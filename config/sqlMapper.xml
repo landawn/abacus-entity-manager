@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<sqlMapper>
+    <sql id="findById">select * from Author where id=1</sql>
+    <sql id="findByName">select * from Author where name='test'</sql>
+
+
+    <sql id="selectAccountByPrimaryKey">select * from account where id > 0 limit 1</sql>
+
+    <sql id="insertAccount">INSERT INTO account (first_name, last_name, gui,
+        last_update_time, create_time) VALUES ( #{firstName}, #{lastName},
+        #{gui}, #{lastUpdateTime}, #{createTime})
+    </sql>
+
+    <sql id="selectAccountById" batchSize="1000" fetchSize="10" resultSetType="FORWARD_ONLY">select * from account WHERE account.id = #{id}</sql>
+
+    <sql id="selectAllAccount">select * from account</sql>
+
+    <sql id="updateAccountFirstNameById">UPDATE account SET first_name = #{firstName} WHERE
+        account.id
+        = #{id}
+    </sql>
+
+    <sql id="deleteAccountById">DELETE FROM account WHERE account.id = #{id}</sql>
+
+    <sql id="deleteAllAccount">DELETE FROM account</sql>
+</sqlMapper>

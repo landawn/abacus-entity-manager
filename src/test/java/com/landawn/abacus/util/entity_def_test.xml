@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<entityDef package="com.landawn.abacus.util">
+	<entity name="Person" abstract="true">
+		<properties>
+			<property name="firstName" type="String" />
+			<property name="middleName" type="String" />
+			<property name="lastName" type="String" />
+			<property name="birthDate" type="Timestamp" />
+		</properties>
+	</entity>
+
+	<entity name="Student" extends="Person" implements="java.io.Serializable, Cloneable" hashEqualsWithParentProperties="true" toStringWithParentProperties="true">
+		<properties>
+			<property name="clazz" type="String" hashEquals="false" toString="false" />
+			<property name="list" type="List&lt;List&lt;Person&gt;&gt;" hashEquals="true" toString="false" />
+
+			<property name="map" type="Map&lt;List&lt;List&lt;Person&gt;&gt;, List&lt;List&lt;Person&gt;&gt;&gt;" hashEquals="true" toString="true" />
+
+			<property name="map1" type="Map&lt;Person, List&lt;List&lt;Person&gt;&gt;&gt;" hashEquals="true" toString="true" />
+
+			<property name="map2" type="Map&lt;List&lt;List&lt;Person&gt;&gt;, Person&gt;" hashEquals="true" toString="true" />
+		</properties>
+	</entity>
+</entityDef>

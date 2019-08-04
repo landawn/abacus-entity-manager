@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<abacus version="0.8">
+	<slog>
+		<open>false</open>
+		<batchSize>200</batchSize>
+		<domain name="ExtendDirty">
+			<operationCode>1</operationCode>
+		</domain>
+		<domain name="extendDirtyLVC">
+			<operationCode>2</operationCode>
+		</domain>
+		<table name="slog">
+			<url>${jdbc.url}</url>
+			<driver>${jdbc.driver}</driver>
+			<user>${jdbc.user}</user>
+			<password>${jdbc.password}</password>
+			<initialSize>1</initialSize>
+		</table>
+	</slog>
+
+	<properties resource="abacus.properties" />
+
+	<initializerOnStartup>com.landawn.abacus.impl.MyAbacusInitializer
+	</initializerOnStartup>
+
+	<!-- extendDirtyEntityDefinition -->
+	<entityManager>
+		<domainName>ExtendDirty</domainName>
+		<mode>LVC</mode>
+		<entityCache>
+			<liveTime>3600</liveTime>
+			<maxIdleTime>600000</maxIdleTime>
+			<capacity>50000</capacity>
+			<includedEntities>Author, Book</includedEntities>
+			<customizedEntity name="Author">
+				<liveTime>1800000</liveTime>
+				<maxIdleTime>600000</maxIdleTime>
+				<excludedProperties>birthDay</excludedProperties>
+			</customizedEntity>
+			<customizedEntity name="Book">
+				<liveTime>1800000</liveTime>
+				<maxIdleTime>600000</maxIdleTime>
+				<excludedProperties>birthDay</excludedProperties>
+			</customizedEntity>
+		</entityCache>
+		<lock>
+			<recordLockProvider>Memcached(localhost:11211)</recordLockProvider>
+		</lock>
+		<entityDefinition>${entity.definition.extendDirty}</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<!-- <provider>dbcp</provider> -->
+				<sqlLog>true</sqlLog>
+				<queryWithReadOnlyConnectionByDefault>true
+				</queryWithReadOnlyConnectionByDefault>
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<initialSize>3</initialSize>
+					<maxActive>${jdbc.maxActive}</maxActive>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>300000</maxIdleTime>
+					<validationQuery>SELECT 1</validationQuery>
+				</connection>
+				<readOnlyConnection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<initialSize>3</initialSize>
+					<maxActive>${jdbc.maxActive}</maxActive>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>300000</maxIdleTime>
+					<validationQuery>SELECT 1</validationQuery>
+				</readOnlyConnection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- implDirtyEntityDefinition -->
+	<entityManager>
+		<domainName>ImplDirty</domainName>
+		<mode>LVC</mode>
+		<entityCache>
+			<liveTime>3600</liveTime>
+			<maxIdleTime>600000</maxIdleTime>
+			<capacity>50000</capacity>
+			<includedEntities>Author, Book</includedEntities>
+			<customizedEntity name="Author">
+				<liveTime>1800000</liveTime>
+				<maxIdleTime>600000</maxIdleTime>
+				<excludedProperties>birthDay</excludedProperties>
+			</customizedEntity>
+			<customizedEntity name="Book">
+				<liveTime>1800000</liveTime>
+				<maxIdleTime>600000</maxIdleTime>
+				<excludedProperties>birthDay</excludedProperties>
+			</customizedEntity>
+		</entityCache>
+		<entityDefinition>${entity.definition.implDirty}</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- noInheritEntityDefinition -->
+	<entityManager>
+		<domainName>NoInherit</domainName>
+		<mode>LVC</mode>
+		<entityCache>
+			<liveTime>3600</liveTime>
+			<maxIdleTime>600000</maxIdleTime>
+			<capacity>50000</capacity>
+			<includedEntities>Author, Book</includedEntities>
+			<customizedEntity name="Author">
+				<liveTime>1800000</liveTime>
+				<maxIdleTime>600000</maxIdleTime>
+				<excludedProperties>birthDay</excludedProperties>
+			</customizedEntity>
+			<customizedEntity name="Book">
+				<liveTime>1800000</liveTime>
+				<maxIdleTime>600000</maxIdleTime>
+				<excludedProperties>birthDay</excludedProperties>
+			</customizedEntity>
+		</entityCache>
+		<entityDefinition>${entity.definition.noInherit}</entityDefinition>
+		<handler>MyHandler</handler>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- stringIdEntityDefinition -->
+	<entityManager>
+		<domainName>StringId</domainName>
+		<mode>LVC</mode>
+		<entityCache>
+			<liveTime>3600</liveTime>
+			<maxIdleTime>600000</maxIdleTime>
+			<capacity>50000</capacity>
+			<includedEntities>Author, Book</includedEntities>
+			<customizedEntity name="Author">
+				<liveTime>1800000</liveTime>
+				<maxIdleTime>600000</maxIdleTime>
+				<excludedProperties>birthDay</excludedProperties>
+			</customizedEntity>
+			<customizedEntity name="Book">
+				<liveTime>1800000</liveTime>
+				<maxIdleTime>600000</maxIdleTime>
+				<excludedProperties>birthDay</excludedProperties>
+			</customizedEntity>
+		</entityCache>
+		<entityDefinition>${entity.definition.stringId}</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- start abacus test -->
+
+	<!-- extendDirtyBasicEntityDefinition -->
+	<entityManager>
+		<domainName>extendDirtyBasic</domainName>
+		<mode>basic</mode>
+		<entityDefinition>${entity.definition.extendDirtyBasic}
+		</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<sqlLog>true</sqlLog>
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- extendDirtyLVEntityDefinition -->
+	<entityManager>
+		<domainName>extendDirtyLV</domainName>
+		<mode>LV</mode>
+		<entityDefinition>${entity.definition.extendDirtyLV}
+		</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<sqlLog>true</sqlLog>
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- extendDirtyLVCEntityDefinition -->
+	<entityManager>
+		<domainName>extendDirtyLVC</domainName>
+		<mode>LVC</mode>
+		<entityDefinition>${entity.definition.extendDirtyLVC}
+		</entityDefinition>
+		<queryCache>
+			<autoRefresh>true</autoRefresh>
+			<zipCache>true</zipCache>
+			<provider>Memcached(localhost:11211)</provider>
+		</queryCache>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<sqlLog>true</sqlLog>
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+		<sqlMapper>extendDirtyLVCSqlMapper.xml</sqlMapper>
+		<handler>MyHandler, EmptyHandler</handler>
+	</entityManager>
+
+	<!-- extendDirtyVCEntityDefinition -->
+	<entityManager>
+		<domainName>extendDirtyVC</domainName>
+		<mode>VC</mode>
+		<entityDefinition>${entity.definition.extendDirtyVC}
+		</entityDefinition>
+		<queryCache>
+			<!-- <provider>Memcached(localhost:11211)</provider> -->
+		</queryCache>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<sqlLog>true</sqlLog>
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- implDirtyBasicEntityDefinition -->
+	<entityManager>
+		<domainName>implDirtyBasic</domainName>
+		<mode>basic</mode>
+		<entityDefinition>${entity.definition.implDirtyBasic}
+		</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<sqlLog>true</sqlLog>
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- implDirtyLVEntityDefinition -->
+	<entityManager>
+		<domainName>implDirtyLV</domainName>
+		<mode>LV</mode>
+		<entityDefinition>${entity.definition.implDirtyLV}</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<sqlLog>true</sqlLog>
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- implDirtyLVCEntityDefinition -->
+	<entityManager>
+		<domainName>implDirtyLVC</domainName>
+		<mode>LVC</mode>
+		<entityDefinition>${entity.definition.implDirtyLVC}</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<sqlLog>true</sqlLog>
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- implDirtyVCEntityDefinition -->
+	<entityManager>
+		<domainName>implDirtyVC</domainName>
+		<mode>VC</mode>
+		<entityDefinition>${entity.definition.implDirtyVC}</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<sqlLog>true</sqlLog>
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- pjoBasicEntityDefinition -->
+	<entityManager>
+		<domainName>pjoBasic</domainName>
+		<mode>basic</mode>
+		<entityDefinition>${entity.definition.pjoBasic}</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<sqlLog>true</sqlLog>
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- pjoLVEntityDefinition -->
+	<entityManager>
+		<domainName>pjoLV</domainName>
+		<mode>LV</mode>
+		<entityDefinition>${entity.definition.pjoLV}</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<sqlLog>true</sqlLog>
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- pjoLVCEntityDefinition -->
+	<entityManager>
+		<domainName>pjoLVC</domainName>
+		<mode>LVC</mode>
+		<entityDefinition>${entity.definition.pjoLVC}</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<sqlLog>true</sqlLog>
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- pjoVCEntityDefinition -->
+	<entityManager>
+		<domainName>pjoVC</domainName>
+		<mode>VC</mode>
+		<entityDefinition>${entity.definition.pjoVC}</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<sqlLog>true</sqlLog>
+				<connection>
+					<url>${jdbc.url}</url>
+					<driver>${jdbc.driver}</driver>
+					<user>${jdbc.user}</user>
+					<password>${jdbc.password}</password>
+					<liveTime>${jdbc.liveTime}</liveTime>
+					<maxIdleTime>${jdbc.maxIdleTime}</maxIdleTime>
+					<maxActive>${jdbc.maxActive}</maxActive>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+	<!-- end abacus test -->
+</abacus>

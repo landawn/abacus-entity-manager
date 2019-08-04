@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSourceManager liveEnv="dev">
+
+	<properties resource="abacus.properties" />
+	
+	<dataSource name="codes" env="dev">
+        <!-- <provider>dbcp</provider> -->
+		<sqlLog>true</sqlLog>
+		<queryWithReadOnlyConnectionByDefault>true</queryWithReadOnlyConnectionByDefault>
+		<connection>
+			<url>${jdbc.url}</url>
+			<driver>${jdbc.driver}</driver>
+			<user>${jdbc.user}</user>
+			<password>${jdbc.password}</password>
+			<initialSize>3</initialSize>
+			<maxActive>100</maxActive>
+			<liveTime>86400000</liveTime>
+			<maxIdleTime>300000</maxIdleTime>
+			<validationQuery>SELECT 1</validationQuery>
+		</connection>
+		<readOnlyConnection>
+			<url>${jdbc.url}</url>
+			<driver>${jdbc.driver}</driver>
+			<user>${jdbc.user}</user>
+			<password>${jdbc.password}</password>
+			<initialSize>3</initialSize>
+			<maxActive>100</maxActive>
+			<liveTime>86400000</liveTime>
+			<maxIdleTime>300000</maxIdleTime>
+			<validationQuery>SELECT 1</validationQuery>
+		</readOnlyConnection>
+	</dataSource>
+</dataSourceManager>

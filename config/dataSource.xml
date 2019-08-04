@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="codes" env="dev">
+    <!-- <provider>dbcp</provider> -->
+    <sqlLog>true</sqlLog>
+    <queryWithReadOnlyConnectionByDefault>true</queryWithReadOnlyConnectionByDefault>
+    
+    <connection>
+        <url>jdbc:mysql://localhost:3306/abacustest</url>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <user>root</user>
+        <password>admin</password>
+        <initialSize>3</initialSize>
+        <maxActive>100</maxActive>
+        <liveTime>86400000</liveTime>
+        <maxIdleTime>300000</maxIdleTime>
+        <validationQuery>SELECT 1</validationQuery>
+    </connection>
+    
+    <readOnlyConnection>
+        <url>jdbc:mysql://localhost:3306/abacustest</url>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <user>root</user>
+        <password>admin</password>
+        <initialSize>3</initialSize>
+        <maxActive>100</maxActive>
+        <liveTime>86400000</liveTime>
+        <maxIdleTime>300000</maxIdleTime>
+        <validationQuery>SELECT 1</validationQuery>
+    </readOnlyConnection>
+</dataSource>
