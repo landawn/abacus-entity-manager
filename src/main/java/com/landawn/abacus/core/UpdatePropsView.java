@@ -22,17 +22,28 @@ import java.util.Map;
 import com.landawn.abacus.annotation.Internal;
 import com.landawn.abacus.metadata.Property;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class UpdatePropsView.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 @Internal
 final class UpdatePropsView {
+    
+    /** The update props. */
     final Map<String, Object> updateProps;
+    
+    /** The prop entity list. */
     final Map<Property, List<Object>> propEntityList;
 
+    /**
+     * Instantiates a new update props view.
+     *
+     * @param updateProps the update props
+     * @param propEntityList the prop entity list
+     */
     UpdatePropsView(Map<String, Object> updateProps, Map<Property, List<Object>> propEntityList) {
         this.updateProps = updateProps;
         this.propEntityList = propEntityList;

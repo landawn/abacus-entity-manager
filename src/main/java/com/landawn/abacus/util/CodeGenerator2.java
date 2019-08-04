@@ -84,18 +84,19 @@ import com.landawn.abacus.type.Type;
 import com.landawn.abacus.type.TypeType;
 import com.landawn.abacus.util.CodeGenerator.ParentPropertyMode;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CodeGenerator2.
  *
- * @since 0.8
- * 
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class CodeGenerator2 {
+    
+    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(CodeGenerator2.class);
 
-    /**
-     * Field UTF_8
-     */
+    /** Field UTF_8. */
     private static final String UTF_8 = "UTF-8";
 
     /**
@@ -103,6 +104,7 @@ public final class CodeGenerator2 {
      */
     public static final Class<?> _N = _N.class;
 
+    /** The Constant POSTFIX_OF_JAVA_FILE. */
     private static final String POSTFIX_OF_JAVA_FILE = ".java";
 
     /**
@@ -199,6 +201,7 @@ public final class CodeGenerator2 {
         USUAL_TYPES.add(HBaseColumn.class.getCanonicalName());
     }
 
+    /** The java type prop name. */
     private static Map<String, String> JAVA_TYPE_PROP_NAME = new HashMap<>();
 
     static {
@@ -220,6 +223,13 @@ public final class CodeGenerator2 {
         // No instance.
     }
 
+    /**
+     * Database 2 xml.
+     *
+     * @param database the database
+     * @param xml the xml
+     * @param databaseElementAttrs the database element attrs
+     */
     static void database2Xml(final Database database, final File xml, final Map<String, String> databaseElementAttrs) {
         Document doc = XMLUtil.createDOMParser(true, true).newDocument();
         Element databaseNode = doc.createElement(DatabaseEle.DATABASE);
@@ -228,6 +238,14 @@ public final class CodeGenerator2 {
         XMLUtil.transform(doc, xml);
     }
 
+    /**
+     * Database 2 node.
+     *
+     * @param database the database
+     * @param node the node
+     * @param databaseElementAttrs the database element attrs
+     * @return the element
+     */
     static Element database2Node(final Database database, final Element node, final Map<String, String> databaseElementAttrs) {
         Document doc = node.getOwnerDocument();
         Element databaseNode = null;
@@ -254,6 +272,13 @@ public final class CodeGenerator2 {
         return databaseNode;
     }
 
+    /**
+     * Table 2 node.
+     *
+     * @param table the table
+     * @param node the node
+     * @return the element
+     */
     static Element table2Node(final Table table, final Element node) {
         Document doc = node.getOwnerDocument();
         Element tableNode = null;
@@ -286,6 +311,12 @@ public final class CodeGenerator2 {
         return tableNode;
     }
 
+    /**
+     * Table 2 xml.
+     *
+     * @param table the table
+     * @param xml the xml
+     */
     static void table2Xml(final Table table, final File xml) {
         Document doc = XMLUtil.createDOMParser(true, true).newDocument();
         Element tableNode = doc.createElement(TableEle.TABLE);
@@ -296,16 +327,39 @@ public final class CodeGenerator2 {
         XMLUtil.transform(doc, xml);
     }
 
+    /**
+     * Database 2 entity definition xml.
+     *
+     * @param database the database
+     * @param entityDefinitionXml the entity definition xml
+     */
     public static void database2EntityDefinitionXml(final Database database, final File entityDefinitionXml) {
         database2EntityDefinitionXml(database, entityDefinitionXml, null);
     }
 
+    /**
+     * Database 2 entity definition xml.
+     *
+     * @param database the database
+     * @param entityDefinitionXml the entity definition xml
+     * @param entityDefAttrs the entity def attrs
+     */
     public static void database2EntityDefinitionXml(final Database database, final File entityDefinitionXml, final Map<String, String> entityDefAttrs) {
         Map<String, String> newEntityNames = new LinkedHashMap<>();
         Map<String, String> newPropNames = new LinkedHashMap<>();
         database2EntityDefinitionXml(database, entityDefinitionXml, entityDefAttrs, newEntityNames, newPropNames, null);
     }
 
+    /**
+     * Database 2 entity definition xml.
+     *
+     * @param database the database
+     * @param entityDefinitionXml the entity definition xml
+     * @param entityDefAttrs the entity def attrs
+     * @param newEntityNames the new entity names
+     * @param newPropNames the new prop names
+     * @param excludedeEntityPropNames the excludede entity prop names
+     */
     public static void database2EntityDefinitionXml(final Database database, final File entityDefinitionXml, final Map<String, String> entityDefAttrs,
             final Map<String, String> newEntityNames, final Map<String, String> newPropNames, final Map<String, Set<String>> excludedeEntityPropNames) {
         Map<String, Map<String, String>> newEntityPropNames = new LinkedHashMap<>();
@@ -324,6 +378,16 @@ public final class CodeGenerator2 {
         database2EntityDefinitionXml(database, entityDefinitionXml, entityDefAttrs, null, newEntityNames, null, newEntityPropNames, excludedeEntityPropNames);
     }
 
+    /**
+     * Database 2 entity definition xml.
+     *
+     * @param database the database
+     * @param entityDefinitionXml the entity definition xml
+     * @param entityDefAttrs the entity def attrs
+     * @param tableName2EntityName the table name 2 entity name
+     * @param columnName2PropName the column name 2 prop name
+     * @param excludedeEntityPropNames the excludede entity prop names
+     */
     public static void database2EntityDefinitionXml(final Database database, final File entityDefinitionXml, final Map<String, String> entityDefAttrs,
             Method tableName2EntityName, final Method columnName2PropName, final Map<String, Set<String>> excludedeEntityPropNames) {
         if (tableName2EntityName == null) {
@@ -343,6 +407,18 @@ public final class CodeGenerator2 {
                 excludedeEntityPropNames);
     }
 
+    /**
+     * Database 2 entity definition xml.
+     *
+     * @param database the database
+     * @param entityDefinitionXml the entity definition xml
+     * @param entityDefAttrs the entity def attrs
+     * @param tableName2EntityName the table name 2 entity name
+     * @param newEntityNames the new entity names
+     * @param entityColumnName2PropName the entity column name 2 prop name
+     * @param newEntityPropNames the new entity prop names
+     * @param excludedeEntityPropNames the excludede entity prop names
+     */
     static void database2EntityDefinitionXml(final Database database, final File entityDefinitionXml, final Map<String, String> entityDefAttrs,
             Method tableName2EntityName, Map<String, String> newEntityNames, Map<String, Method> entityColumnName2PropName,
             Map<String, Map<String, String>> newEntityPropNames, Map<String, Set<String>> excludedeEntityPropNames) {
@@ -462,6 +538,12 @@ public final class CodeGenerator2 {
         XMLUtil.transform(doc, entityDefinitionXml);
     }
 
+    /**
+     * Sets the attributes.
+     *
+     * @param element the element
+     * @param attrs the attrs
+     */
     static void setAttributes(final Element element, final Map<String, String> attrs) {
         if (attrs != null) {
             for (String attrName : attrs.keySet()) {
@@ -471,11 +553,13 @@ public final class CodeGenerator2 {
     }
 
     /**
-     * @param entityDef
-     * @param node
-     * @param newPropNames
-     * @param excludedPropNames
-     * @param importedEntityEelement
+     * Entity definition 2 node.
+     *
+     * @param entityDef the entity def
+     * @param node the node
+     * @param newPropNames the new prop names
+     * @param excludedPropNames the excluded prop names
+     * @param importedEntityEelement the imported entity eelement
      */
     static void entityDefinition2Node(final EntityDefinition entityDef, final Element node, Map<String, String> newPropNames, Set<String> excludedPropNames,
             final Element importedEntityEelement) {
@@ -638,6 +722,12 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Gets the entity element list.
+     *
+     * @param doc the doc
+     * @return the entity element list
+     */
     private static Map<String, Element> getEntityElementList(final Document doc) {
         Map<String, Element> result = new LinkedHashMap<>();
 
@@ -660,6 +750,13 @@ public final class CodeGenerator2 {
         return result;
     }
 
+    /**
+     * Gets the entity ele by name.
+     *
+     * @param entityName the entity name
+     * @param entityEleList the entity ele list
+     * @return the entity ele by name
+     */
     private static Element getEntityEleByName(final String entityName, final Map<String, Element> entityEleList) {
         Element importedElement = null;
 
@@ -674,6 +771,12 @@ public final class CodeGenerator2 {
         return importedElement;
     }
 
+    /**
+     * Gets the simple prop name table class name.
+     *
+     * @param className the class name
+     * @return the simple prop name table class name
+     */
     protected static String getSimplePropNameTableClassName(final String className) {
         String simpleClassName = className;
         int index = className.lastIndexOf(WD._PERIOD);
@@ -685,15 +788,47 @@ public final class CodeGenerator2 {
         return simpleClassName;
     }
 
+    /**
+     * Entity definition xml 2 class.
+     *
+     * @param domainName the domain name
+     * @param entityDefinitionXml the entity definition xml
+     * @param srcPath the src path
+     * @param entityMode the entity mode
+     */
     public static void entityDefinitionXml2Class(final String domainName, final File entityDefinitionXml, final String srcPath, final EntityMode entityMode) {
         entityDefinitionXml2Class(domainName, entityDefinitionXml, srcPath, entityMode, null, null, true);
     }
 
+    /**
+     * Entity definition xml 2 class.
+     *
+     * @param domainName the domain name
+     * @param entityDefinitionXml the entity definition xml
+     * @param srcPath the src path
+     * @param entityMode the entity mode
+     * @param propName2VarName the prop name 2 var name
+     * @param propName2MethodName the prop name 2 method name
+     * @param fluentSetMethod the fluent set method
+     */
     public static void entityDefinitionXml2Class(final String domainName, final File entityDefinitionXml, final String srcPath, final EntityMode entityMode,
             final Method propName2VarName, final Method propName2MethodName, final boolean fluentSetMethod) {
         entityDefinitionXml2Class(domainName, entityDefinitionXml, srcPath, entityMode, propName2VarName, propName2MethodName, fluentSetMethod, null);
     }
 
+    /**
+     * Entity definition xml 2 class.
+     *
+     * @param domainName the domain name
+     * @param entityDefinitionXml the entity definition xml
+     * @param srcPath the src path
+     * @param entityMode the entity mode
+     * @param propName2VarName the prop name 2 var name
+     * @param propName2MethodName the prop name 2 method name
+     * @param fluentSetMethod the fluent set method
+     * @param extendedClass the extended class
+     * @param implementedInterfaces the implemented interfaces
+     */
     public static void entityDefinitionXml2Class(final String domainName, final File entityDefinitionXml, final String srcPath, final EntityMode entityMode,
             final Method propName2VarName, final Method propName2MethodName, final boolean fluentSetMethod, final Class<?> extendedClass,
             final Class<?>... implementedInterfaces) {
@@ -701,6 +836,21 @@ public final class CodeGenerator2 {
                 N.asList(implementedInterfaces), true, true);
     }
 
+    /**
+     * Entity definition xml 2 class.
+     *
+     * @param domainName the domain name
+     * @param entityDefinitionXml the entity definition xml
+     * @param srcPath the src path
+     * @param entityMode the entity mode
+     * @param propName2VarName the prop name 2 var name
+     * @param propName2MethodName the prop name 2 method name
+     * @param fluentSetMethod the fluent set method
+     * @param extendedClass the extended class
+     * @param implementedInterfaces the implemented interfaces
+     * @param generateHashEqualsMethod the generate hash equals method
+     * @param generateToStringMethod the generate to string method
+     */
     public static void entityDefinitionXml2Class(final String domainName, final File entityDefinitionXml, final String srcPath, final EntityMode entityMode,
             final Method propName2VarName, final Method propName2MethodName, final boolean fluentSetMethod, final Class<?> extendedClass,
             final List<Class<?>> implementedInterfaces, final boolean generateHashEqualsMethod, final boolean generateToStringMethod) {
@@ -708,6 +858,24 @@ public final class CodeGenerator2 {
                 implementedInterfaces, generateHashEqualsMethod, generateToStringMethod, generateHashEqualsMethod, generateToStringMethod, Objects.class);
     }
 
+    /**
+     * Entity definition xml 2 class.
+     *
+     * @param domainName the domain name
+     * @param entityDefinitionXml the entity definition xml
+     * @param srcPath the src path
+     * @param entityMode the entity mode
+     * @param propName2VarName the prop name 2 var name
+     * @param propName2MethodName the prop name 2 method name
+     * @param fluentSetMethod the fluent set method
+     * @param extendedClass the extended class
+     * @param implementedInterfaces the implemented interfaces
+     * @param generateHashEqualsMethod the generate hash equals method
+     * @param generateToStringMethod the generate to string method
+     * @param hashEqualsWithParentProperties the hash equals with parent properties
+     * @param toStringWithParentProperties the to string with parent properties
+     * @param utilClassForHashEqualsToString the util class for hash equals to string
+     */
     public static void entityDefinitionXml2Class(final String domainName, final File entityDefinitionXml, final String srcPath, final EntityMode entityMode,
             final Method propName2VarName, final Method propName2MethodName, final boolean fluentSetMethod, final Class<?> extendedClass,
             final List<Class<?>> implementedInterfaces, final boolean generateHashEqualsMethod, final boolean generateToStringMethod,
@@ -737,6 +905,19 @@ public final class CodeGenerator2 {
                 toStringWithParentProperties, utilClassForHashEqualsToString);
     }
 
+    /**
+     * Entity definition xml 2 class.
+     *
+     * @param domainName the domain name
+     * @param entityDefinitionXml the entity definition xml
+     * @param srcPath the src path
+     * @param entityMode the entity mode
+     * @param propName2VarName the prop name 2 var name
+     * @param propName2MethodName the prop name 2 method name
+     * @param fluentSetMethod the fluent set method
+     * @param entityExtendedClasses the entity extended classes
+     * @param entityImplementedInterfaces the entity implemented interfaces
+     */
     public static void entityDefinitionXml2Class(final String domainName, final File entityDefinitionXml, final String srcPath, final EntityMode entityMode,
             final Method propName2VarName, final Method propName2MethodName, final boolean fluentSetMethod, final Map<String, Class<?>> entityExtendedClasses,
             final Map<String, List<Class<?>>> entityImplementedInterfaces) {
@@ -744,6 +925,21 @@ public final class CodeGenerator2 {
                 entityExtendedClasses, entityImplementedInterfaces, true, true);
     }
 
+    /**
+     * Entity definition xml 2 class.
+     *
+     * @param domainName the domain name
+     * @param entityDefinitionXml the entity definition xml
+     * @param srcPath the src path
+     * @param entityMode the entity mode
+     * @param propName2VarName the prop name 2 var name
+     * @param propName2MethodName the prop name 2 method name
+     * @param fluentSetMethod the fluent set method
+     * @param entityExtendedClasses the entity extended classes
+     * @param entityImplementedInterfaces the entity implemented interfaces
+     * @param generateHashEqualsMethod the generate hash equals method
+     * @param generateToStringMethod the generate to string method
+     */
     public static void entityDefinitionXml2Class(final String domainName, final File entityDefinitionXml, final String srcPath, final EntityMode entityMode,
             final Method propName2VarName, final Method propName2MethodName, final boolean fluentSetMethod, final Map<String, Class<?>> entityExtendedClasses,
             final Map<String, List<Class<?>>> entityImplementedInterfaces, final boolean generateHashEqualsMethod, final boolean generateToStringMethod) {
@@ -753,20 +949,21 @@ public final class CodeGenerator2 {
     }
 
     /**
+     * Entity definition xml 2 class.
      *
-     * @param domainName
-     * @param entityDefinitionXml
-     * @param srcPath
-     * @param entityMode
-     * @param propName2VarName
-     * @param propName2MethodName
+     * @param domainName the domain name
+     * @param entityDefinitionXml the entity definition xml
+     * @param srcPath the src path
+     * @param entityMode the entity mode
+     * @param propName2VarName the prop name 2 var name
+     * @param propName2MethodName the prop name 2 method name
      * @param fluentSetMethod <code>true</code> to generate the setter methods with returning <code>this</code> to support fluent setter. For example: <code>account.setFirstName("fn").setLastName("ln")...</code>
-     * @param entityExtendedClasses
-     * @param entityImplementedInterfaces
-     * @param generateHashEqualsMethod
-     * @param generateToStringMethod
-     * @param hashEqualsWithParentProperties
-     * @param toStringWithParentProperties
+     * @param entityExtendedClasses the entity extended classes
+     * @param entityImplementedInterfaces the entity implemented interfaces
+     * @param generateHashEqualsMethod the generate hash equals method
+     * @param generateToStringMethod the generate to string method
+     * @param hashEqualsWithParentProperties the hash equals with parent properties
+     * @param toStringWithParentProperties the to string with parent properties
      * @param utilClassForHashEqualsToString is <code>Objects.class</code> by default. It can also be <code>N.class</code> or any classes else which provide the {@code hashCode/equals/toString} method.
      *      Or specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-util.jar for Methods {@code hashCode/equals/toString}.
      */
@@ -861,6 +1058,12 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Gets the prop name table class name.
+     *
+     * @param entityDefinitionFactory the entity definition factory
+     * @return the prop name table class name
+     */
     private static String getPropNameTableClassName(final EntityDefinitionFactory entityDefinitionFactory) {
         String propNameTableClass = POSTFIX_OF_PROP_NAME_LIST;
         String domainName = entityDefinitionFactory.domainName();
@@ -878,6 +1081,24 @@ public final class CodeGenerator2 {
         return propNameTableClass;
     }
 
+    /**
+     * Entity definition 2 class.
+     *
+     * @param entityDef the entity def
+     * @param classFile the class file
+     * @param entityMode the entity mode
+     * @param propNameTableClass the prop name table class
+     * @param propName2VarName the prop name 2 var name
+     * @param propName2MethodName the prop name 2 method name
+     * @param extendedClass the extended class
+     * @param implementedInterfaces the implemented interfaces
+     * @param fluentSetMethod the fluent set method
+     * @param generateHashEqualsMethod the generate hash equals method
+     * @param generateToStringMethod the generate to string method
+     * @param hashEqualsWithParentProperties the hash equals with parent properties
+     * @param toStringWithParentProperties the to string with parent properties
+     * @param utilClass the util class
+     */
     static void entityDefinition2Class(final EntityDefinition entityDef, final File classFile, final EntityMode entityMode, final String propNameTableClass,
             final Method propName2VarName, final Method propName2MethodName, Class<?> extendedClass, List<Class<?>> implementedInterfaces,
             final boolean fluentSetMethod, boolean generateHashEqualsMethod, boolean generateToStringMethod, boolean hashEqualsWithParentProperties,
@@ -1111,15 +1332,24 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Entity definition xml 2 prop name table.
+     *
+     * @param domainName the domain name
+     * @param entityDefinitionXml the entity definition xml
+     * @param srcPath the src path
+     */
     public static void entityDefinitionXml2PropNameTable(final String domainName, final File entityDefinitionXml, final String srcPath) {
         entityDefinitionXml2PropNameTable(domainName, entityDefinitionXml, srcPath, null, _N);
     }
 
     /**
-     * @param domainName
-     * @param entityDefinitionXml
-     * @param srcPath
-     * @param propName2VarName
+     * Entity definition xml 2 prop name table.
+     *
+     * @param domainName the domain name
+     * @param entityDefinitionXml the entity definition xml
+     * @param srcPath the src path
+     * @param propName2VarName the prop name 2 var name
      * @param utilClass  specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-util.jar
      */
     public static void entityDefinitionXml2PropNameTable(String domainName, final File entityDefinitionXml, final String srcPath, Method propName2VarName,
@@ -1153,6 +1383,15 @@ public final class CodeGenerator2 {
         entityDefinition2PropNameTable(entityDefinitionFactory, propNameDefClassFile, pkgName, propName2VarName, utilClass);
     }
 
+    /**
+     * Entity definition 2 prop name table.
+     *
+     * @param entityDefinitionFactory the entity definition factory
+     * @param propNameDefClassFile the prop name def class file
+     * @param pkgName the pkg name
+     * @param propName2VarName the prop name 2 var name
+     * @param utilClass the util class
+     */
     static void entityDefinition2PropNameTable(final EntityDefinitionFactory entityDefinitionFactory, final File propNameDefClassFile, final String pkgName,
             final Method propName2VarName, final Class<?> utilClass) {
 
@@ -1269,6 +1508,16 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Write prop name table.
+     *
+     * @param entityDefs the entity defs
+     * @param propName2VarName the prop name 2 var name
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @param utilClass the util class
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static void writePropNameTable(final EntityDefinition[] entityDefs, final Method propName2VarName, final String headSpace, final Writer fileWrite,
             final Class<?> utilClass) throws IOException {
         for (EntityDefinition entityDef : entityDefs) {
@@ -1300,12 +1549,14 @@ public final class CodeGenerator2 {
     }
 
     /**
+     * Write prop name field.
      *
-     * @param entityDef
-     * @param propName2VarName
-     * @param headSpace
-     * @param fileWrite
-     * @throws IOException
+     * @param entityDef the entity def
+     * @param propName2VarName the prop name 2 var name
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @param utilClass the util class
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     private static void writePropNameField(final EntityDefinition entityDef, final Method propName2VarName, final String headSpace, final Writer fileWrite,
             final Class<?> utilClass) throws IOException {
@@ -1398,16 +1649,24 @@ public final class CodeGenerator2 {
         Objectory.recycle(sb);
     }
 
+    /**
+     * Entity definition xml 2 column name table.
+     *
+     * @param domainName the domain name
+     * @param entityDefinitionXml the entity definition xml
+     * @param srcPath the src path
+     */
     public static void entityDefinitionXml2ColumnNameTable(final String domainName, final File entityDefinitionXml, final String srcPath) {
         entityDefinitionXml2ColumnNameTable(domainName, entityDefinitionXml, srcPath, null, _N);
     }
 
     /**
+     * Entity definition xml 2 column name table.
      *
-     * @param domainName
-     * @param entityDefinitionXml
-     * @param srcPath
-     * @param columnName2VarName
+     * @param domainName the domain name
+     * @param entityDefinitionXml the entity definition xml
+     * @param srcPath the src path
+     * @param columnName2VarName the column name 2 var name
      * @param utilClass  specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-util.jar
      */
     public static void entityDefinitionXml2ColumnNameTable(final String domainName, final File entityDefinitionXml, final String srcPath,
@@ -1546,6 +1805,16 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Write column name table.
+     *
+     * @param entityDefs the entity defs
+     * @param columnName2VarName the column name 2 var name
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @param utilClass the util class
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static void writeColumnNameTable(final Collection<EntityDefinition> entityDefs, final Method columnName2VarName, final String headSpace,
             final Writer fileWrite, final Class<?> utilClass) throws IOException {
         for (EntityDefinition entityDef : entityDefs) {
@@ -1562,6 +1831,16 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Write column name field.
+     *
+     * @param entityDef the entity def
+     * @param columnName2VarName the column name 2 var name
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @param utilClass the util class
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static void writeColumnNameField(final EntityDefinition entityDef, final Method columnName2VarName, final String headSpace, final Writer fileWrite,
             final Class<?> utilClass) throws IOException {
         final StringBuilder sb = Objectory.createStringBuilder();
@@ -1660,11 +1939,29 @@ public final class CodeGenerator2 {
         Objectory.recycle(sb);
     }
 
+    /**
+     * Generate SQL mapper id table.
+     *
+     * @param filePath the file path
+     * @param srcPath the src path
+     * @param pkgName the pkg name
+     * @param className the class name
+     * @param id2VarName the id 2 var name
+     */
     public static void generateSQLMapperIdTable(final String filePath, final String srcPath, final String pkgName, final String className,
             final Method id2VarName) {
         generateSQLMapperIdTable(SQLMapper.fromFile(filePath), srcPath, pkgName, className, id2VarName);
     }
 
+    /**
+     * Generate SQL mapper id table.
+     *
+     * @param sqlMapper the sql mapper
+     * @param srcPath the src path
+     * @param pkgName the pkg name
+     * @param className the class name
+     * @param id2VarName the id 2 var name
+     */
     public static void generateSQLMapperIdTable(final SQLMapper sqlMapper, final String srcPath, final String pkgName, final String className,
             Method id2VarName) {
         String classFilePath = ClassUtil.makePackageFolder(srcPath, pkgName);
@@ -1707,20 +2004,29 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Generate entity.
+     *
+     * @param srcDir the src dir
+     * @param packageName the package name
+     * @param className the class name
+     * @param fields the fields
+     */
     public static void generateEntity(File srcDir, String packageName, String className, Map<String, ?> fields) {
         generateEntity(srcDir, packageName, className, fields, false, false, false, Objects.class);
     }
 
     /**
-     * 
-     * @param srcDir
-     * @param packageName
-     * @param className
-     * @param fields key is field name, value is field type, which must be <code>Class</code>, <code>Type</code> or the name of them. 
+     * Generate entity.
+     *
+     * @param srcDir the src dir
+     * @param packageName the package name
+     * @param className the class name
+     * @param fields key is field name, value is field type, which must be <code>Class</code>, <code>Type</code> or the name of them.
      *               It must be <code>LinkedHashMap</code>.
-     * @param constructor
-     * @param copyMethod
-     * @param fluentSetter
+     * @param constructor the constructor
+     * @param copyMethod the copy method
+     * @param fluentSetter the fluent setter
      * @param utilClassForHashEqualsToString is <code>Objects.class</code> by default. It can also be <code>N.class</code> or any classes else which provide the {@code hashCode/equals/toString} method.
      *      Or specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-util.jar for Methods {@code hashCode/equals/toString}.
      */
@@ -1730,19 +2036,20 @@ public final class CodeGenerator2 {
     }
 
     /**
-     * 
-     * @param srcDir
-     * @param packageName
-     * @param className
-     * @param fields key is field name, value is field type, which must be <code>Class</code>, <code>Type</code> or the name of them. 
+     * Generate entity.
+     *
+     * @param srcDir the src dir
+     * @param packageName the package name
+     * @param className the class name
+     * @param fields key is field name, value is field type, which must be <code>Class</code>, <code>Type</code> or the name of them.
      *               It must be <code>LinkedHashMap</code>.
-     * @param constructor
-     * @param copyMethod
-     * @param fluentSetter
-     * @param fieldName2MethodName
-     * @param parentClass
-     * @param parentPropertyModeForHashEquals
-     * @param parentPropertyModeForToString
+     * @param constructor the constructor
+     * @param copyMethod the copy method
+     * @param fluentSetter the fluent setter
+     * @param fieldName2MethodName the field name 2 method name
+     * @param parentClass the parent class
+     * @param parentPropertyModeForHashEquals the parent property mode for hash equals
+     * @param parentPropertyModeForToString the parent property mode for to string
      * @param utilClassForHashEqualsToString is <code>Objects.class</code> by default. It can also be <code>N.class</code> or any classes else which provide the {@code hashCode/equals/toString} method.
      *      Or specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-util.jar for Methods {@code hashCode/equals/toString}.
      */
@@ -1971,6 +2278,13 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Read package types.
+     *
+     * @param type the type
+     * @param packageName the package name
+     * @param packClasses the pack classes
+     */
     private static void readPackageTypes(Type<?> type, String packageName, final Multimap<String, String, Set<String>> packClasses) {
         final Package pkg = type.clazz().getPackage();
 
@@ -2091,6 +2405,26 @@ public final class CodeGenerator2 {
     //        }
     //    }
 
+    /**
+     * Write class method.
+     *
+     * @param cls the cls
+     * @param className the class name
+     * @param parentClass the parent class
+     * @param pkgName the pkg name
+     * @param fieldTypes the field types
+     * @param constructor the constructor
+     * @param copyMethod the copy method
+     * @param fluentSetter the fluent setter
+     * @param parentPropertyModeForHashEquals the parent property mode for hash equals
+     * @param parentPropertyModeForToString the parent property mode for to string
+     * @param fieldName2MethodName the field name 2 method name
+     * @param importedClasses the imported classes
+     * @param utilClass the util class
+     * @param writer the writer
+     * @throws NoSuchFieldException the no such field exception
+     * @throws SecurityException the security exception
+     */
     private static void writeClassMethod(Class<?> cls, final String className, final Class<?> parentClass, final String pkgName,
             final Map<String, Type<?>> fieldTypes, final boolean constructor, final boolean copyMethod, final boolean fluentSetter,
             ParentPropertyMode parentPropertyModeForHashEquals, ParentPropertyMode parentPropertyModeForToString, Map<String, String> fieldName2MethodName,
@@ -2456,6 +2790,13 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Gets the parameter type name.
+     *
+     * @param pkgName the pkg name
+     * @param entry the entry
+     * @return the parameter type name
+     */
     private static String getParameterTypeName(final String pkgName, Map.Entry<String, Method> entry) {
         String paraTypeName = ClassUtil.getParameterizedTypeNameByMethod(entry.getValue());
 
@@ -2485,6 +2826,14 @@ public final class CodeGenerator2 {
         return paraTypeName + " " + entry.getKey();
     }
 
+    /**
+     * Gets the anno type.
+     *
+     * @param type the type
+     * @param packageName the package name
+     * @param importedClasses the imported classes
+     * @return the anno type
+     */
     static String getAnnoType(Type<?> type, final String packageName, Map<String, Class<?>> importedClasses) {
         if (N.isNullOrEmpty(type.getParameterTypes()) && !type.clazz().equals(Object.class)) {
             return type.name();
@@ -2574,9 +2923,9 @@ public final class CodeGenerator2 {
     /**
      * Method newFileWriter.
      *
-     * @param classFile
+     * @param classFile the class file
      * @return Writer
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     private static Writer newFileWriter(final File classFile) throws IOException {
         if (!classFile.exists()) {
@@ -2589,10 +2938,10 @@ public final class CodeGenerator2 {
     /**
      * Method writeDomanPropNameClass.
      *
-     * @param domainName
-     * @param fileWrite
-     * @param headSpace
-     * @throws IOException
+     * @param domainName the domain name
+     * @param fileWrite the file write
+     * @param headSpace the head space
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     private static void writeDomainPropNameClass(final String domainName, final Writer fileWrite, final String headSpace) throws IOException {
         fileWrite.write(IOUtil.LINE_SEPARATOR);
@@ -2602,7 +2951,7 @@ public final class CodeGenerator2 {
     /**
      * Upper case the first char of the table name.
      *
-     * @param tableName
+     * @param tableName the table name
      * @return String
      */
     static String tableName2EntityName(final String tableName) {
@@ -2612,7 +2961,7 @@ public final class CodeGenerator2 {
     /**
      * SubString {@code columnName} from first under score if it exists. lower the first char of the subString.
      *
-     * @param columnName
+     * @param columnName the column name
      * @return String
      */
     static String columnName2PropName(final String columnName) {
@@ -2622,18 +2971,31 @@ public final class CodeGenerator2 {
     }
 
     /**
+     * Prop name 2 var name.
      *
-     * @param propName
-     * @return
+     * @param propName the prop name
+     * @return the string
      */
     static String propName2VarName(final String propName) {
         return ClassUtil.toUpperCaseWithUnderscore(ClassUtil.formalizePropName(propName));
     }
 
+    /**
+     * Prop name 2 method name.
+     *
+     * @param propName the prop name
+     * @return the string
+     */
     static String propName2MethodName(final String propName) {
         return StringUtil.capitalize(propName);
     }
 
+    /**
+     * Prop name 2 field name.
+     *
+     * @param propName the prop name
+     * @return the string
+     */
     static String propName2FieldName(final String propName) {
         if (propName.toUpperCase().equals(propName)) {
             return propName.toLowerCase();
@@ -2645,7 +3007,7 @@ public final class CodeGenerator2 {
     /**
      * Method rule.
      *
-     * @param st
+     * @param st the st
      * @return String
      */
     private static String formalizePropName(String st) {
@@ -2718,18 +3080,48 @@ public final class CodeGenerator2 {
         return StringUtil.uncapitalize(nst);
     }
 
+    /**
+     * Write file head.
+     *
+     * @param fileWrite the file write
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static void writeFileHead(final Writer fileWrite) throws IOException {
         fileWrite.write("/*" + IOUtil.LINE_SEPARATOR);
         fileWrite.write(" * Generated by Abacus." + IOUtil.LINE_SEPARATOR);
         fileWrite.write(" */" + IOUtil.LINE_SEPARATOR);
     }
 
+    /**
+     * Write package name.
+     *
+     * @param pkgName the pkg name
+     * @param fileWrite the file write
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static void writePackageName(final String pkgName, final Writer fileWrite) throws IOException {
         if (N.notNullOrEmpty(pkgName)) {
             fileWrite.write("package " + pkgName + ";" + IOUtil.LINE_SEPARATOR);
         }
     }
 
+    /**
+     * Write import.
+     *
+     * @param entityDef the entity def
+     * @param pkgName the pkg name
+     * @param propNameTableClass the prop name table class
+     * @param entityMode the entity mode
+     * @param extendedClass the extended class
+     * @param implementedInterfaces the implemented interfaces
+     * @param fileWrite the file write
+     * @param generateHashEqualsMethod the generate hash equals method
+     * @param generateToStringMethod the generate to string method
+     * @param utilClass the util class
+     * @param annotationImportClasses the annotation import classes
+     * @return the map
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static Map<String, Class<?>> writeImport(final EntityDefinition entityDef, final String pkgName, final String propNameTableClass,
             final EntityMode entityMode, final Class<?> extendedClass, final List<Class<?>> implementedInterfaces, final Writer fileWrite,
             final boolean generateHashEqualsMethod, final boolean generateToStringMethod, final Class<?> utilClass, final Set<Class<?>> annotationImportClasses)
@@ -2815,6 +3207,14 @@ public final class CodeGenerator2 {
         return importedClasses;
     }
 
+    /**
+     * Write class import.
+     *
+     * @param fileWrite the file write
+     * @param cls the cls
+     * @param importedClasses the imported classes
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static void writeClassImport(final Writer fileWrite, Class<?> cls, final Map<String, Class<?>> importedClasses) throws IOException {
         //        if (!cls.isInterface()) {
         //            if (Map.class.isAssignableFrom(cls)) {
@@ -2847,6 +3247,30 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Write class.
+     *
+     * @param entityDef the entity def
+     * @param pkgName the pkg name
+     * @param propNameTableClass the prop name table class
+     * @param propName2VarName the prop name 2 var name
+     * @param propName2MethodName the prop name 2 method name
+     * @param entityMode the entity mode
+     * @param extendedClass the extended class
+     * @param implementedInterfaces the implemented interfaces
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @param generateHashEqualsMethod the generate hash equals method
+     * @param generateToStringMethod the generate to string method
+     * @param hashEqualsWithParentProperties the hash equals with parent properties
+     * @param toStringWithParentProperties the to string with parent properties
+     * @param utilClass the util class
+     * @param fluentSetMethod the fluent set method
+     * @param importedClasses the imported classes
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws IllegalAccessException the illegal access exception
+     * @throws InvocationTargetException the invocation target exception
+     */
     private static void writeClass(final EntityDefinition entityDef, final String pkgName, final String propNameTableClass, final Method propName2VarName,
             final Method propName2MethodName, final EntityMode entityMode, Class<?> extendedClass, final List<Class<?>> implementedInterfaces,
             final String headSpace, final Writer fileWrite, final boolean generateHashEqualsMethod, final boolean generateToStringMethod,
@@ -2913,8 +3337,8 @@ public final class CodeGenerator2 {
     /**
      * Method writeClassComment2.
      *
-     * @param fileWrite
-     * @throws IOException
+     * @param fileWrite the file write
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     private static void writeClassComment(final Writer fileWrite) throws IOException {
         fileWrite.write(IOUtil.LINE_SEPARATOR);
@@ -2924,6 +3348,17 @@ public final class CodeGenerator2 {
         fileWrite.write(" */" + IOUtil.LINE_SEPARATOR);
     }
 
+    /**
+     * Write class head.
+     *
+     * @param entityDef the entity def
+     * @param propNameTableClass the prop name table class
+     * @param extendedClass the extended class
+     * @param implementsInterface the implements interface
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static void writeClassHead(final EntityDefinition entityDef, final String propNameTableClass, final Class<?> extendedClass,
             final List<Class<?>> implementsInterface, final String headSpace, final Writer fileWrite) throws IOException {
         final StringBuilder sb = Objectory.createStringBuilder();
@@ -3006,15 +3441,17 @@ public final class CodeGenerator2 {
     // }
 
     /**
+     * Write field.
      *
-     * @param entityDef
-     * @param pkgName
-     * @param entityMode
-     * @param extendedClass
-     * @param implementedInterfaces
-     * @param headSpace
-     * @param fileWrite
-     * @throws IOException
+     * @param entityDef the entity def
+     * @param pkgName the pkg name
+     * @param entityMode the entity mode
+     * @param extendedClass the extended class
+     * @param implementedInterfaces the implemented interfaces
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @param importedClasses the imported classes
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     private static void writeField(final EntityDefinition entityDef, final String pkgName, final EntityMode entityMode, final Class<?> extendedClass,
             final List<Class<?>> implementedInterfaces, final String headSpace, final Writer fileWrite, final Map<String, Class<?>> importedClasses)
@@ -3041,6 +3478,13 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Checks if is serializable.
+     *
+     * @param extendedClass the extended class
+     * @param implementedInterfaces the implemented interfaces
+     * @return true, if is serializable
+     */
     private static boolean isSerializable(final Class<?> extendedClass, final List<Class<?>> implementedInterfaces) {
         if ((extendedClass != null) && !DirtyMarkerImpl.class.isAssignableFrom(extendedClass) && Serializable.class.isAssignableFrom(extendedClass)) {
             return true;
@@ -3057,6 +3501,14 @@ public final class CodeGenerator2 {
         return false;
     }
 
+    /**
+     * Write serial version UID.
+     *
+     * @param entityDef the entity def
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static void writeSerialVersionUID(final EntityDefinition entityDef, final String headSpace, final Writer fileWrite) throws IOException {
         long hashCode = entityDef.getName().hashCode();
 
@@ -3081,6 +3533,15 @@ public final class CodeGenerator2 {
                 headSpace + "    private static final long serialVersionUID = " + serialVersionUID + "L;" + IOUtil.LINE_SEPARATOR + IOUtil.LINE_SEPARATOR);
     }
 
+    /**
+     * Write default constructor.
+     *
+     * @param entityDef the entity def
+     * @param entityMode the entity mode
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static void writeDefaultConstructor(final EntityDefinition entityDef, final EntityMode entityMode, final String headSpace, final Writer fileWrite)
             throws IOException {
         fileWrite.write(IOUtil.LINE_SEPARATOR + headSpace + "    public " + entityDef.getName() + "() {" + IOUtil.LINE_SEPARATOR);
@@ -3099,6 +3560,18 @@ public final class CodeGenerator2 {
         fileWrite.write(headSpace + "    }" + IOUtil.LINE_SEPARATOR);
     }
 
+    /**
+     * Write id property constructor.
+     *
+     * @param entityDef the entity def
+     * @param pkgName the pkg name
+     * @param propName2MethodName the prop name 2 method name
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @param importedClasses the imported classes
+     * @return the collection
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static Collection<String> writeIdPropertyConstructor(final EntityDefinition entityDef, final String pkgName, final Method propName2MethodName,
             final String headSpace, final Writer fileWrite, final Map<String, Class<?>> importedClasses) throws IOException {
 
@@ -3193,6 +3666,17 @@ public final class CodeGenerator2 {
         return idPropNames;
     }
 
+    /**
+     * Write full property constructor.
+     *
+     * @param entityDef the entity def
+     * @param pkgName the pkg name
+     * @param propName2MethodName the prop name 2 method name
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @param importedClasses the imported classes
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static void writeFullPropertyConstructor(final EntityDefinition entityDef, final String pkgName, final Method propName2MethodName,
             final String headSpace, final Writer fileWrite, final Map<String, Class<?>> importedClasses) throws IOException {
         fileWrite.write(IOUtil.LINE_SEPARATOR + headSpace + "    public " + entityDef.getName() + "(");
@@ -3250,11 +3734,17 @@ public final class CodeGenerator2 {
     /**
      * Method writeCopyConstructor.
      *
-     * @param entityDef
-     * @param pkgName
-     * @param headSpace
-     * @param fileWrite
-     * @throws IOException
+     * @param entityDef the entity def
+     * @param pkgName the pkg name
+     * @param extendedClass the extended class
+     * @param entityMode the entity mode
+     * @param propName2VarName the prop name 2 var name
+     * @param propName2MethodName the prop name 2 method name
+     * @param fluentSetMethod the fluent set method
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @param importedClasses the imported classes
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     /*
      * static void writeCopyConstructor(EntityDefinition entityDef, String pkgName, String headSpace, Writer
@@ -3597,6 +4087,17 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Write hash code method.
+     *
+     * @param entityDef the entity def
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @param extendedClass the extended class
+     * @param hashEqualsWithParentProperties the hash equals with parent properties
+     * @param utilClass the util class
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static void writeHashCodeMethod(final EntityDefinition entityDef, final String headSpace, final Writer fileWrite, final Class<?> extendedClass,
             final boolean hashEqualsWithParentProperties, final Class<?> utilClass) throws IOException {
         if (hasHashEqualsProperty(entityDef) == false) {
@@ -3645,6 +4146,17 @@ public final class CodeGenerator2 {
         fileWrite.write(headSpace + "    }" + IOUtil.LINE_SEPARATOR);
     }
 
+    /**
+     * Write equal method.
+     *
+     * @param entityDef the entity def
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @param extendedClass the extended class
+     * @param hashEqualsWithParentProperties the hash equals with parent properties
+     * @param utilClass the util class
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static void writeEqualMethod(final EntityDefinition entityDef, final String headSpace, final Writer fileWrite, final Class<?> extendedClass,
             boolean hashEqualsWithParentProperties, final Class<?> utilClass) throws IOException {
         if (hasHashEqualsProperty(entityDef) == false) {
@@ -3724,6 +4236,17 @@ public final class CodeGenerator2 {
         fileWrite.write(headSpace + "    }" + IOUtil.LINE_SEPARATOR);
     }
 
+    /**
+     * Write to string method.
+     *
+     * @param entityDef the entity def
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @param extendedClass the extended class
+     * @param toStringWithParentProperties the to string with parent properties
+     * @param utilClass the util class
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     private static void writeToStringMethod(final EntityDefinition entityDef, final String headSpace, final Writer fileWrite, final Class<?> extendedClass,
             final boolean toStringWithParentProperties, final Class<?> utilClass) throws IOException {
         if (hasToStringProperty(entityDef) == false) {
@@ -3804,6 +4327,12 @@ public final class CodeGenerator2 {
         fileWrite.write(headSpace + "    }" + IOUtil.LINE_SEPARATOR);
     }
 
+    /**
+     * Checks for hash equals property.
+     *
+     * @param entityDef the entity def
+     * @return true, if successful
+     */
     private static boolean hasHashEqualsProperty(final EntityDefinition entityDef) {
         final Collection<Property> props = entityDef.getPropertyList();
 
@@ -3818,6 +4347,12 @@ public final class CodeGenerator2 {
         return false;
     }
 
+    /**
+     * Checks for to string property.
+     *
+     * @param entityDef the entity def
+     * @return true, if successful
+     */
     private static boolean hasToStringProperty(final EntityDefinition entityDef) {
         final Collection<Property> props = entityDef.getPropertyList();
 
@@ -3832,6 +4367,15 @@ public final class CodeGenerator2 {
         return false;
     }
 
+    /**
+     * Write dirty marker method.
+     *
+     * @param entityDef the entity def
+     * @param entityMode the entity mode
+     * @param headSpace the head space
+     * @param fileWrite the file write
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     /*
      * static void writeHES(String headSpace, Writer fileWrite) throws IOException { fileWrite.write(N.LINE_SEPARATOR);
      * fileWrite.write(headSpace + "    public int hashCode() {" + N.LINE_SEPARATOR); fileWrite.write(headSpace +
@@ -4089,6 +4633,15 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Gets the simple type.
+     *
+     * @param type the type
+     * @param prop the prop
+     * @param pkgName the pkg name
+     * @param importedClasses the imported classes
+     * @return the simple type
+     */
     private static String getSimpleType(Type<?> type, final Property prop, final String pkgName, final Map<String, Class<?>> importedClasses) {
         type = type == null ? prop.getType() : type;
         final Class<?> typeClass = type.clazz();
@@ -4161,7 +4714,7 @@ public final class CodeGenerator2 {
     /**
      * Method getUsualType.
      *
-     * @param entityDef
+     * @param entityDef the entity def
      * @return Set<String>
      */
     private static Set<Class<?>> getUsualType(final EntityDefinition entityDef) {
@@ -4178,6 +4731,13 @@ public final class CodeGenerator2 {
         return set;
     }
 
+    /**
+     * Gets the usual type.
+     *
+     * @param set the set
+     * @param type the type
+     * @return the usual type
+     */
     private static void getUsualType(final Set<Class<?>> set, final Type<?> type) {
         if (isUsualType(type.clazz().getCanonicalName())) {
             set.add(type.clazz());
@@ -4194,11 +4754,23 @@ public final class CodeGenerator2 {
         }
     }
 
+    /**
+     * Checks if is usual type.
+     *
+     * @param canonicalName the canonical name
+     * @return true, if is usual type
+     */
     private static boolean isUsualType(String canonicalName) {
         int lastIndex = canonicalName.lastIndexOf('.');
         return lastIndex > 0 && USUAL_TYPES.contains(canonicalName.substring(0, lastIndex));
     }
 
+    /**
+     * Gets the package name.
+     *
+     * @param entityDef the entity def
+     * @return the package name
+     */
     /*
      * static String getSimpleType(EntityDefinition entityDef, String pkgName) { String type =
      * entityDef.getJavaType(); type = type.replace(pkgName + _PERIOD + entityDef.getName(), entityDef.getName());
@@ -4213,6 +4785,14 @@ public final class CodeGenerator2 {
         return entityDef.getAttribute(EntityDefEle.PACKAGE);
     }
 
+    /**
+     * Gets the id para string.
+     *
+     * @param pkgName the pkg name
+     * @param idPropList the id prop list
+     * @param importedClasses the imported classes
+     * @return the id para string
+     */
     private static String getIdParaString(final String pkgName, final List<Property> idPropList, final Map<String, Class<?>> importedClasses) {
         String idPropParaStr = "";
 
@@ -4249,13 +4829,24 @@ public final class CodeGenerator2 {
     }
 
     /**
+     * The Enum EntityMode.
+     *
      * @author Haiyang Li
      * @version $Revision: 0.8 $
      */
     public enum EntityMode {
-        POJO, POJO_WITH_PROP_NAME_TABLE, IMPL_DIRTY_MARKER, EXTEND_DIRTY_MARKER;
+        
+        /** The pojo. */
+        POJO, 
+ /** The pojo with prop name table. */
+ POJO_WITH_PROP_NAME_TABLE, 
+ /** The impl dirty marker. */
+ IMPL_DIRTY_MARKER, 
+ /** The extend dirty marker. */
+ EXTEND_DIRTY_MARKER;
     }
 
+    /** The Constant _N_STRING. */
     private static final String _N_STRING = "/*\r\n" + " * Licensed to the Apache Software Foundation (ASF) under one or more\r\n"
             + " * contributor license agreements.  See the NOTICE file distributed with\r\n"
             + " * this work for additional information regarding copyright ownership.\r\n"

@@ -16,19 +16,22 @@ package com.landawn.abacus.validator;
 
 import com.landawn.abacus.type.Type;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class GreaterEqualValidator.
+ *
  * @author Haiyang Li
+ * @param <T> the generic type
+ * @since 0.8
  */
 public final class GreaterEqualValidator<T extends Comparable<T>> extends AbstractComparableValidator<T> {
+    
     /**
      * Constructor for GreaterEqualValidator.
-     * 
-     * @param propName
-     * @param type
-     * @param value
+     *
+     * @param propName the prop name
+     * @param type the type
+     * @param value the value
      */
     public GreaterEqualValidator(String propName, Type<T> type, String value) {
         super(propName, type, value);
@@ -36,8 +39,8 @@ public final class GreaterEqualValidator<T extends Comparable<T>> extends Abstra
 
     /**
      * Method isValid.
-     * 
-     * @param propValue
+     *
+     * @param propValue the prop value
      * @return boolean
      * @see com.landawn.abacus.validator.Validator#isValid(T)
      */

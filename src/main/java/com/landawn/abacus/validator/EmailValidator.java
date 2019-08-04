@@ -16,16 +16,24 @@ package com.landawn.abacus.validator;
 
 import com.landawn.abacus.type.Type;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class EmailValidator.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class EmailValidator extends PatternValidator {
 
+    /** The Constant EMAIL_PATTERN. */
     private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*$";
 
+    /**
+     * Instantiates a new email validator.
+     *
+     * @param propName the prop name
+     * @param type the type
+     */
     protected EmailValidator(String propName, Type<String> type) {
         super(propName, type, EMAIL_PATTERN);
     }

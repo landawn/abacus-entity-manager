@@ -14,15 +14,22 @@
 
 package com.landawn.abacus.version;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class AbstractVersion.
+ *
  * @author Haiyang Li
+ * @param <K> the key type
+ * @since 0.8
  */
 public abstract class AbstractVersion<K> implements Version<K> {
     // private static final int MAX_UPDATE_COUNT = 100000000;
 
+    /**
+     * Gets the default capacity.
+     *
+     * @return the default capacity
+     */
     protected static int getDefaultCapacity() {
         long maxMemory = Runtime.getRuntime().maxMemory() / 1024 * 1024; // N.ONE_MB;
 
@@ -37,6 +44,11 @@ public abstract class AbstractVersion<K> implements Version<K> {
         }
     }
 
+    /**
+     * Gets the start number.
+     *
+     * @return the start number
+     */
     protected long getStartNumber() {
         // return (System.currentTimeMillis() % (1000000000000000000L /
         // MAX_UPDATE_COUNT)) * MAX_UPDATE_COUNT;

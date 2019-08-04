@@ -31,32 +31,47 @@ import com.landawn.abacus.core.sql.command.SQLOperationCommand;
 import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.util.N;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class InterpreterProxy.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class InterpreterProxy extends AbstractInterpreter {
+    
+    /** The Constant MAX_POOL_SIZE. */
     private static final int MAX_POOL_SIZE = 100;
 
+    /** The condition cmd pool. */
     private final Map<String, Map<String, Command>> conditionCmdPool = new HashMap<>();
 
+    /** The add cmd pool. */
     private final Map<String, Map<List<String>, Command>> addCmdPool = new HashMap<>();
 
+    /** The update cmd pool. */
     private final Map<String, Map<String, Map<List<String>, Command>>> updateCmdPool = new HashMap<>();
 
+    /** The delete cmd pool. */
     private final Map<String, Map<String, Command>> deleteCmdPool = new HashMap<>();
 
+    /** The query cmd pool. */
     private final Map<String, Map<String, Map<List<String>, Command>>> queryCmdPool = new HashMap<>();
 
+    /** The sql query cmd pool. */
     private final Map<String, Map<String, Command>> sqlQueryCmdPool = new HashMap<>();
 
     //    private final Map<String, Map<Set<String>, SQLOperationCommand>> batchUpdateCmdPool = new HashMap<>();
     //    private final Map<String, SQLOperationCommand> batchDeleteCmdPool = new HashMap<>();
 
+    /** The interpreter. */
     private final Interpreter interpreter;
 
+    /**
+     * Instantiates a new interpreter proxy.
+     *
+     * @param interpreter the interpreter
+     */
     public InterpreterProxy(Interpreter interpreter) {
         this.interpreter = interpreter;
     }
@@ -82,6 +97,14 @@ public class InterpreterProxy extends AbstractInterpreter {
     //        return command;
     //    }
 
+    /**
+     * Interpret add.
+     *
+     * @param entityDef the entity def
+     * @param propsList the props list
+     * @param options the options
+     * @return the command
+     */
     @Override
     public Command interpretAdd(EntityDefinition entityDef, List<Map<String, Object>> propsList, Map<String, Object> options) {
         Command command = null;
@@ -104,6 +127,15 @@ public class InterpreterProxy extends AbstractInterpreter {
         return command;
     }
 
+    /**
+     * Interpret update.
+     *
+     * @param entityDef the entity def
+     * @param props the props
+     * @param condition the condition
+     * @param options the options
+     * @return the command
+     */
     @Override
     public Command interpretUpdate(EntityDefinition entityDef, Map<String, Object> props, Condition condition, Map<String, Object> options) {
         Command command = null;
@@ -145,6 +177,14 @@ public class InterpreterProxy extends AbstractInterpreter {
         return command;
     }
 
+    /**
+     * Interpret delete.
+     *
+     * @param entityDef the entity def
+     * @param condition the condition
+     * @param options the options
+     * @return the command
+     */
     @Override
     public Command interpretDelete(EntityDefinition entityDef, Condition condition, Map<String, Object> options) {
         Command command = null;
@@ -186,6 +226,15 @@ public class InterpreterProxy extends AbstractInterpreter {
         return command;
     }
 
+    /**
+     * Interpret query.
+     *
+     * @param entityDef the entity def
+     * @param propNames the prop names
+     * @param condition the condition
+     * @param options the options
+     * @return the command
+     */
     @Override
     public Command interpretQuery(EntityDefinition entityDef, Collection<String> propNames, Condition condition, Map<String, Object> options) {
         Command command = null;
@@ -208,6 +257,15 @@ public class InterpreterProxy extends AbstractInterpreter {
         return command;
     }
 
+    /**
+     * Interpret query.
+     *
+     * @param entityDef the entity def
+     * @param query the query
+     * @param parameters the parameters
+     * @param options the options
+     * @return the command
+     */
     @Override
     public Command interpretQuery(EntityDefinition entityDef, String query, List<?> parameters, Map<String, Object> options) {
         Command command = null;
@@ -245,6 +303,13 @@ public class InterpreterProxy extends AbstractInterpreter {
         return command;
     }
 
+    /**
+     * Interpret condition.
+     *
+     * @param entityDef the entity def
+     * @param condition the condition
+     * @return the command
+     */
     @Override
     public Command interpretCondition(EntityDefinition entityDef, Condition condition) {
         Command command = null;
@@ -288,6 +353,12 @@ public class InterpreterProxy extends AbstractInterpreter {
     //        }
     //    }
 
+    /**
+     * Checks if is cachable.
+     *
+     * @param condition the condition
+     * @return true, if is cachable
+     */
     private boolean isCachable(Condition condition) {
         if (condition != null) {
             for (Object propValue : condition.getParameters()) {
@@ -300,6 +371,12 @@ public class InterpreterProxy extends AbstractInterpreter {
         return true;
     }
 
+    /**
+     * Checks if is cachable.
+     *
+     * @param props the props
+     * @return true, if is cachable
+     */
     private boolean isCachable(Map<String, Object> props) {
         for (Object propValue : props.values()) {
             if ((propValue != null) && (propValue instanceof Condition)) {
@@ -310,6 +387,12 @@ public class InterpreterProxy extends AbstractInterpreter {
         return true;
     }
 
+    /**
+     * Checks if is cachable.
+     *
+     * @param propsList the props list
+     * @return true, if is cachable
+     */
     private boolean isCachable(List<Map<String, Object>> propsList) {
         for (Map<String, Object> props : propsList) {
             if (!isCachable(props)) {
@@ -320,10 +403,24 @@ public class InterpreterProxy extends AbstractInterpreter {
         return true;
     }
 
+    /**
+     * Checks if is cachable.
+     *
+     * @param props the props
+     * @param condition the condition
+     * @return true, if is cachable
+     */
     private boolean isCachable(Map<String, Object> props, Condition condition) {
         return isCachable(condition) && isCachable(props);
     }
 
+    /**
+     * Creates the condition cache key.
+     *
+     * @param entityDef the entity def
+     * @param condition the condition
+     * @return the string
+     */
     private String createConditionCacheKey(EntityDefinition entityDef, Condition condition) {
         if (condition == null) {
             return entityDef.getName();
@@ -366,6 +463,13 @@ public class InterpreterProxy extends AbstractInterpreter {
     //        }
     //    }
 
+    /**
+     * Cache add cmd.
+     *
+     * @param entityDef the entity def
+     * @param propsList the props list
+     * @param command the command
+     */
     private void cacheAddCmd(EntityDefinition entityDef, List<Map<String, Object>> propsList, Command command) {
         synchronized (addCmdPool) {
             final String entityName = entityDef.getName();
@@ -417,6 +521,13 @@ public class InterpreterProxy extends AbstractInterpreter {
     //        }
     //    }
 
+    /**
+     * Gets the cached add cmd.
+     *
+     * @param entityDef the entity def
+     * @param propsList the props list
+     * @return the cached add cmd
+     */
     private Command getCachedAddCmd(EntityDefinition entityDef, List<Map<String, Object>> propsList) {
         final List<String> propNames = new ArrayList<>(propsList.get(0).keySet());
 
@@ -450,6 +561,14 @@ public class InterpreterProxy extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Cache update cmd.
+     *
+     * @param entityDef the entity def
+     * @param props the props
+     * @param conditionKey the condition key
+     * @param command the command
+     */
     private void cacheUpdateCmd(EntityDefinition entityDef, Map<String, Object> props, String conditionKey, Command command) {
         synchronized (updateCmdPool) {
             Map<String, Map<List<String>, Command>> entityUpdateCmdMap = updateCmdPool.get(entityDef.getName());
@@ -478,6 +597,15 @@ public class InterpreterProxy extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Gets the cached update cmd.
+     *
+     * @param entityDef the entity def
+     * @param props the props
+     * @param condition the condition
+     * @param conditionKey the condition key
+     * @return the cached update cmd
+     */
     private Command getCachedUpdateCmd(EntityDefinition entityDef, Map<String, Object> props, Condition condition, String conditionKey) {
         final List<String> propNames = new ArrayList<>(props.keySet());
 
@@ -514,6 +642,13 @@ public class InterpreterProxy extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Cache delete cmd.
+     *
+     * @param entityDef the entity def
+     * @param conditionKey the condition key
+     * @param command the command
+     */
     private void cacheDeleteCmd(EntityDefinition entityDef, String conditionKey, Command command) {
         synchronized (deleteCmdPool) {
             Map<String, Command> entityDeleteCmdMap = deleteCmdPool.get(entityDef.getName());
@@ -535,6 +670,14 @@ public class InterpreterProxy extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Gets the cached delete cmd.
+     *
+     * @param entityDef the entity def
+     * @param condition the condition
+     * @param conditionKey the condition key
+     * @return the cached delete cmd
+     */
     private Command getCachedDeleteCmd(EntityDefinition entityDef, Condition condition, String conditionKey) {
         Command command = null;
 
@@ -559,6 +702,14 @@ public class InterpreterProxy extends AbstractInterpreter {
         return command;
     }
 
+    /**
+     * Cache query cmd.
+     *
+     * @param entityDef the entity def
+     * @param propNames the prop names
+     * @param conditionKey the condition key
+     * @param command the command
+     */
     private void cacheQueryCmd(EntityDefinition entityDef, Collection<String> propNames, String conditionKey, Command command) {
         synchronized (queryCmdPool) {
             Map<String, Map<List<String>, Command>> entityQueryCmdMap = queryCmdPool.get(entityDef.getName());
@@ -587,6 +738,15 @@ public class InterpreterProxy extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Gets the cached query cmd.
+     *
+     * @param entityDef the entity def
+     * @param propNames the prop names
+     * @param condition the condition
+     * @param conditionKey the condition key
+     * @return the cached query cmd
+     */
     private Command getCachedQueryCmd(EntityDefinition entityDef, Collection<String> propNames, Condition condition, String conditionKey) {
         Command command = null;
 
@@ -615,6 +775,13 @@ public class InterpreterProxy extends AbstractInterpreter {
         return command;
     }
 
+    /**
+     * Cache condtion cmd.
+     *
+     * @param entityDef the entity def
+     * @param conditionKey the condition key
+     * @param command the command
+     */
     private void cacheCondtionCmd(EntityDefinition entityDef, String conditionKey, Command command) {
         synchronized (conditionCmdPool) {
             Map<String, Command> entityConditionCmdMap = conditionCmdPool.get(entityDef.getName());
@@ -637,6 +804,14 @@ public class InterpreterProxy extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Gets the cached condtion cmd.
+     *
+     * @param entityDef the entity def
+     * @param condition the condition
+     * @param conditionKey the condition key
+     * @return the cached condtion cmd
+     */
     private Command getCachedCondtionCmd(EntityDefinition entityDef, Condition condition, String conditionKey) {
         Command command = null;
 
@@ -742,10 +917,22 @@ public class InterpreterProxy extends AbstractInterpreter {
     //        return sqlCommand;
     //    }
 
+    /**
+     * Sets the parameter.
+     *
+     * @param command the command
+     * @param parameterValue the parameter value
+     */
     private void setParameter(Command command, Object parameterValue) {
         command.setParameter(command.getParameterCount(), parameterValue, command.getParameterType(command.getParameterCount()));
     }
 
+    /**
+     * Copy.
+     *
+     * @param command the command
+     * @return the command
+     */
     private Command copy(Command command) {
         Command copy = command.copy();
 

@@ -40,31 +40,58 @@ import com.landawn.abacus.util.OperationType;
 import com.landawn.abacus.util.Options;
 import com.landawn.abacus.util.u.Optional;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class SessionImpl.
+ *
  * @author Haiyang Li
+ * @param <E> the element type
+ * @since 0.8
  */
 @SuppressWarnings("deprecation")
 final class SessionImpl<E> implements Session<E> {
+    
+    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(SessionImpl.class);
 
+    /** The attached entities. */
     private final Map<E, OperationType> attachedEntities = new IdentityHashMap<>();
+    
+    /** The attached entity list. */
     private final List<E> attachedEntityList = new LinkedList<>();
 
+    /** The entity manager. */
     private final EntityManager<E> entityManager;
+    
+    /** The isolation level. */
     private final IsolationLevel isolationLevel;
+    
+    /** The options. */
     private Map<String, Object> options;
+    
+    /** The transaction. */
     private TransactionProxy transaction;
 
+    /** The is closed. */
     private boolean isClosed = false;
 
+    /**
+     * Instantiates a new session impl.
+     *
+     * @param entityManager the entity manager
+     * @param isolationLevel the isolation level
+     */
     SessionImpl(EntityManager<E> entityManager, IsolationLevel isolationLevel) {
         this.entityManager = entityManager;
         this.isolationLevel = isolationLevel;
     }
 
+    /**
+     * Begin transaction.
+     *
+     * @param isolationLevel the isolation level
+     * @return the transaction
+     */
     @Override
     public Transaction beginTransaction(IsolationLevel isolationLevel) {
         assertNotClosed();
@@ -78,11 +105,27 @@ final class SessionImpl<E> implements Session<E> {
         return transaction;
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityId the entity id
+     * @param selectPropNames the select prop names
+     * @return the optional
+     */
     @Override
     public <T> Optional<T> get(EntityId entityId, Collection<String> selectPropNames) {
         return Optional.ofNullable((T) gett(entityId, selectPropNames));
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityId the entity id
+     * @param selectPropNames the select prop names
+     * @return the t
+     */
     @SuppressWarnings("unchecked")
     @Override
     public <T> T gett(EntityId entityId, Collection<String> selectPropNames) {
@@ -99,6 +142,15 @@ final class SessionImpl<E> implements Session<E> {
         return entity;
     }
 
+    /**
+     * List.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param selectPropNames the select prop names
+     * @param condition the condition
+     * @return the list
+     */
     @SuppressWarnings("unchecked")
     @Override
     public <T> List<T> list(String entityName, Collection<String> selectPropNames, Condition condition) {
@@ -117,6 +169,11 @@ final class SessionImpl<E> implements Session<E> {
         }
     }
 
+    /**
+     * Adds the.
+     *
+     * @param entities the entities
+     */
     @SuppressWarnings("unchecked")
     @Override
     @SafeVarargs
@@ -126,6 +183,11 @@ final class SessionImpl<E> implements Session<E> {
         attach(OperationType.ADD, entities);
     }
 
+    /**
+     * Adds the.
+     *
+     * @param entities the entities
+     */
     @Override
     public void add(Collection<? extends E> entities) {
         E[] arrayOfEntity = collection2Array(entities);
@@ -133,6 +195,11 @@ final class SessionImpl<E> implements Session<E> {
         add(arrayOfEntity);
     }
 
+    /**
+     * Update.
+     *
+     * @param entities the entities
+     */
     @SuppressWarnings("unchecked")
     @Override
     @SafeVarargs
@@ -140,6 +207,11 @@ final class SessionImpl<E> implements Session<E> {
         attach(OperationType.UPDATE, entities);
     }
 
+    /**
+     * Update.
+     *
+     * @param entities the entities
+     */
     @Override
     public void update(Collection<? extends E> entities) {
         E[] arrayOfEntity = collection2Array(entities);
@@ -147,6 +219,11 @@ final class SessionImpl<E> implements Session<E> {
         update(arrayOfEntity);
     }
 
+    /**
+     * Delete.
+     *
+     * @param entities the entities
+     */
     @SuppressWarnings("unchecked")
     @Override
     @SafeVarargs
@@ -156,6 +233,11 @@ final class SessionImpl<E> implements Session<E> {
         attach(OperationType.DELETE, entities);
     }
 
+    /**
+     * Delete.
+     *
+     * @param entities the entities
+     */
     @Override
     public void delete(Collection<? extends E> entities) {
         E[] arrayOfEntity = collection2Array(entities);
@@ -163,6 +245,12 @@ final class SessionImpl<E> implements Session<E> {
         delete(arrayOfEntity);
     }
 
+    /**
+     * Attach.
+     *
+     * @param operationType the operation type
+     * @param entities the entities
+     */
     @SuppressWarnings("unchecked")
     protected void attach(OperationType operationType, E... entities) {
         assertNotClosed();
@@ -178,6 +266,12 @@ final class SessionImpl<E> implements Session<E> {
         }
     }
 
+    /**
+     * Attach.
+     *
+     * @param operationType the operation type
+     * @param entities the entities
+     */
     @SuppressWarnings("unchecked")
     protected void attach(OperationType operationType, List<E> entities) {
         assertNotClosed();
@@ -193,6 +287,11 @@ final class SessionImpl<E> implements Session<E> {
         }
     }
 
+    /**
+     * Detach.
+     *
+     * @param entities the entities
+     */
     @SuppressWarnings("unchecked")
     @Override
     @SafeVarargs
@@ -216,6 +315,11 @@ final class SessionImpl<E> implements Session<E> {
         }
     }
 
+    /**
+     * Detach.
+     *
+     * @param entities the entities
+     */
     @Override
     public void detach(Collection<? extends E> entities) {
         E[] arrayOfEntity = collection2Array(entities);
@@ -223,6 +327,12 @@ final class SessionImpl<E> implements Session<E> {
         detach(arrayOfEntity);
     }
 
+    /**
+     * Contains.
+     *
+     * @param entity the entity
+     * @return true, if successful
+     */
     @Override
     public boolean contains(E entity) {
         assertNotClosed();
@@ -230,6 +340,9 @@ final class SessionImpl<E> implements Session<E> {
         return attachedEntities.containsKey(entity);
     }
 
+    /**
+     * Flush.
+     */
     @Override
     public void flush() {
         assertNotClosed();
@@ -312,6 +425,9 @@ final class SessionImpl<E> implements Session<E> {
         }
     }
 
+    /**
+     * Clear.
+     */
     @Override
     public void clear() {
         assertNotClosed();
@@ -320,6 +436,11 @@ final class SessionImpl<E> implements Session<E> {
         attachedEntityList.clear();
     }
 
+    /**
+     * Checks if is dirty.
+     *
+     * @return true, if is dirty
+     */
     @Override
     public boolean isDirty() {
         assertNotClosed();
@@ -345,6 +466,9 @@ final class SessionImpl<E> implements Session<E> {
         return false;
     }
 
+    /**
+     * Close.
+     */
     @Override
     public void close() {
         assertNotClosed();
@@ -370,11 +494,23 @@ final class SessionImpl<E> implements Session<E> {
         isClosed = true;
     }
 
+    /**
+     * Checks if is closed.
+     *
+     * @return true, if is closed
+     */
     @Override
     public boolean isClosed() {
         return isClosed;
     }
 
+    /**
+     * Commit.
+     *
+     * @param entities the entities
+     * @param operationType the operation type
+     * @param options the options
+     */
     @SuppressWarnings("unchecked")
     private void commit(List<E> entities, OperationType operationType, Map<String, Object> options) {
         if (N.isNullOrEmpty(entities)) {
@@ -396,6 +532,12 @@ final class SessionImpl<E> implements Session<E> {
         }
     }
 
+    /**
+     * Collection 2 array.
+     *
+     * @param entities the entities
+     * @return the e[]
+     */
     @SuppressWarnings("unchecked")
     private E[] collection2Array(Collection<?> entities) {
         E[] arrayOfEntity = null;
@@ -407,6 +549,9 @@ final class SessionImpl<E> implements Session<E> {
         return arrayOfEntity;
     }
 
+    /**
+     * Refresh status.
+     */
     @SuppressWarnings("unchecked")
     private void refreshStatus() {
         List<E> keys = new ArrayList<>(attachedEntities.keySet());
@@ -423,6 +568,11 @@ final class SessionImpl<E> implements Session<E> {
         }
     }
 
+    /**
+     * Sets the transaction.
+     *
+     * @return the map
+     */
     private Map<String, Object> setTransaction() {
         if (isInTransaction()) {
             if (options == null) {
@@ -439,6 +589,11 @@ final class SessionImpl<E> implements Session<E> {
         return options;
     }
 
+    /**
+     * Checks if is in transaction.
+     *
+     * @return true, if is in transaction
+     */
     private boolean isInTransaction() {
         if (transaction == null) {
             return false;
@@ -451,12 +606,20 @@ final class SessionImpl<E> implements Session<E> {
         }
     }
 
+    /**
+     * Assert not closed.
+     */
     private void assertNotClosed() {
         if (isClosed) {
             throw new IllegalStateException("The session has been closed. ");
         }
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
         return "{isClosed=" + isClosed + ", transactionId=" + ((transaction == null) ? "null" : transaction.id) + ", attached entities: "
@@ -464,17 +627,31 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * 
+     * The Class TransactionProxy.
+     *
      * @author Haiyang Li
-     * 
      * @version $Revision: 0.8 $ 07/03/05
      */
     static final class TransactionProxy implements Transaction {
+        
+        /** The entity manager. */
         private final EntityManager<?> entityManager;
+        
+        /** The id. */
         private final String id;
+        
+        /** The isolation level. */
         private final IsolationLevel isolationLevel;
+        
+        /** The status. */
         private Status status;
 
+        /**
+         * Instantiates a new transaction proxy.
+         *
+         * @param entityManager the entity manager
+         * @param isolationLevel the isolation level
+         */
         TransactionProxy(EntityManager<?> entityManager, IsolationLevel isolationLevel) {
             this.entityManager = entityManager;
             this.id = entityManager.beginTransaction(isolationLevel, null);
@@ -482,26 +659,49 @@ final class SessionImpl<E> implements Session<E> {
             this.status = Status.ACTIVE;
         }
 
+        /**
+         * Id.
+         *
+         * @return the string
+         */
         @Override
         public String id() {
             return id;
         }
 
+        /**
+         * Isolation level.
+         *
+         * @return the isolation level
+         */
         @Override
         public IsolationLevel isolationLevel() {
             return isolationLevel;
         }
 
+        /**
+         * Status.
+         *
+         * @return the status
+         */
         @Override
         public Status status() {
             return status;
         }
 
+        /**
+         * Checks if is active.
+         *
+         * @return true, if is active
+         */
         @Override
         public boolean isActive() {
             return status == Status.ACTIVE;
         }
 
+        /**
+         * Commit.
+         */
         @Override
         public void commit() {
             if (!status.equals(Status.ACTIVE)) {
@@ -515,6 +715,9 @@ final class SessionImpl<E> implements Session<E> {
             status = Status.COMMITTED;
         }
 
+        /**
+         * Rollback.
+         */
         @Override
         public void rollback() {
             if (!status.equals(Status.ACTIVE)) {

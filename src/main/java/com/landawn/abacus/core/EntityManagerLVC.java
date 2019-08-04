@@ -49,16 +49,28 @@ import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options.Query;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class EntityManagerLVC.
+ *
  * @author Haiyang Li
+ * @param <E> the element type
+ * @since 0.8
  */
 class EntityManagerLVC<E> extends EntityManagerLV<E> {
+    
+    /** The entity cache decorator. */
     private final EntityCacheDecorator entityCacheDecorator;
+    
+    /** The rw entity id lock. */
     private final RWLock<EntityId> rwEntityIdLock;
 
+    /**
+     * Instantiates a new entity manager LVC.
+     *
+     * @param entityManagerConfig the entity manager config
+     * @param dbAccess the db access
+     */
     protected EntityManagerLVC(EntityManagerConfiguration entityManagerConfig, DBAccessImpl dbAccess) {
         super(entityManagerConfig, dbAccess);
         this.entityCacheDecorator = new EntityCacheDecorator(entityManagerConfig.getEntityCacheConfiguration());
@@ -72,6 +84,17 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         }
     }
 
+    /**
+     * Gets the entities.
+     *
+     * @param <T> the generic type
+     * @param targetClass the target class
+     * @param entityDef the entity def
+     * @param entityIds the entity ids
+     * @param selectPropNames the select prop names
+     * @param options the options
+     * @return the entities
+     */
     @SuppressWarnings("unchecked")
     @Override
     protected <T> List<T> getEntities(Class<T> targetClass, EntityDefinition entityDef, List<? extends EntityId> entityIds, Collection<String> selectPropNames,
@@ -164,6 +187,15 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         return entityList;
     }
 
+    /**
+     * Update entities.
+     *
+     * @param entityDef the entity def
+     * @param entityIds the entity ids
+     * @param props the props
+     * @param options the options
+     * @return the int
+     */
     @Override
     protected int updateEntities(EntityDefinition entityDef, List<? extends EntityId> entityIds, Map<String, Object> props, Map<String, Object> options) {
         int result = super.updateEntities(entityDef, entityIds, props, options);
@@ -183,6 +215,14 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         return result;
     }
 
+    /**
+     * Delete entities.
+     *
+     * @param entityDef the entity def
+     * @param entityIds the entity ids
+     * @param options the options
+     * @return the int
+     */
     @Override
     protected int deleteEntities(EntityDefinition entityDef, List<? extends EntityId> entityIds, Map<String, Object> options) {
         int result = super.deleteEntities(entityDef, entityIds, options);
@@ -196,6 +236,15 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         return result;
     }
 
+    /**
+     * Cache entity.
+     *
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @param selectPropNames the select prop names
+     * @param alwrite the alwrite
+     * @param options the options
+     */
     protected void cacheEntity(EntityDefinition entityDef, Object entity, Collection<String> selectPropNames, Set<EntityId> alwrite,
             Map<String, Object> options) {
         if ((entity == null) || (entityDef.getIdPropertyList().size() == 0)) {
@@ -247,6 +296,16 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         }
     }
 
+    /**
+     * Sets the caching prop value.
+     *
+     * @param entity the entity
+     * @param cachingEntity the caching entity
+     * @param prop the prop
+     * @param propValue the prop value
+     * @param alCached the al cached
+     * @param options the options
+     */
     private void setCachingPropValue(Object entity, MapEntity cachingEntity, Property prop, Object propValue, Set<EntityId> alCached,
             Map<String, Object> options) {
         if (prop.getColumnType().isEntity()) {
@@ -304,12 +363,28 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         cachingEntity.set(prop.getName(), propValue);
     }
 
+    /**
+     * Cache entity.
+     *
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @param alwrite the alwrite
+     * @param options the options
+     */
     private void cacheEntity(EntityDefinition entityDef, Object entity, Set<EntityId> alwrite, Map<String, Object> options) {
         if (entity instanceof DirtyMarker) {
             cacheEntity(entityDef, entity, DirtyMarkerUtil.signedPropNames((DirtyMarker) entity), alwrite, options);
         }
     }
 
+    /**
+     * Adds the to cache.
+     *
+     * @param entityDef the entity def
+     * @param entityId the entity id
+     * @param cachedEntity the cached entity
+     * @param options the options
+     */
     private void addToCache(EntityDefinition entityDef, EntityId entityId, MapEntity cachedEntity, Map<String, Object> options) {
         if ((cachedEntity == null) || (cachedEntity.version() != getRecordVersion(entityId, options))) {
             remvoeFromCache(entityDef, entityId);
@@ -359,6 +434,17 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         }
     }
 
+    /**
+     * Gets the entity from cache.
+     *
+     * @param <T> the generic type
+     * @param targetClass the target class
+     * @param entityDef the entity def
+     * @param entityId the entity id
+     * @param selectPropNames the select prop names
+     * @param options the options
+     * @return the entity from cache
+     */
     @SuppressWarnings({ "unchecked" })
     protected <T> T getEntityFromCache(Class<T> targetClass, EntityDefinition entityDef, EntityId entityId, Collection<String> selectPropNames,
             Map<String, Object> options) {
@@ -464,6 +550,14 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         return (T) result;
     }
 
+    /**
+     * Gets the from cache.
+     *
+     * @param entityDef the entity def
+     * @param entityId the entity id
+     * @param options the options
+     * @return the from cache
+     */
     private MapEntity getFromCache(EntityDefinition entityDef, EntityId entityId, Map<String, Object> options) {
         MapEntity cachedEntity = entityCacheDecorator.get(entityId).orElse(null);
 
@@ -475,6 +569,14 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         return cachedEntity;
     }
 
+    /**
+     * Gets the cached prop value.
+     *
+     * @param prop the prop
+     * @param cachedEntity the cached entity
+     * @param options the options
+     * @return the cached prop value
+     */
     private Object getCachedPropValue(Property prop, MapEntity cachedEntity, Map<String, Object> options) {
         Object propValue = cachedEntity.get(prop.getName());
 
@@ -552,6 +654,15 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         return propValue;
     }
 
+    /**
+     * Gets the uncached prop values.
+     *
+     * @param entityId the entity id
+     * @param uncachedPropNames the uncached prop names
+     * @param cachedEntity the cached entity
+     * @param options the options
+     * @return the uncached prop values
+     */
     private MapEntity getUncachedPropValues(EntityId entityId, Collection<String> uncachedPropNames, MapEntity cachedEntity, Map<String, Object> options) {
         EntityDefinition entityDef = checkEntityName(entityId.entityName());
 
@@ -653,6 +764,13 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         return (tempEntities.size() == 0) ? null : tempEntities.get(0);
     }
 
+    /**
+     * Update cached entity.
+     *
+     * @param entityId the entity id
+     * @param props the props
+     * @param options the options
+     */
     protected void updateCachedEntity(EntityId entityId, Map<String, Object> props, Map<String, Object> options) {
         // TODO what to do for distribution
         rwEntityIdLock.lockWriteOn(entityId);
@@ -697,6 +815,12 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         }
     }
 
+    /**
+     * Remvoe from cache.
+     *
+     * @param entityDef the entity def
+     * @param entityId the entity id
+     */
     protected void remvoeFromCache(EntityDefinition entityDef, EntityId entityId) {
         List<String> uidPropNameList = entityDef.getUIDPropertyNameList();
 
@@ -730,10 +854,25 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         }
     }
 
+    /**
+     * Entities 2 prop value.
+     *
+     * @param prop the prop
+     * @param entities the entities
+     * @return the object
+     */
     private Object entities2PropValue(Property prop, List<?> entities) {
         return prop.isCollection() ? prop.asCollection(entities) : (N.notNullOrEmpty(entities) ? entities.get(0) : null);
     }
 
+    /**
+     * Gets the signed prop names.
+     *
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @param selectPropNames the select prop names
+     * @return the signed prop names
+     */
     private Collection<String> getSignedPropNames(EntityDefinition entityDef, Object entity, Collection<String> selectPropNames) {
         if (entity instanceof DirtyMarker) {
             return DirtyMarkerUtil.signedPropNames((DirtyMarker) entity);
@@ -742,6 +881,14 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         }
     }
 
+    /**
+     * Gets the entity id by condition.
+     *
+     * @param entityName the entity name
+     * @param cond the cond
+     * @param options the options
+     * @return the entity id by condition
+     */
     @Override
     protected List<EntityId> getEntityIdByCondition(String entityName, Condition cond, Map<String, Object> options) {
         final EntityDefinition entityDef = checkEntityName(entityName);

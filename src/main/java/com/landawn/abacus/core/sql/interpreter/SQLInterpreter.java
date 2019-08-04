@@ -50,13 +50,16 @@ import com.landawn.abacus.util.OperationType;
 import com.landawn.abacus.util.SQLParser;
 import com.landawn.abacus.util.WD;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class SQLInterpreter.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class SQLInterpreter extends AbstractInterpreter {
+    
+    /** The Constant operatorChars. */
     static final char[] operatorChars = new char[128];
     static {
         operatorChars[' '] = ' ';
@@ -83,11 +86,21 @@ public class SQLInterpreter extends AbstractInterpreter {
         operatorChars['!'] = '!';
     }
 
+    /** The Constant EMPTY_CRITERIA. */
     static final Criteria EMPTY_CRITERIA = CF.criteria();
 
+    /** The product name. */
     protected final String productName;
+    
+    /** The product version. */
     protected final String productVersion;
 
+    /**
+     * Instantiates a new SQL interpreter.
+     *
+     * @param productName the product name
+     * @param productVersion the product version
+     */
     public SQLInterpreter(String productName, String productVersion) {
         this.productName = productName;
         this.productVersion = productVersion;
@@ -100,6 +113,14 @@ public class SQLInterpreter extends AbstractInterpreter {
     //    }
     //
 
+    /**
+     * Interpret add.
+     *
+     * @param entityDef the entity def
+     * @param propsList the props list
+     * @param options the options
+     * @return the SQL operation command
+     */
     @Override
     public SQLOperationCommand interpretAdd(EntityDefinition entityDef, List<Map<String, Object>> propsList, Map<String, Object> options) {
         Collection<String> propNames = propsList.get(0).keySet();
@@ -126,6 +147,13 @@ public class SQLInterpreter extends AbstractInterpreter {
         return sqlCommand;
     }
 
+    /**
+     * Builds the target table.
+     *
+     * @param entityDef the entity def
+     * @param sqlCommand the sql command
+     * @param sql the sql
+     */
     protected void buildTargetTable(EntityDefinition entityDef, SQLCondCommand sqlCommand, StringBuilder sql) {
         String targetTableName = entityDef.getTableName();
         sqlCommand.addTargetTable(targetTableName);
@@ -147,6 +175,14 @@ public class SQLInterpreter extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Builds the insert prop names.
+     *
+     * @param entityDef the entity def
+     * @param propNames the prop names
+     * @param sqlCommand the sql command
+     * @param sql the sql
+     */
     protected void buildInsertPropNames(EntityDefinition entityDef, Collection<String> propNames, SQLOperationCommand sqlCommand, StringBuilder sql) {
         sql.append(_SPACE_PARENTHESES_L);
 
@@ -164,6 +200,15 @@ public class SQLInterpreter extends AbstractInterpreter {
         sqlCommand.setTargetPropNames(new ArrayList<>(propNames));
     }
 
+    /**
+     * Builds the insert props list.
+     *
+     * @param entityDef the entity def
+     * @param propNames the prop names
+     * @param propsList the props list
+     * @param sqlCommand the sql command
+     * @param sql the sql
+     */
     protected void buildInsertPropsList(EntityDefinition entityDef, Collection<String> propNames, List<Map<String, Object>> propsList,
             SQLOperationCommand sqlCommand, StringBuilder sql) {
         sql.append(WD._SPACE);
@@ -192,6 +237,15 @@ public class SQLInterpreter extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Interpret update.
+     *
+     * @param entityDef the entity def
+     * @param props the props
+     * @param condition the condition
+     * @param options the options
+     * @return the SQL operation command
+     */
     @Override
     public SQLOperationCommand interpretUpdate(EntityDefinition entityDef, Map<String, Object> props, Condition condition, Map<String, Object> options) {
         Criteria criteria = condition2Criteria(condition);
@@ -219,6 +273,14 @@ public class SQLInterpreter extends AbstractInterpreter {
         return sqlCommand;
     }
 
+    /**
+     * Builds the update props.
+     *
+     * @param entityDef the entity def
+     * @param props the props
+     * @param sqlCommand the sql command
+     * @param sql the sql
+     */
     protected void buildUpdateProps(EntityDefinition entityDef, Map<String, Object> props, SQLOperationCommand sqlCommand, StringBuilder sql) {
         sql.append(WD._SPACE);
 
@@ -239,10 +301,26 @@ public class SQLInterpreter extends AbstractInterpreter {
         sqlCommand.setTargetPropNames(new ArrayList<>(props.keySet()));
     }
 
+    /**
+     * Builds the criteria.
+     *
+     * @param entityDef the entity def
+     * @param criteria the criteria
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     protected void buildCriteria(EntityDefinition entityDef, Criteria criteria, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         interpretCriteria(entityDef, criteria, sqlCondCmd, sql);
     }
 
+    /**
+     * Interpret delete.
+     *
+     * @param entityDef the entity def
+     * @param condition the condition
+     * @param options the options
+     * @return the SQL operation command
+     */
     @Override
     public SQLOperationCommand interpretDelete(EntityDefinition entityDef, Condition condition, Map<String, Object> options) {
         final Criteria criteria = condition2Criteria(condition);
@@ -269,6 +347,15 @@ public class SQLInterpreter extends AbstractInterpreter {
         return sqlCommand;
     }
 
+    /**
+     * Interpret query.
+     *
+     * @param entityDef the entity def
+     * @param propNames the prop names
+     * @param condition the condition
+     * @param options the options
+     * @return the command
+     */
     @Override
     public Command interpretQuery(EntityDefinition entityDef, Collection<String> propNames, Condition condition, Map<String, Object> options) {
         final Criteria criteria = condition2Criteria(condition);
@@ -286,6 +373,15 @@ public class SQLInterpreter extends AbstractInterpreter {
         return sqlCommand;
     }
 
+    /**
+     * Interpret query.
+     *
+     * @param entityDef the entity def
+     * @param propNames the prop names
+     * @param criteria the criteria
+     * @param sqlCommand the sql command
+     * @param sql the sql
+     */
     protected void interpretQuery(EntityDefinition entityDef, Collection<String> propNames, Criteria criteria, SQLCondCommand sqlCommand, StringBuilder sql) {
         sql.append(_SELECT);
 
@@ -313,6 +409,14 @@ public class SQLInterpreter extends AbstractInterpreter {
         Objectory.recycle(condSql);
     }
 
+    /**
+     * Builds the select prop names.
+     *
+     * @param entityDef the entity def
+     * @param propNames the prop names
+     * @param sqlCommand the sql command
+     * @param sql the sql
+     */
     protected void buildSelectPropNames(EntityDefinition entityDef, Collection<String> propNames, SQLCondCommand sqlCommand, StringBuilder sql) {
         int i = 0;
         for (String propName : propNames) {
@@ -376,6 +480,15 @@ public class SQLInterpreter extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Interpret query.
+     *
+     * @param entityDef the entity def
+     * @param querySql the query sql
+     * @param parameters the parameters
+     * @param options the options
+     * @return the SQL operation command
+     */
     @Override
     public SQLOperationCommand interpretQuery(EntityDefinition entityDef, String querySql, List<?> parameters, Map<String, Object> options) {
         final SQLOperationCommand sqlCommand = SQLCommandFactory.createSqlCommand(OperationType.QUERY, entityDef, options);
@@ -398,6 +511,13 @@ public class SQLInterpreter extends AbstractInterpreter {
         return sqlCommand;
     }
 
+    /**
+     * Interpret condition.
+     *
+     * @param entityDef the entity def
+     * @param condition the condition
+     * @return the SQL cond command
+     */
     @Override
     public SQLCondCommand interpretCondition(EntityDefinition entityDef, Condition condition) {
         SQLCondCommand sqlCondCmd = null;
@@ -421,6 +541,15 @@ public class SQLInterpreter extends AbstractInterpreter {
         return sqlCondCmd;
     }
 
+    /**
+     * Interpret condition.
+     *
+     * @param entityDef the entity def
+     * @param condition the condition
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     * @return the SQL cond command
+     */
     protected SQLCondCommand interpretCondition(EntityDefinition entityDef, Condition condition, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         // TODO [performance improvement]. how to improve the performance here?
         // cache?.
@@ -451,6 +580,14 @@ public class SQLInterpreter extends AbstractInterpreter {
         return sqlCondCmd;
     }
 
+    /**
+     * Inerpret customized condition.
+     *
+     * @param entityDef the entity def
+     * @param condition the condition
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     protected void inerpretCustomizedCondition(EntityDefinition entityDef, Condition condition, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         throw new IllegalArgumentException("unsupported condition[" + condition + "]. ");
     }
@@ -497,6 +634,14 @@ public class SQLInterpreter extends AbstractInterpreter {
     //        }
     //    }
 
+    /**
+     * Interpret binary.
+     *
+     * @param entityDef the entity def
+     * @param binary the binary
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     protected final void interpretBinary(EntityDefinition entityDef, Binary binary, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         interpretExpression(entityDef, binary.getPropName(), sqlCondCmd, sql);
         sql.append(WD._SPACE);
@@ -505,6 +650,14 @@ public class SQLInterpreter extends AbstractInterpreter {
         setPropValue(entityDef, binary.getPropName(), binary.getPropValue(), sqlCondCmd, sql);
     }
 
+    /**
+     * Interpret join.
+     *
+     * @param entityDef the entity def
+     * @param join the join
+     * @param criteriaCmd the criteria cmd
+     * @param sql the sql
+     */
     protected final void interpretJoin(EntityDefinition entityDef, Join join, SQLCondCommand criteriaCmd, StringBuilder sql) {
         sql.append(WD._SPACE);
         sql.append(join.getOperator().toString());
@@ -535,6 +688,14 @@ public class SQLInterpreter extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Interpret cell.
+     *
+     * @param entityDef the entity def
+     * @param cell the cell
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     protected final void interpretCell(EntityDefinition entityDef, Cell cell, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         sql.append(WD._SPACE);
         sql.append(cell.getOperator().toString());
@@ -542,6 +703,14 @@ public class SQLInterpreter extends AbstractInterpreter {
         interpretCondition(entityDef, cell.getCondition(), sqlCondCmd, sql);
     }
 
+    /**
+     * Interpret between.
+     *
+     * @param entityDef the entity def
+     * @param between the between
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     protected final void interpretBetween(EntityDefinition entityDef, Between between, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         interpretExpression(entityDef, between.getPropName(), sqlCondCmd, sql);
 
@@ -554,6 +723,14 @@ public class SQLInterpreter extends AbstractInterpreter {
         setPropValue(entityDef, between.getPropName(), between.getMaxValue(), sqlCondCmd, sql);
     }
 
+    /**
+     * Interpret in.
+     *
+     * @param entityDef the entity def
+     * @param in the in
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     protected final void interpretIn(EntityDefinition entityDef, In in, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         interpretExpression(entityDef, in.getPropName(), sqlCondCmd, sql);
 
@@ -574,6 +751,14 @@ public class SQLInterpreter extends AbstractInterpreter {
 
     }
 
+    /**
+     * Interpret junction.
+     *
+     * @param entityDef the entity def
+     * @param junction the junction
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     protected final void interpretJunction(EntityDefinition entityDef, Junction junction, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         List<Condition> conditionList = junction.getConditions();
 
@@ -604,6 +789,12 @@ public class SQLInterpreter extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Interpret limit.
+     *
+     * @param limit the limit
+     * @param sql the sql
+     */
     protected final void interpretLimit(Limit limit, StringBuilder sql) {
         sql.append(WD._SPACE);
         sql.append(_LIMIT);
@@ -622,6 +813,14 @@ public class SQLInterpreter extends AbstractInterpreter {
         sql.append(limit.getOffset());
     }
 
+    /**
+     * Interpret sub query.
+     *
+     * @param entityDef the entity def
+     * @param subQuery the sub query
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     protected final void interpretSubQuery(EntityDefinition entityDef, SubQuery subQuery, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         entityDef = entityDef.getFactory().getDefinition(subQuery.getEntityName());
 
@@ -645,6 +844,14 @@ public class SQLInterpreter extends AbstractInterpreter {
         sqlCondCmd.appendParameters(sqlCommand);
     }
 
+    /**
+     * Interpret criteria.
+     *
+     * @param entityDef the entity def
+     * @param criteria the criteria
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     protected final void interpretCriteria(EntityDefinition entityDef, Criteria criteria, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         Collection<Join> joins = criteria.getJoins();
 
@@ -693,6 +900,14 @@ public class SQLInterpreter extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Interpret expression.
+     *
+     * @param entityDef the entity def
+     * @param literal the literal
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     protected final void interpretExpression(EntityDefinition entityDef, String literal, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         Property prop = entityDef.getProperty(literal);
 
@@ -727,6 +942,12 @@ public class SQLInterpreter extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Condition 2 criteria.
+     *
+     * @param condition the condition
+     * @return the criteria
+     */
     protected final Criteria condition2Criteria(Condition condition) {
         if (condition == null) {
             return EMPTY_CRITERIA;
@@ -737,6 +958,13 @@ public class SQLInterpreter extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Gets the write column name.
+     *
+     * @param entityDef the entity def
+     * @param propName the prop name
+     * @return the write column name
+     */
     protected final String getWriteColumnName(EntityDefinition entityDef, String propName) {
         Property prop = entityDef.getProperty(propName);
 
@@ -751,6 +979,13 @@ public class SQLInterpreter extends AbstractInterpreter {
         return prop.getColumnName();
     }
 
+    /**
+     * Gets the update column name.
+     *
+     * @param entityDef the entity def
+     * @param propName the prop name
+     * @return the update column name
+     */
     protected final String getUpdateColumnName(EntityDefinition entityDef, String propName) {
         Property prop = entityDef.getProperty(propName);
 
@@ -765,6 +1000,13 @@ public class SQLInterpreter extends AbstractInterpreter {
         return prop.getColumnName();
     }
 
+    /**
+     * Gets the join table names.
+     *
+     * @param entityDef the entity def
+     * @param join the join
+     * @return the join table names
+     */
     protected final List<String> getJoinTableNames(EntityDefinition entityDef, Join join) {
         List<String> joinTableNames = new ArrayList<>();
         EntityDefinition joinEntityDef = null;
@@ -782,6 +1024,13 @@ public class SQLInterpreter extends AbstractInterpreter {
         return joinTableNames;
     }
 
+    /**
+     * Sets the prop name.
+     *
+     * @param prop the prop
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     protected final void setPropName(Property prop, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         //            if ((sql.length() == 0) || !((sql.charAt(sql.length() - 1) == D._SPACE) || (sql.charAt(sql.length() - 1) == D._PARENTHESES_L))) {
         //                sql.append(D._SPACE);
@@ -803,6 +1052,15 @@ public class SQLInterpreter extends AbstractInterpreter {
         sqlCondCmd.addTargetTable(prop.getEntityDefinition().getTableName());
     }
 
+    /**
+     * Sets the prop value.
+     *
+     * @param entityDef the entity def
+     * @param propName the prop name
+     * @param propValue the prop value
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     protected final void setPropValue(EntityDefinition entityDef, String propName, Object propValue, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         //        if ((propValue == null) || propValue instanceof String || propValue instanceof Number || propValue instanceof Date || propValue instanceof Boolean) {
         //            setParameterValue(entityDef, propName, propValue, sqlCondCmd, sql);
@@ -819,6 +1077,15 @@ public class SQLInterpreter extends AbstractInterpreter {
         }
     }
 
+    /**
+     * Sets the parameter value.
+     *
+     * @param entityDef the entity def
+     * @param propName the prop name
+     * @param propValue the prop value
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     protected final void setParameterValue(EntityDefinition entityDef, String propName, Object propValue, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         Property prop = entityDef.getProperty(propName);
         Type<Object> type = (prop == null) ? TypeFactory.getType(ObjectType.OBJECT) : prop.getType();

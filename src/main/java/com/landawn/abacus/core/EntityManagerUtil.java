@@ -58,28 +58,41 @@ import com.landawn.abacus.util.WD;
 import com.landawn.abacus.util.u.Holder;
 import com.landawn.abacus.validator.Validator;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class EntityManagerUtil.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 @Internal
 public final class EntityManagerUtil {
+    
+    /** The Constant clsEntityName. */
     private static final Map<Class<?>, String> clsEntityName = new ObjectPool<Class<?>, String>(1024);
 
+    /**
+     * Instantiates a new entity manager util.
+     */
     private EntityManagerUtil() {
         // no instance
     }
 
+    /**
+     * Copy options.
+     *
+     * @param options the options
+     * @return the map
+     */
     public static Map<String, Object> copyOptions(final Map<String, Object> options) {
         return N.isNullOrEmpty(options) ? ParametersUtil.asOptions() : ParametersUtil.copy(options);
     }
 
     /**
-     * Check if the specified parameter is null or empty
+     * Check if the specified parameter is null or empty.
      *
-     * @param parameter
+     * @param <T> the generic type
+     * @param parameter the parameter
      * @param msg name of parameter or error message
      * @return the input parameter
      * @throws IllegalArgumentException if the specified parameter is null or empty.
@@ -96,11 +109,24 @@ public final class EntityManagerUtil {
         return parameter;
     }
 
+    /**
+     * Checks if is null error msg.
+     *
+     * @param msg the msg
+     * @return true, if is null error msg
+     */
     private static boolean isNullErrorMsg(final String msg) {
         // shortest message: "it is null"
         return msg.length() > 9 && msg.indexOf(WD._SPACE) > 0;
     }
 
+    /**
+     * Check entity name.
+     *
+     * @param entityDefinitionFactory the entity definition factory
+     * @param entityName the entity name
+     * @return the entity definition
+     */
     public static EntityDefinition checkEntityName(final EntityDefinitionFactory entityDefinitionFactory, final String entityName) {
         if (N.isNullOrEmpty(entityName)) {
             throw new IllegalArgumentException("The entity name can not be null or empty");
@@ -115,6 +141,13 @@ public final class EntityManagerUtil {
         return entityDef;
     }
 
+    /**
+     * Check entity id.
+     *
+     * @param entityDefinitionFactory the entity definition factory
+     * @param entityId the entity id
+     * @return the entity definition
+     */
     public static EntityDefinition checkEntityId(final EntityDefinitionFactory entityDefinitionFactory, final EntityId entityId) {
         if ((entityId == null) || entityId.isEmpty()) {
             throw new IllegalArgumentException("EntityId can not be null or empty");
@@ -132,6 +165,13 @@ public final class EntityManagerUtil {
         return entityDef;
     }
 
+    /**
+     * Check entity id.
+     *
+     * @param entityDefinitionFactory the entity definition factory
+     * @param entityIds the entity ids
+     * @return the entity definition
+     */
     public static EntityDefinition checkEntityId(final EntityDefinitionFactory entityDefinitionFactory, final List<? extends EntityId> entityIds) {
         if (N.isNullOrEmpty(entityIds)) {
             throw new IllegalArgumentException("EntityIds can not be null or empty");
@@ -160,6 +200,13 @@ public final class EntityManagerUtil {
         return entityDef;
     }
 
+    /**
+     * Check entity.
+     *
+     * @param entityDefinitionFactory the entity definition factory
+     * @param entity the entity
+     * @return the entity definition
+     */
     public static EntityDefinition checkEntity(final EntityDefinitionFactory entityDefinitionFactory, final Object entity) {
         if (entity == null) {
             throw new IllegalArgumentException("The specified entity can not be null.");
@@ -215,6 +262,13 @@ public final class EntityManagerUtil {
         }
     }
 
+    /**
+     * Check entity.
+     *
+     * @param entityDefinitionFactory the entity definition factory
+     * @param entities the entities
+     * @return the entity definition
+     */
     public static EntityDefinition checkEntity(final EntityDefinitionFactory entityDefinitionFactory, final Collection<?> entities) {
         if (N.isNullOrEmpty(entities)) {
             throw new IllegalArgumentException("Entities can not be null or empty");
@@ -233,6 +287,12 @@ public final class EntityManagerUtil {
         return checkEntity(entityDefinitionFactory, first);
     }
 
+    /**
+     * Check select prop names for get.
+     *
+     * @param entityDef the entity def
+     * @param selectPropNames the select prop names
+     */
     public static void checkSelectPropNamesForGet(final EntityDefinition entityDef, final Collection<String> selectPropNames) {
         if (N.notNullOrEmpty(selectPropNames)) {
             Property prop = null;
@@ -253,6 +313,11 @@ public final class EntityManagerUtil {
         }
     }
 
+    /**
+     * Check props list.
+     *
+     * @param propsList the props list
+     */
     public static void checkPropsList(final List<Map<String, Object>> propsList) {
         if (N.isNullOrEmpty(propsList)) {
             throw new IllegalArgumentException("propsList can not be null or empty.");
@@ -267,6 +332,11 @@ public final class EntityManagerUtil {
         }
     }
 
+    /**
+     * Check conflict options.
+     *
+     * @param options the options
+     */
     public static void checkConflictOptions(final Map<String, Object> options) {
         if (isGetFromCache(options) || isCacheResult(options)) {
             if ((options.get(Jdbc.MAX_FIELD_SIZE) != null) || (options.get(Jdbc.MAX_ROWS) != null) || (options.get(Jdbc.FETCH_DIRECTION) != null)) {
@@ -275,11 +345,25 @@ public final class EntityManagerUtil {
         }
     }
 
+    /**
+     * Gets the prop value by method.
+     *
+     * @param entity the entity
+     * @param prop the prop
+     * @return the prop value by method
+     */
     public static Object getPropValueByMethod(final Object entity, final Property prop) {
         // return N.invokeMethod(entity, prop.getGetMethod(entity.getClass()));
         return ParserUtil.getEntityInfo(entity.getClass()).getPropValue(entity, prop.getName());
     }
 
+    /**
+     * Sets the prop value by method.
+     *
+     * @param entity the entity
+     * @param prop the prop
+     * @param propValue the prop value
+     */
     public static void setPropValueByMethod(final Object entity, final Property prop, Object propValue) {
         if (propValue == null) {
             propValue = N.defaultValueOf(prop.getType().clazz());
@@ -289,6 +373,13 @@ public final class EntityManagerUtil {
         ParserUtil.getEntityInfo(entity.getClass()).setPropValue(entity, prop.getName(), propValue);
     }
 
+    /**
+     * Gets the prop value.
+     *
+     * @param entity the entity
+     * @param prop the prop
+     * @return the prop value
+     */
     public static Object getPropValue(final Object entity, final Property prop) {
         if (entity instanceof MapEntity) {
             return ((MapEntity) entity).get(prop.getName());
@@ -297,6 +388,13 @@ public final class EntityManagerUtil {
         }
     }
 
+    /**
+     * Sets the prop value.
+     *
+     * @param entity the entity
+     * @param prop the prop
+     * @param propValue the prop value
+     */
     public static void setPropValue(final Object entity, final Property prop, final Object propValue) {
         if (entity instanceof MapEntity) {
             ((MapEntity) entity).set(prop.getName(), propValue);
@@ -305,6 +403,13 @@ public final class EntityManagerUtil {
         }
     }
 
+    /**
+     * Gets the signed prop names.
+     *
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @return the signed prop names
+     */
     public static Collection<String> getSignedPropNames(final EntityDefinition entityDef, final Object entity) {
         Collection<String> propNames = null;
 
@@ -317,6 +422,13 @@ public final class EntityManagerUtil {
         return propNames;
     }
 
+    /**
+     * Gets the dirty prop names.
+     *
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @return the dirty prop names
+     */
     public static Collection<String> getDirtyPropNames(final EntityDefinition entityDef, final Object entity) {
         Collection<String> propNames = null;
 
@@ -329,6 +441,13 @@ public final class EntityManagerUtil {
         return propNames;
     }
 
+    /**
+     * Gets the updated props.
+     *
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @return the updated props
+     */
     public static Map<String, Object> getUpdatedProps(final EntityDefinition entityDef, final Object entity) {
         Collection<String> propNamesToUpdate = getDirtyPropNames(entityDef, entity);
         Map<String, Object> updateProps = new HashMap<>();
@@ -397,10 +516,25 @@ public final class EntityManagerUtil {
         return updateProps;
     }
 
+    /**
+     * Parses the select prop names in get.
+     *
+     * @param entityDef the entity def
+     * @param selectPropNames the select prop names
+     * @return the select prop name view
+     */
     public static SelectPropNameView parseSelectPropNamesInGet(final EntityDefinition entityDef, final Collection<String> selectPropNames) {
         return parseSelectPropNames(entityDef, selectPropNames, true);
     }
 
+    /**
+     * Parses the select prop names in query.
+     *
+     * @param entityDef the entity def
+     * @param selectPropNames the select prop names
+     * @param options the options
+     * @return the select prop name view
+     */
     public static SelectPropNameView parseSelectPropNamesInQuery(final EntityDefinition entityDef, final Collection<String> selectPropNames,
             final Map<String, Object> options) {
         SelectPropNameView xa = parseSelectPropNames(entityDef, selectPropNames, false);
@@ -424,6 +558,14 @@ public final class EntityManagerUtil {
         return xa;
     }
 
+    /**
+     * Parses the select prop names.
+     *
+     * @param entityDef the entity def
+     * @param selectPropNames the select prop names
+     * @param autoAddId the auto add id
+     * @return the select prop name view
+     */
     private static SelectPropNameView parseSelectPropNames(final EntityDefinition entityDef, Collection<String> selectPropNames, final boolean autoAddId) {
         boolean isNullSelectPropNames = selectPropNames == null;
 
@@ -485,6 +627,14 @@ public final class EntityManagerUtil {
         return xa;
     }
 
+    /**
+     * Parses the update props.
+     *
+     * @param entityDef the entity def
+     * @param props the props
+     * @param isPropEntitySupported the is prop entity supported
+     * @return the update props view
+     */
     public static UpdatePropsView parseUpdateProps(final EntityDefinition entityDef, final Map<String, Object> props, final boolean isPropEntitySupported) {
         // TODO [performance improvement]. how to improve performance?
         final Map<String, Object> updateProps = new HashMap<>(N.initHashCapacity(props.size()));
@@ -566,9 +716,10 @@ public final class EntityManagerUtil {
 
     /**
      * Method validatePropValue.
-     * 
-     * @param prop
-     * @param propValue
+     *
+     * @param prop the prop
+     * @param propValue the prop value
+     * @return the object
      */
     private static Object validatePropValue(final Property prop, Object propValue) {
         List<Validator<Object>> validators = prop.getValidatorList();
@@ -582,6 +733,13 @@ public final class EntityManagerUtil {
         return propValue;
     }
 
+    /**
+     * Entity 2 map.
+     *
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @return the map
+     */
     public static Map<String, Object> entity2Map(final EntityDefinition entityDef, final Object entity) {
         Collection<String> signedPropNames = getSignedPropNames(entityDef, entity);
         Map<String, Object> insertProps = new HashMap<>();
@@ -602,6 +760,13 @@ public final class EntityManagerUtil {
         return insertProps;
     }
 
+    /**
+     * Entity 2 map.
+     *
+     * @param entityDef the entity def
+     * @param entities the entities
+     * @return the list
+     */
     public static List<Map<String, Object>> entity2Map(final EntityDefinition entityDef, final Collection<?> entities) {
         checkEntity(entityDef.getFactory(), entities);
 
@@ -614,6 +779,13 @@ public final class EntityManagerUtil {
         return propsList;
     }
 
+    /**
+     * Gets the prop entity.
+     *
+     * @param entityDef the entity def
+     * @param propsList the props list
+     * @return the prop entity
+     */
     public static Map<Property, List<Object>> getPropEntity(final EntityDefinition entityDef, final List<Map<String, Object>> propsList) {
         Map<Property, List<Object>> propEntities = new HashMap<>();
 
@@ -643,6 +815,14 @@ public final class EntityManagerUtil {
         return propEntities;
     }
 
+    /**
+     * Parses the insert props list.
+     *
+     * @param entityDef the entity def
+     * @param propsList the props list
+     * @param isPropEntitySupported the is prop entity supported
+     * @return the insert props list view
+     */
     public static InsertPropsListView parseInsertPropsList(final EntityDefinition entityDef, final List<Map<String, Object>> propsList,
             final boolean isPropEntitySupported) {
         List<Map<String, Object>> insertPropsList = new ArrayList<>(propsList.size());
@@ -669,6 +849,16 @@ public final class EntityManagerUtil {
         return insertPropsListView;
     }
 
+    /**
+     * Parses the insert props.
+     *
+     * @param entityDef the entity def
+     * @param propNamesToInsert the prop names to insert
+     * @param props the props
+     * @param insertPropsListView the insert props list view
+     * @param isPropEntitySupported the is prop entity supported
+     * @return the map
+     */
     @SuppressWarnings("unchecked")
     private static Map<String, Object> parseInsertProps(final EntityDefinition entityDef, Collection<String> propNamesToInsert, final Map<String, Object> props,
             final InsertPropsListView insertPropsListView, final boolean isPropEntitySupported) {
@@ -814,12 +1004,22 @@ public final class EntityManagerUtil {
         return insertProps;
     }
 
+    /**
+     * Clean up dirty prop names.
+     *
+     * @param entity the entity
+     */
     public static void cleanUpDirtyPropNames(final Object entity) {
         if (entity instanceof DirtyMarker) {
             DirtyMarkerUtil.markDirty((DirtyMarker) entity, false);
         }
     }
 
+    /**
+     * Clean up dirty prop names.
+     *
+     * @param entities the entities
+     */
     public static void cleanUpDirtyPropNames(final Collection<?> entities) {
         if (N.notNullOrEmpty(entities)) {
             if (entities.iterator().next() instanceof DirtyMarker) {
@@ -830,12 +1030,24 @@ public final class EntityManagerUtil {
         }
     }
 
+    /**
+     * Sets the dirty marker.
+     *
+     * @param entity the entity
+     * @param isDirty the is dirty
+     */
     public static void setDirtyMarker(final Object entity, final boolean isDirty) {
         if (entity instanceof DirtyMarker) {
             DirtyMarkerUtil.markDirty((DirtyMarker) entity, isDirty);
         }
     }
 
+    /**
+     * Sets the dirty marker.
+     *
+     * @param entities the entities
+     * @param isDirty the is dirty
+     */
     public static void setDirtyMarker(final Collection<?> entities, final boolean isDirty) {
         if (N.notNullOrEmpty(entities)) {
             if (entities.iterator().next() instanceof DirtyMarker) {
@@ -846,10 +1058,23 @@ public final class EntityManagerUtil {
         }
     }
 
+    /**
+     * Checks if is null or empty id value.
+     *
+     * @param value the value
+     * @return true, if is null or empty id value
+     */
     public static boolean isNullOrEmptyIdValue(final Object value) {
         return (value == null) || (value instanceof Number && (0 == ((Number) value).longValue()));
     }
 
+    /**
+     * Sets the id value.
+     *
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @param entityId the entity id
+     */
     @SuppressWarnings("deprecation")
     public static void setIdValue(final EntityDefinition entityDef, final Object entity, final EntityId entityId) {
         Object propVal = null;
@@ -864,16 +1089,38 @@ public final class EntityManagerUtil {
         }
     }
 
+    /**
+     * Sets the id value.
+     *
+     * @param entityDef the entity def
+     * @param entities the entities
+     * @param entityIds the entity ids
+     */
     public static void setIdValue(final EntityDefinition entityDef, final List<?> entities, final List<EntityId> entityIds) {
         for (int i = 0, len = entityIds.size(); i < len; i++) {
             EntityManagerUtil.setIdValue(entityDef, entities.get(i), entityIds.get(i));
         }
     }
 
+    /**
+     * Gets the entity id by entity.
+     *
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @return the entity id by entity
+     */
     public static EntityId getEntityIdByEntity(final EntityDefinition entityDef, final Object entity) {
         return getEntityIdByEntity(entityDef, entity, true);
     }
 
+    /**
+     * Gets the entity id by entity.
+     *
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @param checkEmptyId the check empty id
+     * @return the entity id by entity
+     */
     public static EntityId getEntityIdByEntity(final EntityDefinition entityDef, final Object entity, final boolean checkEmptyId) {
         Collection<String> idPropNames = entityDef.getIdPropertyNameList();
 
@@ -910,10 +1157,25 @@ public final class EntityManagerUtil {
         return entityId;
     }
 
+    /**
+     * Gets the entity id by entity.
+     *
+     * @param entityDef the entity def
+     * @param entities the entities
+     * @return the entity id by entity
+     */
     public static List<EntityId> getEntityIdByEntity(final EntityDefinition entityDef, final Collection<?> entities) {
         return getEntityIdByEntity(entityDef, entities, true);
     }
 
+    /**
+     * Gets the entity id by entity.
+     *
+     * @param entityDef the entity def
+     * @param entities the entities
+     * @param checkEmptyId the check empty id
+     * @return the entity id by entity
+     */
     public static List<EntityId> getEntityIdByEntity(final EntityDefinition entityDef, final Collection<?> entities, final boolean checkEmptyId) {
         List<EntityId> entityIds = new ArrayList<>(entities.size());
 
@@ -924,6 +1186,13 @@ public final class EntityManagerUtil {
         return entityIds;
     }
 
+    /**
+     * Result set 2 entity id.
+     *
+     * @param entityDef the entity def
+     * @param dataSet the data set
+     * @return the list
+     */
     public static List<EntityId> resultSet2EntityId(final EntityDefinition entityDef, final DataSet dataSet) {
         final String entityName = entityDef.getName();
         final List<EntityId> entityIds = new ArrayList<>(dataSet.size());
@@ -949,6 +1218,12 @@ public final class EntityManagerUtil {
         return entityIds;
     }
 
+    /**
+     * Gets the cache range.
+     *
+     * @param options the options
+     * @return the cache range
+     */
     public static Cache.Range getCacheRange(final Map<String, Object> options) {
         Cache.Range range = null;
 
@@ -961,6 +1236,13 @@ public final class EntityManagerUtil {
         return range;
     }
 
+    /**
+     * Gets the cache condition.
+     *
+     * @param queryCacheConfig the query cache config
+     * @param options the options
+     * @return the cache condition
+     */
     public static Cache.Condition getCacheCondition(final QueryCacheConfiguration queryCacheConfig, final Map<String, Object> options) {
         Cache.Condition cacheCond = null;
 
@@ -976,10 +1258,24 @@ public final class EntityManagerUtil {
         return cacheCond;
     }
 
+    /**
+     * Gets the uncache prop names.
+     *
+     * @param options the options
+     * @return the uncache prop names
+     */
     public static Object getUncachePropNames(final Map<String, Object> options) {
         return (options == null) ? null : options.get(Cache.UNCACHED_PROP_NAMES);
     }
 
+    /**
+     * Gets the entity cache live time.
+     *
+     * @param entityName the entity name
+     * @param entityCacheConfig the entity cache config
+     * @param options the options
+     * @return the entity cache live time
+     */
     public static long getEntityCacheLiveTime(final String entityName, final EntityCacheConfiguration entityCacheConfig, final Map<String, Object> options) {
         long liveTime = EntityCacheConfiguration.DEFAULT_LIVE_TIME;
 
@@ -1002,6 +1298,14 @@ public final class EntityManagerUtil {
         return liveTime;
     }
 
+    /**
+     * Gets the entity cache max idle time.
+     *
+     * @param entityName the entity name
+     * @param entityCacheConfig the entity cache config
+     * @param options the options
+     * @return the entity cache max idle time
+     */
     public static long getEntityCacheMaxIdleTime(final String entityName, final EntityCacheConfiguration entityCacheConfig, final Map<String, Object> options) {
         long maxIdleTime = EntityCacheConfiguration.DEFAULT_MAX_IDLE_TIME;
 
@@ -1024,6 +1328,13 @@ public final class EntityManagerUtil {
         return maxIdleTime;
     }
 
+    /**
+     * Gets the query cache live time.
+     *
+     * @param queryCacheConfig the query cache config
+     * @param options the options
+     * @return the query cache live time
+     */
     public static long getQueryCacheLiveTime(final QueryCacheConfiguration queryCacheConfig, final Map<String, Object> options) {
         long liveTime = QueryCacheConfiguration.DEFAULT_LIVE_TIME;
 
@@ -1040,6 +1351,13 @@ public final class EntityManagerUtil {
         return liveTime;
     }
 
+    /**
+     * Gets the query cache max idle time.
+     *
+     * @param queryCacheConfig the query cache config
+     * @param options the options
+     * @return the query cache max idle time
+     */
     public static long getQueryCacheMaxIdleTime(final QueryCacheConfiguration queryCacheConfig, final Map<String, Object> options) {
         long maxIdleTime = QueryCacheConfiguration.DEFAULT_MAX_IDLE_TIME;
 
@@ -1056,6 +1374,13 @@ public final class EntityManagerUtil {
         return maxIdleTime;
     }
 
+    /**
+     * Gets the min check query cache size.
+     *
+     * @param queryCacheConfig the query cache config
+     * @param options the options
+     * @return the min check query cache size
+     */
     public static int getMinCheckQueryCacheSize(final QueryCacheConfiguration queryCacheConfig, final Map<String, Object> options) {
         int minCheckQueryCacheSize = QueryCacheConfiguration.DEFAULT_MIN_CHECK_QUERY_CACHE_SIZE;
 
@@ -1073,6 +1398,13 @@ public final class EntityManagerUtil {
         return minCheckQueryCacheSize;
     }
 
+    /**
+     * Gets the max check query cache time.
+     *
+     * @param queryCacheConfig the query cache config
+     * @param options the options
+     * @return the max check query cache time
+     */
     public static long getMaxCheckQueryCacheTime(final QueryCacheConfiguration queryCacheConfig, final Map<String, Object> options) {
         // get and check update condition from options.
         long maxCheckQueryCacheTime = QueryCacheConfiguration.DEFAULT_MAX_CHECK_QUERY_CACHE_TIME;
@@ -1090,6 +1422,12 @@ public final class EntityManagerUtil {
         return maxCheckQueryCacheTime;
     }
 
+    /**
+     * Gets the offset.
+     *
+     * @param options the options
+     * @return the offset
+     */
     public static int getOffset(final Map<String, Object> options) {
         int offset = Query.DEFAULT_OFFSET;
 
@@ -1104,6 +1442,12 @@ public final class EntityManagerUtil {
         return offset;
     }
 
+    /**
+     * Gets the count.
+     *
+     * @param options the options
+     * @return the count
+     */
     public static int getCount(final Map<String, Object> options) {
         int count = Query.DEFAULT_COUNT;
 
@@ -1118,10 +1462,23 @@ public final class EntityManagerUtil {
         return count;
     }
 
+    /**
+     * Gets the lock code.
+     *
+     * @param options the options
+     * @return the lock code
+     */
     public static String getLockCode(final Map<String, Object> options) {
         return (options == null) ? null : (String) options.get(Options.RECORD_LOCK_CODE);
     }
 
+    /**
+     * Gets the record lock timeout.
+     *
+     * @param options the options
+     * @param lockConfig the lock config
+     * @return the record lock timeout
+     */
     public static long getRecordLockTimeout(final Map<String, Object> options, final LockConfiguration lockConfig) {
         long lockTimeout = LockConfiguration.DEFAULT_RECORD_LOCK_TIMEOUT;
 
@@ -1138,10 +1495,22 @@ public final class EntityManagerUtil {
         return lockTimeout;
     }
 
+    /**
+     * Gets the transaction id.
+     *
+     * @param options the options
+     * @return the transaction id
+     */
     public static String getTransactionId(final Map<String, Object> options) {
         return (options == null) ? null : (String) options.get(Options.TRANSACTION_ID);
     }
 
+    /**
+     * Gets the batch size.
+     *
+     * @param options the options
+     * @return the batch size
+     */
     public static int getBatchSize(final Map<String, Object> options) {
         int batchSize = Options.DEFAULT_BATCH_SIZE;
 
@@ -1156,18 +1525,34 @@ public final class EntityManagerUtil {
         return batchSize;
     }
 
+    /**
+     * Check result handle.
+     *
+     * @param resultHandle the result handle
+     */
     public static void checkResultHandle(final Holder<String> resultHandle) {
         if ((resultHandle == null) || N.isNullOrEmpty(resultHandle.value())) {
             throw new IllegalArgumentException("The resultHandle or its value is null or empty.");
         }
     }
 
+    /**
+     * Check result handle.
+     *
+     * @param resultHandle the result handle
+     */
     public static void checkResultHandle(final String resultHandle) {
         if (N.isNullOrEmpty(resultHandle)) {
             throw new IllegalArgumentException("The resultHandle or its value is null or empty.");
         }
     }
 
+    /**
+     * Gets the handle live time.
+     *
+     * @param options the options
+     * @return the handle live time
+     */
     public static long getHandleLiveTime(final Map<String, Object> options) {
         long liveTime = Query.HANDLE_DEFAULT_LIVE_TIME;
 
@@ -1178,6 +1563,12 @@ public final class EntityManagerUtil {
         return liveTime;
     }
 
+    /**
+     * Gets the handle max idle time.
+     *
+     * @param options the options
+     * @return the handle max idle time
+     */
     public static long getHandleMaxIdleTime(final Map<String, Object> options) {
         long maxIdleTime = Query.HANDLE_DEFAULT_MAX_IDLE_TIME;
 
@@ -1188,32 +1579,75 @@ public final class EntityManagerUtil {
         return maxIdleTime;
     }
 
+    /**
+     * Checks if is enable my SQL batch add.
+     *
+     * @param options the options
+     * @return true, if is enable my SQL batch add
+     */
     public static boolean isEnableMySQLBatchAdd(final Map<String, Object> options) {
         return isYes(Options.ENABLE_MYSQL_BATCH_ADD, options);
     }
 
+    /**
+     * Checks if is gets the by result handle.
+     *
+     * @param resultHandle the result handle
+     * @return true, if is gets the by result handle
+     */
     public static boolean isGetByResultHandle(Holder<String> resultHandle)
 
     {
         return (resultHandle != null) && (N.notNullOrEmpty(resultHandle.value()));
     }
 
+    /**
+     * Checks if is in transaction.
+     *
+     * @param options the options
+     * @return true, if is in transaction
+     */
     public static boolean isInTransaction(final Map<String, Object> options) {
         return (options != null) && (options.get(Options.TRANSACTION_ID) != null);
     }
 
+    /**
+     * Not in transaction.
+     *
+     * @param options the options
+     * @return true, if successful
+     */
     public static boolean notInTransaction(final Map<String, Object> options) {
         return (options == null) || (options.get(Options.TRANSACTION_ID) == null);
     }
 
+    /**
+     * Checks if is auto rollback transaction.
+     *
+     * @param options the options
+     * @return true, if is auto rollback transaction
+     */
     public static boolean isAutoRollbackTransaction(final Map<String, Object> options) {
         return !isNot(Options.AUTO_ROLLBACK_TRANSACTION, options);
     }
 
+    /**
+     * Checks if is result combined.
+     *
+     * @param options the options
+     * @return true, if is result combined
+     */
     public static boolean isResultCombined(final Map<String, Object> options) {
         return isYes(Query.COMBINE_PROPERTIES, options);
     }
 
+    /**
+     * Checks if is yes.
+     *
+     * @param optionName the option name
+     * @param options the options
+     * @return true, if is yes
+     */
     private static boolean isYes(final String optionName, final Map<String, Object> options) {
         if (N.isNullOrEmpty(options)) {
             return false;
@@ -1224,22 +1658,53 @@ public final class EntityManagerUtil {
         return (obj == null) ? false : (Boolean) obj;
     }
 
+    /**
+     * Checks if is query in parallel.
+     *
+     * @param options the options
+     * @return true, if is query in parallel
+     */
     public static boolean isQueryInParallel(final Map<String, Object> options) {
         return N.isNullOrEmpty(options) || options.get(Query.QUERY_IN_PARALLEL) == null || Boolean.TRUE.equals(options.get(Query.QUERY_IN_PARALLEL));
     }
 
+    /**
+     * Not query in parallel.
+     *
+     * @param options the options
+     * @return true, if successful
+     */
     public static boolean notQueryInParallel(final Map<String, Object> options) {
         return N.notNullOrEmpty(options) && Boolean.FALSE.equals(options.get(Query.QUERY_IN_PARALLEL));
     }
 
+    /**
+     * Checks if is query with read only conection.
+     *
+     * @param options the options
+     * @return true, if is query with read only conection
+     */
     public static boolean isQueryWithReadOnlyConection(final Map<String, Object> options) {
         return isYes(Query.QUERY_WITH_READ_ONLY_CONNECTION, options);
     }
 
+    /**
+     * Not query with read only conection.
+     *
+     * @param options the options
+     * @return true, if successful
+     */
     public static boolean notQueryWithReadOnlyConection(final Map<String, Object> options) {
         return isNot(Query.QUERY_WITH_READ_ONLY_CONNECTION, options);
     }
 
+    /**
+     * Checks if is not.
+     *
+     * @param optionName the option name
+     * @param options the options
+     * @return true, if is not
+     */
     private static boolean isNot(final String optionName, final Map<String, Object> options) {
         if (N.isNullOrEmpty(options)) {
             return false;
@@ -1250,6 +1715,12 @@ public final class EntityManagerUtil {
         return (value == null) ? false : Boolean.FALSE.equals(value);
     }
 
+    /**
+     * Checks if is cache result.
+     *
+     * @param options the options
+     * @return true, if is cache result
+     */
     public static boolean isCacheResult(final Map<String, Object> options) {
         if (options != null) {
             Object cacheResult = options.get(Query.CACHE_RESULT);
@@ -1269,22 +1740,52 @@ public final class EntityManagerUtil {
         return false;
     }
 
+    /**
+     * Not cache result.
+     *
+     * @param options the options
+     * @return true, if successful
+     */
     public static boolean notCacheResult(final Map<String, Object> options) {
         return isNot(Query.CACHE_RESULT, options);
     }
 
+    /**
+     * Checks if is gets the from cache.
+     *
+     * @param options the options
+     * @return true, if is gets the from cache
+     */
     public static boolean isGetFromCache(final Map<String, Object> options) {
         return isYes(Query.QUERY_FROM_CACHE, options);
     }
 
+    /**
+     * Not get from cache.
+     *
+     * @param options the options
+     * @return true, if successful
+     */
     public static boolean notGetFromCache(final Map<String, Object> options) {
         return isNot(Query.QUERY_FROM_CACHE, options);
     }
 
+    /**
+     * Checks if is refresh cache.
+     *
+     * @param options the options
+     * @return true, if is refresh cache
+     */
     public static boolean isRefreshCache(final Map<String, Object> options) {
         return isYes(Query.REFRESH_CACHE, options);
     }
 
+    /**
+     * Removes the offset count.
+     *
+     * @param options the options
+     * @return the map
+     */
     public static Map<String, Object> removeOffsetCount(Map<String, Object> options) {
         if ((options != null) && ((options.get(Query.OFFSET) != null) || (options.get(Query.COUNT) != null))) {
             options = ParametersUtil.copy(options);
@@ -1295,10 +1796,23 @@ public final class EntityManagerUtil {
         return options;
     }
 
+    /**
+     * Checks for offset count.
+     *
+     * @param options the options
+     * @return true, if successful
+     */
     public static boolean hasOffsetCount(final Map<String, Object> options) {
         return (options != null) && ((options.get(Query.OFFSET) != null) || (options.get(Query.COUNT) != null));
     }
 
+    /**
+     * Requires auto generated keys.
+     *
+     * @param entityDef the entity def
+     * @param propsList the props list
+     * @return true, if successful
+     */
     public static boolean requiresAutoGeneratedKeys(final EntityDefinition entityDef, final List<Map<String, Object>> propsList) {
         if (entityDef.isIdAutoGenerated() && (propsList.size() > 0)) {
             for (String idPropName : entityDef.getIdPropertyNameList()) {
@@ -1315,6 +1829,12 @@ public final class EntityManagerUtil {
         return false;
     }
 
+    /**
+     * Entity id 2 condition.
+     *
+     * @param entityId the entity id
+     * @return the condition
+     */
     public static Condition entityId2Condition(final EntityId entityId) {
         if (entityId.isEmpty()) {
             throw new IllegalArgumentException("Empty EntityId is found: " + N.toString(entityId));
@@ -1355,10 +1875,24 @@ public final class EntityManagerUtil {
         }
     }
 
+    /**
+     * Entity id 2 condition.
+     *
+     * @param entityIds the entity ids
+     * @return the condition
+     */
     public static Condition entityId2Condition(final List<? extends EntityId> entityIds) {
         return entityId2Condition(entityIds, 0, entityIds.size());
     }
 
+    /**
+     * Entity id 2 condition.
+     *
+     * @param entityIds the entity ids
+     * @param fromIndex the from index
+     * @param toIndex the to index
+     * @return the condition
+     */
     public static Condition entityId2Condition(final List<? extends EntityId> entityIds, final int fromIndex, final int toIndex) {
         if (toIndex - fromIndex == 1) {
             return entityId2Condition(entityIds.get(fromIndex));

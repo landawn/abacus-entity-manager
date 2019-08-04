@@ -14,11 +14,12 @@
 
 package com.landawn.abacus.metadata;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Enum OnDeleteAction.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public enum OnDeleteAction {
     /**
@@ -39,15 +40,17 @@ public enum OnDeleteAction {
     private int intValue;
 
     /**
-     * 
-     * @param intValue
+     * Instantiates a new on delete action.
+     *
+     * @param intValue the int value
      */
     OnDeleteAction(int intValue) {
         this.intValue = intValue;
     }
 
     /**
-     * 
+     * Value.
+     *
      * @return int
      */
     public int value() {
@@ -56,8 +59,8 @@ public enum OnDeleteAction {
 
     /**
      * Method get.
-     * 
-     * @param name
+     *
+     * @param name the name
      * @return ConstraintType
      */
     public static OnDeleteAction get(String name) {

@@ -27,69 +27,138 @@ import com.landawn.abacus.exception.UncheckedSQLException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class SQLTransaction.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 @Internal
 final class SQLTransaction implements Transaction {
+    
+    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(SQLTransaction.class);
 
+    /** The id. */
     private final String id;
+    
+    /** The isolation level. */
     private final IsolationLevel isolationLevel;
+    
+    /** The ds. */
     private SQLDataSource ds;
+    
+    /** The conn. */
     private Connection conn;
+    
+    /** The status. */
     private Status status;
 
+    /**
+     * Instantiates a new SQL transaction.
+     *
+     * @param id the id
+     * @param isolationLevel the isolation level
+     */
     public SQLTransaction(String id, IsolationLevel isolationLevel) {
         this.id = id;
         this.isolationLevel = isolationLevel;
         status = Status.ACTIVE;
     }
 
+    /**
+     * Id.
+     *
+     * @return the string
+     */
     @Override
     public String id() {
         return id;
     }
 
+    /**
+     * Isolation level.
+     *
+     * @return the isolation level
+     */
     @Override
     public IsolationLevel isolationLevel() {
         return isolationLevel;
     }
 
+    /**
+     * Status.
+     *
+     * @return the status
+     */
     @Override
     public Status status() {
         return status;
     }
 
+    /**
+     * Checks if is active.
+     *
+     * @return true, if is active
+     */
     @Override
     public boolean isActive() {
         return status == Status.ACTIVE;
     }
 
+    /**
+     * Gets the data source.
+     *
+     * @return the data source
+     */
     SQLDataSource getDataSource() {
         return ds;
     }
 
+    /**
+     * Sets the data source.
+     *
+     * @param ds the new data source
+     */
     void setDataSource(SQLDataSource ds) {
         this.ds = ds;
     }
 
+    /**
+     * Gets the connection.
+     *
+     * @return the connection
+     */
     Connection getConnection() {
         return conn;
     }
 
+    /**
+     * Sets the connection.
+     *
+     * @param conn the new connection
+     */
     void setConnection(Connection conn) {
         this.conn = conn;
     }
 
+    /**
+     * Commit.
+     *
+     * @throws UncheckedSQLException the unchecked SQL exception
+     */
     @Override
     public void commit() throws UncheckedSQLException {
         commit(true);
     }
 
+    /**
+     * Commit.
+     *
+     * @param autoRollback the auto rollback
+     * @throws UncheckedSQLException the unchecked SQL exception
+     */
     public void commit(boolean autoRollback) throws UncheckedSQLException {
         if (!status.equals(Status.ACTIVE)) {
             throw new IllegalStateException("transaction is already " + status);
@@ -120,6 +189,11 @@ final class SQLTransaction implements Transaction {
         }
     }
 
+    /**
+     * Rollback.
+     *
+     * @throws UncheckedSQLException the unchecked SQL exception
+     */
     @Override
     public void rollback() throws UncheckedSQLException {
         if (!(status.equals(Status.ACTIVE) || status == Status.FAILED_COMMIT)) {

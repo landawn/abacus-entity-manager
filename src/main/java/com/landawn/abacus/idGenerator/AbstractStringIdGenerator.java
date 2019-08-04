@@ -16,14 +16,20 @@ package com.landawn.abacus.idGenerator;
 
 import com.landawn.abacus.metadata.Property;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class AbstractStringIdGenerator.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public abstract class AbstractStringIdGenerator extends AbstractIdGenerator<String> {
 
+    /**
+     * Instantiates a new abstract string id generator.
+     *
+     * @param prop the prop
+     */
     protected AbstractStringIdGenerator(Property prop) {
         super(prop);
     }

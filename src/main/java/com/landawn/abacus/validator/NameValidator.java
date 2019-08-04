@@ -16,15 +16,24 @@ package com.landawn.abacus.validator;
 
 import com.landawn.abacus.type.Type;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class NameValidator.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class NameValidator extends PatternValidator {
+    
+    /** The Constant namePattern. */
     private static final String namePattern = "^[a-zA-Z_][a-zA-Z0-9_]*$";
 
+    /**
+     * Instantiates a new name validator.
+     *
+     * @param propName the prop name
+     * @param type the type
+     */
     public NameValidator(String propName, Type<String> type) {
         super(propName, type, namePattern);
     }

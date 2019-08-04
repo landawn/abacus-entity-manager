@@ -22,86 +22,95 @@ import com.landawn.abacus.annotation.Beta;
 import com.landawn.abacus.condition.Condition;
 import com.landawn.abacus.util.u.Optional;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Interface Session.
+ *
  * @author Haiyang Li
+ * @param <E> the element type
+ * @since 0.8
  */
 @Beta
 @Deprecated
 public interface Session<E> {
+    
     /**
      * Start a transaction.
-     * 
-     * @param isolationLevel
+     *
+     * @param isolationLevel the isolation level
      * @return Transaction
      * @see com.landawn.abacus.DBAccess#startTransaction(IsolationLevel, Map)
      */
     Transaction beginTransaction(IsolationLevel isolationLevel);
 
     /**
-     * 
-     * @param entityId
-     * @param selectPropNames
-     * @return
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityId the entity id
+     * @param selectPropNames the select prop names
+     * @return the optional
      */
     <T> Optional<T> get(EntityId entityId, Collection<String> selectPropNames);
 
     /**
-     * 
-     * @param entityId
-     * @param selectPropNames
-     * @return
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityId the entity id
+     * @param selectPropNames the select prop names
+     * @return the t
      */
     <T> T gett(EntityId entityId, Collection<String> selectPropNames);
 
     /**
-     * 
-     * @param entityName
-     * @param selectPropNames
-     * @param condition
-     * @return
+     * List.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param selectPropNames the select prop names
+     * @param condition the condition
+     * @return the list
      */
     <T> List<T> list(String entityName, Collection<String> selectPropNames, Condition condition);
 
     /**
      * Make the entity instances managed and persistent. The entity in {@code entities} must be the same type entity.
      * the changes will be committed to data store when flush API is called or the session is closed.
-     * 
-     * @param entities
-     * @throws com.landawn.abacus.exception.IllegalArgumentException
+     *
+     * @param entities the entities
      */
     void add(E... entities);
 
     /**
      * Make the entity instances managed and persistent. The entity in {@code entities} must be the same type entity.
      * the changes will be committed to data store when flush API is called or the session is closed.
-     * 
-     * @param entities
-     * @throws com.landawn.abacus.exception.IllegalArgumentException
+     *
+     * @param entities the entities
      */
     void add(Collection<? extends E> entities);
 
     /**
      * Add these entities to the entity list managed by this session. Any update in these entities will be committed to
      * data store when flush this session.
-     * 
-     * @param entities
+     *
+     * @param entities the entities
      */
     void update(E... entities);
 
     /**
      * Add these entities to the entity list managed by this session. Any update in these entities will be committed to
      * data store when flush this session.s Collection<? extends E>
+     *
+     * @param entities the entities
      */
     void update(Collection<? extends E> entities);
 
     /**
      * Mark these entities to delete from data store. the changes will be committed to data store when flush API is
      * called or the session is closed. the specified entities will be detached if flush successfully.
-     * 
-     * @param entities
+     *
+     * @param entities the entities
      * @see com.landawn.abacus.util.Options.Eran
      */
     void delete(E... entities);
@@ -109,8 +118,8 @@ public interface Session<E> {
     /**
      * Mark these entities to delete from data store. the changes will be committed to data store when flush API is
      * called or the session is closed. the specified entities will be detached if flush successfully.
-     * 
-     * @param entities
+     *
+     * @param entities the entities
      * @see com.landawn.abacus.util.Options.Eran
      */
     void delete(Collection<? extends E> entities);
@@ -118,23 +127,23 @@ public interface Session<E> {
     /**
      * Remove these entities from the entity list managed by this session. Any update in these entities will not be
      * committed to data store when flush this session.
-     * 
-     * @param entities
+     *
+     * @param entities the entities
      */
     void detach(E... entities);
 
     /**
      * Remove these entities from the entity list managed by this session. Any update in these entities will not be
      * committed to data store when flush this session.
-     * 
-     * @param entities
+     *
+     * @param entities the entities
      */
     void detach(Collection<? extends E> entities);
 
     /**
      * Check if the instance belongs to the current persistence context.
-     * 
-     * @param entity
+     *
+     * @param entity the entity
      * @return boolean
      */
     boolean contains(E entity);
@@ -157,7 +166,7 @@ public interface Session<E> {
     void clear();
 
     /**
-     * flush and close this session
+     * flush and close this session.
      */
     void close();
 

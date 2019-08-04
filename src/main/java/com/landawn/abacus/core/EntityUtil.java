@@ -31,20 +31,34 @@ import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Objectory;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class EntityUtil.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 @Internal
 public final class EntityUtil {
+    
+    /** The Constant DOUBLE_BRACKET. */
     private static final String DOUBLE_BRACKET = "{}";
 
+    /**
+     * Instantiates a new entity util.
+     */
     private EntityUtil() {
         // no instance.
     }
 
+    /**
+     * Clone.
+     *
+     * @param <T> the generic type
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @return the t
+     */
     public static <T> T clone(EntityDefinition entityDef, T entity) {
         if (entity == null) {
             return null;
@@ -55,10 +69,27 @@ public final class EntityUtil {
         return copy(entityDef, entity, propNames, true);
     }
 
+    /**
+     * Copy.
+     *
+     * @param <T> the generic type
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @return the t
+     */
     public static <T> T copy(EntityDefinition entityDef, T entity) {
         return copy(entityDef, entity, null);
     }
 
+    /**
+     * Copy.
+     *
+     * @param <T> the generic type
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @param propNames the prop names
+     * @return the t
+     */
     public static <T> T copy(EntityDefinition entityDef, T entity, Collection<String> propNames) {
         if (entity == null) {
             return null;
@@ -71,6 +102,16 @@ public final class EntityUtil {
         return copy(entityDef, entity, propNames, false);
     }
 
+    /**
+     * Copy.
+     *
+     * @param <T> the generic type
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @param propNames the prop names
+     * @param isDeepCopy the is deep copy
+     * @return the t
+     */
     private static <T> T copy(EntityDefinition entityDef, T entity, Collection<String> propNames, boolean isDeepCopy) {
         @SuppressWarnings("unchecked")
         T copy = (T) N.newEntity(entity.getClass(), entityDef.getName());
@@ -132,10 +173,29 @@ public final class EntityUtil {
         return copy;
     }
 
+    /**
+     * Transfer.
+     *
+     * @param <T> the generic type
+     * @param entityDef the entity def
+     * @param sourceEntity the source entity
+     * @param targetClass the target class
+     * @return the t
+     */
     public static <T> T transfer(EntityDefinition entityDef, Object sourceEntity, Class<T> targetClass) {
         return transfer(entityDef, sourceEntity, null, targetClass);
     }
 
+    /**
+     * Transfer.
+     *
+     * @param <T> the generic type
+     * @param entityDef the entity def
+     * @param sourceEntity the source entity
+     * @param propNames the prop names
+     * @param targetClass the target class
+     * @return the t
+     */
     @SuppressWarnings({ "unchecked" })
     public static <T> T transfer(EntityDefinition entityDef, Object sourceEntity, Collection<String> propNames, Class<T> targetClass) {
         if (sourceEntity == null) {
@@ -228,6 +288,13 @@ public final class EntityUtil {
         return targetEntity;
     }
 
+    /**
+     * Disassemble.
+     *
+     * @param entityDef the entity def
+     * @param sourceEntity the source entity
+     * @return the map entity
+     */
     @SuppressWarnings("unchecked")
     public static MapEntity disassemble(EntityDefinition entityDef, Object sourceEntity) {
         if (sourceEntity == null) {
@@ -276,6 +343,15 @@ public final class EntityUtil {
         return targetEntity;
     }
 
+    /**
+     * Assemble.
+     *
+     * @param <T> the generic type
+     * @param entityDef the entity def
+     * @param sourceEntity the source entity
+     * @param targetClass the target class
+     * @return the t
+     */
     @SuppressWarnings("unchecked")
     public static <T> T assemble(EntityDefinition entityDef, MapEntity sourceEntity, Class<T> targetClass) {
         if (sourceEntity == null) {
@@ -324,6 +400,13 @@ public final class EntityUtil {
         return targetEntity;
     }
 
+    /**
+     * Refresh.
+     *
+     * @param entityDef the entity def
+     * @param sourceEntity the source entity
+     * @param targetEntity the target entity
+     */
     public static void refresh(EntityDefinition entityDef, Object sourceEntity, Object targetEntity) {
         if (sourceEntity == null) {
             return;
@@ -381,6 +464,15 @@ public final class EntityUtil {
         }
     }
 
+    /**
+     * Merge.
+     *
+     * @param entityDef the entity def
+     * @param sourceEntity the source entity
+     * @param targetEntity the target entity
+     * @param ignoreNullValue the ignore null value
+     * @param ignoreEqualValue the ignore equal value
+     */
     public static void merge(EntityDefinition entityDef, Object sourceEntity, Object targetEntity, boolean ignoreNullValue, boolean ignoreEqualValue) {
         if (sourceEntity == null) {
             return;
@@ -553,6 +645,13 @@ public final class EntityUtil {
         }
     }
 
+    /**
+     * Hash code.
+     *
+     * @param entityDef the entity def
+     * @param thisEntity the this entity
+     * @return the int
+     */
     public static int hashCode(EntityDefinition entityDef, Object thisEntity) {
         int h = 17;
         h = (h * 31) + entityDef.getName().hashCode();
@@ -583,6 +682,14 @@ public final class EntityUtil {
         return h;
     }
 
+    /**
+     * Equals.
+     *
+     * @param entityDef the entity def
+     * @param entity the entity
+     * @param anObject the an object
+     * @return true, if successful
+     */
     public static boolean equals(EntityDefinition entityDef, Object entity, Object anObject) {
         if (entity == anObject) {
             return true;
@@ -660,6 +767,13 @@ public final class EntityUtil {
         return true;
     }
 
+    /**
+     * To string.
+     *
+     * @param entityDef the entity def
+     * @param thisEntity the this entity
+     * @return the string
+     */
     public static String toString(EntityDefinition entityDef, Object thisEntity) {
         Collection<String> signedPropNames = EntityManagerUtil.getSignedPropNames(entityDef, thisEntity);
 
@@ -716,6 +830,14 @@ public final class EntityUtil {
         return st;
     }
 
+    /**
+     * Gets the prop ele class.
+     *
+     * @param <T> the generic type
+     * @param entityClass the entity class
+     * @param prop the prop
+     * @return the prop ele class
+     */
     @SuppressWarnings("unchecked")
     private static <T> T getPropEleClass(Class<?> entityClass, Property prop) {
         Method method = prop.getSetMethod(entityClass);

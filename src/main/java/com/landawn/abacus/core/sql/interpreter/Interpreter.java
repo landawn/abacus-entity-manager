@@ -24,24 +24,75 @@ import com.landawn.abacus.condition.Condition;
 import com.landawn.abacus.core.sql.command.Command;
 import com.landawn.abacus.metadata.EntityDefinition;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Interface Interpreter.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public interface Interpreter {
     //    Command interpretAdd(EntityDefinition entityDef, Map<String, Object> props, Map<String, Object> options);
 
+    /**
+     * Interpret add.
+     *
+     * @param entityDef the entity def
+     * @param propsList the props list
+     * @param options the options
+     * @return the command
+     */
     Command interpretAdd(EntityDefinition entityDef, List<Map<String, Object>> propsList, Map<String, Object> options);
 
+    /**
+     * Interpret update.
+     *
+     * @param entityDef the entity def
+     * @param props the props
+     * @param condition the condition
+     * @param options the options
+     * @return the command
+     */
     Command interpretUpdate(EntityDefinition entityDef, Map<String, Object> props, Condition condition, Map<String, Object> options);
 
+    /**
+     * Interpret delete.
+     *
+     * @param entityDef the entity def
+     * @param condition the condition
+     * @param options the options
+     * @return the command
+     */
     Command interpretDelete(EntityDefinition entityDef, Condition condition, Map<String, Object> options);
 
+    /**
+     * Interpret query.
+     *
+     * @param entityDef the entity def
+     * @param propNames the prop names
+     * @param condition the condition
+     * @param options the options
+     * @return the command
+     */
     Command interpretQuery(EntityDefinition entityDef, Collection<String> propNames, Condition condition, Map<String, Object> options);
 
+    /**
+     * Interpret query.
+     *
+     * @param entityDef the entity def
+     * @param query the query
+     * @param parameters the parameters
+     * @param options the options
+     * @return the command
+     */
     Command interpretQuery(EntityDefinition entityDef, String query, List<?> parameters, Map<String, Object> options);
 
+    /**
+     * Interpret condition.
+     *
+     * @param entityDef the entity def
+     * @param condition the condition
+     * @return the command
+     */
     Command interpretCondition(EntityDefinition entityDef, Condition condition);
 }

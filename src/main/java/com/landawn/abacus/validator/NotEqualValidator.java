@@ -16,31 +16,37 @@ package com.landawn.abacus.validator;
 
 import com.landawn.abacus.type.Type;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class NotEqualValidator.
+ *
  * @author Haiyang Li
+ * @param <T> the generic type
+ * @since 0.8
  */
 public final class NotEqualValidator<T> extends AbstractComparableValidator<T> {
+    
+    /** The case insensitive. */
     private boolean caseInsensitive = true;
 
     /**
      * Constructor for NotEqualValidator.
-     * 
-     * @param propName
-     * @param type
-     * @param value
+     *
+     * @param propName the prop name
+     * @param type the type
+     * @param value the value
      */
     public NotEqualValidator(String propName, Type<T> type, String value) {
         super(propName, type, value);
     }
 
     /**
-     * @param propName
-     * @param type
-     * @param value
-     * @param caseinsenc
+     * Instantiates a new not equal validator.
+     *
+     * @param propName the prop name
+     * @param type the type
+     * @param value the value
+     * @param caseInsensitive the case insensitive
      */
     public NotEqualValidator(String propName, Type<T> type, String value, String caseInsensitive) {
         super(propName, type, value);
@@ -49,8 +55,8 @@ public final class NotEqualValidator<T> extends AbstractComparableValidator<T> {
 
     /**
      * Method isValid.
-     * 
-     * @param propValue
+     *
+     * @param propValue the prop value
      * @return boolean
      */
     @Override

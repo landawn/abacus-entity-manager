@@ -40,53 +40,121 @@ import com.landawn.abacus.util.ImmutableMap;
 import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.XMLUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class SQLDatabase.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class SQLDatabase implements Database {
+    
+    /** The Constant TABLE_NAME. */
     private static final String TABLE_NAME = "TABLE_NAME";
+    
+    /** The Constant TABLE. */
     private static final String TABLE = "TABLE";
 
     // private static final String REF_GENERATION = "REF_GENERATION";
+    /** The Constant ORACLE. */
     // private static final String USER = "USER";
     private static final String ORACLE = "ORACLE";
+    
+    /** The Constant BIN$. */
     private static final String BIN$ = "BIN$";
 
+    /** The name. */
     private final String name;
+    
+    /** The attrs. */
     private final Map<String, String> attrs;
+    
+    /** The table map. */
     private final Map<String, SQLTable> tableMap;
 
+    /**
+     * Instantiates a new SQL database.
+     *
+     * @param conn the conn
+     * @param dbName the db name
+     */
     public SQLDatabase(Connection conn, String dbName) {
         this(conn, dbName, null);
     }
 
+    /**
+     * Instantiates a new SQL database.
+     *
+     * @param conn the conn
+     * @param dbName the db name
+     * @param selectTableNames the select table names
+     */
     public SQLDatabase(Connection conn, String dbName, Collection<String> selectTableNames) {
         this(conn, dbName, null, null, null, selectTableNames);
     }
 
+    /**
+     * Instantiates a new SQL database.
+     *
+     * @param conn the conn
+     * @param dbName the db name
+     * @param schemaPattern the schema pattern
+     * @param tableNamePattern the table name pattern
+     * @param types the types
+     */
     public SQLDatabase(Connection conn, String dbName, String schemaPattern, String tableNamePattern, String[] types) {
         this(conn, dbName, schemaPattern, tableNamePattern, types, null);
     }
 
+    /**
+     * Instantiates a new SQL database.
+     *
+     * @param conn the conn
+     * @param dbName the db name
+     * @param schemaPattern the schema pattern
+     * @param tableNamePattern the table name pattern
+     * @param types the types
+     * @param selectTableNames the select table names
+     */
     SQLDatabase(Connection conn, String dbName, String schemaPattern, String tableNamePattern, String[] types, Collection<String> selectTableNames) {
         this(parse(conn, dbName, schemaPattern, tableNamePattern, types, selectTableNames));
     }
 
+    /**
+     * Instantiates a new SQL database.
+     *
+     * @param is the is
+     * @throws SAXException the SAX exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public SQLDatabase(InputStream is) throws SAXException, IOException {
         this(Configuration.parse(is).getDocumentElement());
     }
 
+    /**
+     * Instantiates a new SQL database.
+     *
+     * @param databaseNode the database node
+     */
     public SQLDatabase(Element databaseNode) {
         this(parse(databaseNode));
     }
 
+    /**
+     * Instantiates a new SQL database.
+     *
+     * @param attrsTableMap the attrs table map
+     */
     SQLDatabase(Object[] attrsTableMap) {
         this((Map<String, String>) attrsTableMap[0], (Map<String, SQLTable>) attrsTableMap[1]);
     }
 
+    /**
+     * Instantiates a new SQL database.
+     *
+     * @param attrs the attrs
+     * @param tableMap the table map
+     */
     SQLDatabase(Map<String, String> attrs, Map<String, SQLTable> tableMap) {
         this.name = NameUtil.getCachedName(attrs.get(TableEle.NAME));
         attrs.put(TableEle.NAME, name);
@@ -95,62 +163,131 @@ public class SQLDatabase implements Database {
         this.tableMap = ImmutableMap.of(tableMap);
     }
 
+    /**
+     * Gets the name.
+     *
+     * @return the name
+     */
     @Override
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the product name.
+     *
+     * @return the product name
+     */
     @Override
     public String getProductName() {
         return attrs.get(DatabaseEle.PRODUCT_NAME);
     }
 
+    /**
+     * Gets the product version.
+     *
+     * @return the product version
+     */
     @Override
     public String getProductVersion() {
         return attrs.get(DatabaseEle.PRODUCT_VERSTION);
     }
 
+    /**
+     * Gets the table list.
+     *
+     * @return the table list
+     */
     @SuppressWarnings("rawtypes")
     @Override
     public Collection<Table> getTableList() {
         return (Collection) tableMap.values();
     }
 
+    /**
+     * Gets the table name list.
+     *
+     * @return the table name list
+     */
     @Override
     public Collection<String> getTableNameList() {
         return tableMap.keySet();
     }
 
+    /**
+     * Gets the table.
+     *
+     * @param tableName the table name
+     * @return the table
+     */
     @Override
     public Table getTable(String tableName) {
         return tableMap.get(tableName);
     }
 
+    /**
+     * Gets the attributes.
+     *
+     * @return the attributes
+     */
     @Override
     public Map<String, String> getAttributes() {
         return attrs;
     }
 
+    /**
+     * Gets the attribute.
+     *
+     * @param attrName the attr name
+     * @return the attribute
+     */
     @Override
     public String getAttribute(String attrName) {
         return attrs.get(attrName);
     }
 
+    /**
+     * Hash code.
+     *
+     * @return the int
+     */
     @Override
     public int hashCode() {
         return name.hashCode();
     }
 
+    /**
+     * Equals.
+     *
+     * @param obj the obj
+     * @return true, if successful
+     */
     @Override
     public boolean equals(Object obj) {
         return this == obj || (obj instanceof SQLDatabase && ((SQLDatabase) obj).name.equals(name));
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
         return attrs.toString();
     }
 
+    /**
+     * Parses the.
+     *
+     * @param conn the conn
+     * @param dbName the db name
+     * @param schemaPattern the schema pattern
+     * @param tableNamePattern the table name pattern
+     * @param types the types
+     * @param selectTableNames the select table names
+     * @return the object[]
+     */
     private static Object[] parse(Connection conn, String dbName, String schemaPattern, String tableNamePattern, String[] types,
             Collection<String> selectTableNames) {
         final Map<String, String> attrs = new LinkedHashMap<>();
@@ -210,6 +347,12 @@ public class SQLDatabase implements Database {
         return new Object[] { attrs, tableMap };
     }
 
+    /**
+     * Parses the.
+     *
+     * @param databaseNode the database node
+     * @return the object[]
+     */
     private static Object[] parse(Element databaseNode) {
         final Map<String, String> attrs = XMLUtil.readAttributes(databaseNode);
         final Map<String, SQLTable> tableMap = new LinkedHashMap<>();

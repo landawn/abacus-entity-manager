@@ -33,21 +33,40 @@ import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Objectory;
 import com.landawn.abacus.util.OperationType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class SQLOperationCommand.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class SQLOperationCommand extends SQLCondCommand {
+    
+    /** The operation type. */
     private final OperationType operationType;
+    
+    /** The entity def. */
     private final EntityDefinition entityDef;
+    
+    /** The options. */
     private final Map<String, Object> options;
 
+    /** The target prop names. */
     private Collection<String> targetPropNames;
+    
+    /** The batch parameter values. */
     private List<Object[]> batchParameterValues;
+    
+    /** The is batch. */
     private boolean isBatch = false;
 
+    /**
+     * Instantiates a new SQL operation command.
+     *
+     * @param operationType the operation type
+     * @param entityDef the entity def
+     * @param options the options
+     */
     public SQLOperationCommand(OperationType operationType, EntityDefinition entityDef, Map<String, Object> options) {
         super();
 
@@ -56,29 +75,57 @@ public class SQLOperationCommand extends SQLCondCommand {
         this.options = options;
     }
 
+    /**
+     * Gets the operation type.
+     *
+     * @return the operation type
+     */
     @Override
     public OperationType getOperationType() {
         return operationType;
     }
 
+    /**
+     * Gets the entity def.
+     *
+     * @return the entity def
+     */
     @Override
     public EntityDefinition getEntityDef() {
         return entityDef;
     }
 
+    /**
+     * Gets the options.
+     *
+     * @return the options
+     */
     @Override
     public Map<String, Object> getOptions() {
         return options;
     }
 
+    /**
+     * Gets the target prop names.
+     *
+     * @return the target prop names
+     */
     public Collection<String> getTargetPropNames() {
         return targetPropNames;
     }
 
+    /**
+     * Sets the target prop names.
+     *
+     * @param propNames the new target prop names
+     */
     public void setTargetPropNames(Collection<String> propNames) {
         targetPropNames = propNames;
     }
 
+    /**
+     * Adds the batch.
+     */
     public void addBatch() {
         if (batchParameterValues == null) {
             batchParameterValues = new ArrayList<>();
@@ -92,10 +139,18 @@ public class SQLOperationCommand extends SQLCondCommand {
         isBatch = true;
     }
 
+    /**
+     * Gets the batch parameters.
+     *
+     * @return the batch parameters
+     */
     public List<Object[]> getBatchParameters() {
         return batchParameterValues;
     }
 
+    /**
+     * Clear batch parameters.
+     */
     public void clearBatchParameters() {
         if (batchParameterValues != null) {
             batchParameterValues.clear();
@@ -108,10 +163,20 @@ public class SQLOperationCommand extends SQLCondCommand {
         }
     }
 
+    /**
+     * Checks if is batch.
+     *
+     * @return true, if is batch
+     */
     public boolean isBatch() {
         return isBatch;
     }
 
+    /**
+     * Combine.
+     *
+     * @param sqlCmd the sql cmd
+     */
     @Override
     public void combine(SQLCommand sqlCmd) {
         super.combine(sqlCmd);
@@ -125,6 +190,11 @@ public class SQLOperationCommand extends SQLCondCommand {
         }
     }
 
+    /**
+     * Clone.
+     *
+     * @return the object
+     */
     @SuppressWarnings("unchecked")
     @Override
     public Object clone() {
@@ -142,6 +212,9 @@ public class SQLOperationCommand extends SQLCondCommand {
         return copy;
     }
 
+    /**
+     * Clear.
+     */
     @Override
     public void clear() {
         super.clear();
@@ -150,6 +223,11 @@ public class SQLOperationCommand extends SQLCondCommand {
         batchParameterValues = null;
     }
 
+    /**
+     * Hash code.
+     *
+     * @return the int
+     */
     @Override
     public int hashCode() {
         int h = 17;
@@ -160,6 +238,12 @@ public class SQLOperationCommand extends SQLCondCommand {
         return h;
     }
 
+    /**
+     * Equals.
+     *
+     * @param obj the obj
+     * @return true, if successful
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -200,6 +284,11 @@ public class SQLOperationCommand extends SQLCondCommand {
         return false;
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
         if (!isBatch() && (parameterCount == 0)) {

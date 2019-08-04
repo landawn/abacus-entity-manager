@@ -22,18 +22,32 @@ import java.util.Map;
 import com.landawn.abacus.annotation.Internal;
 import com.landawn.abacus.metadata.Property;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class InsertPropsListView.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 @Internal
 final class InsertPropsListView {
+    
+    /** The write props list. */
     final List<Map<String, Object>> writePropsList;
+    
+    /** The prop entity props list. */
     final Map<Property, List<PropEntityProps>> propEntityPropsList;
+    
+    /** The prop bi entity props list. */
     final Map<Property, List<BiEntityProps>> propBiEntityPropsList;
 
+    /**
+     * Instantiates a new insert props list view.
+     *
+     * @param writePropsList the write props list
+     * @param propEntityPropsList the prop entity props list
+     * @param propBiEntityPropsList the prop bi entity props list
+     */
     InsertPropsListView(List<Map<String, Object>> writePropsList, Map<Property, List<PropEntityProps>> propEntityPropsList,
             Map<Property, List<BiEntityProps>> propBiEntityPropsList) {
         this.writePropsList = writePropsList;

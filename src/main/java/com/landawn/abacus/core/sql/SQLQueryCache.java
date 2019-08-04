@@ -46,32 +46,63 @@ import com.landawn.abacus.util.Options;
 import com.landawn.abacus.util.Try;
 import com.landawn.abacus.util.WD;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class SQLQueryCache.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 @Internal
 public class SQLQueryCache extends AbstractQueryCache {
+    
+    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(SQLQueryCache.class);
 
+    /** The Constant WHERE. */
     private static final String WHERE = WD.SPACE + WD.WHERE + WD.SPACE;
+    
+    /** The Constant WHERE_PARENTHESES_L. */
     private static final String WHERE_PARENTHESES_L = WHERE + WD._PARENTHESES_L;
+    
+    /** The Constant PARENTHESES_R_AND_PARENTHESES_L. */
     private static final String PARENTHESES_R_AND_PARENTHESES_L = WD.PARENTHESES_R_SPACE + WD.AND + WD.SPACE_PARENTHESES_L;
+    
+    /** The Constant ASYNC_EXECUTOR. */
     private static final AsyncExecutor ASYNC_EXECUTOR = new AsyncExecutor();
+    
+    /** The Constant CACHED_DATA_GRID_ID_IN_EXECUTING. */
     private static final Map<String, Object> CACHED_DATA_GRID_ID_IN_EXECUTING = new ConcurrentHashMap<>();
 
+    /** The data grid cache. */
     private final Cache<String, DataGrid<Object>> dataGridCache;
+    
+    /** The data grid cache id. */
     private final String dataGridCacheId;
+    
+    /** The soft data grid. */
     private SoftReference<DataGrid<Object>> softDataGrid;
+    
+    /** The executant. */
     private Executant executant;
+    
+    /** The query cmd. */
     private SQLOperationCommand queryCmd;
 
+    /**
+     * Instantiates a new SQL query cache.
+     */
     public SQLQueryCache() {
         this(QueryCacheConfiguration.DEFAULT_LIVE_TIME, QueryCacheConfiguration.DEFAULT_MAX_IDLE_TIME, null);
     }
 
+    /**
+     * Instantiates a new SQL query cache.
+     *
+     * @param liveTime the live time
+     * @param maxIdleTime the max idle time
+     * @param dataGridCache the data grid cache
+     */
     public SQLQueryCache(long liveTime, long maxIdleTime, Cache<String, DataGrid<Object>> dataGridCache) {
         super(liveTime, maxIdleTime);
         this.dataGridCache = dataGridCache;
@@ -79,6 +110,14 @@ public class SQLQueryCache extends AbstractQueryCache {
         this.dataGridCacheId = dataGridCache == null ? null : N.uuid();
     }
 
+    /**
+     * Cache result.
+     *
+     * @param queryResult the query result
+     * @param cachePropNames the cache prop names
+     * @param cacheCond the cache cond
+     * @param range the range
+     */
     @Override
     public void cacheResult(SQLResult queryResult, Collection<String> cachePropNames, Options.Cache.Condition cacheCond, Options.Cache.Range range) {
         assertNotClosed();
@@ -101,6 +140,15 @@ public class SQLQueryCache extends AbstractQueryCache {
         }
     }
 
+    /**
+     * Async cache result.
+     *
+     * @param queryResult the query result
+     * @param cachePropNames the cache prop names
+     * @param cacheCond the cache cond
+     * @param range the range
+     * @param closeResult the close result
+     */
     @Override
     public void asyncCacheResult(final SQLResult queryResult, final Collection<String> cachePropNames, final Options.Cache.Condition cacheCond,
             final Options.Cache.Range range, final boolean closeResult) {
@@ -120,6 +168,14 @@ public class SQLQueryCache extends AbstractQueryCache {
         });
     }
 
+    /**
+     * Cache result.
+     *
+     * @param queryResult the query result
+     * @param rowRange the row range
+     * @param selectPropNames the select prop names
+     * @throws UncheckedSQLException the unchecked SQL exception
+     */
     private void cacheResult(SQLResult queryResult, BitSet rowRange, Collection<String> selectPropNames) throws UncheckedSQLException {
         DataGrid<Object> dataGrid = null;
 
@@ -219,6 +275,13 @@ public class SQLQueryCache extends AbstractQueryCache {
         //        }
     }
 
+    /**
+     * Update.
+     *
+     * @param command the command
+     * @param options the options
+     * @return true, if successful
+     */
     @Override
     public synchronized boolean update(Command command, Map<String, Object> options) {
         assertNotClosed();
@@ -354,6 +417,11 @@ public class SQLQueryCache extends AbstractQueryCache {
         return true;
     }
 
+    /**
+     * Removes the result.
+     *
+     * @param propName the prop name
+     */
     @Override
     public void removeResult(String propName) {
         assertNotClosed();
@@ -385,6 +453,11 @@ public class SQLQueryCache extends AbstractQueryCache {
         }
     }
 
+    /**
+     * Gets the data grid.
+     *
+     * @return the data grid
+     */
     @Override
     public DataGrid<Object> getDataGrid() {
         assertNotClosed();
@@ -416,6 +489,9 @@ public class SQLQueryCache extends AbstractQueryCache {
         return dataGrid;
     }
 
+    /**
+     * Zip.
+     */
     @Override
     public void zip() {
         assertNotClosed();
@@ -434,6 +510,9 @@ public class SQLQueryCache extends AbstractQueryCache {
         }
     }
 
+    /**
+     * Close.
+     */
     @Override
     public void close() {
         rwLock.writeLock().lock();
@@ -475,6 +554,12 @@ public class SQLQueryCache extends AbstractQueryCache {
         // Runtime.getRuntime().gc();
     }
 
+    /**
+     * Creates the check sql cmd.
+     *
+     * @param updateCmd the update cmd
+     * @return the SQL operation command
+     */
     private SQLOperationCommand createCheckSqlCmd(SQLOperationCommand updateCmd) {
         String checkSql = null;
         int queryWhereBeginIndex = queryCmd.getWhereBeginIndex();
@@ -530,6 +615,13 @@ public class SQLQueryCache extends AbstractQueryCache {
         return checkSqlCmd;
     }
 
+    /**
+     * Gets the prop position in cache.
+     *
+     * @param cachingPropNames the caching prop names
+     * @return the prop position in cache
+     * @throws UncheckedSQLException the unchecked SQL exception
+     */
     private int[] getPropPositionInCache(Collection<String> cachingPropNames) throws UncheckedSQLException {
         int[] propPositionInCache = new int[cachingPropNames.size()];
         int arrayIndex = 0;
@@ -548,6 +640,14 @@ public class SQLQueryCache extends AbstractQueryCache {
         return propPositionInCache;
     }
 
+    /**
+     * Inits the.
+     *
+     * @param queryResult the query result
+     * @param cachingPropNames the caching prop names
+     * @return the data grid
+     * @throws UncheckedSQLException the unchecked SQL exception
+     */
     private DataGrid<Object> init(SQLResult queryResult, Collection<String> cachingPropNames) throws UncheckedSQLException {
         DataGrid<Object> dataGrid = getDataGrid();
 

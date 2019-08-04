@@ -27,17 +27,25 @@ import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.util.IOUtil;
 import com.landawn.abacus.util.N;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class CacheZipper.
  *
- * @since 0.8
- * 
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class CacheZipper {
+    
+    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(CacheZipper.class);
 
+    /** The Constant CPU_CORES_FOR_ZIP. */
     private static final int CPU_CORES_FOR_ZIP = N.max(1, IOUtil.CPU_CORES / 2);
+    
+    /** The Constant EXECUTOR_SERVICE. */
     private static final ExecutorService EXECUTOR_SERVICE = Executors.newFixedThreadPool(CPU_CORES_FOR_ZIP);
+    
+    /** The last scan time. */
     private volatile long lastScanTime = System.currentTimeMillis();
 
     //    static {
@@ -59,6 +67,11 @@ public final class CacheZipper {
     //        });
     //    }
 
+    /**
+     * Zip.
+     *
+     * @param cacheList the cache list
+     */
     public void zip(Collection<? extends QueryCache> cacheList) {
         boolean isCacheUpdated = false;
 
@@ -107,6 +120,12 @@ public final class CacheZipper {
         }
     }
 
+    /**
+     * Zip cache.
+     *
+     * @param hashArray the hash array
+     * @param cacheList the cache list
+     */
     @SuppressWarnings("unchecked")
     void zipCache(final Object[] hashArray, final List<? extends QueryCache> cacheList) {
         final int BIT_INDEX = hashArray.length - 1;
@@ -185,6 +204,12 @@ public final class CacheZipper {
         }
     }
 
+    /**
+     * Divide cache by processor.
+     *
+     * @param cacheList the cache list
+     * @return the list
+     */
     static List<List<QueryCache>> divideCacheByProcessor(Collection<? extends QueryCache> cacheList) {
         List<List<QueryCache>> threadCachesList = new ArrayList<>();
 
@@ -203,6 +228,11 @@ public final class CacheZipper {
         return threadCachesList;
     }
 
+    /**
+     * Creates the big array.
+     *
+     * @return the object[]
+     */
     public static Object[] createBigArray() {
         final long M8 = 1024 * 1024 * 8; // N.ONE_MB * 8;
 

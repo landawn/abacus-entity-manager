@@ -22,11 +22,12 @@ import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.ClassUtil;
 import com.landawn.abacus.util.TypeAttrParser;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * A factory for creating IdGenerator objects.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class IdGeneratorFactory {
     /**
@@ -49,10 +50,11 @@ public final class IdGeneratorFactory {
     }
 
     /**
-     * Method create
-     * 
-     * @param idGeneratorAttr
-     * @param prop
+     * Method create.
+     *
+     * @param <T> the generic type
+     * @param idGeneratorAttr the id generator attr
+     * @param prop the prop
      * @return IdGenerator
      */
     public static <T> IdGenerator<T> create(String idGeneratorAttr, Property prop) {
@@ -77,6 +79,13 @@ public final class IdGeneratorFactory {
         return TypeAttrParser.newInstance(clazz, idGeneratorAttr, Property.class, prop);
     }
 
+    /**
+     * Gets the default id generator.
+     *
+     * @param <T> the generic type
+     * @param prop the prop
+     * @return the default id generator
+     */
     public static <T> IdGenerator<T> getDefaultIdGenerator(Property prop) {
         if (prop.getType().clazz().equals(String.class)) {
             return create(UUIDIdGenerator.class.getSimpleName(), prop);
@@ -86,9 +95,9 @@ public final class IdGeneratorFactory {
     }
 
     /**
-     * Method initBuiltinIdGeneratorName
-     * 
-     * @param clazz
+     * Method initBuiltinIdGeneratorName.
+     *
+     * @param clazz the clazz
      */
     private static void initBuiltinIdGeneratorName(Class<? extends IdGenerator<?>> clazz) {
         registerIdGenerator(clazz.getSimpleName().replaceAll(IdGenerator.ID_GENERATOR, N.EMPTY_STRING), clazz);
@@ -96,9 +105,10 @@ public final class IdGeneratorFactory {
     }
 
     /**
-     * 
-     * @param idGenerator
-     * @param clazz
+     * Register id generator.
+     *
+     * @param idGenerator the id generator
+     * @param clazz the clazz
      */
     public static void registerIdGenerator(String idGenerator, Class<? extends IdGenerator<?>> clazz) {
         registeredIdGenerator.put(idGenerator, clazz);

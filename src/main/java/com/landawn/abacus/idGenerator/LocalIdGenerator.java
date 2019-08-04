@@ -25,28 +25,59 @@ import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.OperationType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class LocalIdGenerator.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
+    
+    /** The init value. */
     private final long initValue;
+    
+    /** The delta. */
     private final int delta;
+    
+    /** The max id value. */
     private volatile long maxIdValue;
+    
+    /** The sql. */
     private final String sql;
+    
+    /** The executor. */
     private Executant executor;
+    
+    /** The is initialized. */
     private boolean isInitialized = false;
 
+    /**
+     * Instantiates a new local id generator.
+     *
+     * @param prop the prop
+     */
     public LocalIdGenerator(Property prop) {
         this(prop, "0");
     }
 
+    /**
+     * Instantiates a new local id generator.
+     *
+     * @param prop the prop
+     * @param initValue the init value
+     */
     public LocalIdGenerator(Property prop, String initValue) {
         this(prop, initValue, "1");
     }
 
+    /**
+     * Instantiates a new local id generator.
+     *
+     * @param prop the prop
+     * @param initValue the init value
+     * @param delta the delta
+     */
     public LocalIdGenerator(Property prop, String initValue, String delta) {
         super(prop);
         this.initValue = Long.valueOf(initValue);
@@ -56,11 +87,21 @@ public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
         sql = "select max(" + prop.getColumnName() + ") from " + prop.getEntityDefinition().getTableName();
     }
 
+    /**
+     * Initialize.
+     *
+     * @param executor the executor
+     */
     @Override
     public void initialize(Executant executor) {
         this.executor = executor;
     }
 
+    /**
+     * Allocate.
+     *
+     * @return the number
+     */
     @Override
     public synchronized Number allocate() {
         if (!isInitialized) {
@@ -72,6 +113,11 @@ public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
         return valueOf(maxIdValue);
     }
 
+    /**
+     * Reserve.
+     *
+     * @param value the value
+     */
     @Override
     public synchronized void reserve(Number value) {
         if (!isInitialized) {
@@ -83,6 +129,9 @@ public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
         }
     }
 
+    /**
+     * Initialize.
+     */
     private void initialize() {
         EntityDefinition entityDef = prop.getEntityDefinition();
         Command queryCmd = SQLCommandFactory.createSqlCommand(OperationType.QUERY, entityDef, sql, null);

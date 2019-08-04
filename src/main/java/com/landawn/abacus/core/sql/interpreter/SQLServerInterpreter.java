@@ -29,16 +29,27 @@ import com.landawn.abacus.util.WD;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Objectory;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class SQLServerInterpreter.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class SQLServerInterpreter extends SQLInterpreter {
+    
+    /** The Constant VERSION_2012. */
     private static final int VERSION_2012 = 11;
+    
+    /** The is version 2012 or above. */
     private final boolean isVersion2012OrAbove;
 
+    /**
+     * Instantiates a new SQL server interpreter.
+     *
+     * @param productName the product name
+     * @param productVersion the product version
+     */
     public SQLServerInterpreter(String productName, String productVersion) {
         super(productName, productVersion);
 
@@ -46,6 +57,15 @@ public class SQLServerInterpreter extends SQLInterpreter {
         isVersion2012OrAbove = (sts.length > 0) && (Integer.valueOf(sts[0]) >= VERSION_2012);
     }
 
+    /**
+     * Interpret query.
+     *
+     * @param entityDef the entity def
+     * @param propNames the prop names
+     * @param criteria the criteria
+     * @param sqlCommand the sql command
+     * @param sql the sql
+     */
     @Override
     protected void interpretQuery(EntityDefinition entityDef, Collection<String> propNames, Criteria criteria, SQLCondCommand sqlCommand, StringBuilder sql) {
         if (isVersion2012OrAbove || criteria.getLimit() == null) {
@@ -93,6 +113,14 @@ public class SQLServerInterpreter extends SQLInterpreter {
         }
     }
 
+    /**
+     * Builds the criteria.
+     *
+     * @param entityDef the entity def
+     * @param criteria the criteria
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     @Override
     protected void buildCriteria(EntityDefinition entityDef, Criteria criteria, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         Collection<Join> joins = criteria.getJoins();

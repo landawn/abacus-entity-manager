@@ -24,23 +24,46 @@ import com.landawn.abacus.metadata.Association;
 import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.N;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class PropEntityProps.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 @Internal
 final class PropEntityProps {
+    
+    /** The prop. */
     private final Property prop;
+    
+    /** The entity. */
     private final Object entity;
+    
+    /** The props. */
     private final Map<String, Object> props;
+    
+    /** The src prop value. */
     private Object srcPropValue;
 
+    /**
+     * Instantiates a new prop entity props.
+     *
+     * @param prop the prop
+     * @param entity the entity
+     */
     PropEntityProps(Property prop, Object entity) {
         this(prop, entity, null, null);
     }
 
+    /**
+     * Instantiates a new prop entity props.
+     *
+     * @param prop the prop
+     * @param entity the entity
+     * @param srcPropValue the src prop value
+     * @param props the props
+     */
     PropEntityProps(Property prop, Object entity, Object srcPropValue, Map<String, Object> props) {
         this.prop = prop;
         this.entity = entity;
@@ -48,6 +71,11 @@ final class PropEntityProps {
         this.props = props;
     }
 
+    /**
+     * Gets the prop entity.
+     *
+     * @return the prop entity
+     */
     public Object getPropEntity() {
         Association association = prop.getAssociation();
         Property srcProp = association.getSrcProperty();
@@ -68,6 +96,11 @@ final class PropEntityProps {
         return entity;
     }
 
+    /**
+     * Hash code.
+     *
+     * @return the int
+     */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -78,6 +111,12 @@ final class PropEntityProps {
         return result;
     }
 
+    /**
+     * Equals.
+     *
+     * @param obj the obj
+     * @return true, if successful
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -93,6 +132,11 @@ final class PropEntityProps {
         return false;
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
         return "{prop=" + prop + ", entity=" + entity + "}";

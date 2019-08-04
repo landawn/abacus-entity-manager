@@ -20,16 +20,28 @@ import java.util.Map;
 
 import com.landawn.abacus.type.Type;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class SizeValidator.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class SizeValidator extends AbstractValidator<Object> {
+    
+    /** The min size. */
     final int minSize;
+    
+    /** The max size. */
     final int maxSize;
 
+    /**
+     * Instantiates a new size validator.
+     *
+     * @param propName the prop name
+     * @param type the type
+     * @param size the size
+     */
     public SizeValidator(String propName, Type<Object> type, String size) {
         super(propName, type);
         this.minSize = Integer.valueOf(size);
@@ -37,12 +49,12 @@ public class SizeValidator extends AbstractValidator<Object> {
     }
 
     /**
-     * Constructor SizeValidator
-     * 
-     * @param propName
-     * @param type
-     * @param minSize
-     * @param maxSize
+     * Constructor SizeValidator.
+     *
+     * @param propName the prop name
+     * @param type the type
+     * @param minSize the min size
+     * @param maxSize the max size
      */
     public SizeValidator(String propName, Type<Object> type, String minSize, String maxSize) {
         super(propName, type);
@@ -52,8 +64,8 @@ public class SizeValidator extends AbstractValidator<Object> {
 
     /**
      * Method isValid.
-     * 
-     * @param propValue
+     *
+     * @param propValue the prop value
      * @return boolean
      * @see com.landawn.abacus.validator.Validator#isValid(T)
      */

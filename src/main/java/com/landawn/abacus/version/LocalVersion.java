@@ -19,20 +19,34 @@ import java.util.Map;
 
 import com.landawn.abacus.util.MutableLong;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class LocalVersion.
+ *
  * @author Haiyang Li
+ * @param <K> the key type
+ * @since 0.8
  */
 public final class LocalVersion<K> extends AbstractVersion<K> {
+    
+    /** The pool. */
     private final Map<K, MutableLong> pool;
+    
+    /** The capacity. */
     private final int capacity;
 
+    /**
+     * Instantiates a new local version.
+     */
     public LocalVersion() {
         this(getDefaultCapacity());
     }
 
+    /**
+     * Instantiates a new local version.
+     *
+     * @param capacity the capacity
+     */
     public LocalVersion(int capacity) {
         if (capacity < 0) {
             throw new IllegalArgumentException("Capacity(" + capacity + ") can't be negative.");
@@ -42,6 +56,12 @@ public final class LocalVersion<K> extends AbstractVersion<K> {
         pool = new LinkedHashMap<K, MutableLong>(capacity);
     }
 
+    /**
+     * Gets the.
+     *
+     * @param k the k
+     * @return the long
+     */
     @Override
     public long get(K k) {
         synchronized (pool) {
@@ -60,6 +80,12 @@ public final class LocalVersion<K> extends AbstractVersion<K> {
         }
     }
 
+    /**
+     * Update.
+     *
+     * @param k the k
+     * @param delta the delta
+     */
     @Override
     public void update(K k, int delta) {
         synchronized (pool) {
@@ -72,6 +98,11 @@ public final class LocalVersion<K> extends AbstractVersion<K> {
         }
     }
 
+    /**
+     * Removes the.
+     *
+     * @param k the k
+     */
     @Override
     public void remove(K k) {
         synchronized (pool) {
@@ -79,6 +110,9 @@ public final class LocalVersion<K> extends AbstractVersion<K> {
         }
     }
 
+    /**
+     * Clear.
+     */
     @Override
     public void clear() {
         synchronized (pool) {

@@ -16,13 +16,21 @@
 
 package com.landawn.abacus.core.sql.interpreter;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class H2Interpreter.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class H2Interpreter extends SQLInterpreter {
+    
+    /**
+     * Instantiates a new h 2 interpreter.
+     *
+     * @param productName the product name
+     * @param productVersion the product version
+     */
     public H2Interpreter(String productName, String productVersion) {
         super(productName, productVersion);
     }

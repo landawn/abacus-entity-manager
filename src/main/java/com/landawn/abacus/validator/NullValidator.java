@@ -16,22 +16,29 @@ package com.landawn.abacus.validator;
 
 import com.landawn.abacus.type.Type;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class NullValidator.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class NullValidator extends AbstractValidator<Object> {
 
+    /**
+     * Instantiates a new null validator.
+     *
+     * @param propName the prop name
+     * @param type the type
+     */
     public NullValidator(String propName, Type<Object> type) {
         super(propName, type);
     }
 
     /**
      * Method isValid.
-     * 
-     * @param propValue
+     *
+     * @param propValue the prop value
      * @return boolean
      */
     @Override

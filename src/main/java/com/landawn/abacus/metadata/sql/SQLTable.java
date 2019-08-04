@@ -47,43 +47,93 @@ import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.WD;
 import com.landawn.abacus.util.XMLUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class SQLTable.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class SQLTable implements Table {
+    
+    /** The Constant logger. */
     protected static final Logger logger = LoggerFactory.getLogger(SQLTable.class);
 
+    /** The Constant COLUMN_NAME. */
     private static final String COLUMN_NAME = "COLUMN_NAME";
+    
+    /** The Constant PRIMARY_KEY_GOT_SQL. */
     private static final String PRIMARY_KEY_GOT_SQL = "SELECT cols.column_name FROM all_constraints cons, all_cons_columns cols WHERE cols.table_name = ? AND cons.constraint_type = 'P' AND cons.constraint_name = cols.constraint_name";
+    
+    /** The Constant ORACLE. */
     private static final String ORACLE = "ORACLE";
+    
+    /** The Constant NUMBER. */
     private static final String NUMBER = "NUMBER";
+    
+    /** The Constant SMALLINT. */
     private static final String SMALLINT = "SMALLINT";
+    
+    /** The Constant TINYINT. */
     private static final String TINYINT = "TINYINT";
 
+    /** The name. */
     private final String name;
+    
+    /** The attrs. */
     private final Map<String, String> attrs;
+    
+    /** The column map. */
     private final Map<String, SQLColumn> columnMap;
+    
+    /** The column pool. */
     private final Map<String, SQLColumn> columnPool = new HashMap<>();
 
+    /**
+     * Instantiates a new SQL table.
+     *
+     * @param name the name
+     * @param conn the conn
+     */
     public SQLTable(String name, Connection conn) {
         this(parse(name, conn));
     }
 
+    /**
+     * Instantiates a new SQL table.
+     *
+     * @param is the is
+     * @throws SAXException the SAX exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public SQLTable(InputStream is) throws SAXException, IOException {
         this(Configuration.parse(is).getDocumentElement());
     }
 
+    /**
+     * Instantiates a new SQL table.
+     *
+     * @param tableNode the table node
+     */
     public SQLTable(Element tableNode) {
         this(parse(tableNode));
     }
 
+    /**
+     * Instantiates a new SQL table.
+     *
+     * @param attrsColumnMap the attrs column map
+     */
     SQLTable(Object[] attrsColumnMap) {
         this((Map<String, String>) attrsColumnMap[0], (Map<String, SQLColumn>) attrsColumnMap[1]);
     }
 
+    /**
+     * Instantiates a new SQL table.
+     *
+     * @param attrs the attrs
+     * @param columnMap the column map
+     */
     SQLTable(Map<String, String> attrs, Map<String, SQLColumn> columnMap) {
         this.name = NameUtil.getCachedName(attrs.get(TableEle.NAME));
         attrs.put(TableEle.NAME, name);
@@ -99,52 +149,109 @@ public class SQLTable implements Table {
         this.columnMap = ImmutableMap.of(columnMap);
     }
 
+    /**
+     * Gets the name.
+     *
+     * @return the name
+     */
     @Override
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the column list.
+     *
+     * @return the column list
+     */
     @SuppressWarnings("rawtypes")
     @Override
     public Collection<Column> getColumnList() {
         return (Collection) columnMap.values();
     }
 
+    /**
+     * Gets the column name list.
+     *
+     * @return the column name list
+     */
     @Override
     public Collection<String> getColumnNameList() {
         return columnMap.keySet();
     }
 
+    /**
+     * Gets the column.
+     *
+     * @param columnName the column name
+     * @return the column
+     */
     @Override
     public Column getColumn(String columnName) {
         return columnPool.get(columnName);
     }
 
+    /**
+     * Gets the attributes.
+     *
+     * @return the attributes
+     */
     @Override
     public Map<String, String> getAttributes() {
         return attrs;
     }
 
+    /**
+     * Gets the attribute.
+     *
+     * @param attrName the attr name
+     * @return the attribute
+     */
     @Override
     public String getAttribute(String attrName) {
         return attrs.get(attrName);
     }
 
+    /**
+     * Hash code.
+     *
+     * @return the int
+     */
     @Override
     public int hashCode() {
         return name.hashCode();
     }
 
+    /**
+     * Equals.
+     *
+     * @param obj the obj
+     * @return true, if successful
+     */
     @Override
     public boolean equals(Object obj) {
         return this == obj || (obj instanceof SQLTable && ((SQLTable) obj).name.equals(name));
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
         return attrs.toString();
     }
 
+    /**
+     * Column type 2 java type.
+     *
+     * @param columnTypeName the column type name
+     * @param columnClassName the column class name
+     * @param precision the precision
+     * @param scale the scale
+     * @return the string
+     */
     public static String columnType2JavaType(String columnTypeName, String columnClassName, int precision, int scale) {
         String javaType = null;
 
@@ -183,6 +290,13 @@ public class SQLTable implements Table {
         return javaType;
     }
 
+    /**
+     * Parses the.
+     *
+     * @param tableName the table name
+     * @param conn the conn
+     * @return the object[]
+     */
     private static Object[] parse(String tableName, Connection conn) {
         final Map<String, SQLColumn> columnMap = new LinkedHashMap<>();
 
@@ -297,6 +411,12 @@ public class SQLTable implements Table {
         return new Object[] { attrs, columnMap };
     }
 
+    /**
+     * Parses the.
+     *
+     * @param tableNode the table node
+     * @return the object[]
+     */
     private static Object[] parse(Element tableNode) {
         final String tableName = tableNode.getAttribute(TableEle.NAME);
         final Map<String, String> attrs = XMLUtil.readAttributes(tableNode);

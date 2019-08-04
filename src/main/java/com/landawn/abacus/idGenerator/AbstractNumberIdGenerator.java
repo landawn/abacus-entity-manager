@@ -19,20 +19,36 @@ import java.math.BigInteger;
 import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.metadata.Property;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class AbstractNumberIdGenerator.
+ *
  * @author Haiyang Li
+ * @param <T> the generic type
+ * @since 0.8
  */
 public abstract class AbstractNumberIdGenerator<T extends Number> extends AbstractIdGenerator<T> {
+    
+    /** The Constant LONG_TYPE. */
     private static final int LONG_TYPE = 1;
+    
+    /** The Constant INT_TYPE. */
     private static final int INT_TYPE = 2;
+    
+    /** The Constant SHORT_TYPE. */
     private static final int SHORT_TYPE = 3;
+    
+    /** The Constant BYTE_TYPE. */
     private static final int BYTE_TYPE = 4;
 
+    /** The number type. */
     private final int numberType;
 
+    /**
+     * Instantiates a new abstract number id generator.
+     *
+     * @param prop the prop
+     */
     protected AbstractNumberIdGenerator(Property prop) {
         super(prop);
 
@@ -51,6 +67,12 @@ public abstract class AbstractNumberIdGenerator<T extends Number> extends Abstra
         }
     }
 
+    /**
+     * Value of.
+     *
+     * @param t the t
+     * @return the number
+     */
     protected Number valueOf(Number t) {
         switch (numberType) {
             case LONG_TYPE:

@@ -16,26 +16,38 @@ package com.landawn.abacus.validator;
 
 import com.landawn.abacus.type.Type;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class EqualValidator.
+ *
  * @author Haiyang Li
+ * @param <T> the generic type
+ * @since 0.8
  */
 public final class EqualValidator<T> extends AbstractComparableValidator<T> {
+    
+    /** The case insensitive. */
     private boolean caseInsensitive = true;
 
     /**
      * Constructor for EqualValidator.
-     * 
-     * @param propName
-     * @param type
-     * @param value
+     *
+     * @param propName the prop name
+     * @param type the type
+     * @param value the value
      */
     public EqualValidator(String propName, Type<T> type, String value) {
         super(propName, type, value);
     }
 
+    /**
+     * Instantiates a new equal validator.
+     *
+     * @param propName the prop name
+     * @param type the type
+     * @param value the value
+     * @param caseInsensitive the case insensitive
+     */
     public EqualValidator(String propName, Type<T> type, String value, String caseInsensitive) {
         super(propName, type, value);
         this.caseInsensitive = Boolean.valueOf(caseInsensitive);
@@ -43,8 +55,8 @@ public final class EqualValidator<T> extends AbstractComparableValidator<T> {
 
     /**
      * Method isValid.
-     * 
-     * @param propValue
+     *
+     * @param propValue the prop value
      * @return boolean
      * @see com.landawn.abacus.validator.Validator#isValid(T)
      */

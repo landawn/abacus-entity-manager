@@ -16,13 +16,21 @@
 
 package com.landawn.abacus.core.sql.interpreter;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class PostgreSQLInterpreter.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class PostgreSQLInterpreter extends SQLInterpreter {
+    
+    /**
+     * Instantiates a new postgre SQL interpreter.
+     *
+     * @param productName the product name
+     * @param productVersion the product version
+     */
     public PostgreSQLInterpreter(String productName, String productVersion) {
         super(productName, productVersion);
     }

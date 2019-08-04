@@ -16,33 +16,36 @@ package com.landawn.abacus;
 
 import java.util.Collection;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * A factory for creating EntityManager objects.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public interface EntityManagerFactory {
+    
     /**
-     * 
+     * Gets the domain names.
+     *
      * @return the initialized domain name list.
      */
     Collection<String> getDomainNames();
 
     /**
      * Method getDBAccess.
-     * 
-     * @param domainName
+     *
+     * @param domainName the domain name
      * @return DBAccess
      */
     DBAccess getDBAccess(String domainName);
 
     /**
-     * Method getEntityManager
-     * 
-     * @param <T>
-     * @param domainName
-     * @return
+     * Method getEntityManager.
+     *
+     * @param <T> the generic type
+     * @param domainName the domain name
+     * @return the entity manager
      */
     <T> EntityManager<T> getEntityManager(String domainName);
 

@@ -22,11 +22,12 @@ import java.util.Map;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.QueryCacheConfiguration.CacheResultConditionConfiguration;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class Options.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class Options {
     /**
@@ -77,15 +78,20 @@ public final class Options {
         // no instance
     }
 
+    /**
+     * Creates the.
+     *
+     * @return the map
+     */
     public static Map<String, Object> create() {
         return new HashMap<>();
     }
 
     /**
      * Method create.
-     * 
-     * @param offset
-     * @param count
+     *
+     * @param offset the offset
+     * @param count the count
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count) {
@@ -98,11 +104,11 @@ public final class Options {
 
     /**
      * Method create.
-     * 
-     * @param offset
-     * @param count
-     * @param fromCache
-     * @param cacheResult
+     *
+     * @param offset the offset
+     * @param count the count
+     * @param fromCache the from cache
+     * @param cacheResult the cache result
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count, boolean fromCache, String cacheResult) {
@@ -120,10 +126,10 @@ public final class Options {
 
     /**
      * Method create.
-     * 
-     * @param cacheResult
-     * @param range
-     * @param cond
+     *
+     * @param cacheResult the cache result
+     * @param range the range
+     * @param cond the cond
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(String cacheResult, Cache.Range range, Cache.Condition cond) {
@@ -146,12 +152,12 @@ public final class Options {
 
     /**
      * Method create.
-     * 
-     * @param cacheResult
-     * @param range
-     * @param cond
-     * @param liveTime
-     * @param maxIdleTime
+     *
+     * @param cacheResult the cache result
+     * @param range the range
+     * @param cond the cond
+     * @param liveTime the live time
+     * @param maxIdleTime the max idle time
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(String cacheResult, Cache.Range range, Cache.Condition cond, long liveTime, long maxIdleTime) {
@@ -177,12 +183,12 @@ public final class Options {
 
     /**
      * Method create.
-     * 
-     * @param offset
-     * @param count
-     * @param cacheResult
-     * @param range
-     * @param cond
+     *
+     * @param offset the offset
+     * @param count the count
+     * @param cacheResult the cache result
+     * @param range the range
+     * @param cond the cond
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count, String cacheResult, Cache.Range range, Cache.Condition cond) {
@@ -207,14 +213,14 @@ public final class Options {
 
     /**
      * Method create.
-     * 
-     * @param offset
-     * @param count
-     * @param cacheResult
-     * @param range
-     * @param cond
-     * @param liveTime
-     * @param maxIdleTime
+     *
+     * @param offset the offset
+     * @param count the count
+     * @param cacheResult the cache result
+     * @param range the range
+     * @param cond the cond
+     * @param liveTime the live time
+     * @param maxIdleTime the max idle time
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count, String cacheResult, Cache.Range range, Cache.Condition cond, long liveTime,
@@ -243,14 +249,14 @@ public final class Options {
 
     /**
      * Method create.
-     * 
-     * @param offset
-     * @param count
-     * @param fromCache
-     * @param cacheResult
-     * @param range
-     * @param cond
-     * @param transactionId
+     *
+     * @param offset the offset
+     * @param count the count
+     * @param fromCache the from cache
+     * @param cacheResult the cache result
+     * @param range the range
+     * @param cond the cond
+     * @param transactionId the transaction id
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count, boolean fromCache, String cacheResult, Cache.Range range, Cache.Condition cond,
@@ -281,16 +287,16 @@ public final class Options {
 
     /**
      * Method create.
-     * 
-     * @param offset
-     * @param count
-     * @param fromCache
-     * @param cacheResult
-     * @param range
-     * @param cond
-     * @param liveTime
-     * @param maxIdleTime
-     * @param transactionId
+     *
+     * @param offset the offset
+     * @param count the count
+     * @param fromCache the from cache
+     * @param cacheResult the cache result
+     * @param range the range
+     * @param cond the cond
+     * @param liveTime the live time
+     * @param maxIdleTime the max idle time
+     * @param transactionId the transaction id
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count, boolean fromCache, String cacheResult, Cache.Range range, Cache.Condition cond,
@@ -323,18 +329,20 @@ public final class Options {
     }
 
     /**
-    *
-    * @param options
-    * @return
-    */
+     * Copy.
+     *
+     * @param options the options
+     * @return the map
+     */
     public static Map<String, Object> copy(final Map<String, Object> options) {
         return N.isNullOrEmpty(options) ? new HashMap<String, Object>() : new HashMap<String, Object>(options);
     }
 
     /**
+     * Of.
      *
-     * @param a
-     * @return
+     * @param a the a
+     * @return the map
      */
     @SafeVarargs
     public static Map<String, Object> of(final Object... a) {
@@ -348,6 +356,8 @@ public final class Options {
     }
 
     /**
+     * The Class Query.
+     *
      * @author Haiyang Li
      * @version $Revision: 0.8 $ 07/01/15
      */
@@ -446,9 +456,7 @@ public final class Options {
          */
         public static final String HANDLE_MAX_IDLE_TIME = "resultHandleMaxIdleTime";
 
-        /**
-         * Field HANDLE_DEFAULT_MAX_IDLE_TIME
-         */
+        /** Field HANDLE_DEFAULT_MAX_IDLE_TIME. */
         public static final long HANDLE_DEFAULT_MAX_IDLE_TIME = 7 * 24 * 3600 * 1000L;
 
         /**
@@ -460,6 +468,8 @@ public final class Options {
     }
 
     /**
+     * The Class Cache.
+     *
      * @author Haiyang Li
      * @version $Revision: 0.8 $
      */
@@ -486,9 +496,7 @@ public final class Options {
          */
         public static final String MIN_CHECK_QUERY_CACHE_SIZE = "minCheckQueryCacheSize";
 
-        /**
-         * Cache range option
-         */
+        /** Cache range option. */
         public static final String CACHE_RESULT_RANGE = "cacheResultRange";
 
         /**
@@ -578,14 +586,10 @@ public final class Options {
              */
             public static final long DEFAULT_MIN_QUERY_TIME = CacheResultConditionConfiguration.DEFAULT_MIN_QUERY_TIME;
 
-            /**
-             * Default value for {@code DEFAULT_MIN_COUNT} option
-             */
+            /** Default value for {@code DEFAULT_MIN_COUNT} option. */
             public static final int DEFAULT_MIN_COUNT = CacheResultConditionConfiguration.DEFAULT_MIN_COUNT;
 
-            /**
-             * Default value for {@code CACHE_RESULT_CONDITION} option
-             */
+            /** Default value for {@code CACHE_RESULT_CONDITION} option. */
             public static final int DEFAULT_MAX_COUNT = CacheResultConditionConfiguration.DEFAULT_MAX_COUNT;
 
             /**
@@ -603,6 +607,9 @@ public final class Options {
              */
             private int maxCount;
 
+            /**
+             * Instantiates a new condition.
+             */
             // For Kryo
             Condition() {
             }
@@ -738,6 +745,11 @@ public final class Options {
                 this.maxCount = maxCount;
             }
 
+            /**
+             * Hash code.
+             *
+             * @return the int
+             */
             @Override
             public int hashCode() {
                 int h = 17;
@@ -748,6 +760,12 @@ public final class Options {
                 return h;
             }
 
+            /**
+             * Equals.
+             *
+             * @param obj the obj
+             * @return true, if successful
+             */
             @Override
             public boolean equals(Object obj) {
                 if (this == obj) {
@@ -765,6 +783,11 @@ public final class Options {
                 return false;
             }
 
+            /**
+             * To string.
+             *
+             * @return the string
+             */
             @Override
             public String toString() {
                 return "{minQueryTime=" + minQueryTime + ", minCount=" + minCount + ", maxCount=" + maxCount + "}";
@@ -772,6 +795,8 @@ public final class Options {
         }
 
         /**
+         * The Class Range.
+         *
          * @author Haiyang Li
          * @version $Revision: 0.8 $ 07/01/15
          */
@@ -796,6 +821,9 @@ public final class Options {
              */
             private final BitSet bitSet;
 
+            /**
+             * Instantiates a new range.
+             */
             // For Kryo
             Range() {
                 bitSet = null;
@@ -803,8 +831,8 @@ public final class Options {
 
             /**
              * Constructor for Range.
-             * 
-             * @param range
+             *
+             * @param range the range
              */
             @SafeVarargs
             public Range(int... range) {
@@ -850,6 +878,11 @@ public final class Options {
              * this.from = from; this.to = to; }
              */
 
+            /**
+             * Hash code.
+             *
+             * @return the int
+             */
             @Override
             public int hashCode() {
                 int h = 17;
@@ -858,11 +891,22 @@ public final class Options {
                 return h;
             }
 
+            /**
+             * Equals.
+             *
+             * @param obj the obj
+             * @return true, if successful
+             */
             @Override
             public boolean equals(Object obj) {
                 return this == obj || (obj instanceof Range && N.equals(((Range) obj).bitSet, bitSet));
             }
 
+            /**
+             * To string.
+             *
+             * @return the string
+             */
             @Override
             public String toString() {
                 String st = "{";
@@ -886,6 +930,8 @@ public final class Options {
     }
 
     /**
+     * The Class Jdbc.
+     *
      * @author Haiyang Li
      * @version $Revision: 0.8 $ 07/01/15
      */
@@ -932,9 +978,7 @@ public final class Options {
          */
         public static final String FETCH_DIRECTION = "jdbcFetchDirection";
 
-        /**
-         * Field FETCH_SIZE
-         */
+        /** Field FETCH_SIZE. */
         public static final String FETCH_SIZE = "jdbcFetchSize";
 
         /**

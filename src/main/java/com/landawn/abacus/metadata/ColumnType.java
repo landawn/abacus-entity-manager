@@ -14,30 +14,28 @@
 
 package com.landawn.abacus.metadata;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Enum ColumnType.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public enum ColumnType {
-    /**
-     * Field TABLE_COLUMN
-     */
+    
+    /** Field TABLE_COLUMN. */
     TABLE_COLUMN("tableColumn"),
-    /**
-     * Field ENTITY
-     */
+    
+    /** Field ENTITY. */
     ENTITY("entity");
-    /**
-     * Field name;
-     */
+    
+    /** Field name;. */
     private final String name;
 
     /**
      * Constructor.
-     * 
-     * @param name
+     *
+     * @param name the name
      */
     ColumnType(String name) {
         this.name = name;
@@ -45,16 +43,17 @@ public enum ColumnType {
 
     /**
      * Method getName.
-     * 
-     * @return
+     *
+     * @return the name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * 
-     * @param entityTypeName
+     * Gets the.
+     *
+     * @param typeName the type name
      * @return EntityType
      */
     public static ColumnType get(String typeName) {

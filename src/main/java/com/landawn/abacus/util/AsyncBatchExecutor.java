@@ -27,22 +27,33 @@ import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class AsyncBatchExecutor.
+ *
  * @author Haiyang Li
+ * @param <E> the element type
+ * @since 0.8
  */
 public final class AsyncBatchExecutor<E> {
+    
+    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(AsyncBatchExecutor.class);
 
+    /** The Constant DEFAULT_CAPACITY. */
     public static final int DEFAULT_CAPACITY = 8192;
+    
+    /** The Constant DEFAULT_EVICT_DELAY. */
     public static final int DEFAULT_EVICT_DELAY = 3000;
+    
     /**
+     * The Constant DEFAULT_BATCH_SIZE.
+     *
      * @see Options#DEFAULT_BATCH_SIZE
      */
     public static final int DEFAULT_BATCH_SIZE = Options.DEFAULT_BATCH_SIZE;
 
+    /** The Constant scheduledExecutor. */
     static final ScheduledExecutorService scheduledExecutor;
     static {
         final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(16);
@@ -52,27 +63,53 @@ public final class AsyncBatchExecutor<E> {
         scheduledExecutor = MoreExecutors.getExitingScheduledExecutorService(executor);
     }
 
+    /** The schedule future. */
     private final ScheduledFuture<?> scheduleFuture;
 
+    /** The em. */
     protected final EntityManager<E> em;
+    
+    /** The options. */
     protected final Map<String, Object> options;
+    
+    /** The add queue. */
     protected final List<E> addQueue;
+    
+    /** The update queue. */
     protected final List<E> updateQueue;
+    
+    /** The delete queue. */
     protected final List<E> deleteQueue;
 
-    /**
-     * Unit is millisecond
-     */
+    /** Unit is millisecond. */
     private final int capacity;
+    
+    /** The evict delay. */
     private final long evictDelay;
+    
+    /** The batch size. */
     private final int batchSize;
 
+    /** The is closed. */
     private boolean isClosed = false;
 
+    /**
+     * Instantiates a new async batch executor.
+     *
+     * @param em the em
+     */
     public AsyncBatchExecutor(final EntityManager<E> em) {
         this(em, DEFAULT_CAPACITY, DEFAULT_EVICT_DELAY, DEFAULT_BATCH_SIZE);
     }
 
+    /**
+     * Instantiates a new async batch executor.
+     *
+     * @param em the em
+     * @param capacity the capacity
+     * @param evictDelay the evict delay
+     * @param batchSize the batch size
+     */
     public AsyncBatchExecutor(final EntityManager<E> em, final int capacity, final long evictDelay, final int batchSize) {
         if ((em == null) || (evictDelay <= 0) || (batchSize <= 0) || (capacity <= 0)) {
             throw new IllegalArgumentException();
@@ -116,18 +153,38 @@ public final class AsyncBatchExecutor<E> {
         });
     }
 
+    /**
+     * Gets the evict delay.
+     *
+     * @return the evict delay
+     */
     public long getEvictDelay() {
         return evictDelay;
     }
 
+    /**
+     * Gets the batch size.
+     *
+     * @return the batch size
+     */
     public int getBatchSize() {
         return batchSize;
     }
 
+    /**
+     * Gets the capacity.
+     *
+     * @return the capacity
+     */
     public int getCapacity() {
         return capacity;
     }
 
+    /**
+     * Adds the.
+     *
+     * @param e the e
+     */
     public void add(E e) {
         assertNotClosed();
 
@@ -136,6 +193,11 @@ public final class AsyncBatchExecutor<E> {
         }
     }
 
+    /**
+     * Update.
+     *
+     * @param e the e
+     */
     public void update(E e) {
         assertNotClosed();
 
@@ -144,6 +206,11 @@ public final class AsyncBatchExecutor<E> {
         }
     }
 
+    /**
+     * Delete.
+     *
+     * @param e the e
+     */
     public void delete(E e) {
         assertNotClosed();
 
@@ -152,6 +219,9 @@ public final class AsyncBatchExecutor<E> {
         }
     }
 
+    /**
+     * Commit.
+     */
     @SuppressWarnings("unchecked")
     public void commit() {
         assertNotClosed();
@@ -159,6 +229,9 @@ public final class AsyncBatchExecutor<E> {
         internalCommit();
     }
 
+    /**
+     * Internal commit.
+     */
     private void internalCommit() {
         if (addQueue.size() > 0) {
             List<E> entities = new ArrayList<>();
@@ -242,6 +315,12 @@ public final class AsyncBatchExecutor<E> {
         }
     }
 
+    /**
+     * Adds the element.
+     *
+     * @param queue the queue
+     * @param e the e
+     */
     protected void addElement(List<E> queue, E e) {
         if ((addQueue.size() + updateQueue.size() + deleteQueue.size()) > capacity) {
             String msg = "Queue is full. The capacity is " + capacity;
@@ -251,6 +330,9 @@ public final class AsyncBatchExecutor<E> {
         queue.add(e);
     }
 
+    /**
+     * Close.
+     */
     public void close() {
         if (isClosed) {
             return;
@@ -267,6 +349,9 @@ public final class AsyncBatchExecutor<E> {
         }
     }
 
+    /**
+     * Assert not closed.
+     */
     protected void assertNotClosed() {
         if (isClosed) {
             throw new AbacusException("This object pool has been closed");

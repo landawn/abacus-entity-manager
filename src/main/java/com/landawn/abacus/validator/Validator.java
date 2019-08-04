@@ -17,11 +17,13 @@ package com.landawn.abacus.validator;
 import com.landawn.abacus.exception.ValidationException;
 import com.landawn.abacus.type.Type;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Interface Validator.
+ *
  * @author Haiyang Li
+ * @param <T> the generic type
+ * @since 0.8
  */
 public interface Validator<T> {
     /**
@@ -32,27 +34,26 @@ public interface Validator<T> {
     String getPropName();
 
     /**
-     * Method getType
-     * 
+     * Method getType.
+     *
      * @return Type
      */
     Type<T> getType();
 
     /**
-     * Method isValid
-     * 
-     * @param propValue
+     * Method isValid.
+     *
+     * @param propValue the prop value
      * @return boolean
      */
     boolean isValid(T propValue);
 
     /**
-     * Method validate
-     * 
-     * @param propValue
+     * Method validate.
+     *
+     * @param propValue the prop value
      * @return TODO
-     * @throws ValidationException
-     *             if {@code isValid()} returns {@code false}
+     * @throws ValidationException             if {@code isValid()} returns {@code false}
      */
     T validate(T propValue) throws ValidationException;
 }

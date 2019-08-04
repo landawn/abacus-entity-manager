@@ -20,17 +20,29 @@ import com.landawn.abacus.metadata.EntityDefXmlEle.EntityDefEle.EntityEle.Proper
 import com.landawn.abacus.type.Type;
 import com.landawn.abacus.util.DateUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class AbstractDateValidator.
+ *
  * @author Haiyang Li
+ * @param <T> the generic type
+ * @since 0.8
  */
 public abstract class AbstractDateValidator<T extends Date> extends AbstractValidator<T> {
+    
+    /** The benchmark. */
     private final T benchmark;
 
+    /** The is sys time. */
     private final boolean isSysTime;
 
+    /**
+     * Instantiates a new abstract date validator.
+     *
+     * @param propName the prop name
+     * @param type the type
+     * @param value the value
+     */
     protected AbstractDateValidator(String propName, Type<T> type, String value) {
         super(propName, type);
 

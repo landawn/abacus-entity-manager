@@ -21,11 +21,12 @@ import com.landawn.abacus.EntityManager;
 import com.landawn.abacus.util.ClassUtil;
 import com.landawn.abacus.util.TypeAttrParser;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * A factory for creating Handler objects.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class HandlerFactory {
     /**
@@ -42,8 +43,10 @@ public final class HandlerFactory {
 
     /**
      * Method create.
-     * 
-     * @param handlerAttr
+     *
+     * @param <T> the generic type
+     * @param entityManager the entity manager
+     * @param handlerAttr the handler attr
      * @return Handler
      */
     public static <T> Handler<T> create(EntityManager<T> entityManager, String handlerAttr) {
@@ -62,9 +65,10 @@ public final class HandlerFactory {
     }
 
     /**
-     * 
-     * @param handler
-     * @param clazz
+     * Register handler.
+     *
+     * @param handler the handler
+     * @param clazz the clazz
      */
     @SuppressWarnings("unchecked")
     public static void registerHandler(String handler, @SuppressWarnings("rawtypes") Class<? extends Handler> clazz) {

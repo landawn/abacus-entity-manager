@@ -19,20 +19,36 @@ import java.util.regex.Pattern;
 
 import com.landawn.abacus.type.Type;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class PatternValidator.
  *
- * @since 0.8
- * 
  * @author Haiyang Li
+ * @since 0.8
  */
 public class PatternValidator extends AbstractValidator<String> {
+    
+    /** The pattern. */
     private final Pattern pattern;
 
+    /**
+     * Instantiates a new pattern validator.
+     *
+     * @param propName the prop name
+     * @param type the type
+     * @param pattern the pattern
+     */
     public PatternValidator(String propName, Type<String> type, String pattern) {
         super(propName, type);
         this.pattern = Pattern.compile(pattern);
     }
 
+    /**
+     * Checks if is valid.
+     *
+     * @param propValue the prop value
+     * @return true, if is valid
+     */
     @Override
     public boolean isValid(String propValue) {
         if (propValue == null) {

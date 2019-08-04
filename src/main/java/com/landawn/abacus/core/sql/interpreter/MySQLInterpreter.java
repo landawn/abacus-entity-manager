@@ -32,17 +32,33 @@ import com.landawn.abacus.util.Objectory;
 import com.landawn.abacus.util.OperationType;
 import com.landawn.abacus.util.WD;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class MySQLInterpreter.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class MySQLInterpreter extends SQLInterpreter {
+    
+    /**
+     * Instantiates a new my SQL interpreter.
+     *
+     * @param productName the product name
+     * @param productVersion the product version
+     */
     public MySQLInterpreter(String productName, String productVersion) {
         super(productName, productVersion);
     }
 
+    /**
+     * Interpret add.
+     *
+     * @param entityDef the entity def
+     * @param propsList the props list
+     * @param options the options
+     * @return the SQL operation command
+     */
     @Override
     public SQLOperationCommand interpretAdd(EntityDefinition entityDef, List<Map<String, Object>> propsList, Map<String, Object> options) {
         Collection<String> propNames = propsList.get(0).keySet();
@@ -74,6 +90,15 @@ public class MySQLInterpreter extends SQLInterpreter {
         return sqlCommand;
     }
 
+    /**
+     * Builds the insert props list with one sql.
+     *
+     * @param entityDef the entity def
+     * @param propNames the prop names
+     * @param propsList the props list
+     * @param sqlCommand the sql command
+     * @param sql the sql
+     */
     protected void buildInsertPropsListWithOneSql(EntityDefinition entityDef, Collection<String> propNames, List<Map<String, Object>> propsList,
             SQLOperationCommand sqlCommand, StringBuilder sql) {
         sql.append(_SPACE);

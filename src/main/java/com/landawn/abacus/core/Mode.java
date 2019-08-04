@@ -18,11 +18,12 @@ package com.landawn.abacus.core;
 
 import com.landawn.abacus.annotation.Internal;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Enum Mode.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 @Internal
 public enum Mode {

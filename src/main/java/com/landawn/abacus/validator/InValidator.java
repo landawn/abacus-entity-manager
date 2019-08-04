@@ -20,15 +20,26 @@ import java.util.Set;
 import com.landawn.abacus.type.Type;
 import com.landawn.abacus.util.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class InValidator.
+ *
  * @author Haiyang Li
+ * @param <T> the generic type
+ * @since 0.8
  */
 public final class InValidator<T> extends AbstractValidator<T> {
+    
+    /** The value set. */
     private final Set<T> valueSet = new HashSet<T>();
 
+    /**
+     * Instantiates a new in validator.
+     *
+     * @param propName the prop name
+     * @param type the type
+     * @param values the values
+     */
     @SafeVarargs
     public InValidator(String propName, Type<T> type, String... values) {
         super(propName, type);
@@ -40,8 +51,8 @@ public final class InValidator<T> extends AbstractValidator<T> {
 
     /**
      * Method isValid.
-     * 
-     * @param propValue
+     *
+     * @param propValue the prop value
      * @return boolean
      * @see com.landawn.abacus.validator.Validator#isValid(T)
      */

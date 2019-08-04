@@ -20,30 +20,59 @@ import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.util.N;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class DistributedVersion.
+ *
  * @author Haiyang Li
+ * @param <K> the key type
+ * @since 0.8
  */
 public class DistributedVersion<K> extends AbstractVersion<K> {
+    
+    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(DistributedVersion.class);
 
+    /** The Constant DEFAULT_LIVE_TIME. */
     static final long DEFAULT_LIVE_TIME = 24 * 60 * 60 * 1000L;
+    
+    /** The dcc. */
     private final DistributedCacheClient<Long> dcc;
+    
+    /** The key prefix. */
     private final String keyPrefix;
+    
+    /** The live time. */
     private final long liveTime;
 
+    /**
+     * Instantiates a new distributed version.
+     *
+     * @param dcc the dcc
+     */
     public DistributedVersion(DistributedCacheClient<Long> dcc) {
         this(dcc, null, DEFAULT_LIVE_TIME);
     }
 
+    /**
+     * Instantiates a new distributed version.
+     *
+     * @param dcc the dcc
+     * @param keyPrefix the key prefix
+     * @param liveTime the live time
+     */
     public DistributedVersion(DistributedCacheClient<Long> dcc, String keyPrefix, long liveTime) {
         this.dcc = dcc;
         this.keyPrefix = N.isNullOrEmpty(keyPrefix) ? N.EMPTY_STRING : keyPrefix;
         this.liveTime = (liveTime == 0) ? DEFAULT_LIVE_TIME : liveTime;
     }
 
+    /**
+     * Gets the.
+     *
+     * @param k the k
+     * @return the long
+     */
     @Override
     public long get(K k) {
         Long num = dcc.get(generateKey(k));
@@ -56,6 +85,12 @@ public class DistributedVersion<K> extends AbstractVersion<K> {
         return num.longValue();
     }
 
+    /**
+     * Update.
+     *
+     * @param k the k
+     * @param delta the delta
+     */
     @Override
     public void update(K k, int delta) {
         try {
@@ -68,6 +103,11 @@ public class DistributedVersion<K> extends AbstractVersion<K> {
         }
     }
 
+    /**
+     * Removes the.
+     *
+     * @param k the k
+     */
     @Override
     public void remove(K k) {
         try {
@@ -80,6 +120,9 @@ public class DistributedVersion<K> extends AbstractVersion<K> {
         }
     }
 
+    /**
+     * Clear.
+     */
     @Override
     public void clear() {
         try {
@@ -92,6 +135,12 @@ public class DistributedVersion<K> extends AbstractVersion<K> {
         }
     }
 
+    /**
+     * Generate key.
+     *
+     * @param k the k
+     * @return the string
+     */
     protected String generateKey(K k) {
         return N.isNullOrEmpty(keyPrefix) ? N.base64Encode(N.toString(k).getBytes()) : (keyPrefix + N.base64Encode(N.toString(k).getBytes()));
     }

@@ -27,23 +27,48 @@ import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.util.WD;
 import com.landawn.abacus.util.N;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class Association.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class Association implements Serializable {
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3451344350605572248L;
+    
+    /** The join on. */
     private final String joinOn;
+    
+    /** The prop. */
     private final Property prop;
+    
+    /** The src prop. */
     private final Property srcProp;
+    
+    /** The target prop. */
     private final Property targetProp;
+    
+    /** The bi entity props. */
     private final Property[] biEntityProps;
+    
+    /** The bi entity def. */
     private final EntityDefinition biEntityDef;
+    
+    /** The join type. */
     private final JoinType joinType;
+    
+    /** The joins. */
     private final List<Join> joins;
 
+    /**
+     * Instantiates a new association.
+     *
+     * @param prop the prop
+     * @param joinOn the join on
+     */
     public Association(Property prop, String joinOn) {
         this.joinOn = joinOn;
         this.prop = prop;
@@ -153,6 +178,13 @@ public class Association implements Serializable {
         }
     }
 
+    /**
+     * Check property.
+     *
+     * @param ed the ed
+     * @param propName the prop name
+     * @return the property
+     */
     private Property checkProperty(EntityDefinition ed, String propName) {
         propName = propName.trim();
 
@@ -170,49 +202,103 @@ public class Association implements Serializable {
         return prop;
     }
 
+    /**
+     * Gets the property.
+     *
+     * @return the property
+     */
     public Property getProperty() {
         return prop;
     }
 
+    /**
+     * Gets the src property.
+     *
+     * @return the src property
+     */
     public Property getSrcProperty() {
         return srcProp;
     }
 
+    /**
+     * Gets the target property.
+     *
+     * @return the target property
+     */
     public Property getTargetProperty() {
         return targetProp;
     }
 
+    /**
+     * Gets the bi entity properties.
+     *
+     * @return the bi entity properties
+     */
     public Property[] getBiEntityProperties() {
         return biEntityProps;
     }
 
+    /**
+     * Gets the bi entity def.
+     *
+     * @return the bi entity def
+     */
     public EntityDefinition getBiEntityDef() {
         return biEntityDef;
     }
 
+    /**
+     * Gets the join type.
+     *
+     * @return the join type
+     */
     public JoinType getJoinType() {
         return joinType;
     }
 
+    /**
+     * Gets the join condition.
+     *
+     * @return the join condition
+     */
     public Collection<Join> getJoinCondition() {
         return joins;
     }
 
+    /**
+     * Equals.
+     *
+     * @param obj the obj
+     * @return true, if successful
+     */
     @Override
     public boolean equals(Object obj) {
         return this == obj || (obj instanceof Association && N.equals(((Association) obj).joinOn, joinOn));
     }
 
+    /**
+     * Hash code.
+     *
+     * @return the int
+     */
     @Override
     public int hashCode() {
         return joinOn.hashCode();
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
         return joinOn;
     }
 
+    /**
+     * The Enum JoinType.
+     */
     public enum JoinType {
         /**
          * Filed INNER.

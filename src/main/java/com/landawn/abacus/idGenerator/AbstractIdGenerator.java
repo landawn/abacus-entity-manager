@@ -19,37 +19,71 @@ import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.ClassUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class AbstractIdGenerator.
+ *
  * @author Haiyang Li
+ * @param <T> the generic type
+ * @since 0.8
  */
 public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
+    
+    /** The prop. */
     final Property prop;
 
+    /**
+     * Instantiates a new abstract id generator.
+     *
+     * @param prop the prop
+     */
     protected AbstractIdGenerator(Property prop) {
         this.prop = prop;
     }
 
+    /**
+     * Gets the property.
+     *
+     * @return the property
+     */
     @Override
     public Property getProperty() {
         return prop;
     }
 
+    /**
+     * Initialize.
+     *
+     * @param executor the executor
+     */
     @Override
     public void initialize(Executant executor) {
         // do nothing.
     }
 
+    /**
+     * Allocate.
+     *
+     * @return the t
+     */
     @Override
     public abstract T allocate();
 
+    /**
+     * Reserve.
+     *
+     * @param value the value
+     */
     @Override
     public void reserve(T value) {
         // do nothing.
     }
 
+    /**
+     * Hash code.
+     *
+     * @return the int
+     */
     @Override
     public int hashCode() {
         int h = 7;
@@ -59,6 +93,12 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
         return h;
     }
 
+    /**
+     * Equals.
+     *
+     * @param obj the obj
+     * @return true, if successful
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -74,6 +114,11 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
         return false;
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
         return this.getClass().getSimpleName() + ": " + prop.getName();

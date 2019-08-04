@@ -26,17 +26,30 @@ import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.OperationType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class SequenceIdGenerator.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class SequenceIdGenerator extends AbstractNumberIdGenerator<Number> {
+    
+    /** The next val sql. */
     private final String nextValSql;
+    
+    /** The executant. */
     private Executant executant;
+    
+    /** The query cmd. */
     private Command queryCmd;
 
+    /**
+     * Instantiates a new sequence id generator.
+     *
+     * @param prop the prop
+     * @param sequenceName the sequence name
+     */
     public SequenceIdGenerator(Property prop, String sequenceName) {
         super(prop);
 
@@ -52,6 +65,11 @@ public final class SequenceIdGenerator extends AbstractNumberIdGenerator<Number>
         }
     }
 
+    /**
+     * Initialize.
+     *
+     * @param executor the executor
+     */
     @Override
     public void initialize(Executant executor) {
         this.executant = executor;
@@ -60,6 +78,11 @@ public final class SequenceIdGenerator extends AbstractNumberIdGenerator<Number>
         queryCmd = SQLCommandFactory.createSqlCommand(OperationType.QUERY, entityDef, nextValSql, null);
     }
 
+    /**
+     * Allocate.
+     *
+     * @return the number
+     */
     @Override
     public Number allocate() {
         SQLResult queryResult = executant.executeQuery(queryCmd, null);

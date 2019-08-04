@@ -16,19 +16,22 @@ package com.landawn.abacus.validator;
 
 import com.landawn.abacus.type.Type;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class LessThanValidator.
+ *
  * @author Haiyang Li
+ * @param <T> the generic type
+ * @since 0.8
  */
 public final class LessThanValidator<T extends Comparable<T>> extends AbstractComparableValidator<T> {
+    
     /**
      * Constructor for LessThanValidator.
-     * 
-     * @param propName
-     * @param type
-     * @param value
+     *
+     * @param propName the prop name
+     * @param type the type
+     * @param value the value
      */
     public LessThanValidator(String propName, Type<T> type, String value) {
         super(propName, type, value);
@@ -36,8 +39,8 @@ public final class LessThanValidator<T extends Comparable<T>> extends AbstractCo
 
     /**
      * Method isValid.
-     * 
-     * @param propValue
+     *
+     * @param propValue the prop value
      * @return boolean
      * @see com.landawn.abacus.validator.Validator#isValid(T)
      */

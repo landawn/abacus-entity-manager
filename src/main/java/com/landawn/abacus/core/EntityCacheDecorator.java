@@ -32,19 +32,30 @@ import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Properties;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class EntityCacheDecorator.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 @Internal
 class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
+    
+    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(EntityCacheDecorator.class);
 
+    /** The config. */
     private final EntityCacheConfiguration config;
+    
+    /** The entity cache. */
     private final Cache<EntityId, MapEntity> entityCache;
 
+    /**
+     * Instantiates a new entity cache decorator.
+     *
+     * @param config the config
+     */
     public EntityCacheDecorator(EntityCacheConfiguration config) {
         this.config = config;
         entityCache = newEntityCacheProviderInstance(config);
@@ -55,6 +66,12 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
         }
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param entityId the entity id
+     * @return the t
+     */
     @Override
     public MapEntity gett(EntityId entityId) {
         checkEntityId(entityId);
@@ -70,6 +87,15 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
         return null;
     }
 
+    /**
+     * Put.
+     *
+     * @param entityId the entity id
+     * @param entity the entity
+     * @param liveTime the live time
+     * @param maxIdleTime the max idle time
+     * @return true, if successful
+     */
     @Override
     public boolean put(EntityId entityId, MapEntity entity, long liveTime, long maxIdleTime) {
         checkEntityId(entityId);
@@ -107,6 +133,11 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
         }
     }
 
+    /**
+     * Removes the.
+     *
+     * @param entityId the entity id
+     */
     @Override
     public void remove(EntityId entityId) {
         checkEntityId(entityId);
@@ -120,6 +151,12 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
         }
     }
 
+    /**
+     * Contains key.
+     *
+     * @param entityId the entity id
+     * @return true, if successful
+     */
     @Override
     public boolean containsKey(EntityId entityId) {
         checkEntityId(entityId);
@@ -127,41 +164,79 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
         return entityCache.containsKey(entityId);
     }
 
+    /**
+     * Key set.
+     *
+     * @return the sets the
+     */
     @Override
     public Set<EntityId> keySet() {
         return entityCache.keySet();
     }
 
+    /**
+     * Size.
+     *
+     * @return the int
+     */
     @Override
     public int size() {
         return entityCache.size();
     }
 
+    /**
+     * Clear.
+     */
     @Override
     public void clear() {
         entityCache.clear();
     }
 
+    /**
+     * Close.
+     */
     @Override
     public void close() {
         entityCache.close();
     }
 
+    /**
+     * Checks if is closed.
+     *
+     * @return true, if is closed
+     */
     @Override
     public boolean isClosed() {
         return entityCache.isClosed();
     }
 
+    /**
+     * Check entity id.
+     *
+     * @param entityId the entity id
+     */
     private void checkEntityId(EntityId entityId) {
         if ((entityId == null) || entityId.isEmpty()) {
             throw new IllegalArgumentException("entityId can't be null or empty");
         }
     }
 
+    /**
+     * Checks if is excluded entity.
+     *
+     * @param entityName the entity name
+     * @return true, if is excluded entity
+     */
     private boolean isExcludedEntity(String entityName) {
         return (config != null) && config.isExcludedEntity(entityName);
     }
 
+    /**
+     * New entity cache provider instance.
+     *
+     * @param config the config
+     * @return the cache
+     */
     private Cache<EntityId, MapEntity> newEntityCacheProviderInstance(EntityCacheConfiguration config) {
         if (config == null) {
             return CacheFactory.createLocalCache(EntityCacheConfiguration.DEFAULT_CAPACITY, EntityCacheConfiguration.DEFAULT_EVICT_DELAY);
@@ -174,21 +249,48 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
         }
     }
 
+    /**
+     * Gets the properties.
+     *
+     * @return the properties
+     */
     @Override
     public Properties<String, Object> getProperties() {
         return entityCache.getProperties();
     }
 
+    /**
+     * Gets the property.
+     *
+     * @param <T> the generic type
+     * @param propName the prop name
+     * @return the property
+     */
     @Override
     public <T> T getProperty(String propName) {
         return entityCache.getProperty(propName);
     }
 
+    /**
+     * Sets the property.
+     *
+     * @param <T> the generic type
+     * @param propName the prop name
+     * @param propValue the prop value
+     * @return the t
+     */
     @Override
     public <T> T setProperty(String propName, Object propValue) {
         return entityCache.setProperty(propName, propValue);
     }
 
+    /**
+     * Removes the property.
+     *
+     * @param <T> the generic type
+     * @param propName the prop name
+     * @return the t
+     */
     @Override
     public <T> T removeProperty(String propName) {
         return entityCache.removeProperty(propName);

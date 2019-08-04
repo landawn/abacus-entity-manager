@@ -14,11 +14,12 @@
 
 package com.landawn.abacus.metadata;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Enum OnUpdateAction.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public enum OnUpdateAction {
     /**
@@ -39,15 +40,17 @@ public enum OnUpdateAction {
     private int intValue;
 
     /**
-     * 
-     * @param intValue
+     * Instantiates a new on update action.
+     *
+     * @param intValue the int value
      */
     OnUpdateAction(int intValue) {
         this.intValue = intValue;
     }
 
     /**
-     * 
+     * Value.
+     *
      * @return int
      */
     public int value() {
@@ -56,8 +59,8 @@ public enum OnUpdateAction {
 
     /**
      * Method get.
-     * 
-     * @param name
+     *
+     * @param name the name
      * @return ConstraintType
      */
     public static OnUpdateAction get(String name) {

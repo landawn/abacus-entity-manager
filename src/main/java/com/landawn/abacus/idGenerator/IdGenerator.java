@@ -17,15 +17,24 @@ package com.landawn.abacus.idGenerator;
 import com.landawn.abacus.core.sql.Executant;
 import com.landawn.abacus.metadata.Property;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Interface IdGenerator.
+ *
  * @author Haiyang Li
+ * @param <T> the generic type
+ * @since 0.8
  */
 public interface IdGenerator<T> {
+    
+    /** The Constant ID_GENERATOR. */
     public static final String ID_GENERATOR = IdGenerator.class.getSimpleName();
 
+    /**
+     * Initialize.
+     *
+     * @param executor the executor
+     */
     void initialize(Executant executor);
 
     /**
@@ -44,8 +53,8 @@ public interface IdGenerator<T> {
 
     /**
      * Method reserve.
-     * 
-     * @param value
+     *
+     * @param value the value
      */
     void reserve(T value);
 }

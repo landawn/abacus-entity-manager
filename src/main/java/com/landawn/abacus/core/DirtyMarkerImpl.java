@@ -23,41 +23,72 @@ import javax.xml.bind.annotation.XmlTransient;
 import com.landawn.abacus.DirtyMarker;
 import com.landawn.abacus.util.N;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class DirtyMarkerImpl.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class DirtyMarkerImpl extends AbstractDirtyMarker {
 
+    /**
+     * Instantiates a new dirty marker impl.
+     */
     // for kryo
     DirtyMarkerImpl() {
         super(N.EMPTY_STRING);
     }
 
+    /**
+     * Instantiates a new dirty marker impl.
+     *
+     * @param entityName the entity name
+     */
     public DirtyMarkerImpl(String entityName) {
         super(entityName);
     }
 
+    /**
+     * Sets the updated prop name.
+     *
+     * @param propName the new updated prop name
+     */
     @Override
     @XmlTransient
     public void setUpdatedPropName(String propName) {
         super.setUpdatedPropName(propName);
     }
 
+    /**
+     * Sets the updated prop names.
+     *
+     * @param propNames the new updated prop names
+     */
     @Override
     @XmlTransient
     public void setUpdatedPropNames(Collection<String> propNames) {
         super.setUpdatedPropNames(propNames);
     }
 
+    /**
+     * Checks if is entity dirty.
+     *
+     * @param entities the entities
+     * @return true, if is entity dirty
+     */
     @Override
     @XmlTransient
     public boolean isEntityDirty(Collection<? extends DirtyMarker> entities) {
         return super.isEntityDirty(entities);
     }
 
+    /**
+     * Mark entity dirty.
+     *
+     * @param entities the entities
+     * @param isDirty the is dirty
+     */
     @Override
     public void markEntityDirty(Collection<? extends DirtyMarker> entities, boolean isDirty) {
         super.markEntityDirty(entities, isDirty);

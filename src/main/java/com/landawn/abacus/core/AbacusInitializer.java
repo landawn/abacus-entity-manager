@@ -16,13 +16,17 @@
 
 package com.landawn.abacus.core;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Interface AbacusInitializer.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public interface AbacusInitializer {
 
+    /**
+     * Initialize.
+     */
     void initialize();
 }

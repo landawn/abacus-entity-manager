@@ -17,22 +17,56 @@ package com.landawn.abacus.metadata;
 import java.util.Collection;
 import java.util.Map;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Interface Table.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public interface Table {
+    
+    /**
+     * Gets the name.
+     *
+     * @return the name
+     */
     String getName();
 
+    /**
+     * Gets the column list.
+     *
+     * @return the column list
+     */
     Collection<Column> getColumnList();
 
+    /**
+     * Gets the column name list.
+     *
+     * @return the column name list
+     */
     Collection<String> getColumnNameList();
 
+    /**
+     * Gets the column.
+     *
+     * @param columnName the column name
+     * @return the column
+     */
     Column getColumn(String columnName);
 
+    /**
+     * Gets the attributes.
+     *
+     * @return the attributes
+     */
     Map<String, String> getAttributes();
 
+    /**
+     * Gets the attribute.
+     *
+     * @param attrName the attr name
+     * @return the attribute
+     */
     String getAttribute(String attrName);
 }

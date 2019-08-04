@@ -14,11 +14,12 @@
 
 package com.landawn.abacus.metadata;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class EntityDefXmlEle.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class EntityDefXmlEle {
     /**
@@ -29,6 +30,8 @@ public final class EntityDefXmlEle {
     }
 
     /**
+     * The Class EntityDefEle.
+     *
      * @author Haiyang Li
      * @version $Revision: 0.8 $ 07/01/15
      */
@@ -50,6 +53,8 @@ public final class EntityDefXmlEle {
         }
 
         /**
+         * The Class EntityEle.
+         *
          * @author Haiyang Li
          * @version $Revision: 0.8 $ 07/01/15
          */
@@ -107,6 +112,8 @@ public final class EntityDefXmlEle {
             }
 
             /**
+             * The Class PropertyEle.
+             *
              * @author Haiyang Li
              * @version $Revision: 0.8 $ 07/01/15
              */
@@ -237,6 +244,8 @@ public final class EntityDefXmlEle {
             }
 
             /**
+             * The Class TableEle.
+             *
              * @author Haiyang Li
              * @version $Revision: 0.8 $ 07/01/15
              */
@@ -259,6 +268,8 @@ public final class EntityDefXmlEle {
                 }
 
                 /**
+                 * The Class ColumnEle.
+                 *
                  * @author Haiyang Li
                  * @version $Revision: 0.8 $ 07/01/15
                  */
@@ -345,6 +356,8 @@ public final class EntityDefXmlEle {
     }
 
     /**
+     * The Class DatabaseEle.
+     *
      * @author Haiyang Li
      * @version $Revision: 0.8 $ 07/01/15
      */

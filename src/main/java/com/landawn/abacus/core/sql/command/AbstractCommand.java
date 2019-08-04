@@ -21,28 +21,50 @@ import java.util.Map;
 import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.util.OperationType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class AbstractCommand.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public abstract class AbstractCommand implements Command, Cloneable {
+    
+    /**
+     * Gets the operation type.
+     *
+     * @return the operation type
+     */
     @Override
     public OperationType getOperationType() {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Gets the entity def.
+     *
+     * @return the entity def
+     */
     @Override
     public EntityDefinition getEntityDef() {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Gets the options.
+     *
+     * @return the options
+     */
     @Override
     public Map<String, Object> getOptions() {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Clone.
+     *
+     * @return the object
+     */
     @Override
     public Object clone() {
         Object copy = null;
@@ -56,6 +78,12 @@ public abstract class AbstractCommand implements Command, Cloneable {
         return copy;
     }
 
+    /**
+     * Copy.
+     *
+     * @param <T> the generic type
+     * @return the t
+     */
     @Override
     @SuppressWarnings("unchecked")
     public <T extends Command> T copy() {

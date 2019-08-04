@@ -24,15 +24,23 @@ import java.util.Set;
 import com.landawn.abacus.annotation.Internal;
 import com.landawn.abacus.util.N;
 
+// TODO: Auto-generated Javadoc
 /**
  * please don't use it in your application.
- * 
- * @since 0.8
- * 
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 @Internal
 final class ParametersUtil {
+    
+    /**
+     * As list.
+     *
+     * @param <T> the generic type
+     * @param a the a
+     * @return the list
+     */
     @SafeVarargs
     public static <T> List<T> asList(T... a) {
         List<T> list = (a.length == 0) ? new ArrayList<T>() : new ArrayList<T>(a.length);
@@ -44,6 +52,13 @@ final class ParametersUtil {
         return list;
     }
 
+    /**
+     * As set.
+     *
+     * @param <T> the generic type
+     * @param a the a
+     * @return the sets the
+     */
     @SafeVarargs
     public static <T> Set<T> asSet(T... a) {
         Set<T> set = (a.length == 0) ? new HashSet<T>() : new HashSet<T>(a.length + 3);
@@ -55,6 +70,14 @@ final class ParametersUtil {
         return set;
     }
 
+    /**
+     * As map.
+     *
+     * @param <K> the key type
+     * @param <V> the value type
+     * @param a the a
+     * @return the map
+     */
     @SuppressWarnings("unchecked")
     @SafeVarargs
     public static <K, V> Map<K, V> asMap(Object... a) {
@@ -71,16 +94,35 @@ final class ParametersUtil {
         return map;
     }
 
+    /**
+     * As props.
+     *
+     * @param propNameValues the prop name values
+     * @return the map
+     */
     @SafeVarargs
     public static Map<String, Object> asProps(Object... propNameValues) {
         return asMap(propNameValues);
     }
 
+    /**
+     * As options.
+     *
+     * @param a the a
+     * @return the map
+     */
     @SafeVarargs
     public static Map<String, Object> asOptions(Object... a) {
         return asMap(a);
     }
 
+    /**
+     * Copy.
+     *
+     * @param <T> the generic type
+     * @param c the c
+     * @return the collection
+     */
     public static <T> Collection<T> copy(Collection<T> c) {
         if (c instanceof List) {
             return copy((List<T>) c);
@@ -95,6 +137,13 @@ final class ParametersUtil {
         }
     }
 
+    /**
+     * Copy.
+     *
+     * @param <T> the generic type
+     * @param c the c
+     * @return the list
+     */
     public static <T> List<T> copy(List<T> c) {
         if (c == null) {
             return new ArrayList<T>();
@@ -103,6 +152,13 @@ final class ParametersUtil {
         }
     }
 
+    /**
+     * Copy.
+     *
+     * @param <T> the generic type
+     * @param c the c
+     * @return the sets the
+     */
     public static <T> Set<T> copy(Set<T> c) {
         if (c == null) {
             return new LinkedHashSet<T>();
@@ -111,6 +167,14 @@ final class ParametersUtil {
         }
     }
 
+    /**
+     * Copy.
+     *
+     * @param <K> the key type
+     * @param <V> the value type
+     * @param m the m
+     * @return the map
+     */
     public static <K, V> Map<K, V> copy(Map<K, V> m) {
         if (m == null) {
             return new LinkedHashMap<K, V>();
@@ -119,100 +183,229 @@ final class ParametersUtil {
         }
     }
 
+    /**
+     * The Interface Local.
+     */
     static interface Local {
     }
 
+    /**
+     * The Class HashMap.
+     *
+     * @param <K> the key type
+     * @param <V> the value type
+     */
     static final class HashMap<K, V> extends java.util.HashMap<K, V> implements Local {
+        
+        /** The Constant serialVersionUID. */
         private static final long serialVersionUID = -8221642996729977229L;
 
+        /**
+         * Instantiates a new hash map.
+         */
         public HashMap() {
             super();
         }
 
+        /**
+         * Instantiates a new hash map.
+         *
+         * @param initialCapacity the initial capacity
+         */
         public HashMap(int initialCapacity) {
             super(initialCapacity);
         }
 
+        /**
+         * Instantiates a new hash map.
+         *
+         * @param initialCapacity the initial capacity
+         * @param loadFactor the load factor
+         */
         public HashMap(int initialCapacity, float loadFactor) {
             super(initialCapacity, loadFactor);
         }
 
+        /**
+         * Instantiates a new hash map.
+         *
+         * @param m the m
+         */
         public HashMap(Map<? extends K, ? extends V> m) {
             super(m);
         }
     }
 
+    /**
+     * The Class LinkedHashMap.
+     *
+     * @param <K> the key type
+     * @param <V> the value type
+     */
     static final class LinkedHashMap<K, V> extends java.util.HashMap<K, V> implements Local {
+        
+        /** The Constant serialVersionUID. */
         private static final long serialVersionUID = 3744016416795543777L;
 
+        /**
+         * Instantiates a new linked hash map.
+         */
         public LinkedHashMap() {
             super();
         }
 
+        /**
+         * Instantiates a new linked hash map.
+         *
+         * @param initialCapacity the initial capacity
+         */
         public LinkedHashMap(int initialCapacity) {
             super(initialCapacity);
         }
 
+        /**
+         * Instantiates a new linked hash map.
+         *
+         * @param initialCapacity the initial capacity
+         * @param loadFactor the load factor
+         */
         public LinkedHashMap(int initialCapacity, float loadFactor) {
             super(initialCapacity, loadFactor);
         }
 
+        /**
+         * Instantiates a new linked hash map.
+         *
+         * @param m the m
+         */
         public LinkedHashMap(Map<? extends K, ? extends V> m) {
             super(m);
         }
     }
 
+    /**
+     * The Class HashSet.
+     *
+     * @param <E> the element type
+     */
     static final class HashSet<E> extends java.util.HashSet<E> implements Local {
+        
+        /** The Constant serialVersionUID. */
         private static final long serialVersionUID = 9081027352330623445L;
 
+        /**
+         * Instantiates a new hash set.
+         */
         public HashSet() {
             super();
         }
 
+        /**
+         * Instantiates a new hash set.
+         *
+         * @param initialCapacity the initial capacity
+         */
         public HashSet(int initialCapacity) {
             super(initialCapacity);
         }
 
+        /**
+         * Instantiates a new hash set.
+         *
+         * @param initialCapacity the initial capacity
+         * @param loadFactor the load factor
+         */
         public HashSet(int initialCapacity, float loadFactor) {
             super(initialCapacity, loadFactor);
         }
 
+        /**
+         * Instantiates a new hash set.
+         *
+         * @param c the c
+         */
         public HashSet(Collection<? extends E> c) {
             super(c);
         }
     }
 
+    /**
+     * The Class LinkedHashSet.
+     *
+     * @param <E> the element type
+     */
     static final class LinkedHashSet<E> extends java.util.LinkedHashSet<E> implements Local {
+        
+        /** The Constant serialVersionUID. */
         private static final long serialVersionUID = -8427957578044492143L;
 
+        /**
+         * Instantiates a new linked hash set.
+         */
         public LinkedHashSet() {
             super();
         }
 
+        /**
+         * Instantiates a new linked hash set.
+         *
+         * @param initialCapacity the initial capacity
+         */
         public LinkedHashSet(int initialCapacity) {
             super(initialCapacity);
         }
 
+        /**
+         * Instantiates a new linked hash set.
+         *
+         * @param initialCapacity the initial capacity
+         * @param loadFactor the load factor
+         */
         public LinkedHashSet(int initialCapacity, float loadFactor) {
             super(initialCapacity, loadFactor);
         }
 
+        /**
+         * Instantiates a new linked hash set.
+         *
+         * @param c the c
+         */
         public LinkedHashSet(Collection<? extends E> c) {
             super(c);
         }
     }
 
+    /**
+     * The Class ArrayList.
+     *
+     * @param <E> the element type
+     */
     static final class ArrayList<E> extends java.util.ArrayList<E> implements Local {
+        
+        /** The Constant serialVersionUID. */
         private static final long serialVersionUID = -6177282621875675144L;
 
+        /**
+         * Instantiates a new array list.
+         */
         public ArrayList() {
             super();
         }
 
+        /**
+         * Instantiates a new array list.
+         *
+         * @param initialCapacity the initial capacity
+         */
         public ArrayList(int initialCapacity) {
             super(initialCapacity);
         }
 
+        /**
+         * Instantiates a new array list.
+         *
+         * @param c the c
+         */
         public ArrayList(Collection<? extends E> c) {
             super(c);
         }

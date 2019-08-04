@@ -23,24 +23,43 @@ import com.landawn.abacus.annotation.Internal;
 import com.landawn.abacus.metadata.Association;
 import com.landawn.abacus.metadata.Property;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class BiEntityProps.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 @Internal
 final class BiEntityProps {
+    
+    /** The entity prop. */
     private final Property entityProp;
+    
+    /** The insert props. */
     private final Map<String, Object> insertProps;
+    
+    /** The associated entity. */
     private final Object associatedEntity;
 
+    /**
+     * Instantiates a new bi entity props.
+     *
+     * @param prop the prop
+     * @param insertProps the insert props
+     * @param associatedEntity the associated entity
+     */
     BiEntityProps(Property prop, Map<String, Object> insertProps, Object associatedEntity) {
         this.entityProp = prop;
         this.insertProps = insertProps;
         this.associatedEntity = associatedEntity;
     }
 
+    /**
+     * Creates the props.
+     *
+     * @return the map
+     */
     Map<String, Object> createProps() {
         Map<String, Object> biProps = new HashMap<>();
         Association association = entityProp.getAssociation();

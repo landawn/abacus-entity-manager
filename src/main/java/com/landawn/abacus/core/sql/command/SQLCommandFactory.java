@@ -21,21 +21,37 @@ import java.util.Map;
 import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.util.OperationType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * A factory for creating SQLCommand objects.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class SQLCommandFactory {
+    
+    /**
+     * Instantiates a new SQL command factory.
+     */
     private SQLCommandFactory() {
         // No instance;
     }
 
+    /**
+     * Creates a new SQLCommand object.
+     *
+     * @return the SQL cond command
+     */
     public static SQLCondCommand createSqlCondCmd() {
         return new SQLCondCommand();
     }
 
+    /**
+     * Creates a new SQLCommand object.
+     *
+     * @param sql the sql
+     * @return the SQL cond command
+     */
     public static SQLCondCommand createSqlCondCmd(String sql) {
         SQLCondCommand sqlCondCmd = new SQLCondCommand();
         sqlCondCmd.setSql(sql);
@@ -43,10 +59,27 @@ public final class SQLCommandFactory {
         return sqlCondCmd;
     }
 
+    /**
+     * Creates a new SQLCommand object.
+     *
+     * @param operationType the operation type
+     * @param entityDef the entity def
+     * @param options the options
+     * @return the SQL operation command
+     */
     public static SQLOperationCommand createSqlCommand(OperationType operationType, EntityDefinition entityDef, Map<String, Object> options) {
         return new SQLOperationCommand(operationType, entityDef, options);
     }
 
+    /**
+     * Creates a new SQLCommand object.
+     *
+     * @param operationType the operation type
+     * @param entityDef the entity def
+     * @param sql the sql
+     * @param options the options
+     * @return the SQL operation command
+     */
     public static SQLOperationCommand createSqlCommand(OperationType operationType, EntityDefinition entityDef, String sql, Map<String, Object> options) {
         SQLOperationCommand sqlCommand = new SQLOperationCommand(operationType, entityDef, options);
 

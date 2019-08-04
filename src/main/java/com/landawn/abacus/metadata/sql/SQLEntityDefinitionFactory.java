@@ -42,18 +42,33 @@ import com.landawn.abacus.util.ImmutableMap;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.XMLUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * A factory for creating SQLEntityDefinition objects.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
+    
+    /** The domain name. */
     private final String domainName;
+    
+    /** The domain definition. */
     private final byte[] domainDefinition;
+    
+    /** The attrs. */
     private final Map<String, String> attrs;
+    
+    /** The entity definition pool. */
     private final Map<String, SQLEntityDefinition> entityDefinitionPool;
 
+    /**
+     * Instantiates a new SQL entity definition factory.
+     *
+     * @param domainName the domain name
+     * @param byteDef the byte def
+     */
     protected SQLEntityDefinitionFactory(String domainName, byte[] byteDef) {
         this.domainName = NameUtil.getCachedName(domainName);
         this.domainDefinition = byteDef;
@@ -89,6 +104,14 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
         }
     }
 
+    /**
+     * New instance.
+     *
+     * @param domainName the domain name
+     * @param entityDefinitionXmlFile the entity definition xml file
+     * @return the SQL entity definition factory
+     * @throws UncheckedIOException the unchecked IO exception
+     */
     public static synchronized SQLEntityDefinitionFactory newInstance(String domainName, File entityDefinitionXmlFile) throws UncheckedIOException {
         entityDefinitionXmlFile = Configuration.formatPath(entityDefinitionXmlFile);
 
@@ -105,51 +128,106 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
         }
     }
 
+    /**
+     * New instance.
+     *
+     * @param domainName the domain name
+     * @param is the is
+     * @return the SQL entity definition factory
+     */
     public static synchronized SQLEntityDefinitionFactory newInstance(String domainName, InputStream is) {
         return new SQLEntityDefinitionFactory(domainName, IOUtil.readBytes(is));
     }
 
+    /**
+     * Domain name.
+     *
+     * @return the string
+     */
     @Override
     public String domainName() {
         return domainName;
     }
 
+    /**
+     * Gets the entity name list.
+     *
+     * @return the entity name list
+     */
     @Override
     public Collection<String> getEntityNameList() {
         return entityDefinitionPool.keySet();
     }
 
+    /**
+     * Gets the definition.
+     *
+     * @param entityName the entity name
+     * @return the definition
+     */
     @Override
     public EntityDefinition getDefinition(String entityName) {
         return entityDefinitionPool.get(entityName);
     }
 
+    /**
+     * Gets the definition list.
+     *
+     * @return the definition list
+     */
     @SuppressWarnings("rawtypes")
     @Override
     public Collection<EntityDefinition> getDefinitionList() {
         return (Collection) entityDefinitionPool.values();
     }
 
+    /**
+     * Gets the attributes.
+     *
+     * @return the attributes
+     */
     @Override
     public Map<String, String> getAttributes() {
         return attrs;
     }
 
+    /**
+     * Gets the attribute.
+     *
+     * @param attrName the attr name
+     * @return the attribute
+     */
     @Override
     public String getAttribute(String attrName) {
         return attrs.get(attrName);
     }
 
+    /**
+     * Export definition.
+     *
+     * @return the byte[]
+     */
     @Override
     public byte[] exportDefinition() {
         return domainDefinition;
     }
 
+    /**
+     * Hash code.
+     *
+     * @return the int
+     */
     @Override
     public int hashCode() {
         return entityDefinitionPool.hashCode();
     }
 
+    /**
+     * Equals.
+     *
+     * @param obj the obj
+     * @return true, if successful
+     */
     @Override
     public boolean equals(Object obj) {
         return this == obj
@@ -157,11 +235,22 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
 
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
         return attrs.toString();
     }
 
+    /**
+     * Parses the.
+     *
+     * @param entityDefElement the entity def element
+     * @return the object[]
+     */
     private static Object[] parse(Element entityDefElement) {
         final String pkgName = entityDefElement.getAttribute(EntityDefEle.PACKAGE);
         final Map<String, String> attrs = XMLUtil.readAttributes(entityDefElement);

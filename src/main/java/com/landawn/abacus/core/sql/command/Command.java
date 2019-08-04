@@ -22,41 +22,122 @@ import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.type.Type;
 import com.landawn.abacus.util.OperationType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Interface Command.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public interface Command {
 
+    /**
+     * Gets the operation type.
+     *
+     * @return the operation type
+     */
     OperationType getOperationType();
 
+    /**
+     * Gets the entity def.
+     *
+     * @return the entity def
+     */
     EntityDefinition getEntityDef();
 
+    /**
+     * Gets the options.
+     *
+     * @return the options
+     */
     Map<String, Object> getOptions();
 
+    /**
+     * Gets the parameters.
+     *
+     * @return the parameters
+     */
     Object[] getParameters();
 
+    /**
+     * Gets the parameter types.
+     *
+     * @return the parameter types
+     */
     Type<Object>[] getParameterTypes();
 
+    /**
+     * Gets the parameter.
+     *
+     * @param index the index
+     * @return the parameter
+     */
     Object getParameter(int index);
 
+    /**
+     * Gets the parameter type.
+     *
+     * @param index the index
+     * @return the parameter type
+     */
     Type<Object> getParameterType(int index);
 
+    /**
+     * Sets the parameter.
+     *
+     * @param index the index
+     * @param value the value
+     * @param type the type
+     */
     void setParameter(int index, Object value, Type<Object> type);
 
+    /**
+     * Gets the parameter.
+     *
+     * @param parameterName the parameter name
+     * @return the parameter
+     */
     Object getParameter(String parameterName);
 
+    /**
+     * Gets the parameter type.
+     *
+     * @param parameterName the parameter name
+     * @return the parameter type
+     */
     Type<Object> getParameterType(String parameterName);
 
+    /**
+     * Sets the parameter.
+     *
+     * @param parameterName the parameter name
+     * @param value the value
+     * @param type the type
+     */
     void setParameter(String parameterName, Object value, Type<Object> type);
 
+    /**
+     * Gets the parameter count.
+     *
+     * @return the parameter count
+     */
     int getParameterCount();
 
+    /**
+     * Clear parameters.
+     */
     void clearParameters();
 
+    /**
+     * Copy.
+     *
+     * @param <T> the generic type
+     * @return the t
+     */
     <T extends Command> T copy();
 
+    /**
+     * Clear.
+     */
     void clear();
 }

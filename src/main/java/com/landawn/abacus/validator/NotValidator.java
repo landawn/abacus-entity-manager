@@ -14,16 +14,27 @@
 
 package com.landawn.abacus.validator;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class NotValidator.
+ *
  * @author Haiyang Li
+ * @param <T> the generic type
+ * @since 0.8
  */
 final class NotValidator<T> extends AbstractValidator<T> {
+    
+    /** The src validator. */
     private final Validator<T> srcValidator;
+    
+    /** The is not null. */
     private final boolean isNotNull;
 
+    /**
+     * Instantiates a new not validator.
+     *
+     * @param srcValidator the src validator
+     */
     NotValidator(Validator<T> srcValidator) {
         super(srcValidator.getPropName(), srcValidator.getType());
         this.srcValidator = srcValidator;
@@ -32,8 +43,8 @@ final class NotValidator<T> extends AbstractValidator<T> {
 
     /**
      * Method isValid.
-     * 
-     * @param value
+     *
+     * @param value the value
      * @return boolean
      * @see com.landawn.abacus.validator.Validator#isValid(T)
      */

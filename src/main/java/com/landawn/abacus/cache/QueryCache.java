@@ -22,11 +22,12 @@ import com.landawn.abacus.core.sql.command.Command;
 import com.landawn.abacus.pool.Poolable;
 import com.landawn.abacus.util.Options.Cache;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Interface QueryCache.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public interface QueryCache extends Poolable {
     /**
@@ -41,39 +42,39 @@ public interface QueryCache extends Poolable {
 
     /**
      * Method getPropIndex.
-     * 
-     * @param propName
+     *
+     * @param propName the prop name
      * @return int
      */
     int getPropIndex(String propName);
 
     /**
      * Method cacheResult.
-     * 
-     * @param queryResult
-     * @param cachePropNames
-     * @param cond
-     * @param range
+     *
+     * @param queryResult the query result
+     * @param cachePropNames the cache prop names
+     * @param cond the cond
+     * @param range the range
      */
     void cacheResult(SQLResult queryResult, Collection<String> cachePropNames, Cache.Condition cond, Cache.Range range);
 
     /**
      * Method asyncCacheResult.
-     * 
-     * @param queryResult
-     * @param cachePropNames
-     * @param cacheCond
-     * @param range
-     * @param closeResult
+     *
+     * @param queryResult the query result
+     * @param cachePropNames the cache prop names
+     * @param cacheCond the cache cond
+     * @param range the range
+     * @param closeResult the close result
      */
     void asyncCacheResult(final SQLResult queryResult, final Collection<String> cachePropNames, final Cache.Condition cacheCond, final Cache.Range range,
             final boolean closeResult);
 
     /**
      * Method update.
-     * 
-     * @param command
-     * @param options
+     *
+     * @param command the command
+     * @param options the options
      * @return boolean
      */
     boolean update(Command command, Map<String, Object> options);
@@ -87,9 +88,9 @@ public interface QueryCache extends Poolable {
 
     /**
      * Method isCachedResult.
-     * 
-     * @param propName
-     * @param range
+     *
+     * @param propName the prop name
+     * @param range the range
      * @return boolean
      */
     boolean isCachedResult(String propName, Cache.Range range);
@@ -103,46 +104,68 @@ public interface QueryCache extends Poolable {
 
     /**
      * Method getResult.
-     * 
-     * @param propName
-     * @param beginIndex
-     * @param endIndex
+     *
+     * @param propName the prop name
+     * @param beginIndex the begin index
+     * @param endIndex the end index
      * @return Object[]
      */
     Object[] getResult(String propName, int beginIndex, int endIndex);
 
     /**
      * Method getResult.
-     * 
-     * @param propNames
-     * @param beginIndex
-     * @param endIndex
+     *
+     * @param propNames the prop names
+     * @param beginIndex the begin index
+     * @param endIndex the end index
      * @return Object[][]
      */
     Object[][] getResult(Collection<String> propNames, int beginIndex, int endIndex);
 
     /**
      * Method getResult.
-     * 
-     * @param beginIndex
-     * @param endIndex
+     *
+     * @param beginIndex the begin index
+     * @param endIndex the end index
      * @return Object[][]
      */
     Object[][] getResult(int beginIndex, int endIndex);
 
     /**
-     * 
-     * @param propName
+     * Removes the result.
+     *
+     * @param propName the prop name
      */
     void removeResult(String propName);
 
+    /**
+     * Gets the last update time.
+     *
+     * @return the last update time
+     */
     long getLastUpdateTime();
 
+    /**
+     * Size.
+     *
+     * @return the int
+     */
     int size();
 
+    /**
+     * Zip.
+     */
     void zip();
 
+    /**
+     * Close.
+     */
     void close();
 
+    /**
+     * Checks if is closed.
+     *
+     * @return true, if is closed
+     */
     boolean isClosed();
 }

@@ -25,25 +25,50 @@ import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.StringUtil;
 import com.landawn.abacus.util.TypeAttrParser;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * A factory for creating Version objects.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class VersionFactory {
+    
+    /**
+     * Instantiates a new version factory.
+     */
     private VersionFactory() {
         // singleton
     }
 
+    /**
+     * Creates a new Version object.
+     *
+     * @param <K> the key type
+     * @return the local version< k>
+     */
     public static <K> LocalVersion<K> createLocalVersion() {
         return new LocalVersion<K>();
     }
 
+    /**
+     * Creates a new Version object.
+     *
+     * @param <K> the key type
+     * @param capacity the capacity
+     * @return the local version< k>
+     */
     public static <K> LocalVersion<K> createLocalVersion(int capacity) {
         return new LocalVersion<K>(capacity);
     }
 
+    /**
+     * Creates a new Version object.
+     *
+     * @param <K> the key type
+     * @param provider the provider
+     * @return the version< k>
+     */
     @SuppressWarnings("unchecked")
     public static <K> Version<K> createVersion(String provider) {
         TypeAttrParser attrResult = TypeAttrParser.parse(provider);

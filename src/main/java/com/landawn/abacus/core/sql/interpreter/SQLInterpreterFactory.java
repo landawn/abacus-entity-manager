@@ -21,11 +21,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.landawn.abacus.util.N;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * A factory for creating SQLInterpreter objects.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class SQLInterpreterFactory {
     /**
@@ -68,6 +69,7 @@ public final class SQLInterpreterFactory {
      */
     public static final String H2 = "H2";
 
+    /** The registered interpreters. */
     public static Map<String, Class<?>> registeredInterpreters = new ConcurrentHashMap<>();
 
     static {
@@ -81,10 +83,20 @@ public final class SQLInterpreterFactory {
         registerInterpreter(HSQL, HSQLDBInterpreter.class);
     }
 
+    /**
+     * Instantiates a new SQL interpreter factory.
+     */
     private SQLInterpreterFactory() {
         // singleton.
     }
 
+    /**
+     * Gets the interpreter.
+     *
+     * @param productName the product name
+     * @param productVersion the product version
+     * @return the interpreter
+     */
     public static Interpreter getInterpreter(String productName, String productVersion) {
         productName = productName.toUpperCase();
 
@@ -111,6 +123,12 @@ public final class SQLInterpreterFactory {
         }
     }
 
+    /**
+     * Register interpreter.
+     *
+     * @param interpreter the interpreter
+     * @param clazz the clazz
+     */
     public static void registerInterpreter(String interpreter, Class<?> clazz) {
         registeredInterpreters.put(interpreter.toUpperCase(), clazz);
     }

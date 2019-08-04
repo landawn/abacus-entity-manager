@@ -27,32 +27,59 @@ import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options.Cache;
 import com.landawn.abacus.util.Properties;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class AbstractQueryCache.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public abstract class AbstractQueryCache extends AbstractPoolable implements QueryCache {
+    
+    /** The rw lock. */
     protected final ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock();
+    
+    /** The prop name index map. */
     protected final Properties<String, Integer> propNameIndexMap = new Properties<>();
+    
+    /** The last updated time. */
     protected long lastUpdatedTime = System.currentTimeMillis();
+    
+    /** The is closed. */
     protected boolean isClosed = false;
 
+    /**
+     * Instantiates a new abstract query cache.
+     *
+     * @param liveTime the live time
+     * @param maxIdleTime the max idle time
+     */
     protected AbstractQueryCache(long liveTime, long maxIdleTime) {
         super(liveTime, maxIdleTime);
     }
 
+    /**
+     * Lock.
+     */
     @Override
     public void lock() {
         rwLock.readLock().lock();
     }
 
+    /**
+     * Unlock.
+     */
     @Override
     public void unlock() {
         rwLock.readLock().unlock();
     }
 
+    /**
+     * Gets the prop index.
+     *
+     * @param propName the prop name
+     * @return the prop index
+     */
     @Override
     public int getPropIndex(String propName) {
         assertNotClosed();
@@ -60,6 +87,11 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
         return propNameIndexMap.getOrDefault(propName, -1);
     }
 
+    /**
+     * Gets the cached prop names.
+     *
+     * @return the cached prop names
+     */
     @Override
     public Collection<String> getCachedPropNames() {
         assertNotClosed();
@@ -73,6 +105,13 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
         }
     }
 
+    /**
+     * Checks if is cached result.
+     *
+     * @param propName the prop name
+     * @param range the range
+     * @return true, if is cached result
+     */
     @Override
     public boolean isCachedResult(String propName, Cache.Range range) {
         assertNotClosed();
@@ -108,6 +147,14 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
         }
     }
 
+    /**
+     * Gets the result.
+     *
+     * @param propName the prop name
+     * @param beginIndex the begin index
+     * @param endIndex the end index
+     * @return the result
+     */
     @Override
     public Object[] getResult(String propName, int beginIndex, int endIndex) {
         assertNotClosed();
@@ -133,6 +180,14 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
         return result;
     }
 
+    /**
+     * Gets the result.
+     *
+     * @param propNames the prop names
+     * @param beginIndex the begin index
+     * @param endIndex the end index
+     * @return the result
+     */
     @Override
     public Object[][] getResult(Collection<String> propNames, int beginIndex, int endIndex) {
         assertNotClosed();
@@ -171,11 +226,23 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
         return result;
     }
 
+    /**
+     * Gets the result.
+     *
+     * @param beginIndex the begin index
+     * @param endIndex the end index
+     * @return the result
+     */
     @Override
     public Object[][] getResult(int beginIndex, int endIndex) {
         return getResult(propNameIndexMap.keySet(), beginIndex, endIndex);
     }
 
+    /**
+     * Gets the last update time.
+     *
+     * @return the last update time
+     */
     @Override
     public long getLastUpdateTime() {
         assertNotClosed();
@@ -183,6 +250,11 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
         return lastUpdatedTime;
     }
 
+    /**
+     * Size.
+     *
+     * @return the int
+     */
     @Override
     public int size() {
         assertNotClosed();
@@ -203,6 +275,9 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
         }
     }
 
+    /**
+     * Close.
+     */
     @Override
     public void close() {
         if (isClosed) {
@@ -228,16 +303,29 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
         // Runtime.getRuntime().gc();
     }
 
+    /**
+     * Checks if is closed.
+     *
+     * @return true, if is closed
+     */
     @Override
     public boolean isClosed() {
         return isClosed;
     }
 
+    /**
+     * Destroy.
+     */
     @Override
     public void destroy() {
         close();
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
         DataGrid<Object> dataGrid = getDataGrid();
@@ -249,6 +337,12 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
         }
     }
 
+    /**
+     * Check prop index.
+     *
+     * @param propName the prop name
+     * @return the int
+     */
     protected int checkPropIndex(String propName) {
         Integer propIndex = propNameIndexMap.get(propName);
 
@@ -259,6 +353,12 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
         return propIndex;
     }
 
+    /**
+     * Check bound.
+     *
+     * @param beginIndex the begin index
+     * @param endIndex the end index
+     */
     protected void checkBound(int beginIndex, int endIndex) {
         if (beginIndex < 0) {
             throw new IllegalArgumentException("The beginIndex[" + beginIndex + "] must not be negative. ");
@@ -273,6 +373,9 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
         }
     }
 
+    /**
+     * Assert not closed.
+     */
     protected void assertNotClosed() {
         if (isClosed) {
             throw new IllegalStateException(ClassUtil.getSimpleClassName(this.getClass()) + " has been closed");

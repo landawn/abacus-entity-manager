@@ -26,13 +26,16 @@ import com.landawn.abacus.util.ObjectPool;
 import com.landawn.abacus.util.ClassUtil;
 import com.landawn.abacus.util.TypeAttrParser;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * A factory for creating Validator objects.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class ValidatorFactory {
+    
+    /** The Constant builtinValidatorClsNamePool. */
     @SuppressWarnings("rawtypes")
     private static final Map<String, Class<? extends Validator>> builtinValidatorClsNamePool = new ConcurrentHashMap<>(100);
 
@@ -79,18 +82,23 @@ public final class ValidatorFactory {
         }
     }
 
+    /** The Constant validatorPool. */
     private static final Map<String, Validator<?>> validatorPool = new ObjectPool<String, Validator<?>>(1024);
 
+    /**
+     * Instantiates a new validator factory.
+     */
     private ValidatorFactory() {
         // singleton.
     }
 
     /**
      * Method create.
-     * 
-     * @param propName
-     * @param type
-     * @param validatorAttr
+     *
+     * @param <T> the generic type
+     * @param propName the prop name
+     * @param type the type
+     * @param validatorAttr the validator attr
      * @return Validator
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -129,9 +137,10 @@ public final class ValidatorFactory {
     }
 
     /**
-     * 
-     * @param validator
-     * @param clazz
+     * Register validator.
+     *
+     * @param validator the validator
+     * @param clazz the clazz
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public static void registerValidator(String validator, Class<? extends Validator> clazz) {
@@ -140,8 +149,8 @@ public final class ValidatorFactory {
 
     /**
      * Method getBuiltinValidatorName.
-     * 
-     * @param clazz
+     *
+     * @param clazz the clazz
      * @return String
      */
     private static String getBuiltinValidatorName(Class<?> clazz) {
@@ -150,9 +159,9 @@ public final class ValidatorFactory {
 
     /**
      * Method createValidatorKey.
-     * 
-     * @param prop
-     * @param validatorAttr
+     *
+     * @param propName the prop name
+     * @param validatorAttr the validator attr
      * @return String
      */
     private static String createValidatorKey(String propName, String validatorAttr) {

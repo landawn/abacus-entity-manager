@@ -184,7 +184,6 @@ public class CodeGeneratorTest extends AbstractTest {
 
         N.println("==============SUCCESS: " + domainName + "===================");
     }
- 
 
     public void testDatabase2Xml() throws Exception {
         Connection conn = ds.getConnection();
@@ -270,6 +269,9 @@ public class CodeGeneratorTest extends AbstractTest {
         set.contains(defFactory);
 
         N.println(defFactory.toString());
+
+        IOUtil.deleteIfExists(databaseXml);
+        IOUtil.deleteIfExists(entityDefinitionXml);
     }
 
     //    public void test_printClassMethod() {

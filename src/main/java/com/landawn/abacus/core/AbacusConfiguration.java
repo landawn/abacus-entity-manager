@@ -46,13 +46,16 @@ import com.landawn.abacus.util.OperationType;
 import com.landawn.abacus.util.SQLMapper;
 import com.landawn.abacus.util.XMLUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class AbacusConfiguration.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class AbacusConfiguration {
+    
+    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(AbacusConfiguration.class);
 
     /**
@@ -90,14 +93,27 @@ public final class AbacusConfiguration {
      */
     public static final String FACTORY = "factory";
 
+    /** The props. */
     private final Map<String, String> props = new HashMap<>();
 
+    /** The entity manager configuration list. */
     private final List<EntityManagerConfiguration> entityManagerConfigurationList;
+    
+    /** The slog configuration. */
     private final SLogConfiguration slogConfiguration;
 
+    /** The initializer on startup. */
     private String initializerOnStartup;
+    
+    /** The factory. */
     private String factory;
 
+    /**
+     * Instantiates a new abacus configuration.
+     *
+     * @param abacusFile the abacus file
+     * @throws UncheckedIOException the unchecked IO exception
+     */
     public AbacusConfiguration(File abacusFile) throws UncheckedIOException {
         abacusFile = Configuration.formatPath(abacusFile);
 
@@ -183,22 +199,45 @@ public final class AbacusConfiguration {
         }
     }
 
+    /**
+     * Gets the factory.
+     *
+     * @return the factory
+     */
     public String getFactory() {
         return factory;
     }
 
+    /**
+     * Gets the initializer on startup.
+     *
+     * @return the initializer on startup
+     */
     public String getInitializerOnStartup() {
         return initializerOnStartup;
     }
 
+    /**
+     * Gets the entity manager configuration list.
+     *
+     * @return the entity manager configuration list
+     */
     public List<EntityManagerConfiguration> getEntityManagerConfigurationList() {
         return entityManagerConfigurationList;
     }
 
+    /**
+     * Gets the s log configuration.
+     *
+     * @return the s log configuration
+     */
     public SLogConfiguration getSLogConfiguration() {
         return slogConfiguration;
     }
 
+    /**
+     * The Class EntityManagerConfiguration.
+     */
     public final class EntityManagerConfiguration extends Configuration {
         /**
          * Field ENTITY_MANAGER. (value is ""entityManager"")
@@ -240,22 +279,48 @@ public final class AbacusConfiguration {
          */
         public static final String HANDLER = "handler";
 
+        /** The domain name. */
         private final String domainName;
+        
+        /** The mode. */
         private final Mode mode;
 
+        /** The batch size. */
         private final int batchSize;
+        
+        /** The entity definition file. */
         private final File entityDefinitionFile;
+        
+        /** The sql mapper. */
         private final SQLMapper sqlMapper;
+        
+        /** The handler list. */
         private final List<String> handlerList;
 
+        /** The lock config. */
         private LockConfiguration lockConfig;
+        
+        /** The version config. */
         private VersionConfiguration versionConfig;
+        
+        /** The entity cache config. */
         private EntityCacheConfiguration entityCacheConfig;
+        
+        /** The query cache config. */
         private QueryCacheConfiguration queryCacheConfig;
+        
+        /** The data source manager config. */
         private DataSourceManagerConfiguration dataSourceManagerConfig;
 
+        /** The server config. */
         private ServerConfiguration serverConfig;
 
+        /**
+         * Instantiates a new entity manager configuration.
+         *
+         * @param element the element
+         * @param abacusFile the abacus file
+         */
         EntityManagerConfiguration(Element element, File abacusFile) {
             super(element, AbacusConfiguration.this.props);
             this.domainName = getAttribute(DOMAIN_NAME);
@@ -298,6 +363,11 @@ public final class AbacusConfiguration {
             handlerList = Collections.unmodifiableList(string2List(getAttribute(HANDLER)));
         }
 
+        /**
+         * Complex element 2 attr.
+         *
+         * @param element the element
+         */
         @Override
         protected void complexElement2Attr(Element element) {
             String eleName = element.getNodeName();
@@ -319,54 +389,117 @@ public final class AbacusConfiguration {
             }
         }
 
+        /**
+         * Gets the domain name.
+         *
+         * @return the domain name
+         */
         public String getDomainName() {
             return domainName;
         }
 
+        /**
+         * Gets the mode.
+         *
+         * @return the mode
+         */
         public Mode getMode() {
             return mode;
         }
 
+        /**
+         * Gets the batch size.
+         *
+         * @return the batch size
+         */
         public int getBatchSize() {
             return batchSize;
         }
 
+        /**
+         * Gets the entity definition file.
+         *
+         * @return the entity definition file
+         */
         public File getEntityDefinitionFile() {
             return entityDefinitionFile;
         }
 
+        /**
+         * Gets the SQL mapper.
+         *
+         * @return the SQL mapper
+         */
         public SQLMapper getSQLMapper() {
             return sqlMapper;
         }
 
+        /**
+         * Gets the handler list.
+         *
+         * @return the handler list
+         */
         public List<String> getHandlerList() {
             return handlerList;
         }
 
+        /**
+         * Gets the lock configuration.
+         *
+         * @return the lock configuration
+         */
         public LockConfiguration getLockConfiguration() {
             return lockConfig;
         }
 
+        /**
+         * Gets the version configuration.
+         *
+         * @return the version configuration
+         */
         public VersionConfiguration getVersionConfiguration() {
             return versionConfig;
         }
 
+        /**
+         * Gets the entity cache configuration.
+         *
+         * @return the entity cache configuration
+         */
         public EntityCacheConfiguration getEntityCacheConfiguration() {
             return entityCacheConfig;
         }
 
+        /**
+         * Gets the query cache configuration.
+         *
+         * @return the query cache configuration
+         */
         public QueryCacheConfiguration getQueryCacheConfiguration() {
             return queryCacheConfig;
         }
 
+        /**
+         * Gets the data source manager configuration.
+         *
+         * @return the data source manager configuration
+         */
         public DataSourceManagerConfiguration getDataSourceManagerConfiguration() {
             return dataSourceManagerConfig;
         }
 
+        /**
+         * Gets the server configuration.
+         *
+         * @return the server configuration
+         */
         public ServerConfiguration getServerConfiguration() {
             return serverConfig;
         }
 
+        /**
+         * The Class LockConfiguration.
+         */
         final class LockConfiguration extends Configuration {
             /**
              * Field LOCK. (value is ""LOCK"")
@@ -393,10 +526,20 @@ public final class AbacusConfiguration {
              */
             public static final long DEFAULT_RECORD_LOCK_TIMEOUT = 3000;
 
+            /** The rw lock provider. */
             private final String rwLockProvider;
+            
+            /** The record lock provider. */
             private final String recordLockProvider;
+            
+            /** The record lock timeout. */
             private final long recordLockTimeout;
 
+            /**
+             * Instantiates a new lock configuration.
+             *
+             * @param element the element
+             */
             LockConfiguration(Element element) {
                 super(element, AbacusConfiguration.this.props);
 
@@ -409,34 +552,71 @@ public final class AbacusConfiguration {
                 recordLockTimeout = (attr == null) ? DEFAULT_RECORD_LOCK_TIMEOUT : Configuration.readTimeValue(attr);
             }
 
+            /**
+             * Gets the RW lock provider.
+             *
+             * @return the RW lock provider
+             */
             public String getRWLockProvider() {
                 return rwLockProvider;
             }
 
+            /**
+             * Gets the record lock provider.
+             *
+             * @return the record lock provider
+             */
             public String getRecordLockProvider() {
                 return recordLockProvider;
             }
 
+            /**
+             * Gets the record lock timeout.
+             *
+             * @return the record lock timeout
+             */
             public long getRecordLockTimeout() {
                 return recordLockTimeout;
             }
         }
 
+        /**
+         * The Class VersionConfiguration.
+         */
         final class VersionConfiguration extends Configuration {
+            
+            /** The Constant VERSION. */
             public static final String VERSION = "version";
+            
+            /** The Constant PROVIDER. */
             public static final String PROVIDER = "provider";
+            
+            /** The provider. */
             private final String provider;
 
+            /**
+             * Instantiates a new version configuration.
+             *
+             * @param element the element
+             */
             VersionConfiguration(Element element) {
                 super(element, AbacusConfiguration.this.props);
                 provider = getAttribute(PROVIDER);
             }
 
+            /**
+             * Gets the provider.
+             *
+             * @return the provider
+             */
             public String getProvider() {
                 return provider;
             }
         }
 
+        /**
+         * The Class CacheConfiguration.
+         */
         class CacheConfiguration extends Configuration {
             /**
              * Field PROVIDER. (value is ""provider"")
@@ -463,12 +643,30 @@ public final class AbacusConfiguration {
              */
             public static final String MAX_IDLE_TIME = "maxIdleTime";
 
+            /** The provider. */
             private final String provider;
+            
+            /** The capacity. */
             private final int capacity;
+            
+            /** The evict delay. */
             private final long evictDelay;
+            
+            /** The live time. */
             private final long liveTime;
+            
+            /** The max idle time. */
             private final long maxIdleTime;
 
+            /**
+             * Instantiates a new cache configuration.
+             *
+             * @param element the element
+             * @param defaultCapacity the default capacity
+             * @param defaultEvictDelay the default evict delay
+             * @param defaultLiveTime the default live time
+             * @param defaultMaxIdleTime the default max idle time
+             */
             CacheConfiguration(Element element, int defaultCapacity, long defaultEvictDelay, long defaultLiveTime, long defaultMaxIdleTime) {
                 super(element, AbacusConfiguration.this.props);
 
@@ -487,27 +685,55 @@ public final class AbacusConfiguration {
                 this.maxIdleTime = (attr == null) ? defaultMaxIdleTime : Configuration.readTimeValue(attr);
             }
 
+            /**
+             * Gets the provider.
+             *
+             * @return the provider
+             */
             public String getProvider() {
                 return provider;
             }
 
+            /**
+             * Gets the capacity.
+             *
+             * @return the capacity
+             */
             public int getCapacity() {
                 return capacity;
             }
 
+            /**
+             * Gets the evict delay.
+             *
+             * @return the evict delay
+             */
             public long getEvictDelay() {
                 return evictDelay;
             }
 
+            /**
+             * Gets the live time.
+             *
+             * @return the live time
+             */
             public long getLiveTime() {
                 return liveTime;
             }
 
+            /**
+             * Gets the max idle time.
+             *
+             * @return the max idle time
+             */
             public long getMaxIdleTime() {
                 return maxIdleTime;
             }
         }
 
+        /**
+         * The Class EntityCacheConfiguration.
+         */
         final class EntityCacheConfiguration extends CacheConfiguration {
             /**
              * Field ENTITY_CACHE. (value is ""entityCache"")
@@ -544,11 +770,20 @@ public final class AbacusConfiguration {
              */
             public static final long DEFAULT_MAX_IDLE_TIME = 60 * 60 * 1000L;
 
+            /** The included entity names. */
             private final Set<String> includedEntityNames;
+            
+            /** The excluded entity names. */
             private final Set<String> excludedEntityNames;
 
+            /** The customized entities. */
             private Map<String, CustomizedEntityCacheConfiguration> customizedEntities;
 
+            /**
+             * Instantiates a new entity cache configuration.
+             *
+             * @param element the element
+             */
             EntityCacheConfiguration(Element element) {
                 super(element, DEFAULT_CAPACITY, DEFAULT_EVICT_DELAY, DEFAULT_LIVE_TIME, DEFAULT_MAX_IDLE_TIME);
 
@@ -561,11 +796,19 @@ public final class AbacusConfiguration {
                 }
             }
 
+            /**
+             * Inits the.
+             */
             @Override
             protected void init() {
                 customizedEntities = new HashMap<>();
             }
 
+            /**
+             * Complex element 2 attr.
+             *
+             * @param element the element
+             */
             @Override
             protected void complexElement2Attr(Element element) {
                 String eleName = element.getNodeName();
@@ -578,14 +821,30 @@ public final class AbacusConfiguration {
                 }
             }
 
+            /**
+             * Gets the included entity names.
+             *
+             * @return the included entity names
+             */
             Set<String> getIncludedEntityNames() {
                 return includedEntityNames;
             }
 
+            /**
+             * Gets the excluded entity names.
+             *
+             * @return the excluded entity names
+             */
             Set<String> getExcludedEntityNames() {
                 return excludedEntityNames;
             }
 
+            /**
+             * Checks if is excluded entity.
+             *
+             * @param entityName the entity name
+             * @return true, if is excluded entity
+             */
             public boolean isExcludedEntity(String entityName) {
                 if (excludedEntityNames.size() > 0) {
                     return excludedEntityNames.contains(entityName);
@@ -596,23 +855,35 @@ public final class AbacusConfiguration {
                 return false;
             }
 
+            /**
+             * Gets the customized entity names.
+             *
+             * @return the customized entity names
+             */
             public Collection<String> getCustomizedEntityNames() {
                 return customizedEntities.keySet();
             }
 
+            /**
+             * Gets the customized entity cache configuration.
+             *
+             * @param entityName the entity name
+             * @return the customized entity cache configuration
+             */
             public CustomizedEntityCacheConfiguration getCustomizedEntityCacheConfiguration(String entityName) {
                 return customizedEntities.get(entityName);
             }
 
+            /**
+             * The Class CustomizedEntityCacheConfiguration.
+             */
             public final class CustomizedEntityCacheConfiguration extends Configuration {
                 /**
                  * Field CUSTOMIZED_ENTITY. (value is ""customizedEntity"")
                  */
                 public static final String CUSTOMIZED_ENTITY = "customizedEntity";
 
-                /**
-                 * Field NAME
-                 */
+                /** Field NAME. */
                 public static final String NAME = "name";
 
                 /**
@@ -625,12 +896,26 @@ public final class AbacusConfiguration {
                  */
                 public static final String EXCLUDED_PROPERTIES = "excludedProperties";
 
+                /** The entity name. */
                 private final String entityName;
+                
+                /** The live time. */
                 private final long liveTime;
+                
+                /** The max idle time. */
                 private final long maxIdleTime;
+                
+                /** The included prop names. */
                 private final Set<String> includedPropNames;
+                
+                /** The excluded prop names. */
                 private final Set<String> excludedPropNames;
 
+                /**
+                 * Instantiates a new customized entity cache configuration.
+                 *
+                 * @param element the element
+                 */
                 CustomizedEntityCacheConfiguration(Element element) {
                     super(element, AbacusConfiguration.this.props);
 
@@ -699,26 +984,57 @@ public final class AbacusConfiguration {
                     }
                 }
 
+                /**
+                 * Gets the entity name.
+                 *
+                 * @return the entity name
+                 */
                 public String getEntityName() {
                     return entityName;
                 }
 
+                /**
+                 * Gets the live time.
+                 *
+                 * @return the live time
+                 */
                 public long getLiveTime() {
                     return liveTime;
                 }
 
+                /**
+                 * Gets the max idle time.
+                 *
+                 * @return the max idle time
+                 */
                 public long getMaxIdleTime() {
                     return maxIdleTime;
                 }
 
+                /**
+                 * Gets the included property names.
+                 *
+                 * @return the included property names
+                 */
                 Set<String> getIncludedPropertyNames() {
                     return includedPropNames;
                 }
 
+                /**
+                 * Gets the excluded property names.
+                 *
+                 * @return the excluded property names
+                 */
                 Set<String> getExcludedPropertyNames() {
                     return excludedPropNames;
                 }
 
+                /**
+                 * Checks if is excluded property.
+                 *
+                 * @param propName the prop name
+                 * @return true, if is excluded property
+                 */
                 public boolean isExcludedProperty(String propName) {
                     if (excludedPropNames.size() > 0) {
                         return excludedPropNames.contains(propName);
@@ -731,6 +1047,9 @@ public final class AbacusConfiguration {
             }
         }
 
+        /**
+         * The Class QueryCacheConfiguration.
+         */
         public final class QueryCacheConfiguration extends CacheConfiguration {
             /**
              * Field QUERY_CACHE. (value is ""queryCache"")
@@ -799,13 +1118,26 @@ public final class AbacusConfiguration {
              */
             public static final long DEFAULT_MAX_IDLE_TIME = 15 * 60 * 1000L;
 
+            /** The auto refresh. */
             private final boolean autoRefresh;
+            
+            /** The zip cache. */
             private final boolean zipCache;
+            
+            /** The max check cache time. */
             private final long maxCheckCacheTime;
+            
+            /** The min check cache size. */
             private final int minCheckCacheSize;
 
+            /** The cache result condition configuration. */
             private CacheResultConditionConfiguration cacheResultConditionConfiguration;
 
+            /**
+             * Instantiates a new query cache configuration.
+             *
+             * @param element the element
+             */
             QueryCacheConfiguration(Element element) {
                 super(element, DEFAULT_CAPACITY, DEFAULT_EVICT_DELAY, DEFAULT_LIVE_TIME, DEFAULT_MAX_IDLE_TIME);
 
@@ -822,26 +1154,56 @@ public final class AbacusConfiguration {
                 minCheckCacheSize = (attr == null) ? DEFAULT_MIN_CHECK_QUERY_CACHE_SIZE : N.parseInt(attr);
             }
 
+            /**
+             * Checks if is auto refresh.
+             *
+             * @return true, if is auto refresh
+             */
             public boolean isAutoRefresh() {
                 return autoRefresh;
             }
 
+            /**
+             * Checks if is zip cache.
+             *
+             * @return true, if is zip cache
+             */
             public boolean isZipCache() {
                 return zipCache;
             }
 
+            /**
+             * Gets the max check cache time.
+             *
+             * @return the max check cache time
+             */
             public long getMaxCheckCacheTime() {
                 return maxCheckCacheTime;
             }
 
+            /**
+             * Gets the min check cache size.
+             *
+             * @return the min check cache size
+             */
             public int getMinCheckCacheSize() {
                 return minCheckCacheSize;
             }
 
+            /**
+             * Gets the cache result condition configuration.
+             *
+             * @return the cache result condition configuration
+             */
             public CacheResultConditionConfiguration getCacheResultConditionConfiguration() {
                 return cacheResultConditionConfiguration;
             }
 
+            /**
+             * Complex element 2 attr.
+             *
+             * @param element the element
+             */
             @Override
             protected void complexElement2Attr(Element element) {
                 String eleName = element.getNodeName();
@@ -853,6 +1215,9 @@ public final class AbacusConfiguration {
                 }
             }
 
+            /**
+             * The Class CacheResultConditionConfiguration.
+             */
             public final class CacheResultConditionConfiguration extends Configuration {
                 /**
                  * Field CACHE_RESULT_CONDITION. (value is ""cacheResultCondition"")
@@ -864,9 +1229,7 @@ public final class AbacusConfiguration {
                  */
                 public static final String MIN_COUNT = "minCount";
 
-                /**
-                 * Default value for {@code DEFAULT_MIN_COUNT} option
-                 */
+                /** Default value for {@code DEFAULT_MIN_COUNT} option. */
                 public static final int DEFAULT_MIN_COUNT = 100;
 
                 /**
@@ -874,9 +1237,7 @@ public final class AbacusConfiguration {
                  */
                 public static final String MAX_COUNT = "maxCount";
 
-                /**
-                 * Default value for {@code CACHE_RESULT_CONDITION} option
-                 */
+                /** Default value for {@code CACHE_RESULT_CONDITION} option. */
                 public static final int DEFAULT_MAX_COUNT = 100000;
 
                 /**
@@ -890,10 +1251,20 @@ public final class AbacusConfiguration {
                  */
                 public static final long DEFAULT_MIN_QUERY_TIME = 10;
 
+                /** The min count. */
                 private final int minCount;
+                
+                /** The max count. */
                 private final int maxCount;
+                
+                /** The min query time. */
                 private final long minQueryTime;
 
+                /**
+                 * Instantiates a new cache result condition configuration.
+                 *
+                 * @param element the element
+                 */
                 public CacheResultConditionConfiguration(Element element) {
                     super(element, AbacusConfiguration.this.props);
 
@@ -907,20 +1278,38 @@ public final class AbacusConfiguration {
                     minQueryTime = (attr == null) ? DEFAULT_MIN_QUERY_TIME : Configuration.readTimeValue(attr);
                 }
 
+                /**
+                 * Gets the min count.
+                 *
+                 * @return the min count
+                 */
                 public int getMinCount() {
                     return minCount;
                 }
 
+                /**
+                 * Gets the max count.
+                 *
+                 * @return the max count
+                 */
                 public int getMaxCount() {
                     return maxCount;
                 }
 
+                /**
+                 * Gets the min query time.
+                 *
+                 * @return the min query time
+                 */
                 public long getMinQueryTime() {
                     return minQueryTime;
                 }
             }
         }
 
+        /**
+         * The Class ServerConfiguration.
+         */
         public final class ServerConfiguration extends Configuration {
             /**
              * Field SERVER. (value is ""server"")
@@ -967,12 +1356,26 @@ public final class AbacusConfiguration {
              */
             public static final String CONTENT_FORMAT = "contentFormat";
 
+            /** The url. */
             private final String url;
+            
+            /** The max connection. */
             private final int maxConnection;
+            
+            /** The conn timeout. */
             private final int connTimeout;
+            
+            /** The read timeout. */
             private final int readTimeout;
+            
+            /** The content format. */
             private final ContentFormat contentFormat;
 
+            /**
+             * Instantiates a new server configuration.
+             *
+             * @param element the element
+             */
             ServerConfiguration(Element element) {
                 super(element, AbacusConfiguration.this.props);
 
@@ -991,28 +1394,56 @@ public final class AbacusConfiguration {
                 contentFormat = N.isNullOrEmpty(attr) ? ContentFormat.XML : ContentFormat.valueOf(attr.toUpperCase());
             }
 
+            /**
+             * Gets the url.
+             *
+             * @return the url
+             */
             public String getUrl() {
                 return url;
             }
 
+            /**
+             * Gets the max connection.
+             *
+             * @return the max connection
+             */
             public int getMaxConnection() {
                 return maxConnection;
             }
 
+            /**
+             * Gets the connection timeout.
+             *
+             * @return the connection timeout
+             */
             public int getConnectionTimeout() {
                 return connTimeout;
             }
 
+            /**
+             * Gets the read timeout.
+             *
+             * @return the read timeout
+             */
             public int getReadTimeout() {
                 return readTimeout;
             }
 
+            /**
+             * Gets the content format.
+             *
+             * @return the content format
+             */
             public ContentFormat getContentFormat() {
                 return contentFormat;
             }
         }
     }
 
+    /**
+     * The Class SLogConfiguration.
+     */
     public final class SLogConfiguration extends Configuration {
         /**
          * Field SLOG. (value is ""slog"")
@@ -1044,12 +1475,23 @@ public final class AbacusConfiguration {
          */
         public static final String TABLE = "table";
 
+        /** The is open. */
         private final boolean isOpen;
+        
+        /** The batch size. */
         private final int batchSize;
 
+        /** The domain list. */
         private Map<String, DomainConfiguration> domainList;
+        
+        /** The table. */
         private TableConfiguration table;
 
+        /**
+         * Instantiates a new s log configuration.
+         *
+         * @param element the element
+         */
         SLogConfiguration(Element element) {
             super(element, AbacusConfiguration.this.props);
             isOpen = Boolean.valueOf(getAttribute(OPEN));
@@ -1063,27 +1505,56 @@ public final class AbacusConfiguration {
             }
         }
 
+        /**
+         * Checks if is open.
+         *
+         * @return true, if is open
+         */
         public boolean isOpen() {
             return isOpen;
         }
 
+        /**
+         * Gets the batch size.
+         *
+         * @return the batch size
+         */
         public int getBatchSize() {
             return batchSize;
         }
 
+        /**
+         * Gets the domain.
+         *
+         * @param domainName the domain name
+         * @return the domain
+         */
         public DomainConfiguration getDomain(String domainName) {
             return domainList.get(domainName);
         }
 
+        /**
+         * Gets the table.
+         *
+         * @return the table
+         */
         public TableConfiguration getTable() {
             return table;
         }
 
+        /**
+         * Inits the.
+         */
         @Override
         protected void init() {
             domainList = new HashMap<>();
         }
 
+        /**
+         * Complex element 2 attr.
+         *
+         * @param element the element
+         */
         @Override
         protected void complexElement2Attr(Element element) {
             if (TABLE.equals(element.getNodeName())) {
@@ -1100,19 +1571,26 @@ public final class AbacusConfiguration {
             }
         }
 
+        /**
+         * The Class DomainConfiguration.
+         */
         public final class DomainConfiguration extends Configuration {
             /**
              * Field NAME. (value is ""name"")
              */
             public static final String NAME = "name";
 
-            /**
-             * Field OPERATION_CODE
-             */
+            /** Field OPERATION_CODE. */
             public static final String OPERATION_CODE = "operationCode";
 
+            /** The operation code. */
             private final int operationCode;
 
+            /**
+             * Instantiates a new domain configuration.
+             *
+             * @param element the element
+             */
             DomainConfiguration(Element element) {
                 super(element, AbacusConfiguration.this.props);
 
@@ -1129,17 +1607,30 @@ public final class AbacusConfiguration {
                 }
             }
 
+            /**
+             * Gets the operation code.
+             *
+             * @return the operation code
+             */
             public int getOperationCode() {
                 return operationCode;
             }
         }
 
+        /**
+         * The Class TableConfiguration.
+         */
         public final class TableConfiguration extends Configuration {
             /**
              * Field NAME. (value is ""name"")
              */
             public static final String NAME = "name";
 
+            /**
+             * Instantiates a new table configuration.
+             *
+             * @param element the element
+             */
             TableConfiguration(Element element) {
                 super(element, AbacusConfiguration.this.props);
             }

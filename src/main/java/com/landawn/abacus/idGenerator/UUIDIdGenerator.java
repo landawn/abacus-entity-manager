@@ -17,25 +17,43 @@ package com.landawn.abacus.idGenerator;
 import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.N;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class UUIDIdGenerator.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public final class UUIDIdGenerator extends AbstractStringIdGenerator {
 
+    /** The header. */
     private final String header;
 
+    /**
+     * Instantiates a new UUID id generator.
+     *
+     * @param prop the prop
+     */
     public UUIDIdGenerator(Property prop) {
         this(prop, null);
     }
 
+    /**
+     * Instantiates a new UUID id generator.
+     *
+     * @param prop the prop
+     * @param header the header
+     */
     public UUIDIdGenerator(Property prop, String header) {
         super(prop);
         this.header = header;
     }
 
+    /**
+     * Allocate.
+     *
+     * @return the string
+     */
     @Override
     public String allocate() {
         if (header == null) {

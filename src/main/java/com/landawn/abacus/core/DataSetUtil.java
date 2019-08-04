@@ -30,23 +30,49 @@ import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.parser.ParserUtil;
 import com.landawn.abacus.util.N;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class DataSetUtil.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 final class DataSetUtil {
+    
+    /**
+     * Instantiates a new data set util.
+     */
     private DataSetUtil() {
         // no instance.
     }
 
+    /**
+     * Row 2 entity.
+     *
+     * @param <T> the generic type
+     * @param targetType the target type
+     * @param dataSet the data set
+     * @param entityDef the entity def
+     * @param rowNum the row num
+     * @return the t
+     */
     static <T> T row2Entity(final Class<T> targetType, final RowDataSet dataSet, final EntityDefinition entityDef, final int rowNum) {
         final List<T> entities = row2Entity(targetType, dataSet, entityDef, rowNum, rowNum + 1);
 
         return N.isNullOrEmpty(entities) ? null : entities.get(0);
     }
 
+    /**
+     * Row 2 entity.
+     *
+     * @param <T> the generic type
+     * @param targetType the target type
+     * @param dataSet the data set
+     * @param entityDef the entity def
+     * @param fromRowIndex the from row index
+     * @param toRowIndex the to row index
+     * @return the list
+     */
     static <T> List<T> row2Entity(final Class<T> targetType, final RowDataSet dataSet, final EntityDefinition entityDef, final int fromRowIndex,
             final int toRowIndex) {
         // TODO [performance improvement]. how to improve performance? 
@@ -128,6 +154,13 @@ final class DataSetUtil {
         return entities;
     }
 
+    /**
+     * Combine.
+     *
+     * @param dataSet the data set
+     * @param prop the prop
+     * @param idPropNames the id prop names
+     */
     static void combine(final RowDataSet dataSet, final Property prop, final String... idPropNames) {
         // TODO [performance improvement]. How to improve performance? 
 
@@ -210,6 +243,13 @@ final class DataSetUtil {
         dataSet.modCount++;
     }
 
+    /**
+     * Sets the prop value by method.
+     *
+     * @param entity the entity
+     * @param prop the prop
+     * @param propValue the prop value
+     */
     private static void setPropValueByMethod(final Object entity, final Property prop, Object propValue) {
         if (propValue == null) {
             propValue = N.defaultValueOf(prop.getType().clazz());

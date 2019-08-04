@@ -64,25 +64,44 @@ import com.landawn.abacus.util.function.ToIntFunction;
 import com.landawn.abacus.util.function.ToLongFunction;
 import com.landawn.abacus.util.function.ToShortFunction;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class EntityManagerEx.
+ *
  * @author Haiyang Li
+ * @param <E> the element type
+ * @since 0.8
  */
 public final class EntityManagerEx<E> implements EntityManager<E> {
+    
+    /** The entity mapper pool. */
     @SuppressWarnings("rawtypes")
     private final Map<Class, Mapper> entityMapperPool = new HashMap<>();
 
+    /** The async executor. */
     private final AsyncExecutor asyncExecutor;
+    
+    /** The entity manager. */
     private final EntityManager<E> entityManager;
 
+    /** The is version supported. */
     private final boolean isVersionSupported;
 
+    /**
+     * Instantiates a new entity manager ex.
+     *
+     * @param entityManager the entity manager
+     */
     public EntityManagerEx(final EntityManager<E> entityManager) {
         this(entityManager, new AsyncExecutor(Math.min(8, IOUtil.CPU_CORES), 64, 180L, TimeUnit.SECONDS));
     }
 
+    /**
+     * Instantiates a new entity manager ex.
+     *
+     * @param entityManager the entity manager
+     * @param asyncExecutor the async executor
+     */
     public EntityManagerEx(final EntityManager<E> entityManager, final AsyncExecutor asyncExecutor) {
         this.entityManager = entityManager;
         this.asyncExecutor = asyncExecutor;
@@ -117,6 +136,13 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         this.isVersionSupported = temp;
     }
 
+    /**
+     * Mapper.
+     *
+     * @param <T> the generic type
+     * @param entityClass the entity class
+     * @return the mapper
+     */
     public <T> Mapper<T> mapper(Class<T> entityClass) {
         synchronized (entityMapperPool) {
             Mapper<T> mapper = entityMapperPool.get(entityClass);
@@ -130,42 +156,105 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         }
     }
 
+    /**
+     * Exists.
+     *
+     * @param entityName the entity name
+     * @param id the id
+     * @return true, if successful
+     */
     public boolean exists(final String entityName, final long id) {
         return exists(createEntityId(entityName, id));
     }
 
+    /**
+     * Exists.
+     *
+     * @param entityName the entity name
+     * @param id the id
+     * @return true, if successful
+     */
     public boolean exists(final String entityName, final String id) {
         return exists(createEntityId(entityName, id));
     }
 
+    /**
+     * Exists.
+     *
+     * @param entityId the entity id
+     * @return true, if successful
+     */
     public boolean exists(final EntityId entityId) {
         return exists(entityId, null);
     }
 
+    /**
+     * Exists.
+     *
+     * @param entityId the entity id
+     * @param options the options
+     * @return true, if successful
+     */
     public boolean exists(final EntityId entityId, final Map<String, Object> options) {
         return gett(entityId, N.asList(entityId.keySet().iterator().next()), options) != null;
     }
 
+    /**
+     * Exists.
+     *
+     * @param entityName the entity name
+     * @param cond the cond
+     * @return true, if successful
+     */
     public boolean exists(final String entityName, final Condition cond) {
         return exists(entityName, cond, null);
     }
 
+    /**
+     * Exists.
+     *
+     * @param entityName the entity name
+     * @param cond the cond
+     * @param options the options
+     * @return true, if successful
+     */
     public boolean exists(final String entityName, final Condition cond, final Map<String, Object> options) {
         Map<String, Object> newOptions = setSingleResultOption(options);
 
         return query(entityName, NSC._1_list, cond, newOptions).size() > 0;
     }
 
+    /**
+     * Count.
+     *
+     * @param entityName the entity name
+     * @param cond the cond
+     * @return the int
+     */
     public int count(final String entityName, final Condition cond) {
         return count(entityName, cond, null);
     }
 
+    /**
+     * Count.
+     *
+     * @param entityName the entity name
+     * @param cond the cond
+     * @param options the options
+     * @return the int
+     */
     public int count(final String entityName, final Condition cond, final Map<String, Object> options) {
         Map<String, Object> newOptions = setSingleResultOption(options);
 
         return queryForSingleResult(int.class, entityName, NSC.COUNT_ALL, cond, newOptions).orElse(0);
     }
 
+    /**
+     * Sets the single result option.
+     *
+     * @param options the options
+     * @return the map
+     */
     protected Map<String, Object> setSingleResultOption(final Map<String, Object> options) {
         Map<String, Object> newOptions = EntityManagerUtil.copyOptions(options);
         newOptions.put(Options.Query.COUNT, 1);
@@ -173,6 +262,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         return newOptions;
     }
 
+    /**
+     * Sets the unique result option.
+     *
+     * @param options the options
+     * @return the map
+     */
     protected Map<String, Object> setUniqueResultOption(final Map<String, Object> options) {
         Map<String, Object> newOptions = EntityManagerUtil.copyOptions(options);
         newOptions.put(Options.Query.COUNT, 2);
@@ -181,6 +276,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
+     * Query for boolean.
+     *
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the optional boolean
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalBoolean queryForBoolean(final String entityName, final String propName, final Condition cond) {
@@ -188,6 +289,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
+     * Query for char.
+     *
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the optional char
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalChar queryForChar(final String entityName, final String propName, final Condition cond) {
@@ -195,6 +302,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
+     * Query for byte.
+     *
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the optional byte
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalByte queryForByte(final String entityName, final String propName, final Condition cond) {
@@ -202,6 +315,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
+     * Query for short.
+     *
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the optional short
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalShort queryForShort(final String entityName, final String propName, final Condition cond) {
@@ -209,6 +328,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
+     * Query for int.
+     *
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the optional int
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalInt queryForInt(final String entityName, final String propName, final Condition cond) {
@@ -216,6 +341,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
+     * Query for long.
+     *
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the optional long
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalLong queryForLong(final String entityName, final String propName, final Condition cond) {
@@ -223,6 +354,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
+     * Query for float.
+     *
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the optional float
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalFloat queryForFloat(final String entityName, final String propName, final Condition cond) {
@@ -230,6 +367,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
+     * Query for double.
+     *
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the optional double
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalDouble queryForDouble(final String entityName, final String propName, final Condition cond) {
@@ -237,6 +380,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
+     * Query for string.
+     *
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the nullable
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<String> queryForString(final String entityName, final String propName, final Condition cond) {
@@ -244,6 +393,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
+     * Query for date.
+     *
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the nullable
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<java.sql.Date> queryForDate(final String entityName, final String propName, final Condition cond) {
@@ -251,6 +406,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
+     * Query for time.
+     *
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the nullable
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<java.sql.Time> queryForTime(final String entityName, final String propName, final Condition cond) {
@@ -258,6 +419,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
+     * Query for timestamp.
+     *
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the nullable
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<java.sql.Timestamp> queryForTimestamp(final String entityName, final String propName, final Condition cond) {
@@ -265,12 +432,15 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
+     * Query for single result.
+     *
+     * @param <V> the value type
+     * @param targetClass the target class
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the nullable
      * @see SQLExecutor#queryForSingleResult(Class, String, String, Condition, Map<String, Object>).
-     * 
-     * @param targetClass
-     * @param entityName
-     * @param cond
-     * @return
      */
     public <V> Nullable<V> queryForSingleResult(final Class<V> targetClass, final String entityName, final String propName, final Condition cond) {
         return queryForSingleResult(targetClass, entityName, propName, cond, null);
@@ -281,15 +451,15 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
      * 
      * 
      * Remember to add {@code limit} condition if big result will be returned by the query.
-     * 
-     * @param targetClass
-     *            set result type to avoid the NullPointerException if result is null and T is primitive type
+     *
+     * @param <V> the value type
+     * @param targetClass            set result type to avoid the NullPointerException if result is null and T is primitive type
      *            "int, long. short ... char, boolean..".
-     * 
-     * @param entityName
-     * @param cond
-     * @param options
-     * @return
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @param options the options
+     * @return the nullable
      */
     @SuppressWarnings("unchecked")
     public <V> Nullable<V> queryForSingleResult(final Class<V> targetClass, final String entityName, final String propName, final Condition cond,
@@ -307,6 +477,16 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         }
     }
 
+    /**
+     * Query for single non null.
+     *
+     * @param <V> the value type
+     * @param targetClass the target class
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the optional
+     */
     public <V> Optional<V> queryForSingleNonNull(final Class<V> targetClass, final String entityName, final String propName, final Condition cond) {
         return queryForSingleNonNull(targetClass, entityName, propName, cond, null);
     }
@@ -316,15 +496,15 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
      * 
      * 
      * Remember to add {@code limit} condition if big result will be returned by the query.
-     * 
-     * @param targetClass
-     *            set result type to avoid the NullPointerException if result is null and T is primitive type
+     *
+     * @param <V> the value type
+     * @param targetClass            set result type to avoid the NullPointerException if result is null and T is primitive type
      *            "int, long. short ... char, boolean..".
-     * 
-     * @param entityName
-     * @param cond
-     * @param options
-     * @return
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @param options the options
+     * @return the optional
      */
     @SuppressWarnings("unchecked")
     public <V> Optional<V> queryForSingleNonNull(final Class<V> targetClass, final String entityName, final String propName, final Condition cond,
@@ -343,13 +523,16 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
-     * @see SQLExecutor#queryForUniqueResult(Class, String, String, Condition, Map<String, Object>).
-     * 
-     * @param targetClass
-     * @param entityName
-     * @param cond
-     * @return
+     * Query for unique result.
+     *
+     * @param <V> the value type
+     * @param targetClass the target class
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the nullable
      * @throws DuplicatedResultException if more than one record found.
+     * @see SQLExecutor#queryForUniqueResult(Class, String, String, Condition, Map<String, Object>).
      */
     public <V> Nullable<V> queryForUniqueResult(final Class<V> targetClass, final String entityName, final String propName, final Condition cond)
             throws DuplicatedResultException {
@@ -362,15 +545,15 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
      * 
      * 
      * Remember to add {@code limit} condition if big result will be returned by the query.
-     * 
-     * @param targetClass
-     *            set result type to avoid the NullPointerException if result is null and T is primitive type
+     *
+     * @param <V> the value type
+     * @param targetClass            set result type to avoid the NullPointerException if result is null and T is primitive type
      *            "int, long. short ... char, boolean..".
-     * 
-     * @param entityName
-     * @param cond
-     * @param options
-     * @return
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @param options the options
+     * @return the nullable
      * @throws DuplicatedResultException if more than one record found.
      */
     @SuppressWarnings("unchecked")
@@ -396,12 +579,14 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
-     * 
-     * @param targetClass
-     * @param entityName
-     * @param propName
-     * @param cond
-     * @return
+     * Query for unique non null.
+     *
+     * @param <V> the value type
+     * @param targetClass the target class
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @return the optional
      * @throws DuplicatedResultException if more than one record found.
      */
     public <V> Optional<V> queryForUniqueNonNull(final Class<V> targetClass, final String entityName, final String propName, final Condition cond)
@@ -415,16 +600,16 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
      * 
      * 
      * Remember to add {@code limit} condition if big result will be returned by the query.
-     * 
-     * @param targetClass
-     *            set result type to avoid the NullPointerException if result is null and T is primitive type
+     *
+     * @param <V> the value type
+     * @param targetClass            set result type to avoid the NullPointerException if result is null and T is primitive type
      *            "int, long. short ... char, boolean..".
-     * 
-     * @param entityName
-     * @param cond
-     * @param options
+     * @param entityName the entity name
+     * @param propName the prop name
+     * @param cond the cond
+     * @param options the options
+     * @return the optional
      * @throws DuplicatedResultException if more than one record found.
-     * @return
      */
     @SuppressWarnings("unchecked")
     public <V> Optional<V> queryForUniqueNonNull(final Class<V> targetClass, final String entityName, final String propName, final Condition cond,
@@ -448,15 +633,42 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         }
     }
 
+    /**
+     * Query.
+     *
+     * @param entityName the entity name
+     * @param selectPropNames the select prop names
+     * @param cond the cond
+     * @return the data set
+     */
     @Override
     public DataSet query(final String entityName, final Collection<String> selectPropNames, final Condition cond) {
         return query(entityName, selectPropNames, cond, null);
     }
 
+    /**
+     * Query.
+     *
+     * @param entityName the entity name
+     * @param selectPropNames the select prop names
+     * @param cond the cond
+     * @param options the options
+     * @return the data set
+     */
     public DataSet query(final String entityName, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
         return entityManager.query(entityName, selectPropNames, cond, null, options);
     }
 
+    /**
+     * Query.
+     *
+     * @param entityName the entity name
+     * @param selectPropNames the select prop names
+     * @param cond the cond
+     * @param resultHandle the result handle
+     * @param options the options
+     * @return the data set
+     */
     @Override
     public DataSet query(final String entityName, final Collection<String> selectPropNames, final Condition cond, final Holder<String> resultHandle,
             final Map<String, Object> options) {
@@ -493,12 +705,11 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
      * Mostly it's designed for partition to query different partitioning tables in the specified data sources.
      * 
      * By default it's queried in parallel. but it can be set to sequential query by set <code>Query.QUERY_IN_PARALLEL=false</code> in options
-     * 
-     * @param entityName
-     * @param selectPropNames
-     * @param cond
-     * @param options
-     *            Multiple data sources can be specified by query options: <code>Query.QUERY_WITH_DATA_SOURCES</code>
+     *
+     * @param entityName the entity name
+     * @param selectPropNames the select prop names
+     * @param cond the cond
+     * @param options            Multiple data sources can be specified by query options: <code>Query.QUERY_WITH_DATA_SOURCES</code>
      * @return the merged result
      */
     public DataSet queryAll(final String entityName, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
@@ -536,6 +747,15 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     //
     //        return (dataSet.size() == 0) ? null : (Map<String, Object>) dataSet.getRow(Map.class, 0);
     //    }
+    /**
+     * Find first.
+     *
+     * @param <T> the generic type
+     * @param entityClass the entity class
+     * @param selectPropNames the select prop names
+     * @param cond the cond
+     * @return the optional
+     */
     //
     public <T> Optional<T> findFirst(final Class<T> entityClass, final Collection<String> selectPropNames, final Condition cond) {
         return findFirst(entityClass, selectPropNames, cond, null);
@@ -547,12 +767,13 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
      * from column value.
      * 
      * Remember to add {@code limit} condition if big result will be returned by the query.
-     * 
-     * @param entityName
-     * @param selectPropNames
-     * @param cond
-     * @param options
-     * @return
+     *
+     * @param <T> the generic type
+     * @param entityClass the entity class
+     * @param selectPropNames the select prop names
+     * @param cond the cond
+     * @param options the options
+     * @return the optional
      */
     public <T> Optional<T> findFirst(final Class<T> entityClass, final Collection<String> selectPropNames, final Condition cond,
             final Map<String, Object> options) {
@@ -562,6 +783,15 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         return N.isNullOrEmpty(entities) ? (Optional<T>) Optional.empty() : Optional.of(entities.get(0));
     }
 
+    /**
+     * Find first.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param selectPropNames the select prop names
+     * @param cond the cond
+     * @return the optional
+     */
     public <T> Optional<T> findFirst(final String entityName, final Collection<String> selectPropNames, final Condition cond) {
         return findFirst(entityName, selectPropNames, cond, null);
     }
@@ -572,12 +802,13 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
      * from column value.
      * 
      * Remember to add {@code limit} condition if big result will be returned by the query.
-     * 
-     * @param entityName
-     * @param selectPropNames
-     * @param cond
-     * @param options
-     * @return
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param selectPropNames the select prop names
+     * @param cond the cond
+     * @param options the options
+     * @return the optional
      */
     public <T> Optional<T> findFirst(final String entityName, final Collection<String> selectPropNames, final Condition cond,
             final Map<String, Object> options) {
@@ -587,6 +818,16 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         return N.isNullOrEmpty(entities) ? (Optional<T>) Optional.empty() : Optional.of(entities.get(0));
     }
 
+    /**
+     * Query all.
+     *
+     * @param entityDef the entity def
+     * @param selectPropNames the select prop names
+     * @param cond the cond
+     * @param options the options
+     * @param counter the counter
+     * @return the data set
+     */
     private DataSet queryAll(final EntityDefinition entityDef, final Collection<String> selectPropNames, final Condition cond,
             final Map<String, Object> options, final AtomicInteger counter) {
         final Collection<String> dataSourceNames = N.isNullOrEmpty(options) ? null : (Collection<String>) options.get(Query.QUERY_WITH_DATA_SOURCES);
@@ -776,11 +1017,30 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         }
     }
 
+    /**
+     * List.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param selectPropNames the select prop names
+     * @param cond the cond
+     * @return the list
+     */
     @Override
     public <T> List<T> list(final String entityName, final Collection<String> selectPropNames, final Condition cond) {
         return list(entityName, selectPropNames, cond, null);
     }
 
+    /**
+     * List.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param selectPropNames the select prop names
+     * @param cond the cond
+     * @param options the options
+     * @return the list
+     */
     @Override
     public <T> List<T> list(final String entityName, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
         return entityManager.list(entityName, selectPropNames, cond, options);
@@ -791,12 +1051,12 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
      * Mostly it's designed for partition to query different partitioning tables in the specified data sources.
      * 
      * By default it's queried in parallel. but it can be set to sequential query by set <code>Query.QUERY_IN_PARALLEL=false</code> in options
-     * 
-     * @param entityName
-     * @param selectPropNames
-     * @param cond
-     * @param options
-     *            Multiple data sources can be specified by query options: <code>Query.QUERY_WITH_DATA_SOURCES</code>
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param selectPropNames the select prop names
+     * @param cond the cond
+     * @param options            Multiple data sources can be specified by query options: <code>Query.QUERY_WITH_DATA_SOURCES</code>
      * @return the merged result
      */
     @SuppressWarnings("unchecked")
@@ -813,6 +1073,17 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         return listAll(entityDef, selectPropNames, cond, options, counter);
     }
 
+    /**
+     * List all.
+     *
+     * @param <T> the generic type
+     * @param entityDef the entity def
+     * @param selectPropNames the select prop names
+     * @param cond the cond
+     * @param options the options
+     * @param counter the counter
+     * @return the list
+     */
     @SuppressWarnings("unchecked")
     private <T> List<T> listAll(final EntityDefinition entityDef, final Collection<String> selectPropNames, final Condition cond,
             final Map<String, Object> options, final AtomicInteger counter) {
@@ -1008,106 +1279,282 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         }
     }
 
+    /**
+     * Adds the.
+     *
+     * @param entityName the entity name
+     * @param props the props
+     * @return the entity id
+     */
     public EntityId add(final String entityName, final Map<String, Object> props) {
         return add(entityName, props, null);
     }
 
+    /**
+     * Adds the.
+     *
+     * @param entityName the entity name
+     * @param props the props
+     * @param options the options
+     * @return the entity id
+     */
     @Override
     public EntityId add(final String entityName, final Map<String, Object> props, final Map<String, Object> options) {
         return entityManager.add(entityName, props, options);
     }
 
+    /**
+     * Adds the all.
+     *
+     * @param entityName the entity name
+     * @param propsList the props list
+     * @return the list
+     */
     public List<EntityId> addAll(final String entityName, final List<Map<String, Object>> propsList) {
         return addAll(entityName, propsList, null);
     }
 
+    /**
+     * Adds the all.
+     *
+     * @param entityName the entity name
+     * @param propsList the props list
+     * @param options the options
+     * @return the list
+     */
     @Override
     public List<EntityId> addAll(final String entityName, final List<Map<String, Object>> propsList, final Map<String, Object> options) {
         return entityManager.addAll(entityName, propsList, options);
     }
 
+    /**
+     * Update.
+     *
+     * @param entityName the entity name
+     * @param props the props
+     * @param cond the cond
+     * @return the int
+     */
     public int update(final String entityName, final Map<String, Object> props, final Condition cond) {
         return update(entityName, props, cond, null);
     }
 
+    /**
+     * Update.
+     *
+     * @param entityName the entity name
+     * @param props the props
+     * @param cond the cond
+     * @param options the options
+     * @return the int
+     */
     @Override
     public int update(final String entityName, final Map<String, Object> props, final Condition cond, final Map<String, Object> options) {
         return entityManager.update(entityName, props, cond, options);
     }
 
+    /**
+     * Delete.
+     *
+     * @param entityName the entity name
+     * @param cond the cond
+     * @return the int
+     */
     public int delete(final String entityName, final Condition cond) {
         return delete(entityName, cond, null);
     }
 
+    /**
+     * Delete.
+     *
+     * @param entityName the entity name
+     * @param cond the cond
+     * @param options the options
+     * @return the int
+     */
     @Override
     public int delete(final String entityName, final Condition cond, final Map<String, Object> options) {
         return entityManager.delete(entityName, cond, options);
     }
 
+    /**
+     * Gets the result by handle.
+     *
+     * @param resultHandle the result handle
+     * @param selectPropNames the select prop names
+     * @param options the options
+     * @return the result by handle
+     */
     @Override
     public DataSet getResultByHandle(final String resultHandle, final Collection<String> selectPropNames, final Map<String, Object> options) {
         return entityManager.getResultByHandle(resultHandle, selectPropNames, options);
     }
 
+    /**
+     * Release result handle.
+     *
+     * @param resultHandle the result handle
+     */
     @Override
     public void releaseResultHandle(final String resultHandle) {
         entityManager.releaseResultHandle(resultHandle);
     }
 
+    /**
+     * Begin transaction.
+     *
+     * @param isolationLevel the isolation level
+     * @param options the options
+     * @return the string
+     */
     @Override
     public String beginTransaction(final IsolationLevel isolationLevel, final Map<String, Object> options) {
         return entityManager.beginTransaction(isolationLevel, options);
     }
 
+    /**
+     * End transaction.
+     *
+     * @param transactionId the transaction id
+     * @param transactionAction the transaction action
+     * @param options the options
+     */
     @Override
     public void endTransaction(final String transactionId, final Action transactionAction, final Map<String, Object> options) {
         entityManager.endTransaction(transactionId, transactionAction, options);
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @return the optional
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final String entityName, final long id) throws DuplicatedResultException {
         return Optional.ofNullable((T) entityManager.gett(createEntityId(entityName, id)));
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @param selectPropNames the select prop names
+     * @return the optional
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final String entityName, final long id, final Collection<String> selectPropNames) throws DuplicatedResultException {
         return Optional.ofNullable((T) entityManager.gett(createEntityId(entityName, id), selectPropNames));
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @param selectPropNames the select prop names
+     * @param options the options
+     * @return the optional
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final String entityName, final long id, final Collection<String> selectPropNames, final Map<String, Object> options)
             throws DuplicatedResultException {
         return Optional.ofNullable((T) entityManager.gett(createEntityId(entityName, id), selectPropNames, options));
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @return the optional
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final String entityName, final String id) throws DuplicatedResultException {
         return Optional.ofNullable((T) entityManager.gett(createEntityId(entityName, id)));
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @param selectPropNames the select prop names
+     * @return the optional
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final String entityName, final String id, final Collection<String> selectPropNames) throws DuplicatedResultException {
         return Optional.ofNullable((T) entityManager.gett(createEntityId(entityName, id), selectPropNames));
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @param selectPropNames the select prop names
+     * @param options the options
+     * @return the optional
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final String entityName, final String id, final Collection<String> selectPropNames, final Map<String, Object> options)
             throws DuplicatedResultException {
         return Optional.ofNullable((T) entityManager.gett(createEntityId(entityName, id), selectPropNames, options));
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityId the entity id
+     * @return the optional
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @Override
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final EntityId entityId) throws DuplicatedResultException {
         return Optional.ofNullable((T) entityManager.gett(entityId));
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityId the entity id
+     * @param selectPropNames the select prop names
+     * @return the optional
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @Override
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final EntityId entityId, final Collection<String> selectPropNames) throws DuplicatedResultException {
         return Optional.ofNullable((T) entityManager.gett(entityId, selectPropNames));
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityId the entity id
+     * @param selectPropNames the select prop names
+     * @param options the options
+     * @return the optional
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @Override
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final EntityId entityId, final Collection<String> selectPropNames, final Map<String, Object> options)
@@ -1115,86 +1562,231 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         return Optional.ofNullable((T) entityManager.gett(entityId, selectPropNames, options));
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @return the t
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     public <T> T gett(final String entityName, final long id) throws DuplicatedResultException {
         return (T) entityManager.gett(createEntityId(entityName, id));
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @param selectPropNames the select prop names
+     * @return the t
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     <T> T gett(final String entityName, final long id, final String... selectPropNames) throws DuplicatedResultException {
         final Collection<String> selectPropNameList = N.isNullOrEmpty(selectPropNames) ? null : N.asList(selectPropNames);
 
         return this.gett(entityName, id, selectPropNameList);
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @param selectPropNames the select prop names
+     * @return the t
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     public <T> T gett(final String entityName, final long id, final Collection<String> selectPropNames) throws DuplicatedResultException {
         return (T) entityManager.gett(createEntityId(entityName, id), selectPropNames);
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @param selectPropNames the select prop names
+     * @param options the options
+     * @return the t
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     public <T> T gett(final String entityName, final long id, final Collection<String> selectPropNames, final Map<String, Object> options)
             throws DuplicatedResultException {
         return (T) entityManager.gett(createEntityId(entityName, id), selectPropNames, options);
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @return the t
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     public <T> T gett(final String entityName, final String id) throws DuplicatedResultException {
         return (T) entityManager.gett(createEntityId(entityName, id));
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @param selectPropNames the select prop names
+     * @return the t
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     <T> T gett(final String entityName, final String id, final String... selectPropNames) throws DuplicatedResultException {
         final Collection<String> selectPropNameList = N.isNullOrEmpty(selectPropNames) ? null : N.asList(selectPropNames);
 
         return this.gett(entityName, id, selectPropNameList);
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @param selectPropNames the select prop names
+     * @return the t
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     public <T> T gett(final String entityName, final String id, final Collection<String> selectPropNames) throws DuplicatedResultException {
         return (T) entityManager.gett(createEntityId(entityName, id), selectPropNames);
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @param selectPropNames the select prop names
+     * @param options the options
+     * @return the t
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     public <T> T gett(final String entityName, final String id, final Collection<String> selectPropNames, final Map<String, Object> options)
             throws DuplicatedResultException {
         return (T) entityManager.gett(createEntityId(entityName, id), selectPropNames, options);
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityId the entity id
+     * @return the t
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     @Override
     public <T> T gett(final EntityId entityId) throws DuplicatedResultException {
         return (T) entityManager.gett(entityId);
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityId the entity id
+     * @param selectPropNames the select prop names
+     * @return the t
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     <T> T gett(final EntityId entityId, final String... selectPropNames) throws DuplicatedResultException {
         final List<String> selectPropNameList = N.isNullOrEmpty(selectPropNames) ? null : N.asList(selectPropNames);
 
         return gett(entityId, selectPropNameList);
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityId the entity id
+     * @param selectPropNames the select prop names
+     * @return the t
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     @Override
     public <T> T gett(final EntityId entityId, final Collection<String> selectPropNames) throws DuplicatedResultException {
         return (T) entityManager.gett(entityId, selectPropNames);
     }
 
+    /**
+     * Gets the t.
+     *
+     * @param <T> the generic type
+     * @param entityId the entity id
+     * @param selectPropNames the select prop names
+     * @param options the options
+     * @return the t
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     @SuppressWarnings("unchecked")
     @Override
     public <T> T gett(final EntityId entityId, final Collection<String> selectPropNames, final Map<String, Object> options) throws DuplicatedResultException {
         return (T) entityManager.gett(entityId, selectPropNames, options);
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @param selectPropNames the select prop names
+     * @return the optional
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     <T> Optional<T> get(final String entityName, final long id, final String... selectPropNames) throws DuplicatedResultException {
         final Collection<String> selectPropNameList = N.isNullOrEmpty(selectPropNames) ? null : N.asList(selectPropNames);
 
         return this.get(entityName, id, selectPropNameList);
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityName the entity name
+     * @param id the id
+     * @param selectPropNames the select prop names
+     * @return the optional
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     <T> Optional<T> get(final String entityName, final String id, final String... selectPropNames) throws DuplicatedResultException {
         final Collection<String> selectPropNameList = N.isNullOrEmpty(selectPropNames) ? null : N.asList(selectPropNames);
 
         return this.get(entityName, id, selectPropNameList);
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param entityId the entity id
+     * @param selectPropNames the select prop names
+     * @return the optional
+     * @throws DuplicatedResultException the duplicated result exception
+     */
     <T> Optional<T> get(final EntityId entityId, final String... selectPropNames) throws DuplicatedResultException {
         final List<String> selectPropNameList = N.isNullOrEmpty(selectPropNames) ? null : N.asList(selectPropNames);
 
@@ -1224,11 +1816,24 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     //        return entityManager.getAll(entityIds, selectPropNames, options);
     //    }
 
+    /**
+     * Refresh.
+     *
+     * @param entity the entity
+     * @return true, if successful
+     */
     @Deprecated
     public boolean refresh(final E entity) {
         return refresh(entity, null);
     }
 
+    /**
+     * Refresh.
+     *
+     * @param entity the entity
+     * @param options the options
+     * @return true, if successful
+     */
     @Deprecated
     public boolean refresh(final E entity, final Map<String, Object> options) {
         final EntityDefinition entityDef = checkEntity(entity);
@@ -1250,11 +1855,24 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         }
     }
 
+    /**
+     * Refresh all.
+     *
+     * @param entities the entities
+     * @return the int
+     */
     @Deprecated
     public int refreshAll(final Collection<? extends E> entities) {
         return refreshAll(entities, null);
     }
 
+    /**
+     * Refresh all.
+     *
+     * @param entities the entities
+     * @param options the options
+     * @return the int
+     */
     @Deprecated
     public int refreshAll(final Collection<? extends E> entities, final Map<String, Object> options) {
         if (N.isNullOrEmpty(entities)) {
@@ -1305,21 +1923,47 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         return result;
     }
 
+    /**
+     * Adds the.
+     *
+     * @param entity the entity
+     * @return the entity id
+     */
     @Override
     public EntityId add(final E entity) {
         return entityManager.add(entity);
     }
 
+    /**
+     * Adds the.
+     *
+     * @param entity the entity
+     * @param options the options
+     * @return the entity id
+     */
     @Override
     public EntityId add(final E entity, final Map<String, Object> options) {
         return entityManager.add(entity, options);
     }
 
+    /**
+     * Adds the all.
+     *
+     * @param entities the entities
+     * @return the list
+     */
     @Override
     public List<EntityId> addAll(final Collection<? extends E> entities) {
         return addAll(entities, null);
     }
 
+    /**
+     * Adds the all.
+     *
+     * @param entities the entities
+     * @param options the options
+     * @return the list
+     */
     @Override
     public List<EntityId> addAll(final Collection<? extends E> entities, final Map<String, Object> options) {
         return entityManager.addAll(entities, options);
@@ -1327,10 +1971,10 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
 
     /**
      * Execute {@code add} and return the added entity if the record doesn't, otherwise, {@code update} is executed and updated db record is returned. 
-     * 
-     * @param entity
-     * @param cond
-     * @return
+     *
+     * @param entity the entity
+     * @param cond the cond
+     * @return the e
      */
     public E addOrUpdate(final E entity, final Condition cond) {
         return addOrUpdate(entity, cond, null);
@@ -1338,11 +1982,11 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
 
     /**
      * Execute {@code add} and return the added entity if the record doesn't, otherwise, {@code update} is executed and updated db record is returned. 
-     * 
-     * @param entity
-     * @param cond
-     * @param options
-     * @return
+     *
+     * @param entity the entity
+     * @param cond the cond
+     * @param options the options
+     * @return the e
      */
     public E addOrUpdate(final E entity, final Condition cond, final Map<String, Object> options) {
         if (cond == null) {
@@ -1369,60 +2013,130 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         }
     }
 
+    /**
+     * Update.
+     *
+     * @param entity the entity
+     * @return the int
+     */
     @Override
     public int update(final E entity) {
         return entityManager.update(entity);
     }
 
+    /**
+     * Update.
+     *
+     * @param entity the entity
+     * @param options the options
+     * @return the int
+     */
     @Override
     public int update(final E entity, final Map<String, Object> options) {
         return entityManager.update(entity, options);
     }
 
+    /**
+     * Update all.
+     *
+     * @param entities the entities
+     * @return the int
+     */
     @Override
     public int updateAll(final Collection<? extends E> entities) {
         return updateAll(entities, null);
     }
 
+    /**
+     * Update all.
+     *
+     * @param entities the entities
+     * @param options the options
+     * @return the int
+     */
     @Override
     public int updateAll(final Collection<? extends E> entities, final Map<String, Object> options) {
         return entityManager.updateAll(entities, options);
     }
 
+    /**
+     * Update.
+     *
+     * @param props the props
+     * @param entityId the entity id
+     * @return the int
+     */
     @Override
     public int update(final Map<String, Object> props, final EntityId entityId) {
         return entityManager.update(props, entityId);
     }
 
+    /**
+     * Update.
+     *
+     * @param props the props
+     * @param entityId the entity id
+     * @param options the options
+     * @return the int
+     */
     @Override
     public int update(final Map<String, Object> props, final EntityId entityId, final Map<String, Object> options) {
         return entityManager.update(props, entityId, options);
     }
 
+    /**
+     * Update all.
+     *
+     * @param props the props
+     * @param entityIds the entity ids
+     * @return the int
+     */
     @Override
     public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds) {
         return entityManager.updateAll(props, entityIds);
     }
 
+    /**
+     * Update all.
+     *
+     * @param props the props
+     * @param entityIds the entity ids
+     * @param options the options
+     * @return the int
+     */
     @Override
     public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds, final Map<String, Object> options) {
         return entityManager.updateAll(props, entityIds, options);
     }
 
+    /**
+     * Delete.
+     *
+     * @param entity the entity
+     * @return the int
+     */
     @Override
     public int delete(final E entity) {
         return entityManager.delete(entity);
     }
 
+    /**
+     * Delete.
+     *
+     * @param entity the entity
+     * @param options the options
+     * @return the int
+     */
     @Override
     public int delete(final E entity, final Map<String, Object> options) {
         return entityManager.delete(entity, options);
     }
 
     /**
-     * 
+     * Delete all.
+     *
      * @param entities the elements in the collection must be the same type
-     * @return
+     * @return the int
      */
     @Override
     public int deleteAll(final Collection<? extends E> entities) {
@@ -1430,53 +2144,109 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
-     * 
+     * Delete all.
+     *
      * @param entities the elements in the collection must be the same type
-     * @return
+     * @param options the options
+     * @return the int
      */
     @Override
     public int deleteAll(final Collection<? extends E> entities, final Map<String, Object> options) {
         return entityManager.deleteAll(entities, options);
     }
 
+    /**
+     * Delete.
+     *
+     * @param entityId the entity id
+     * @return the int
+     */
     @Override
     public int delete(final EntityId entityId) {
         return entityManager.delete(entityId);
     }
 
+    /**
+     * Delete.
+     *
+     * @param entityId the entity id
+     * @param options the options
+     * @return the int
+     */
     @Override
     public int delete(final EntityId entityId, final Map<String, Object> options) {
         return entityManager.delete(entityId, options);
     }
 
+    /**
+     * Delete all.
+     *
+     * @param entityIds the entity ids
+     * @return the int
+     */
     @Override
     public int deleteAll(final List<? extends EntityId> entityIds) {
         return entityManager.deleteAll(entityIds);
     }
 
+    /**
+     * Delete all.
+     *
+     * @param entityIds the entity ids
+     * @param options the options
+     * @return the int
+     */
     @Override
     public int deleteAll(final List<? extends EntityId> entityIds, final Map<String, Object> options) {
         return entityManager.deleteAll(entityIds, options);
     }
 
+    /**
+     * Gets the record version.
+     *
+     * @param entityId the entity id
+     * @param options the options
+     * @return the record version
+     */
     @Override
     @Deprecated
     public long getRecordVersion(final EntityId entityId, final Map<String, Object> options) {
         return entityManager.getRecordVersion(entityId, options);
     }
 
+    /**
+     * Lock record.
+     *
+     * @param entityId the entity id
+     * @param lockMode the lock mode
+     * @param options the options
+     * @return the string
+     */
     @Override
     @Deprecated
     public String lockRecord(final EntityId entityId, final LockMode lockMode, final Map<String, Object> options) {
         return entityManager.lockRecord(entityId, lockMode, options);
     }
 
+    /**
+     * Unlock record.
+     *
+     * @param entityId the entity id
+     * @param lockCode the lock code
+     * @param options the options
+     * @return true, if successful
+     */
     @Override
     @Deprecated
     public boolean unlockRecord(final EntityId entityId, final String lockCode, final Map<String, Object> options) {
         return entityManager.unlockRecord(entityId, lockCode, options);
     }
 
+    /**
+     * Gets the entity definition factory.
+     *
+     * @return the entity definition factory
+     */
     @Override
     @Deprecated
     @Internal
@@ -1484,6 +2254,13 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         return entityManager.getEntityDefinitionFactory();
     }
 
+    /**
+     * To array.
+     *
+     * @param <T> the generic type
+     * @param c the c
+     * @return the t[]
+     */
     protected <T> T[] toArray(final Collection<? extends T> c) {
         if (N.isNullOrEmpty(c)) {
             return (T[]) N.EMPTY_OBJECT_ARRAY;
@@ -1506,22 +2283,53 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         }
     }
 
+    /**
+     * Check entity.
+     *
+     * @param entity the entity
+     * @return the entity definition
+     */
     protected EntityDefinition checkEntity(final E entity) {
         return EntityManagerUtil.checkEntity(getEntityDefinitionFactory(), entity);
     }
 
+    /**
+     * Check entity.
+     *
+     * @param entities the entities
+     * @return the entity definition
+     */
     protected EntityDefinition checkEntity(final E[] entities) {
         return EntityManagerUtil.checkEntity(getEntityDefinitionFactory(), entities);
     }
 
+    /**
+     * Check entity.
+     *
+     * @param entities the entities
+     * @return the entity definition
+     */
     protected EntityDefinition checkEntity(final Collection<?> entities) {
         return EntityManagerUtil.checkEntity(getEntityDefinitionFactory(), entities);
     }
 
+    /**
+     * Check entity name.
+     *
+     * @param entityName the entity name
+     * @return the entity definition
+     */
     protected EntityDefinition checkEntityName(final String entityName) {
         return EntityManagerUtil.checkEntityName(getEntityDefinitionFactory(), entityName);
     }
 
+    /**
+     * Creates the entity id.
+     *
+     * @param entityName the entity name
+     * @param id the id
+     * @return the entity id
+     */
     protected EntityId createEntityId(final String entityName, final Object id) {
         final EntityDefinition entityDef = checkEntityName(entityName);
 
@@ -1541,11 +2349,28 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         return entityId;
     }
 
+    /**
+     * The Class Mapper.
+     *
+     * @param <E> the element type
+     */
     public static class Mapper<E> {
+        
+        /** The em. */
         private final EntityManagerEx<E> em;
+        
+        /** The entity class. */
         private final Class<E> entityClass;
+        
+        /** The entity name. */
         private final String entityName;
 
+        /**
+         * Instantiates a new mapper.
+         *
+         * @param em the em
+         * @param entityClass the entity class
+         */
         @SuppressWarnings("rawtypes")
         Mapper(final EntityManagerEx em, final Class<E> entityClass) {
             this.em = em;
@@ -1553,387 +2378,1044 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
             this.entityName = ClassUtil.getSimpleClassName(entityClass);
         }
 
+        /**
+         * Exists.
+         *
+         * @param id the id
+         * @return true, if successful
+         */
         public boolean exists(final long id) {
             return em.exists(entityName, id);
         }
 
+        /**
+         * Exists.
+         *
+         * @param id the id
+         * @return true, if successful
+         */
         public boolean exists(final String id) {
             return em.exists(entityName, id);
         }
 
+        /**
+         * Exists.
+         *
+         * @param entityId the entity id
+         * @return true, if successful
+         */
         public boolean exists(final EntityId entityId) {
             return em.exists(entityId);
         }
 
+        /**
+         * Exists.
+         *
+         * @param entityId the entity id
+         * @param options the options
+         * @return true, if successful
+         */
         public boolean exists(final EntityId entityId, final Map<String, Object> options) {
             return em.exists(entityId, options);
         }
 
+        /**
+         * Exists.
+         *
+         * @param cond the cond
+         * @return true, if successful
+         */
         public boolean exists(final Condition cond) {
             return em.exists(entityName, cond);
         }
 
+        /**
+         * Exists.
+         *
+         * @param cond the cond
+         * @param options the options
+         * @return true, if successful
+         */
         public boolean exists(final Condition cond, final Map<String, Object> options) {
             return em.exists(entityName, cond, options);
         }
 
+        /**
+         * Count.
+         *
+         * @param cond the cond
+         * @return the int
+         */
         public int count(final Condition cond) {
             return em.count(entityName, cond);
         }
 
+        /**
+         * Count.
+         *
+         * @param cond the cond
+         * @param options the options
+         * @return the int
+         */
         public int count(final Condition cond, final Map<String, Object> options) {
             return em.count(entityName, cond, options);
         }
 
+        /**
+         * Query for boolean.
+         *
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the optional boolean
+         */
         public OptionalBoolean queryForBoolean(final String propName, final Condition cond) {
             return em.queryForBoolean(entityName, propName, cond);
         }
 
+        /**
+         * Query for char.
+         *
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the optional char
+         */
         public OptionalChar queryForChar(final String propName, final Condition cond) {
             return em.queryForChar(entityName, propName, cond);
         }
 
+        /**
+         * Query for byte.
+         *
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the optional byte
+         */
         public OptionalByte queryForByte(final String propName, final Condition cond) {
             return em.queryForByte(entityName, propName, cond);
         }
 
+        /**
+         * Query for short.
+         *
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the optional short
+         */
         public OptionalShort queryForShort(final String propName, final Condition cond) {
             return em.queryForShort(entityName, propName, cond);
         }
 
+        /**
+         * Query for int.
+         *
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the optional int
+         */
         public OptionalInt queryForInt(final String propName, final Condition cond) {
             return em.queryForInt(entityName, propName, cond);
         }
 
+        /**
+         * Query for long.
+         *
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the optional long
+         */
         public OptionalLong queryForLong(final String propName, final Condition cond) {
             return em.queryForLong(entityName, propName, cond);
         }
 
+        /**
+         * Query for float.
+         *
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the optional float
+         */
         public OptionalFloat queryForFloat(final String propName, final Condition cond) {
             return em.queryForFloat(entityName, propName, cond);
         }
 
+        /**
+         * Query for double.
+         *
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the optional double
+         */
         public OptionalDouble queryForDouble(final String propName, final Condition cond) {
             return em.queryForDouble(entityName, propName, cond);
         }
 
+        /**
+         * Query for string.
+         *
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the nullable
+         */
         public Nullable<String> queryForString(final String propName, final Condition cond) {
             return em.queryForString(entityName, propName, cond);
         }
 
+        /**
+         * Query for date.
+         *
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the nullable
+         */
         public Nullable<java.sql.Date> queryForDate(final String propName, final Condition cond) {
             return em.queryForDate(entityName, propName, cond);
         }
 
+        /**
+         * Query for time.
+         *
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the nullable
+         */
         public Nullable<java.sql.Time> queryForTime(final String propName, final Condition cond) {
             return em.queryForTime(entityName, propName, cond);
         }
 
+        /**
+         * Query for timestamp.
+         *
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the nullable
+         */
         public Nullable<java.sql.Timestamp> queryForTimestamp(final String propName, final Condition cond) {
             return em.queryForTimestamp(entityName, propName, cond);
         }
 
+        /**
+         * Query for single result.
+         *
+         * @param <V> the value type
+         * @param targetClass the target class
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the nullable
+         */
         public <V> Nullable<V> queryForSingleResult(final Class<V> targetClass, final String propName, final Condition cond) {
             return em.queryForSingleResult(targetClass, entityName, propName, cond);
         }
 
+        /**
+         * Query for single result.
+         *
+         * @param <V> the value type
+         * @param targetClass the target class
+         * @param propName the prop name
+         * @param cond the cond
+         * @param options the options
+         * @return the nullable
+         */
         @SuppressWarnings("unchecked")
         public <V> Nullable<V> queryForSingleResult(final Class<V> targetClass, final String propName, final Condition cond,
                 final Map<String, Object> options) {
             return em.queryForSingleResult(targetClass, entityName, propName, cond, options);
         }
 
+        /**
+         * Query for single non null.
+         *
+         * @param <V> the value type
+         * @param targetClass the target class
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the optional
+         */
         public <V> Optional<V> queryForSingleNonNull(final Class<V> targetClass, final String propName, final Condition cond) {
             return em.queryForSingleNonNull(targetClass, entityName, propName, cond);
         }
 
+        /**
+         * Query for single non null.
+         *
+         * @param <V> the value type
+         * @param targetClass the target class
+         * @param propName the prop name
+         * @param cond the cond
+         * @param options the options
+         * @return the optional
+         */
         @SuppressWarnings("unchecked")
         public <V> Optional<V> queryForSingleNonNull(final Class<V> targetClass, final String propName, final Condition cond,
                 final Map<String, Object> options) {
             return em.queryForSingleNonNull(targetClass, entityName, propName, cond, options);
         }
 
+        /**
+         * Query for unique result.
+         *
+         * @param <V> the value type
+         * @param targetClass the target class
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the nullable
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         public <V> Nullable<V> queryForUniqueResult(final Class<V> targetClass, final String propName, final Condition cond) throws DuplicatedResultException {
             return em.queryForUniqueResult(targetClass, entityName, propName, cond);
         }
 
+        /**
+         * Query for unique result.
+         *
+         * @param <V> the value type
+         * @param targetClass the target class
+         * @param propName the prop name
+         * @param cond the cond
+         * @param options the options
+         * @return the nullable
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public <V> Nullable<V> queryForUniqueResult(final Class<V> targetClass, final String propName, final Condition cond, final Map<String, Object> options)
                 throws DuplicatedResultException {
             return em.queryForUniqueResult(targetClass, entityName, propName, cond, options);
         }
 
+        /**
+         * Query for unique non null.
+         *
+         * @param <V> the value type
+         * @param targetClass the target class
+         * @param propName the prop name
+         * @param cond the cond
+         * @return the optional
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         public <V> Optional<V> queryForUniqueNonNull(final Class<V> targetClass, final String propName, final Condition cond) throws DuplicatedResultException {
             return em.queryForUniqueNonNull(targetClass, entityName, propName, cond);
         }
 
+        /**
+         * Query for unique non null.
+         *
+         * @param <V> the value type
+         * @param targetClass the target class
+         * @param propName the prop name
+         * @param cond the cond
+         * @param options the options
+         * @return the optional
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public <V> Optional<V> queryForUniqueNonNull(final Class<V> targetClass, final String propName, final Condition cond, final Map<String, Object> options)
                 throws DuplicatedResultException {
             return em.queryForUniqueNonNull(targetClass, entityName, propName, cond, options);
         }
 
+        /**
+         * Find first.
+         *
+         * @param selectPropNames the select prop names
+         * @param cond the cond
+         * @return the optional
+         */
         public Optional<E> findFirst(final Collection<String> selectPropNames, final Condition cond) {
             return em.findFirst(entityClass, selectPropNames, cond);
         }
 
+        /**
+         * Find first.
+         *
+         * @param selectPropNames the select prop names
+         * @param cond the cond
+         * @param options the options
+         * @return the optional
+         */
         public Optional<E> findFirst(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
             return em.findFirst(entityClass, selectPropNames, cond, options);
         }
 
+        /**
+         * Query.
+         *
+         * @param selectPropNames the select prop names
+         * @param cond the cond
+         * @return the data set
+         */
         public DataSet query(final Collection<String> selectPropNames, final Condition cond) {
             return em.query(entityName, selectPropNames, cond);
         }
 
+        /**
+         * Query.
+         *
+         * @param selectPropNames the select prop names
+         * @param cond the cond
+         * @param options the options
+         * @return the data set
+         */
         public DataSet query(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
             return em.query(entityName, selectPropNames, cond, options);
         }
 
+        /**
+         * Query.
+         *
+         * @param selectPropNames the select prop names
+         * @param cond the cond
+         * @param resultHandle the result handle
+         * @param options the options
+         * @return the data set
+         */
         public DataSet query(final Collection<String> selectPropNames, final Condition cond, final Holder<String> resultHandle,
                 final Map<String, Object> options) {
             return em.query(entityName, selectPropNames, cond, resultHandle, options);
         }
 
+        /**
+         * Query all.
+         *
+         * @param selectPropNames the select prop names
+         * @param cond the cond
+         * @param options the options
+         * @return the data set
+         */
         public DataSet queryAll(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
             return em.queryAll(entityName, selectPropNames, cond, options);
         }
 
+        /**
+         * List.
+         *
+         * @param selectPropNames the select prop names
+         * @param cond the cond
+         * @return the list
+         */
         public List<E> list(final Collection<String> selectPropNames, final Condition cond) {
             return em.list(entityName, selectPropNames, cond);
         }
 
+        /**
+         * List.
+         *
+         * @param selectPropNames the select prop names
+         * @param cond the cond
+         * @param options the options
+         * @return the list
+         */
         public List<E> list(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
             return em.list(entityName, selectPropNames, cond, options);
         }
 
+        /**
+         * List all.
+         *
+         * @param selectPropNames the select prop names
+         * @param cond the cond
+         * @param options the options
+         * @return the list
+         */
         @SuppressWarnings("unchecked")
         public List<E> listAll(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
             return em.listAll(entityName, selectPropNames, cond, options);
         }
 
+        /**
+         * Adds the.
+         *
+         * @param props the props
+         * @return the entity id
+         */
         public EntityId add(final Map<String, Object> props) {
             return em.add(entityName, props);
         }
 
+        /**
+         * Adds the.
+         *
+         * @param props the props
+         * @param options the options
+         * @return the entity id
+         */
         public EntityId add(final Map<String, Object> props, final Map<String, Object> options) {
             return em.add(entityName, props, options);
         }
 
+        /**
+         * Adds the all.
+         *
+         * @param propsList the props list
+         * @return the list
+         */
         public List<EntityId> addAll(final List<Map<String, Object>> propsList) {
             return em.addAll(entityName, propsList);
         }
 
+        /**
+         * Adds the all.
+         *
+         * @param propsList the props list
+         * @param options the options
+         * @return the list
+         */
         public List<EntityId> addAll(final List<Map<String, Object>> propsList, final Map<String, Object> options) {
             return em.addAll(entityName, propsList, options);
         }
 
+        /**
+         * Update.
+         *
+         * @param props the props
+         * @param cond the cond
+         * @return the int
+         */
         public int update(final Map<String, Object> props, final Condition cond) {
             return em.update(entityName, props, cond);
         }
 
+        /**
+         * Update.
+         *
+         * @param props the props
+         * @param cond the cond
+         * @param options the options
+         * @return the int
+         */
         public int update(final Map<String, Object> props, final Condition cond, final Map<String, Object> options) {
             return em.update(entityName, props, cond, options);
         }
 
+        /**
+         * Delete.
+         *
+         * @param cond the cond
+         * @return the int
+         */
         public int delete(final Condition cond) {
             return em.delete(entityName, cond);
         }
 
+        /**
+         * Delete.
+         *
+         * @param cond the cond
+         * @param options the options
+         * @return the int
+         */
         public int delete(final Condition cond, final Map<String, Object> options) {
             return em.delete(entityName, cond, options);
         }
 
+        /**
+         * Gets the.
+         *
+         * @param id the id
+         * @return the optional
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public Optional<E> get(final long id) throws DuplicatedResultException {
             return em.get(entityName, id);
         }
 
+        /**
+         * Gets the.
+         *
+         * @param id the id
+         * @param selectPropNames the select prop names
+         * @return the optional
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public Optional<E> get(final long id, final Collection<String> selectPropNames) throws DuplicatedResultException {
             return em.get(entityName, id, selectPropNames);
         }
 
+        /**
+         * Gets the.
+         *
+         * @param id the id
+         * @param selectPropNames the select prop names
+         * @param options the options
+         * @return the optional
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public Optional<E> get(final long id, final Collection<String> selectPropNames, final Map<String, Object> options) throws DuplicatedResultException {
             return em.get(entityName, id, selectPropNames, options);
         }
 
+        /**
+         * Gets the.
+         *
+         * @param id the id
+         * @return the optional
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public Optional<E> get(final String id) throws DuplicatedResultException {
             return em.get(entityName, id);
         }
 
+        /**
+         * Gets the.
+         *
+         * @param id the id
+         * @param selectPropNames the select prop names
+         * @return the optional
+         */
         @SuppressWarnings("unchecked")
         public Optional<E> get(final String id, final Collection<String> selectPropNames) {
             return em.get(entityName, id, selectPropNames);
         }
 
+        /**
+         * Gets the.
+         *
+         * @param id the id
+         * @param selectPropNames the select prop names
+         * @param options the options
+         * @return the optional
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public Optional<E> get(final String id, final Collection<String> selectPropNames, final Map<String, Object> options) throws DuplicatedResultException {
             return em.get(entityName, id, selectPropNames, options);
         }
 
+        /**
+         * Gets the.
+         *
+         * @param entityId the entity id
+         * @return the optional
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public Optional<E> get(final EntityId entityId) throws DuplicatedResultException {
             return em.get(entityId);
         }
 
+        /**
+         * Gets the.
+         *
+         * @param entityId the entity id
+         * @param selectPropNames the select prop names
+         * @return the optional
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public Optional<E> get(final EntityId entityId, final Collection<String> selectPropNames) throws DuplicatedResultException {
             return em.get(entityId, selectPropNames);
         }
 
+        /**
+         * Gets the.
+         *
+         * @param entityId the entity id
+         * @param selectPropNames the select prop names
+         * @param options the options
+         * @return the optional
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public Optional<E> get(final EntityId entityId, final Collection<String> selectPropNames, final Map<String, Object> options)
                 throws DuplicatedResultException {
             return em.get(entityId, selectPropNames, options);
         }
 
+        /**
+         * Gets the t.
+         *
+         * @param id the id
+         * @return the t
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public E gett(final long id) throws DuplicatedResultException {
             return em.gett(entityName, id);
         }
 
+        /**
+         * Gets the t.
+         *
+         * @param id the id
+         * @param selectPropNames the select prop names
+         * @return the t
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public E gett(final long id, final Collection<String> selectPropNames) throws DuplicatedResultException {
             return em.gett(entityName, id, selectPropNames);
         }
 
+        /**
+         * Gets the t.
+         *
+         * @param id the id
+         * @param selectPropNames the select prop names
+         * @param options the options
+         * @return the t
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public E gett(final long id, final Collection<String> selectPropNames, final Map<String, Object> options) throws DuplicatedResultException {
             return em.gett(entityName, id, selectPropNames, options);
         }
 
+        /**
+         * Gets the t.
+         *
+         * @param id the id
+         * @return the t
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public E gett(final String id) throws DuplicatedResultException {
             return em.gett(entityName, id);
         }
 
+        /**
+         * Gets the t.
+         *
+         * @param id the id
+         * @param selectPropNames the select prop names
+         * @return the t
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public E gett(final String id, final Collection<String> selectPropNames) throws DuplicatedResultException {
             return em.gett(entityName, id, selectPropNames);
         }
 
+        /**
+         * Gets the t.
+         *
+         * @param id the id
+         * @param selectPropNames the select prop names
+         * @param options the options
+         * @return the t
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public E gett(final String id, final Collection<String> selectPropNames, final Map<String, Object> options) throws DuplicatedResultException {
             return em.gett(entityName, id, selectPropNames, options);
         }
 
+        /**
+         * Gets the t.
+         *
+         * @param entityId the entity id
+         * @return the t
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public E gett(final EntityId entityId) throws DuplicatedResultException {
             return em.gett(entityId);
         }
 
+        /**
+         * Gets the t.
+         *
+         * @param entityId the entity id
+         * @param selectPropNames the select prop names
+         * @return the t
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public E gett(final EntityId entityId, final Collection<String> selectPropNames) throws DuplicatedResultException {
             return em.gett(entityId, selectPropNames);
         }
 
+        /**
+         * Gets the t.
+         *
+         * @param entityId the entity id
+         * @param selectPropNames the select prop names
+         * @param options the options
+         * @return the t
+         * @throws DuplicatedResultException the duplicated result exception
+         */
         @SuppressWarnings("unchecked")
         public E gett(final EntityId entityId, final Collection<String> selectPropNames, final Map<String, Object> options) throws DuplicatedResultException {
             return em.gett(entityId, selectPropNames, options);
         }
 
+        /**
+         * Refresh.
+         *
+         * @param entity the entity
+         * @return true, if successful
+         */
         public boolean refresh(final E entity) {
             return em.refresh(entity);
         }
 
+        /**
+         * Refresh.
+         *
+         * @param entity the entity
+         * @param options the options
+         * @return true, if successful
+         */
         public boolean refresh(final E entity, final Map<String, Object> options) {
             return em.refresh(entity, options);
         }
 
+        /**
+         * Refresh all.
+         *
+         * @param entities the entities
+         * @return the int
+         */
         public int refreshAll(final Collection<? extends E> entities) {
             return em.refreshAll(entities);
         }
 
+        /**
+         * Refresh all.
+         *
+         * @param entities the entities
+         * @param options the options
+         * @return the int
+         */
         public int refreshAll(final Collection<? extends E> entities, final Map<String, Object> options) {
             return em.refreshAll(entities, options);
         }
 
+        /**
+         * Adds the.
+         *
+         * @param entity the entity
+         * @return the entity id
+         */
         public EntityId add(final E entity) {
             return em.add(entity);
         }
 
+        /**
+         * Adds the.
+         *
+         * @param entity the entity
+         * @param options the options
+         * @return the entity id
+         */
         public EntityId add(final E entity, final Map<String, Object> options) {
             return em.add(entity, options);
         }
 
+        /**
+         * Adds the all.
+         *
+         * @param entities the entities
+         * @return the list
+         */
         public List<EntityId> addAll(final Collection<? extends E> entities) {
             return em.addAll(entities);
         }
 
+        /**
+         * Adds the all.
+         *
+         * @param entities the entities
+         * @param options the options
+         * @return the list
+         */
         public List<EntityId> addAll(final Collection<? extends E> entities, final Map<String, Object> options) {
             return em.addAll(entities, options);
         }
 
+        /**
+         * Adds the or update.
+         *
+         * @param entity the entity
+         * @param cond the cond
+         * @return the e
+         */
         public E addOrUpdate(final E entity, final Condition cond) {
             return em.addOrUpdate(entity, cond);
         }
 
+        /**
+         * Adds the or update.
+         *
+         * @param entity the entity
+         * @param cond the cond
+         * @param options the options
+         * @return the e
+         */
         public E addOrUpdate(final E entity, final Condition cond, final Map<String, Object> options) {
             return em.addOrUpdate(entity, cond, options);
         }
 
+        /**
+         * Update.
+         *
+         * @param entity the entity
+         * @return the int
+         */
         public int update(final E entity) {
             return em.update(entity);
         }
 
+        /**
+         * Update.
+         *
+         * @param entity the entity
+         * @param options the options
+         * @return the int
+         */
         public int update(final E entity, final Map<String, Object> options) {
             return em.update(entity, options);
         }
 
+        /**
+         * Update all.
+         *
+         * @param entities the entities
+         * @return the int
+         */
         public int updateAll(final Collection<? extends E> entities) {
             return em.updateAll(entities);
         }
 
+        /**
+         * Update all.
+         *
+         * @param entities the entities
+         * @param options the options
+         * @return the int
+         */
         public int updateAll(final Collection<? extends E> entities, final Map<String, Object> options) {
             return em.updateAll(entities, options);
         }
 
+        /**
+         * Update.
+         *
+         * @param props the props
+         * @param entityId the entity id
+         * @return the int
+         */
         public int update(final Map<String, Object> props, final EntityId entityId) {
             return em.update(props, entityId);
         }
 
+        /**
+         * Update.
+         *
+         * @param props the props
+         * @param entityId the entity id
+         * @param options the options
+         * @return the int
+         */
         public int update(final Map<String, Object> props, final EntityId entityId, final Map<String, Object> options) {
             return em.update(props, entityId, options);
         }
 
+        /**
+         * Update all.
+         *
+         * @param props the props
+         * @param entityIds the entity ids
+         * @return the int
+         */
         public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds) {
             return em.updateAll(props, entityIds);
         }
 
+        /**
+         * Update all.
+         *
+         * @param props the props
+         * @param entityIds the entity ids
+         * @param options the options
+         * @return the int
+         */
         public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds, final Map<String, Object> options) {
             return em.updateAll(props, entityIds, options);
         }
 
+        /**
+         * Delete.
+         *
+         * @param entity the entity
+         * @return the int
+         */
         public int delete(final E entity) {
             return em.delete(entity);
         }
 
+        /**
+         * Delete.
+         *
+         * @param entity the entity
+         * @param options the options
+         * @return the int
+         */
         public int delete(final E entity, final Map<String, Object> options) {
             return em.delete(entity, options);
         }
 
+        /**
+         * Delete all.
+         *
+         * @param entities the entities
+         * @return the int
+         */
         public int deleteAll(final Collection<? extends E> entities) {
             return em.deleteAll(entities);
         }
 
+        /**
+         * Delete all.
+         *
+         * @param entities the entities
+         * @param options the options
+         * @return the int
+         */
         public int deleteAll(final Collection<? extends E> entities, final Map<String, Object> options) {
             return em.deleteAll(entities, options);
         }
 
+        /**
+         * Delete.
+         *
+         * @param entityId the entity id
+         * @return the int
+         */
         public int delete(final EntityId entityId) {
             return em.delete(entityId);
         }
 
+        /**
+         * Delete.
+         *
+         * @param entityId the entity id
+         * @param options the options
+         * @return the int
+         */
         public int delete(final EntityId entityId, final Map<String, Object> options) {
             return em.delete(entityId, options);
         }
 
+        /**
+         * Delete all.
+         *
+         * @param entityIds the entity ids
+         * @return the int
+         */
         public int deleteAll(final List<? extends EntityId> entityIds) {
             return em.deleteAll(entityIds);
         }
 
+        /**
+         * Delete all.
+         *
+         * @param entityIds the entity ids
+         * @param options the options
+         * @return the int
+         */
         public int deleteAll(final List<? extends EntityId> entityIds, final Map<String, Object> options) {
             return em.deleteAll(entityIds, options);
         }

@@ -16,13 +16,21 @@
 
 package com.landawn.abacus.core.sql.interpreter;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class HSQLDBInterpreter.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class HSQLDBInterpreter extends SQLInterpreter {
+    
+    /**
+     * Instantiates a new HSQLDB interpreter.
+     *
+     * @param productName the product name
+     * @param productVersion the product version
+     */
     public HSQLDBInterpreter(String productName, String productVersion) {
         super(productName, productVersion);
     }

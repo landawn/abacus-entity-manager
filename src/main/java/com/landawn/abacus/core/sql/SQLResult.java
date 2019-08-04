@@ -46,49 +46,112 @@ import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.WD;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class SQLResult.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 @Internal
 public class SQLResult {
+    
+    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(SQLResult.class);
 
+    /** The Constant resultInfoPool. */
     private static final Map<String, Map<String, Map<List<String>, ResultInfo>>> resultInfoPool = new HashMap<>();
 
+    /** The executant. */
     protected final Executant executant;
+    
+    /** The sql cmd. */
     protected final SQLOperationCommand sqlCmd;
+    
+    /** The options. */
     protected final Map<String, Object> options;
 
+    /** The ds. */
     protected final SQLDataSource ds;
+    
+    /** The stmt. */
     protected final Statement stmt;
+    
+    /** The rs. */
     protected final ResultSet rs;
 
+    /** The result info. */
     protected final ResultInfo resultInfo;
 
+    /** The execution time. */
     private final long executionTime;
+    
+    /** The update count. */
     private final int updateCount;
+    
+    /** The generated keys. */
     private final List<Object> generatedKeys;
 
+    /** The size. */
     private int size = -1;
 
+    /** The is closed. */
     private boolean isClosed = false;
 
+    /**
+     * Instantiates a new SQL result.
+     *
+     * @param executant the executant
+     * @param sqlCmd the sql cmd
+     * @param options the options
+     * @param ds the ds
+     * @param stmt the stmt
+     * @param rs the rs
+     * @param executionTime the execution time
+     */
     public SQLResult(Executant executant, SQLOperationCommand sqlCmd, Map<String, Object> options, SQLDataSource ds, Statement stmt, ResultSet rs,
             long executionTime) {
         this(executant, sqlCmd, options, ds, stmt, rs, executionTime, 0, null);
     }
 
+    /**
+     * Instantiates a new SQL result.
+     *
+     * @param executant the executant
+     * @param sqlCmd the sql cmd
+     * @param executionTime the execution time
+     * @param updateCount the update count
+     */
     public SQLResult(Executant executant, SQLOperationCommand sqlCmd, long executionTime, int updateCount) {
         this(executant, sqlCmd, null, null, null, null, executionTime, updateCount, null);
     }
 
+    /**
+     * Instantiates a new SQL result.
+     *
+     * @param executant the executant
+     * @param sqlCmd the sql cmd
+     * @param executionTime the execution time
+     * @param updateCount the update count
+     * @param generatedKeys the generated keys
+     */
     public SQLResult(Executant executant, SQLOperationCommand sqlCmd, long executionTime, int updateCount, List<Object> generatedKeys) {
         this(executant, sqlCmd, null, null, null, null, executionTime, updateCount, generatedKeys);
     }
 
+    /**
+     * Instantiates a new SQL result.
+     *
+     * @param executant the executant
+     * @param sqlCmd the sql cmd
+     * @param options the options
+     * @param ds the ds
+     * @param stmt the stmt
+     * @param rs the rs
+     * @param executionTime the execution time
+     * @param updateCount the update count
+     * @param generatedKeys the generated keys
+     */
     SQLResult(Executant executant, SQLOperationCommand sqlCmd, Map<String, Object> options, SQLDataSource ds, Statement stmt, ResultSet rs, long executionTime,
             int updateCount, List<Object> generatedKeys) {
         this.executant = executant;
@@ -110,38 +173,85 @@ public class SQLResult {
         }
     }
 
+    /**
+     * Gets the executant.
+     *
+     * @return the executant
+     */
     public Executant getExecutant() {
         return executant;
     }
 
+    /**
+     * Gets the SQL command.
+     *
+     * @return the SQL command
+     */
     public SQLCommand getSQLCommand() {
         return sqlCmd;
     }
 
+    /**
+     * Gets the options.
+     *
+     * @return the options
+     */
     public Map<String, Object> getOptions() {
         return options;
     }
 
+    /**
+     * Gets the execution time.
+     *
+     * @return the execution time
+     */
     public long getExecutionTime() {
         return executionTime;
     }
 
+    /**
+     * Gets the upate count.
+     *
+     * @return the upate count
+     */
     public int getUpateCount() {
         return updateCount;
     }
 
+    /**
+     * Gets the generated keys.
+     *
+     * @return the generated keys
+     */
     public List<Object> getGeneratedKeys() {
         return generatedKeys;
     }
 
+    /**
+     * Gets the prop name list.
+     *
+     * @return the prop name list
+     */
     public List<String> getPropNameList() {
         return resultInfo.propNames;
     }
 
+    /**
+     * Gets the prop name.
+     *
+     * @param propIndex the prop index
+     * @return the prop name
+     */
     public String getPropName(int propIndex) {
         return resultInfo.propNames.get(propIndex);
     }
 
+    /**
+     * Gets the prop index.
+     *
+     * @param propName the prop name
+     * @return the prop index
+     */
     public int getPropIndex(String propName) {
         Integer index = resultInfo.propIndexes.get(propName);
 
@@ -152,16 +262,39 @@ public class SQLResult {
         return index;
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param propIndex the prop index
+     * @return the t
+     * @throws SQLException the SQL exception
+     */
     @SuppressWarnings("unchecked")
     public <T> T get(int propIndex) throws SQLException {
         return (T) resultInfo.propTypes[propIndex].get(rs, propIndex + 1);
     }
 
+    /**
+     * Gets the.
+     *
+     * @param <T> the generic type
+     * @param propName the prop name
+     * @return the t
+     * @throws SQLException the SQL exception
+     */
     @SuppressWarnings("unchecked")
     public <T> T get(String propName) throws SQLException {
         return (T) get(getPropIndex(propName));
     }
 
+    /**
+     * Absolute.
+     *
+     * @param row the row
+     * @return true, if successful
+     * @throws SQLException the SQL exception
+     */
     public boolean absolute(int row) throws SQLException {
         boolean result = rs.absolute(row + 1);
 
@@ -173,14 +306,34 @@ public class SQLResult {
         return result;
     }
 
+    /**
+     * Next.
+     *
+     * @return true, if successful
+     * @throws SQLException the SQL exception
+     */
     public boolean next() throws SQLException {
         return rs.next();
     }
 
+    /**
+     * Gets the current row num.
+     *
+     * @return the current row num
+     * @throws SQLException the SQL exception
+     */
     public int getCurrentRowNum() throws SQLException {
         return rs.getRow();
     }
 
+    /**
+     * Gets the result set.
+     *
+     * @param selectPropNames the select prop names
+     * @param options the options
+     * @return the result set
+     * @throws UncheckedSQLException the unchecked SQL exception
+     */
     public DataSet getResultSet(Collection<String> selectPropNames, Map<String, Object> options) throws UncheckedSQLException {
         assertNotClosed();
 
@@ -191,6 +344,11 @@ public class SQLResult {
         }
     }
 
+    /**
+     * Size.
+     *
+     * @return the int
+     */
     public int size() {
         assertNotClosed();
 
@@ -203,6 +361,9 @@ public class SQLResult {
         }
     }
 
+    /**
+     * Close.
+     */
     public void close() {
         if (isClosed) {
             return;
@@ -227,16 +388,32 @@ public class SQLResult {
         isClosed = true;
     }
 
+    /**
+     * Checks if is closed.
+     *
+     * @return true, if is closed
+     */
     public boolean isClosed() {
         return isClosed;
     }
 
+    /**
+     * Assert not closed.
+     */
     private void assertNotClosed() {
         if (isClosed) {
             throw new IllegalStateException("SQL result has been closed");
         }
     }
 
+    /**
+     * Creates the result set.
+     *
+     * @param selectPropNames the select prop names
+     * @param options the options
+     * @return the data set
+     * @throws SQLException the SQL exception
+     */
     private DataSet createResultSet(Collection<String> selectPropNames, Map<String, Object> options) throws SQLException {
         if (selectPropNames == null) {
             selectPropNames = resultInfo.propNames;
@@ -289,6 +466,14 @@ public class SQLResult {
         return new RowDataSet(new ArrayList<>(selectPropNames), columnList);
     }
 
+    /**
+     * Gets the result info.
+     *
+     * @param sqlCmd the sql cmd
+     * @param rs the rs
+     * @return the result info
+     * @throws UncheckedSQLException the unchecked SQL exception
+     */
     private ResultInfo getResultInfo(SQLOperationCommand sqlCmd, ResultSet rs) throws UncheckedSQLException {
         final EntityDefinition entityDef = sqlCmd.getEntityDef();
         final String domainName = (entityDef.getFactory() == null) ? N.EMPTY_STRING : entityDef.getFactory().domainName();
@@ -381,11 +566,27 @@ public class SQLResult {
         return resultInfo;
     }
 
+    /**
+     * The Class ResultInfo.
+     */
     private static class ResultInfo {
+        
+        /** The prop names. */
         final List<String> propNames;
+        
+        /** The prop indexes. */
         final Map<String, Integer> propIndexes;
+        
+        /** The prop types. */
         final Type<Object>[] propTypes;
 
+        /**
+         * Instantiates a new result info.
+         *
+         * @param propNames the prop names
+         * @param propIndexes the prop indexes
+         * @param propTypes the prop types
+         */
         ResultInfo(final List<String> propNames, final Map<String, Integer> propIndexes, final Type<Object>[] propTypes) {
             this.propNames = propNames;
             this.propIndexes = propIndexes;

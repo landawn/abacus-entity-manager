@@ -28,17 +28,33 @@ import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.util.WD;
 import com.landawn.abacus.util.N;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class OracleInterpreter.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class OracleInterpreter extends SQLInterpreter {
+    
+    /**
+     * Instantiates a new oracle interpreter.
+     *
+     * @param productName the product name
+     * @param productVersion the product version
+     */
     public OracleInterpreter(String productName, String productVersion) {
         super(productName, productVersion);
     }
 
+    /**
+     * Builds the criteria.
+     *
+     * @param entityDef the entity def
+     * @param criteria the criteria
+     * @param sqlCondCmd the sql cond cmd
+     * @param sql the sql
+     */
     @Override
     protected void buildCriteria(EntityDefinition entityDef, Criteria criteria, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         Collection<Join> joins = criteria.getJoins();

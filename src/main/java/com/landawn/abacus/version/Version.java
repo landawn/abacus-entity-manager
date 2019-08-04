@@ -14,36 +14,36 @@
 
 package com.landawn.abacus.version;
 
+// TODO: Auto-generated Javadoc
 /**
  * Keyed Version.
- * 
- * @param <K>
- * 
- * @since 0.8
- * 
+ *
  * @author Haiyang Li
+ * @param <K> the key type
+ * @since 0.8
  */
 public interface Version<K> {
+    
     /**
      * Method get.
-     * 
-     * @param k
+     *
+     * @param k the k
      * @return long
      */
     long get(K k);
 
     /**
      * Method update.
-     * 
-     * @param k
-     * @param delta
+     *
+     * @param k the k
+     * @param delta the delta
      */
     void update(K k, int delta);
 
     /**
      * Method remove.
-     * 
-     * @param k
+     *
+     * @param k the k
      */
     void remove(K k);
 

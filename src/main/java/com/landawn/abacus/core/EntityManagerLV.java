@@ -49,20 +49,37 @@ import com.landawn.abacus.util.OperationType;
 import com.landawn.abacus.version.Version;
 import com.landawn.abacus.version.VersionFactory;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class EntityManagerLV.
+ *
  * @author Haiyang Li
+ * @param <E> the element type
+ * @since 0.8
  */
 class EntityManagerLV<E> extends EntityManagerImpl<E> {
+    
+    /** The Constant VERSION_DELTA_FOR_DELETE. */
     static final int VERSION_DELTA_FOR_DELETE = -1;
+    
+    /** The Constant VERSION_DELTA_FOR_UPDATE. */
     static final int VERSION_DELTA_FOR_UPDATE = 1;
 
+    /** The tran id entity ids map. */
     private final Map<String, List<EntityIdMemo>> tranIdEntityIdsMap = new ConcurrentHashMap<>();
+    
+    /** The x record lock. */
     private final XLock<EntityId> xRecordLock;
+    
+    /** The record version. */
     private final Version<EntityId> recordVersion;
 
+    /**
+     * Instantiates a new entity manager LV.
+     *
+     * @param entityManagerConfig the entity manager config
+     * @param dbAccess the db access
+     */
     protected EntityManagerLV(EntityManagerConfiguration entityManagerConfig, DBAccessImpl dbAccess) {
         super(entityManagerConfig, dbAccess);
 
@@ -84,6 +101,17 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         }
     }
 
+    /**
+     * Internal list.
+     *
+     * @param <T> the generic type
+     * @param targetClass the target class
+     * @param entityName the entity name
+     * @param selectPropNames the select prop names
+     * @param condition the condition
+     * @param options the options
+     * @return the list
+     */
     @Override
     protected <T> List<T> internalList(Class<T> targetClass, String entityName, Collection<String> selectPropNames, Condition condition,
             Map<String, Object> options) {
@@ -108,6 +136,17 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         }
     }
 
+    /**
+     * Gets the entities.
+     *
+     * @param <T> the generic type
+     * @param targetClass the target class
+     * @param entityDef the entity def
+     * @param entityIds the entity ids
+     * @param selectPropNames the select prop names
+     * @param options the options
+     * @return the entities
+     */
     @Override
     protected <T> List<T> getEntities(Class<T> targetClass, EntityDefinition entityDef, List<? extends EntityId> entityIds, Collection<String> selectPropNames,
             Map<String, Object> options) {
@@ -148,6 +187,14 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         return entities;
     }
 
+    /**
+     * Adds the entities.
+     *
+     * @param entityDef the entity def
+     * @param propsList the props list
+     * @param options the options
+     * @return the list
+     */
     @Override
     protected List<EntityId> addEntities(EntityDefinition entityDef, List<Map<String, Object>> propsList, Map<String, Object> options) {
         if (propsList.size() == 0) {
@@ -167,6 +214,15 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         return entityIds;
     }
 
+    /**
+     * Internal update.
+     *
+     * @param entityName the entity name
+     * @param props the props
+     * @param condition the condition
+     * @param options the options
+     * @return the int
+     */
     @Override
     protected int internalUpdate(String entityName, Map<String, Object> props, Condition condition, Map<String, Object> options) {
         final EntityDefinition entityDef = checkEntityName(entityName);
@@ -181,6 +237,15 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         }
     }
 
+    /**
+     * Update entities.
+     *
+     * @param entityDef the entity def
+     * @param entityIds the entity ids
+     * @param props the props
+     * @param options the options
+     * @return the int
+     */
     @Override
     protected int updateEntities(EntityDefinition entityDef, List<? extends EntityId> entityIds, Map<String, Object> props, Map<String, Object> options) {
         if (entityIds.size() == 0) {
@@ -206,6 +271,14 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         return result;
     }
 
+    /**
+     * Internal delete.
+     *
+     * @param entityName the entity name
+     * @param cond the cond
+     * @param options the options
+     * @return the int
+     */
     @Override
     protected int internalDelete(String entityName, Condition cond, Map<String, Object> options) {
         final EntityDefinition entityDef = checkEntityName(entityName);
@@ -220,6 +293,14 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         }
     }
 
+    /**
+     * Delete entities.
+     *
+     * @param entityDef the entity def
+     * @param entityIds the entity ids
+     * @param options the options
+     * @return the int
+     */
     @Override
     protected int deleteEntities(EntityDefinition entityDef, List<? extends EntityId> entityIds, Map<String, Object> options) {
         if (entityIds.size() == 0) {
@@ -241,6 +322,13 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         return result;
     }
 
+    /**
+     * Internal get record version.
+     *
+     * @param entityId the entity id
+     * @param options the options
+     * @return the long
+     */
     @Override
     protected long internalGetRecordVersion(EntityId entityId, Map<String, Object> options) {
         checkEntityId(entityId);
@@ -248,6 +336,14 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         return recordVersion.get(entityId);
     }
 
+    /**
+     * Internal lock record.
+     *
+     * @param entityId the entity id
+     * @param lockMode the lock mode
+     * @param options the options
+     * @return the string
+     */
     @SuppressWarnings("deprecation")
     @Override
     protected String internalLockRecord(EntityId entityId, LockMode lockMode, Map<String, Object> options) {
@@ -263,6 +359,14 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         return xRecordLock.lock(entityId, lockMode, lockCode, timeout);
     }
 
+    /**
+     * Internal unlock record.
+     *
+     * @param entityId the entity id
+     * @param lockCode the lock code
+     * @param options the options
+     * @return true, if successful
+     */
     @Override
     protected boolean internalUnlockRecord(EntityId entityId, String lockCode, Map<String, Object> options) {
         checkEntityId(entityId);
@@ -270,6 +374,13 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         return xRecordLock.unlock(entityId, lockCode);
     }
 
+    /**
+     * Check lock.
+     *
+     * @param entityIds the entity ids
+     * @param requiredLockMode the required lock mode
+     * @param options the options
+     */
     protected void checkLock(List<? extends EntityId> entityIds, LockMode requiredLockMode, Map<String, Object> options) {
         String lockCode = getLockCode(options);
 
@@ -280,6 +391,13 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         }
     }
 
+    /**
+     * Internal end transaction.
+     *
+     * @param transactionId the transaction id
+     * @param transactionAction the transaction action
+     * @param options the options
+     */
     @Override
     protected void internalEndTransaction(String transactionId, Action transactionAction, Map<String, Object> options) {
         Transaction tran = dbAccess.getExecutant().getTransaction(transactionId);
@@ -291,6 +409,12 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         }
     }
 
+    /**
+     * Update record version by tran.
+     *
+     * @param transactionId the transaction id
+     * @param tran the tran
+     */
     protected void updateRecordVersionByTran(String transactionId, Transaction tran) {
         if (N.isNullOrEmpty(transactionId) || (tran == null)) {
             return;
@@ -332,6 +456,13 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         }
     }
 
+    /**
+     * Adds the entity ids by tran.
+     *
+     * @param transactionId the transaction id
+     * @param entityIds the entity ids
+     * @param op the op
+     */
     protected void addEntityIdsByTran(String transactionId, List<? extends EntityId> entityIds, OperationType op) {
         synchronized (tranIdEntityIdsMap) {
             List<EntityIdMemo> entityIdMemoList = tranIdEntityIdsMap.get(transactionId);
@@ -345,6 +476,14 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         }
     }
 
+    /**
+     * Gets the entity id by condition.
+     *
+     * @param entityName the entity name
+     * @param cond the cond
+     * @param options the options
+     * @return the entity id by condition
+     */
     protected List<EntityId> getEntityIdByCondition(String entityName, Condition cond, Map<String, Object> options) {
         final EntityDefinition entityDef = checkEntityName(entityName);
         final Collection<String> idPropNames = entityDef.getIdPropertyNameList();
@@ -354,6 +493,12 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         return resultSet2EntityId(entityDef, resultSet);
     }
 
+    /**
+     * Update record version.
+     *
+     * @param entityId the entity id
+     * @param delta the delta
+     */
     private void updateRecordVersion(EntityId entityId, int delta) {
         if (delta == VERSION_DELTA_FOR_DELETE) {
             recordVersion.remove(entityId);
@@ -362,6 +507,12 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         }
     }
 
+    /**
+     * Update record version.
+     *
+     * @param entityIds the entity ids
+     * @param delta the delta
+     */
     private void updateRecordVersion(List<? extends EntityId> entityIds, int delta) {
         for (EntityId entityId : entityIds) {
             updateRecordVersion(entityId, delta);

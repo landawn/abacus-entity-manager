@@ -17,16 +17,28 @@ package com.landawn.abacus.validator;
 import com.landawn.abacus.exception.ValidationException;
 import com.landawn.abacus.type.Type;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class AbstractValidator.
+ *
  * @author Haiyang Li
+ * @param <T> the generic type
+ * @since 0.8
  */
 public abstract class AbstractValidator<T> implements Validator<T> {
+    
+    /** The prop name. */
     private final String propName;
+    
+    /** The type. */
     private final Type<T> type;
 
+    /**
+     * Instantiates a new abstract validator.
+     *
+     * @param propName the prop name
+     * @param type the type
+     */
     protected AbstractValidator(String propName, Type<T> type) {
         this.propName = propName;
         this.type = type;
@@ -56,9 +68,10 @@ public abstract class AbstractValidator<T> implements Validator<T> {
 
     /**
      * Method check.
-     * 
-     * @param propValue
-     * @throws ValidationException
+     *
+     * @param propValue the prop value
+     * @return the t
+     * @throws ValidationException the validation exception
      * @see com.landawn.abacus.validator.Validator#validate(T)
      */
     @Override
@@ -70,6 +83,11 @@ public abstract class AbstractValidator<T> implements Validator<T> {
         return propValue;
     }
 
+    /**
+     * To string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
         return getClass().getSimpleName();

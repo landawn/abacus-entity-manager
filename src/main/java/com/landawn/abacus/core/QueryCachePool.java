@@ -39,19 +39,28 @@ import com.landawn.abacus.util.MoreExecutors;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.OperationType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class QueryCachePool.
+ *
  * @author Haiyang Li
+ * @param <K> the key type
+ * @param <V> the value type
+ * @since 0.8
  */
 @Internal
 class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, V> {
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4494321879106210592L;
 
+    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(QueryCachePool.class);
+    
+    /** The Constant ZIP_DELAY. */
     private static final long ZIP_DELAY = 3 * 60 * 1000L;
 
+    /** The Constant scheduledExecutor. */
     private static final ScheduledExecutorService scheduledExecutor;
     static {
         final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(IOUtil.CPU_CORES);
@@ -59,12 +68,22 @@ class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, 
         scheduledExecutor = MoreExecutors.getExitingScheduledExecutorService(executor);
     }
 
+    /** The schedule future. */
     private ScheduledFuture<?> scheduleFuture;
 
+    /** The query cache config. */
     private final QueryCacheConfiguration queryCacheConfig;
 
+    /** The cache zipper. */
     private CacheZipper cacheZipper;
 
+    /**
+     * Instantiates a new query cache pool.
+     *
+     * @param capacity the capacity
+     * @param evictDelay the evict delay
+     * @param queryCacheConfig the query cache config
+     */
     public QueryCachePool(int capacity, long evictDelay, QueryCacheConfiguration queryCacheConfig) {
         super(capacity, evictDelay, EvictionPolicy.LAST_ACCESS_TIME);
         this.queryCacheConfig = queryCacheConfig;
@@ -92,6 +111,12 @@ class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, 
         }
     }
 
+    /**
+     * Update cache.
+     *
+     * @param command the command
+     * @param options the options
+     */
     public void updateCache(Command command, Map<String, Object> options) {
         // TODO [how to handle distribution].
         assertNotClosed();
@@ -168,6 +193,9 @@ class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, 
         }
     }
 
+    /**
+     * Close.
+     */
     @Override
     public void close() {
         if (isClosed()) {
@@ -183,6 +211,11 @@ class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, 
         }
     }
 
+    /**
+     * Creates the pool key.
+     *
+     * @return the string
+     */
     protected String createPoolKey() {
         return N.uuid();
     }

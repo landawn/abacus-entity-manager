@@ -23,27 +23,59 @@ import com.landawn.abacus.EntityId;
 import com.landawn.abacus.LockMode;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class EntityManagerVC.
+ *
  * @author Haiyang Li
+ * @param <T> the generic type
+ * @since 0.8
  */
 class EntityManagerVC<T> extends EntityManagerLVC<T> {
+    
+    /**
+     * Instantiates a new entity manager VC.
+     *
+     * @param entityManagerConfig the entity manager config
+     * @param dbAccess the db access
+     */
     protected EntityManagerVC(EntityManagerConfiguration entityManagerConfig, DBAccessImpl dbAccess) {
         super(entityManagerConfig, dbAccess);
     }
 
+    /**
+     * Internal lock record.
+     *
+     * @param entityId the entity id
+     * @param lockMode the lock mode
+     * @param options the options
+     * @return the string
+     */
     @Override
     protected String internalLockRecord(EntityId entityId, LockMode lockMode, Map<String, Object> options) {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Internal unlock record.
+     *
+     * @param entityId the entity id
+     * @param lockCode the lock code
+     * @param options the options
+     * @return true, if successful
+     */
     @Override
     protected boolean internalUnlockRecord(EntityId entityId, String lockCode, Map<String, Object> options) {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Check lock.
+     *
+     * @param entityIds the entity ids
+     * @param requiredLockMode the required lock mode
+     * @param options the options
+     */
     @Override
     protected void checkLock(List<? extends EntityId> entityIds, LockMode requiredLockMode, Map<String, Object> options) {
         // ignore
