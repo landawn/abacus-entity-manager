@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.abacusep.com/landawn/abacus" xmlns:tns="http://www.abacusep.com/landawn/abacus">
+	<xsd:include schemaLocation="DataSource.xsd" />
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			Abacus configuration schema. Copyright 2015, Haiyang Li. All rights reserved.
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:element name="abacus" type="tns:Abacus" />
+	<xsd:complexType name="Abacus">
+		<xsd:sequence>
+			<xsd:element name="properties" type="tns:Properties" />
+			<!-- the full name of the class which must implement com.landawn.abacus.core.AbacusInitializer -->
+			<xsd:element name="initializerOnStartup" type="xsd:string" />
+			<xsd:element name="entityManager" type="tns:EntityManager" />
+			<xsd:element name="slog" type="tns:SLog" />
+		</xsd:sequence>
+		<xsd:attribute name="version" type="xsd:string" />
+	</xsd:complexType>
+
+	<!-- path of the properties file -->
+	<xsd:complexType name="Properties">
+		<xsd:attribute name="resource" type="xsd:string" />
+	</xsd:complexType>
+
+	<xsd:complexType name="EntityManager">
+		<xsd:sequence>
+			<xsd:element name="domainName" type="xsd:string" />
+			
+			<!-- Optional values: basic, LV, VC, LVC.
+			     LV means that record lock/version are supported
+			     LVC means that record lock/version and entity cache are supported 
+			     VC means that record version and entity cache are supported
+			     The default value is basic. -->
+			<xsd:element name="mode" type="xsd:string" />
+			
+			<!-- default is 200 for batch operation -->
+			<xsd:element name="batchSize" type="xsd:positiveInteger" />
+			<!-- the path of entity definition xml file -->
+			<xsd:element name="entityDefinition" type="xsd:string" />
+			<!-- Refer to sqlMapper.xsd. The sql table xml file name. split by "," if there are multiple files. -->
+			<!-- <sqlMapper>sqlMapper1.xml, sqlMapper2.xml</sqlMapper> -->
+			<xsd:element name="sqlMapper" type="xsd:string" />
+			<!-- <handler>com.x.MyHandler, com.x.YourHandler</handler> -->
+			<xsd:element name="handler" type="xsd:string" />
+			<xsd:element name="lock" type="tns:Lock" />
+			<xsd:element name="version" type="tns:Version" />
+			<xsd:element name="entityCache" type="tns:EntityCache" />
+			<xsd:element name="queryCache" type="tns:QueryCache" />
+			<!-- refer to Connection.xsd -->
+			<xsd:element name="dataSourceManager" type="tns:DataSourceManager" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Lock">
+		<xsd:sequence>	
+			<!-- The RWLock is used to support entity cache synchronization in Abacus. Memcached is supported for distribution with format: 
+			     <rwLockProvider>Memcached(host1:port host2:port hostN:port, keyPrefix, liveTime)</rwLockProvider>.
+			     The unit for liveTime is milliseconds. The default value for liveTime is 3600000.
+			     for example: <rwLockProvider>Memcached(host1:11211 host2:11211, myRWLockKeyPrefix, 3600000)</rwLockProvider>
+			-->
+			<xsd:element name="rwLockProvider" type="xsd:string" />
+			
+			<!-- The recordLockProvider is used to support lockRecord/unlockRecord operation. Memcached is supported for distribution with format: 
+			     <recordLockProvider>Memcached(host1:port host2:port hostN:port, keyPrefix, liveTime)</recordLockProvider>.
+			     The unit for liveTime is milliseconds. The default value for liveTime is 3600000.
+			     for example: <recordLockProvider>Memcached(host1:11211 host2:11211, myRecordLockKeyPrefix, 3600000)</recordLockProvider>
+			-->
+			<xsd:element name="recordLockProvider" type="xsd:string" />	
+			
+			<!-- default value is 3000 milliseconds. unit is millisecond second -->
+			<xsd:element name="recordLockTimeout" type="xsd:positiveInteger" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Version">
+		<xsd:sequence>			
+			<!-- Memcached is supported for distribution with format: 
+			     <provider>Memcached(host1:port host2:port hostN:port, keyPrefix, liveTime, timeout)</provider>
+			     The unit for liveTime and timeout is milliseconds. The default value for liveTime is 24 * 3600* 1000. the default value for timeout is 1000
+			     for example: <provider>Memcached(host1:11211 host2:11211, myVersionKeyPrefix, 3600000, 1000)</provider>
+			-->
+			<xsd:element name="provider" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- Cache for entity when the mode of EntityManager is LVC/VC . This cache will be auto-refreshed. for example sample:
+		<entityCache>
+			<capacity>30000</capacity>
+			<evictDelay>3000</evictDelay>
+			<liveTime>86400000</liveTime>
+			<maxIdleTime>3600000</maxIdleTime>
+			<includedEntities>Author, Book</includedEntities>
+			<customizedEntity name="Author">
+				<liveTime>1800000</liveTime>
+				<maxIdleTime>600000</maxIdleTime>
+				<excludedProperties>id, birthDay</excludedProperties>
+			</customizedEntity>
+		</entityCache>
+	-->
+	<xsd:complexType name="EntityCache">
+		<xsd:sequence>	
+			<!-- Memcached is supported for distribution with format: 
+			     <provider>Memcached(host1:port host2:port hostN:port, keyPrefix, timeout)</provider>
+			     The unit for timeout is milliseconds. The default value for timeout is 1000
+			     for example: <provider>Memcached(host1:11211 host2:11211, myVersionKeyPrefix, 1000)</provider>
+			-->
+			<xsd:element name="provider" type="xsd:string" />
+			<!-- default value is 30000 -->
+			<xsd:element name="capacity" type="xsd:positiveInteger" />
+			<!-- default value is 3000 milliseconds. unit is milliseconds -->
+			<xsd:element name="evictDelay" type="xsd:positiveInteger" />
+			<!-- default value is 24 * 60 * 60 * 1000 milliseconds. unit is milliseconds -->
+			<xsd:element name="liveTime" type="xsd:positiveInteger" />
+			<!-- default value is 60 * 60 * 1000 milliseconds. unit is milliseconds -->
+			<xsd:element name="maxIdleTime" type="xsd:positiveInteger" />
+
+			<!-- cache all entities if not set this attribute. split by ','. sample value: Book, Author -->
+			<xsd:element name="includedEntities" type="xsd:string" />
+			<!-- split by ','. sample value: Book, Author -->
+			<xsd:element name="excludedEntiteis" type="xsd:string" />
+
+			<xsd:element name="customizedEntity" type="tns:CustomizedEntity" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomizedEntity">
+		<xsd:sequence>
+			<!-- unit is milliseconds -->
+			<xsd:element name="liveTime" type="xsd:positiveInteger" />
+			<!-- unit is milliseconds -->
+			<xsd:element name="maxIdleTime" type="xsd:positiveInteger" />
+			<!-- split by ','. sample value: id, firstName, lastName. Id properties will be included automatically. -->
+			<xsd:element name="includedProperties" type="xsd:string" />
+			<!-- split by ','. sample value: firstName, lastName. . Id properties MUST NOT be excluded -->
+			<xsd:element name="excludedProperties" type="xsd:string" />
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" use="required" />
+	</xsd:complexType>
+
+	<!-- Cache for query result when 'CACHE_RESULT' is specified in the query options. for example sample:
+		<queryCache>
+			<capacity>1000</capacity>
+			<liveTime>3600000</liveTime>
+			<maxIdleTime>900000</maxIdleTime>
+			<maxCheckQueryCacheTime>1000</maxCheckQueryCacheTime>
+			<minCheckQueryCacheCount>100</minCheckQueryCacheCount>
+			<cacheResultCondition>
+				<minCount>100</minCount>
+				<maxCount>10000</maxCount>
+				<minQueryTime>10</minQueryTime>
+			</cacheResultCondition>
+		</queryCache> 
+	-->
+	<xsd:complexType name="QueryCache">
+		<xsd:sequence>				
+			<!-- Memcached is supported for distribution with format: 
+			     <provider>Memcached(host1:port host2:port hostN:port, keyPrefix, timeout)</provider>
+			     The unit for timeout is milliseconds. The default value for timeout is 1000
+			     for example: <provider>Memcached(host1:11211 host2:11211, myVersionKeyPrefix, 1000)</provider>
+			-->
+			<xsd:element name="provider" type="xsd:string" />
+			
+			<!-- the query cache will be refreshed automatically by update if it's true. Default value is true. -->
+			<xsd:element name="autoRefresh" type="xsd:boolean" />
+			<!-- the query cache will be zipped if it's true. Default value is false. -->
+			<xsd:element name="zipCache" type="xsd:boolean" />
+			
+			<!-- default value is 1000 -->
+			<xsd:element name="capacity" type="xsd:positiveInteger" />
+			<!-- default value is 1000 milliseconds. unit is milliseconds -->
+			<xsd:element name="evictDelay" type="xsd:positiveInteger" />
+			<!-- default value is 3600000 milliseconds. unit is milliseconds -->
+			<xsd:element name="liveTime" type="xsd:positiveInteger" />
+			<!-- default value is 900000 milliseconds. unit is milliseconds -->
+			<xsd:element name="maxIdleTime" type="xsd:positiveInteger" />
+			
+			<!-- The minimum size for checking if this cache is updated or just remove from cache pool when data is modified. just remove 
+				the cache from cache pool if cache size less than this min size. Default value is 100 -->
+			<xsd:element name="minCheckQueryCacheSize" type="xsd:positiveInteger" />			
+			<!-- The maximum time spent on query cache refresh. Default value is 1000 milliseconds. unit is millisecond second -->
+			<xsd:element name="maxCheckQueryCacheTime" type="xsd:positiveInteger" />
+
+			<xsd:element name="cacheResultCondition" type="tns:CacheResultCondition" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- condition to decide if cache the query result -->
+	<xsd:complexType name="CacheResultCondition">
+		<xsd:sequence>
+			<!-- don't cache the query result if its size is less than this value. Default value is 100 -->
+			<xsd:element name="minCount" type="xsd:positiveInteger" />
+			<!-- don't cache the query result if its size is greater than this value. Default value is 100000 -->
+			<xsd:element name="maxCount" type="xsd:positiveInteger" />
+			<!-- don't cache the query result if the query time is less than this value. Default value is 10 milliseconds. unit is 
+				millisecond second -->
+			<xsd:element name="minQueryTime" type="xsd:positiveInteger" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- sql log. for example:
+		<slog>
+			<open>true</open>
+			<batchSize>200</batchSize>
+			<domain name="ExtendDirty">
+				<operationCode>1</operationCode>
+			</domain>
+			<domain name="ExtendActiveRecord">
+				<operationCode>2</operationCode>
+			</domain>
+			<table name="slog">
+				<url>jdbc:mysql://localhost:3306/abacustest</url>
+				<driver>com.mysql.jdbc.Driver</driver>
+				<user>root</user>
+				<password>admin</password>
+			</table>
+		</slog>	
+	 -->
+	<xsd:complexType name="SLog">
+		<xsd:sequence>
+			<xsd:element name="open" type="xsd:boolean" />
+			<xsd:element name="batchSize" type="xsd:positiveInteger" />
+			<xsd:element name="domain" type="tns:Domain" />
+			<xsd:element name="table" type="tns:Table" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Domain">
+		<xsd:sequence>
+			<!-- 1=query, 2=update, 4=add, 8=delete, 15=all -->
+			<xsd:element name="operationCode" type="xsd:positiveInteger" />
+		</xsd:sequence>
+		<!-- domain name -->
+		<xsd:attribute name="name" type="xsd:string" use="required" />
+	</xsd:complexType>
+
+	<!-- configuration for database table which used to store the slog log -->
+	<xsd:complexType name="Table">
+		<xsd:sequence>
+			<xsd:element name="driver" type="xsd:string" />
+			<xsd:element name="url" type="xsd:string" />
+			<xsd:element name="user" type="xsd:string" />
+			<xsd:element name="password" type="xsd:string" />
+		</xsd:sequence>
+		<!-- Abacus will try to create slog table by following schema if it is not created -->
+		<xsd:attribute name="name" type="xsd:string" use="required" />
+	</xsd:complexType>
+
+</xsd:schema>

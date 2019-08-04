@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.abacusep.com/landawn/abacus" xmlns:tns="http://www.abacusep.com/landawn/abacus">
+
+	<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			Database definition schema. Copyright 2015, Haiyang Li. All rights reserved.
+		</xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:element name="project" type="tns:Project" />
+	<xsd:complexType name="Project">
+		<xsd:sequence>
+			<xsd:element name="DBMS" type="tns:DBMS" />
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" />
+	</xsd:complexType>
+
+	<xsd:complexType name="DBMS">
+		<xsd:sequence>
+			<xsd:element name="driver" type="xsd:string" />
+			<xsd:element name="url" type="xsd:string" />
+			<xsd:element name="user" type="xsd:string" />
+			<xsd:element name="password" type="xsd:string" />
+			<xsd:element name="database" type="tns:Database" />
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" />
+	</xsd:complexType>
+
+	<xsd:complexType name="Database">
+		<xsd:sequence>
+			<xsd:element name="table" type="tns:Table" />
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string" />
+
+	</xsd:complexType>
+	<xsd:complexType name="Table">
+		<xsd:sequence>
+			<xsd:element name="schema" type="xsd:string" />
+			<xsd:element name="index" type="xsd:string" />
+			<xsd:element name="sequence" type="xsd:string" />
+			<xsd:element name="constraint" type="xsd:string" />
+		</xsd:sequence>
+
+		<xsd:attribute name="name" type="xsd:string" />
+	</xsd:complexType>
+
+</xsd:schema>

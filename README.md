@@ -4,3 +4,7 @@
 [![Javadocs](https://www.javadoc.io/badge/com.landawn/abacus-entity-manager.svg)](https://www.javadoc.io/doc/com.landawn/abacus-entity-manager)
 
 A general persistent library in Java. It's easy to learn and simple to use with concise and powerful APIs.
+
+
+* EntityManager: 
+[EntityManagerEx](https://cdn.staticaly.com/gh/landawn/abacus-abacus-entity-manager/master/docs/EntityManagerEx_view.html).

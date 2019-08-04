@@ -1,0 +1,754 @@
+/*
+ * Copyright (c) 2015, Haiyang Li.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.landawn.abacus.core;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
+import com.landawn.abacus.DataSet;
+import com.landawn.abacus.EntityId;
+import com.landawn.abacus.IsolationLevel;
+import com.landawn.abacus.LockMode;
+import com.landawn.abacus.Transaction.Action;
+import com.landawn.abacus.condition.Condition;
+import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration;
+import com.landawn.abacus.handler.Handler;
+import com.landawn.abacus.handler.HandlerFactory;
+import com.landawn.abacus.metadata.EntityDefinition;
+import com.landawn.abacus.metadata.EntityDefinitionFactory;
+import com.landawn.abacus.util.N;
+import com.landawn.abacus.util.u.Holder;
+import com.landawn.abacus.util.u.Optional;
+
+/**
+ * 
+ * @since 0.8
+ * 
+ * @author Haiyang Li
+ */
+public abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityManager<E> {
+    protected final String domainName;
+    protected final EntityManagerConfiguration config;
+
+    private final List<Handler<E>> handlerList;
+
+    protected AbstractEntityManager(final String domainName, final EntityManagerConfiguration config) {
+        this.domainName = domainName;
+        this.config = config;
+
+        handlerList = new ArrayList<Handler<E>>();
+
+        for (String attr : config.getHandlerList()) {
+            Handler<E> handler = HandlerFactory.create(this, attr);
+            handlerList.add(handler);
+        }
+    }
+
+    @Override
+    public <T> Optional<T> get(EntityId entityId) {
+        return Optional.ofNullable((T) gett(entityId));
+    }
+
+    @Override
+    public <T> Optional<T> get(EntityId entityId, Collection<String> selectPropNames) {
+        return Optional.ofNullable((T) gett(entityId, selectPropNames));
+    }
+
+    @Override
+    public <T> Optional<T> get(EntityId entityId, Collection<String> selectPropNames, Map<String, Object> options) {
+        return Optional.ofNullable((T) gett(entityId, selectPropNames, options));
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> T gett(final EntityId entityId) {
+        return (T) gett(entityId, null, null);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> T gett(final EntityId entityId, final Collection<String> selectPropNames) {
+        return (T) gett(entityId, selectPropNames, null);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> T gett(final EntityId entityId, final Collection<String> selectPropNames, final Map<String, Object> options) {
+        EntityManagerUtil.checkArgNotNullOrEmpty(entityId, "EntityId");
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preGet(entityId, selectPropNames, options);
+        }
+
+        T entity = null;
+
+        try {
+            entity = (T) internalGet(null, entityId, selectPropNames, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postGet((E) entity, entityId, selectPropNames, options);
+            }
+        }
+
+        return entity;
+    }
+
+    //    @SuppressWarnings("unchecked")
+    //    @Override
+    //    public <T> List<T> getAll(final List<? extends EntityId> entityIds) {
+    //        return getAll(entityIds, null);
+    //    }
+    //
+    //    @SuppressWarnings("unchecked")
+    //    @Override
+    //    public <T> List<T> getAll(final List<? extends EntityId> entityIds, final Collection<String> selectPropNames) {
+    //        return getAll(entityIds, selectPropNames, null);
+    //    }
+    //
+    //    @SuppressWarnings("unchecked")
+    //    @Override
+    //    public <T> List<T> getAll(final List<? extends EntityId> entityIds, final Collection<String> selectPropNames, final Map<String, Object> options) {
+    //        EntityManagerUtil.checkArgNotNullOrEmpty(entityIds, "EntityIds");
+    //        EntityManagerUtil.checkArgNotNullOrEmpty(entityIds.get(0), "EntityIds");
+    //
+    //        for (int index = 0, size = handlerList.size(); index < size; index++) {
+    //            handlerList.get(index).preGet(entityIds, selectPropNames, options);
+    //        }
+    //
+    //        List<T> entities = null;
+    //
+    //        try {
+    //            entities = internalGet(null, entityIds, selectPropNames, options);
+    //        } finally {
+    //            for (int index = 0, size = handlerList.size(); index < size; index++) {
+    //                handlerList.get(index).postGet((List<E>) entities, entityIds, selectPropNames, options);
+    //            }
+    //        }
+    //
+    //        return entities;
+    //    }
+
+    @Override
+    public <T> List<T> list(final String entityName, final Collection<String> selectPropNames, final Condition condition) {
+        return list(entityName, selectPropNames, condition, null);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> List<T> list(final String entityName, final Collection<String> selectPropNames, final Condition condition, final Map<String, Object> options) {
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preList(entityName, selectPropNames, condition, options);
+        }
+
+        List<T> entities = null;
+
+        try {
+            entities = internalList(null, entityName, selectPropNames, condition, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postList((List<E>) entities, entityName, selectPropNames, condition, options);
+            }
+        }
+
+        return entities;
+    }
+
+    @Override
+    public EntityId add(final E entity) {
+        return add(entity, null);
+    }
+
+    @Override
+    public EntityId add(final E entity, final Map<String, Object> options) {
+        if (entity == null) {
+            throw new IllegalArgumentException("Entity can't be null");
+        }
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preAdd(entity, options);
+        }
+
+        EntityId entityId = null;
+
+        try {
+            entityId = internalAdd(entity, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postAdd(entityId, entity, options);
+            }
+        }
+
+        return entityId;
+    }
+
+    @Override
+    public List<EntityId> addAll(final Collection<? extends E> entities) {
+        return addAll(entities, null);
+    }
+
+    @Override
+    public List<EntityId> addAll(final Collection<? extends E> entities, final Map<String, Object> options) {
+        N.checkArgNotNullOrEmpty(entities, "Entities");
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preAdd(entities, options);
+        }
+
+        List<EntityId> entityIds = null;
+
+        try {
+            entityIds = internalAdd(entities, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postAdd(entityIds, entities, options);
+            }
+        }
+
+        return entityIds;
+    }
+
+    @Override
+    public EntityId add(final String entityName, final Map<String, Object> props, final Map<String, Object> options) {
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preAdd(entityName, props, options);
+        }
+
+        EntityId entityId = null;
+
+        try {
+            entityId = internalAdd(entityName, props, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postAdd(entityId, entityName, props, options);
+            }
+        }
+
+        return entityId;
+    }
+
+    @Override
+    public List<EntityId> addAll(final String entityName, final List<Map<String, Object>> propsList, final Map<String, Object> options) {
+        N.checkArgNotNullOrEmpty(propsList, "PropsList");
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preAdd(entityName, propsList, options);
+        }
+
+        List<EntityId> entityIds = null;
+
+        try {
+            entityIds = internalAdd(entityName, propsList, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postAdd(entityIds, entityName, propsList, options);
+            }
+        }
+
+        return entityIds;
+    }
+
+    @Override
+    public int update(final E entity) {
+        return update(entity, null);
+    }
+
+    @Override
+    public int update(final E entity, final Map<String, Object> options) {
+        if (entity == null) {
+            throw new IllegalArgumentException("Entity can't be null");
+        }
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preUpdate(entity, options);
+        }
+
+        int result = -1;
+
+        try {
+            // [TODO]
+            // if (entity instanceof ActiveRecord) {
+            // ((ActiveRecord) entity).update(options);
+            // } else {
+            result = internalUpdate(entity, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postUpdate(result, entity, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public int updateAll(final Collection<? extends E> entities) {
+        return updateAll(entities, null);
+    }
+
+    @Override
+    public int updateAll(final Collection<? extends E> entities, final Map<String, Object> options) {
+        N.checkArgNotNullOrEmpty(entities, "Entities");
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preUpdate(entities, options);
+        }
+
+        int result = -1;
+
+        try {
+            result = internalUpdate(entities, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postUpdate(result, entities, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public int update(final Map<String, Object> props, final EntityId entityId) {
+        return update(props, entityId, null);
+    }
+
+    @Override
+    public int update(final Map<String, Object> props, final EntityId entityId, final Map<String, Object> options) {
+        EntityManagerUtil.checkArgNotNullOrEmpty(entityId, "EntityId");
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preUpdate(props, entityId, options);
+        }
+
+        int result = -1;
+
+        try {
+            result = internalUpdate(entityId, props, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postUpdate(result, props, entityId, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds) {
+        return updateAll(props, entityIds, null);
+    }
+
+    @Override
+    public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds, final Map<String, Object> options) {
+        N.checkArgNotNullOrEmpty(entityIds, "EntityIds");
+        EntityManagerUtil.checkArgNotNullOrEmpty(entityIds.get(0), "EntityIds");
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preUpdate(props, entityIds, options);
+        }
+
+        int result = -1;
+
+        try {
+            result = internalUpdate(entityIds, props, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postUpdate(result, props, entityIds, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public int update(final String entityName, final Map<String, Object> props, final Condition condition, final Map<String, Object> options) {
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preUpdate(entityName, props, condition, options);
+        }
+
+        int result = -1;
+
+        try {
+            result = internalUpdate(entityName, props, condition, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postUpdate(result, entityName, props, condition, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public int delete(final EntityId entityId) {
+        return delete(entityId, null);
+    }
+
+    @Override
+    public int delete(final EntityId entityId, final Map<String, Object> options) {
+        EntityManagerUtil.checkArgNotNullOrEmpty(entityId, "EntityId");
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preDelete(entityId, options);
+        }
+
+        int result = -1;
+
+        try {
+            result = internalDelete(entityId, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postDelete(result, entityId, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public int deleteAll(final List<? extends EntityId> entityIds) {
+        return deleteAll(entityIds, null);
+    }
+
+    @Override
+    public int deleteAll(final List<? extends EntityId> entityIds, final Map<String, Object> options) {
+        N.checkArgNotNullOrEmpty(entityIds, "EntityIds");
+        EntityManagerUtil.checkArgNotNullOrEmpty(entityIds.get(0), "EntityIds");
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preDelete(entityIds, options);
+        }
+
+        int result = -1;
+
+        try {
+            result = internalDelete(entityIds, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postDelete(result, entityIds, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public int delete(final E entity) {
+        return delete(entity, null);
+    }
+
+    @Override
+    public int delete(final E entity, final Map<String, Object> options) {
+        if (entity == null) {
+            throw new IllegalArgumentException("Entity can't be null");
+        }
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preDelete(entity, options);
+        }
+
+        int result = -1;
+
+        try {
+            result = internalDelete(entity, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postDelete(result, entity, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public int deleteAll(final Collection<? extends E> entities) {
+        return deleteAll(entities, null);
+    }
+
+    @Override
+    public int deleteAll(final Collection<? extends E> entities, final Map<String, Object> options) {
+        N.checkArgNotNullOrEmpty(entities, "Entities");
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preDelete(entities, options);
+        }
+
+        int result = -1;
+
+        try {
+            result = internalDelete(entities, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postDelete(result, entities, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public int delete(final String entityName, final Condition condition, final Map<String, Object> options) {
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preDelete(entityName, condition, options);
+        }
+
+        int result = -1;
+
+        try {
+            result = internalDelete(entityName, condition, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postDelete(result, entityName, condition, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public DataSet query(final String entityName, final Collection<String> selectPropNames, final Condition condition) {
+        return query(entityName, selectPropNames, condition, null, null);
+    }
+
+    @Override
+    public DataSet query(final String entityName, final Collection<String> selectPropNames, final Condition condition, final Holder<String> resultHandle,
+            final Map<String, Object> options) {
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preQuery(entityName, selectPropNames, condition, resultHandle, options);
+        }
+
+        DataSet result = null;
+
+        try {
+            result = internalQuery(entityName, selectPropNames, condition, resultHandle, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postQuery(result, entityName, selectPropNames, condition, resultHandle, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public DataSet getResultByHandle(final String resultHandle, final Collection<String> selectPropNames, final Map<String, Object> options) {
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preGetResultByHandle(resultHandle, selectPropNames, options);
+        }
+
+        DataSet result = null;
+
+        try {
+            result = internalGetResultByHandle(resultHandle, selectPropNames, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postGetResultByHandle(result, resultHandle, selectPropNames, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public void releaseResultHandle(String resultHandle)
+
+    {
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preReleaseResultHandle(resultHandle);
+        }
+
+        try {
+            internalReleaseResultHandle(resultHandle);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postReleaseResultHandle(resultHandle);
+            }
+        }
+    }
+
+    @Override
+    public String beginTransaction(final IsolationLevel isolationLevel, final Map<String, Object> options) {
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preBeginTransaction(isolationLevel, options);
+        }
+
+        String result = null;
+
+        try {
+            result = internalBeginTransaction(isolationLevel, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postBeginTransaction(result, isolationLevel, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public void endTransaction(final String transactionId, final Action transactionAction, final Map<String, Object> options) {
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preEndTransaction(transactionId, transactionAction, options);
+        }
+
+        try {
+            internalEndTransaction(transactionId, transactionAction, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postEndTransaction(transactionId, transactionAction, options);
+            }
+        }
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public long getRecordVersion(final EntityId entityId, final Map<String, Object> options) {
+        EntityManagerUtil.checkArgNotNullOrEmpty(entityId, "EntityId");
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preGetRecordVersion(entityId, options);
+        }
+
+        long result = -1;
+
+        try {
+            result = internalGetRecordVersion(entityId, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postGetRecordVersion(result, entityId, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public String lockRecord(final EntityId entityId, final LockMode lockMode, final Map<String, Object> options) {
+        EntityManagerUtil.checkArgNotNullOrEmpty(entityId, "EntityId");
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preLockRecord(entityId, lockMode, options);
+        }
+
+        String result = null;
+
+        try {
+            result = internalLockRecord(entityId, lockMode, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postLockRecord(result, entityId, lockMode, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public boolean unlockRecord(final EntityId entityId, final String lockCode, final Map<String, Object> options) {
+        EntityManagerUtil.checkArgNotNullOrEmpty(entityId, "EntityId");
+
+        for (int index = 0, size = handlerList.size(); index < size; index++) {
+            handlerList.get(index).preUnlockRecord(entityId, lockCode, options);
+        }
+
+        boolean result = false;
+
+        try {
+            result = internalUnlockRecord(entityId, lockCode, options);
+        } finally {
+            for (int index = 0, size = handlerList.size(); index < size; index++) {
+                handlerList.get(index).postUnlockRecord(result, entityId, lockCode, options);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public EntityDefinitionFactory getEntityDefinitionFactory() {
+        return internalGetEntityDefinitionFactory();
+    }
+
+    protected abstract <T> T internalGet(Class<T> targetClass, EntityId entityId, Collection<String> selectPropNames, Map<String, Object> options);
+
+    protected abstract <T> List<T> internalGet(Class<T> targetClass, List<? extends EntityId> entityIds, Collection<String> selectPropNames,
+            Map<String, Object> options);
+
+    protected abstract <T> List<T> internalList(Class<T> targetClass, String entityName, Collection<String> selectPropNames, Condition condition,
+            Map<String, Object> options);
+
+    protected abstract EntityId internalAdd(E entity, Map<String, Object> options);
+
+    protected abstract List<EntityId> internalAdd(Collection<? extends E> entities, Map<String, Object> options);
+
+    protected abstract EntityId internalAdd(String entityName, Map<String, Object> props, Map<String, Object> options);
+
+    protected abstract List<EntityId> internalAdd(String entityName, List<Map<String, Object>> propsList, Map<String, Object> options);
+
+    protected abstract int internalUpdate(E entity, Map<String, Object> options);
+
+    protected abstract int internalUpdate(Collection<? extends E> entities, Map<String, Object> options);
+
+    protected abstract int internalUpdate(EntityId entityId, Map<String, Object> props, Map<String, Object> options);
+
+    protected abstract int internalUpdate(List<? extends EntityId> entityIds, Map<String, Object> props, Map<String, Object> options);
+
+    protected abstract int internalUpdate(String entityName, Map<String, Object> props, Condition condition, Map<String, Object> options);
+
+    protected abstract int internalDelete(EntityId entityId, Map<String, Object> options);
+
+    protected abstract int internalDelete(List<? extends EntityId> entityIds, Map<String, Object> options);
+
+    protected abstract int internalDelete(E entity, Map<String, Object> options);
+
+    protected abstract int internalDelete(Collection<? extends E> entities, Map<String, Object> options);
+
+    protected abstract int internalDelete(String entityName, Condition condition, Map<String, Object> options);
+
+    protected abstract DataSet internalQuery(String entityName, Collection<String> selectPropNames, Condition condition, Holder<String> resultHandle,
+            Map<String, Object> options);
+
+    protected abstract DataSet internalGetResultByHandle(String resultHandle, Collection<String> selectPropNames, Map<String, Object> options);
+
+    protected abstract void internalReleaseResultHandle(String resultHandle);
+
+    protected abstract String internalBeginTransaction(IsolationLevel isolationLevel, Map<String, Object> options);
+
+    protected abstract void internalEndTransaction(String transactionId, Action transactionAction, Map<String, Object> options);
+
+    protected abstract long internalGetRecordVersion(EntityId entityId, Map<String, Object> options);
+
+    protected abstract String internalLockRecord(EntityId entityId, LockMode lockMode, Map<String, Object> options);
+
+    protected abstract boolean internalUnlockRecord(EntityId entityId, String lockCode, Map<String, Object> options);
+
+    protected abstract EntityDefinitionFactory internalGetEntityDefinitionFactory();
+
+    protected EntityDefinition checkEntityName(final String entityName) {
+        return EntityManagerUtil.checkEntityName(getEntityDefinitionFactory(), entityName);
+    }
+
+    protected EntityDefinition checkEntityId(final EntityId entityId) {
+        return EntityManagerUtil.checkEntityId(getEntityDefinitionFactory(), entityId);
+    }
+
+    protected EntityDefinition checkEntity(final E entity) {
+        return EntityManagerUtil.checkEntity(getEntityDefinitionFactory(), entity);
+    }
+}
