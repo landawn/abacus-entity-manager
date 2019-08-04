@@ -6,7 +6,7 @@ package com.landawn.abacus.core;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.EntityId;
 import com.landawn.abacus.LockMode;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
@@ -20,7 +20,7 @@ import com.landawn.abacus.util.Try;
  * 
  * @author Haiyang Li
  */
-public class ConcurrentTest extends AbstractAbacusTest {
+public class ConcurrentTest extends AbstractEntityManager1Test {
     public void testCRUD() {
         final AtomicInteger activeThreadNum = new AtomicInteger(0);
         final int threadNumber = 100;

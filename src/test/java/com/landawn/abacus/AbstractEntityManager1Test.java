@@ -31,7 +31,7 @@ import com.landawn.abacus.util.SQLExecutor;
  * 
  * @author Haiyang Li
  */
-public abstract class AbstractAbacusTest extends AbstractTest {
+public abstract class AbstractEntityManager1Test extends AbstractTest {
     protected static final EntityManagerFactory emf = EntityManagerFactory.getInstance();
     protected final String domainName = getDomainName();
     protected final DBAccess dbAccess = emf.getDBAccess(domainName);
@@ -77,7 +77,7 @@ public abstract class AbstractAbacusTest extends AbstractTest {
         List<T> accounts = new ArrayList<>(size);
 
         for (int i = 0; i < size; i++) {
-            T account = AbstractAbacusTest.createAccount(cls, FIRST_NAME + i, LAST_NAME + i);
+            T account = AbstractEntityManager1Test.createAccount(cls, FIRST_NAME + i, LAST_NAME + i);
             accounts.add(account);
         }
 

@@ -59,14 +59,14 @@ public final class AbacusConfiguration {
     private static final Logger logger = LoggerFactory.getLogger(AbacusConfiguration.class);
 
     /**
-     * Field ABACUS. (value is ""abacus"")
+     * Field ABACUS_ENTITY_MANAGER. (value is ""abacus-entity-manager"")
      */
-    public static final String ABACUS = "abacus";
+    public static final String ABACUS_ENTITY_MANAGER = "abacus-entity-manager";
 
     /**
-     * Field ABACUS_FILE_NAME. (value is "ABACUS + ".xml"")
+     * Field ABACUS_ENTITY_MANAGER_FILE_NAME. (value is "abacus-entity-manager.xml"")
      */
-    public static final String ABACUS_FILE_NAME = ABACUS + ".xml";
+    public static final String ABACUS_ENTITY_MANAGER_FILE_NAME = ABACUS_ENTITY_MANAGER + ".xml";
 
     /**
      * Field VERSION. (value is ""version"")
@@ -120,7 +120,7 @@ public final class AbacusConfiguration {
         Document doc = Configuration.parse(abacusFile);
         Element abacusEle = doc.getDocumentElement();
 
-        if (!abacusEle.getNodeName().equals(ABACUS)) {
+        if (!abacusEle.getNodeName().equals(ABACUS_ENTITY_MANAGER)) {
             throw new AbacusException("Wrong configuration file, There is no root element: 'abacus'. ");
         }
 

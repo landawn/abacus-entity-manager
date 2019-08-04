@@ -26,7 +26,7 @@ public class ConfigurationTest extends AbstractTest {
     }
 
     public void testReadWriteAttr() throws IOException {
-        File databaseXml = new File("./config/abacus.xml");
+        File databaseXml = new File("./config/abacus-entity-manager.xml");
         Document doc = Configuration.parse(databaseXml);
 
         N.println(Configuration.readElement(doc.getDocumentElement()));

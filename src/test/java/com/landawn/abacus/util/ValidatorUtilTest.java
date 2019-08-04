@@ -4,7 +4,7 @@
 
 package com.landawn.abacus.util;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 
 /**
  * 
@@ -12,7 +12,7 @@ import com.landawn.abacus.AbstractAbacusTest;
  * 
  * @author Haiyang Li
  */
-public class ValidatorUtilTest extends AbstractAbacusTest {
+public class ValidatorUtilTest extends AbstractEntityManager1Test {
 
     public void test_01() {
         assertTrue(ValidatorUtil.isValidEmailAddress("70abc._22BB12@gmail.com"));

@@ -6,7 +6,7 @@ package com.landawn.abacus.core;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.util.N;
 
 /**
@@ -15,7 +15,7 @@ import com.landawn.abacus.util.N;
  * 
  * @author Haiyang Li
  */
-public class SessionTest extends AbstractAbacusTest {
+public class SessionTest extends AbstractEntityManager1Test {
 
     @Test
     public void test_01() {

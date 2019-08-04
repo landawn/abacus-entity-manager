@@ -8,7 +8,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.entity.extendDirty.basic.AclUser;
 import com.landawn.abacus.util.N;
 
@@ -18,7 +18,7 @@ import com.landawn.abacus.util.N;
  * 
  * @author Haiyang Li
  */
-public class MetadataTest extends AbstractAbacusTest {
+public class MetadataTest extends AbstractEntityManager1Test {
     @Test
     public void test_01() {
         N.println(ColumnType.get(ColumnType.ENTITY.getName()));

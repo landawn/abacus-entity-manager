@@ -11,7 +11,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.EntityId;
 import com.landawn.abacus.IsolationLevel;
@@ -36,7 +36,7 @@ import com.landawn.abacus.util.u.Holder;
  * 
  * @author Haiyang Li
  */
-public class DBAccessTest extends AbstractAbacusTest {
+public class DBAccessTest extends AbstractEntityManager1Test {
     @Test
     public void test_query() {
         Map<String, Object> props = createAccountProps();

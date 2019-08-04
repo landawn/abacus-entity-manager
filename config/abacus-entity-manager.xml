@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<abacus version="0.8">
+<abacus-entity-manager version="0.8">
 	<slog>
 		<open>false</open>
 		<batchSize>200</batchSize>
@@ -18,7 +18,7 @@
 		</table>
 	</slog>
 
-	<properties resource="abacus.properties" />
+	<properties resource="abacus-entity-manager.properties" />
 
 	<initializerOnStartup>com.landawn.abacus.impl.MyAbacusInitializer
 	</initializerOnStartup>
@@ -457,5 +457,4 @@
 		</dataSourceManager>
 	</entityManager>
 
-	<!-- end abacus test -->
-</abacus>
+</abacus-entity-manager>

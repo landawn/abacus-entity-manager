@@ -11,7 +11,7 @@ import java.util.UUID;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.EntityId;
 import com.landawn.abacus.condition.ConditionFactory.CF;
@@ -38,7 +38,7 @@ import com.landawn.abacus.util.Options;
  *
  * @author Haiyang Li
  */
-public class EntityManagerTest extends AbstractAbacusTest {
+public class EntityManagerTest extends AbstractEntityManager1Test {
     @Test
     public void testCRUD() {
         Account account = em.gett(Seid.of(Account.ID, 1));

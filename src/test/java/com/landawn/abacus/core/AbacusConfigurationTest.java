@@ -21,7 +21,7 @@ import java.io.File;
  */
 public class AbacusConfigurationTest extends AbstractTest {
     public void testEntityCacheConfiguration() {
-        File file = Configuration.findFile(AbacusConfiguration.ABACUS_FILE_NAME);
+        File file = Configuration.findFile(AbacusConfiguration.ABACUS_ENTITY_MANAGER_FILE_NAME);
         AbacusConfiguration abacusConfig = new AbacusConfiguration(file);
 
         // assertEquals(7, abacusConfig.getEntityManagerConfigurationList().size());

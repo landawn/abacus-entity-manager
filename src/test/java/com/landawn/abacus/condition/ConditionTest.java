@@ -10,7 +10,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.EntityId;
 import com.landawn.abacus.condition.ConditionFactory.CF;
@@ -28,7 +28,7 @@ import com.landawn.abacus.util.SortDirection;
  *
  * @author Haiyang Li
  */
-public class ConditionTest extends AbstractAbacusTest {
+public class ConditionTest extends AbstractEntityManager1Test {
 
     @Test
     public void test_Junction() {

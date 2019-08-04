@@ -9,7 +9,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.core.sql.command.SQLCommandFactory;
 import com.landawn.abacus.core.sql.command.SQLCondCommand;
 import com.landawn.abacus.core.sql.command.SQLOperationCommand;
@@ -25,7 +25,7 @@ import com.landawn.abacus.util.Options.Query;
  * 
  * @author Haiyang Li
  */
-public class SQLCommandTest extends AbstractAbacusTest {
+public class SQLCommandTest extends AbstractEntityManager1Test {
     @Test
     public void test_01() {
         SQLCondCommand sqlCondCmd = SQLCommandFactory.createSqlCondCmd();

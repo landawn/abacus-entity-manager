@@ -24,15 +24,13 @@ import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.SQLExecutor;
 
-import junit.framework.TestCase;
-
 /**
  * 
  * @since 0.8
  * 
  * @author Haiyang Li
  */
-public abstract class BaseTest extends TestCase {
+public abstract class AbstractEntityManager0Test extends AbstractTest {
     public static final String databaseName = "abacustest";
     protected static final String srcPath = "./src/test/java/";
     protected static boolean isMySQL;
@@ -66,10 +64,6 @@ public abstract class BaseTest extends TestCase {
                 JdbcUtil.closeQuietly(conn);
             }
         }
-    }
-
-    protected static void println(Object obj) {
-        N.println(obj);
     }
 
     protected void sleep(long interval) {

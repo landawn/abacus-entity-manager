@@ -4,7 +4,7 @@
 
 package com.landawn.abacus.core.implDirty.basic;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.EntityId;
 import com.landawn.abacus.entity.implDirty.basic.Account;
 import com.landawn.abacus.entity.implDirty.basic.ImplDirtyBasicPNL;
@@ -19,7 +19,7 @@ import org.junit.Test;
  * 
  * @author Haiyang Li
  */
-public class DBAccessTest extends AbstractAbacusTest {
+public class DBAccessTest extends AbstractEntityManager1Test {
     @Test
     public void testCRUD() {
         Account account = createAccount(Account.class);

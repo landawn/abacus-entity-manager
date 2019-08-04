@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.EntityId;
 import com.landawn.abacus.condition.Condition;
@@ -27,7 +27,7 @@ import com.landawn.abacus.util.Options.Query;
  * 
  * @author Haiyang Li
  */
-public class QueryCacheTest extends AbstractAbacusTest {
+public class QueryCacheTest extends AbstractEntityManager1Test {
     //
     //  int[] resultSizes = { 0, 1, 2, 9, 11, 99, 101, 1023, 1024, 1025, 2099 };
     //  int[] offsets = { 0, 1, 99, 100, 1023, 1024, 1025, 2099 };

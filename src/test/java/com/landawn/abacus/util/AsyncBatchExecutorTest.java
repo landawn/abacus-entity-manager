@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutionException;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.condition.ConditionFactory.CF;
 import com.landawn.abacus.core.Seid;
@@ -29,7 +29,7 @@ import com.landawn.abacus.util.SQLExecutor.StatementSetter;
  * 
  * @author Haiyang Li
  */
-public class AsyncBatchExecutorTest extends AbstractAbacusTest {
+public class AsyncBatchExecutorTest extends AbstractEntityManager1Test {
     private final AsyncBatchExecutor<Object> asyncBatchExecutor = emf.createAsyncBatchExecutor(domainName);
 
     @Override

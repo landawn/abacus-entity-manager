@@ -18,7 +18,7 @@
 		</table>
 	</slog>
 
-	<properties resource="abacus.properties" />
+	<properties resource="abacus-entity-manager.properties" />
 
 	<initializerOnStartup>com.landawn.abacus.impl.MyAbacusInitializer
 	</initializerOnStartup>
@@ -29,7 +29,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/ExtendDirty</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 	</entityManager>
 
@@ -39,7 +39,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/ImplDirty</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 	</entityManager>
 
@@ -49,7 +49,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/NoInherit</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 	</entityManager>
 
@@ -59,7 +59,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/StringId</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 	</entityManager>
 
@@ -71,7 +71,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/extendDirtyBasic</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 		<entityDefinition>${entity.definition.extendDirtyBasic}
 		</entityDefinition>
@@ -97,7 +97,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/extendDirtyLV</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 		<entityDefinition>${entity.definition.extendDirtyLV}
 		</entityDefinition>
@@ -123,7 +123,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/extendDirtyLVC</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 		<entityDefinition>${entity.definition.extendDirtyLVC}
 		</entityDefinition>
@@ -154,7 +154,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/extendDirtyVC</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 		<entityDefinition>${entity.definition.extendDirtyVC}
 		</entityDefinition>
@@ -183,7 +183,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/implDirtyBasic</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 		<entityDefinition>${entity.definition.implDirtyBasic}
 		</entityDefinition>
@@ -209,7 +209,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/implDirtyLV</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 		<entityDefinition>${entity.definition.implDirtyLV}</entityDefinition>
 		<dataSourceManager liveEnv="dev">
@@ -234,7 +234,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/implDirtyLVC</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 		<entityDefinition>${entity.definition.implDirtyLVC}</entityDefinition>
 		<dataSourceManager liveEnv="dev">
@@ -259,7 +259,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/implDirtyVC</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 		<entityDefinition>${entity.definition.implDirtyVC}</entityDefinition>
 		<dataSourceManager liveEnv="dev">
@@ -284,7 +284,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/pjoBasic</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 		<entityDefinition>${entity.definition.pjoBasic}</entityDefinition>
 		<dataSourceManager liveEnv="dev">
@@ -309,7 +309,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/pjoLV</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 		<entityDefinition>${entity.definition.pjoLV}</entityDefinition>
 		<dataSourceManager liveEnv="dev">
@@ -334,7 +334,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/pjoLVC</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 		<entityDefinition>${entity.definition.pjoLVC}</entityDefinition>
 		<dataSourceManager liveEnv="dev">
@@ -359,7 +359,7 @@
 		<mode>remote</mode>
 		<server>
 			<url>http://localhost:8080/abacus/pjoVC</url>
-			<contentFormat>xml</contentFormat>
+			<contentFormat>kryo</contentFormat>
 		</server>
 		<entityDefinition>${entity.definition.pjoVC}</entityDefinition>
 		<dataSourceManager liveEnv="dev">

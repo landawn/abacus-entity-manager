@@ -164,7 +164,7 @@ public abstract class AbstractTest extends TestCase {
         T account = null;
 
         for (int i = 0; i < size; i++) {
-            account = AbstractAbacusTest.createAccount(cls, FIRST_NAME + i, LAST_NAME + i);
+            account = AbstractEntityManager1Test.createAccount(cls, FIRST_NAME + i, LAST_NAME + i);
             ClassUtil.setPropValue(account, propSetMethod, createAccountContact(propSetMethod.getParameterTypes()[0]));
 
             accounts.add(account);

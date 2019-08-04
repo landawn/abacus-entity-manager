@@ -10,7 +10,7 @@ package com.landawn.abacus;
  * 
  * @author Haiyang Li
  */
-public class NoInheritBaseTest extends BaseTest {
+public abstract class NoInheritBaseTest extends AbstractEntityManager0Test {
     public static final String domainName = "NoInherit";
 
     @Override

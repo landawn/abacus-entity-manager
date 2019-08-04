@@ -6,7 +6,7 @@ package com.landawn.abacus.server;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
 import com.landawn.abacus.http.HttpClient;
 import com.landawn.abacus.util.Array;
@@ -19,7 +19,7 @@ import com.landawn.abacus.util.URLEncodedUtil;
  * 
  * @author Haiyang Li
  */
-public class GetTest extends AbstractAbacusTest {
+public class GetTest extends AbstractEntityManager1Test {
     static final String url = "http://localhost:8080/abacus/extendDirtyBasic";
     static final HttpClient httpClient = HttpClient.create(url);
 

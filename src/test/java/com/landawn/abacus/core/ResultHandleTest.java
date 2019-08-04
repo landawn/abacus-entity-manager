@@ -9,7 +9,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
 import com.landawn.abacus.util.N;
@@ -22,7 +22,7 @@ import com.landawn.abacus.util.u.Holder;
  * 
  * @author Haiyang Li
  */
-public class ResultHandleTest extends AbstractAbacusTest {
+public class ResultHandleTest extends AbstractEntityManager1Test {
     @Test
     public void test_getFromCache() {
         List<Account> accounts = addAccount(Account.class, 5);

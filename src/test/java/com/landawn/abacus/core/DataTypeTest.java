@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.EntityId;
 import com.landawn.abacus.EntityManager;
@@ -39,7 +39,7 @@ import com.landawn.abacus.util.N;
  * 
  * @author Haiyang Li
  */
-public class DataTypeTest extends AbstractAbacusTest {
+public class DataTypeTest extends AbstractEntityManager1Test {
 
     public void test_clob() throws IOException, SQLException {
         EntityManager<DataType> em = emf.getEntityManager(domainName);

@@ -7,7 +7,7 @@ package com.landawn.abacus.core;
 import java.util.Collection;
 import java.util.Map;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.condition.Condition;
 import com.landawn.abacus.core.sql.SQLQueryCache;
 import com.landawn.abacus.core.sql.SQLResult;
@@ -24,7 +24,7 @@ import com.landawn.abacus.util.Options.Cache;
  * 
  * @author Haiyang Li
  */
-public class SQLQueryCacheTest extends AbstractAbacusTest {
+public class SQLQueryCacheTest extends AbstractEntityManager1Test {
     public void testA() {
         addAccount(Account.class, 3000);
 

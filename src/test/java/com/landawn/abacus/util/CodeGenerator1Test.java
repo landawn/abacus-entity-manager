@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.landawn.abacus.BaseTest;
+import com.landawn.abacus.AbstractEntityManager0Test;
 import com.landawn.abacus.DataSource;
 import com.landawn.abacus.impl.MyAbstractDirtyMarker;
 import com.landawn.abacus.impl.MyDirtyMarker;
@@ -29,7 +29,7 @@ import junit.framework.TestCase;
 public class CodeGenerator1Test extends TestCase {
     static final DataSource ds;
     static {
-        Properties<String, String> props = PropertiesUtil.load(new File("./config/abacus.properties"));
+        Properties<String, String> props = PropertiesUtil.load(new File("./config/abacus-entity-manager.properties"));
         Properties<String, String> jdbcProperties = new Properties<String, String>();
         for (Map.Entry<String, String> entry : props.entrySet()) {
             if (entry.getKey().startsWith("jdbc.")) {
@@ -86,7 +86,7 @@ public class CodeGenerator1Test extends TestCase {
     public void generate(String domainName, EntityMode entityMode, Class<?> extendedClass, Class<?>... implInterface) {
         Connection conn = ds.getConnection();
 
-        SQLDatabase database = new SQLDatabase(conn, BaseTest.databaseName, selectedTables);
+        SQLDatabase database = new SQLDatabase(conn, AbstractEntityManager0Test.databaseName, selectedTables);
         JdbcUtil.closeQuietly(null, conn);
 
         File entityDefinitionFile = getEntityDefinitionXmlFile(domainName);
@@ -107,7 +107,7 @@ public class CodeGenerator1Test extends TestCase {
     }
 
     protected File getEntityDefinitionXmlFile(String domainName) {
-        String directoryPath = srcPath + BaseTest.class.getPackage().getName().replace('.', '/') + "/entity/" + domainName.substring(0, 1).toLowerCase()
+        String directoryPath = srcPath + AbstractEntityManager0Test.class.getPackage().getName().replace('.', '/') + "/entity/" + domainName.substring(0, 1).toLowerCase()
                 + domainName.substring(1) + "/";
 
         // create entity definition from database.

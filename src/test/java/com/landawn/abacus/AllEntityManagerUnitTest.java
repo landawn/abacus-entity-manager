@@ -22,10 +22,10 @@ import junit.framework.TestSuite;
  * 
  * @author Haiyang Li
  */
-public class AllUnitTest extends TestSuite {
+public class AllEntityManagerUnitTest extends TestSuite {
 
     public static Test suite() {
-        TestSuite suite = new TestSuite("All Unit Test");
+        TestSuite suite = new TestSuite("All Entity Manager Unit Test");
         final Set<Class<?>> set = new HashSet<>();
 
         for (int i = 0; i < 1; i++) {

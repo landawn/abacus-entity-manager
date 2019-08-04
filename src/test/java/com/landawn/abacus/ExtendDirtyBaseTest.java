@@ -10,7 +10,7 @@ package com.landawn.abacus;
  * 
  * @author Haiyang Li
  */
-public class ExtendDirtyBaseTest extends BaseTest {
+public abstract class ExtendDirtyBaseTest extends AbstractEntityManager0Test {
     public static final String domainName = "ExtendDirty";
 
     @Override

@@ -7,7 +7,7 @@ package com.landawn.abacus.util;
 import java.util.List;
 import java.util.Map;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.EntityId;
 import com.landawn.abacus.IsolationLevel;
@@ -27,7 +27,7 @@ import com.landawn.abacus.util.u.Holder;
  * 
  * @author Haiyang Li
  */
-public class ExEntityManagerTest extends AbstractAbacusTest {
+public class ExEntityManagerTest extends AbstractEntityManager1Test {
     public void test_checkEntity() {
         em.checkEntity(N.asList(createAccount(Account.class)));
     }
@@ -92,7 +92,7 @@ public class ExEntityManagerTest extends AbstractAbacusTest {
 
         assertEquals(false, em.queryForBoolean(Account.__, Account.STATUS, null).orElse(false));
         assertEquals(0, em.queryForByte(Account.__, Account.STATUS, null).orElse((byte) 0));
-        assertEquals('0', em.queryForChar(Account.__, Account.STATUS, null).orElse(N.CHAR_0));
+        assertEquals(0, em.queryForChar(Account.__, Account.STATUS, null).orElse(N.CHAR_0));
         assertEquals(0, em.queryForShort(Account.__, Account.STATUS, null).orElse((short) 0));
         assertEquals(0, em.queryForLong(Account.__, Account.STATUS, null).orElse(0));
         assertEquals(0f, em.queryForFloat(Account.__, Account.STATUS, null).orElse(0f));

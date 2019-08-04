@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
@@ -20,7 +20,7 @@ import com.landawn.abacus.util.Options;
  * 
  * @author Haiyang Li
  */
-public class MySQLTest extends AbstractAbacusTest {
+public class MySQLTest extends AbstractEntityManager1Test {
     static final int batchSize = Options.DEFAULT_BATCH_SIZE;
 
     @Test

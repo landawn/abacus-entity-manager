@@ -10,7 +10,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.condition.ConditionFactory.CF;
 import com.landawn.abacus.condition.Criteria;
@@ -26,7 +26,7 @@ import com.landawn.abacus.util.Options.Jdbc;
  * 
  * @author Haiyang Li
  */
-public class SQLExecutorTest extends AbstractAbacusTest {
+public class SQLExecutorTest extends AbstractEntityManager1Test {
     @Test
     public void test_getResultByHandleInTransaction() {
         List<Account> accounts = addAccount(Account.class, 103);

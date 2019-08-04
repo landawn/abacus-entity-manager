@@ -6,7 +6,7 @@ package com.landawn.abacus.core;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.EntityId;
 import com.landawn.abacus.entity.extendDirty.basic.Account;
 import com.landawn.abacus.util.DateUtil;
@@ -18,7 +18,7 @@ import com.landawn.abacus.util.N;
  * 
  * @author Haiyang Li
  */
-public class EntityIdTest extends AbstractAbacusTest {
+public class EntityIdTest extends AbstractEntityManager1Test {
     @Test
     public void test_1() {
         EntityId entityId = Seid.of(Account.ID, 1);

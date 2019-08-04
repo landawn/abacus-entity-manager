@@ -10,7 +10,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.condition.ConditionFactory.CF;
 import com.landawn.abacus.condition.Criteria;
 import com.landawn.abacus.core.sql.command.SQLCommandFactory;
@@ -28,7 +28,7 @@ import com.landawn.abacus.util.SortDirection;
  * 
  * @author Haiyang Li
  */
-public class InterpreterTest extends AbstractAbacusTest {
+public class InterpreterTest extends AbstractEntityManager1Test {
     @Test
     public void test_OracleInterpreter_01() {
         OracleInterpreter interpreter = new OracleInterpreter("oracle", "11.1");

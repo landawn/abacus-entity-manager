@@ -4,7 +4,7 @@
 
 package com.landawn.abacus.idGenerator;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.entity.extendDirty.basic.DataType;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
 import com.landawn.abacus.metadata.EntityDefinition;
@@ -17,7 +17,7 @@ import com.landawn.abacus.util.N;
  * 
  * @author Haiyang Li
  */
-public class IdGeneratorTest extends AbstractAbacusTest {
+public class IdGeneratorTest extends AbstractEntityManager1Test {
     public void testCRUD() {
         Account account = createAccount(Account.class);
         em.add(account);

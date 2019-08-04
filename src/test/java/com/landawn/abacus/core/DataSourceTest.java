@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
@@ -27,7 +27,7 @@ import com.landawn.abacus.util.u.Holder;
  * 
  * @author Haiyang Li
  */
-public class DataSourceTest extends AbstractAbacusTest {
+public class DataSourceTest extends AbstractEntityManager1Test {
     public void testPoolSize() throws Exception {
         for (int k = 0; k < 3; k++) {
             final AtomicInteger activeThreadNum = new AtomicInteger();

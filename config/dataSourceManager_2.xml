@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSourceManager liveEnv="dev">
 
-	<properties resource="abacus.properties" />
+	<properties resource="abacus-entity-manager.properties" />
 	
 	<dataSource name="codes" env="dev">
         <!-- <provider>dbcp</provider> -->

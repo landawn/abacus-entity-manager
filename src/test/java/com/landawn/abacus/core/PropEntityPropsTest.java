@@ -6,7 +6,7 @@ package com.landawn.abacus.core;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
 import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.N;
@@ -17,7 +17,7 @@ import com.landawn.abacus.util.N;
  * 
  * @author Haiyang Li
  */
-public class PropEntityPropsTest extends AbstractAbacusTest {
+public class PropEntityPropsTest extends AbstractEntityManager1Test {
     @Test
     public void test_01() {
         Account account = createAccount(Account.class);

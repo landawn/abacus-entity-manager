@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 
-	<display-name>Abacus</display-name>
-	<description>Abacus server Application</description>
+	<display-name>abacus-entity-manager</display-name>
+	<description>abacus-entity-manager server Application</description>
 
 	<servlet>
 		<servlet-name>echo</servlet-name>

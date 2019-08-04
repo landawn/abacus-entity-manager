@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.entity.extendDirty.lvc.AclUser;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
 import com.landawn.abacus.entity.extendDirty.lvc.AccountContact;
@@ -21,7 +21,7 @@ import com.landawn.abacus.util.N;
  * 
  * @author Haiyang Li
  */
-public class EntityUtilTest extends AbstractAbacusTest {
+public class EntityUtilTest extends AbstractEntityManager1Test {
     final EntityDefinition accountEntityDef = em.getEntityDefinitionFactory().getDefinition(Account.__);
     final EntityDefinition aclUserEntityDef = em.getEntityDefinitionFactory().getDefinition(AclUser.__);
 

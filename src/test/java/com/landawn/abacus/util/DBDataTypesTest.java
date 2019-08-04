@@ -6,7 +6,7 @@ package com.landawn.abacus.util;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 
 /**
  * 
@@ -14,7 +14,7 @@ import com.landawn.abacus.AbstractAbacusTest;
  * 
  * @author Haiyang Li
  */
-public class DBDataTypesTest extends AbstractAbacusTest {
+public class DBDataTypesTest extends AbstractEntityManager1Test {
     @Test
     public void test_getMysqlDataType() throws Exception {
         assertEquals("int", DBDataTypeMapper.getMySQLDataType("int"));

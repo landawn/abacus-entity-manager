@@ -21,7 +21,7 @@ import java.util.Set;
 import org.junit.Test;
 
 import com.landawn.abacus.AbstractTest;
-import com.landawn.abacus.BaseTest;
+import com.landawn.abacus.AbstractEntityManager0Test;
 import com.landawn.abacus.DataSource;
 import com.landawn.abacus.core.AbstractDirtyMarker;
 import com.landawn.abacus.metadata.Column;
@@ -45,7 +45,7 @@ import com.myPackage.y.Account2;
 public class CodeGeneratorTest extends AbstractTest {
     static final DataSource ds;
     static {
-        Properties<String, String> props = PropertiesUtil.load(new File("./config/abacus.properties"));
+        Properties<String, String> props = PropertiesUtil.load(new File("./config/abacus-entity-manager.properties"));
         Properties<String, String> jdbcProperties = new Properties<String, String>();
         for (Map.Entry<String, String> entry : props.entrySet()) {
             if (entry.getKey().startsWith("jdbc.")) {
@@ -187,7 +187,7 @@ public class CodeGeneratorTest extends AbstractTest {
 
     public void testDatabase2Xml() throws Exception {
         Connection conn = ds.getConnection();
-        SQLDatabase database = new SQLDatabase(conn, BaseTest.databaseName, selectedTables);
+        SQLDatabase database = new SQLDatabase(conn, AbstractEntityManager0Test.databaseName, selectedTables);
         JdbcUtil.closeQuietly(null, conn);
 
         N.println(database.getProductName());

@@ -106,7 +106,7 @@ public class EntityManagerFactory implements com.landawn.abacus.EntityManagerFac
      */
     public synchronized static EntityManagerFactory getInstance() {
         if (DEFAULT_INSTANCE == null) {
-            DEFAULT_INSTANCE = getInstance(AbacusConfiguration.ABACUS_FILE_NAME);
+            DEFAULT_INSTANCE = getInstance(AbacusConfiguration.ABACUS_ENTITY_MANAGER_FILE_NAME);
         }
 
         return DEFAULT_INSTANCE;

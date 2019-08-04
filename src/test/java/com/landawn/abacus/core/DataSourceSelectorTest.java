@@ -4,7 +4,7 @@
 
 package com.landawn.abacus.core;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
 import com.landawn.abacus.impl.MyDataSourceSelector;
 import com.landawn.abacus.util.N;
@@ -20,7 +20,7 @@ import java.util.Map;
  * 
  * @author Haiyang Li
  */
-public class DataSourceSelectorTest extends AbstractAbacusTest {
+public class DataSourceSelectorTest extends AbstractEntityManager1Test {
     @Test
     public void testSelectNonExistDataSource() {
         Map<String, Object> options = N.asProps(Query.QUERY_WITH_DATA_SOURCE, MyDataSourceSelector.NON_EXIST_DATA_SOURCE);

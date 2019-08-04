@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.EntityId;
 import com.landawn.abacus.LockMode;
@@ -41,7 +41,7 @@ import com.landawn.abacus.util.Try;
  *
  * @author Haiyang Li
  */
-public class EntityManagerTest extends AbstractAbacusTest {
+public class EntityManagerTest extends AbstractEntityManager1Test {
     @Test
     public void test_lock() {
         EntityId entityId = Seid.of(Account.ID, 1);

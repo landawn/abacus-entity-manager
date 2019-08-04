@@ -9,7 +9,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractAbacusTest;
+import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.condition.Condition;
 import com.landawn.abacus.entity.extendDirty.basic.AccountContact;
 import com.landawn.abacus.entity.extendDirty.basic.DataType;
@@ -29,7 +29,7 @@ import com.landawn.abacus.util.Options.Query;
  *
  * @author Haiyang Li
  */
-public class EntityManagerUtilTest extends AbstractAbacusTest {
+public class EntityManagerUtilTest extends AbstractEntityManager1Test {
     final EntityDefinitionFactory entityDefinitionFactory = em.getEntityDefinitionFactory();
     final EntityDefinition entityDef = em.getEntityDefinitionFactory().getDefinition(Account.__);
 
