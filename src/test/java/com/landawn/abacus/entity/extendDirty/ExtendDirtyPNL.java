@@ -12,13 +12,13 @@ import java.util.List;
  * @version ${version}
  */
 public interface ExtendDirtyPNL {
-    public static final String _DN = "ExtendDirty".intern();
+    public static final String _DN = "extendDirty".intern();
 
-    public static interface AuthorPNL {
+    public static interface AccountPNL {
         /**
-         * Name of "Author" entity. 
+         * Name of "Account" entity. 
          */
-        public static final String __ = "Author".intern();
+        public static final String __ = "Account".intern();
 
         /**
          * Name of "id" property. 
@@ -26,89 +26,86 @@ public interface ExtendDirtyPNL {
          * column: "id". 
          */
         public static final String ID = (__ + ".id").intern();
+
+        /**
+         * Name of "gui" property. 
+         * type: String. 
+         * column: "gui". 
+         */
+        public static final String GUI = (__ + ".gui").intern();
+
+        /**
+         * Name of "emailAddress" property. 
+         * type: String. 
+         * column: "email_address". 
+         */
+        public static final String EMAIL_ADDRESS = (__ + ".emailAddress").intern();
 
         /**
          * Name of "firstName" property. 
          * type: String. 
-         * column: "firstName". 
+         * column: "first_name". 
          */
         public static final String FIRST_NAME = (__ + ".firstName").intern();
 
         /**
+         * Name of "middleName" property. 
+         * type: String. 
+         * column: "middle_name". 
+         */
+        public static final String MIDDLE_NAME = (__ + ".middleName").intern();
+
+        /**
          * Name of "lastName" property. 
          * type: String. 
-         * column: "lastName". 
+         * column: "last_name". 
          */
         public static final String LAST_NAME = (__ + ".lastName").intern();
 
         /**
-         * Name of "birthDay" property. 
+         * Name of "birthDate" property. 
+         * type: Date. 
+         * column: "birth_date". 
+         */
+        public static final String BIRTH_DATE = (__ + ".birthDate").intern();
+
+        /**
+         * Name of "status" property. 
+         * type: int. 
+         * column: "status". 
+         */
+        public static final String STATUS = (__ + ".status").intern();
+
+        /**
+         * Name of "lastUpdateTime" property. 
          * type: Timestamp. 
-         * column: "birthday". 
+         * column: "last_update_time". 
          */
-        public static final String BIRTH_DAY = (__ + ".birthDay").intern();
+        public static final String LAST_UPDATE_TIME = (__ + ".lastUpdateTime").intern();
 
         /**
-         * Name of "contact" property. 
-         * type: com.landawn.abacus.entity.extendDirty.Contact. 
-         * column: "Contact". 
+         * Name of "createTime" property. 
+         * type: Timestamp. 
+         * column: "create_time". 
          */
-        public static final String CONTACT = (__ + ".contact").intern();
-
-        /**
-         * Name of "book" property. 
-         * type: List<com.landawn.abacus.entity.extendDirty.Book>. 
-         * column: "Book". 
-         */
-        public static final String BOOK = (__ + ".book").intern();
+        public static final String CREATE_TIME = (__ + ".createTime").intern();
 
         /**
          * Immutable property name list
          */
-        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, FIRST_NAME, LAST_NAME, BIRTH_DAY, CONTACT, BOOK));
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, GUI, EMAIL_ADDRESS, FIRST_NAME, MIDDLE_NAME, LAST_NAME, BIRTH_DATE, STATUS, LAST_UPDATE_TIME, CREATE_TIME));
 
         /**
          * Immutable column name list
          */
-        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("author.id".intern(), "author.firstName".intern(), "author.lastName".intern(), "author.birthday".intern()));
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("account.id".intern(), "account.gui".intern(), "account.email_address".intern(), "account.first_name".intern(), "account.middle_name".intern(), "account.last_name".intern(), "account.birth_date".intern(), "account.status".intern(), "account.last_update_time".intern(), "account.create_time".intern()));
     }
 
-    public static interface AuthorBookPNL {
+    public static interface AccountContactPNL {
         /**
-         * Name of "AuthorBook" entity. 
+         * Name of "AccountContact" entity. 
          */
-        public static final String __ = "AuthorBook".intern();
-
-        /**
-         * Name of "authorId" property. 
-         * type: long. 
-         * column: "authorId". 
-         */
-        public static final String AUTHOR_ID = (__ + ".authorId").intern();
-
-        /**
-         * Name of "bookId" property. 
-         * type: long. 
-         * column: "bookId". 
-         */
-        public static final String BOOK_ID = (__ + ".bookId").intern();
-
-        /**
-         * Immutable property name list
-         */
-        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(AUTHOR_ID, BOOK_ID));
-
-        /**
-         * Immutable column name list
-         */
-        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("authorBook.authorId".intern(), "authorBook.bookId".intern()));
-    }
-
-    public static interface BookPNL {
-        /**
-         * Name of "Book" entity. 
-         */
-        public static final String __ = "Book".intern();
+        public static final String __ = "AccountContact".intern();
 
         /**
          * Name of "id" property. 
@@ -118,56 +115,11 @@ public interface ExtendDirtyPNL {
         public static final String ID = (__ + ".id").intern();
 
         /**
-         * Name of "name" property. 
-         * type: String. 
-         * column: "name". 
-         */
-        public static final String NAME = (__ + ".name").intern();
-
-        /**
-         * Name of "language" property. 
-         * type: String. 
-         * column: "language". 
-         */
-        public static final String LANGUAGE = (__ + ".language").intern();
-
-        /**
-         * Name of "author" property. 
-         * type: List<com.landawn.abacus.entity.extendDirty.Author>. 
-         * column: "Author". 
-         */
-        public static final String AUTHOR = (__ + ".author").intern();
-
-        /**
-         * Immutable property name list
-         */
-        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, NAME, LANGUAGE, AUTHOR));
-
-        /**
-         * Immutable column name list
-         */
-        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("book.id".intern(), "book.name".intern(), "book.language".intern()));
-    }
-
-    public static interface ContactPNL {
-        /**
-         * Name of "Contact" entity. 
-         */
-        public static final String __ = "Contact".intern();
-
-        /**
-         * Name of "id" property. 
+         * Name of "accountId" property. 
          * type: long. 
-         * column: "id". 
+         * column: "account_id". 
          */
-        public static final String ID = (__ + ".id").intern();
-
-        /**
-         * Name of "hostId" property. 
-         * type: long. 
-         * column: "hostId". 
-         */
-        public static final String HOST_ID = (__ + ".hostId").intern();
+        public static final String ACCOUNT_ID = (__ + ".accountId").intern();
 
         /**
          * Name of "mobile" property. 
@@ -198,21 +150,557 @@ public interface ExtendDirtyPNL {
         public static final String ADDRESS = (__ + ".address").intern();
 
         /**
-         * Name of "emailList" property. 
-         * type: List<com.landawn.abacus.entity.extendDirty.Email>. 
-         * column: "Email". 
+         * Name of "address2" property. 
+         * type: String. 
+         * column: "address_2". 
          */
-        public static final String EMAIL_LIST = (__ + ".emailList").intern();
+        public static final String ADDRESS_2 = (__ + ".address2").intern();
+
+        /**
+         * Name of "city" property. 
+         * type: String. 
+         * column: "city". 
+         */
+        public static final String CITY = (__ + ".city").intern();
+
+        /**
+         * Name of "state" property. 
+         * type: String. 
+         * column: "state". 
+         */
+        public static final String STATE = (__ + ".state").intern();
+
+        /**
+         * Name of "country" property. 
+         * type: String. 
+         * column: "country". 
+         */
+        public static final String COUNTRY = (__ + ".country").intern();
+
+        /**
+         * Name of "zipCode" property. 
+         * type: String. 
+         * column: "zip_code". 
+         */
+        public static final String ZIP_CODE = (__ + ".zipCode").intern();
+
+        /**
+         * Name of "category" property. 
+         * type: String. 
+         * column: "category". 
+         */
+        public static final String CATEGORY = (__ + ".category").intern();
+
+        /**
+         * Name of "description" property. 
+         * type: String. 
+         * column: "description". 
+         */
+        public static final String DESCRIPTION = (__ + ".description").intern();
+
+        /**
+         * Name of "status" property. 
+         * type: int. 
+         * column: "status". 
+         */
+        public static final String STATUS = (__ + ".status").intern();
+
+        /**
+         * Name of "lastUpdateTime" property. 
+         * type: Timestamp. 
+         * column: "last_update_time". 
+         */
+        public static final String LAST_UPDATE_TIME = (__ + ".lastUpdateTime").intern();
+
+        /**
+         * Name of "createTime" property. 
+         * type: Timestamp. 
+         * column: "create_time". 
+         */
+        public static final String CREATE_TIME = (__ + ".createTime").intern();
 
         /**
          * Immutable property name list
          */
-        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, HOST_ID, MOBILE, TELEPHONE, EMAIL, ADDRESS, EMAIL_LIST));
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, ACCOUNT_ID, MOBILE, TELEPHONE, EMAIL, ADDRESS, ADDRESS_2, CITY, STATE, COUNTRY, ZIP_CODE, CATEGORY, DESCRIPTION, STATUS, LAST_UPDATE_TIME, CREATE_TIME));
 
         /**
          * Immutable column name list
          */
-        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("contact.id".intern(), "contact.hostId".intern(), "contact.mobile".intern(), "contact.telephone".intern(), "contact.email".intern(), "contact.address".intern()));
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("account_contact.id".intern(), "account_contact.account_id".intern(), "account_contact.mobile".intern(), "account_contact.telephone".intern(), "account_contact.email".intern(), "account_contact.address".intern(), "account_contact.address_2".intern(), "account_contact.city".intern(), "account_contact.state".intern(), "account_contact.country".intern(), "account_contact.zip_code".intern(), "account_contact.category".intern(), "account_contact.description".intern(), "account_contact.status".intern(), "account_contact.last_update_time".intern(), "account_contact.create_time".intern()));
+    }
+
+    public static interface AccountDevicePNL {
+        /**
+         * Name of "AccountDevice" entity. 
+         */
+        public static final String __ = "AccountDevice".intern();
+
+        /**
+         * Name of "id" property. 
+         * type: long. 
+         * column: "id". 
+         */
+        public static final String ID = (__ + ".id").intern();
+
+        /**
+         * Name of "accountId" property. 
+         * type: long. 
+         * column: "account_id". 
+         */
+        public static final String ACCOUNT_ID = (__ + ".accountId").intern();
+
+        /**
+         * Name of "name" property. 
+         * type: String. 
+         * column: "name". 
+         */
+        public static final String NAME = (__ + ".name").intern();
+
+        /**
+         * Name of "udid" property. 
+         * type: String. 
+         * column: "udid". 
+         */
+        public static final String UDID = (__ + ".udid").intern();
+
+        /**
+         * Name of "platform" property. 
+         * type: String. 
+         * column: "platform". 
+         */
+        public static final String PLATFORM = (__ + ".platform").intern();
+
+        /**
+         * Name of "model" property. 
+         * type: String. 
+         * column: "model". 
+         */
+        public static final String MODEL = (__ + ".model").intern();
+
+        /**
+         * Name of "manufacturer" property. 
+         * type: String. 
+         * column: "manufacturer". 
+         */
+        public static final String MANUFACTURER = (__ + ".manufacturer").intern();
+
+        /**
+         * Name of "produceTime" property. 
+         * type: Date. 
+         * column: "produce_time". 
+         */
+        public static final String PRODUCE_TIME = (__ + ".produceTime").intern();
+
+        /**
+         * Name of "category" property. 
+         * type: String. 
+         * column: "category". 
+         */
+        public static final String CATEGORY = (__ + ".category").intern();
+
+        /**
+         * Name of "description" property. 
+         * type: String. 
+         * column: "description". 
+         */
+        public static final String DESCRIPTION = (__ + ".description").intern();
+
+        /**
+         * Name of "status" property. 
+         * type: int. 
+         * column: "status". 
+         */
+        public static final String STATUS = (__ + ".status").intern();
+
+        /**
+         * Name of "lastUpdateTime" property. 
+         * type: Timestamp. 
+         * column: "last_update_time". 
+         */
+        public static final String LAST_UPDATE_TIME = (__ + ".lastUpdateTime").intern();
+
+        /**
+         * Name of "createTime" property. 
+         * type: Timestamp. 
+         * column: "create_time". 
+         */
+        public static final String CREATE_TIME = (__ + ".createTime").intern();
+
+        /**
+         * Immutable property name list
+         */
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, ACCOUNT_ID, NAME, UDID, PLATFORM, MODEL, MANUFACTURER, PRODUCE_TIME, CATEGORY, DESCRIPTION, STATUS, LAST_UPDATE_TIME, CREATE_TIME));
+
+        /**
+         * Immutable column name list
+         */
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("account_device.id".intern(), "account_device.account_id".intern(), "account_device.name".intern(), "account_device.udid".intern(), "account_device.platform".intern(), "account_device.model".intern(), "account_device.manufacturer".intern(), "account_device.produce_time".intern(), "account_device.category".intern(), "account_device.description".intern(), "account_device.status".intern(), "account_device.last_update_time".intern(), "account_device.create_time".intern()));
+    }
+
+    public static interface AclGroupPNL {
+        /**
+         * Name of "AclGroup" entity. 
+         */
+        public static final String __ = "AclGroup".intern();
+
+        /**
+         * Name of "id" property. 
+         * type: long. 
+         * column: "id". 
+         */
+        public static final String ID = (__ + ".id").intern();
+
+        /**
+         * Name of "gui" property. 
+         * type: String. 
+         * column: "gui". 
+         */
+        public static final String GUI = (__ + ".gui").intern();
+
+        /**
+         * Name of "name" property. 
+         * type: String. 
+         * column: "name". 
+         */
+        public static final String NAME = (__ + ".name").intern();
+
+        /**
+         * Name of "description" property. 
+         * type: String. 
+         * column: "description". 
+         */
+        public static final String DESCRIPTION = (__ + ".description").intern();
+
+        /**
+         * Name of "status" property. 
+         * type: int. 
+         * column: "status". 
+         */
+        public static final String STATUS = (__ + ".status").intern();
+
+        /**
+         * Name of "lastUpdateTime" property. 
+         * type: Timestamp. 
+         * column: "last_update_time". 
+         */
+        public static final String LAST_UPDATE_TIME = (__ + ".lastUpdateTime").intern();
+
+        /**
+         * Name of "createTime" property. 
+         * type: Timestamp. 
+         * column: "create_time". 
+         */
+        public static final String CREATE_TIME = (__ + ".createTime").intern();
+
+        /**
+         * Immutable property name list
+         */
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, GUI, NAME, DESCRIPTION, STATUS, LAST_UPDATE_TIME, CREATE_TIME));
+
+        /**
+         * Immutable column name list
+         */
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("acl_group.id".intern(), "acl_group.gui".intern(), "acl_group.name".intern(), "acl_group.description".intern(), "acl_group.status".intern(), "acl_group.last_update_time".intern(), "acl_group.create_time".intern()));
+    }
+
+    public static interface AclTargetPNL {
+        /**
+         * Name of "AclTarget" entity. 
+         */
+        public static final String __ = "AclTarget".intern();
+
+        /**
+         * Name of "id" property. 
+         * type: long. 
+         * column: "id". 
+         */
+        public static final String ID = (__ + ".id").intern();
+
+        /**
+         * Name of "gui" property. 
+         * type: String. 
+         * column: "gui". 
+         */
+        public static final String GUI = (__ + ".gui").intern();
+
+        /**
+         * Name of "name" property. 
+         * type: String. 
+         * column: "name". 
+         */
+        public static final String NAME = (__ + ".name").intern();
+
+        /**
+         * Name of "category" property. 
+         * type: String. 
+         * column: "category". 
+         */
+        public static final String CATEGORY = (__ + ".category").intern();
+
+        /**
+         * Name of "subCategory" property. 
+         * type: String. 
+         * column: "sub_category". 
+         */
+        public static final String SUB_CATEGORY = (__ + ".subCategory").intern();
+
+        /**
+         * Name of "type" property. 
+         * type: String. 
+         * column: "type". 
+         */
+        public static final String TYPE = (__ + ".type").intern();
+
+        /**
+         * Name of "subType" property. 
+         * type: String. 
+         * column: "sub_type". 
+         */
+        public static final String SUB_TYPE = (__ + ".subType").intern();
+
+        /**
+         * Name of "description" property. 
+         * type: String. 
+         * column: "description". 
+         */
+        public static final String DESCRIPTION = (__ + ".description").intern();
+
+        /**
+         * Name of "status" property. 
+         * type: int. 
+         * column: "status". 
+         */
+        public static final String STATUS = (__ + ".status").intern();
+
+        /**
+         * Name of "lastUpdateTime" property. 
+         * type: Timestamp. 
+         * column: "last_update_time". 
+         */
+        public static final String LAST_UPDATE_TIME = (__ + ".lastUpdateTime").intern();
+
+        /**
+         * Name of "createTime" property. 
+         * type: Timestamp. 
+         * column: "create_time". 
+         */
+        public static final String CREATE_TIME = (__ + ".createTime").intern();
+
+        /**
+         * Immutable property name list
+         */
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, GUI, NAME, CATEGORY, SUB_CATEGORY, TYPE, SUB_TYPE, DESCRIPTION, STATUS, LAST_UPDATE_TIME, CREATE_TIME));
+
+        /**
+         * Immutable column name list
+         */
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("acl_target.id".intern(), "acl_target.gui".intern(), "acl_target.name".intern(), "acl_target.category".intern(), "acl_target.sub_category".intern(), "acl_target.type".intern(), "acl_target.sub_type".intern(), "acl_target.description".intern(), "acl_target.status".intern(), "acl_target.last_update_time".intern(), "acl_target.create_time".intern()));
+    }
+
+    public static interface AclUgTargetRelationshipPNL {
+        /**
+         * Name of "AclUgTargetRelationship" entity. 
+         */
+        public static final String __ = "AclUgTargetRelationship".intern();
+
+        /**
+         * Name of "id" property. 
+         * type: long. 
+         * column: "id". 
+         */
+        public static final String ID = (__ + ".id").intern();
+
+        /**
+         * Name of "ugGui" property. 
+         * type: String. 
+         * column: "ug_gui". 
+         */
+        public static final String UG_GUI = (__ + ".ugGui").intern();
+
+        /**
+         * Name of "targetGui" property. 
+         * type: String. 
+         * column: "target_gui". 
+         */
+        public static final String TARGET_GUI = (__ + ".targetGui").intern();
+
+        /**
+         * Name of "privilege" property. 
+         * type: long. 
+         * column: "privilege". 
+         */
+        public static final String PRIVILEGE = (__ + ".privilege").intern();
+
+        /**
+         * Name of "description" property. 
+         * type: String. 
+         * column: "description". 
+         */
+        public static final String DESCRIPTION = (__ + ".description").intern();
+
+        /**
+         * Name of "status" property. 
+         * type: int. 
+         * column: "status". 
+         */
+        public static final String STATUS = (__ + ".status").intern();
+
+        /**
+         * Name of "lastUpdateTime" property. 
+         * type: Timestamp. 
+         * column: "last_update_time". 
+         */
+        public static final String LAST_UPDATE_TIME = (__ + ".lastUpdateTime").intern();
+
+        /**
+         * Name of "createTime" property. 
+         * type: Timestamp. 
+         * column: "create_time". 
+         */
+        public static final String CREATE_TIME = (__ + ".createTime").intern();
+
+        /**
+         * Immutable property name list
+         */
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, UG_GUI, TARGET_GUI, PRIVILEGE, DESCRIPTION, STATUS, LAST_UPDATE_TIME, CREATE_TIME));
+
+        /**
+         * Immutable column name list
+         */
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("acl_ug_target_relationship.id".intern(), "acl_ug_target_relationship.ug_gui".intern(), "acl_ug_target_relationship.target_gui".intern(), "acl_ug_target_relationship.privilege".intern(), "acl_ug_target_relationship.description".intern(), "acl_ug_target_relationship.status".intern(), "acl_ug_target_relationship.last_update_time".intern(), "acl_ug_target_relationship.create_time".intern()));
+    }
+
+    public static interface AclUserPNL {
+        /**
+         * Name of "AclUser" entity. 
+         */
+        public static final String __ = "AclUser".intern();
+
+        /**
+         * Name of "id" property. 
+         * type: long. 
+         * column: "id". 
+         */
+        public static final String ID = (__ + ".id").intern();
+
+        /**
+         * Name of "gui" property. 
+         * type: String. 
+         * column: "gui". 
+         */
+        public static final String GUI = (__ + ".gui").intern();
+
+        /**
+         * Name of "name" property. 
+         * type: String. 
+         * column: "name". 
+         */
+        public static final String NAME = (__ + ".name").intern();
+
+        /**
+         * Name of "description" property. 
+         * type: String. 
+         * column: "description". 
+         */
+        public static final String DESCRIPTION = (__ + ".description").intern();
+
+        /**
+         * Name of "status" property. 
+         * type: int. 
+         * column: "status". 
+         */
+        public static final String STATUS = (__ + ".status").intern();
+
+        /**
+         * Name of "lastUpdateTime" property. 
+         * type: Timestamp. 
+         * column: "last_update_time". 
+         */
+        public static final String LAST_UPDATE_TIME = (__ + ".lastUpdateTime").intern();
+
+        /**
+         * Name of "createTime" property. 
+         * type: Timestamp. 
+         * column: "create_time". 
+         */
+        public static final String CREATE_TIME = (__ + ".createTime").intern();
+
+        /**
+         * Immutable property name list
+         */
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, GUI, NAME, DESCRIPTION, STATUS, LAST_UPDATE_TIME, CREATE_TIME));
+
+        /**
+         * Immutable column name list
+         */
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("acl_user.id".intern(), "acl_user.gui".intern(), "acl_user.name".intern(), "acl_user.description".intern(), "acl_user.status".intern(), "acl_user.last_update_time".intern(), "acl_user.create_time".intern()));
+    }
+
+    public static interface AclUserGroupRelationshipPNL {
+        /**
+         * Name of "AclUserGroupRelationship" entity. 
+         */
+        public static final String __ = "AclUserGroupRelationship".intern();
+
+        /**
+         * Name of "id" property. 
+         * type: long. 
+         * column: "id". 
+         */
+        public static final String ID = (__ + ".id").intern();
+
+        /**
+         * Name of "userGui" property. 
+         * type: String. 
+         * column: "user_gui". 
+         */
+        public static final String USER_GUI = (__ + ".userGui").intern();
+
+        /**
+         * Name of "groupGui" property. 
+         * type: String. 
+         * column: "group_gui". 
+         */
+        public static final String GROUP_GUI = (__ + ".groupGui").intern();
+
+        /**
+         * Name of "description" property. 
+         * type: String. 
+         * column: "description". 
+         */
+        public static final String DESCRIPTION = (__ + ".description").intern();
+
+        /**
+         * Name of "status" property. 
+         * type: int. 
+         * column: "status". 
+         */
+        public static final String STATUS = (__ + ".status").intern();
+
+        /**
+         * Name of "lastUpdateTime" property. 
+         * type: Timestamp. 
+         * column: "last_update_time". 
+         */
+        public static final String LAST_UPDATE_TIME = (__ + ".lastUpdateTime").intern();
+
+        /**
+         * Name of "createTime" property. 
+         * type: Timestamp. 
+         * column: "create_time". 
+         */
+        public static final String CREATE_TIME = (__ + ".createTime").intern();
+
+        /**
+         * Immutable property name list
+         */
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, USER_GUI, GROUP_GUI, DESCRIPTION, STATUS, LAST_UPDATE_TIME, CREATE_TIME));
+
+        /**
+         * Immutable column name list
+         */
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("acl_user_group_relationship.id".intern(), "acl_user_group_relationship.user_gui".intern(), "acl_user_group_relationship.group_gui".intern(), "acl_user_group_relationship.description".intern(), "acl_user_group_relationship.status".intern(), "acl_user_group_relationship.last_update_time".intern(), "acl_user_group_relationship.create_time".intern()));
     }
 
     public static interface DataTypePNL {
@@ -540,6 +1028,273 @@ public interface ExtendDirtyPNL {
         public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("data_type.bytetype".intern(), "data_type.chartype".intern(), "data_type.booleantype".intern(), "data_type.shorttype".intern(), "data_type.inttype".intern(), "data_type.longtype".intern(), "data_type.floattype".intern(), "data_type.doubletype".intern(), "data_type.bigIntegerType".intern(), "data_type.bigdecimaltype".intern(), "data_type.stringtype".intern(), "data_type.bytearraytype".intern(), "data_type.characterstreamtype".intern(), "data_type.binarystreamtype".intern(), "data_type.clobtype".intern(), "data_type.blobtype".intern(), "data_type.datetype".intern(), "data_type.timetype".intern(), "data_type.timestamptype".intern(), "data_type.longDateType".intern(), "data_type.longTimeType".intern(), "data_type.longTimestampType".intern(), "data_type.enumType".intern(), "data_type.stringarraylisttype".intern(), "data_type.booleanlinkedlisttype".intern(), "data_type.doublearraylisttype".intern(), "data_type.datearraylisttype".intern(), "data_type.timestamparraylisttype".intern(), "data_type.bigdecimalarraylisttype".intern(), "data_type.stringhashsettype".intern(), "data_type.booleanlinkedhashsettype".intern(), "data_type.datehashsettype".intern(), "data_type.timestamphashsettype".intern(), "data_type.bigdecimalhashsettype".intern(), "data_type.stringhashmaptype".intern(), "data_type.booleanlinkedhashmaptype".intern(), "data_type.floathashmaptype".intern(), "data_type.datehashmaptype".intern(), "data_type.timestamphashmaptype".intern(), "data_type.bigdecimalhashmaptype".intern(), "data_type.stringvectortype".intern(), "data_type.stringconcurrenthashmaptype".intern(), "data_type.jsonType".intern(), "data_type.xmlType".intern()));
     }
 
+    public static interface LoginPNL {
+        /**
+         * Name of "Login" entity. 
+         */
+        public static final String __ = "Login".intern();
+
+        /**
+         * Name of "id" property. 
+         * type: long. 
+         * column: "id". 
+         */
+        public static final String ID = (__ + ".id").intern();
+
+        /**
+         * Name of "accountId" property. 
+         * type: long. 
+         * column: "account_id". 
+         */
+        public static final String ACCOUNT_ID = (__ + ".accountId").intern();
+
+        /**
+         * Name of "loginId" property. 
+         * type: String. 
+         * column: "login_id". 
+         */
+        public static final String LOGIN_ID = (__ + ".loginId").intern();
+
+        /**
+         * Name of "loginPassword" property. 
+         * type: String. 
+         * column: "login_password". 
+         */
+        public static final String LOGIN_PASSWORD = (__ + ".loginPassword").intern();
+
+        /**
+         * Name of "status" property. 
+         * type: int. 
+         * column: "status". 
+         */
+        public static final String STATUS = (__ + ".status").intern();
+
+        /**
+         * Name of "lastUpdateTime" property. 
+         * type: Timestamp. 
+         * column: "last_update_time". 
+         */
+        public static final String LAST_UPDATE_TIME = (__ + ".lastUpdateTime").intern();
+
+        /**
+         * Name of "createTime" property. 
+         * type: Timestamp. 
+         * column: "create_time". 
+         */
+        public static final String CREATE_TIME = (__ + ".createTime").intern();
+
+        /**
+         * Immutable property name list
+         */
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, ACCOUNT_ID, LOGIN_ID, LOGIN_PASSWORD, STATUS, LAST_UPDATE_TIME, CREATE_TIME));
+
+        /**
+         * Immutable column name list
+         */
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("login.id".intern(), "login.account_id".intern(), "login.login_id".intern(), "login.login_password".intern(), "login.status".intern(), "login.last_update_time".intern(), "login.create_time".intern()));
+    }
+
+    public static interface AuthorPNL {
+        /**
+         * Name of "Author" entity. 
+         */
+        public static final String __ = "Author".intern();
+
+        /**
+         * Name of "id" property. 
+         * type: long. 
+         * column: "id". 
+         */
+        public static final String ID = (__ + ".id").intern();
+
+        /**
+         * Name of "firstName" property. 
+         * type: String. 
+         * column: "firstName". 
+         */
+        public static final String FIRST_NAME = (__ + ".firstName").intern();
+
+        /**
+         * Name of "lastName" property. 
+         * type: String. 
+         * column: "lastName". 
+         */
+        public static final String LAST_NAME = (__ + ".lastName").intern();
+
+        /**
+         * Name of "birthDay" property. 
+         * type: Timestamp. 
+         * column: "birthday". 
+         */
+        public static final String BIRTH_DAY = (__ + ".birthDay").intern();
+
+        /**
+         * Name of "contact" property. 
+         * type: com.landawn.abacus.entity.extendDirty.Contact. 
+         * column: "Contact". 
+         */
+        public static final String CONTACT = (__ + ".contact").intern();
+
+        /**
+         * Name of "book" property. 
+         * type: List<com.landawn.abacus.entity.extendDirty.Book>. 
+         * column: "Book". 
+         */
+        public static final String BOOK = (__ + ".book").intern();
+
+        /**
+         * Immutable property name list
+         */
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, FIRST_NAME, LAST_NAME, BIRTH_DAY, CONTACT, BOOK));
+
+        /**
+         * Immutable column name list
+         */
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("author.id".intern(), "author.firstName".intern(), "author.lastName".intern(), "author.birthday".intern()));
+    }
+
+    public static interface AuthorBookPNL {
+        /**
+         * Name of "AuthorBook" entity. 
+         */
+        public static final String __ = "AuthorBook".intern();
+
+        /**
+         * Name of "authorId" property. 
+         * type: long. 
+         * column: "authorId". 
+         */
+        public static final String AUTHOR_ID = (__ + ".authorId").intern();
+
+        /**
+         * Name of "bookId" property. 
+         * type: long. 
+         * column: "bookId". 
+         */
+        public static final String BOOK_ID = (__ + ".bookId").intern();
+
+        /**
+         * Immutable property name list
+         */
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(AUTHOR_ID, BOOK_ID));
+
+        /**
+         * Immutable column name list
+         */
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("authorBook.authorId".intern(), "authorBook.bookId".intern()));
+    }
+
+    public static interface BookPNL {
+        /**
+         * Name of "Book" entity. 
+         */
+        public static final String __ = "Book".intern();
+
+        /**
+         * Name of "id" property. 
+         * type: long. 
+         * column: "id". 
+         */
+        public static final String ID = (__ + ".id").intern();
+
+        /**
+         * Name of "name" property. 
+         * type: String. 
+         * column: "name". 
+         */
+        public static final String NAME = (__ + ".name").intern();
+
+        /**
+         * Name of "language" property. 
+         * type: String. 
+         * column: "language". 
+         */
+        public static final String LANGUAGE = (__ + ".language").intern();
+
+        /**
+         * Name of "author" property. 
+         * type: List<com.landawn.abacus.entity.extendDirty.Author>. 
+         * column: "Author". 
+         */
+        public static final String AUTHOR = (__ + ".author").intern();
+
+        /**
+         * Immutable property name list
+         */
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, NAME, LANGUAGE, AUTHOR));
+
+        /**
+         * Immutable column name list
+         */
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("book.id".intern(), "book.name".intern(), "book.language".intern()));
+    }
+
+    public static interface ContactPNL {
+        /**
+         * Name of "Contact" entity. 
+         */
+        public static final String __ = "Contact".intern();
+
+        /**
+         * Name of "id" property. 
+         * type: long. 
+         * column: "id". 
+         */
+        public static final String ID = (__ + ".id").intern();
+
+        /**
+         * Name of "hostId" property. 
+         * type: long. 
+         * column: "hostId". 
+         */
+        public static final String HOST_ID = (__ + ".hostId").intern();
+
+        /**
+         * Name of "mobile" property. 
+         * type: String. 
+         * column: "mobile". 
+         */
+        public static final String MOBILE = (__ + ".mobile").intern();
+
+        /**
+         * Name of "telephone" property. 
+         * type: String. 
+         * column: "telephone". 
+         */
+        public static final String TELEPHONE = (__ + ".telephone").intern();
+
+        /**
+         * Name of "email" property. 
+         * type: String. 
+         * column: "email". 
+         */
+        public static final String EMAIL = (__ + ".email").intern();
+
+        /**
+         * Name of "address" property. 
+         * type: String. 
+         * column: "address". 
+         */
+        public static final String ADDRESS = (__ + ".address").intern();
+
+        /**
+         * Name of "emailList" property. 
+         * type: List<com.landawn.abacus.entity.extendDirty.Email>. 
+         * column: "Email". 
+         */
+        public static final String EMAIL_LIST = (__ + ".emailList").intern();
+
+        /**
+         * Immutable property name list
+         */
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(ID, HOST_ID, MOBILE, TELEPHONE, EMAIL, ADDRESS, EMAIL_LIST));
+
+        /**
+         * Immutable column name list
+         */
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("contact.id".intern(), "contact.hostId".intern(), "contact.mobile".intern(), "contact.telephone".intern(), "contact.email".intern(), "contact.address".intern()));
+    }
+
     public static interface EmailPNL {
         /**
          * Name of "Email" entity. 
@@ -578,7 +1333,11 @@ public interface ExtendDirtyPNL {
         public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("email.id".intern(), "email.contactId".intern(), "email.emailAddress".intern()));
     }
 
+    public static final String ACCOUNT_ID = "accountId".intern();
+
     public static final String ADDRESS = "address".intern();
+
+    public static final String ADDRESS_2 = "address2".intern();
 
     public static final String AUTHOR = "author".intern();
 
@@ -595,6 +1354,8 @@ public interface ExtendDirtyPNL {
     public static final String BIG_INTEGER_TYPE = "bigIntegerType".intern();
 
     public static final String BINARY_STREAM_TYPE = "binaryStreamType".intern();
+
+    public static final String BIRTH_DATE = "birthDate".intern();
 
     public static final String BIRTH_DAY = "birthDay".intern();
 
@@ -616,15 +1377,23 @@ public interface ExtendDirtyPNL {
 
     public static final String BYTE_TYPE = "byteType".intern();
 
+    public static final String CATEGORY = "category".intern();
+
     public static final String CHARACTER_STREAM_TYPE = "characterStreamType".intern();
 
     public static final String CHAR_TYPE = "charType".intern();
+
+    public static final String CITY = "city".intern();
 
     public static final String CLOB_TYPE = "clobType".intern();
 
     public static final String CONTACT = "contact".intern();
 
     public static final String CONTACT_ID = "contactId".intern();
+
+    public static final String COUNTRY = "country".intern();
+
+    public static final String CREATE_TIME = "createTime".intern();
 
     public static final String DATE_ARRAY_LIST_TYPE = "dateArrayListType".intern();
 
@@ -633,6 +1402,8 @@ public interface ExtendDirtyPNL {
     public static final String DATE_HASH_SET_TYPE = "dateHashSetType".intern();
 
     public static final String DATE_TYPE = "dateType".intern();
+
+    public static final String DESCRIPTION = "description".intern();
 
     public static final String DOUBLE_LIST_TYPE = "doubleListType".intern();
 
@@ -652,6 +1423,10 @@ public interface ExtendDirtyPNL {
 
     public static final String FLOAT_TYPE = "floatType".intern();
 
+    public static final String GROUP_GUI = "groupGui".intern();
+
+    public static final String GUI = "gui".intern();
+
     public static final String HOST_ID = "hostId".intern();
 
     public static final String ID = "id".intern();
@@ -664,6 +1439,12 @@ public interface ExtendDirtyPNL {
 
     public static final String LAST_NAME = "lastName".intern();
 
+    public static final String LAST_UPDATE_TIME = "lastUpdateTime".intern();
+
+    public static final String LOGIN_ID = "loginId".intern();
+
+    public static final String LOGIN_PASSWORD = "loginPassword".intern();
+
     public static final String LONG_DATE_TYPE = "longDateType".intern();
 
     public static final String LONG_TIMESTAMP_TYPE = "longTimestampType".intern();
@@ -672,11 +1453,27 @@ public interface ExtendDirtyPNL {
 
     public static final String LONG_TYPE = "longType".intern();
 
+    public static final String MANUFACTURER = "manufacturer".intern();
+
+    public static final String MIDDLE_NAME = "middleName".intern();
+
     public static final String MOBILE = "mobile".intern();
+
+    public static final String MODEL = "model".intern();
 
     public static final String NAME = "name".intern();
 
+    public static final String PLATFORM = "platform".intern();
+
+    public static final String PRIVILEGE = "privilege".intern();
+
+    public static final String PRODUCE_TIME = "produceTime".intern();
+
     public static final String SHORT_TYPE = "shortType".intern();
+
+    public static final String STATE = "state".intern();
+
+    public static final String STATUS = "status".intern();
 
     public static final String STRING_ARRAY_LIST_TYPE = "stringArrayListType".intern();
 
@@ -690,6 +1487,12 @@ public interface ExtendDirtyPNL {
 
     public static final String STRING_VECTOR_TYPE = "stringVectorType".intern();
 
+    public static final String SUB_CATEGORY = "subCategory".intern();
+
+    public static final String SUB_TYPE = "subType".intern();
+
+    public static final String TARGET_GUI = "targetGui".intern();
+
     public static final String TELEPHONE = "telephone".intern();
 
     public static final String TIMESTAMP_ARRAY_LIST_TYPE = "timestampArrayListType".intern();
@@ -702,5 +1505,15 @@ public interface ExtendDirtyPNL {
 
     public static final String TIME_TYPE = "timeType".intern();
 
+    public static final String TYPE = "type".intern();
+
+    public static final String UDID = "udid".intern();
+
+    public static final String UG_GUI = "ugGui".intern();
+
+    public static final String USER_GUI = "userGui".intern();
+
     public static final String XML_TYPE = "xmlType".intern();
+
+    public static final String ZIP_CODE = "zipCode".intern();
 }

@@ -20,8 +20,8 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import com.landawn.abacus.AbstractTest;
 import com.landawn.abacus.AbstractEntityManager0Test;
+import com.landawn.abacus.AbstractTest;
 import com.landawn.abacus.DataSource;
 import com.landawn.abacus.core.AbstractDirtyMarker;
 import com.landawn.abacus.metadata.Column;
@@ -96,9 +96,13 @@ public class CodeGeneratorTest extends AbstractTest {
     public void testExtendDirtyLVC() throws Exception {
         String pkgName = "com.landawn.abacus.entity.extendDirty.lvc";
         generateCode("extendDirtyLVC", pkgName, EntityMode.EXTEND_DIRTY_MARKER, null);
+    }
 
-        String sqlMapperFile = "./src/test/java/com/landawn/abacus/entity/extendDirty/lvc/extendDirtyLVCSqlMapper.xml";
-        String className = "ExtendDirtyLVCSqlMapper";
+    @Test
+    public void testgenerateSQLMapperIdTable() throws Exception {
+        String pkgName = "com.landawn.abacus.entity.extendDirty";
+        String sqlMapperFile = "./src/test/java/com/landawn/abacus/entity/extendDirty/extendDirtySqlMapper.xml";
+        String className = "ExtendDirtySqlMapper";
         Method id2VarName = null;
         CodeGenerator2.generateSQLMapperIdTable(sqlMapperFile, srcPath, pkgName, className, id2VarName);
     }

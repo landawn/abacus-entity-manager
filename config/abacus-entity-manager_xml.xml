@@ -144,7 +144,7 @@
 				</connection>
 			</dataSource>
 		</dataSourceManager>
-		<sqlMapper>extendDirtyLVCSqlMapper.xml</sqlMapper>
+		<sqlMapper>./src/test/java/com/landawn/abacus/entity/extendDirty/extendDirtySqlMapper.xml</sqlMapper>
 		<handler>MyHandler, EmptyHandler</handler>
 	</entityManager>
 

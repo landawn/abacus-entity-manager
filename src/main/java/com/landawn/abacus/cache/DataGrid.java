@@ -14,6 +14,7 @@
 
 package com.landawn.abacus.cache;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 import com.landawn.abacus.logging.Logger;
@@ -34,7 +35,9 @@ import com.landawn.abacus.util.N;
  * @param <E> the element type
  * @since 0.8
  */
-public class DataGrid<E> {
+public class DataGrid<E> implements Serializable {
+    
+    private static final long serialVersionUID = -8547707617757713870L;
 
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(DataGrid.class);

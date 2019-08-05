@@ -4,14 +4,13 @@
 
 package com.landawn.abacus.core;
 
+import java.io.File;
+
 import com.landawn.abacus.AbstractTest;
-import com.landawn.abacus.core.AbacusConfiguration;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.EntityCacheConfiguration.CustomizedEntityCacheConfiguration;
 import com.landawn.abacus.util.Configuration;
 import com.landawn.abacus.util.N;
-
-import java.io.File;
 
 /**
  * 
@@ -21,7 +20,7 @@ import java.io.File;
  */
 public class AbacusConfigurationTest extends AbstractTest {
     public void testEntityCacheConfiguration() {
-        File file = Configuration.findFile(AbacusConfiguration.ABACUS_ENTITY_MANAGER_FILE_NAME);
+        File file = Configuration.findFile("./config/" + AbacusConfiguration.ABACUS_ENTITY_MANAGER_FILE_NAME);
         AbacusConfiguration abacusConfig = new AbacusConfiguration(file);
 
         // assertEquals(7, abacusConfig.getEntityManagerConfigurationList().size());
