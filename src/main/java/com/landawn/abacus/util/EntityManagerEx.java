@@ -73,14 +73,14 @@ import com.landawn.abacus.util.function.ToShortFunction;
  * @since 0.8
  */
 public final class EntityManagerEx<E> implements EntityManager<E> {
-    
+
     /** The entity mapper pool. */
     @SuppressWarnings("rawtypes")
     private final Map<Class, Mapper> entityMapperPool = new HashMap<>();
 
     /** The async executor. */
     private final AsyncExecutor asyncExecutor;
-    
+
     /** The entity manager. */
     private final EntityManager<E> entityManager;
 
@@ -2355,13 +2355,13 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
      * @param <E> the element type
      */
     public static class Mapper<E> {
-        
+
         /** The em. */
         private final EntityManagerEx<E> em;
-        
+
         /** The entity class. */
         private final Class<E> entityClass;
-        
+
         /** The entity name. */
         private final String entityName;
 

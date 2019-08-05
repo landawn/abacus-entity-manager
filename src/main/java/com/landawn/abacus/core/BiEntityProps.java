@@ -32,13 +32,13 @@ import com.landawn.abacus.metadata.Property;
  */
 @Internal
 final class BiEntityProps {
-    
+
     /** The entity prop. */
     private final Property entityProp;
-    
+
     /** The insert props. */
     private final Map<String, Object> insertProps;
-    
+
     /** The associated entity. */
     private final Object associatedEntity;
 

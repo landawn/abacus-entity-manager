@@ -24,7 +24,7 @@ import java.util.Collection;
  * @since 0.8
  */
 public interface EntityManagerFactory {
-    
+
     /**
      * Gets the domain names.
      *

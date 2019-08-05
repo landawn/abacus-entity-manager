@@ -26,7 +26,7 @@ import java.util.Map;
  * @since 1.2
  */
 public class OptionsBuilder {
-    
+
     /** The options. */
     private final Map<String, Object> options = new HashMap<>();
 

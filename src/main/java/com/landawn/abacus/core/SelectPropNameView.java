@@ -29,16 +29,16 @@ import com.landawn.abacus.annotation.Internal;
  */
 @Internal
 final class SelectPropNameView {
-    
+
     /** The entity name. */
     final String entityName;
-    
+
     /** The select prop names. */
     final Collection<String> selectPropNames;
-    
+
     /** The simple prop names. */
     final Collection<String> simplePropNames;
-    
+
     /** The entity prop names. */
     final Collection<String> entityPropNames;
 

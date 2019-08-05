@@ -89,7 +89,7 @@ import com.landawn.abacus.util.u.Holder;
  * @since 0.8
  */
 class EntityManagerImpl<E> extends AbstractEntityManager<E> {
-    
+
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(EntityManagerImpl.class);
 
@@ -98,10 +98,10 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
 
     /** The get select prop name view pool. */
     private final Map<String, Map<Collection<String>, SelectPropNameView>> getSelectPropNameViewPool = new ConcurrentHashMap<>();
-    
+
     /** The query select prop name view pool. */
     private final Map<String, Map<Collection<String>, SelectPropNameView>> querySelectPropNameViewPool = new ConcurrentHashMap<>();
-    
+
     /** The query cmd pool. */
     private final Map<String, Map<String, Map<Collection<String>, CachedQueryCmd>>> queryCmdPool = new HashMap<>();
 
@@ -1778,10 +1778,10 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
      * The Class CachedQueryCmd.
      */
     static class CachedQueryCmd {
-        
+
         /** The query cmd. */
         private final Command queryCmd;
-        
+
         /** The xa. */
         private final SelectPropNameView xa;
 
@@ -1825,13 +1825,13 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
      * The Class CascadeDeleteResult.
      */
     static class CascadeDeleteResult {
-        
+
         /** The transaction id. */
         String transactionId = null;
-        
+
         /** The options. */
         Map<String, Object> options = null;
-        
+
         /** The cond. */
         Condition cond = null;
 
@@ -1853,10 +1853,10 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
      * The Class EntityIdMemo.
      */
     static final class EntityIdMemo {
-        
+
         /** The entity ids. */
         final List<? extends EntityId> entityIds;
-        
+
         /** The operation type. */
         final OperationType operationType;
 

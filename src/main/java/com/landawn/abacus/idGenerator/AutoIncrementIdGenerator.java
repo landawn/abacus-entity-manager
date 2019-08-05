@@ -25,7 +25,7 @@ import com.landawn.abacus.metadata.Property;
  * @since 0.8
  */
 public final class AutoIncrementIdGenerator extends AbstractNumberIdGenerator<Number> {
-    
+
     /**
      * Instantiates a new auto increment id generator.
      *

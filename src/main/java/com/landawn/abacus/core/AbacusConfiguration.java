@@ -54,7 +54,7 @@ import com.landawn.abacus.util.XMLUtil;
  * @since 0.8
  */
 public final class AbacusConfiguration {
-    
+
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(AbacusConfiguration.class);
 
@@ -98,13 +98,13 @@ public final class AbacusConfiguration {
 
     /** The entity manager configuration list. */
     private final List<EntityManagerConfiguration> entityManagerConfigurationList;
-    
+
     /** The slog configuration. */
     private final SLogConfiguration slogConfiguration;
 
     /** The initializer on startup. */
     private String initializerOnStartup;
-    
+
     /** The factory. */
     private String factory;
 
@@ -281,34 +281,34 @@ public final class AbacusConfiguration {
 
         /** The domain name. */
         private final String domainName;
-        
+
         /** The mode. */
         private final Mode mode;
 
         /** The batch size. */
         private final int batchSize;
-        
+
         /** The entity definition file. */
         private final File entityDefinitionFile;
-        
+
         /** The sql mapper. */
         private final SQLMapper sqlMapper;
-        
+
         /** The handler list. */
         private final List<String> handlerList;
 
         /** The lock config. */
         private LockConfiguration lockConfig;
-        
+
         /** The version config. */
         private VersionConfiguration versionConfig;
-        
+
         /** The entity cache config. */
         private EntityCacheConfiguration entityCacheConfig;
-        
+
         /** The query cache config. */
         private QueryCacheConfiguration queryCacheConfig;
-        
+
         /** The data source manager config. */
         private DataSourceManagerConfiguration dataSourceManagerConfig;
 
@@ -528,10 +528,10 @@ public final class AbacusConfiguration {
 
             /** The rw lock provider. */
             private final String rwLockProvider;
-            
+
             /** The record lock provider. */
             private final String recordLockProvider;
-            
+
             /** The record lock timeout. */
             private final long recordLockTimeout;
 
@@ -584,13 +584,13 @@ public final class AbacusConfiguration {
          * The Class VersionConfiguration.
          */
         final class VersionConfiguration extends Configuration {
-            
+
             /** The Constant VERSION. */
             public static final String VERSION = "version";
-            
+
             /** The Constant PROVIDER. */
             public static final String PROVIDER = "provider";
-            
+
             /** The provider. */
             private final String provider;
 
@@ -645,16 +645,16 @@ public final class AbacusConfiguration {
 
             /** The provider. */
             private final String provider;
-            
+
             /** The capacity. */
             private final int capacity;
-            
+
             /** The evict delay. */
             private final long evictDelay;
-            
+
             /** The live time. */
             private final long liveTime;
-            
+
             /** The max idle time. */
             private final long maxIdleTime;
 
@@ -772,7 +772,7 @@ public final class AbacusConfiguration {
 
             /** The included entity names. */
             private final Set<String> includedEntityNames;
-            
+
             /** The excluded entity names. */
             private final Set<String> excludedEntityNames;
 
@@ -898,16 +898,16 @@ public final class AbacusConfiguration {
 
                 /** The entity name. */
                 private final String entityName;
-                
+
                 /** The live time. */
                 private final long liveTime;
-                
+
                 /** The max idle time. */
                 private final long maxIdleTime;
-                
+
                 /** The included prop names. */
                 private final Set<String> includedPropNames;
-                
+
                 /** The excluded prop names. */
                 private final Set<String> excludedPropNames;
 
@@ -1120,13 +1120,13 @@ public final class AbacusConfiguration {
 
             /** The auto refresh. */
             private final boolean autoRefresh;
-            
+
             /** The zip cache. */
             private final boolean zipCache;
-            
+
             /** The max check cache time. */
             private final long maxCheckCacheTime;
-            
+
             /** The min check cache size. */
             private final int minCheckCacheSize;
 
@@ -1253,10 +1253,10 @@ public final class AbacusConfiguration {
 
                 /** The min count. */
                 private final int minCount;
-                
+
                 /** The max count. */
                 private final int maxCount;
-                
+
                 /** The min query time. */
                 private final long minQueryTime;
 
@@ -1358,16 +1358,16 @@ public final class AbacusConfiguration {
 
             /** The url. */
             private final String url;
-            
+
             /** The max connection. */
             private final int maxConnection;
-            
+
             /** The conn timeout. */
             private final int connTimeout;
-            
+
             /** The read timeout. */
             private final int readTimeout;
-            
+
             /** The content format. */
             private final ContentFormat contentFormat;
 
@@ -1477,13 +1477,13 @@ public final class AbacusConfiguration {
 
         /** The is open. */
         private final boolean isOpen;
-        
+
         /** The batch size. */
         private final int batchSize;
 
         /** The domain list. */
         private Map<String, DomainConfiguration> domainList;
-        
+
         /** The table. */
         private TableConfiguration table;
 

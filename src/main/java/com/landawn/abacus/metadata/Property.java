@@ -31,7 +31,7 @@ import com.landawn.abacus.validator.Validator;
  * @since 0.8
  */
 public interface Property {
-    
+
     /**
      * Gets the name.
      *

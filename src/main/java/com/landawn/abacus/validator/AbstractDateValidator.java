@@ -29,7 +29,7 @@ import com.landawn.abacus.util.DateUtil;
  * @since 0.8
  */
 public abstract class AbstractDateValidator<T extends Date> extends AbstractValidator<T> {
-    
+
     /** The benchmark. */
     private final T benchmark;
 

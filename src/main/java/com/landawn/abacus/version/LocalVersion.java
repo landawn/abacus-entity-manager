@@ -28,10 +28,10 @@ import com.landawn.abacus.util.MutableLong;
  * @since 0.8
  */
 public final class LocalVersion<K> extends AbstractVersion<K> {
-    
+
     /** The pool. */
     private final Map<K, MutableLong> pool;
-    
+
     /** The capacity. */
     private final int capacity;
 

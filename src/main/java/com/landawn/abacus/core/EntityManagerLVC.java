@@ -58,10 +58,10 @@ import com.landawn.abacus.util.Options.Query;
  * @since 0.8
  */
 class EntityManagerLVC<E> extends EntityManagerLV<E> {
-    
+
     /** The entity cache decorator. */
     private final EntityCacheDecorator entityCacheDecorator;
-    
+
     /** The rw entity id lock. */
     private final RWLock<EntityId> rwEntityIdLock;
 

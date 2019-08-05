@@ -31,13 +31,13 @@ import com.landawn.abacus.metadata.Property;
  */
 @Internal
 final class InsertPropsListView {
-    
+
     /** The write props list. */
     final List<Map<String, Object>> writePropsList;
-    
+
     /** The prop entity props list. */
     final Map<Property, List<PropEntityProps>> propEntityPropsList;
-    
+
     /** The prop bi entity props list. */
     final Map<Property, List<BiEntityProps>> propBiEntityPropsList;
 

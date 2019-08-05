@@ -26,10 +26,10 @@ import com.landawn.abacus.type.Type;
  * @since 0.8
  */
 public abstract class AbstractValidator<T> implements Validator<T> {
-    
+
     /** The prop name. */
     private final String propName;
-    
+
     /** The type. */
     private final Type<T> type;
 

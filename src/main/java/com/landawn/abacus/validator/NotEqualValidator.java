@@ -25,7 +25,7 @@ import com.landawn.abacus.type.Type;
  * @since 0.8
  */
 public final class NotEqualValidator<T> extends AbstractComparableValidator<T> {
-    
+
     /** The case insensitive. */
     private boolean caseInsensitive = true;
 

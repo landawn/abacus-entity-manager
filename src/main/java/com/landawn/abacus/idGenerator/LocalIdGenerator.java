@@ -33,22 +33,22 @@ import com.landawn.abacus.util.OperationType;
  * @since 0.8
  */
 public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
-    
+
     /** The init value. */
     private final long initValue;
-    
+
     /** The delta. */
     private final int delta;
-    
+
     /** The max id value. */
     private volatile long maxIdValue;
-    
+
     /** The sql. */
     private final String sql;
-    
+
     /** The executor. */
     private Executant executor;
-    
+
     /** The is initialized. */
     private boolean isInitialized = false;
 

@@ -66,7 +66,7 @@ import java.util.Map;
  * @since 0.8
  */
 public interface EntityManager<E> extends DBAccess {
-    
+
     /**
      * Insert the specified {@code entity} into data store.
      *

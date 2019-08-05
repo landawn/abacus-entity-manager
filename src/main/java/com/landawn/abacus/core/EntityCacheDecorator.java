@@ -41,13 +41,13 @@ import com.landawn.abacus.util.Properties;
  */
 @Internal
 class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
-    
+
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(EntityCacheDecorator.class);
 
     /** The config. */
     private final EntityCacheConfiguration config;
-    
+
     /** The entity cache. */
     private final Cache<EntityId, MapEntity> entityCache;
 

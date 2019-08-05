@@ -36,16 +36,16 @@ import com.landawn.abacus.logging.LoggerFactory;
  * @since 0.8
  */
 public final class AsyncBatchExecutor<E> {
-    
+
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(AsyncBatchExecutor.class);
 
     /** The Constant DEFAULT_CAPACITY. */
     public static final int DEFAULT_CAPACITY = 8192;
-    
+
     /** The Constant DEFAULT_EVICT_DELAY. */
     public static final int DEFAULT_EVICT_DELAY = 3000;
-    
+
     /**
      * The Constant DEFAULT_BATCH_SIZE.
      *
@@ -68,25 +68,25 @@ public final class AsyncBatchExecutor<E> {
 
     /** The em. */
     protected final EntityManager<E> em;
-    
+
     /** The options. */
     protected final Map<String, Object> options;
-    
+
     /** The add queue. */
     protected final List<E> addQueue;
-    
+
     /** The update queue. */
     protected final List<E> updateQueue;
-    
+
     /** The delete queue. */
     protected final List<E> deleteQueue;
 
     /** Unit is millisecond. */
     private final int capacity;
-    
+
     /** The evict delay. */
     private final long evictDelay;
-    
+
     /** The batch size. */
     private final int batchSize;
 

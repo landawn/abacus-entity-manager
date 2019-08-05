@@ -33,16 +33,16 @@ import com.landawn.abacus.util.N;
  */
 @Internal
 final class PropEntityProps {
-    
+
     /** The prop. */
     private final Property prop;
-    
+
     /** The entity. */
     private final Object entity;
-    
+
     /** The props. */
     private final Map<String, Object> props;
-    
+
     /** The src prop value. */
     private Object srcPropValue;
 

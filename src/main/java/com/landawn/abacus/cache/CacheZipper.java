@@ -35,16 +35,16 @@ import com.landawn.abacus.util.N;
  * @since 0.8
  */
 public final class CacheZipper {
-    
+
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(CacheZipper.class);
 
     /** The Constant CPU_CORES_FOR_ZIP. */
     private static final int CPU_CORES_FOR_ZIP = N.max(1, IOUtil.CPU_CORES / 2);
-    
+
     /** The Constant EXECUTOR_SERVICE. */
     private static final ExecutorService EXECUTOR_SERVICE = Executors.newFixedThreadPool(CPU_CORES_FOR_ZIP);
-    
+
     /** The last scan time. */
     private volatile long lastScanTime = System.currentTimeMillis();
 

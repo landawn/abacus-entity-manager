@@ -27,7 +27,7 @@ import com.landawn.abacus.idGenerator.IdGenerator;
  * @since 0.8
  */
 public interface EntityDefinition {
-    
+
     /**
      * Gets the name.
      *

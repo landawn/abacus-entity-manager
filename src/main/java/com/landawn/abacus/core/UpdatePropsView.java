@@ -31,10 +31,10 @@ import com.landawn.abacus.metadata.Property;
  */
 @Internal
 final class UpdatePropsView {
-    
+
     /** The update props. */
     final Map<String, Object> updateProps;
-    
+
     /** The prop entity list. */
     final Map<Property, List<Object>> propEntityList;
 

@@ -92,7 +92,7 @@ import com.landawn.abacus.util.CodeGenerator.ParentPropertyMode;
  * @since 0.8
  */
 public final class CodeGenerator2 {
-    
+
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(CodeGenerator2.class);
 
@@ -4835,15 +4835,15 @@ public final class CodeGenerator2 {
      * @version $Revision: 0.8 $
      */
     public enum EntityMode {
-        
+
         /** The pojo. */
-        POJO, 
- /** The pojo with prop name table. */
- POJO_WITH_PROP_NAME_TABLE, 
- /** The impl dirty marker. */
- IMPL_DIRTY_MARKER, 
- /** The extend dirty marker. */
- EXTEND_DIRTY_MARKER;
+        POJO,
+        /** The pojo with prop name table. */
+        POJO_WITH_PROP_NAME_TABLE,
+        /** The impl dirty marker. */
+        IMPL_DIRTY_MARKER,
+        /** The extend dirty marker. */
+        EXTEND_DIRTY_MARKER;
     }
 
     /** The Constant _N_STRING. */

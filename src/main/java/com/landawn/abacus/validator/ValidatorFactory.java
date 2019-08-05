@@ -34,7 +34,7 @@ import com.landawn.abacus.util.TypeAttrParser;
  * @since 0.8
  */
 public final class ValidatorFactory {
-    
+
     /** The Constant builtinValidatorClsNamePool. */
     @SuppressWarnings("rawtypes")
     private static final Map<String, Class<? extends Validator>> builtinValidatorClsNamePool = new ConcurrentHashMap<>(100);

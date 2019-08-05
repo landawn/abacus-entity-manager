@@ -29,19 +29,19 @@ import com.landawn.abacus.util.N;
  * @since 0.8
  */
 public class DistributedVersion<K> extends AbstractVersion<K> {
-    
+
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(DistributedVersion.class);
 
     /** The Constant DEFAULT_LIVE_TIME. */
     static final long DEFAULT_LIVE_TIME = 24 * 60 * 60 * 1000L;
-    
+
     /** The dcc. */
     private final DistributedCacheClient<Long> dcc;
-    
+
     /** The key prefix. */
     private final String keyPrefix;
-    
+
     /** The live time. */
     private final long liveTime;
 

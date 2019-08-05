@@ -25,7 +25,7 @@ import java.util.Map;
  * @since 0.8
  */
 public interface Database {
-    
+
     /**
      * Gets the name.
      *

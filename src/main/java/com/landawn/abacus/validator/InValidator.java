@@ -29,7 +29,7 @@ import com.landawn.abacus.util.StringUtil;
  * @since 0.8
  */
 public final class InValidator<T> extends AbstractValidator<T> {
-    
+
     /** The value set. */
     private final Set<T> valueSet = new HashSet<T>();
 

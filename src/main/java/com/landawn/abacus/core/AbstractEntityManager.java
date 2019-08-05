@@ -45,10 +45,10 @@ import com.landawn.abacus.util.u.Optional;
  * @since 0.8
  */
 public abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityManager<E> {
-    
+
     /** The domain name. */
     protected final String domainName;
-    
+
     /** The config. */
     protected final EntityManagerConfiguration config;
 

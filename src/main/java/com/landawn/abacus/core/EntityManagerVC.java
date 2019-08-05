@@ -32,7 +32,7 @@ import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration;
  * @since 0.8
  */
 class EntityManagerVC<T> extends EntityManagerLVC<T> {
-    
+
     /**
      * Instantiates a new entity manager VC.
      *

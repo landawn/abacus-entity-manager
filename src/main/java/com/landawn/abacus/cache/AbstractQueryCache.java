@@ -35,16 +35,16 @@ import com.landawn.abacus.util.Properties;
  * @since 0.8
  */
 public abstract class AbstractQueryCache extends AbstractPoolable implements QueryCache {
-    
+
     /** The rw lock. */
     protected final ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock();
-    
+
     /** The prop name index map. */
     protected final Properties<String, Integer> propNameIndexMap = new Properties<>();
-    
+
     /** The last updated time. */
     protected long lastUpdatedTime = System.currentTimeMillis();
-    
+
     /** The is closed. */
     protected boolean isClosed = false;
 

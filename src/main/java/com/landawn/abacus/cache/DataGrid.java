@@ -35,37 +35,37 @@ import com.landawn.abacus.util.N;
  * @since 0.8
  */
 public class DataGrid<E> {
-    
+
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(DataGrid.class);
 
     /** The Constant NULL_MASK. */
     private static final Object NULL_MASK = NullMask.INSTANCE;
-    
+
     /** The Constant INIT_INDEX. */
     private static final int INIT_INDEX = -1;
-    
+
     /** The Constant PIECE_BITS. */
     private static final int PIECE_BITS = 10;
-    
+
     /** The Constant PIECE_SIZE. */
     private static final int PIECE_SIZE = 1 << PIECE_BITS;
-    
+
     /** The Constant BIT_INDEX_MASK. */
     private static final int BIT_INDEX_MASK = PIECE_SIZE - 1;
 
     /** The is big Y. */
     private final boolean isBigY;
-    
+
     /** The x. */
     private int x;
-    
+
     /** The y. */
     private final int y;
-    
+
     /** The xy array. */
     private Object[][] xyArray;
-    
+
     /** The piece index. */
     private int[] pieceIndex;
 
@@ -405,7 +405,7 @@ public class DataGrid<E> {
      * The Class NullMask.
      */
     private static class NullMask implements java.io.Serializable {
-        
+
         /** The Constant serialVersionUID. */
         private static final long serialVersionUID = 6343178353389511572L;
 

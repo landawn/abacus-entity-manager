@@ -22,13 +22,13 @@ package com.landawn.abacus.metadata;
  * @since 0.8
  */
 public enum ColumnType {
-    
+
     /** Field TABLE_COLUMN. */
     TABLE_COLUMN("tableColumn"),
-    
+
     /** Field ENTITY. */
     ENTITY("entity");
-    
+
     /** Field name;. */
     private final String name;
 

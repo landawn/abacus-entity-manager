@@ -35,31 +35,31 @@ import com.landawn.abacus.util.N;
  * @since 0.8
  */
 public class Association implements Serializable {
-    
+
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3451344350605572248L;
-    
+
     /** The join on. */
     private final String joinOn;
-    
+
     /** The prop. */
     private final Property prop;
-    
+
     /** The src prop. */
     private final Property srcProp;
-    
+
     /** The target prop. */
     private final Property targetProp;
-    
+
     /** The bi entity props. */
     private final Property[] biEntityProps;
-    
+
     /** The bi entity def. */
     private final EntityDefinition biEntityDef;
-    
+
     /** The join type. */
     private final JoinType joinType;
-    
+
     /** The joins. */
     private final List<Join> joins;
 

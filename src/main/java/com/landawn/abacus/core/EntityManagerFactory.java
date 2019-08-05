@@ -53,13 +53,13 @@ import com.landawn.abacus.util.SQLExecutor.JdbcSettings;
  * @since 0.8
  */
 public class EntityManagerFactory implements com.landawn.abacus.EntityManagerFactory {
-    
+
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(EntityManagerFactory.class);
 
     /** The Constant GET_INSTANCE. */
     private static final String GET_INSTANCE = "getInstance";
-    
+
     /** The Constant INTANCE_POOL. */
     private static final Map<String, EntityManagerFactory> INTANCE_POOL = new LinkedHashMap<>();
 
@@ -68,7 +68,7 @@ public class EntityManagerFactory implements com.landawn.abacus.EntityManagerFac
 
     /** The entity manager pool. */
     private final Map<String, DomainEntityManager> entityManagerPool = new ObjectPool<String, DomainEntityManager>(64);
-    
+
     /** The abacus config. */
     private final AbacusConfiguration abacusConfig;
 
@@ -337,22 +337,22 @@ public class EntityManagerFactory implements com.landawn.abacus.EntityManagerFac
      * The Class DomainEntityManager.
      */
     protected static final class DomainEntityManager {
-        
+
         /** The domain name. */
         private final String domainName;
-        
+
         /** The entity manager config. */
         private final EntityManagerConfiguration entityManagerConfig;
-        
+
         /** The dsm. */
         private final DataSourceManager dsm;
-        
+
         /** The db access. */
         private final DBAccess dbAccess;
-        
+
         /** The ex entity manager. */
         private final EntityManagerEx<Object> exEntityManager;
-        
+
         /** The sql executor. */
         private final SQLExecutor sqlExecutor;
 

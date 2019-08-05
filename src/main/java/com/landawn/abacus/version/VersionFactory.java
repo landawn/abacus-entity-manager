@@ -33,7 +33,7 @@ import com.landawn.abacus.util.TypeAttrParser;
  * @since 0.8
  */
 public final class VersionFactory {
-    
+
     /**
      * Instantiates a new version factory.
      */

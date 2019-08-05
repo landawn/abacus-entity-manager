@@ -34,13 +34,13 @@ import com.landawn.abacus.util.OperationType;
  * @since 0.8
  */
 public final class SequenceIdGenerator extends AbstractNumberIdGenerator<Number> {
-    
+
     /** The next val sql. */
     private final String nextValSql;
-    
+
     /** The executant. */
     private Executant executant;
-    
+
     /** The query cmd. */
     private Command queryCmd;
 

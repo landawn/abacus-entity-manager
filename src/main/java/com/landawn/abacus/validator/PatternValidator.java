@@ -27,7 +27,7 @@ import com.landawn.abacus.type.Type;
  * @since 0.8
  */
 public class PatternValidator extends AbstractValidator<String> {
-    
+
     /** The pattern. */
     private final Pattern pattern;
 

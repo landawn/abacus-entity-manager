@@ -50,13 +50,13 @@ import com.landawn.abacus.util.OperationType;
  */
 @Internal
 class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, V> {
-    
+
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4494321879106210592L;
 
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(QueryCachePool.class);
-    
+
     /** The Constant ZIP_DELAY. */
     private static final long ZIP_DELAY = 3 * 60 * 1000L;
 

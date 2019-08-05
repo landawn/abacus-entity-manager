@@ -33,7 +33,7 @@ import com.landawn.abacus.util.N;
  */
 @Internal
 final class ParametersUtil {
-    
+
     /**
      * As list.
      *
@@ -196,7 +196,7 @@ final class ParametersUtil {
      * @param <V> the value type
      */
     static final class HashMap<K, V> extends java.util.HashMap<K, V> implements Local {
-        
+
         /** The Constant serialVersionUID. */
         private static final long serialVersionUID = -8221642996729977229L;
 
@@ -243,7 +243,7 @@ final class ParametersUtil {
      * @param <V> the value type
      */
     static final class LinkedHashMap<K, V> extends java.util.HashMap<K, V> implements Local {
-        
+
         /** The Constant serialVersionUID. */
         private static final long serialVersionUID = 3744016416795543777L;
 
@@ -289,7 +289,7 @@ final class ParametersUtil {
      * @param <E> the element type
      */
     static final class HashSet<E> extends java.util.HashSet<E> implements Local {
-        
+
         /** The Constant serialVersionUID. */
         private static final long serialVersionUID = 9081027352330623445L;
 
@@ -335,7 +335,7 @@ final class ParametersUtil {
      * @param <E> the element type
      */
     static final class LinkedHashSet<E> extends java.util.LinkedHashSet<E> implements Local {
-        
+
         /** The Constant serialVersionUID. */
         private static final long serialVersionUID = -8427957578044492143L;
 
@@ -381,7 +381,7 @@ final class ParametersUtil {
      * @param <E> the element type
      */
     static final class ArrayList<E> extends java.util.ArrayList<E> implements Local {
-        
+
         /** The Constant serialVersionUID. */
         private static final long serialVersionUID = -6177282621875675144L;
 

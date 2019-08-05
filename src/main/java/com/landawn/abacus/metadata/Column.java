@@ -24,7 +24,7 @@ import java.util.Map;
  * @since 0.8
  */
 public interface Column {
-    
+
     /**
      * Gets the name.
      *

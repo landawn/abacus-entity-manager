@@ -33,16 +33,16 @@ import com.landawn.abacus.pool.AbstractPoolable;
  */
 @Internal
 final class HandleResult extends AbstractPoolable {
-    
+
     /** The entity def. */
     private final EntityDefinition entityDef;
-    
+
     /** The select prop name. */
     private Collection<String> selectPropName;
-    
+
     /** The query result. */
     private final SQLResult queryResult;
-    
+
     /** The query cache. */
     private QueryCache queryCache;
 

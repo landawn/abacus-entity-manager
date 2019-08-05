@@ -50,25 +50,25 @@ import com.landawn.abacus.util.u.Optional;
  */
 @SuppressWarnings("deprecation")
 final class SessionImpl<E> implements Session<E> {
-    
+
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(SessionImpl.class);
 
     /** The attached entities. */
     private final Map<E, OperationType> attachedEntities = new IdentityHashMap<>();
-    
+
     /** The attached entity list. */
     private final List<E> attachedEntityList = new LinkedList<>();
 
     /** The entity manager. */
     private final EntityManager<E> entityManager;
-    
+
     /** The isolation level. */
     private final IsolationLevel isolationLevel;
-    
+
     /** The options. */
     private Map<String, Object> options;
-    
+
     /** The transaction. */
     private TransactionProxy transaction;
 
@@ -633,16 +633,16 @@ final class SessionImpl<E> implements Session<E> {
      * @version $Revision: 0.8 $ 07/03/05
      */
     static final class TransactionProxy implements Transaction {
-        
+
         /** The entity manager. */
         private final EntityManager<?> entityManager;
-        
+
         /** The id. */
         private final String id;
-        
+
         /** The isolation level. */
         private final IsolationLevel isolationLevel;
-        
+
         /** The status. */
         private Status status;
 

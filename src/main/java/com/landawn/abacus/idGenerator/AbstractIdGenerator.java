@@ -28,7 +28,7 @@ import com.landawn.abacus.util.ClassUtil;
  * @since 0.8
  */
 public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
-    
+
     /** The prop. */
     final Property prop;
 

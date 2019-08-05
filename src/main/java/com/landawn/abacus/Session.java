@@ -33,7 +33,7 @@ import com.landawn.abacus.util.u.Optional;
 @Beta
 @Deprecated
 public interface Session<E> {
-    
+
     /**
      * Start a transaction.
      *

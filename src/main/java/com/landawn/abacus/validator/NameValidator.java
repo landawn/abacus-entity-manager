@@ -24,7 +24,7 @@ import com.landawn.abacus.type.Type;
  * @since 0.8
  */
 public class NameValidator extends PatternValidator {
-    
+
     /** The Constant namePattern. */
     private static final String namePattern = "^[a-zA-Z_][a-zA-Z0-9_]*$";
 

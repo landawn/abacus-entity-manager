@@ -23,7 +23,7 @@ package com.landawn.abacus.version;
  * @since 0.8
  */
 public interface Version<K> {
-    
+
     /**
      * Method get.
      *

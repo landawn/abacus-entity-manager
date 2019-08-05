@@ -25,7 +25,7 @@ import com.landawn.abacus.type.Type;
  * @since 0.8
  */
 public abstract class AbstractComparableValidator<T> extends AbstractValidator<T> {
-    
+
     /** The benchmark. */
     protected final T benchmark;
 
