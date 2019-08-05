@@ -283,7 +283,7 @@ public class CodeGeneratorTest extends AbstractTest {
     //    }
 
     public void test_generateClassMethod() {
-        File srcDir = new File("./test/java");
+        File srcDir = new File("./src/test/java");
         String packageName = "com.landawn.abacus.util.entity";
 
         LinkedHashMap<String, ?> fields = N.asLinkedHashMap("field1", int.class, "field2", N.typeOf("Map<Integer, Date>"));
@@ -311,7 +311,7 @@ public class CodeGeneratorTest extends AbstractTest {
     }
 
     public void test_generator_01() {
-        File srcDir = new File("./test/java");
+        File srcDir = new File("./src/test/java");
         String packageName = "com.myPackage.x";
 
         Map<String, Object> fields = Builder.of(new LinkedHashMap<String, Object>())
@@ -447,7 +447,7 @@ public class CodeGeneratorTest extends AbstractTest {
 
     //    @Test
     //    public void test_writeUtilClassForHashEqualsToString() {
-    //        final File srcDir = new File("./test/java");
+    //        final File srcDir = new File("./src/test/java");
     //
     //        CodeGenerator.printUtilClassForHashEqualsToString("", "XXX");
     //
