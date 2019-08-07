@@ -19,10 +19,10 @@ import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.type.TypeFactory;
 import com.landawn.abacus.types.WeekDay;
-import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.ClassUtil;
 import com.landawn.abacus.util.DateUtil;
 import com.landawn.abacus.util.IOUtil;
+import com.landawn.abacus.util.N;
 
 import junit.framework.TestCase;
 
@@ -34,6 +34,10 @@ import junit.framework.TestCase;
  */
 public abstract class AbstractTest extends TestCase {
     protected static final Logger logger = LoggerFactory.getLogger(AbstractTest.class);
+
+    protected static com.landawn.abacus.core.EntityManagerFactory emf = com.landawn.abacus.core.EntityManagerFactory
+            .getInstance("./src/test/resources/config/abacus-entity-manager.xml"); 
+
     protected static final String FIRST_NAME = "firstName";
     public static final String MIDDLE_NAME = "MN";
     protected static final String LAST_NAME = "lastName";

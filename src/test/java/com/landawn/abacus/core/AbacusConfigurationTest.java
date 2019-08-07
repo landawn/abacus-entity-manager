@@ -20,7 +20,7 @@ import com.landawn.abacus.util.N;
  */
 public class AbacusConfigurationTest extends AbstractTest {
     public void testEntityCacheConfiguration() {
-        File file = Configuration.findFile("./config/" + AbacusConfiguration.ABACUS_ENTITY_MANAGER_FILE_NAME);
+        File file = Configuration.findFile("./src/test/resources/config/abacus-entity-manager.xml");
         AbacusConfiguration abacusConfig = new AbacusConfiguration(file);
 
         // assertEquals(7, abacusConfig.getEntityManagerConfigurationList().size());

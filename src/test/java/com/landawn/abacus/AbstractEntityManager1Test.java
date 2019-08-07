@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.landawn.abacus.core.EntityManagerFactory;
 import com.landawn.abacus.core.RowDataSet;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
 import com.landawn.abacus.entity.extendDirty.lvc.AccountContact;
@@ -30,7 +29,6 @@ import com.landawn.abacus.util.Options;
  * @author Haiyang Li
  */
 public abstract class AbstractEntityManager1Test extends AbstractTest {
-    protected static final EntityManagerFactory emf = EntityManagerFactory.getInstance();
     protected final String domainName = getDomainName();
     protected final DBAccess dbAccess = emf.getDBAccess(domainName);
     protected final EntityManagerEx<Object> em = emf.getEntityManager(domainName);

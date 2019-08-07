@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<abacus-entity-manager version="0.8">
+<abacus version="0.8">
 	<slog>
 		<open>false</open>
 		<batchSize>200</batchSize>
@@ -457,4 +457,4 @@
 		</dataSourceManager>
 	</entityManager>
 
-</abacus-entity-manager>
+</abacus>

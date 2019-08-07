@@ -69,6 +69,11 @@ public final class AbacusConfiguration {
     public static final String ABACUS_ENTITY_MANAGER_FILE_NAME = ABACUS_ENTITY_MANAGER + ".xml";
 
     /**
+     * Field VERSION. (value is ""abacus"")
+     */
+    public static final String ABACUS = "abacus";
+
+    /**
      * Field VERSION. (value is ""version"")
      */
     public static final String VERSION = "version";
@@ -120,7 +125,7 @@ public final class AbacusConfiguration {
         Document doc = Configuration.parse(abacusFile);
         Element abacusEle = doc.getDocumentElement();
 
-        if (!abacusEle.getNodeName().equals(ABACUS_ENTITY_MANAGER)) {
+        if (!abacusEle.getNodeName().equals(ABACUS)) {
             throw new AbacusException("Wrong configuration file, There is no root element: 'abacus'. ");
         }
 
