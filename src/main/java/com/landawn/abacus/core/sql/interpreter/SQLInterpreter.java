@@ -467,9 +467,9 @@ public class SQLInterpreter extends AbstractInterpreter {
             if (hasAS == false && (propName.length() > 1 || propName.charAt(0) != '*')) {
                 sql.append(WD._SPACE);
 
-                sql.append(WD._QUOTATION_S);
+                sql.append(WD._QUOTATION_D);
                 sql.append(propName);
-                sql.append(WD._QUOTATION_S);
+                sql.append(WD._QUOTATION_D);
             }
 
             i++;

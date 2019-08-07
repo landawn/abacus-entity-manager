@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<abacus-entity-manager version="0.8">
+
+	<!-- extendDirtyEntityDefinition -->
+	<entityManager>
+		<domainName>codes</domainName>
+		<mode>basic</mode>
+		<entityDefinition>./samples/config/codes.xml</entityDefinition>
+		<dataSourceManager liveEnv="dev">
+			<dataSource name="codes" env="dev">
+				<connection>
+					<url>jdbc:h2:~/test</url>
+					<driver>org.h2.Driver</driver>
+					<user>sa</user>
+					<password></password>
+					<initialSize>8</initialSize>
+					<maxActive>30</maxActive>
+					<maxIdleTime>300000</maxIdleTime>
+					<validationQuery>SELECT 1</validationQuery>
+				</connection>
+			</dataSource>
+		</dataSourceManager>
+	</entityManager>
+
+</abacus-entity-manager>
