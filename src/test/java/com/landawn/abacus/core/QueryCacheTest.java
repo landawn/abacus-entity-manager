@@ -379,14 +379,16 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
 
         em.update(Account.__, N.asProps(Account.FIRST_NAME, UPDATED_FIRST_NAME), CF.lt(Account.ID, 100), null);
 
-        result = em.query(Account.__, null, CF.like(Account.FIRST_NAME, "fn%"), null, N.asProps(Query.OFFSET, 9, Query.COUNT, 80, Query.QUERY_FROM_CACHE, true));
+        result = em.query(Account.__, null, CF.like(Account.FIRST_NAME, "fn%"), null,
+                N.asProps(Query.OFFSET, 9, Query.COUNT, 80, Query.QUERY_FROM_CACHE, true));
 
         // result.println();
         assertEquals(0, getCachedPropNames(result).size());
 
         em.update(Account.__, N.asProps(Account.FIRST_NAME, UPDATED_FIRST_NAME), CF.lt(Account.ID, 200), null);
 
-        result = em.query(Account.__, null, CF.like(Account.FIRST_NAME, "fn%"), null, N.asProps(Query.OFFSET, 9, Query.COUNT, 80, Query.QUERY_FROM_CACHE, true));
+        result = em.query(Account.__, null, CF.like(Account.FIRST_NAME, "fn%"), null,
+                N.asProps(Query.OFFSET, 9, Query.COUNT, 80, Query.QUERY_FROM_CACHE, true));
 
         // result.println();
         assertEquals(0, getCachedPropNames(result).size());

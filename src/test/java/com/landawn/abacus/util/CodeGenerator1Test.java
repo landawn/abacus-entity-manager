@@ -20,6 +20,7 @@ import com.landawn.abacus.metadata.sql.SQLDatabase;
 import com.landawn.abacus.util.CodeGenerator2.EntityMode;
 
 import junit.framework.TestCase;
+
 /**
  * 
  * @since 0.8
@@ -97,7 +98,8 @@ public class CodeGenerator1Test extends TestCase {
 
         if (reinitClass) {
             if (testMyImpl) {
-                CodeGenerator2.entityDefinitionXml2Class(domainName, entityDefinitionFile, srcPath, entityMode, null, null, false, extendedClass, implInterface);
+                CodeGenerator2.entityDefinitionXml2Class(domainName, entityDefinitionFile, srcPath, entityMode, null, null, false, extendedClass,
+                        implInterface);
             } else {
                 CodeGenerator2.entityDefinitionXml2Class(domainName, entityDefinitionFile, srcPath, entityMode);
             }
@@ -107,8 +109,8 @@ public class CodeGenerator1Test extends TestCase {
     }
 
     protected File getEntityDefinitionXmlFile(String domainName) {
-        String directoryPath = srcPath + AbstractEntityManager0Test.class.getPackage().getName().replace('.', '/') + "/entity/" + domainName.substring(0, 1).toLowerCase()
-                + domainName.substring(1) + "/";
+        String directoryPath = srcPath + AbstractEntityManager0Test.class.getPackage().getName().replace('.', '/') + "/entity/"
+                + domainName.substring(0, 1).toLowerCase() + domainName.substring(1) + "/";
 
         // create entity definition from database.
         File entityDefinitionFile = null;

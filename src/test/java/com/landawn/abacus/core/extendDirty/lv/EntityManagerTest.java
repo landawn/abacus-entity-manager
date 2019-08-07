@@ -4,7 +4,6 @@
 
 package com.landawn.abacus.core.extendDirty.lv;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -26,7 +25,6 @@ import com.landawn.abacus.entity.extendDirty.lv.AclUserGroupRelationship;
 import com.landawn.abacus.entity.extendDirty.lv.DataType;
 import com.landawn.abacus.entity.extendDirty.lv.ExtendDirtyLVPNL;
 import com.landawn.abacus.exception.UncheckedSQLException;
-import com.landawn.abacus.impl.MySqlDef;
 import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.types.WeekDay;
 import com.landawn.abacus.util.N;
@@ -261,42 +259,6 @@ public class EntityManagerTest extends AbstractEntityManager1Test {
         assertEquals(dataType, dbDataType.get(0));
 
         em.delete(DataType.__, CF.eq(DataType.ENUM_TYPE, WeekDay.WEDNESDAY), null);
-    }
-
-    @Test
-    public void testSQLExecutor() throws Exception {
-        Timestamp now = new Timestamp(System.currentTimeMillis());
-        long id = (Long) sqlExecutor.insert(MySqlDef.insertAccount, "fn", "ln", UUID.randomUUID().toString(), now, now);
-
-        DataSet result = sqlExecutor.query(MySqlDef.selectAccountById, id);
-        N.println(result);
-
-        sqlExecutor.update(MySqlDef.updateAccountFirstNameById, "updated fn", id);
-        sqlExecutor.update(MySqlDef.deleteAccountById, id);
-
-        sqlExecutor.update(MySqlDef.deleteAllAccount);
-
-        result = sqlExecutor.query(MySqlDef.selectAccountById, id);
-        N.println(result);
-        assertEquals(0, result.size());
-    }
-
-    @Test
-    public void testSQLExecutor2() throws Exception {
-        Timestamp now = new Timestamp(System.currentTimeMillis());
-        long id = (Long) sqlExecutor.insert(MySqlDef.insertAccount, "fn", "ln", UUID.randomUUID().toString(), now, now);
-
-        DataSet result = sqlExecutor.query("select  id   as  id, first_name  as   firstName from account where id=?", id);
-        N.println(result);
-
-        sqlExecutor.update(MySqlDef.updateAccountFirstNameById, "updated fn", id);
-        sqlExecutor.update(MySqlDef.deleteAccountById, id);
-
-        sqlExecutor.update(MySqlDef.deleteAllAccount);
-
-        result = sqlExecutor.query(MySqlDef.selectAccountById, id);
-        N.println(result);
-        assertEquals(0, result.size());
     }
 
     public void testBatchAdd() {

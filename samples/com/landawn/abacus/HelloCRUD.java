@@ -2,6 +2,7 @@ package com.landawn.abacus;
 
 import java.io.File;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
@@ -16,8 +17,8 @@ import com.landawn.abacus.metadata.sql.SQLDatabase;
 import com.landawn.abacus.util.CodeGenerator2;
 import com.landawn.abacus.util.CodeGenerator2.EntityMode;
 import com.landawn.abacus.util.EntityManagerEx;
+import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.N;
-import com.landawn.abacus.util.SQLExecutor;
 
 import junit.framework.TestCase;
 
@@ -36,20 +37,24 @@ public class HelloCRUD extends TestCase {
     static final DataSource ds;
 
     static {
-        SQLExecutor sqlExecutor = emf.getSQLExecutor(CodesPNL._DN);
-        final String sql_user_drop_table = "DROP TABLE IF EXISTS account";
+        ds = emf.getDataSourceManager(CodesPNL._DN).getPrimaryDataSource();
 
-        final String sql_user_creat_table = "CREATE TABLE IF NOT EXISTS account (" //
-                + "id bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY, " //
-                + "first_name varchar(32) NOT NULL, " //
-                + "last_name varchar(32) NOT NULL, " //
-                + "email_address varchar(64), " //
-                + "create_time timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP)";
+        try (Connection conn = ds.getConnection()) {
+            final String sql_user_drop_table = "DROP TABLE IF EXISTS account";
 
-        sqlExecutor.execute(sql_user_drop_table);
-        sqlExecutor.execute(sql_user_creat_table);
+            final String sql_user_creat_table = "CREATE TABLE IF NOT EXISTS account (" //
+                    + "id bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY, " //
+                    + "first_name varchar(32) NOT NULL, " //
+                    + "last_name varchar(32) NOT NULL, " //
+                    + "email_address varchar(64), " //
+                    + "create_time timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP)";
 
-        ds = sqlExecutor.dataSource();
+            JdbcUtil.execute(conn, sql_user_drop_table);
+            JdbcUtil.execute(conn, sql_user_creat_table);
+        } catch (SQLException e) {
+            // ignore.
+            e.printStackTrace();
+        }
     }
 
     @Test

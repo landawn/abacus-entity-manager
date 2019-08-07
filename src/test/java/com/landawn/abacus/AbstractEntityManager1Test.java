@@ -18,12 +18,10 @@ import com.landawn.abacus.entity.extendDirty.lvc.AclUser;
 import com.landawn.abacus.entity.extendDirty.lvc.AclUserGroupRelationship;
 import com.landawn.abacus.entity.extendDirty.lvc.ExtendDirtyLVCPNL;
 import com.landawn.abacus.metadata.EntityDefinitionFactory;
-import com.landawn.abacus.util.AsyncSQLExecutor;
 import com.landawn.abacus.util.EntityManagerEx;
 import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
-import com.landawn.abacus.util.SQLExecutor;
 
 /**
  * 
@@ -36,8 +34,6 @@ public abstract class AbstractEntityManager1Test extends AbstractTest {
     protected final String domainName = getDomainName();
     protected final DBAccess dbAccess = emf.getDBAccess(domainName);
     protected final EntityManagerEx<Object> em = emf.getEntityManager(domainName);
-    protected final SQLExecutor sqlExecutor = emf.getSQLExecutor(domainName);
-    protected final AsyncSQLExecutor asyncSQLExecutor = sqlExecutor.async();
     protected final DataSourceManager dsm = emf.getDataSourceManager(domainName);
     protected final EntityDefinitionFactory entityDefFactory = em.getEntityDefinitionFactory();
     protected final String dbProductName;

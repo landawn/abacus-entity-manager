@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.sql.DataSource;
+
 import com.landawn.abacus.entity.extendDirty.Author;
 import com.landawn.abacus.entity.extendDirty.AuthorBook;
 import com.landawn.abacus.entity.extendDirty.Book;
@@ -22,7 +24,6 @@ import com.landawn.abacus.entity.extendDirty.basic.DataType;
 import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.N;
-import com.landawn.abacus.util.SQLExecutor;
 
 /**
  * 
@@ -37,7 +38,6 @@ public abstract class AbstractEntityManager0Test extends AbstractTest {
     protected static boolean isSQLServer;
     protected static com.landawn.abacus.core.EntityManagerFactory emf = com.landawn.abacus.core.EntityManagerFactory.getInstance();
     protected static EntityManager<Object> entityManager;
-    protected static SQLExecutor sqlExecutor;
     protected boolean sqlLog = false;
 
     protected abstract String getDomainName();
@@ -45,11 +45,9 @@ public abstract class AbstractEntityManager0Test extends AbstractTest {
     protected void prepareTest(boolean... reinit) throws AbacusException {
         if (entityManager == null) {
             entityManager = emf.getEntityManager(getDomainName());
-            sqlExecutor = emf.getSQLExecutor(getDomainName());
+            DataSource ds = emf.getDataSourceManager(getDomainName()).getPrimaryDataSource();
 
-            Connection conn = sqlExecutor.getConnection();
-
-            try {
+            try (Connection conn = ds.getConnection()) {
                 if (conn.getMetaData().getDatabaseProductName().contains("MySQL")) {
                     isMySQL = true;
                 }
@@ -60,8 +58,6 @@ public abstract class AbstractEntityManager0Test extends AbstractTest {
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-            } finally {
-                JdbcUtil.closeQuietly(conn);
             }
         }
     }
@@ -95,7 +91,11 @@ public abstract class AbstractEntityManager0Test extends AbstractTest {
                 parameters.add(props);
             }
 
-            sqlExecutor.batchInsert(sql, parameters);
+            try (Connection conn = emf.getDataSourceManager(getDomainName()).getPrimaryDataSource().getConnection()) {
+                JdbcUtil.executeBatchUpdate(conn, sql, parameters);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         N.println("Take " + (System.currentTimeMillis() - startTime) + " to import " + number + " record. ");
@@ -113,25 +113,30 @@ public abstract class AbstractEntityManager0Test extends AbstractTest {
         emf.getEntityManager(getDomainName()).delete(DataType.__, null, null);
 
         if (isSQLServer) {
-            sqlExecutor.update("SET IDENTITY_INSERT book ON;" + "INSERT INTO book (id, name ) VALUES ( 1, 'book1');" + ""
-                    + "INSERT INTO book (id, name ) VALUES ( 2, 'book2');" + "INSERT INTO book (id, name ) VALUES ( 3, 'book3');"
-                    + "INSERT INTO book (id, name ) VALUES ( 4, 'book4');" + "INSERT INTO book (id, name ) VALUES ( 5, 'book5');"
-                    + "INSERT INTO book (id, name ) VALUES ( 6, 'book6');" + "INSERT INTO book (id, name ) VALUES ( 7, 'book7');"
-                    + "SET IDENTITY_INSERT book OFF;" + "SET IDENTITY_INSERT author ON;"
-                    + "INSERT INTO author (id, firstName , lastName,birthDay) VALUES ( 1, 'author1', 'num1', CONVERT(DATETIME, '2001-01-01', 101));"
-                    + "INSERT INTO author (id, firstName , lastName,birthDay) VALUES ( 2, 'author2', 'num2', CONVERT(DATETIME, '2002-01-01', 101));"
-                    + "INSERT INTO author (id, firstName , lastName,birthDay) VALUES ( 3, 'author3', 'num3', CONVERT(DATETIME, '2003-01-01', 101));"
-                    + "INSERT INTO author (id, firstName , lastName,birthDay) VALUES ( 4, 'author4', 'num4', CONVERT(DATETIME, '2004-01-01', 101));"
-                    + "INSERT INTO author (id, firstName , lastName,birthDay) VALUES ( 5, 'author5', 'num5', CONVERT(DATETIME, '2005-01-01', 101));"
-                    + "SET IDENTITY_INSERT author OFF;" + "INSERT INTO AuthorBook (bookId, authorId ) VALUES  ( 1, 1 );"
-                    + "INSERT INTO AuthorBook (bookId, authorId ) VALUES  ( 1, 2 );" + "INSERT INTO AuthorBook (bookId, authorId ) VALUES  ( 1, 3 );"
-                    + "INSERT INTO AuthorBook (bookId, authorId ) VALUES  ( 2, 2 );" + "INSERT INTO AuthorBook (bookId, authorId ) VALUES  ( 2, 3 );"
-                    + "INSERT INTO AuthorBook (bookId, authorId ) VALUES  ( 3, 3 );" + "SET IDENTITY_INSERT contact ON;"
-                    + "INSERT INTO contact (id, hostId, email) VALUES ( 1, 1, 'author1.num1@world.com' );"
-                    + "INSERT INTO contact (id, hostId, email) VALUES ( 2, 2 , 'author2.num2@world.com');"
-                    + "INSERT INTO contact (id, hostId, email) VALUES ( 3, 3 , 'author3.num4@world.com');"
-                    + "INSERT INTO contact (id, hostId, email) VALUES ( 4, 4 , 'author4.num4@world.com');"
-                    + "INSERT INTO contact (id, hostId, email) VALUES ( 5, 5 , 'author5.num5@world.com');" + "SET IDENTITY_INSERT contact OFF;");
+            try (Connection conn = emf.getDataSourceManager(getDomainName()).getPrimaryDataSource().getConnection()) {
+                JdbcUtil.executeUpdate(conn, "SET IDENTITY_INSERT book ON;" + "INSERT INTO book (id, name ) VALUES ( 1, 'book1');" + ""
+                        + "INSERT INTO book (id, name ) VALUES ( 2, 'book2');" + "INSERT INTO book (id, name ) VALUES ( 3, 'book3');"
+                        + "INSERT INTO book (id, name ) VALUES ( 4, 'book4');" + "INSERT INTO book (id, name ) VALUES ( 5, 'book5');"
+                        + "INSERT INTO book (id, name ) VALUES ( 6, 'book6');" + "INSERT INTO book (id, name ) VALUES ( 7, 'book7');"
+                        + "SET IDENTITY_INSERT book OFF;" + "SET IDENTITY_INSERT author ON;"
+                        + "INSERT INTO author (id, firstName , lastName,birthDay) VALUES ( 1, 'author1', 'num1', CONVERT(DATETIME, '2001-01-01', 101));"
+                        + "INSERT INTO author (id, firstName , lastName,birthDay) VALUES ( 2, 'author2', 'num2', CONVERT(DATETIME, '2002-01-01', 101));"
+                        + "INSERT INTO author (id, firstName , lastName,birthDay) VALUES ( 3, 'author3', 'num3', CONVERT(DATETIME, '2003-01-01', 101));"
+                        + "INSERT INTO author (id, firstName , lastName,birthDay) VALUES ( 4, 'author4', 'num4', CONVERT(DATETIME, '2004-01-01', 101));"
+                        + "INSERT INTO author (id, firstName , lastName,birthDay) VALUES ( 5, 'author5', 'num5', CONVERT(DATETIME, '2005-01-01', 101));"
+                        + "SET IDENTITY_INSERT author OFF;" + "INSERT INTO AuthorBook (bookId, authorId ) VALUES  ( 1, 1 );"
+                        + "INSERT INTO AuthorBook (bookId, authorId ) VALUES  ( 1, 2 );" + "INSERT INTO AuthorBook (bookId, authorId ) VALUES  ( 1, 3 );"
+                        + "INSERT INTO AuthorBook (bookId, authorId ) VALUES  ( 2, 2 );" + "INSERT INTO AuthorBook (bookId, authorId ) VALUES  ( 2, 3 );"
+                        + "INSERT INTO AuthorBook (bookId, authorId ) VALUES  ( 3, 3 );" + "SET IDENTITY_INSERT contact ON;"
+                        + "INSERT INTO contact (id, hostId, email) VALUES ( 1, 1, 'author1.num1@world.com' );"
+                        + "INSERT INTO contact (id, hostId, email) VALUES ( 2, 2 , 'author2.num2@world.com');"
+                        + "INSERT INTO contact (id, hostId, email) VALUES ( 3, 3 , 'author3.num4@world.com');"
+                        + "INSERT INTO contact (id, hostId, email) VALUES ( 4, 4 , 'author4.num4@world.com');"
+                        + "INSERT INTO contact (id, hostId, email) VALUES ( 5, 5 , 'author5.num5@world.com');" + "SET IDENTITY_INSERT contact OFF;");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
         } else {
             Book book = new Book();
             book.setId(1);

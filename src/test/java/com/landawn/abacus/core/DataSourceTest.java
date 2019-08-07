@@ -79,7 +79,7 @@ public class DataSourceTest extends AbstractEntityManager1Test {
         super.setUp();
 
         // initialize the persistent connection.
-        Holder<String> resultHandle = new Holder<String>(); 
+        Holder<String> resultHandle = new Holder<String>();
         Collection<String> selectPropNames = N.asList(Account.ID, Account.FIRST_NAME, Account.LAST_NAME, Account.CONTACT);
         dbAccess.query(Account.__, selectPropNames, null, resultHandle, N.asProps(Options.Query.COUNT, 0));
         dbAccess.releaseResultHandle(resultHandle.value());

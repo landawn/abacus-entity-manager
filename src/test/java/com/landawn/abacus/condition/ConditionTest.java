@@ -543,14 +543,16 @@ public class ConditionTest extends AbstractEntityManager1Test {
     public void testUnion() {
         List<Account> accounts = addAccount(Account.class, 10);
 
-        Criteria criteria = CF.criteria().where(CF.gt(Account.ID, 0)).union(
-                CF.subQuery(Account.__, N.asList(Account.ID, Account.FIRST_NAME, Account.LAST_NAME), CF.gt(Account.FIRST_NAME, "firstName5")));
+        Criteria criteria = CF.criteria()
+                .where(CF.gt(Account.ID, 0))
+                .union(CF.subQuery(Account.__, N.asList(Account.ID, Account.FIRST_NAME, Account.LAST_NAME), CF.gt(Account.FIRST_NAME, "firstName5")));
         DataSet result = em.query(Account.__, N.asList(Account.ID, Account.FIRST_NAME, Account.LAST_NAME), criteria, null, null);
         println(result);
         assertEquals(10, result.size());
 
-        criteria = CF.criteria().where(CF.gt(Account.ID, 0)).unionAll(
-                CF.subQuery(Account.__, N.asList(Account.ID, Account.FIRST_NAME, Account.LAST_NAME), CF.gt(Account.FIRST_NAME, "firstName5")));
+        criteria = CF.criteria()
+                .where(CF.gt(Account.ID, 0))
+                .unionAll(CF.subQuery(Account.__, N.asList(Account.ID, Account.FIRST_NAME, Account.LAST_NAME), CF.gt(Account.FIRST_NAME, "firstName5")));
         result = em.query(Account.__, N.asList(Account.ID, Account.FIRST_NAME, Account.LAST_NAME), criteria, null, null);
         println(result);
         assertEquals(14, result.size());

@@ -165,19 +165,10 @@ public class PairTriple {
         if (obj instanceof PairTriple) {
             final PairTriple other = (PairTriple) obj;
 
-            return Objects.equals(str, other.str)
-                && Objects.equals(lng, other.lng)
-                && Objects.equals(pair, other.pair)
-                && Objects.equals(pair0, other.pair0)
-                && Objects.equals(triple, other.triple)
-                && Objects.equals(tuple1, other.tuple1)
-                && Objects.equals(tuple2, other.tuple2)
-                && Objects.equals(tuple22, other.tuple22)
-                && Objects.equals(tuple3, other.tuple3)
-                && Objects.equals(tuple4, other.tuple4)
-                && Objects.equals(tuple5, other.tuple5)
-                && Objects.equals(tuple6, other.tuple6)
-                && Objects.equals(tuple7, other.tuple7);
+            return Objects.equals(str, other.str) && Objects.equals(lng, other.lng) && Objects.equals(pair, other.pair) && Objects.equals(pair0, other.pair0)
+                    && Objects.equals(triple, other.triple) && Objects.equals(tuple1, other.tuple1) && Objects.equals(tuple2, other.tuple2)
+                    && Objects.equals(tuple22, other.tuple22) && Objects.equals(tuple3, other.tuple3) && Objects.equals(tuple4, other.tuple4)
+                    && Objects.equals(tuple5, other.tuple5) && Objects.equals(tuple6, other.tuple6) && Objects.equals(tuple7, other.tuple7);
         }
 
         return false;
@@ -185,19 +176,9 @@ public class PairTriple {
 
     @Override
     public String toString() {
-        return "{str=" + Objects.toString(str)
-                 + ", lng=" + Objects.toString(lng)
-                 + ", pair=" + Objects.toString(pair)
-                 + ", pair0=" + Objects.toString(pair0)
-                 + ", triple=" + Objects.toString(triple)
-                 + ", tuple1=" + Objects.toString(tuple1)
-                 + ", tuple2=" + Objects.toString(tuple2)
-                 + ", tuple22=" + Objects.toString(tuple22)
-                 + ", tuple3=" + Objects.toString(tuple3)
-                 + ", tuple4=" + Objects.toString(tuple4)
-                 + ", tuple5=" + Objects.toString(tuple5)
-                 + ", tuple6=" + Objects.toString(tuple6)
-                 + ", tuple7=" + Objects.toString(tuple7)
-                 + "}";
+        return "{str=" + Objects.toString(str) + ", lng=" + Objects.toString(lng) + ", pair=" + Objects.toString(pair) + ", pair0=" + Objects.toString(pair0)
+                + ", triple=" + Objects.toString(triple) + ", tuple1=" + Objects.toString(tuple1) + ", tuple2=" + Objects.toString(tuple2) + ", tuple22="
+                + Objects.toString(tuple22) + ", tuple3=" + Objects.toString(tuple3) + ", tuple4=" + Objects.toString(tuple4) + ", tuple5="
+                + Objects.toString(tuple5) + ", tuple6=" + Objects.toString(tuple6) + ", tuple7=" + Objects.toString(tuple7) + "}";
     }
 }

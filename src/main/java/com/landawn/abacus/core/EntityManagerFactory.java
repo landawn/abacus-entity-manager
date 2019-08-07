@@ -28,7 +28,6 @@ import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.EntityCacheConfiguration;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.EntityCacheConfiguration.CustomizedEntityCacheConfiguration;
 import com.landawn.abacus.core.sql.Executant;
-import com.landawn.abacus.dataSource.DataSourceConfiguration;
 import com.landawn.abacus.dataSource.SQLDataSourceManager;
 import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.logging.Logger;
@@ -42,8 +41,6 @@ import com.landawn.abacus.util.Configuration;
 import com.landawn.abacus.util.EntityManagerEx;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.ObjectPool;
-import com.landawn.abacus.util.SQLExecutor;
-import com.landawn.abacus.util.SQLExecutor.JdbcSettings;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -52,7 +49,7 @@ import com.landawn.abacus.util.SQLExecutor.JdbcSettings;
  * @author Haiyang Li
  * @since 0.8
  */
-public class EntityManagerFactory implements com.landawn.abacus.EntityManagerFactory {
+public class EntityManagerFactory {
 
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(EntityManagerFactory.class);
@@ -158,6 +155,104 @@ public class EntityManagerFactory implements com.landawn.abacus.EntityManagerFac
     }
 
     /**
+     * Gets the entity manager configuration.
+     *
+     * @param domainName the domain name
+     * @return the entity manager configuration
+     */
+    public EntityManagerConfiguration getEntityManagerConfiguration(String domainName) {
+        return getDmainManager(domainName).getEntityManagerConfiguration();
+    }
+
+    /**
+     * Gets the data source manager.
+     *
+     * @param domainName the domain name
+     * @return the data source manager
+     */
+    public DataSourceManager getDataSourceManager(String domainName) {
+        return getDmainManager(domainName).getDataSourceManager();
+    }
+
+    /**
+     * Gets the domain names.
+     *
+     * @return the domain names
+     */
+    public Collection<String> getDomainNames() {
+        synchronized (entityManagerPool) {
+            return entityManagerPool.keySet();
+        }
+    }
+
+    /**
+     * Gets the DB access.
+     *
+     * @param domainName the domain name
+     * @return the DB access
+     */
+    public DBAccess getDBAccess(String domainName) {
+        return getDmainManager(domainName).getDBAccess();
+    }
+
+    /**
+     * Gets the entity manager.
+     *
+     * @param <T> the generic type
+     * @param domainName the domain name
+     * @return the entity manager
+     */
+    public <T> EntityManagerEx<T> getEntityManager(String domainName) {
+        return getDmainManager(domainName).getEntityManager();
+    }
+
+    //    @Override
+    //    public <T> Session<T> createSession(String domainName) {
+    //        return createSession(domainName, IsolationLevel.DEFAULT);
+    //    }
+    //
+    //    public <T> Session<T> createSession(String domainName, IsolationLevel isolationLevel) {
+    //        return new SessionImpl<T>((EntityManager<T>) getEntityManager(domainName), isolationLevel);
+    //    }
+
+    //    /**
+    //     * Gets the SQL executor.
+    //     *
+    //     * @param domainName the domain name
+    //     * @return the SQL executor
+    //     */
+    //    public SQLExecutor getSQLExecutor(String domainName) {
+    //        return getDmainManager(domainName).getSQLExecutor();
+    //    }
+
+    /**
+     * Creates a new EntityManager object.
+     *
+     * @param <T> the generic type
+     * @param domainName the domain name
+     * @return the async batch executor< t>
+     */
+    @SuppressWarnings("unchecked")
+    public <T> AsyncBatchExecutor<T> createAsyncBatchExecutor(String domainName) {
+        return new AsyncBatchExecutor<T>((EntityManager<T>) getEntityManager(domainName));
+    }
+
+    /**
+     * Creates a new EntityManager object.
+     *
+     * @param <T> the generic type
+     * @param domainName the domain name
+     * @param batchSize the batch size
+     * @param evictDelay the evict delay
+     * @param capacity the capacity
+     * @return the async batch executor< t>
+     */
+    @SuppressWarnings("unchecked")
+    public <T> AsyncBatchExecutor<T> createAsyncBatchExecutor(String domainName, int batchSize, long evictDelay, int capacity) {
+        return new AsyncBatchExecutor<T>((EntityManager<T>) getEntityManager(domainName), capacity, evictDelay, batchSize);
+    }
+
+    /**
      * Find file.
      *
      * @param file the file
@@ -190,107 +285,6 @@ public class EntityManagerFactory implements com.landawn.abacus.EntityManagerFac
         }
 
         return configurationFile;
-    }
-
-    /**
-     * Gets the entity manager configuration.
-     *
-     * @param domainName the domain name
-     * @return the entity manager configuration
-     */
-    public EntityManagerConfiguration getEntityManagerConfiguration(String domainName) {
-        return getDmainManager(domainName).getEntityManagerConfiguration();
-    }
-
-    /**
-     * Gets the data source manager.
-     *
-     * @param domainName the domain name
-     * @return the data source manager
-     */
-    public DataSourceManager getDataSourceManager(String domainName) {
-        return getDmainManager(domainName).getDataSourceManager();
-    }
-
-    /**
-     * Gets the domain names.
-     *
-     * @return the domain names
-     */
-    @Override
-    public Collection<String> getDomainNames() {
-        synchronized (entityManagerPool) {
-            return entityManagerPool.keySet();
-        }
-    }
-
-    /**
-     * Gets the DB access.
-     *
-     * @param domainName the domain name
-     * @return the DB access
-     */
-    @Override
-    public DBAccess getDBAccess(String domainName) {
-        return getDmainManager(domainName).getDBAccess();
-    }
-
-    /**
-     * Gets the entity manager.
-     *
-     * @param <T> the generic type
-     * @param domainName the domain name
-     * @return the entity manager
-     */
-    @Override
-    public <T> EntityManagerEx<T> getEntityManager(String domainName) {
-        return getDmainManager(domainName).getEntityManager();
-    }
-
-    //    @Override
-    //    public <T> Session<T> createSession(String domainName) {
-    //        return createSession(domainName, IsolationLevel.DEFAULT);
-    //    }
-    //
-    //    public <T> Session<T> createSession(String domainName, IsolationLevel isolationLevel) {
-    //        return new SessionImpl<T>((EntityManager<T>) getEntityManager(domainName), isolationLevel);
-    //    }
-
-    /**
-     * Gets the SQL executor.
-     *
-     * @param domainName the domain name
-     * @return the SQL executor
-     */
-    public SQLExecutor getSQLExecutor(String domainName) {
-        return getDmainManager(domainName).getSQLExecutor();
-    }
-
-    /**
-     * Creates a new EntityManager object.
-     *
-     * @param <T> the generic type
-     * @param domainName the domain name
-     * @return the async batch executor< t>
-     */
-    @SuppressWarnings("unchecked")
-    public <T> AsyncBatchExecutor<T> createAsyncBatchExecutor(String domainName) {
-        return new AsyncBatchExecutor<T>((EntityManager<T>) getEntityManager(domainName));
-    }
-
-    /**
-     * Creates a new EntityManager object.
-     *
-     * @param <T> the generic type
-     * @param domainName the domain name
-     * @param batchSize the batch size
-     * @param evictDelay the evict delay
-     * @param capacity the capacity
-     * @return the async batch executor< t>
-     */
-    @SuppressWarnings("unchecked")
-    public <T> AsyncBatchExecutor<T> createAsyncBatchExecutor(String domainName, int batchSize, long evictDelay, int capacity) {
-        return new AsyncBatchExecutor<T>((EntityManager<T>) getEntityManager(domainName), capacity, evictDelay, batchSize);
     }
 
     /**
@@ -336,7 +330,7 @@ public class EntityManagerFactory implements com.landawn.abacus.EntityManagerFac
     /**
      * The Class DomainEntityManager.
      */
-    protected static final class DomainEntityManager {
+    static final class DomainEntityManager {
 
         /** The domain name. */
         private final String domainName;
@@ -353,8 +347,8 @@ public class EntityManagerFactory implements com.landawn.abacus.EntityManagerFac
         /** The ex entity manager. */
         private final EntityManagerEx<Object> exEntityManager;
 
-        /** The sql executor. */
-        private final SQLExecutor sqlExecutor;
+        //        /** The sql executor. */
+        //        private final SQLExecutor sqlExecutor;
 
         /**
          * Instantiates a new domain entity manager.
@@ -362,7 +356,7 @@ public class EntityManagerFactory implements com.landawn.abacus.EntityManagerFac
          * @param entityManagerConfig the entity manager config
          */
         @SuppressWarnings("deprecation")
-        public DomainEntityManager(EntityManagerConfiguration entityManagerConfig) {
+        DomainEntityManager(EntityManagerConfiguration entityManagerConfig) {
             this.domainName = entityManagerConfig.getDomainName();
             this.entityManagerConfig = entityManagerConfig;
             this.dsm = new SQLDataSourceManager(entityManagerConfig.getDataSourceManagerConfiguration());
@@ -418,15 +412,15 @@ public class EntityManagerFactory implements com.landawn.abacus.EntityManagerFac
 
             exEntityManager = new EntityManagerEx<Object>(entityManager);
 
-            if (dsm == null) {
-                sqlExecutor = null;
-            } else {
-                final JdbcSettings jdbcSettings = JdbcSettings.create();
-                jdbcSettings.setBatchSize(entityManagerConfig.getBatchSize());
-                jdbcSettings.setLogSQL(Boolean.valueOf(dsm.getPrimaryDataSource().getProperties().get(DataSourceConfiguration.SQL_LOG)));
-
-                sqlExecutor = new SQLExecutor(dsm, jdbcSettings, entityManagerConfig.getSQLMapper());
-            }
+            //            if (dsm == null) {
+            //                sqlExecutor = null;
+            //            } else {
+            //                final JdbcSettings jdbcSettings = JdbcSettings.create();
+            //                jdbcSettings.setBatchSize(entityManagerConfig.getBatchSize());
+            //                jdbcSettings.setLogSQL(Boolean.valueOf(dsm.getPrimaryDataSource().getProperties().get(DataSourceConfiguration.SQL_LOG)));
+            //
+            //                sqlExecutor = new SQLExecutor(dsm, jdbcSettings, entityManagerConfig.getSQLMapper());
+            //            }
         }
 
         /**
@@ -476,13 +470,13 @@ public class EntityManagerFactory implements com.landawn.abacus.EntityManagerFac
             return (EntityManagerEx<T>) exEntityManager;
         }
 
-        /**
-         * Gets the SQL executor.
-         *
-         * @return the SQL executor
-         */
-        public SQLExecutor getSQLExecutor() {
-            return sqlExecutor;
-        }
+        //        /**
+        //         * Gets the SQL executor.
+        //         *
+        //         * @return the SQL executor
+        //         */
+        //        public SQLExecutor getSQLExecutor() {
+        //            return sqlExecutor;
+        //        }
     }
 }

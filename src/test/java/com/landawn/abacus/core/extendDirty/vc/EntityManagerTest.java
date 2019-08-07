@@ -279,42 +279,6 @@ public class EntityManagerTest extends AbstractEntityManager1Test {
         em.delete(DataType.__, CF.eq(DataType.ENUM_TYPE, WeekDay.WEDNESDAY), null);
     }
 
-    @Test
-    public void testSQLExecutor() throws Exception {
-        Timestamp now = new Timestamp(System.currentTimeMillis());
-        long id = (Long) sqlExecutor.insert(MySqlDef.insertAccount, "fn", "ln", UUID.randomUUID().toString(), now, now);
-
-        DataSet result = sqlExecutor.query(MySqlDef.selectAccountById, id);
-        N.println(result);
-
-        sqlExecutor.update(MySqlDef.updateAccountFirstNameById, "updated fn", id);
-        sqlExecutor.update(MySqlDef.deleteAccountById, id);
-
-        sqlExecutor.update(MySqlDef.deleteAllAccount);
-
-        result = sqlExecutor.query(MySqlDef.selectAccountById, id);
-        N.println(result);
-        assertEquals(0, result.size());
-    }
-
-    @Test
-    public void testSQLExecutor2() throws Exception {
-        Timestamp now = new Timestamp(System.currentTimeMillis());
-        long id = (Long) sqlExecutor.insert(MySqlDef.insertAccount, "fn", "ln", UUID.randomUUID().toString(), now, now);
-
-        DataSet result = sqlExecutor.query("select  id   as  id, first_name  as   firstName from account where id=?", id);
-        N.println(result);
-
-        sqlExecutor.update(MySqlDef.updateAccountFirstNameById, "updated fn", id);
-        sqlExecutor.update(MySqlDef.deleteAccountById, id);
-
-        sqlExecutor.update(MySqlDef.deleteAllAccount);
-
-        result = sqlExecutor.query(MySqlDef.selectAccountById, id);
-        N.println(result);
-        assertEquals(0, result.size());
-    }
-
     public void testBatchAdd() {
         this.addAccount(Account.class, 373);
     }

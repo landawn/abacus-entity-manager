@@ -33,7 +33,11 @@ public class InterpreterTest extends AbstractEntityManager1Test {
     public void test_OracleInterpreter_01() {
         OracleInterpreter interpreter = new OracleInterpreter("oracle", "11.1");
         Criteria criteria = CF.criteria();
-        criteria.join(AclUser.__).where(CF.eq(Account.ID, 1)).limit(100).groupBy(Account.FIRST_NAME, Account.LAST_NAME).having(CF.gt("count(*)", 5))
+        criteria.join(AclUser.__)
+                .where(CF.eq(Account.ID, 1))
+                .limit(100)
+                .groupBy(Account.FIRST_NAME, Account.LAST_NAME)
+                .having(CF.gt("count(*)", 5))
                 .orderBy(N.asList(Account.BIRTH_DATE), SortDirection.DESC);
 
         EntityDefinition entityDef = entityDefFactory.getDefinition(Account.__);
@@ -84,7 +88,11 @@ public class InterpreterTest extends AbstractEntityManager1Test {
         SQLCondCommand sqlCondCmd = SQLCommandFactory.createSqlCondCmd();
         StringBuilder sql = Objectory.createStringBuilder();
         Criteria criteria = CF.criteria();
-        criteria.join(AclUser.__).where(CF.eq(Account.ID, 1)).limit(100).groupBy(Account.FIRST_NAME, Account.LAST_NAME).having(CF.gt("count(*)", 5))
+        criteria.join(AclUser.__)
+                .where(CF.eq(Account.ID, 1))
+                .limit(100)
+                .groupBy(Account.FIRST_NAME, Account.LAST_NAME)
+                .having(CF.gt("count(*)", 5))
                 .orderBy(N.asList(Account.BIRTH_DATE), SortDirection.DESC);
 
         interpreter9.buildCriteria(entityDef, criteria, sqlCondCmd, sql);
@@ -97,7 +105,11 @@ public class InterpreterTest extends AbstractEntityManager1Test {
         sqlCondCmd = SQLCommandFactory.createSqlCondCmd();
         sql = Objectory.createStringBuilder();
         criteria = CF.criteria();
-        criteria.join(AclUser.__).where(CF.eq(Account.ID, 1)).limit(56, 100).groupBy(Account.FIRST_NAME, Account.LAST_NAME).having(CF.gt("count(*)", 5))
+        criteria.join(AclUser.__)
+                .where(CF.eq(Account.ID, 1))
+                .limit(56, 100)
+                .groupBy(Account.FIRST_NAME, Account.LAST_NAME)
+                .having(CF.gt("count(*)", 5))
                 .orderBy(N.asList(Account.BIRTH_DATE), SortDirection.DESC);
         interpreter11.buildCriteria(entityDef, criteria, sqlCondCmd, sql);
         N.println(sql.toString());
