@@ -27,7 +27,8 @@ import junit.framework.TestCase;
  * #1, create db/table.
  * #2, generate entity definition xml by CodeGenerator2.database2EntityDefinitionXml.
  * #3, generate entity classes by entity definition xml.
- * #4,  
+ * #4, define abacus-entity-manager.xml, Refer to ./schema/abacus-entity-manager.xsd.
+ * #5, create instance of EntityManagerFactory/EntityManagerEx by abacus-entity-manager.xml.
  * 
  */
 public class HelloCRUD extends TestCase {
