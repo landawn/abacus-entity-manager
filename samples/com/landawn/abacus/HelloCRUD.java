@@ -13,7 +13,6 @@ import com.landawn.abacus.core.Seid;
 import com.landawn.abacus.entity.Account;
 import com.landawn.abacus.entity.CodesPNL;
 import com.landawn.abacus.exception.UncheckedSQLException;
-import com.landawn.abacus.metadata.sql.SQLDatabase;
 import com.landawn.abacus.util.CodeGenerator2;
 import com.landawn.abacus.util.CodeGenerator2.EntityMode;
 import com.landawn.abacus.util.EntityManagerEx;
@@ -60,7 +59,7 @@ public class HelloCRUD extends TestCase {
 
     @Test
     public void test_CRUD() {
-        Account account = em.gett(Seid.of(Account.ID, 1), N.asList("id"));
+        Account account = em.gett(Seid.of(Account.ID, 1));
         N.println(account);
         account = new Account();
         account.setFirstName("firstName...................");
@@ -84,15 +83,16 @@ public class HelloCRUD extends TestCase {
 
     @Test
     public void test_generateCode() throws Exception {
-        SQLDatabase database = null;
-
-        try (Connection conn = ds.getConnection()) {
-            database = new SQLDatabase(conn, "test", N.asList("account"));
-        }
-
         File entityDefinitionFile = new File("./samples/config/codes.xml");
-
-        CodeGenerator2.database2EntityDefinitionXml(database, entityDefinitionFile);
+        
+        //        SQLDatabase database = null;
+        //
+        //        try (Connection conn = ds.getConnection()) {
+        //            database = new SQLDatabase(conn, "test", N.asList("account"));
+        //        }
+        //
+        //
+        //        CodeGenerator2.database2EntityDefinitionXml(database, entityDefinitionFile);
 
         String domainName = "codes";
         String srcPath = "./samples/";
