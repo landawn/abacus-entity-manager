@@ -14,11 +14,12 @@
 
 package com.landawn.abacus.exception;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class ValidationException.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class ValidationException extends AbacusException {
     /**
@@ -35,8 +36,8 @@ public class ValidationException extends AbacusException {
 
     /**
      * Constructor for IllegalArgumentException.
-     * 
-     * @param message
+     *
+     * @param message the message
      */
     public ValidationException(String message) {
         super(message);
@@ -44,9 +45,9 @@ public class ValidationException extends AbacusException {
 
     /**
      * Constructor for IllegalArgumentException.
-     * 
-     * @param message
-     * @param cause
+     *
+     * @param message the message
+     * @param cause the cause
      */
     public ValidationException(String message, Throwable cause) {
         super(message, cause);
@@ -54,8 +55,8 @@ public class ValidationException extends AbacusException {
 
     /**
      * Constructor for IllegalArgumentException.
-     * 
-     * @param cause
+     *
+     * @param cause the cause
      */
     public ValidationException(Throwable cause) {
         super(cause);

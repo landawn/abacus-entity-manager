@@ -14,11 +14,12 @@
 
 package com.landawn.abacus.exception;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class InvalidResultHandleException.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class InvalidResultHandleException extends AbacusException {
     /**
@@ -35,8 +36,8 @@ public class InvalidResultHandleException extends AbacusException {
 
     /**
      * Constructor for InvalidResultHandleException.
-     * 
-     * @param message
+     *
+     * @param message the message
      */
     public InvalidResultHandleException(String message) {
         super(message);
@@ -44,9 +45,9 @@ public class InvalidResultHandleException extends AbacusException {
 
     /**
      * Constructor for InvalidResultHandleException.
-     * 
-     * @param message
-     * @param cause
+     *
+     * @param message the message
+     * @param cause the cause
      */
     public InvalidResultHandleException(String message, Throwable cause) {
         super(message, cause);
@@ -54,8 +55,8 @@ public class InvalidResultHandleException extends AbacusException {
 
     /**
      * Constructor for InvalidResultHandleException.
-     * 
-     * @param cause
+     *
+     * @param cause the cause
      */
     public InvalidResultHandleException(Throwable cause) {
         super(cause);

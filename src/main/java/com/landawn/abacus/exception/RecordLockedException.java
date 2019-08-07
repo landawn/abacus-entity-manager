@@ -14,11 +14,12 @@
 
 package com.landawn.abacus.exception;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @since 0.8
- * 
+ * The Class RecordLockedException.
+ *
  * @author Haiyang Li
+ * @since 0.8
  */
 public class RecordLockedException extends AbacusException {
     /**
@@ -35,8 +36,8 @@ public class RecordLockedException extends AbacusException {
 
     /**
      * Constructor for RecordLockedException.
-     * 
-     * @param message
+     *
+     * @param message the message
      */
     public RecordLockedException(String message) {
         super(message);
@@ -44,9 +45,9 @@ public class RecordLockedException extends AbacusException {
 
     /**
      * Constructor for RecordLockedException.
-     * 
-     * @param message
-     * @param cause
+     *
+     * @param message the message
+     * @param cause the cause
      */
     public RecordLockedException(String message, Throwable cause) {
         super(message, cause);
@@ -54,8 +55,8 @@ public class RecordLockedException extends AbacusException {
 
     /**
      * Constructor for RecordLockedException.
-     * 
-     * @param cause
+     *
+     * @param cause the cause
      */
     public RecordLockedException(Throwable cause) {
         super(cause);

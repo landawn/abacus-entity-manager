@@ -36,7 +36,8 @@ import com.landawn.abacus.util.N;
  * @since 0.8
  */
 public class DataGrid<E> implements Serializable {
-    
+
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8547707617757713870L;
 
     /** The Constant logger. */
