@@ -4,7 +4,6 @@
 
 package com.landawn.abacus.core.extendDirty.basic;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -28,9 +27,9 @@ import com.landawn.abacus.entity.extendDirty.basic.AclUserGroupRelationship;
 import com.landawn.abacus.entity.extendDirty.basic.DataType;
 import com.landawn.abacus.entity.extendDirty.basic.ExtendDirtyBasicPNL;
 import com.landawn.abacus.exception.UncheckedSQLException;
-import com.landawn.abacus.impl.MySqlDef;
 import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.types.WeekDay;
+import com.landawn.abacus.util.EntityManagerEx.Mapper;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
 import com.landawn.abacus.util.Try;
@@ -82,6 +81,33 @@ public class EntityManagerTest extends AbstractEntityManager1Test {
         N.println(account);
         em.delete(account);
         assertNull(em.gett(Seid.of(Account.ID, account.getId())));
+    }
+
+    @Test
+    public void testCRUDByMapper() {
+        final Mapper<Account> accountMapper = em.mapper(Account.class);
+
+        Account account = accountMapper.gett(1);
+        N.println(account);
+        account = new Account();
+        account.setFirstName("firstName...................");
+        account.setMiddleName("middle - name...................");
+        account.setLastName("lastName...................");
+        account.setGUI(UUID.randomUUID().toString());
+        accountMapper.add(account);
+
+        try {
+            accountMapper.add(account);
+            fail("should throw AbacusSQLException");
+        } catch (UncheckedSQLException e) {
+        }
+
+        account = accountMapper.gett(account.getId());
+
+        account = accountMapper.gett(account.getId(), N.asList(Account.FIRST_NAME, Account.LAST_NAME));
+        N.println(account);
+        accountMapper.delete(account);
+        assertNull(accountMapper.gett(account.getId()));
     }
 
     @Test

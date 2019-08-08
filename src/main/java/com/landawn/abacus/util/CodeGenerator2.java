@@ -131,17 +131,17 @@ public final class CodeGenerator2 {
     /**
      * Field DOMAIN_NAME_VAR. (value is """_DN"")
      */
-    private static final String DOMAIN_NAME_VAR = "_DN";
+    static final String DOMAIN_NAME_VAR = "_DN";
 
     /**
      * Field ENTITY_NAME_VAR. (value is ""__"")
      */
-    private static final String ENTITY_NAME_VAR = "__";
+    static final String ENTITY_NAME_VAR = "__";
 
     /**
      * Field PROP_NAME_LIST. (value is ""_PNL"")
      */
-    private static final String PROP_NAME_LIST = "_PNL";
+    static final String PROP_NAME_LIST = "_PNL";
 
     /**
      * Field PROP_NAME_MAP. (value is ""_PNM"")

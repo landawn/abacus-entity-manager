@@ -14,12 +14,14 @@
 
 package com.landawn.abacus.util;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -66,7 +68,7 @@ import com.landawn.abacus.util.function.ToShortFunction;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class EntityManagerEx.
+ * Multi-thread safe.
  *
  * @author Haiyang Li
  * @param <E> the element type
@@ -2350,7 +2352,7 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
     }
 
     /**
-     * The Class Mapper.
+     * Multi-thread safe.
      *
      * @param <E> the element type
      */
@@ -2375,7 +2377,28 @@ public final class EntityManagerEx<E> implements EntityManager<E> {
         Mapper(final EntityManagerEx em, final Class<E> entityClass) {
             this.em = em;
             this.entityClass = entityClass;
-            this.entityName = ClassUtil.getSimpleClassName(entityClass);
+
+            String entityName = ClassUtil.getSimpleClassName(entityClass);
+
+            final Set<Class<?>> classes = ClassUtil.getAllSuperTypes(entityClass);
+            classes.add(entityClass);
+
+            for (Class<?> cls : classes) {
+                try {
+                    final Field field = cls.getDeclaredField(CodeGenerator2.ENTITY_NAME_VAR);
+
+                    if (field != null) {
+                        entityName = (String) field.get(null);
+                    }
+
+                    break;
+                } catch (NoSuchFieldException | SecurityException | IllegalAccessException e) {
+                    e.printStackTrace();
+                    // ignore.
+                }
+            }
+
+            this.entityName = entityName;
         }
 
         /**
