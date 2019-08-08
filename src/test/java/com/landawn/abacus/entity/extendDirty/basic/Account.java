@@ -6,6 +6,8 @@ package com.landawn.abacus.entity.extendDirty.basic;
 import java.util.List;
 import java.sql.Timestamp;
 import java.util.Objects;
+import com.landawn.abacus.annotation.Id;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.core.AbstractDirtyMarker;
 import com.landawn.abacus.entity.extendDirty.basic.ExtendDirtyBasicPNL;
 import javax.xml.bind.annotation.XmlTransient;
@@ -17,17 +19,40 @@ import com.landawn.abacus.annotation.Type;
  * @version ${version}
  */
 public class Account extends AbstractDirtyMarker implements ExtendDirtyBasicPNL.AccountPNL {
+
+    @Id
+    @Column("id")
     private long id;
+
+    @Column("gui")
     private String gui;
+
+    @Column("email_address")
     private String emailAddress;
+
+    @Column("first_name")
     private String firstName;
+
+    @Column("middle_name")
     private String middleName;
+
+    @Column("last_name")
     private String lastName;
+
+    @Column("birth_date")
     private Timestamp birthDate;
+
+    @Column("status")
     private int status;
+
+    @Column("last_update_time")
     private Timestamp lastUpdateTime;
+
+    @Column("create_time")
     private Timestamp createTime;
+
     private AccountContact contact;
+
     private List<AccountDevice> devices;
 
     public Account() {

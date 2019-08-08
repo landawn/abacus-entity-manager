@@ -45,7 +45,7 @@ import com.myPackage.y.Account2;
 public class CodeGeneratorTest extends AbstractTest {
     static final DataSource ds;
     static {
-        Properties<String, String> props = PropertiesUtil.load(new File("./config/abacus-entity-manager.properties"));
+        Properties<String, String> props = PropertiesUtil.load(new File("./src/test/resources/config/abacus-entity-manager.properties"));
         Properties<String, String> jdbcProperties = new Properties<String, String>();
         for (Map.Entry<String, String> entry : props.entrySet()) {
             if (entry.getKey().startsWith("jdbc.")) {

@@ -57,6 +57,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.landawn.abacus.DirtyMarker;
+import com.landawn.abacus.annotation.Id;
 import com.landawn.abacus.core.AbstractDirtyMarker;
 import com.landawn.abacus.core.DirtyMarkerImpl;
 import com.landawn.abacus.exception.AbacusException;
@@ -3170,6 +3171,14 @@ public final class CodeGenerator2 {
             }
         }
 
+        if (N.notNullOrEmpty(entityDef.getIdPropertyList())) {
+            writeClassImport(fileWrite, Id.class, importedClasses);
+        }
+
+        if (N.notNullOrEmpty(entityDef.getPropertyList())) {
+            writeClassImport(fileWrite, com.landawn.abacus.annotation.Column.class, importedClasses);
+        }
+
         if (extendedClass != null) {
             writeClassImport(fileWrite, extendedClass, importedClasses);
         }
@@ -3473,6 +3482,16 @@ public final class CodeGenerator2 {
         for (Property prop : propList) {
             String fieldName = propName2FieldName(prop.getName());
             String type = getSimpleType(null, prop, pkgName, importedClasses);
+
+            fileWrite.write(IOUtil.LINE_SEPARATOR);
+
+            if (prop.isId()) {
+                fileWrite.write(headSpace + "    @Id" + IOUtil.LINE_SEPARATOR);
+            }
+
+            if (prop.getColumnType() == ColumnType.TABLE_COLUMN) {
+                fileWrite.write(headSpace + "    @Column(\"" + prop.getColumnName() + "\")" + IOUtil.LINE_SEPARATOR);
+            }
 
             fileWrite.write(headSpace + "    private " + type + " " + fieldName + ";" + IOUtil.LINE_SEPARATOR);
         }

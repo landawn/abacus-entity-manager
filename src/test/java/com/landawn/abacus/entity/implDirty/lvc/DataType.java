@@ -25,6 +25,7 @@ import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 import com.landawn.abacus.core.DirtyMarkerImpl;
 import java.util.Objects;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.DirtyMarker;
 import com.landawn.abacus.entity.implDirty.lvc.ImplDirtyLVCPNL;
 import javax.xml.bind.annotation.XmlTransient;
@@ -38,49 +39,137 @@ import com.landawn.abacus.annotation.Type;
 public class DataType implements ImplDirtyLVCPNL.DataTypePNL, DirtyMarker {
     private final DirtyMarkerImpl dirtyMarkerImpl = new DirtyMarkerImpl(__);
 
+
+    @Column("bytetype")
     private byte byteType;
+
+    @Column("chartype")
     private char charType;
+
+    @Column("booleantype")
     private boolean booleanType;
+
+    @Column("shorttype")
     private short shortType;
+
+    @Column("inttype")
     private int intType;
+
+    @Column("longtype")
     private long longType;
+
+    @Column("floattype")
     private float floatType;
+
+    @Column("doubletype")
     private double doubleType;
+
+    @Column("bigIntegerType")
     private BigInteger bigIntegerType;
+
+    @Column("bigdecimaltype")
     private BigDecimal bigDecimalType;
+
+    @Column("stringtype")
     private String stringType;
+
+    @Column("bytearraytype")
     private byte[] byteArrayType;
+
+    @Column("characterstreamtype")
     private Reader characterStreamType;
+
+    @Column("binarystreamtype")
     private InputStream binaryStreamType;
+
+    @Column("clobtype")
     private Clob clobType;
+
+    @Column("blobtype")
     private Blob blobType;
+
+    @Column("datetype")
     private Date dateType;
+
+    @Column("timetype")
     private Time timeType;
+
+    @Column("timestamptype")
     private Timestamp timestampType;
+
+    @Column("longDateType")
     private long longDateType;
+
+    @Column("longTimeType")
     private long longTimeType;
+
+    @Column("longTimestampType")
     private long longTimestampType;
+
+    @Column("enumType")
     private com.landawn.abacus.types.WeekDay enumType;
+
+    @Column("stringarraylisttype")
     private ArrayList<String> stringArrayListType;
+
+    @Column("booleanlinkedlisttype")
     private LinkedList<Boolean> booleanLinkedListType;
+
+    @Column("doublearraylisttype")
     private List<Double> doubleListType;
+
+    @Column("datearraylisttype")
     private ArrayList<Date> dateArrayListType;
+
+    @Column("timestamparraylisttype")
     private ArrayList<Timestamp> timestampArrayListType;
+
+    @Column("bigdecimalarraylisttype")
     private ArrayList<BigDecimal> bigDecimalArrayListType;
+
+    @Column("stringhashsettype")
     private HashSet<String> stringHashSetType;
+
+    @Column("booleanlinkedhashsettype")
     private LinkedHashSet<Boolean> booleanLinkedHashSetType;
+
+    @Column("datehashsettype")
     private HashSet<Date> dateHashSetType;
+
+    @Column("timestamphashsettype")
     private HashSet<Timestamp> timestampHashSetType;
+
+    @Column("bigdecimalhashsettype")
     private HashSet<BigDecimal> bigDecimalHashSetType;
+
+    @Column("stringhashmaptype")
     private HashMap<String, String> stringHashMapType;
+
+    @Column("booleanlinkedhashmaptype")
     private LinkedHashMap<String, Boolean> booleanLinkedHashMapType;
+
+    @Column("floathashmaptype")
     private HashMap<String, Float> floatHashMapType;
+
+    @Column("datehashmaptype")
     private HashMap<String, Date> dateHashMapType;
+
+    @Column("timestamphashmaptype")
     private HashMap<Timestamp, Float> timestampHashMapType;
+
+    @Column("bigdecimalhashmaptype")
     private HashMap<BigDecimal, String> bigDecimalHashMapType;
+
+    @Column("stringvectortype")
     private Vector<String> stringVectorType;
+
+    @Column("stringconcurrenthashmaptype")
     private ConcurrentHashMap<BigDecimal, String> stringConcurrentHashMapType;
+
+    @Column("jsonType")
     private com.landawn.abacus.entity.extendDirty.lvc.Account jsonType;
+
+    @Column("xmlType")
     private com.landawn.abacus.entity.extendDirty.lvc.Account xmlType;
 
     public DataType() {

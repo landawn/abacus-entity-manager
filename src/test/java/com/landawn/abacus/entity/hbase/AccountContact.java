@@ -11,6 +11,8 @@ import java.sql.Timestamp;
 import java.util.Objects;
 import com.landawn.abacus.util.HBaseColumn;
 import com.landawn.abacus.util.N;
+import com.landawn.abacus.annotation.Id;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.entity.hbase.HbasePNL;
 import com.landawn.abacus.annotation.Type;
 
@@ -20,14 +22,33 @@ import com.landawn.abacus.annotation.Type;
  * @version ${version}
  */
 public class AccountContact implements HbasePNL.AccountContactPNL {
+
+    @Id
+    @Column("id")
     private HBaseColumn<Long> id;
+
+    @Column("accountId")
     private List<HBaseColumn<Long>> accountId;
+
+    @Column("telephone")
     private SortedSet<HBaseColumn<String>> telephone;
+
+    @Column("city")
     private Set<HBaseColumn<String>> city;
+
+    @Column("state")
     private LinkedHashSet<HBaseColumn<String>> state;
+
+    @Column("zipCode")
     private List<HBaseColumn<String>> zipCode;
+
+    @Column("status")
     private List<HBaseColumn<Integer>> status;
+
+    @Column("lastUpdateTime")
     private List<HBaseColumn<Timestamp>> lastUpdateTime;
+
+    @Column("createTime")
     private List<HBaseColumn<Timestamp>> createTime;
 
     public AccountContact() {

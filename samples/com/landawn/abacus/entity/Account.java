@@ -5,6 +5,8 @@ package com.landawn.abacus.entity;
 
 import java.sql.Timestamp;
 import java.util.Objects;
+import com.landawn.abacus.annotation.Id;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.core.AbstractDirtyMarker;
 import com.landawn.abacus.entity.CodesPNL;
 
@@ -14,10 +16,21 @@ import com.landawn.abacus.entity.CodesPNL;
  * @version ${version}
  */
 public class Account extends AbstractDirtyMarker implements CodesPNL.AccountPNL {
+
+    @Id
+    @Column("id")
     private long id;
+
+    @Column("first_name")
     private String firstName;
+
+    @Column("last_name")
     private String lastName;
+
+    @Column("email_address")
     private String emailAddress;
+
+    @Column("create_time")
     private Timestamp createTime;
 
     public Account() {
@@ -106,6 +119,7 @@ public class Account extends AbstractDirtyMarker implements CodesPNL.AccountPNL 
         return this;
     }
 
+    @Override
     public int hashCode() {
         int h = 17;
         h = 31 * h + Objects.hashCode(id);
@@ -117,6 +131,7 @@ public class Account extends AbstractDirtyMarker implements CodesPNL.AccountPNL 
         return h;
     }
 
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -135,6 +150,7 @@ public class Account extends AbstractDirtyMarker implements CodesPNL.AccountPNL 
         return false;
     }
 
+    @Override
     public String toString() {
          return "{id=" + Objects.toString(id)
                  + ", firstName=" + Objects.toString(firstName)

@@ -8,6 +8,8 @@ import java.util.Set;
 import java.sql.Timestamp;
 import com.landawn.abacus.core.DirtyMarkerImpl;
 import java.util.Objects;
+import com.landawn.abacus.annotation.Id;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.DirtyMarker;
 import com.landawn.abacus.entity.implDirty.lvc.ImplDirtyLVCPNL;
 import javax.xml.bind.annotation.XmlTransient;
@@ -21,13 +23,30 @@ import com.landawn.abacus.annotation.Type;
 public class AclUgTargetRelationship implements ImplDirtyLVCPNL.AclUgTargetRelationshipPNL, DirtyMarker {
     private final DirtyMarkerImpl dirtyMarkerImpl = new DirtyMarkerImpl(__);
 
+
+    @Id
+    @Column("id")
     private long id;
+
+    @Column("ug_gui")
     private String ugGui;
+
+    @Column("target_gui")
     private String targetGui;
+
+    @Column("privilege")
     private long privilege;
+
+    @Column("description")
     private String description;
+
+    @Column("status")
     private int status;
+
+    @Column("last_update_time")
     private Timestamp lastUpdateTime;
+
+    @Column("create_time")
     private Timestamp createTime;
 
     public AclUgTargetRelationship() {

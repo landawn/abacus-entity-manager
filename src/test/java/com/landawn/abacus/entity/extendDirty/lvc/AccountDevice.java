@@ -5,6 +5,8 @@ package com.landawn.abacus.entity.extendDirty.lvc;
 
 import java.sql.Timestamp;
 import java.util.Objects;
+import com.landawn.abacus.annotation.Id;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.core.AbstractDirtyMarker;
 import com.landawn.abacus.entity.extendDirty.lvc.ExtendDirtyLVCPNL;
 import com.landawn.abacus.annotation.Type;
@@ -15,18 +17,45 @@ import com.landawn.abacus.annotation.Type;
  * @version ${version}
  */
 public class AccountDevice extends AbstractDirtyMarker implements ExtendDirtyLVCPNL.AccountDevicePNL {
+
+    @Id
+    @Column("id")
     private long id;
+
+    @Column("account_id")
     private long accountId;
+
+    @Column("name")
     private String name;
+
+    @Column("udid")
     private String udid;
+
+    @Column("platform")
     private String platform;
+
+    @Column("model")
     private String model;
+
+    @Column("manufacturer")
     private String manufacturer;
+
+    @Column("produce_time")
     private Timestamp produceTime;
+
+    @Column("category")
     private String category;
+
+    @Column("description")
     private String description;
+
+    @Column("status")
     private int status;
+
+    @Column("last_update_time")
     private Timestamp lastUpdateTime;
+
+    @Column("create_time")
     private Timestamp createTime;
 
     public AccountDevice() {

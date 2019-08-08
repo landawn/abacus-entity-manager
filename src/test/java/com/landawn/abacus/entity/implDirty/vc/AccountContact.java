@@ -8,6 +8,8 @@ import java.util.Set;
 import java.sql.Timestamp;
 import com.landawn.abacus.core.DirtyMarkerImpl;
 import java.util.Objects;
+import com.landawn.abacus.annotation.Id;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.DirtyMarker;
 import com.landawn.abacus.entity.implDirty.vc.ImplDirtyVCPNL;
 import javax.xml.bind.annotation.XmlTransient;
@@ -21,21 +23,54 @@ import com.landawn.abacus.annotation.Type;
 public class AccountContact implements ImplDirtyVCPNL.AccountContactPNL, DirtyMarker {
     private final DirtyMarkerImpl dirtyMarkerImpl = new DirtyMarkerImpl(__);
 
+
+    @Id
+    @Column("id")
     private long id;
+
+    @Column("account_id")
     private long accountId;
+
+    @Column("mobile")
     private String mobile;
+
+    @Column("telephone")
     private String telephone;
+
+    @Column("email")
     private String email;
+
+    @Column("address")
     private String address;
+
+    @Column("address_2")
     private String address2;
+
+    @Column("city")
     private String city;
+
+    @Column("state")
     private String state;
+
+    @Column("country")
     private String country;
+
+    @Column("zip_code")
     private String zipCode;
+
+    @Column("category")
     private String category;
+
+    @Column("description")
     private String description;
+
+    @Column("status")
     private int status;
+
+    @Column("last_update_time")
     private Timestamp lastUpdateTime;
+
+    @Column("create_time")
     private Timestamp createTime;
 
     public AccountContact() {

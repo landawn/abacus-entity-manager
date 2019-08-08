@@ -5,6 +5,7 @@ package com.landawn.abacus.entity.hbase;
 
 import java.util.Objects;
 import com.landawn.abacus.util.HBaseColumn;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.entity.hbase.HbasePNL;
 import com.landawn.abacus.annotation.Type;
 
@@ -14,8 +15,14 @@ import com.landawn.abacus.annotation.Type;
  * @version ${version}
  */
 public class Name implements HbasePNL.NamePNL {
+
+    @Column("firstName")
     private HBaseColumn<String> firstName;
+
+    @Column("middleName")
     private HBaseColumn<String> middleName;
+
+    @Column("lastName")
     private HBaseColumn<String> lastName;
 
     public Name() {

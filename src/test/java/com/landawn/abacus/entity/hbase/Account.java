@@ -11,6 +11,8 @@ import java.util.Set;
 import java.util.Objects;
 import com.landawn.abacus.util.HBaseColumn;
 import com.landawn.abacus.util.N;
+import com.landawn.abacus.annotation.Id;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.entity.hbase.HbasePNL;
 import com.landawn.abacus.annotation.Type;
 
@@ -20,15 +22,36 @@ import com.landawn.abacus.annotation.Type;
  * @version ${version}
  */
 public class Account implements HbasePNL.AccountPNL {
+
+    @Id
+    @Column("id")
     private long id;
+
+    @Column("gui")
     private Map<Long, HBaseColumn<String>> gui;
+
+    @Column("emailAddress")
     private SortedMap<Long, HBaseColumn<String>> emailAddress;
+
+    @Column("name")
     private Name name;
+
+    @Column("status")
     private HBaseColumn<Integer> status;
+
+    @Column("lastUpdateTime")
     private LinkedHashMap<Long, HBaseColumn<Timestamp>> lastUpdateTime;
+
+    @Column("createTime")
     private Map<Long, HBaseColumn<Timestamp>> createTime;
+
+    @Column("contact")
     private AccountContact contact;
+
+    @Column("strSet")
     private Set<String> strSet;
+
+    @Column("strMap")
     private Map<String, Long> strMap;
 
     public Account() {

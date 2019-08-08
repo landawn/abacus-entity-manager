@@ -5,6 +5,8 @@ package com.landawn.abacus.entity.extendDirty.lv;
 
 import java.sql.Timestamp;
 import java.util.Objects;
+import com.landawn.abacus.annotation.Id;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.core.AbstractDirtyMarker;
 import com.landawn.abacus.entity.extendDirty.lv.ExtendDirtyLVPNL;
 import com.landawn.abacus.annotation.Type;
@@ -15,13 +17,30 @@ import com.landawn.abacus.annotation.Type;
  * @version ${version}
  */
 public class AclUgTargetRelationship extends AbstractDirtyMarker implements ExtendDirtyLVPNL.AclUgTargetRelationshipPNL {
+
+    @Id
+    @Column("id")
     private long id;
+
+    @Column("ug_gui")
     private String ugGui;
+
+    @Column("target_gui")
     private String targetGui;
+
+    @Column("privilege")
     private long privilege;
+
+    @Column("description")
     private String description;
+
+    @Column("status")
     private int status;
+
+    @Column("last_update_time")
     private Timestamp lastUpdateTime;
+
+    @Column("create_time")
     private Timestamp createTime;
 
     public AclUgTargetRelationship() {

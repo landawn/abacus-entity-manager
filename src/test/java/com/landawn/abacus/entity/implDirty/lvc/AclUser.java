@@ -9,6 +9,8 @@ import java.util.List;
 import java.sql.Timestamp;
 import com.landawn.abacus.core.DirtyMarkerImpl;
 import java.util.Objects;
+import com.landawn.abacus.annotation.Id;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.DirtyMarker;
 import com.landawn.abacus.entity.implDirty.lvc.ImplDirtyLVCPNL;
 import javax.xml.bind.annotation.XmlTransient;
@@ -22,13 +24,29 @@ import com.landawn.abacus.annotation.Type;
 public class AclUser implements ImplDirtyLVCPNL.AclUserPNL, DirtyMarker {
     private final DirtyMarkerImpl dirtyMarkerImpl = new DirtyMarkerImpl(__);
 
+
+    @Id
+    @Column("id")
     private long id;
+
+    @Column("gui")
     private String gui;
+
+    @Column("name")
     private String name;
+
+    @Column("description")
     private String description;
+
+    @Column("status")
     private int status;
+
+    @Column("last_update_time")
     private Timestamp lastUpdateTime;
+
+    @Column("create_time")
     private Timestamp createTime;
+
     private List<AclGroup> groupList;
 
     public AclUser() {

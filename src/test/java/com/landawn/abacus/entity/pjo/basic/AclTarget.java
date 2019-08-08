@@ -5,6 +5,8 @@ package com.landawn.abacus.entity.pjo.basic;
 
 import java.sql.Timestamp;
 import java.util.Objects;
+import com.landawn.abacus.annotation.Id;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.annotation.Type;
 
 
@@ -13,16 +15,39 @@ import com.landawn.abacus.annotation.Type;
  * @version ${version}
  */
 public class AclTarget {
+
+    @Id
+    @Column("id")
     private long id;
+
+    @Column("gui")
     private String gui;
+
+    @Column("name")
     private String name;
+
+    @Column("category")
     private String category;
+
+    @Column("sub_category")
     private String subCategory;
+
+    @Column("type")
     private String type;
+
+    @Column("sub_type")
     private String subType;
+
+    @Column("description")
     private String description;
+
+    @Column("status")
     private int status;
+
+    @Column("last_update_time")
     private Timestamp lastUpdateTime;
+
+    @Column("create_time")
     private Timestamp createTime;
 
     public AclTarget() {

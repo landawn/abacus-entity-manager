@@ -30,7 +30,7 @@ import junit.framework.TestCase;
 public class CodeGenerator1Test extends TestCase {
     static final DataSource ds;
     static {
-        Properties<String, String> props = PropertiesUtil.load(new File("./config/abacus-entity-manager.properties"));
+        Properties<String, String> props = PropertiesUtil.load(new File("./src/test/resources/config/abacus-entity-manager.properties"));
         Properties<String, String> jdbcProperties = new Properties<String, String>();
         for (Map.Entry<String, String> entry : props.entrySet()) {
             if (entry.getKey().startsWith("jdbc.")) {
@@ -77,7 +77,7 @@ public class CodeGenerator1Test extends TestCase {
     }
 
     public void testSQLMapperIdTableGeneration() {
-        String sqlMapperFile = "./config/sqlMapper.xml";
+        String sqlMapperFile = "./src/test/resources/config/sqlMapper.xml";
         String packageName = "com.landawn.abacus.entity.sqlMapper";
         String className = "SQLMapperIdTable";
         Method id2VarName = null;

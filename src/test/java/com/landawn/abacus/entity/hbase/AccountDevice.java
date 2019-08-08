@@ -6,6 +6,8 @@ package com.landawn.abacus.entity.hbase;
 import java.sql.Timestamp;
 import java.util.Objects;
 import com.landawn.abacus.util.HBaseColumn;
+import com.landawn.abacus.annotation.Id;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.entity.hbase.HbasePNL;
 import com.landawn.abacus.annotation.Type;
 
@@ -15,18 +17,45 @@ import com.landawn.abacus.annotation.Type;
  * @version ${version}
  */
 public class AccountDevice implements HbasePNL.AccountDevicePNL {
+
+    @Id
+    @Column("id")
     private HBaseColumn<Long> id;
+
+    @Column("accountId")
     private HBaseColumn<Long> accountId;
+
+    @Column("name")
     private HBaseColumn<String> name;
+
+    @Column("UDID")
     private HBaseColumn<String> udid;
+
+    @Column("platform")
     private HBaseColumn<String> platform;
+
+    @Column("model")
     private HBaseColumn<String> model;
+
+    @Column("manufacturer")
     private HBaseColumn<String> manufacturer;
+
+    @Column("produceTime")
     private HBaseColumn<Timestamp> produceTime;
+
+    @Column("category")
     private HBaseColumn<String> category;
+
+    @Column("description")
     private HBaseColumn<String> description;
+
+    @Column("status")
     private HBaseColumn<Integer> status;
+
+    @Column("lastUpdateTime")
     private HBaseColumn<Timestamp> lastUpdateTime;
+
+    @Column("createTime")
     private HBaseColumn<Timestamp> createTime;
 
     public AccountDevice() {

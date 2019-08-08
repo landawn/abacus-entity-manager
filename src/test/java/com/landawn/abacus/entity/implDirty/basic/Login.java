@@ -8,6 +8,8 @@ import java.util.Set;
 import java.sql.Timestamp;
 import com.landawn.abacus.core.DirtyMarkerImpl;
 import java.util.Objects;
+import com.landawn.abacus.annotation.Id;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.DirtyMarker;
 import com.landawn.abacus.entity.implDirty.basic.ImplDirtyBasicPNL;
 import javax.xml.bind.annotation.XmlTransient;
@@ -21,12 +23,27 @@ import com.landawn.abacus.annotation.Type;
 public class Login implements ImplDirtyBasicPNL.LoginPNL, DirtyMarker {
     private final DirtyMarkerImpl dirtyMarkerImpl = new DirtyMarkerImpl(__);
 
+
+    @Id
+    @Column("id")
     private long id;
+
+    @Column("account_id")
     private long accountId;
+
+    @Column("login_id")
     private String loginId;
+
+    @Column("login_password")
     private String loginPassword;
+
+    @Column("status")
     private int status;
+
+    @Column("last_update_time")
     private Timestamp lastUpdateTime;
+
+    @Column("create_time")
     private Timestamp createTime;
 
     public Login() {

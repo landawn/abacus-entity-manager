@@ -9,6 +9,8 @@ import java.util.List;
 import java.sql.Timestamp;
 import com.landawn.abacus.core.DirtyMarkerImpl;
 import java.util.Objects;
+import com.landawn.abacus.annotation.Id;
+import com.landawn.abacus.annotation.Column;
 import com.landawn.abacus.DirtyMarker;
 import com.landawn.abacus.entity.implDirty.basic.ImplDirtyBasicPNL;
 import javax.xml.bind.annotation.XmlTransient;
@@ -25,21 +27,44 @@ import com.landawn.abacus.annotation.Type;
 public class Account implements ImplDirtyBasicPNL.AccountPNL, DirtyMarker {
     private final DirtyMarkerImpl dirtyMarkerImpl = new DirtyMarkerImpl(__);
 
+
+    @Id
+    @Column("id")
     @XmlElement
     private long id;
+
+    @Column("gui")
     @Beta
     @XmlElement
     private String gui;
+
+    @Column("email_address")
     @XmlElement
     private String emailAddress;
+
+    @Column("first_name")
     private String firstName;
+
+    @Column("middle_name")
     private String middleName;
+
+    @Column("last_name")
     private String lastName;
+
+    @Column("birth_date")
     private Timestamp birthDate;
+
+    @Column("status")
     private int status;
+
+    @Column("last_update_time")
     private Timestamp lastUpdateTime;
+
+    @Column("create_time")
     private Timestamp createTime;
+
     private AccountContact contact;
+
     private List<AccountDevice> devices;
 
     public Account() {
