@@ -149,41 +149,37 @@ public interface DBAccess {
 
     /**
      * Update the records identified by the specified {@code entityId} with the specified {@code props}.
-     * @param entityId the entity id
      * @param props            map key is property name; map value is property value.
-     *
+     * @param entityId the entity id
      * @return the number of updated entity.
      */
-    int update(EntityId entityId, Map<String, Object> props);
+    int update(Map<String, Object> props, EntityId entityId);
 
     /**
      * Update the records identified by the specified {@code entityId} with the specified {@code props}.
-     * @param entityId the entity id
      * @param props            map key is property name; map value is property value.
+     * @param entityId the entity id
      * @param options            {@link com.landawn.abacus.util.Options}
-     *
      * @return the number of updated entity.
      */
-    int update(EntityId entityId, Map<String, Object> props, Map<String, Object> options);
+    int update(Map<String, Object> props, EntityId entityId, Map<String, Object> options);
 
     /**
      * Update the records identified by the specified {@code entityIds} with the specified {@code props}.
-     * @param entityIds the entity ids
      * @param props            map key is property name; map value is property value.
-     *
+     * @param entityIds the entity ids
      * @return the number of updated entities.
      */
-    int updateAll(List<? extends EntityId> entityIds, Map<String, Object> props);
+    int updateAll(Map<String, Object> props, List<? extends EntityId> entityIds);
 
     /**
      * Update the records identified by the specified {@code entityIds} with the specified {@code props}.
-     * @param entityIds the entity ids
      * @param props            map key is property name; map value is property value.
+     * @param entityIds the entity ids
      * @param options            {@link com.landawn.abacus.util.Options}
-     *
      * @return the number of updated entity.
      */
-    int updateAll(List<? extends EntityId> entityIds, Map<String, Object> props, Map<String, Object> options);
+    int updateAll(Map<String, Object> props, List<? extends EntityId> entityIds, Map<String, Object> options);
 
     /**
      * Update entities by the specified {@code condition} with the values in {@code props}.

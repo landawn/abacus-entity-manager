@@ -471,26 +471,24 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
 
     /**
      * Update.
-     * @param entityId the entity id
      * @param props the props
-     *
+     * @param entityId the entity id
      * @return the int
      */
     @Override
-    public int update(final EntityId entityId, final Map<String, Object> props) {
-        return update(entityId, props, null);
+    public int update(final Map<String, Object> props, final EntityId entityId) {
+        return update(props, entityId, null);
     }
 
     /**
      * Update.
-     * @param entityId the entity id
      * @param props the props
+     * @param entityId the entity id
      * @param options the options
-     *
      * @return the int
      */
     @Override
-    public int update(final EntityId entityId, final Map<String, Object> props, final Map<String, Object> options) {
+    public int update(final Map<String, Object> props, final EntityId entityId, final Map<String, Object> options) {
         EntityManagerUtil.checkArgNotNullOrEmpty(entityId, "EntityId");
 
         for (int index = 0, size = handlerList.size(); index < size; index++) {
@@ -512,26 +510,24 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
 
     /**
      * Update all.
-     * @param entityIds the entity ids
      * @param props the props
-     *
+     * @param entityIds the entity ids
      * @return the int
      */
     @Override
-    public int updateAll(final List<? extends EntityId> entityIds, final Map<String, Object> props) {
-        return updateAll(entityIds, props, null);
+    public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds) {
+        return updateAll(props, entityIds, null);
     }
 
     /**
      * Update all.
-     * @param entityIds the entity ids
      * @param props the props
+     * @param entityIds the entity ids
      * @param options the options
-     *
      * @return the int
      */
     @Override
-    public int updateAll(final List<? extends EntityId> entityIds, final Map<String, Object> props, final Map<String, Object> options) {
+    public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds, final Map<String, Object> options) {
         N.checkArgNotNullOrEmpty(entityIds, "EntityIds");
         EntityManagerUtil.checkArgNotNullOrEmpty(entityIds.get(0), "EntityIds");
 

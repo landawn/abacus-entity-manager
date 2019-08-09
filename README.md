@@ -9,3 +9,13 @@ A general persistent library in Java. It's easy to learn and simple to use with 
 * [DBAccess](https://cdn.staticaly.com/gh/landawn/abacus-entity-manager/master/docs/DBAccess_view.html), 
 [Session](https://cdn.staticaly.com/gh/landawn/abacus-entity-manager/master/docs/Session_view.html), 
 [EntityManagerEx](https://cdn.staticaly.com/gh/landawn/abacus-entity-manager/master/docs/EntityManagerEx_view.html).
+
+## Download/Installation & [Changes](https://github.com/landawn/abacus-entity-manager/blob/master/CHANGES.md):
+
+* [Maven](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.landawn%22)
+
+* Gradle:
+```gradle
+// JDK 1.8 or above:
+compile 'com.landawn:abacus-entity-manager:0.8.3'
+```

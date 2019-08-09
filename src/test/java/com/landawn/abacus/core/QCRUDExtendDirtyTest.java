@@ -273,7 +273,7 @@ public class QCRUDExtendDirtyTest extends ExtendDirtyBaseTest {
         book = em.gett(entityId);
         assertEquals("test", book.getName());
 
-        em.update(entityId, N.asProps(Book.NAME, "updatedName"));
+        em.update(N.asProps(Book.NAME, "updatedName"), entityId);
         em.refresh(book);
         assertEquals("updatedName", book.getName());
 

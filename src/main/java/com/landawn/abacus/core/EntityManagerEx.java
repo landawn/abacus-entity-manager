@@ -2038,52 +2038,48 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
 
     /**
      * Update.
-     * @param entityId the entity id
      * @param props the props
-     *
+     * @param entityId the entity id
      * @return the int
      */
     @Override
-    public int update(final EntityId entityId, final Map<String, Object> props) {
-        return entityManager.update(entityId, props);
+    public int update(final Map<String, Object> props, final EntityId entityId) {
+        return entityManager.update(props, entityId);
     }
 
     /**
      * Update.
+     * @param props the props
      * @param entityId the entity id
-     * @param props the props
      * @param options the options
-     *
      * @return the int
      */
     @Override
-    public int update(final EntityId entityId, final Map<String, Object> props, final Map<String, Object> options) {
-        return entityManager.update(entityId, props, options);
+    public int update(final Map<String, Object> props, final EntityId entityId, final Map<String, Object> options) {
+        return entityManager.update(props, entityId, options);
     }
 
     /**
      * Update all.
-     * @param entityIds the entity ids
      * @param props the props
-     *
+     * @param entityIds the entity ids
      * @return the int
      */
     @Override
-    public int updateAll(final List<? extends EntityId> entityIds, final Map<String, Object> props) {
-        return entityManager.updateAll(entityIds, props);
+    public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds) {
+        return entityManager.updateAll(props, entityIds);
     }
 
     /**
      * Update all.
-     * @param entityIds the entity ids
      * @param props the props
+     * @param entityIds the entity ids
      * @param options the options
-     *
      * @return the int
      */
     @Override
-    public int updateAll(final List<? extends EntityId> entityIds, final Map<String, Object> props, final Map<String, Object> options) {
-        return entityManager.updateAll(entityIds, props, options);
+    public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds, final Map<String, Object> options) {
+        return entityManager.updateAll(props, entityIds, options);
     }
 
     /**

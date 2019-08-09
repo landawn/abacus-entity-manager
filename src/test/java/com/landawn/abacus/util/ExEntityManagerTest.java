@@ -33,7 +33,7 @@ public class ExEntityManagerTest extends AbstractEntityManager1Test {
         List<Account> accounts = addAccountWithContact(Account.class, 2);
 
         Account account = accounts.get(0);
-        em.update(Seid.of(Account.ID, account.getId()), N.asProps(Account.FIRST_NAME, "updatedFirstName"));
+        em.update(N.asProps(Account.FIRST_NAME, "updatedFirstName"), Seid.of(Account.ID, account.getId()));
 
         assertEquals(true, em.refresh(account));
         assertEquals(true, em.refresh(account, null));
@@ -126,20 +126,20 @@ public class ExEntityManagerTest extends AbstractEntityManager1Test {
         //        em.getAll(entityIdList, Account._PNL);
         //        em.getAll(entityIdList, Account._PNL, null);
 
-        em.update(entityId, N.asProps(Account.FIRST_NAME, "updatedFirstName"));
+        em.update(N.asProps(Account.FIRST_NAME, "updatedFirstName"), entityId);
         em.delete(entityId);
 
-        em.update(entityId, N.asProps(Account.FIRST_NAME, "updatedFirstName"), null);
+        em.update(N.asProps(Account.FIRST_NAME, "updatedFirstName"), entityId, null);
         em.delete(entityId, null);
 
         try {
-            em.updateAll(N.asList(), null);
+            em.updateAll(null, N.asList());
             fail("should throw IllegalArgumentException");
         } catch (IllegalArgumentException e) {
         }
 
         try {
-            em.updateAll(N.asList(), null);
+            em.updateAll(null, N.asList());
             fail("should throw IllegalArgumentException");
         } catch (IllegalArgumentException e) {
         }

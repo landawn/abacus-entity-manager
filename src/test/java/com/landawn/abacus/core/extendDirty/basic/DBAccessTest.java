@@ -110,10 +110,10 @@ public class DBAccessTest extends AbstractEntityManager1Test {
         assertEquals(props.get(Account.FIRST_NAME), dbAccount.getFirstName());
 
         Map<String, Object> updateProps = N.asProps(Account.FIRST_NAME, UPDATED_FIRST_NAME);
-        int updatedCount = dbAccess.update(entityId, updateProps);
+        int updatedCount = dbAccess.update(updateProps, entityId);
         assertEquals(1, updatedCount);
 
-        updatedCount = dbAccess.updateAll(N.asList(entityId), updateProps);
+        updatedCount = dbAccess.updateAll(updateProps, N.asList(entityId));
         assertEquals(1, updatedCount);
 
         updatedCount = dbAccess.deleteAll(N.asList(entityId));
@@ -129,7 +129,7 @@ public class DBAccessTest extends AbstractEntityManager1Test {
         //        List<Account> dbAccounts = dbAccess.getAll(entityIds);
         //        assertEquals(propsList.size(), dbAccounts.size());
 
-        updatedCount = dbAccess.updateAll(entityIds, updateProps);
+        updatedCount = dbAccess.updateAll(updateProps, entityIds);
         assertEquals(propsList.size(), updatedCount);
 
         updatedCount = dbAccess.deleteAll(entityIds);

@@ -1164,48 +1164,44 @@ public final class NewEntityManager {
 
     /**
      * Update.
-     * @param entityId the entity id
      * @param props the props
-     *
+     * @param entityId the entity id
      * @return the int
      */
-    public int update(final EntityId entityId, final Map<String, Object> props) {
-        return em.update(entityId, props);
+    public int update(final Map<String, Object> props, final EntityId entityId) {
+        return em.update(props, entityId);
     }
 
     /**
      * Update.
+     * @param props the props
      * @param entityId the entity id
-     * @param props the props
      * @param options the options
-     *
      * @return the int
      */
-    public int update(final EntityId entityId, final Map<String, Object> props, final Map<String, Object> options) {
-        return em.update(entityId, props, options);
+    public int update(final Map<String, Object> props, final EntityId entityId, final Map<String, Object> options) {
+        return em.update(props, entityId, options);
     }
 
     /**
      * Update all.
-     * @param entityIds the entity ids
      * @param props the props
-     *
+     * @param entityIds the entity ids
      * @return the int
      */
-    public int updateAll(final List<? extends EntityId> entityIds, final Map<String, Object> props) {
-        return em.updateAll(entityIds, props);
+    public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds) {
+        return em.updateAll(props, entityIds);
     }
 
     /**
      * Update all.
-     * @param entityIds the entity ids
      * @param props the props
+     * @param entityIds the entity ids
      * @param options the options
-     *
      * @return the int
      */
-    public int updateAll(final List<? extends EntityId> entityIds, final Map<String, Object> props, final Map<String, Object> options) {
-        return em.updateAll(entityIds, props, options);
+    public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds, final Map<String, Object> options) {
+        return em.updateAll(props, entityIds, options);
     }
 
     /**
@@ -2238,48 +2234,48 @@ public final class NewEntityManager {
 
         /**
          * Update.
-         *
-         * @param entityId the entity id
          * @param props the props
+         * @param entityId the entity id
+         *
          * @return the int
          */
-        public int update(final EntityId entityId, final Map<String, Object> props) {
-            return em.update(entityId, props);
+        public int update(final Map<String, Object> props, final EntityId entityId) {
+            return em.update(props, entityId);
         }
 
         /**
          * Update.
-         *
+         * @param props the props
          * @param entityId the entity id
-         * @param props the props
          * @param options the options
+         *
          * @return the int
          */
-        public int update(final EntityId entityId, final Map<String, Object> props, final Map<String, Object> options) {
-            return em.update(entityId, props, options);
+        public int update(final Map<String, Object> props, final EntityId entityId, final Map<String, Object> options) {
+            return em.update(props, entityId, options);
         }
 
         /**
          * Update all.
-         *
-         * @param entityIds the entity ids
          * @param props the props
+         * @param entityIds the entity ids
+         *
          * @return the int
          */
-        public int updateAll(final List<? extends EntityId> entityIds, final Map<String, Object> props) {
-            return em.updateAll(entityIds, props);
+        public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds) {
+            return em.updateAll(props, entityIds);
         }
 
         /**
          * Update all.
-         *
-         * @param entityIds the entity ids
          * @param props the props
+         * @param entityIds the entity ids
          * @param options the options
+         *
          * @return the int
          */
-        public int updateAll(final List<? extends EntityId> entityIds, final Map<String, Object> props, final Map<String, Object> options) {
-            return em.updateAll(entityIds, props, options);
+        public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds, final Map<String, Object> options) {
+            return em.updateAll(props, entityIds, options);
         }
 
         /**

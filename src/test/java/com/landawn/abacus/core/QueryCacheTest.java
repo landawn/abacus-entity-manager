@@ -427,7 +427,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
             entityIds.add(Seid.of(Account.ID, i));
         }
 
-        em.updateAll(entityIds, N.asProps(Account.LAST_NAME, UPDATED_LAST_NAME), null);
+        em.updateAll(N.asProps(Account.LAST_NAME, UPDATED_LAST_NAME), entityIds, null);
 
         result = em.query(Account.__, null, CF.ge(Account.ID, 100), null, Options.of(Query.OFFSET, 9, Query.COUNT, 80, Query.QUERY_FROM_CACHE, true));
 
