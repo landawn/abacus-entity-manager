@@ -528,26 +528,26 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
 
     /**
      * Update.
-     *
-     * @param props the props
      * @param entityId the entity id
+     * @param props the props
+     *
      * @return the int
      */
     @Override
-    public int update(Map<String, Object> props, EntityId entityId) {
-        return update(props, entityId, null);
+    public int update(EntityId entityId, Map<String, Object> props) {
+        return update(entityId, props, null);
     }
 
     /**
      * Update.
-     *
-     * @param props the props
      * @param entityId the entity id
+     * @param props the props
      * @param options the options
+     *
      * @return the int
      */
     @Override
-    public int update(Map<String, Object> props, EntityId entityId, Map<String, Object> options) {
+    public int update(EntityId entityId, Map<String, Object> props, Map<String, Object> options) {
         checkEntityId(getEntityDefinitionFactory(), entityId);
 
         final String entityName = entityId.entityName();
@@ -557,26 +557,26 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
 
     /**
      * Update all.
-     *
-     * @param props the props
      * @param entityIds the entity ids
+     * @param props the props
+     *
      * @return the int
      */
     @Override
-    public int updateAll(Map<String, Object> props, List<? extends EntityId> entityIds) {
-        return updateAll(props, entityIds, null);
+    public int updateAll(List<? extends EntityId> entityIds, Map<String, Object> props) {
+        return updateAll(entityIds, props, null);
     }
 
     /**
      * Update all.
-     *
-     * @param props the props
      * @param entityIds the entity ids
+     * @param props the props
      * @param options the options
+     *
      * @return the int
      */
     @Override
-    public int updateAll(Map<String, Object> props, List<? extends EntityId> entityIds, Map<String, Object> options) {
+    public int updateAll(List<? extends EntityId> entityIds, Map<String, Object> props, Map<String, Object> options) {
         checkEntityId(getEntityDefinitionFactory(), entityIds);
 
         final String entityName = entityIds.get(0).entityName();

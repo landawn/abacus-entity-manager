@@ -35,10 +35,8 @@ import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.metadata.EntityDefinitionFactory;
 import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.metadata.sql.SQLEntityDefinitionFactory;
-import com.landawn.abacus.util.AsyncBatchExecutor;
 import com.landawn.abacus.util.ClassUtil;
 import com.landawn.abacus.util.Configuration;
-import com.landawn.abacus.util.EntityManagerEx;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.ObjectPool;
 
@@ -206,6 +204,16 @@ public class EntityManagerFactory {
         return getDmainManager(domainName).getEntityManager();
     }
 
+    /**
+     * Gets the entity manager.
+     *
+     * @param domainName the domain name
+     * @return the entity manager
+     */
+    public NewEntityManager getNewEntityManager(String domainName) {
+        return getDmainManager(domainName).getNewEntityManager();
+    }
+
     //    @Override
     //    public <T> Session<T> createSession(String domainName) {
     //        return createSession(domainName, IsolationLevel.DEFAULT);
@@ -345,7 +353,10 @@ public class EntityManagerFactory {
         private final DBAccess dbAccess;
 
         /** The ex entity manager. */
-        private final EntityManagerEx<Object> exEntityManager;
+        private final EntityManagerEx<Object> entityManagerEx;
+
+        /** The new entity manager. */
+        private final NewEntityManager newEntityManager;
 
         //        /** The sql executor. */
         //        private final SQLExecutor sqlExecutor;
@@ -410,7 +421,9 @@ public class EntityManagerFactory {
                 dbAccess = entityManager;
             }
 
-            exEntityManager = new EntityManagerEx<Object>(entityManager);
+            entityManagerEx = new EntityManagerEx<Object>(entityManager);
+
+            newEntityManager = new NewEntityManager(entityManagerEx);
 
             //            if (dsm == null) {
             //                sqlExecutor = null;
@@ -428,7 +441,7 @@ public class EntityManagerFactory {
          *
          * @return the domain name
          */
-        public String getDomainName() {
+        String getDomainName() {
             return domainName;
         }
 
@@ -437,7 +450,7 @@ public class EntityManagerFactory {
          *
          * @return the entity manager configuration
          */
-        public EntityManagerConfiguration getEntityManagerConfiguration() {
+        EntityManagerConfiguration getEntityManagerConfiguration() {
             return entityManagerConfig;
         }
 
@@ -446,7 +459,7 @@ public class EntityManagerFactory {
          *
          * @return the data source manager
          */
-        public DataSourceManager getDataSourceManager() {
+        DataSourceManager getDataSourceManager() {
             return dsm;
         }
 
@@ -455,7 +468,7 @@ public class EntityManagerFactory {
          *
          * @return the DB access
          */
-        public DBAccess getDBAccess() {
+        DBAccess getDBAccess() {
             return dbAccess;
         }
 
@@ -466,8 +479,18 @@ public class EntityManagerFactory {
          * @return the entity manager
          */
         @SuppressWarnings("unchecked")
-        public <T> EntityManagerEx<T> getEntityManager() {
-            return (EntityManagerEx<T>) exEntityManager;
+        <T> EntityManagerEx<T> getEntityManager() {
+            return (EntityManagerEx<T>) entityManagerEx;
+        }
+
+        /**
+         * Gets the new entity manager.
+         *
+         * @return the entity manager
+         */
+        @SuppressWarnings("unchecked")
+        NewEntityManager getNewEntityManager() {
+            return newEntityManager;
         }
 
         //        /**
@@ -475,7 +498,7 @@ public class EntityManagerFactory {
         //         *
         //         * @return the SQL executor
         //         */
-        //        public SQLExecutor getSQLExecutor() {
+        //        SQLExecutor getSQLExecutor() {
         //            return sqlExecutor;
         //        }
     }

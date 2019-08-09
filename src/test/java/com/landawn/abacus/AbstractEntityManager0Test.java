@@ -36,7 +36,8 @@ public abstract class AbstractEntityManager0Test extends AbstractTest {
     protected static final String srcPath = "./src/test/java/";
     protected static boolean isMySQL;
     protected static boolean isSQLServer;
-    protected static com.landawn.abacus.core.EntityManagerFactory emf = com.landawn.abacus.core.EntityManagerFactory.getInstance("./src/test/resources/config/abacus-entity-manager.xml");
+    protected static com.landawn.abacus.core.EntityManagerFactory emf = com.landawn.abacus.core.EntityManagerFactory
+            .getInstance("./src/test/resources/config/abacus-entity-manager.xml");
     protected static EntityManager<Object> entityManager;
     protected boolean sqlLog = false;
 

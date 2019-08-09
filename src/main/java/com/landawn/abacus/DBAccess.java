@@ -149,41 +149,41 @@ public interface DBAccess {
 
     /**
      * Update the records identified by the specified {@code entityId} with the specified {@code props}.
-     *
-     * @param props            map key is property name; map value is property value.
      * @param entityId the entity id
+     * @param props            map key is property name; map value is property value.
+     *
      * @return the number of updated entity.
      */
-    int update(Map<String, Object> props, EntityId entityId);
+    int update(EntityId entityId, Map<String, Object> props);
 
     /**
      * Update the records identified by the specified {@code entityId} with the specified {@code props}.
-     *
-     * @param props            map key is property name; map value is property value.
      * @param entityId the entity id
+     * @param props            map key is property name; map value is property value.
      * @param options            {@link com.landawn.abacus.util.Options}
+     *
      * @return the number of updated entity.
      */
-    int update(Map<String, Object> props, EntityId entityId, Map<String, Object> options);
+    int update(EntityId entityId, Map<String, Object> props, Map<String, Object> options);
 
     /**
      * Update the records identified by the specified {@code entityIds} with the specified {@code props}.
-     *
-     * @param props            map key is property name; map value is property value.
      * @param entityIds the entity ids
+     * @param props            map key is property name; map value is property value.
+     *
      * @return the number of updated entities.
      */
-    int updateAll(Map<String, Object> props, List<? extends EntityId> entityIds);
+    int updateAll(List<? extends EntityId> entityIds, Map<String, Object> props);
 
     /**
      * Update the records identified by the specified {@code entityIds} with the specified {@code props}.
-     *
-     * @param props            map key is property name; map value is property value.
      * @param entityIds the entity ids
+     * @param props            map key is property name; map value is property value.
      * @param options            {@link com.landawn.abacus.util.Options}
+     *
      * @return the number of updated entity.
      */
-    int updateAll(Map<String, Object> props, List<? extends EntityId> entityIds, Map<String, Object> options);
+    int updateAll(List<? extends EntityId> entityIds, Map<String, Object> props, Map<String, Object> options);
 
     /**
      * Update entities by the specified {@code condition} with the values in {@code props}.

@@ -36,7 +36,7 @@ public abstract class AbstractTest extends TestCase {
     protected static final Logger logger = LoggerFactory.getLogger(AbstractTest.class);
 
     protected static com.landawn.abacus.core.EntityManagerFactory emf = com.landawn.abacus.core.EntityManagerFactory
-            .getInstance("./src/test/resources/config/abacus-entity-manager.xml"); 
+            .getInstance("./src/test/resources/config/abacus-entity-manager.xml");
 
     protected static final String FIRST_NAME = "firstName";
     public static final String MIDDLE_NAME = "MN";

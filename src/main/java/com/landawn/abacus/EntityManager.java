@@ -62,19 +62,19 @@ import java.util.Map;
  * .update(...) or delete(...) APIs to update an {@code ActiveRecord}.
  *
  * @author Haiyang Li
- * @param <E> the element type
+ * @param <T> the entity type
  * @since 0.8
  */
-public interface EntityManager<E> extends DBAccess {
+public interface EntityManager<T> extends DBAccess {
 
     /**
      * Insert the specified {@code entity} into data store.
      *
      * @param entity the entity
      * @return EntityId
-     * @see #add(E[], Map)
+     * @see #add(T[], Map)
      */
-    EntityId add(E entity);
+    EntityId add(T entity);
 
     /**
      * Insert the specified {@code entity} into data store.
@@ -82,9 +82,9 @@ public interface EntityManager<E> extends DBAccess {
      * @param entity the entity
      * @param options            {@link com.landawn.abacus.util.Options}
      * @return EntityId
-     * @see #add(E[], Map)
+     * @see #add(T[], Map)
      */
-    EntityId add(E entity, Map<String, Object> options);
+    EntityId add(T entity, Map<String, Object> options);
 
     /**
      * Insert the specified {@code entities} into data store. The entity in {@code entities} must be the same type
@@ -92,9 +92,9 @@ public interface EntityManager<E> extends DBAccess {
      *
      * @param entities the entities
      * @return EntityId[]
-     * @see #add(E[], Map)
+     * @see #add(T[], Map)
      */
-    List<EntityId> addAll(Collection<? extends E> entities);
+    List<EntityId> addAll(Collection<? extends T> entities);
 
     /**
      * Insert the specified {@code entities} into data store. The entity in {@code entities} must be the same type
@@ -104,7 +104,7 @@ public interface EntityManager<E> extends DBAccess {
      * @param options            {@link com.landawn.abacus.util.Options}
      * @return int
      */
-    List<EntityId> addAll(Collection<? extends E> entities, Map<String, Object> options);
+    List<EntityId> addAll(Collection<? extends T> entities, Map<String, Object> options);
 
     /**
      * Update the record in data store by the updated properties in the specified {@code entity}.
@@ -113,7 +113,7 @@ public interface EntityManager<E> extends DBAccess {
      * @return int
      * @see com.landawn.abacus.util.Options.Tran
      */
-    int update(E entity);
+    int update(T entity);
 
     /**
      * Update the record in data store by the updated properties in the specified {@code entity}.
@@ -122,7 +122,7 @@ public interface EntityManager<E> extends DBAccess {
      * @param options            {@link com.landawn.abacus.util.Options}
      * @return int
      */
-    int update(E entity, Map<String, Object> options);
+    int update(T entity, Map<String, Object> options);
 
     /**
      * Update the records in data store by the updated properties in the specified {@code entities}. The entity in
@@ -132,7 +132,7 @@ public interface EntityManager<E> extends DBAccess {
      * @return int
      * @see com.landawn.abacus.util.Options.Tran
      */
-    int updateAll(Collection<? extends E> entities);
+    int updateAll(Collection<? extends T> entities);
 
     /**
      * Update the records in data store by the updated properties in the specified {@code entities}. The entity in
@@ -142,7 +142,7 @@ public interface EntityManager<E> extends DBAccess {
      * @param options            {@link com.landawn.abacus.util.Options}
      * @return int
      */
-    int updateAll(Collection<? extends E> entities, Map<String, Object> options);
+    int updateAll(Collection<? extends T> entities, Map<String, Object> options);
 
     /**
      * Delete record from data store by the specified {@code entity}.
@@ -151,7 +151,7 @@ public interface EntityManager<E> extends DBAccess {
      * @return int
      * @see com.landawn.abacus.util.Options.Tran
      */
-    int delete(E entity);
+    int delete(T entity);
 
     /**
      * Delete record from data store by the specified {@code entity}.
@@ -160,7 +160,7 @@ public interface EntityManager<E> extends DBAccess {
      * @param options            {@link com.landawn.abacus.util.Options}
      * @return int
      */
-    int delete(E entity, Map<String, Object> options);
+    int delete(T entity, Map<String, Object> options);
 
     /**
      * Delete record from data store by the specified {@code entities}.
@@ -168,7 +168,7 @@ public interface EntityManager<E> extends DBAccess {
      * @param entities the entities
      * @return int
      */
-    int deleteAll(Collection<? extends E> entities);
+    int deleteAll(Collection<? extends T> entities);
 
     /**
      * Delete record from data store by the specified {@code entities}.
@@ -177,7 +177,7 @@ public interface EntityManager<E> extends DBAccess {
      * @param options            {@link com.landawn.abacus.util.Options}
      * @return int
      */
-    int deleteAll(Collection<? extends E> entities, Map<String, Object> options);
+    int deleteAll(Collection<? extends T> entities, Map<String, Object> options);
 
     /**
      * Lock the record identified by the specified {@code entityId} on the specified level {@code lockMode}.

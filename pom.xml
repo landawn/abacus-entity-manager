@@ -148,7 +148,20 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<configuration>
 					<doclint>none</doclint>
-					<excludePackageNames>com.landawn.abacus.core.*:com.landawn.abacus.metadata.*</excludePackageNames>
+					<sourceFileExcludes>
+						<exclude>/com/landawn/abacus/cache/CacheZipper.java</exclude>
+						<exclude>/com/landawn/abacus/cache/DataGrid.java</exclude>
+						<exclude>/com/landawn/abacus/core/AbacusConfiguration.java</exclude>
+						<exclude>/com/landawn/abacus/core/DirtyMarkerImpl.java</exclude>
+						<exclude>/com/landawn/abacus/core/EntityUtil.java</exclude>
+						<exclude>/com/landawn/abacus/core/EntityManagerUtil.java</exclude>
+						<exclude>/com/landawn/abacus/core/sql/**/*.java</exclude>
+						<exclude>/com/landawn/abacus/metadata/sql/**/*.java</exclude>
+						<exclude>/com/landawn/abacus/version/**/*.java</exclude>
+					</sourceFileExcludes>
+					<!--
+						<excludePackageNames>com.landawn.abacus.core.*:com.landawn.abacus.metadata.*</excludePackageNames>
+					-->
 				</configuration>
 				<executions>
 					<execution>

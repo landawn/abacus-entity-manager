@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.landawn.abacus.core.EntityManagerEx;
+import com.landawn.abacus.core.NewEntityManager;
 import com.landawn.abacus.core.RowDataSet;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
 import com.landawn.abacus.entity.extendDirty.lvc.AccountContact;
@@ -17,7 +19,6 @@ import com.landawn.abacus.entity.extendDirty.lvc.AclUser;
 import com.landawn.abacus.entity.extendDirty.lvc.AclUserGroupRelationship;
 import com.landawn.abacus.entity.extendDirty.lvc.ExtendDirtyLVCPNL;
 import com.landawn.abacus.metadata.EntityDefinitionFactory;
-import com.landawn.abacus.util.EntityManagerEx;
 import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
@@ -32,6 +33,7 @@ public abstract class AbstractEntityManager1Test extends AbstractTest {
     protected final String domainName = getDomainName();
     protected final DBAccess dbAccess = emf.getDBAccess(domainName);
     protected final EntityManagerEx<Object> em = emf.getEntityManager(domainName);
+    protected final NewEntityManager newEntityManager = emf.getNewEntityManager(domainName);
     protected final DataSourceManager dsm = emf.getDataSourceManager(domainName);
     protected final EntityDefinitionFactory entityDefFactory = em.getEntityDefinitionFactory();
     protected final String dbProductName;

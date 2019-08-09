@@ -17,6 +17,7 @@ import com.landawn.abacus.EntityId;
 import com.landawn.abacus.LockMode;
 import com.landawn.abacus.condition.ConditionFactory.CF;
 import com.landawn.abacus.core.EntityManagerUtil;
+import com.landawn.abacus.core.NewEntityManager.Mapper;
 import com.landawn.abacus.core.Seid;
 import com.landawn.abacus.entity.extendDirty.basic.Account;
 import com.landawn.abacus.entity.extendDirty.basic.AccountContact;
@@ -29,7 +30,6 @@ import com.landawn.abacus.entity.extendDirty.basic.ExtendDirtyBasicPNL;
 import com.landawn.abacus.exception.UncheckedSQLException;
 import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.types.WeekDay;
-import com.landawn.abacus.util.EntityManagerEx.Mapper;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
 import com.landawn.abacus.util.Try;
@@ -85,7 +85,7 @@ public class EntityManagerTest extends AbstractEntityManager1Test {
 
     @Test
     public void testCRUDByMapper() {
-        final Mapper<Account> accountMapper = em.mapper(Account.class);
+        final Mapper<Account> accountMapper = newEntityManager.mapper(Account.class);
 
         Account account = accountMapper.gett(1);
         N.println(account);
@@ -407,7 +407,7 @@ public class EntityManagerTest extends AbstractEntityManager1Test {
 
         assertTrue(N.equals(accounts.size(), dbAccounts.size()));
 
-        int num = em.updateAll(N.asProps(Account.FIRST_NAME, "newFirstName"), entityIds);
+        int num = em.updateAll(entityIds, N.asProps(Account.FIRST_NAME, "newFirstName"));
         N.println(num);
         assertEquals(accounts.size(), num);
 

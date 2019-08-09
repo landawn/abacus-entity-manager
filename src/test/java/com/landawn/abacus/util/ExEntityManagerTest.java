@@ -28,15 +28,12 @@ import com.landawn.abacus.util.u.Holder;
  * @author Haiyang Li
  */
 public class ExEntityManagerTest extends AbstractEntityManager1Test {
-    public void test_checkEntity() {
-        em.checkEntity(N.asList(createAccount(Account.class)));
-    }
 
     public void test_refresh() {
         List<Account> accounts = addAccountWithContact(Account.class, 2);
 
         Account account = accounts.get(0);
-        em.update(N.asProps(Account.FIRST_NAME, "updatedFirstName"), Seid.of(Account.ID, account.getId()));
+        em.update(Seid.of(Account.ID, account.getId()), N.asProps(Account.FIRST_NAME, "updatedFirstName"));
 
         assertEquals(true, em.refresh(account));
         assertEquals(true, em.refresh(account, null));
@@ -88,7 +85,6 @@ public class ExEntityManagerTest extends AbstractEntityManager1Test {
         assertEquals(id, ((Account) em.gett(Account.__, id)).getId());
 
         N.println(em.gett(Account.__, accounts.get(0).getId(), N.asList(Account.FIRST_NAME, Account.LAST_NAME)));
-        N.println(em.gett(Account.__, accounts.get(0).getId(), Account.FIRST_NAME, Account.LAST_NAME));
 
         assertEquals(false, em.queryForBoolean(Account.__, Account.STATUS, null).orElse(false));
         assertEquals(0, em.queryForByte(Account.__, Account.STATUS, null).orElse((byte) 0));
@@ -130,10 +126,10 @@ public class ExEntityManagerTest extends AbstractEntityManager1Test {
         //        em.getAll(entityIdList, Account._PNL);
         //        em.getAll(entityIdList, Account._PNL, null);
 
-        em.update(N.asProps(Account.FIRST_NAME, "updatedFirstName"), entityId);
+        em.update(entityId, N.asProps(Account.FIRST_NAME, "updatedFirstName"));
         em.delete(entityId);
 
-        em.update(N.asProps(Account.FIRST_NAME, "updatedFirstName"), entityId, null);
+        em.update(entityId, N.asProps(Account.FIRST_NAME, "updatedFirstName"), null);
         em.delete(entityId, null);
 
         try {

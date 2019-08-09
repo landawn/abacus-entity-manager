@@ -20,7 +20,6 @@ import com.landawn.abacus.entity.extendDirty.Author;
 import com.landawn.abacus.entity.extendDirty.Book;
 import com.landawn.abacus.exception.RecordLockedException;
 import com.landawn.abacus.exception.ValidationException;
-import com.landawn.abacus.util.EntityManagerEx;
 import com.landawn.abacus.util.Maps;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
@@ -274,7 +273,7 @@ public class QCRUDExtendDirtyTest extends ExtendDirtyBaseTest {
         book = em.gett(entityId);
         assertEquals("test", book.getName());
 
-        em.update(N.asProps(Book.NAME, "updatedName"), entityId);
+        em.update(entityId, N.asProps(Book.NAME, "updatedName"));
         em.refresh(book);
         assertEquals("updatedName", book.getName());
 

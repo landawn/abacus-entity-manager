@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 
 import org.junit.Test;
 
+import com.landawn.abacus.core.EntityManagerEx;
 import com.landawn.abacus.core.EntityManagerFactory;
 import com.landawn.abacus.core.Seid;
 import com.landawn.abacus.entity.Account;
@@ -15,7 +16,6 @@ import com.landawn.abacus.entity.CodesPNL;
 import com.landawn.abacus.exception.UncheckedSQLException;
 import com.landawn.abacus.util.CodeGenerator2;
 import com.landawn.abacus.util.CodeGenerator2.EntityMode;
-import com.landawn.abacus.util.EntityManagerEx;
 import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.N;
 

@@ -320,7 +320,7 @@ public class EntityManagerTest extends AbstractEntityManager1Test {
 
         assertTrue(N.equals(accounts.size(), dbAccounts.size()));
 
-        int num = em.updateAll(N.asProps(Account.FIRST_NAME, "newFirstName"), entityIds);
+        int num = em.updateAll(entityIds, N.asProps(Account.FIRST_NAME, "newFirstName"));
         N.println(num);
         assertEquals(accounts.size(), num);
 

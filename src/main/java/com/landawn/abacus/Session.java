@@ -27,12 +27,12 @@ import com.landawn.abacus.util.u.Optional;
  * The Interface Session.
  *
  * @author Haiyang Li
- * @param <E> the element type
+ * @param <T> the entity type
  * @since 0.8
  */
 @Beta
 @Deprecated
-public interface Session<E> {
+public interface Session<T> {
 
     /**
      * Start a transaction.
@@ -46,33 +46,33 @@ public interface Session<E> {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
+     * @param <TT> the target entity type
      * @param entityId the entity id
      * @param selectPropNames the select prop names
      * @return the optional
      */
-    <T> Optional<T> get(EntityId entityId, Collection<String> selectPropNames);
+    <TT> Optional<TT> get(EntityId entityId, Collection<String> selectPropNames);
 
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
+     * @param <TT> the target entity type
      * @param entityId the entity id
      * @param selectPropNames the select prop names
      * @return the t
      */
-    <T> T gett(EntityId entityId, Collection<String> selectPropNames);
+    <TT> TT gett(EntityId entityId, Collection<String> selectPropNames);
 
     /**
      * List.
      *
-     * @param <T> the generic type
+     * @param <TT> the target entity type
      * @param entityName the entity name
      * @param selectPropNames the select prop names
      * @param condition the condition
      * @return the list
      */
-    <T> List<T> list(String entityName, Collection<String> selectPropNames, Condition condition);
+    <TT> List<TT> list(String entityName, Collection<String> selectPropNames, Condition condition);
 
     /**
      * Make the entity instances managed and persistent. The entity in {@code entities} must be the same type entity.
@@ -80,7 +80,7 @@ public interface Session<E> {
      *
      * @param entities the entities
      */
-    void add(E... entities);
+    void add(T... entities);
 
     /**
      * Make the entity instances managed and persistent. The entity in {@code entities} must be the same type entity.
@@ -88,7 +88,7 @@ public interface Session<E> {
      *
      * @param entities the entities
      */
-    void add(Collection<? extends E> entities);
+    void add(Collection<? extends T> entities);
 
     /**
      * Add these entities to the entity list managed by this session. Any update in these entities will be committed to
@@ -96,7 +96,7 @@ public interface Session<E> {
      *
      * @param entities the entities
      */
-    void update(E... entities);
+    void update(T... entities);
 
     /**
      * Add these entities to the entity list managed by this session. Any update in these entities will be committed to
@@ -104,7 +104,7 @@ public interface Session<E> {
      *
      * @param entities the entities
      */
-    void update(Collection<? extends E> entities);
+    void update(Collection<? extends T> entities);
 
     /**
      * Mark these entities to delete from data store. the changes will be committed to data store when flush API is
@@ -113,7 +113,7 @@ public interface Session<E> {
      * @param entities the entities
      * @see com.landawn.abacus.util.Options.Eran
      */
-    void delete(E... entities);
+    void delete(T... entities);
 
     /**
      * Mark these entities to delete from data store. the changes will be committed to data store when flush API is
@@ -122,7 +122,7 @@ public interface Session<E> {
      * @param entities the entities
      * @see com.landawn.abacus.util.Options.Eran
      */
-    void delete(Collection<? extends E> entities);
+    void delete(Collection<? extends T> entities);
 
     /**
      * Remove these entities from the entity list managed by this session. Any update in these entities will not be
@@ -130,7 +130,7 @@ public interface Session<E> {
      *
      * @param entities the entities
      */
-    void detach(E... entities);
+    void detach(T... entities);
 
     /**
      * Remove these entities from the entity list managed by this session. Any update in these entities will not be
@@ -138,7 +138,7 @@ public interface Session<E> {
      *
      * @param entities the entities
      */
-    void detach(Collection<? extends E> entities);
+    void detach(Collection<? extends T> entities);
 
     /**
      * Check if the instance belongs to the current persistence context.
@@ -146,7 +146,7 @@ public interface Session<E> {
      * @param entity the entity
      * @return boolean
      */
-    boolean contains(E entity);
+    boolean contains(T entity);
 
     /**
      * Method isDirty.

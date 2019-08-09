@@ -16,14 +16,18 @@
 
 package com.landawn.abacus.core;
 
+import java.lang.reflect.Field;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.DirtyMarker;
@@ -39,6 +43,7 @@ import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.En
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.LockConfiguration;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.QueryCacheConfiguration;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.QueryCacheConfiguration.CacheResultConditionConfiguration;
+import com.landawn.abacus.exception.UncheckedSQLException;
 import com.landawn.abacus.idGenerator.IdGenerator;
 import com.landawn.abacus.metadata.Association;
 import com.landawn.abacus.metadata.Association.JoinType;
@@ -1910,5 +1915,86 @@ public final class EntityManagerUtil {
         }
 
         return cond;
+    }
+
+    /** The Constant NAME_OF_ENTITY_NAME_FIELD. */
+    private static final String NAME_OF_ENTITY_NAME_FIELD = "__";
+
+    /** The Constant entityNameMap. */
+    private static final Map<Class<?>, String> entityNameMap = new ConcurrentHashMap<>();
+
+    /**
+     * Gets the entity name.
+     *
+     * @param entityClass the entity class
+     * @return the entity name
+     */
+    static String getEntityName(final Class<?> entityClass) {
+        String entityName = entityNameMap.get(entityClass);
+
+        if (entityName == null) {
+            entityName = ClassUtil.getSimpleClassName(entityClass);
+
+            final Set<Class<?>> classes = ClassUtil.getAllSuperTypes(entityClass);
+            classes.add(entityClass);
+
+            for (Class<?> cls : classes) {
+                try {
+                    final Field field = cls.getDeclaredField(NAME_OF_ENTITY_NAME_FIELD);
+
+                    if (field != null) {
+                        entityName = (String) field.get(null);
+                    }
+
+                    break;
+                } catch (NoSuchFieldException | SecurityException | IllegalAccessException e) {
+                    e.printStackTrace();
+                    // ignore.
+                }
+            }
+
+            entityNameMap.put(entityClass, entityName);
+        }
+
+        return entityName;
+    }
+
+    /** The Constant sqlStateForTableNotExists. */
+    private static final Set<String> sqlStateForTableNotExists = new HashSet<>();
+
+    static {
+        sqlStateForTableNotExists.add("42S02"); // for MySQCF.
+        sqlStateForTableNotExists.add("42P01"); // for PostgreSQCF.
+        sqlStateForTableNotExists.add("42501"); // for HSQLDB.
+    }
+
+    /**
+     * Checks if is table not exists exception.
+     *
+     * @param e the e
+     * @return true, if is table not exists exception
+     */
+    public static boolean isTableNotExistsException(final Throwable e) {
+        if (e instanceof SQLException) {
+            SQLException sqlException = (SQLException) e;
+
+            if (sqlException.getSQLState() != null && sqlStateForTableNotExists.contains(sqlException.getSQLState())) {
+                return true;
+            }
+
+            final String msg = N.defaultIfNull(e.getMessage(), "").toLowerCase();
+            return N.notNullOrEmpty(msg) && (msg.contains("not exist") || msg.contains("doesn't exist") || msg.contains("not found"));
+        } else if (e instanceof UncheckedSQLException) {
+            UncheckedSQLException sqlException = (UncheckedSQLException) e;
+
+            if (sqlException.getSQLState() != null && sqlStateForTableNotExists.contains(sqlException.getSQLState())) {
+                return true;
+            }
+
+            final String msg = N.defaultIfNull(e.getMessage(), "").toLowerCase();
+            return N.notNullOrEmpty(msg) && (msg.contains("not exist") || msg.contains("doesn't exist") || msg.contains("not found"));
+        }
+
+        return false;
     }
 }

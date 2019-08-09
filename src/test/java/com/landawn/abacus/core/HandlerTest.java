@@ -22,8 +22,8 @@ public class HandlerTest extends AbstractEntityManager1Test {
     public void test_methods() {
         Account account = addAccount(Account.class);
         EntityId entityId = Seid.of(Account.ID, account.getId());
-        em.update(N.asProps(Account.LAST_NAME, "updatedLastName"), entityId, null);
-        em.updateAll(N.asProps(Account.LAST_NAME, "updatedLastName2"), N.asList(entityId), null);
+        em.update(entityId, N.asProps(Account.LAST_NAME, "updatedLastName"), null);
+        em.updateAll(N.asList(entityId), N.asProps(Account.LAST_NAME, "updatedLastName2"), null);
 
         em.deleteAll(N.asList(entityId), null);
     }

@@ -10,6 +10,7 @@ import java.util.concurrent.ExecutionException;
 import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.condition.ConditionFactory.CF;
+import com.landawn.abacus.core.AsyncBatchExecutor;
 import com.landawn.abacus.core.Seid;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
 import com.landawn.abacus.util.Profiler.MultiLoopsStatistics;
