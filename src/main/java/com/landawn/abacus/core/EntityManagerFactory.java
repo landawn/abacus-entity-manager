@@ -271,17 +271,7 @@ public class EntityManagerFactory {
         configurationFile = Configuration.formatPath(configurationFile);
 
         if (!configurationFile.exists()) {
-            configurationFile = null;
-
-            File configDir = new File(Configuration.getCommonConfigPath());
-
-            if (configDir.exists()) {
-                configurationFile = Configuration.findFileInDir(file, configDir, false);
-            }
-
-            if (configurationFile == null) {
-                configurationFile = Configuration.findFile(file);
-            }
+            configurationFile = Configuration.findFile(file);
         }
 
         if (configurationFile == null) {
