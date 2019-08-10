@@ -149,10 +149,9 @@ public class DBAccessTest extends AbstractEntityManager1Test {
     public void testGet_EmptyEntityId() {
         Map<String, Object> props = createAccountProps();
         EntityId entityId = dbAccess.add(Account.__, props, null);
-        entityId.clear();
 
         try {
-            dbAccess.gett(entityId, null);
+            dbAccess.gett(Seid.of(Account.__), null);
             fail("IllegalArgumentException should be threw.");
         } catch (IllegalArgumentException e) {
         }

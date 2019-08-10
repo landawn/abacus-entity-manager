@@ -337,7 +337,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
      * @param options the options
      * @return the prop entity
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked" })
     protected Map<Object, Object> getPropEntity(Property entityProp, DataSet rs, Map<String, Object> options) {
         if (N.isNullOrEmpty(rs)) {
             return new HashMap<>();
@@ -366,14 +366,10 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
         if (biEntityDef == null) {
             if (isIdReference) {
                 final List<EntityId> entityIds = new ArrayList<>(rs.size());
-                EntityId entityId = null;
 
                 for (int i = 0; i < rs.size(); i++) {
                     rs.absolute(i);
-
-                    entityId = Seid.of(propEntityName);
-                    entityId.set(targetPropName, rs.get(srcPropIndex));
-                    entityIds.add(entityId);
+                    entityIds.add(EntityId.of(propEntityName, targetPropName, rs.get(srcPropIndex)));
                 }
 
                 if (N.notNullOrEmpty(entityIds)) {
@@ -448,14 +444,11 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
 
                 if (isIdReference) {
                     final List<EntityId> entityIds = new ArrayList<>(biResultSet.size());
-                    EntityId entityId = null;
 
                     for (int i = 0; i < biResultSet.size(); i++) {
                         biResultSet.absolute(i);
 
-                        entityId = Seid.of(propEntityName);
-                        entityId.set(targetPropName, biResultSet.get(1));
-                        entityIds.add(entityId);
+                        entityIds.add(EntityId.of(propEntityName, targetPropName, biResultSet.get(1)));
                     }
 
                     List<?> entities = internalGet(propEntityClass, entityIds, propEntitySelectPropNames, options);
@@ -1199,13 +1192,10 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
             if (biEntityDef == null) {
                 if (isIdTargetProp) {
                     final List<EntityId> propEntityEntityIds = new ArrayList<>(rs.size());
-                    EntityId entityId;
 
                     for (int i = 0; i < rs.size(); i++) {
                         rs.absolute(i);
-                        entityId = Seid.of(propEntityName);
-                        entityId.set(targetPropName, rs.get(srcPropIndex));
-                        propEntityEntityIds.add(entityId);
+                        propEntityEntityIds.add(EntityId.of(propEntityName, targetPropName, rs.get(srcPropIndex)));
                     }
 
                     boolean noException = false;
@@ -1301,15 +1291,11 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
                             if (ct == OnDeleteAction.CASCADE) {
                                 if (isIdTargetProp) {
                                     final List<EntityId> propEntityEntityIds = new ArrayList<>(biEntityResultSet.size());
-                                    EntityId entityId;
 
                                     for (int i = 0; i < biEntityResultSet.size(); i++) {
                                         biEntityResultSet.absolute(i);
 
-                                        entityId = Seid.of(propEntityName);
-                                        entityId.set(targetPropName, biEntityResultSet.get(rightPropIndex));
-
-                                        propEntityEntityIds.add(entityId);
+                                        propEntityEntityIds.add(EntityId.of(propEntityName, targetPropName, biEntityResultSet.get(rightPropIndex)));
                                     }
 
                                     internalDelete(propEntityEntityIds, options);

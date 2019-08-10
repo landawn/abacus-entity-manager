@@ -100,6 +100,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityManager the entity manager
      * @param asyncExecutor the async executor
      */
+    @SuppressWarnings("deprecation")
     EntityManagerEx(final EntityManager<T> entityManager, final AsyncExecutor asyncExecutor) {
         this.entityManager = entityManager;
         this.asyncExecutor = asyncExecutor;
@@ -107,7 +108,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
         boolean temp = true;
 
         try {
-            EntityId entityId = null;
+            Seid entityId = null;
 
             for (EntityDefinition entityDef : getEntityDefinitionFactory().getDefinitionList()) {
                 if (N.notNullOrEmpty(entityDef.getIdPropertyList())) {
@@ -2310,13 +2311,13 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
             throw new IllegalArgumentException("the size of id property is not 1. " + N.toString(entityDef.getIdPropertyList()));
         }
 
-        Property idProp = entityDef.getIdPropertyList().get(0);
-        EntityId entityId = Seid.of(entityName);
+        final Property idProp = entityDef.getIdPropertyList().get(0);
+        EntityId entityId = null;
 
         if (idProp.getType().clazz().isAssignableFrom(id.getClass())) {
-            entityId.set(idProp.getName(), id);
+            entityId = EntityId.of(entityName, idProp.getName(), id);
         } else {
-            entityId.set(idProp.getName(), idProp.getType().valueOf(id.toString()));
+            entityId = EntityId.of(entityName, idProp.getName(), idProp.getType().valueOf(id.toString()));
         }
 
         return entityId;

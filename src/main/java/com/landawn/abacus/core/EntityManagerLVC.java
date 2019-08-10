@@ -425,8 +425,7 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
                         idMapEntity.version = cachedEntity.version;
                     }
 
-                    EntityId uidEntityId = Seid.of(entityName);
-                    uidEntityId.set(uidPropName, uidPropValue);
+                    final EntityId uidEntityId = EntityId.of(entityName, uidPropName, uidPropValue);
 
                     entityCacheDecorator.put(uidEntityId, idMapEntity, liveTime, maxIdleTime);
                 }
@@ -603,8 +602,7 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
 
                 if (biEntityDef == null) {
                     if (isIdTargetProp) {
-                        EntityId propEntityEntityId = Seid.of(propEntityName);
-                        propEntityEntityId.set(targetPropName, srcPropValue);
+                        final EntityId propEntityEntityId = EntityId.of(propEntityName, targetPropName, srcPropValue);
                         propValue = internalGet(propEntityClass, propEntityEntityId, propEntitySelectPropNames, options);
                     } else {
                         Condition cond = cachedEntity.get(prop.getName());
@@ -620,14 +618,11 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
 
                         if (isIdTargetProp) {
                             List<EntityId> propEntityEntityIds = new ArrayList<>(biResultSet.size());
-                            EntityId entityId = null;
 
                             for (int i = 0; i < biResultSet.size(); i++) {
                                 biResultSet.absolute(i);
 
-                                entityId = Seid.of(propEntityName);
-                                entityId.set(targetPropName, biResultSet.get(0));
-                                propEntityEntityIds.add(entityId);
+                                propEntityEntityIds.add(EntityId.of(propEntityName, targetPropName, biResultSet.get(0)));
                             }
 
                             entities = internalGet(propEntityClass, propEntityEntityIds, propEntitySelectPropNames, options);
@@ -692,8 +687,7 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
 
                     if (biEntityDef == null) {
                         if (isIdTargetProp) {
-                            EntityId propEntityEntityId = Seid.of(propEntityName);
-                            propEntityEntityId.set(targetPropName, cachedEntity.get(srcProp.getName()));
+                            final EntityId propEntityEntityId = EntityId.of(propEntityName, targetPropName, cachedEntity.get(srcProp.getName()));
                             propValue = internalGet(null, propEntityEntityId, propEntitySelectPropNames, options);
                         } else {
                             Condition cond = CF.eq(targetPropName, cachedEntity.get(srcProp.getName()));
@@ -713,13 +707,10 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
 
                             if (isIdTargetProp) {
                                 final List<EntityId> propEntityEntityIds = new ArrayList<>(biResultSet.size());
-                                EntityId tmpEntityId = null;
 
                                 for (int i = 0; i < biResultSet.size(); i++) {
                                     biResultSet.absolute(i);
-                                    tmpEntityId = Seid.of(propEntityName);
-                                    tmpEntityId.set(targetPropName, biResultSet.get(0));
-                                    propEntityEntityIds.add(tmpEntityId);
+                                    propEntityEntityIds.add(EntityId.of(propEntityName, targetPropName, biResultSet.get(0)));
                                 }
 
                                 entities = internalGet(propEntityClass, propEntityEntityIds, propEntitySelectPropNames, options);
@@ -821,6 +812,7 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
      * @param entityDef the entity def
      * @param entityId the entity id
      */
+    @SuppressWarnings("deprecation")
     protected void remvoeFromCache(EntityDefinition entityDef, EntityId entityId) {
         List<String> uidPropNameList = entityDef.getUIDPropertyNameList();
 
@@ -832,7 +824,7 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
             if (mapEntity != null) {
                 entityCacheDecorator.remove(entityId);
 
-                EntityId uidEntityId = null;
+                Seid uidEntityId = null;
                 Object propValue = null;
                 for (String uidPropName : uidPropNameList) {
                     propValue = mapEntity.get(uidPropName);
@@ -889,6 +881,7 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
      * @param options the options
      * @return the entity id by condition
      */
+    @SuppressWarnings("deprecation")
     @Override
     protected List<EntityId> getEntityIdByCondition(String entityName, Condition cond, Map<String, Object> options) {
         final EntityDefinition entityDef = checkEntityName(entityName);
@@ -904,13 +897,12 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
             CustomizedEntityCacheConfiguration ece = (ec == null) ? null : ec.getCustomizedEntityCacheConfiguration(entityName);
 
             if ((prop != null) && prop.isUID() && ((ece == null) || !ece.isExcludedProperty(propName))) {
-                EntityId uid = Seid.of(entityName);
-                uid.set(propName, b.getPropValue());
+                EntityId uid = EntityId.of(entityName, propName, b.getPropValue());
 
                 MapEntity mapEntity = entityCacheDecorator.get(uid).orElse(null);
 
                 if ((mapEntity != null) && mapEntity.keySet().containsAll(idPropNames)) {
-                    EntityId entityId = Seid.of(entityName);
+                    Seid entityId = Seid.of(entityName);
 
                     for (String idPropName : idPropNames) {
                         entityId.set(idPropName, mapEntity.get(idPropName));

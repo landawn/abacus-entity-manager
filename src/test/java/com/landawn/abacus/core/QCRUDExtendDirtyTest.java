@@ -254,9 +254,7 @@ public class QCRUDExtendDirtyTest extends ExtendDirtyBaseTest {
     //    }
     public void testEntityIdCacheInfo() {
         EntityManager<Author> em = emf.getEntityManager(domainName);
-        EntityId entityId = Seid.of(Author.__);
-        entityId.set(Author.ID, 2L);
-
+        EntityId entityId = EntityId.of(Author.__, Author.ID, 2L);
         Author author = em.gett(entityId);
         N.println(author);
         author = em.gett(entityId);

@@ -7,7 +7,6 @@ package com.landawn.abacus.core;
 import org.junit.Test;
 
 import com.landawn.abacus.AbstractEntityManager1Test;
-import com.landawn.abacus.EntityId;
 import com.landawn.abacus.entity.extendDirty.basic.Account;
 import com.landawn.abacus.util.DateUtil;
 import com.landawn.abacus.util.N;
@@ -21,7 +20,7 @@ import com.landawn.abacus.util.N;
 public class EntityIdTest extends AbstractEntityManager1Test {
     @Test
     public void test_1() {
-        EntityId entityId = Seid.of(Account.ID, 1);
+        Seid entityId = Seid.of(Account.ID, 1);
         assertEquals(1, entityId.get(int.class, Account.ID).intValue());
 
         assertEquals(entityId, entityId.copy());
@@ -39,11 +38,5 @@ public class EntityIdTest extends AbstractEntityManager1Test {
         entityId = Seid.of(Account.FIRST_NAME, "firstName", Account.LAST_NAME, "lastName");
 
         N.println(entityId);
-
-        try {
-            entityId = Seid.of(Account.FIRST_NAME, "firstName", Account.LAST_NAME);
-            fail("Should throw IllegalArgumentException");
-        } catch (IllegalArgumentException e) {
-        }
     }
 }

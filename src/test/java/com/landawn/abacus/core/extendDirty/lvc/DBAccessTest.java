@@ -21,9 +21,9 @@ import com.landawn.abacus.core.Seid;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
 import com.landawn.abacus.entity.extendDirty.lvc.AccountContact;
 import com.landawn.abacus.entity.extendDirty.lvc.ExtendDirtyLVCPNL;
-import com.landawn.abacus.exception.UncheckedSQLException;
 import com.landawn.abacus.exception.InvalidResultHandleException;
 import com.landawn.abacus.exception.InvalidTransactionIdException;
+import com.landawn.abacus.exception.UncheckedSQLException;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
 import com.landawn.abacus.util.Options.Cache;
@@ -91,10 +91,9 @@ public class DBAccessTest extends AbstractEntityManager1Test {
     public void testGet_EmptyEntityId() {
         Map<String, Object> props = createAccountProps();
         EntityId entityId = dbAccess.add(Account.__, props, null);
-        entityId.clear();
 
         try {
-            dbAccess.gett(entityId, null, null);
+            dbAccess.gett(Seid.of(Account.__), null, null);
             fail("IllegalArgumentException should be threw.");
         } catch (Exception e) {
             assertEquals(IllegalArgumentException.class, e.getClass());

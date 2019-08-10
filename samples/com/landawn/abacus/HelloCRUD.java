@@ -10,8 +10,8 @@ import org.junit.Test;
 
 import com.landawn.abacus.core.EntityManagerEx;
 import com.landawn.abacus.core.EntityManagerFactory;
+import com.landawn.abacus.core.NewEntityManager;
 import com.landawn.abacus.core.NewEntityManager.Mapper;
-import com.landawn.abacus.core.Seid;
 import com.landawn.abacus.entity.Account;
 import com.landawn.abacus.entity.CodesPNL;
 import com.landawn.abacus.exception.UncheckedSQLException;
@@ -36,6 +36,7 @@ public class HelloCRUD extends TestCase {
     static final EntityManagerFactory emf = EntityManagerFactory.getInstance("./samples/config/abacus-entity-manager.xml");
     static final DBAccess dbAccess = emf.getDBAccess(CodesPNL._DN);
     static final EntityManagerEx<Object> em = emf.getEntityManager(CodesPNL._DN);
+    static final NewEntityManager nem = emf.getNewEntityManager(CodesPNL._DN);
     static final Mapper<Account> accountMapper = emf.getNewEntityManager(CodesPNL._DN).mapper(Account.class);
     static final DataSource ds;
 
@@ -62,13 +63,13 @@ public class HelloCRUD extends TestCase {
 
     @Test
     public void test_crud_by_entity_manager() {
-        Account account = em.gett(Seid.of(Account.ID, 1));
+        Account account = em.gett(EntityId.of(Account.ID, 1));
         N.println(account);
         account = new Account();
         account.setFirstName("firstName...................");
         account.setLastName("lastName...................");
         account.setEmailAddress("abc@email.com");
-        long id = accountMapper.add(account).get(Account.ID);
+        long id = em.add(account).get(Account.ID);
 
         try {
             em.add(account);
@@ -76,12 +77,36 @@ public class HelloCRUD extends TestCase {
         } catch (UncheckedSQLException e) {
         }
 
-        account = em.gett(Seid.of(Account.ID, id));
+        account = em.gett(EntityId.of(Account.ID, id));
 
-        account = em.gett(Seid.of(Account.ID, id), N.asList(Account.FIRST_NAME, Account.LAST_NAME));
+        account = em.gett(EntityId.of(Account.ID, id), N.asList(Account.FIRST_NAME, Account.LAST_NAME));
         N.println(account);
         em.delete(account);
-        assertNull(em.gett(Seid.of(Account.ID, id)));
+        assertNull(em.gett(EntityId.of(Account.ID, id)));
+    }
+
+    @Test
+    public void test_crud_by_new_entity_manager() {
+        Account account = nem.gett(Account.class, 1);
+        N.println(account);
+        account = new Account();
+        account.setFirstName("firstName...................");
+        account.setLastName("lastName...................");
+        account.setEmailAddress("abc@email.com");
+        long id = nem.add(account).get(Account.ID);
+
+        try {
+            nem.add(account);
+            fail("should throw AbacusSQLException");
+        } catch (UncheckedSQLException e) {
+        }
+
+        account = nem.gett(Account.class, id);
+
+        account = nem.gett(Account.class, id, N.asList(Account.FIRST_NAME, Account.LAST_NAME));
+        N.println(account);
+        em.delete(account);
+        assertNull(nem.gett(Account.class, id));
     }
 
     @Test
@@ -101,7 +126,7 @@ public class HelloCRUD extends TestCase {
         account = accountMapper.gett(id, N.asList(Account.FIRST_NAME, Account.LAST_NAME));
         N.println(account);
         accountMapper.delete(account);
-        assertNull(accountMapper.gett(Seid.of(Account.ID, id)));
+        assertNull(accountMapper.gett(EntityId.of(Account.ID, id)));
     }
 
     @Test

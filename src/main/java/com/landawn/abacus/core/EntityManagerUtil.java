@@ -1126,6 +1126,7 @@ public final class EntityManagerUtil {
      * @param checkEmptyId the check empty id
      * @return the entity id by entity
      */
+    @SuppressWarnings("deprecation")
     public static EntityId getEntityIdByEntity(final EntityDefinition entityDef, final Object entity, final boolean checkEmptyId) {
         Collection<String> idPropNames = entityDef.getIdPropertyNameList();
 
@@ -1144,7 +1145,7 @@ public final class EntityManagerUtil {
             }
         }
 
-        EntityId entityId = Seid.of(entityDef.getName());
+        final Seid entityId = Seid.of(entityDef.getName());
 
         if (entity instanceof MapEntity) {
             MapEntity anEntity = (MapEntity) entity;
@@ -1198,11 +1199,12 @@ public final class EntityManagerUtil {
      * @param dataSet the data set
      * @return the list
      */
+    @SuppressWarnings("deprecation")
     public static List<EntityId> resultSet2EntityId(final EntityDefinition entityDef, final DataSet dataSet) {
         final String entityName = entityDef.getName();
         final List<EntityId> entityIds = new ArrayList<>(dataSet.size());
         final Collection<String> idPropNames = entityDef.getIdPropertyNameList();
-        EntityId entityId = null;
+        Seid entityId = null;
 
         for (int i = 0, len = dataSet.size(); i < len; i++) {
             dataSet.absolute(i);
