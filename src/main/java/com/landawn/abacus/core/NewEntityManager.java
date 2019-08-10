@@ -36,14 +36,6 @@ import com.landawn.abacus.util.u.OptionalFloat;
 import com.landawn.abacus.util.u.OptionalInt;
 import com.landawn.abacus.util.u.OptionalLong;
 import com.landawn.abacus.util.u.OptionalShort;
-import com.landawn.abacus.util.function.ToBooleanFunction;
-import com.landawn.abacus.util.function.ToByteFunction;
-import com.landawn.abacus.util.function.ToCharFunction;
-import com.landawn.abacus.util.function.ToDoubleFunction;
-import com.landawn.abacus.util.function.ToFloatFunction;
-import com.landawn.abacus.util.function.ToIntFunction;
-import com.landawn.abacus.util.function.ToLongFunction;
-import com.landawn.abacus.util.function.ToShortFunction;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -189,7 +181,7 @@ public final class NewEntityManager {
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalBoolean queryForBoolean(final Class<?> entityClass, final String propName, final Condition cond) {
-        return queryForSingleResult(Boolean.class, entityClass, propName, cond).mapToBoolean(ToBooleanFunction.UNBOX);
+        return em.queryForBoolean(EntityManagerUtil.getEntityName(entityClass), propName, cond);
     }
 
     /**
@@ -202,7 +194,7 @@ public final class NewEntityManager {
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalChar queryForChar(final Class<?> entityClass, final String propName, final Condition cond) {
-        return queryForSingleResult(Character.class, entityClass, propName, cond).mapToChar(ToCharFunction.UNBOX);
+        return em.queryForChar(EntityManagerUtil.getEntityName(entityClass), propName, cond);
     }
 
     /**
@@ -215,7 +207,7 @@ public final class NewEntityManager {
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalByte queryForByte(final Class<?> entityClass, final String propName, final Condition cond) {
-        return queryForSingleResult(Byte.class, entityClass, propName, cond).mapToByte(ToByteFunction.UNBOX);
+        return em.queryForByte(EntityManagerUtil.getEntityName(entityClass), propName, cond);
     }
 
     /**
@@ -228,7 +220,7 @@ public final class NewEntityManager {
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalShort queryForShort(final Class<?> entityClass, final String propName, final Condition cond) {
-        return queryForSingleResult(Short.class, entityClass, propName, cond).mapToShort(ToShortFunction.UNBOX);
+        return em.queryForShort(EntityManagerUtil.getEntityName(entityClass), propName, cond);
     }
 
     /**
@@ -241,7 +233,7 @@ public final class NewEntityManager {
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalInt queryForInt(final Class<?> entityClass, final String propName, final Condition cond) {
-        return queryForSingleResult(Integer.class, entityClass, propName, cond).mapToInt(ToIntFunction.UNBOX);
+        return em.queryForInt(EntityManagerUtil.getEntityName(entityClass), propName, cond);
     }
 
     /**
@@ -254,7 +246,7 @@ public final class NewEntityManager {
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalLong queryForLong(final Class<?> entityClass, final String propName, final Condition cond) {
-        return queryForSingleResult(Long.class, entityClass, propName, cond).mapToLong(ToLongFunction.UNBOX);
+        return em.queryForLong(EntityManagerUtil.getEntityName(entityClass), propName, cond);
     }
 
     /**
@@ -267,7 +259,7 @@ public final class NewEntityManager {
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalFloat queryForFloat(final Class<?> entityClass, final String propName, final Condition cond) {
-        return queryForSingleResult(Float.class, entityClass, propName, cond).mapToFloat(ToFloatFunction.UNBOX);
+        return em.queryForFloat(EntityManagerUtil.getEntityName(entityClass), propName, cond);
     }
 
     /**
@@ -280,7 +272,7 @@ public final class NewEntityManager {
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalDouble queryForDouble(final Class<?> entityClass, final String propName, final Condition cond) {
-        return queryForSingleResult(Double.class, entityClass, propName, cond).mapToDouble(ToDoubleFunction.UNBOX);
+        return em.queryForDouble(EntityManagerUtil.getEntityName(entityClass), propName, cond);
     }
 
     /**
@@ -293,7 +285,7 @@ public final class NewEntityManager {
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<String> queryForString(final Class<?> entityClass, final String propName, final Condition cond) {
-        return queryForSingleResult(String.class, entityClass, propName, cond);
+        return em.queryForString(EntityManagerUtil.getEntityName(entityClass), propName, cond);
     }
 
     /**
@@ -306,7 +298,7 @@ public final class NewEntityManager {
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<java.sql.Date> queryForDate(final Class<?> entityClass, final String propName, final Condition cond) {
-        return queryForSingleResult(java.sql.Date.class, entityClass, propName, cond);
+        return em.queryForDate(EntityManagerUtil.getEntityName(entityClass), propName, cond);
     }
 
     /**
@@ -319,7 +311,7 @@ public final class NewEntityManager {
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<java.sql.Time> queryForTime(final Class<?> entityClass, final String propName, final Condition cond) {
-        return queryForSingleResult(java.sql.Time.class, entityClass, propName, cond);
+        return em.queryForTime(EntityManagerUtil.getEntityName(entityClass), propName, cond);
     }
 
     /**
@@ -332,7 +324,7 @@ public final class NewEntityManager {
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<java.sql.Timestamp> queryForTimestamp(final Class<?> entityClass, final String propName, final Condition cond) {
-        return queryForSingleResult(java.sql.Timestamp.class, entityClass, propName, cond);
+        return em.queryForTimestamp(EntityManagerUtil.getEntityName(entityClass), propName, cond);
     }
 
     /**

@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import com.landawn.abacus.core.EntityManagerEx;
 import com.landawn.abacus.core.EntityManagerFactory;
+import com.landawn.abacus.core.NewEntityManager.Mapper;
 import com.landawn.abacus.core.Seid;
 import com.landawn.abacus.entity.Account;
 import com.landawn.abacus.entity.CodesPNL;
@@ -18,6 +19,7 @@ import com.landawn.abacus.util.CodeGenerator2;
 import com.landawn.abacus.util.CodeGenerator2.EntityMode;
 import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.N;
+import com.landawn.abacus.util.Profiler;
 
 import junit.framework.TestCase;
 
@@ -34,6 +36,7 @@ public class HelloCRUD extends TestCase {
     static final EntityManagerFactory emf = EntityManagerFactory.getInstance("./samples/config/abacus-entity-manager.xml");
     static final DBAccess dbAccess = emf.getDBAccess(CodesPNL._DN);
     static final EntityManagerEx<Object> em = emf.getEntityManager(CodesPNL._DN);
+    static final Mapper<Account> accountMapper = emf.getNewEntityManager(CodesPNL._DN).mapper(Account.class);
     static final DataSource ds;
 
     static {
@@ -58,14 +61,14 @@ public class HelloCRUD extends TestCase {
     }
 
     @Test
-    public void test_CRUD() {
+    public void test_crud_by_entity_manager() {
         Account account = em.gett(Seid.of(Account.ID, 1));
         N.println(account);
         account = new Account();
         account.setFirstName("firstName...................");
         account.setLastName("lastName...................");
         account.setEmailAddress("abc@email.com");
-        em.add(account);
+        long id = accountMapper.add(account).get(Account.ID);
 
         try {
             em.add(account);
@@ -73,18 +76,38 @@ public class HelloCRUD extends TestCase {
         } catch (UncheckedSQLException e) {
         }
 
-        account = em.gett(Seid.of(Account.ID, account.getId()));
+        account = em.gett(Seid.of(Account.ID, id));
 
-        account = em.gett(Seid.of(Account.ID, account.getId()), N.asList(Account.FIRST_NAME, Account.LAST_NAME));
+        account = em.gett(Seid.of(Account.ID, id), N.asList(Account.FIRST_NAME, Account.LAST_NAME));
         N.println(account);
         em.delete(account);
-        assertNull(em.gett(Seid.of(Account.ID, account.getId())));
+        assertNull(em.gett(Seid.of(Account.ID, id)));
+    }
+
+    @Test
+    public void test_crud_by_mapper() {
+        Account account = accountMapper.gett(1);
+        N.println(account);
+        account = new Account();
+        account.setFirstName("firstName...................");
+        account.setLastName("lastName...................");
+        account.setEmailAddress("abc@email.com");
+        long id = accountMapper.add(account).get(Account.ID);
+
+        account = accountMapper.gett(id);
+
+        Profiler.run(1, 10000, 3, "load from cache", () -> accountMapper.gett(id)).printResult();
+
+        account = accountMapper.gett(id, N.asList(Account.FIRST_NAME, Account.LAST_NAME));
+        N.println(account);
+        accountMapper.delete(account);
+        assertNull(accountMapper.gett(Seid.of(Account.ID, id)));
     }
 
     @Test
     public void test_generateCode() throws Exception {
         File entityDefinitionFile = new File("./samples/config/codes.xml");
-        
+
         //        SQLDatabase database = null;
         //
         //        try (Connection conn = ds.getConnection()) {

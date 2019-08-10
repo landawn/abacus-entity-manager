@@ -4,7 +4,20 @@
 	<!-- extendDirtyEntityDefinition -->
 	<entityManager>
 		<domainName>codes</domainName>
-		<mode>basic</mode>
+		<mode>LVC</mode>
+		<entityCache>
+			<!--
+				<provider>Memcached(localhost:11211)</provider>
+			-->
+			<liveTime>3600</liveTime>
+			<maxIdleTime>600000</maxIdleTime>
+			<capacity>50000</capacity>
+			<includedEntities>Account</includedEntities>
+			<customizedEntity name="Account">
+				<liveTime>1800000</liveTime>
+				<maxIdleTime>600000</maxIdleTime>
+			</customizedEntity>
+		</entityCache>
 		<entityDefinition>./samples/config/codes.xml</entityDefinition>
 		<dataSourceManager liveEnv="dev">
 			<dataSource name="codes" env="dev">
