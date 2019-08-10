@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 
 import org.junit.Test;
 
+import com.landawn.abacus.Transaction.Action;
 import com.landawn.abacus.core.EntityManagerEx;
 import com.landawn.abacus.core.EntityManagerFactory;
 import com.landawn.abacus.core.NewEntityManager;
@@ -105,7 +106,7 @@ public class HelloCRUD extends TestCase {
 
         account = nem.gett(Account.class, id, N.asList(Account.FIRST_NAME, Account.LAST_NAME));
         N.println(account);
-        em.delete(account);
+        nem.delete(account);
         assertNull(nem.gett(Account.class, id));
     }
 
@@ -127,6 +128,41 @@ public class HelloCRUD extends TestCase {
         N.println(account);
         accountMapper.delete(account);
         assertNull(accountMapper.gett(EntityId.of(Account.ID, id)));
+    }
+
+    @Test
+    public void test_transaction() {
+        Account account = nem.gett(Account.class, 1);
+        N.println(account);
+        account = new Account();
+        account.setFirstName("firstName...................");
+        account.setLastName("lastName...................");
+        account.setEmailAddress("abc@email.com");
+
+        String tranId = nem.beginTransaction(IsolationLevel.DEFAULT);
+        Action tranAction = Action.ROLLBACK;
+        long id = 0;
+
+        try {
+            id = nem.add(account).get(Account.ID);
+
+            try {
+                nem.add(account);
+                fail("should throw AbacusSQLException");
+            } catch (UncheckedSQLException e) {
+            }
+            tranAction = Action.COMMIT;
+        } finally {
+            nem.endTransaction(tranId, tranAction);
+        }
+
+        account = nem.gett(Account.class, id);
+
+        account = nem.gett(Account.class, id, N.asList(Account.FIRST_NAME, Account.LAST_NAME));
+        N.println(account);
+        nem.delete(account);
+        assertNull(nem.gett(Account.class, id));
+
     }
 
     @Test

@@ -1381,6 +1381,16 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     /**
      * Begin transaction.
      *
+     * @param isolationLevel the isolation level 
+     * @return the string
+     */
+    public String beginTransaction(final IsolationLevel isolationLevel) {
+        return beginTransaction(isolationLevel, null);
+    }
+
+    /**
+     * Begin transaction.
+     *
      * @param isolationLevel the isolation level
      * @param options the options
      * @return the string
@@ -1388,6 +1398,16 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     @Override
     public String beginTransaction(final IsolationLevel isolationLevel, final Map<String, Object> options) {
         return entityManager.beginTransaction(isolationLevel, options);
+    }
+
+    /**
+     * End transaction.
+     *
+     * @param transactionId the transaction id
+     * @param transactionAction the transaction action 
+     */
+    public void endTransaction(final String transactionId, final Action transactionAction) {
+        endTransaction(transactionId, transactionAction, null);
     }
 
     /**
