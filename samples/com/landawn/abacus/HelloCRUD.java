@@ -3,6 +3,7 @@ package com.landawn.abacus;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -20,6 +21,7 @@ import com.landawn.abacus.util.CodeGenerator2;
 import com.landawn.abacus.util.CodeGenerator2.EntityMode;
 import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.N;
+import com.landawn.abacus.util.OptionsBuilder;
 import com.landawn.abacus.util.Profiler;
 
 import junit.framework.TestCase;
@@ -139,18 +141,13 @@ public class HelloCRUD extends TestCase {
         account.setLastName("lastName...................");
         account.setEmailAddress("abc@email.com");
 
-        String tranId = nem.beginTransaction(IsolationLevel.DEFAULT);
+        final String tranId = nem.beginTransaction(IsolationLevel.DEFAULT);
+        final Map<String, Object> options = OptionsBuilder.create().transactionId(tranId).build();
         Action tranAction = Action.ROLLBACK;
         long id = 0;
 
         try {
-            id = nem.add(account).get(Account.ID);
-
-            try {
-                nem.add(account);
-                fail("should throw AbacusSQLException");
-            } catch (UncheckedSQLException e) {
-            }
+            id = nem.add(account, options).get(Account.ID);
             tranAction = Action.COMMIT;
         } finally {
             nem.endTransaction(tranId, tranAction);
@@ -162,7 +159,6 @@ public class HelloCRUD extends TestCase {
         N.println(account);
         nem.delete(account);
         assertNull(nem.gett(Account.class, id));
-
     }
 
     @Test

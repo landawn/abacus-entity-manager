@@ -199,7 +199,9 @@ public class EntityManagerFactory {
      * @param <T> the generic type
      * @param domainName the domain name
      * @return the entity manager
+     * @deprecated replaced by {@link #getNewEntityManager(String)}
      */
+    @Deprecated
     public <T> EntityManagerEx<T> getEntityManager(String domainName) {
         return getDmainManager(domainName).getEntityManager();
     }

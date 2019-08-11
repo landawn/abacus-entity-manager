@@ -25,6 +25,7 @@ import com.landawn.abacus.IsolationLevel;
 import com.landawn.abacus.Transaction.Action;
 import com.landawn.abacus.condition.Condition;
 import com.landawn.abacus.exception.DuplicatedResultException;
+import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.u.Holder;
 import com.landawn.abacus.util.u.Nullable;
 import com.landawn.abacus.util.u.Optional;
@@ -36,6 +37,14 @@ import com.landawn.abacus.util.u.OptionalFloat;
 import com.landawn.abacus.util.u.OptionalInt;
 import com.landawn.abacus.util.u.OptionalLong;
 import com.landawn.abacus.util.u.OptionalShort;
+import com.landawn.abacus.util.function.ToBooleanFunction;
+import com.landawn.abacus.util.function.ToByteFunction;
+import com.landawn.abacus.util.function.ToCharFunction;
+import com.landawn.abacus.util.function.ToDoubleFunction;
+import com.landawn.abacus.util.function.ToFloatFunction;
+import com.landawn.abacus.util.function.ToIntFunction;
+import com.landawn.abacus.util.function.ToLongFunction;
+import com.landawn.abacus.util.function.ToShortFunction;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -74,7 +83,7 @@ public final class NewEntityManager {
             Mapper<T> mapper = entityMapperPool.get(entityClass);
 
             if (mapper == null) {
-                mapper = new Mapper<T>(em, entityClass);
+                mapper = new Mapper<T>(this, entityClass);
                 entityMapperPool.put(entityClass, mapper);
             }
 
@@ -90,7 +99,7 @@ public final class NewEntityManager {
      * @return true, if successful
      */
     public boolean exists(final Class<?> entityClass, final long id) {
-        return em.exists(EntityManagerUtil.getEntityName(entityClass), id);
+        return exists(createEntityId(entityClass, id));
     }
 
     /**
@@ -101,7 +110,7 @@ public final class NewEntityManager {
      * @return true, if successful
      */
     public boolean exists(final Class<?> entityClass, final String id) {
-        return em.exists(EntityManagerUtil.getEntityName(entityClass), id);
+        return exists(createEntityId(entityClass, id));
     }
 
     /**
@@ -122,7 +131,7 @@ public final class NewEntityManager {
      * @return true, if successful
      */
     public boolean exists(final EntityId entityId, final Map<String, Object> options) {
-        return em.exists(entityId, options);
+        return em.exists(entityId, checkOptions(options));
     }
 
     /**
@@ -145,7 +154,7 @@ public final class NewEntityManager {
      * @return true, if successful
      */
     public boolean exists(final Class<?> entityClass, final Condition cond, final Map<String, Object> options) {
-        return em.exists(EntityManagerUtil.getEntityName(entityClass), cond, options);
+        return em.exists(EntityManagerUtil.getEntityName(entityClass), cond, checkOptions(options));
     }
 
     /**
@@ -168,163 +177,163 @@ public final class NewEntityManager {
      * @return the int
      */
     public int count(final Class<?> entityClass, final Condition cond, final Map<String, Object> options) {
-        return em.count(EntityManagerUtil.getEntityName(entityClass), cond, options);
+        return em.count(EntityManagerUtil.getEntityName(entityClass), cond, checkOptions(options));
     }
 
     /**
      * Query for boolean.
      *
-     * @param entityClass the entity Class
+     * @param entityClass the entity class
      * @param propName the prop name
      * @param cond the cond
      * @return the optional boolean
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalBoolean queryForBoolean(final Class<?> entityClass, final String propName, final Condition cond) {
-        return em.queryForBoolean(EntityManagerUtil.getEntityName(entityClass), propName, cond);
+        return queryForSingleResult(Boolean.class, entityClass, propName, cond).mapToBoolean(ToBooleanFunction.UNBOX);
     }
 
     /**
      * Query for char.
      *
-     * @param entityClass the entity Class
+     * @param entityClass the entity class
      * @param propName the prop name
      * @param cond the cond
      * @return the optional char
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalChar queryForChar(final Class<?> entityClass, final String propName, final Condition cond) {
-        return em.queryForChar(EntityManagerUtil.getEntityName(entityClass), propName, cond);
+        return queryForSingleResult(Character.class, entityClass, propName, cond).mapToChar(ToCharFunction.UNBOX);
     }
 
     /**
      * Query for byte.
      *
-     * @param entityClass the entity Class
+     * @param entityClass the entity class
      * @param propName the prop name
      * @param cond the cond
      * @return the optional byte
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalByte queryForByte(final Class<?> entityClass, final String propName, final Condition cond) {
-        return em.queryForByte(EntityManagerUtil.getEntityName(entityClass), propName, cond);
+        return queryForSingleResult(Byte.class, entityClass, propName, cond).mapToByte(ToByteFunction.UNBOX);
     }
 
     /**
      * Query for short.
      *
-     * @param entityClass the entity Class
+     * @param entityClass the entity class
      * @param propName the prop name
      * @param cond the cond
      * @return the optional short
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalShort queryForShort(final Class<?> entityClass, final String propName, final Condition cond) {
-        return em.queryForShort(EntityManagerUtil.getEntityName(entityClass), propName, cond);
+        return queryForSingleResult(Short.class, entityClass, propName, cond).mapToShort(ToShortFunction.UNBOX);
     }
 
     /**
      * Query for int.
      *
-     * @param entityClass the entity Class
+     * @param entityClass the entity class
      * @param propName the prop name
      * @param cond the cond
      * @return the optional int
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalInt queryForInt(final Class<?> entityClass, final String propName, final Condition cond) {
-        return em.queryForInt(EntityManagerUtil.getEntityName(entityClass), propName, cond);
+        return queryForSingleResult(Integer.class, entityClass, propName, cond).mapToInt(ToIntFunction.UNBOX);
     }
 
     /**
      * Query for long.
      *
-     * @param entityClass the entity Class
+     * @param entityClass the entity class
      * @param propName the prop name
      * @param cond the cond
      * @return the optional long
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalLong queryForLong(final Class<?> entityClass, final String propName, final Condition cond) {
-        return em.queryForLong(EntityManagerUtil.getEntityName(entityClass), propName, cond);
+        return queryForSingleResult(Long.class, entityClass, propName, cond).mapToLong(ToLongFunction.UNBOX);
     }
 
     /**
      * Query for float.
      *
-     * @param entityClass the entity Class
+     * @param entityClass the entity class
      * @param propName the prop name
      * @param cond the cond
      * @return the optional float
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalFloat queryForFloat(final Class<?> entityClass, final String propName, final Condition cond) {
-        return em.queryForFloat(EntityManagerUtil.getEntityName(entityClass), propName, cond);
+        return queryForSingleResult(Float.class, entityClass, propName, cond).mapToFloat(ToFloatFunction.UNBOX);
     }
 
     /**
      * Query for double.
      *
-     * @param entityClass the entity Class
+     * @param entityClass the entity class
      * @param propName the prop name
      * @param cond the cond
      * @return the optional double
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalDouble queryForDouble(final Class<?> entityClass, final String propName, final Condition cond) {
-        return em.queryForDouble(EntityManagerUtil.getEntityName(entityClass), propName, cond);
+        return queryForSingleResult(Double.class, entityClass, propName, cond).mapToDouble(ToDoubleFunction.UNBOX);
     }
 
     /**
      * Query for string.
      *
-     * @param entityClass the entity Class
+     * @param entityClass the entity class
      * @param propName the prop name
      * @param cond the cond
      * @return the nullable
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<String> queryForString(final Class<?> entityClass, final String propName, final Condition cond) {
-        return em.queryForString(EntityManagerUtil.getEntityName(entityClass), propName, cond);
+        return queryForSingleResult(String.class, entityClass, propName, cond);
     }
 
     /**
      * Query for date.
      *
-     * @param entityClass the entity Class
+     * @param entityClass the entity class
      * @param propName the prop name
      * @param cond the cond
      * @return the nullable
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<java.sql.Date> queryForDate(final Class<?> entityClass, final String propName, final Condition cond) {
-        return em.queryForDate(EntityManagerUtil.getEntityName(entityClass), propName, cond);
+        return queryForSingleResult(java.sql.Date.class, entityClass, propName, cond);
     }
 
     /**
      * Query for time.
      *
-     * @param entityClass the entity Class
+     * @param entityClass the entity class
      * @param propName the prop name
      * @param cond the cond
      * @return the nullable
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<java.sql.Time> queryForTime(final Class<?> entityClass, final String propName, final Condition cond) {
-        return em.queryForTime(EntityManagerUtil.getEntityName(entityClass), propName, cond);
+        return queryForSingleResult(java.sql.Time.class, entityClass, propName, cond);
     }
 
     /**
      * Query for timestamp.
      *
-     * @param entityClass the entity Class
+     * @param entityClass the entity class
      * @param propName the prop name
      * @param cond the cond
      * @return the nullable
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<java.sql.Timestamp> queryForTimestamp(final Class<?> entityClass, final String propName, final Condition cond) {
-        return em.queryForTimestamp(EntityManagerUtil.getEntityName(entityClass), propName, cond);
+        return queryForSingleResult(java.sql.Timestamp.class, entityClass, propName, cond);
     }
 
     /**
@@ -360,7 +369,7 @@ public final class NewEntityManager {
     @SuppressWarnings("unchecked")
     public <V> Nullable<V> queryForSingleResult(final Class<V> targetClass, final Class<?> entityClass, final String propName, final Condition cond,
             final Map<String, Object> options) {
-        return em.queryForSingleResult(targetClass, EntityManagerUtil.getEntityName(entityClass), propName, cond, options);
+        return em.queryForSingleResult(targetClass, EntityManagerUtil.getEntityName(entityClass), propName, cond, checkOptions(options));
     }
 
     /**
@@ -395,7 +404,7 @@ public final class NewEntityManager {
     @SuppressWarnings("unchecked")
     public <V> Optional<V> queryForSingleNonNull(final Class<V> targetClass, final Class<?> entityClass, final String propName, final Condition cond,
             final Map<String, Object> options) {
-        return em.queryForSingleNonNull(targetClass, EntityManagerUtil.getEntityName(entityClass), propName, cond, options);
+        return em.queryForSingleNonNull(targetClass, EntityManagerUtil.getEntityName(entityClass), propName, cond, checkOptions(options));
     }
 
     /**
@@ -435,7 +444,7 @@ public final class NewEntityManager {
     @SuppressWarnings("unchecked")
     public <V> Nullable<V> queryForUniqueResult(final Class<V> targetClass, final Class<?> entityClass, final String propName, final Condition cond,
             final Map<String, Object> options) throws DuplicatedResultException {
-        return em.queryForUniqueResult(targetClass, EntityManagerUtil.getEntityName(entityClass), propName, cond, options);
+        return em.queryForUniqueResult(targetClass, EntityManagerUtil.getEntityName(entityClass), propName, cond, checkOptions(options));
     }
 
     /**
@@ -474,7 +483,7 @@ public final class NewEntityManager {
     @SuppressWarnings("unchecked")
     public <V> Optional<V> queryForUniqueNonNull(final Class<V> targetClass, final Class<?> entityClass, final String propName, final Condition cond,
             final Map<String, Object> options) throws DuplicatedResultException {
-        return em.queryForUniqueNonNull(targetClass, EntityManagerUtil.getEntityName(entityClass), propName, cond, options);
+        return em.queryForUniqueNonNull(targetClass, EntityManagerUtil.getEntityName(entityClass), propName, cond, checkOptions(options));
     }
 
     /**
@@ -514,7 +523,7 @@ public final class NewEntityManager {
      */
     public DataSet query(final Class<?> entityClass, final Collection<String> selectPropNames, final Condition cond, final Holder<String> resultHandle,
             final Map<String, Object> options) {
-        return em.query(EntityManagerUtil.getEntityName(entityClass), selectPropNames, cond, resultHandle, options);
+        return em.query(EntityManagerUtil.getEntityName(entityClass), selectPropNames, cond, resultHandle, checkOptions(options));
     }
 
     /**
@@ -530,7 +539,7 @@ public final class NewEntityManager {
      * @return the merged result
      */
     public DataSet queryAll(final Class<?> entityClass, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
-        return em.queryAll(EntityManagerUtil.getEntityName(entityClass), selectPropNames, cond, options);
+        return em.queryAll(EntityManagerUtil.getEntityName(entityClass), selectPropNames, cond, checkOptions(options));
     }
 
     /**
@@ -563,7 +572,7 @@ public final class NewEntityManager {
      */
     public <T> Optional<T> findFirst(final Class<T> entityClass, final Collection<String> selectPropNames, final Condition cond,
             final Map<String, Object> options) {
-        return em.findFirst(EntityManagerUtil.getEntityName(entityClass), selectPropNames, cond, options);
+        return em.findFirst(EntityManagerUtil.getEntityName(entityClass), selectPropNames, cond, checkOptions(options));
     }
 
     /**
@@ -590,7 +599,20 @@ public final class NewEntityManager {
      * @return the list
      */
     public <T> List<T> list(final Class<T> entityClass, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
-        return em.list(EntityManagerUtil.getEntityName(entityClass), selectPropNames, cond, options);
+        return em.list(EntityManagerUtil.getEntityName(entityClass), selectPropNames, cond, checkOptions(options));
+    }
+
+    /**
+     * 
+     * @param <T>
+     * @param entityClass
+     * @param selectPropNames
+     * @param cond
+     * @param options
+     * @return
+     */
+    public <T> List<T> listAll(final Class<T> entityClass, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
+        return em.listAll(EntityManagerUtil.getEntityName(entityClass), selectPropNames, cond, checkOptions(options));
     }
 
     /**
@@ -613,7 +635,7 @@ public final class NewEntityManager {
      * @return the entity id
      */
     public EntityId add(final Class<?> entityClass, final Map<String, Object> props, final Map<String, Object> options) {
-        return em.add(EntityManagerUtil.getEntityName(entityClass), props, options);
+        return em.add(EntityManagerUtil.getEntityName(entityClass), props, checkOptions(options));
     }
 
     /**
@@ -636,7 +658,7 @@ public final class NewEntityManager {
      * @return the list
      */
     public List<EntityId> addAll(final Class<?> entityClass, final List<Map<String, Object>> propsList, final Map<String, Object> options) {
-        return em.addAll(EntityManagerUtil.getEntityName(entityClass), propsList, options);
+        return em.addAll(EntityManagerUtil.getEntityName(entityClass), propsList, checkOptions(options));
     }
 
     /**
@@ -661,7 +683,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int update(final Class<?> entityClass, final Map<String, Object> props, final Condition cond, final Map<String, Object> options) {
-        return em.update(EntityManagerUtil.getEntityName(entityClass), props, cond, options);
+        return em.update(EntityManagerUtil.getEntityName(entityClass), props, cond, checkOptions(options));
     }
 
     /**
@@ -684,7 +706,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int delete(final Class<?> entityClass, final Condition cond, final Map<String, Object> options) {
-        return em.delete(EntityManagerUtil.getEntityName(entityClass), cond, options);
+        return em.delete(EntityManagerUtil.getEntityName(entityClass), cond, checkOptions(options));
     }
 
     /**
@@ -696,7 +718,7 @@ public final class NewEntityManager {
      * @return the result by handle
      */
     public DataSet getResultByHandle(final String resultHandle, final Collection<String> selectPropNames, final Map<String, Object> options) {
-        return em.getResultByHandle(resultHandle, selectPropNames, options);
+        return em.getResultByHandle(resultHandle, selectPropNames, checkOptions(options));
     }
 
     /**
@@ -715,7 +737,7 @@ public final class NewEntityManager {
      * @return the string
      */
     public String beginTransaction(final IsolationLevel isolationLevel) {
-        return em.beginTransaction(isolationLevel);
+        return beginTransaction(isolationLevel, null);
     }
 
     /**
@@ -726,7 +748,7 @@ public final class NewEntityManager {
      * @return the string
      */
     public String beginTransaction(final IsolationLevel isolationLevel, final Map<String, Object> options) {
-        return em.beginTransaction(isolationLevel, options);
+        return em.beginTransaction(isolationLevel, checkOptions(options));
     }
 
     /**
@@ -736,7 +758,7 @@ public final class NewEntityManager {
      * @param transactionAction the transaction action
      */
     public void endTransaction(final String transactionId, final Action transactionAction) {
-        em.endTransaction(transactionId, transactionAction);
+        endTransaction(transactionId, transactionAction, null);
     }
 
     /**
@@ -747,7 +769,7 @@ public final class NewEntityManager {
      * @param options the options
      */
     public void endTransaction(final String transactionId, final Action transactionAction, final Map<String, Object> options) {
-        em.endTransaction(transactionId, transactionAction, options);
+        em.endTransaction(transactionId, transactionAction, checkOptions(options));
     }
 
     /**
@@ -761,7 +783,7 @@ public final class NewEntityManager {
      */
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final Class<T> entityClass, final long id) throws DuplicatedResultException {
-        return em.get(EntityManagerUtil.getEntityName(entityClass), id);
+        return get(entityClass, id, null);
     }
 
     /**
@@ -776,7 +798,7 @@ public final class NewEntityManager {
      */
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final Class<T> entityClass, final long id, final Collection<String> selectPropNames) throws DuplicatedResultException {
-        return em.get(EntityManagerUtil.getEntityName(entityClass), id, selectPropNames);
+        return get(entityClass, id, selectPropNames, null);
     }
 
     /**
@@ -793,7 +815,7 @@ public final class NewEntityManager {
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final Class<T> entityClass, final long id, final Collection<String> selectPropNames, final Map<String, Object> options)
             throws DuplicatedResultException {
-        return em.get(EntityManagerUtil.getEntityName(entityClass), id, selectPropNames, options);
+        return em.get(EntityManagerUtil.getEntityName(entityClass), id, selectPropNames, checkOptions(options));
     }
 
     /**
@@ -807,7 +829,7 @@ public final class NewEntityManager {
      */
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final Class<T> entityClass, final String id) throws DuplicatedResultException {
-        return em.get(EntityManagerUtil.getEntityName(entityClass), id);
+        return get(entityClass, id, null);
     }
 
     /**
@@ -822,7 +844,7 @@ public final class NewEntityManager {
      */
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final Class<T> entityClass, final String id, final Collection<String> selectPropNames) throws DuplicatedResultException {
-        return em.get(EntityManagerUtil.getEntityName(entityClass), id, selectPropNames);
+        return get(entityClass, id, selectPropNames, null);
     }
 
     /**
@@ -839,7 +861,7 @@ public final class NewEntityManager {
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final Class<T> entityClass, final String id, final Collection<String> selectPropNames, final Map<String, Object> options)
             throws DuplicatedResultException {
-        return em.get(EntityManagerUtil.getEntityName(entityClass), id, selectPropNames, options);
+        return em.get(EntityManagerUtil.getEntityName(entityClass), id, selectPropNames, checkOptions(options));
     }
 
     /**
@@ -852,7 +874,7 @@ public final class NewEntityManager {
      */
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final EntityId entityId) throws DuplicatedResultException {
-        return em.get(entityId);
+        return get(entityId, null);
     }
 
     /**
@@ -866,7 +888,7 @@ public final class NewEntityManager {
      */
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final EntityId entityId, final Collection<String> selectPropNames) throws DuplicatedResultException {
-        return em.get(entityId, selectPropNames);
+        return get(entityId, selectPropNames, null);
     }
 
     /**
@@ -882,7 +904,7 @@ public final class NewEntityManager {
     @SuppressWarnings("unchecked")
     public <T> Optional<T> get(final EntityId entityId, final Collection<String> selectPropNames, final Map<String, Object> options)
             throws DuplicatedResultException {
-        return em.get(entityId, selectPropNames, options);
+        return em.get(entityId, selectPropNames, checkOptions(options));
     }
 
     /**
@@ -896,7 +918,7 @@ public final class NewEntityManager {
      */
     @SuppressWarnings("unchecked")
     public <T> T gett(final Class<T> entityClass, final long id) throws DuplicatedResultException {
-        return em.gett(EntityManagerUtil.getEntityName(entityClass), id);
+        return gett(entityClass, id, null);
     }
 
     /**
@@ -911,7 +933,7 @@ public final class NewEntityManager {
      */
     @SuppressWarnings("unchecked")
     public <T> T gett(final Class<T> entityClass, final long id, final Collection<String> selectPropNames) throws DuplicatedResultException {
-        return em.gett(EntityManagerUtil.getEntityName(entityClass), id, selectPropNames);
+        return gett(entityClass, id, selectPropNames, null);
     }
 
     /**
@@ -928,7 +950,7 @@ public final class NewEntityManager {
     @SuppressWarnings("unchecked")
     public <T> T gett(final Class<T> entityClass, final long id, final Collection<String> selectPropNames, final Map<String, Object> options)
             throws DuplicatedResultException {
-        return em.gett(EntityManagerUtil.getEntityName(entityClass), id, selectPropNames, options);
+        return em.gett(EntityManagerUtil.getEntityName(entityClass), id, selectPropNames, checkOptions(options));
     }
 
     /**
@@ -942,7 +964,7 @@ public final class NewEntityManager {
      */
     @SuppressWarnings("unchecked")
     public <T> T gett(final Class<T> entityClass, final String id) throws DuplicatedResultException {
-        return em.gett(EntityManagerUtil.getEntityName(entityClass), id);
+        return gett(entityClass, id, null);
     }
 
     /**
@@ -957,7 +979,7 @@ public final class NewEntityManager {
      */
     @SuppressWarnings("unchecked")
     public <T> T gett(final Class<T> entityClass, final String id, final Collection<String> selectPropNames) throws DuplicatedResultException {
-        return em.gett(EntityManagerUtil.getEntityName(entityClass), id, selectPropNames);
+        return gett(entityClass, id, selectPropNames, null);
     }
 
     /**
@@ -974,7 +996,7 @@ public final class NewEntityManager {
     @SuppressWarnings("unchecked")
     public <T> T gett(final Class<T> entityClass, final String id, final Collection<String> selectPropNames, final Map<String, Object> options)
             throws DuplicatedResultException {
-        return em.gett(EntityManagerUtil.getEntityName(entityClass), id, selectPropNames, options);
+        return em.gett(EntityManagerUtil.getEntityName(entityClass), id, selectPropNames, checkOptions(options));
     }
 
     /**
@@ -987,7 +1009,7 @@ public final class NewEntityManager {
      */
     @SuppressWarnings("unchecked")
     public <T> T gett(final EntityId entityId) throws DuplicatedResultException {
-        return (T) em.gett(entityId);
+        return gett(entityId, null);
     }
 
     /**
@@ -1001,7 +1023,7 @@ public final class NewEntityManager {
      */
     @SuppressWarnings("unchecked")
     public <T> T gett(final EntityId entityId, final Collection<String> selectPropNames) throws DuplicatedResultException {
-        return (T) em.gett(entityId, selectPropNames);
+        return gett(entityId, selectPropNames, null);
     }
 
     /**
@@ -1016,7 +1038,7 @@ public final class NewEntityManager {
      */
     @SuppressWarnings("unchecked")
     public <T> T gett(final EntityId entityId, final Collection<String> selectPropNames, final Map<String, Object> options) throws DuplicatedResultException {
-        return (T) em.gett(entityId, selectPropNames, options);
+        return (T) em.gett(entityId, selectPropNames, checkOptions(options));
     }
 
     /**
@@ -1039,7 +1061,7 @@ public final class NewEntityManager {
      */
     @Deprecated
     public boolean refresh(final Object entity, final Map<String, Object> options) {
-        return em.refresh(entity, options);
+        return em.refresh(entity, checkOptions(options));
     }
 
     /**
@@ -1062,7 +1084,7 @@ public final class NewEntityManager {
      */
     @Deprecated
     public int refreshAll(final Collection<?> entities, final Map<String, Object> options) {
-        return em.refreshAll(entities, options);
+        return em.refreshAll(entities, checkOptions(options));
     }
 
     /**
@@ -1072,7 +1094,7 @@ public final class NewEntityManager {
      * @return the entity id
      */
     public EntityId add(final Object entity) {
-        return em.add(entity);
+        return add(entity, null);
     }
 
     /**
@@ -1083,7 +1105,7 @@ public final class NewEntityManager {
      * @return the entity id
      */
     public EntityId add(final Object entity, final Map<String, Object> options) {
-        return em.add(entity, options);
+        return em.add(entity, checkOptions(options));
     }
 
     /**
@@ -1104,7 +1126,7 @@ public final class NewEntityManager {
      * @return the list
      */
     public List<EntityId> addAll(final Collection<?> entities, final Map<String, Object> options) {
-        return em.addAll(entities, options);
+        return em.addAll(entities, checkOptions(options));
     }
 
     /**
@@ -1129,7 +1151,7 @@ public final class NewEntityManager {
      * @return the e
      */
     public <T> T addOrUpdate(final T entity, final Condition cond, final Map<String, Object> options) {
-        return (T) em.addOrUpdate(entity, cond, options);
+        return (T) em.addOrUpdate(entity, cond, checkOptions(options));
     }
 
     /**
@@ -1139,7 +1161,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int update(final Object entity) {
-        return em.update(entity);
+        return update(entity, null);
     }
 
     /**
@@ -1150,7 +1172,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int update(final Object entity, final Map<String, Object> options) {
-        return em.update(entity, options);
+        return em.update(entity, checkOptions(options));
     }
 
     /**
@@ -1171,7 +1193,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int updateAll(final Collection<?> entities, final Map<String, Object> options) {
-        return em.updateAll(entities, options);
+        return em.updateAll(entities, checkOptions(options));
     }
 
     /**
@@ -1181,7 +1203,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int update(final Map<String, Object> props, final EntityId entityId) {
-        return em.update(props, entityId);
+        return update(props, entityId, null);
     }
 
     /**
@@ -1192,7 +1214,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int update(final Map<String, Object> props, final EntityId entityId, final Map<String, Object> options) {
-        return em.update(props, entityId, options);
+        return em.update(props, entityId, checkOptions(options));
     }
 
     /**
@@ -1202,7 +1224,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds) {
-        return em.updateAll(props, entityIds);
+        return updateAll(props, entityIds, null);
     }
 
     /**
@@ -1213,7 +1235,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds, final Map<String, Object> options) {
-        return em.updateAll(props, entityIds, options);
+        return em.updateAll(props, entityIds, checkOptions(options));
     }
 
     /**
@@ -1223,7 +1245,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int delete(final Object entity) {
-        return em.delete(entity);
+        return delete(entity, null);
     }
 
     /**
@@ -1234,7 +1256,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int delete(final Object entity, final Map<String, Object> options) {
-        return em.delete(entity, options);
+        return em.delete(entity, checkOptions(options));
     }
 
     /**
@@ -1255,7 +1277,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int deleteAll(final Collection<?> entities, final Map<String, Object> options) {
-        return em.deleteAll(entities, options);
+        return em.deleteAll(entities, checkOptions(options));
     }
 
     /**
@@ -1265,7 +1287,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int delete(final EntityId entityId) {
-        return em.delete(entityId);
+        return delete(entityId, null);
     }
 
     /**
@@ -1276,7 +1298,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int delete(final EntityId entityId, final Map<String, Object> options) {
-        return em.delete(entityId, options);
+        return em.delete(entityId, checkOptions(options));
     }
 
     /**
@@ -1286,7 +1308,7 @@ public final class NewEntityManager {
      * @return the int
      */
     public int deleteAll(final List<? extends EntityId> entityIds) {
-        return em.deleteAll(entityIds);
+        return deleteAll(entityIds, null);
     }
 
     /**
@@ -1297,7 +1319,15 @@ public final class NewEntityManager {
      * @return the int
      */
     public int deleteAll(final List<? extends EntityId> entityIds, final Map<String, Object> options) {
-        return em.deleteAll(entityIds, options);
+        return em.deleteAll(entityIds, checkOptions(options));
+    }
+
+    EntityId createEntityId(final Class<?> entityClass, final Object id) {
+        return em.createEntityId(EntityManagerUtil.getEntityName(entityClass), id);
+    }
+
+    static Map<String, Object> checkOptions(Map<String, Object> options) {
+        return options;
     }
 
     /**
@@ -1308,22 +1338,22 @@ public final class NewEntityManager {
     public static class Mapper<T> {
 
         /** The em. */
-        private final EntityManagerEx<Object> em;
+        final NewEntityManager nem;
 
         /** The entity class. */
-        private final Class<T> entityClass;
+        final Class<T> entityClass;
 
         /** The entity name. */
-        private final String entityName;
+        final String entityName;
 
         /**
          * Instantiates a new mapper.
          *
-         * @param em the em
+         * @param nem the em
          * @param entityClass the entity class
          */
-        Mapper(final EntityManagerEx<Object> em, final Class<T> entityClass) {
-            this.em = em;
+        Mapper(final NewEntityManager nem, final Class<T> entityClass) {
+            this.nem = nem;
             this.entityClass = entityClass;
             this.entityName = EntityManagerUtil.getEntityName(entityClass);
         }
@@ -1335,7 +1365,7 @@ public final class NewEntityManager {
          * @return true, if successful
          */
         public boolean exists(final long id) {
-            return em.exists(entityName, id);
+            return nem.exists(entityClass, id);
         }
 
         /**
@@ -1345,7 +1375,7 @@ public final class NewEntityManager {
          * @return true, if successful
          */
         public boolean exists(final String id) {
-            return em.exists(entityName, id);
+            return nem.exists(entityClass, id);
         }
 
         /**
@@ -1355,7 +1385,7 @@ public final class NewEntityManager {
          * @return true, if successful
          */
         public boolean exists(final EntityId entityId) {
-            return em.exists(entityId);
+            return nem.exists(checkEntityId(entityId));
         }
 
         /**
@@ -1366,7 +1396,7 @@ public final class NewEntityManager {
          * @return true, if successful
          */
         public boolean exists(final EntityId entityId, final Map<String, Object> options) {
-            return em.exists(entityId, options);
+            return nem.exists(checkEntityId(entityId), options);
         }
 
         /**
@@ -1376,7 +1406,7 @@ public final class NewEntityManager {
          * @return true, if successful
          */
         public boolean exists(final Condition cond) {
-            return em.exists(entityName, cond);
+            return nem.exists(entityClass, cond);
         }
 
         /**
@@ -1387,7 +1417,7 @@ public final class NewEntityManager {
          * @return true, if successful
          */
         public boolean exists(final Condition cond, final Map<String, Object> options) {
-            return em.exists(entityName, cond, options);
+            return nem.exists(entityClass, cond, options);
         }
 
         /**
@@ -1397,7 +1427,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int count(final Condition cond) {
-            return em.count(entityName, cond);
+            return nem.count(entityClass, cond);
         }
 
         /**
@@ -1408,7 +1438,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int count(final Condition cond, final Map<String, Object> options) {
-            return em.count(entityName, cond, options);
+            return nem.count(entityClass, cond, options);
         }
 
         /**
@@ -1419,7 +1449,7 @@ public final class NewEntityManager {
          * @return the optional boolean
          */
         public OptionalBoolean queryForBoolean(final String propName, final Condition cond) {
-            return em.queryForBoolean(entityName, propName, cond);
+            return nem.queryForBoolean(entityClass, propName, cond);
         }
 
         /**
@@ -1430,7 +1460,7 @@ public final class NewEntityManager {
          * @return the optional char
          */
         public OptionalChar queryForChar(final String propName, final Condition cond) {
-            return em.queryForChar(entityName, propName, cond);
+            return nem.queryForChar(entityClass, propName, cond);
         }
 
         /**
@@ -1441,7 +1471,7 @@ public final class NewEntityManager {
          * @return the optional byte
          */
         public OptionalByte queryForByte(final String propName, final Condition cond) {
-            return em.queryForByte(entityName, propName, cond);
+            return nem.queryForByte(entityClass, propName, cond);
         }
 
         /**
@@ -1452,7 +1482,7 @@ public final class NewEntityManager {
          * @return the optional short
          */
         public OptionalShort queryForShort(final String propName, final Condition cond) {
-            return em.queryForShort(entityName, propName, cond);
+            return nem.queryForShort(entityClass, propName, cond);
         }
 
         /**
@@ -1463,7 +1493,7 @@ public final class NewEntityManager {
          * @return the optional int
          */
         public OptionalInt queryForInt(final String propName, final Condition cond) {
-            return em.queryForInt(entityName, propName, cond);
+            return nem.queryForInt(entityClass, propName, cond);
         }
 
         /**
@@ -1474,7 +1504,7 @@ public final class NewEntityManager {
          * @return the optional long
          */
         public OptionalLong queryForLong(final String propName, final Condition cond) {
-            return em.queryForLong(entityName, propName, cond);
+            return nem.queryForLong(entityClass, propName, cond);
         }
 
         /**
@@ -1485,7 +1515,7 @@ public final class NewEntityManager {
          * @return the optional float
          */
         public OptionalFloat queryForFloat(final String propName, final Condition cond) {
-            return em.queryForFloat(entityName, propName, cond);
+            return nem.queryForFloat(entityClass, propName, cond);
         }
 
         /**
@@ -1496,7 +1526,7 @@ public final class NewEntityManager {
          * @return the optional double
          */
         public OptionalDouble queryForDouble(final String propName, final Condition cond) {
-            return em.queryForDouble(entityName, propName, cond);
+            return nem.queryForDouble(entityClass, propName, cond);
         }
 
         /**
@@ -1507,7 +1537,7 @@ public final class NewEntityManager {
          * @return the nullable
          */
         public Nullable<String> queryForString(final String propName, final Condition cond) {
-            return em.queryForString(entityName, propName, cond);
+            return nem.queryForString(entityClass, propName, cond);
         }
 
         /**
@@ -1518,7 +1548,7 @@ public final class NewEntityManager {
          * @return the nullable
          */
         public Nullable<java.sql.Date> queryForDate(final String propName, final Condition cond) {
-            return em.queryForDate(entityName, propName, cond);
+            return nem.queryForDate(entityClass, propName, cond);
         }
 
         /**
@@ -1529,7 +1559,7 @@ public final class NewEntityManager {
          * @return the nullable
          */
         public Nullable<java.sql.Time> queryForTime(final String propName, final Condition cond) {
-            return em.queryForTime(entityName, propName, cond);
+            return nem.queryForTime(entityClass, propName, cond);
         }
 
         /**
@@ -1540,7 +1570,7 @@ public final class NewEntityManager {
          * @return the nullable
          */
         public Nullable<java.sql.Timestamp> queryForTimestamp(final String propName, final Condition cond) {
-            return em.queryForTimestamp(entityName, propName, cond);
+            return nem.queryForTimestamp(entityClass, propName, cond);
         }
 
         /**
@@ -1553,7 +1583,7 @@ public final class NewEntityManager {
          * @return the nullable
          */
         public <V> Nullable<V> queryForSingleResult(final Class<V> targetClass, final String propName, final Condition cond) {
-            return em.queryForSingleResult(targetClass, entityName, propName, cond);
+            return nem.queryForSingleResult(targetClass, entityClass, propName, cond);
         }
 
         /**
@@ -1569,7 +1599,7 @@ public final class NewEntityManager {
         @SuppressWarnings("unchecked")
         public <V> Nullable<V> queryForSingleResult(final Class<V> targetClass, final String propName, final Condition cond,
                 final Map<String, Object> options) {
-            return em.queryForSingleResult(targetClass, entityName, propName, cond, options);
+            return nem.queryForSingleResult(targetClass, entityClass, propName, cond, options);
         }
 
         /**
@@ -1582,7 +1612,7 @@ public final class NewEntityManager {
          * @return the optional
          */
         public <V> Optional<V> queryForSingleNonNull(final Class<V> targetClass, final String propName, final Condition cond) {
-            return em.queryForSingleNonNull(targetClass, entityName, propName, cond);
+            return nem.queryForSingleNonNull(targetClass, entityClass, propName, cond);
         }
 
         /**
@@ -1598,7 +1628,7 @@ public final class NewEntityManager {
         @SuppressWarnings("unchecked")
         public <V> Optional<V> queryForSingleNonNull(final Class<V> targetClass, final String propName, final Condition cond,
                 final Map<String, Object> options) {
-            return em.queryForSingleNonNull(targetClass, entityName, propName, cond, options);
+            return nem.queryForSingleNonNull(targetClass, entityClass, propName, cond, options);
         }
 
         /**
@@ -1612,7 +1642,7 @@ public final class NewEntityManager {
          * @throws DuplicatedResultException the duplicated result exception
          */
         public <V> Nullable<V> queryForUniqueResult(final Class<V> targetClass, final String propName, final Condition cond) throws DuplicatedResultException {
-            return em.queryForUniqueResult(targetClass, entityName, propName, cond);
+            return nem.queryForUniqueResult(targetClass, entityClass, propName, cond);
         }
 
         /**
@@ -1629,7 +1659,7 @@ public final class NewEntityManager {
         @SuppressWarnings("unchecked")
         public <V> Nullable<V> queryForUniqueResult(final Class<V> targetClass, final String propName, final Condition cond, final Map<String, Object> options)
                 throws DuplicatedResultException {
-            return em.queryForUniqueResult(targetClass, entityName, propName, cond, options);
+            return nem.queryForUniqueResult(targetClass, entityClass, propName, cond, options);
         }
 
         /**
@@ -1643,7 +1673,7 @@ public final class NewEntityManager {
          * @throws DuplicatedResultException the duplicated result exception
          */
         public <V> Optional<V> queryForUniqueNonNull(final Class<V> targetClass, final String propName, final Condition cond) throws DuplicatedResultException {
-            return em.queryForUniqueNonNull(targetClass, entityName, propName, cond);
+            return nem.queryForUniqueNonNull(targetClass, entityClass, propName, cond);
         }
 
         /**
@@ -1660,7 +1690,7 @@ public final class NewEntityManager {
         @SuppressWarnings("unchecked")
         public <V> Optional<V> queryForUniqueNonNull(final Class<V> targetClass, final String propName, final Condition cond, final Map<String, Object> options)
                 throws DuplicatedResultException {
-            return em.queryForUniqueNonNull(targetClass, entityName, propName, cond, options);
+            return nem.queryForUniqueNonNull(targetClass, entityClass, propName, cond, options);
         }
 
         /**
@@ -1671,7 +1701,7 @@ public final class NewEntityManager {
          * @return the optional
          */
         public Optional<T> findFirst(final Collection<String> selectPropNames, final Condition cond) {
-            return em.findFirst(entityClass, selectPropNames, cond);
+            return nem.findFirst(entityClass, selectPropNames, cond);
         }
 
         /**
@@ -1683,7 +1713,7 @@ public final class NewEntityManager {
          * @return the optional
          */
         public Optional<T> findFirst(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
-            return em.findFirst(entityClass, selectPropNames, cond, options);
+            return nem.findFirst(entityClass, selectPropNames, cond, options);
         }
 
         /**
@@ -1694,7 +1724,7 @@ public final class NewEntityManager {
          * @return the data set
          */
         public DataSet query(final Collection<String> selectPropNames, final Condition cond) {
-            return em.query(entityName, selectPropNames, cond);
+            return nem.query(entityClass, selectPropNames, cond);
         }
 
         /**
@@ -1706,7 +1736,7 @@ public final class NewEntityManager {
          * @return the data set
          */
         public DataSet query(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
-            return em.query(entityName, selectPropNames, cond, options);
+            return nem.query(entityClass, selectPropNames, cond, options);
         }
 
         /**
@@ -1720,7 +1750,7 @@ public final class NewEntityManager {
          */
         public DataSet query(final Collection<String> selectPropNames, final Condition cond, final Holder<String> resultHandle,
                 final Map<String, Object> options) {
-            return em.query(entityName, selectPropNames, cond, resultHandle, options);
+            return nem.query(entityClass, selectPropNames, cond, resultHandle, options);
         }
 
         /**
@@ -1732,7 +1762,7 @@ public final class NewEntityManager {
          * @return the data set
          */
         public DataSet queryAll(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
-            return em.queryAll(entityName, selectPropNames, cond, options);
+            return nem.queryAll(entityClass, selectPropNames, cond, options);
         }
 
         /**
@@ -1743,7 +1773,7 @@ public final class NewEntityManager {
          * @return the list
          */
         public List<T> list(final Collection<String> selectPropNames, final Condition cond) {
-            return em.list(entityName, selectPropNames, cond);
+            return nem.list(entityClass, selectPropNames, cond);
         }
 
         /**
@@ -1755,7 +1785,7 @@ public final class NewEntityManager {
          * @return the list
          */
         public List<T> list(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
-            return em.list(entityName, selectPropNames, cond, options);
+            return nem.list(entityClass, selectPropNames, cond, options);
         }
 
         /**
@@ -1768,7 +1798,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public List<T> listAll(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
-            return em.listAll(entityName, selectPropNames, cond, options);
+            return nem.listAll(entityClass, selectPropNames, cond, options);
         }
 
         /**
@@ -1778,7 +1808,7 @@ public final class NewEntityManager {
          * @return the entity id
          */
         public EntityId add(final Map<String, Object> props) {
-            return em.add(entityName, props);
+            return nem.add(entityClass, props);
         }
 
         /**
@@ -1789,7 +1819,7 @@ public final class NewEntityManager {
          * @return the entity id
          */
         public EntityId add(final Map<String, Object> props, final Map<String, Object> options) {
-            return em.add(entityName, props, options);
+            return nem.add(entityClass, props, options);
         }
 
         /**
@@ -1799,7 +1829,7 @@ public final class NewEntityManager {
          * @return the list
          */
         public List<EntityId> addAll(final List<Map<String, Object>> propsList) {
-            return em.addAll(entityName, propsList);
+            return nem.addAll(entityClass, propsList);
         }
 
         /**
@@ -1810,7 +1840,7 @@ public final class NewEntityManager {
          * @return the list
          */
         public List<EntityId> addAll(final List<Map<String, Object>> propsList, final Map<String, Object> options) {
-            return em.addAll(entityName, propsList, options);
+            return nem.addAll(entityClass, propsList, options);
         }
 
         /**
@@ -1821,7 +1851,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int update(final Map<String, Object> props, final Condition cond) {
-            return em.update(entityName, props, cond);
+            return nem.update(entityClass, props, cond);
         }
 
         /**
@@ -1833,7 +1863,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int update(final Map<String, Object> props, final Condition cond, final Map<String, Object> options) {
-            return em.update(entityName, props, cond, options);
+            return nem.update(entityClass, props, cond, options);
         }
 
         /**
@@ -1843,7 +1873,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int delete(final Condition cond) {
-            return em.delete(entityName, cond);
+            return nem.delete(entityClass, cond);
         }
 
         /**
@@ -1854,7 +1884,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int delete(final Condition cond, final Map<String, Object> options) {
-            return em.delete(entityName, cond, options);
+            return nem.delete(entityClass, cond, options);
         }
 
         /**
@@ -1866,7 +1896,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public Optional<T> get(final long id) throws DuplicatedResultException {
-            return em.get(entityName, id);
+            return nem.get(entityClass, id);
         }
 
         /**
@@ -1879,7 +1909,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public Optional<T> get(final long id, final Collection<String> selectPropNames) throws DuplicatedResultException {
-            return em.get(entityName, id, selectPropNames);
+            return nem.get(entityClass, id, selectPropNames);
         }
 
         /**
@@ -1893,7 +1923,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public Optional<T> get(final long id, final Collection<String> selectPropNames, final Map<String, Object> options) throws DuplicatedResultException {
-            return em.get(entityName, id, selectPropNames, options);
+            return nem.get(entityClass, id, selectPropNames, options);
         }
 
         /**
@@ -1905,7 +1935,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public Optional<T> get(final String id) throws DuplicatedResultException {
-            return em.get(entityName, id);
+            return nem.get(entityClass, id);
         }
 
         /**
@@ -1917,7 +1947,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public Optional<T> get(final String id, final Collection<String> selectPropNames) {
-            return em.get(entityName, id, selectPropNames);
+            return nem.get(entityClass, id, selectPropNames);
         }
 
         /**
@@ -1931,7 +1961,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public Optional<T> get(final String id, final Collection<String> selectPropNames, final Map<String, Object> options) throws DuplicatedResultException {
-            return em.get(entityName, id, selectPropNames, options);
+            return nem.get(entityClass, id, selectPropNames, options);
         }
 
         /**
@@ -1943,7 +1973,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public Optional<T> get(final EntityId entityId) throws DuplicatedResultException {
-            return em.get(entityId);
+            return nem.get(checkEntityId(entityId));
         }
 
         /**
@@ -1956,7 +1986,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public Optional<T> get(final EntityId entityId, final Collection<String> selectPropNames) throws DuplicatedResultException {
-            return em.get(entityId, selectPropNames);
+            return nem.get(checkEntityId(entityId), selectPropNames);
         }
 
         /**
@@ -1971,7 +2001,7 @@ public final class NewEntityManager {
         @SuppressWarnings("unchecked")
         public Optional<T> get(final EntityId entityId, final Collection<String> selectPropNames, final Map<String, Object> options)
                 throws DuplicatedResultException {
-            return em.get(entityId, selectPropNames, options);
+            return nem.get(checkEntityId(entityId), selectPropNames, options);
         }
 
         /**
@@ -1983,7 +2013,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public T gett(final long id) throws DuplicatedResultException {
-            return em.gett(entityName, id);
+            return nem.gett(entityClass, id);
         }
 
         /**
@@ -1996,7 +2026,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public T gett(final long id, final Collection<String> selectPropNames) throws DuplicatedResultException {
-            return em.gett(entityName, id, selectPropNames);
+            return nem.gett(entityClass, id, selectPropNames);
         }
 
         /**
@@ -2010,7 +2040,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public T gett(final long id, final Collection<String> selectPropNames, final Map<String, Object> options) throws DuplicatedResultException {
-            return em.gett(entityName, id, selectPropNames, options);
+            return nem.gett(entityClass, id, selectPropNames, options);
         }
 
         /**
@@ -2022,7 +2052,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public T gett(final String id) throws DuplicatedResultException {
-            return em.gett(entityName, id);
+            return nem.gett(entityClass, id);
         }
 
         /**
@@ -2035,7 +2065,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public T gett(final String id, final Collection<String> selectPropNames) throws DuplicatedResultException {
-            return em.gett(entityName, id, selectPropNames);
+            return nem.gett(entityClass, id, selectPropNames);
         }
 
         /**
@@ -2049,7 +2079,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public T gett(final String id, final Collection<String> selectPropNames, final Map<String, Object> options) throws DuplicatedResultException {
-            return em.gett(entityName, id, selectPropNames, options);
+            return nem.gett(entityClass, id, selectPropNames, options);
         }
 
         /**
@@ -2061,7 +2091,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public T gett(final EntityId entityId) throws DuplicatedResultException {
-            return em.gett(entityId);
+            return nem.gett(checkEntityId(entityId));
         }
 
         /**
@@ -2074,7 +2104,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public T gett(final EntityId entityId, final Collection<String> selectPropNames) throws DuplicatedResultException {
-            return em.gett(entityId, selectPropNames);
+            return nem.gett(checkEntityId(entityId), selectPropNames);
         }
 
         /**
@@ -2088,7 +2118,7 @@ public final class NewEntityManager {
          */
         @SuppressWarnings("unchecked")
         public T gett(final EntityId entityId, final Collection<String> selectPropNames, final Map<String, Object> options) throws DuplicatedResultException {
-            return em.gett(entityId, selectPropNames, options);
+            return nem.gett(checkEntityId(entityId), selectPropNames, options);
         }
 
         /**
@@ -2097,9 +2127,9 @@ public final class NewEntityManager {
          * @param entity the entity
          * @return true, if successful
          */
-        @SuppressWarnings("deprecation")
+        @Deprecated
         public boolean refresh(final T entity) {
-            return em.refresh(entity);
+            return nem.refresh(entity);
         }
 
         /**
@@ -2109,9 +2139,9 @@ public final class NewEntityManager {
          * @param options the options
          * @return true, if successful
          */
-        @SuppressWarnings("deprecation")
+        @Deprecated
         public boolean refresh(final T entity, final Map<String, Object> options) {
-            return em.refresh(entity, options);
+            return nem.refresh(entity, options);
         }
 
         /**
@@ -2120,9 +2150,9 @@ public final class NewEntityManager {
          * @param entities the entities
          * @return the int
          */
-        @SuppressWarnings("deprecation")
+        @Deprecated
         public int refreshAll(final Collection<? extends T> entities) {
-            return em.refreshAll(entities);
+            return nem.refreshAll(entities);
         }
 
         /**
@@ -2132,9 +2162,9 @@ public final class NewEntityManager {
          * @param options the options
          * @return the int
          */
-        @SuppressWarnings("deprecation")
+        @Deprecated
         public int refreshAll(final Collection<? extends T> entities, final Map<String, Object> options) {
-            return em.refreshAll(entities, options);
+            return nem.refreshAll(entities, options);
         }
 
         /**
@@ -2144,7 +2174,7 @@ public final class NewEntityManager {
          * @return the entity id
          */
         public EntityId add(final T entity) {
-            return em.add(entity);
+            return nem.add(entity);
         }
 
         /**
@@ -2155,7 +2185,7 @@ public final class NewEntityManager {
          * @return the entity id
          */
         public EntityId add(final T entity, final Map<String, Object> options) {
-            return em.add(entity, options);
+            return nem.add(entity, options);
         }
 
         /**
@@ -2165,7 +2195,7 @@ public final class NewEntityManager {
          * @return the list
          */
         public List<EntityId> addAll(final Collection<? extends T> entities) {
-            return em.addAll(entities);
+            return nem.addAll(entities);
         }
 
         /**
@@ -2176,7 +2206,7 @@ public final class NewEntityManager {
          * @return the list
          */
         public List<EntityId> addAll(final Collection<? extends T> entities, final Map<String, Object> options) {
-            return em.addAll(entities, options);
+            return nem.addAll(entities, options);
         }
 
         /**
@@ -2187,7 +2217,7 @@ public final class NewEntityManager {
          * @return the e
          */
         public T addOrUpdate(final T entity, final Condition cond) {
-            return (T) em.addOrUpdate(entity, cond);
+            return nem.addOrUpdate(entity, cond);
         }
 
         /**
@@ -2199,7 +2229,7 @@ public final class NewEntityManager {
          * @return the e
          */
         public T addOrUpdate(final T entity, final Condition cond, final Map<String, Object> options) {
-            return (T) em.addOrUpdate(entity, cond, options);
+            return nem.addOrUpdate(entity, cond, options);
         }
 
         /**
@@ -2209,7 +2239,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int update(final T entity) {
-            return em.update(entity);
+            return nem.update(entity);
         }
 
         /**
@@ -2220,7 +2250,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int update(final T entity, final Map<String, Object> options) {
-            return em.update(entity, options);
+            return nem.update(entity, options);
         }
 
         /**
@@ -2230,7 +2260,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int updateAll(final Collection<? extends T> entities) {
-            return em.updateAll(entities);
+            return nem.updateAll(entities);
         }
 
         /**
@@ -2241,7 +2271,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int updateAll(final Collection<? extends T> entities, final Map<String, Object> options) {
-            return em.updateAll(entities, options);
+            return nem.updateAll(entities, options);
         }
 
         /**
@@ -2252,7 +2282,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int update(final Map<String, Object> props, final EntityId entityId) {
-            return em.update(props, entityId);
+            return nem.update(props, checkEntityId(entityId));
         }
 
         /**
@@ -2264,7 +2294,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int update(final Map<String, Object> props, final EntityId entityId, final Map<String, Object> options) {
-            return em.update(props, entityId, options);
+            return nem.update(props, checkEntityId(entityId), options);
         }
 
         /**
@@ -2275,7 +2305,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds) {
-            return em.updateAll(props, entityIds);
+            return nem.updateAll(props, checkEntityIds(entityIds));
         }
 
         /**
@@ -2287,7 +2317,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds, final Map<String, Object> options) {
-            return em.updateAll(props, entityIds, options);
+            return nem.updateAll(props, checkEntityIds(entityIds), options);
         }
 
         /**
@@ -2297,7 +2327,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int delete(final T entity) {
-            return em.delete(entity);
+            return nem.delete(entity);
         }
 
         /**
@@ -2308,7 +2338,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int delete(final T entity, final Map<String, Object> options) {
-            return em.delete(entity, options);
+            return nem.delete(entity, options);
         }
 
         /**
@@ -2318,7 +2348,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int deleteAll(final Collection<? extends T> entities) {
-            return em.deleteAll(entities);
+            return nem.deleteAll(entities);
         }
 
         /**
@@ -2329,7 +2359,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int deleteAll(final Collection<? extends T> entities, final Map<String, Object> options) {
-            return em.deleteAll(entities, options);
+            return nem.deleteAll(entities, options);
         }
 
         /**
@@ -2339,7 +2369,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int delete(final EntityId entityId) {
-            return em.delete(entityId);
+            return nem.delete(checkEntityId(entityId));
         }
 
         /**
@@ -2350,7 +2380,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int delete(final EntityId entityId, final Map<String, Object> options) {
-            return em.delete(entityId, options);
+            return nem.delete(checkEntityId(entityId), options);
         }
 
         /**
@@ -2360,7 +2390,7 @@ public final class NewEntityManager {
          * @return the int
          */
         public int deleteAll(final List<? extends EntityId> entityIds) {
-            return em.deleteAll(entityIds);
+            return nem.deleteAll(checkEntityIds(entityIds));
         }
 
         /**
@@ -2371,7 +2401,24 @@ public final class NewEntityManager {
          * @return the int
          */
         public int deleteAll(final List<? extends EntityId> entityIds, final Map<String, Object> options) {
-            return em.deleteAll(entityIds, options);
+            return nem.deleteAll(checkEntityIds(entityIds), options);
+        }
+
+        EntityId checkEntityId(final EntityId entityId) {
+            N.checkArgument(entityName.equals(entityId.entityName()), "Incorrect entity id with entity name: {} is called in Mapper({})", entityId.entityName(),
+                    entityName);
+
+            return entityId;
+        }
+
+        <EID extends EntityId> List<EID> checkEntityIds(final List<EID> entityIds) {
+            if (N.notNullOrEmpty(entityIds)) {
+                for (EntityId entityId : entityIds) {
+                    checkEntityId(checkEntityId(entityId));
+                }
+            }
+
+            return entityIds;
         }
     }
 }
