@@ -3,17 +3,16 @@ package com.landawn.abacus;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Map;
 
 import javax.sql.DataSource;
 
 import org.junit.Test;
 
-import com.landawn.abacus.Transaction.Action;
 import com.landawn.abacus.core.EntityManagerEx;
 import com.landawn.abacus.core.EntityManagerFactory;
 import com.landawn.abacus.core.NewEntityManager;
 import com.landawn.abacus.core.NewEntityManager.Mapper;
+import com.landawn.abacus.core.SQLTransaction;
 import com.landawn.abacus.entity.Account;
 import com.landawn.abacus.entity.CodesPNL;
 import com.landawn.abacus.exception.UncheckedSQLException;
@@ -21,7 +20,6 @@ import com.landawn.abacus.util.CodeGenerator2;
 import com.landawn.abacus.util.CodeGenerator2.EntityMode;
 import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.N;
-import com.landawn.abacus.util.OptionsBuilder;
 import com.landawn.abacus.util.Profiler;
 
 import junit.framework.TestCase;
@@ -141,19 +139,27 @@ public class HelloCRUD extends TestCase {
         account.setLastName("lastName...................");
         account.setEmailAddress("abc@email.com");
 
-        final String tranId = nem.beginTransaction(IsolationLevel.DEFAULT);
-        final Map<String, Object> options = OptionsBuilder.create().transactionId(tranId).build();
-        Action tranAction = Action.ROLLBACK;
         long id = 0;
+        SQLTransaction tran = nem.beginTransaction(IsolationLevel.DEFAULT);
 
         try {
-            id = nem.add(account, options).get(Account.ID);
-            tranAction = Action.COMMIT;
+            id = nem.add(account).get(Account.ID);
         } finally {
-            nem.endTransaction(tranId, tranAction);
+            tran.rollbackIfNotCommitted();
         }
 
-        account = nem.gett(Account.class, id);
+        assertNull(nem.gett(Account.class, id));
+
+        tran = nem.beginTransaction(IsolationLevel.DEFAULT);
+
+        try {
+            id = nem.add(account).get(Account.ID);
+            tran.commit();
+        } finally {
+            tran.rollbackIfNotCommitted();
+        }
+
+        assertNotNull(account = nem.gett(Account.class, id));
 
         account = nem.gett(Account.class, id, N.asList(Account.FIRST_NAME, Account.LAST_NAME));
         N.println(account);

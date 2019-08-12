@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.landawn.abacus.core.sql;
+package com.landawn.abacus.core;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -29,10 +29,9 @@ import java.util.Map;
 
 import com.landawn.abacus.DataSet;
 import com.landawn.abacus.annotation.Internal;
-import com.landawn.abacus.core.EntityManagerUtil;
 import com.landawn.abacus.core.RowDataSet;
-import com.landawn.abacus.core.sql.command.SQLCommand;
-import com.landawn.abacus.core.sql.command.SQLOperationCommand;
+import com.landawn.abacus.core.command.SQLCommand;
+import com.landawn.abacus.core.command.SQLOperationCommand;
 import com.landawn.abacus.dataSource.SQLDataSource;
 import com.landawn.abacus.exception.UncheckedSQLException;
 import com.landawn.abacus.logging.Logger;

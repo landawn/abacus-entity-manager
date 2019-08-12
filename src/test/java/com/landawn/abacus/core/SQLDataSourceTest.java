@@ -2,7 +2,7 @@
  * Copyright (c) 2015, Haiyang Li. All rights reserved.
  */
 
-package com.landawn.abacus.core.sql;
+package com.landawn.abacus.core;
 
 import static com.landawn.abacus.dataSource.DataSourceConfiguration.C3P0;
 import static com.landawn.abacus.dataSource.DataSourceConfiguration.DBCP;

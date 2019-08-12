@@ -2,20 +2,20 @@
  * Copyright (c) 2015, Haiyang Li. All rights reserved.
  */
 
-package com.landawn.abacus.core.sql;
+package com.landawn.abacus.core;
 
 import org.junit.Test;
 
 import com.landawn.abacus.AbstractTest;
-import com.landawn.abacus.core.sql.interpreter.DB2Interpreter;
-import com.landawn.abacus.core.sql.interpreter.H2Interpreter;
-import com.landawn.abacus.core.sql.interpreter.HSQLDBInterpreter;
-import com.landawn.abacus.core.sql.interpreter.Interpreter;
-import com.landawn.abacus.core.sql.interpreter.MySQLInterpreter;
-import com.landawn.abacus.core.sql.interpreter.OracleInterpreter;
-import com.landawn.abacus.core.sql.interpreter.PostgreSQLInterpreter;
-import com.landawn.abacus.core.sql.interpreter.SQLInterpreter;
-import com.landawn.abacus.core.sql.interpreter.SQLInterpreterFactory;
+import com.landawn.abacus.core.interpreter.DB2Interpreter;
+import com.landawn.abacus.core.interpreter.H2Interpreter;
+import com.landawn.abacus.core.interpreter.HSQLDBInterpreter;
+import com.landawn.abacus.core.interpreter.Interpreter;
+import com.landawn.abacus.core.interpreter.MySQLInterpreter;
+import com.landawn.abacus.core.interpreter.OracleInterpreter;
+import com.landawn.abacus.core.interpreter.PostgreSQLInterpreter;
+import com.landawn.abacus.core.interpreter.SQLInterpreter;
+import com.landawn.abacus.core.interpreter.SQLInterpreterFactory;
 
 /**
  * 

@@ -17,8 +17,8 @@ package com.landawn.abacus.cache;
 import java.util.Collection;
 import java.util.Map;
 
-import com.landawn.abacus.core.sql.SQLResult;
-import com.landawn.abacus.core.sql.command.Command;
+import com.landawn.abacus.core.SQLResult;
+import com.landawn.abacus.core.command.Command;
 import com.landawn.abacus.pool.Poolable;
 import com.landawn.abacus.util.Options.Cache;
 

@@ -20,7 +20,6 @@ import java.util.Collection;
 
 import com.landawn.abacus.annotation.Internal;
 import com.landawn.abacus.cache.QueryCache;
-import com.landawn.abacus.core.sql.SQLResult;
 import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.pool.AbstractPoolable;
 

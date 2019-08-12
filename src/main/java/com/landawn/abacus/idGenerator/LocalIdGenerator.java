@@ -16,10 +16,10 @@ package com.landawn.abacus.idGenerator;
 
 import java.sql.SQLException;
 
-import com.landawn.abacus.core.sql.Executant;
-import com.landawn.abacus.core.sql.SQLResult;
-import com.landawn.abacus.core.sql.command.Command;
-import com.landawn.abacus.core.sql.command.SQLCommandFactory;
+import com.landawn.abacus.core.Executant;
+import com.landawn.abacus.core.SQLResult;
+import com.landawn.abacus.core.command.Command;
+import com.landawn.abacus.core.command.SQLCommandFactory;
 import com.landawn.abacus.exception.UncheckedSQLException;
 import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.metadata.Property;

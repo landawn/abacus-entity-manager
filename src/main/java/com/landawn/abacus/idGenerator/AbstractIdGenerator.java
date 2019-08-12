@@ -14,7 +14,7 @@
 
 package com.landawn.abacus.idGenerator;
 
-import com.landawn.abacus.core.sql.Executant;
+import com.landawn.abacus.core.Executant;
 import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.ClassUtil;

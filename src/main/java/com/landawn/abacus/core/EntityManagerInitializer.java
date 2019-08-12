@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Haiyang Li.
+ * Copyright (c) 2018, Haiyang Li.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,24 +14,19 @@
  * limitations under the License.
  */
 
-package com.landawn.abacus.core.sql.interpreter;
+package com.landawn.abacus.core;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class DB2Interpreter.
+ * The Interface EntityManagerInitializer.
  *
  * @author Haiyang Li
  * @since 0.8
  */
-public class DB2Interpreter extends SQLInterpreter {
-    
+public interface EntityManagerInitializer {
+
     /**
-     * Instantiates a new DB 2 interpreter.
-     *
-     * @param productName the product name
-     * @param productVersion the product version
+     * Initialize.
      */
-    public DB2Interpreter(String productName, String productVersion) {
-        super(productName, productVersion);
-    }
+    void initialize();
 }

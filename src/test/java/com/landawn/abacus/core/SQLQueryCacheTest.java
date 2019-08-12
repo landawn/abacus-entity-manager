@@ -9,9 +9,7 @@ import java.util.Map;
 
 import com.landawn.abacus.AbstractEntityManager1Test;
 import com.landawn.abacus.condition.Condition;
-import com.landawn.abacus.core.sql.SQLQueryCache;
-import com.landawn.abacus.core.sql.SQLResult;
-import com.landawn.abacus.core.sql.command.Command;
+import com.landawn.abacus.core.command.Command;
 import com.landawn.abacus.entity.extendDirty.basic.Account;
 import com.landawn.abacus.entity.extendDirty.basic.ExtendDirtyBasicPNL;
 import com.landawn.abacus.metadata.EntityDefinition;

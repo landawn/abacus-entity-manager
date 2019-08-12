@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.landawn.abacus.core.sql;
+package com.landawn.abacus.core;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -25,20 +25,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
+import javax.sql.DataSource;
 
 import com.landawn.abacus.DataSourceManager;
 import com.landawn.abacus.DataSourceSelector;
 import com.landawn.abacus.IsolationLevel;
 import com.landawn.abacus.Transaction.Action;
-import com.landawn.abacus.Transaction.Status;
 import com.landawn.abacus.annotation.Internal;
-import com.landawn.abacus.core.EntityManagerUtil;
-import com.landawn.abacus.core.sql.command.Command;
-import com.landawn.abacus.core.sql.command.SQLOperationCommand;
-import com.landawn.abacus.core.sql.interpreter.Interpreter;
-import com.landawn.abacus.core.sql.interpreter.InterpreterProxy;
-import com.landawn.abacus.core.sql.interpreter.SQLInterpreterFactory;
+import com.landawn.abacus.core.SQLTransaction.CreatedBy;
+import com.landawn.abacus.core.command.Command;
+import com.landawn.abacus.core.command.SQLOperationCommand;
+import com.landawn.abacus.core.interpreter.Interpreter;
+import com.landawn.abacus.core.interpreter.InterpreterProxy;
+import com.landawn.abacus.core.interpreter.SQLInterpreterFactory;
 import com.landawn.abacus.dataSource.SQLDataSource;
 import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.exception.InvalidTransactionIdException;
@@ -64,24 +64,26 @@ import com.landawn.abacus.util.WD;
  */
 @Internal
 public class Executant {
-    
+
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(Executant.class);
 
     /** The Constant SELECT_COUNT. */
     private static final String SELECT_COUNT = "SELECT count(*) ";
 
-    /** The transaction pool. */
-    private final Map<String, SQLTransaction> transactionPool = new ConcurrentHashMap<>();
-
     /** The dsm. */
-    private final DataSourceManager dsm;
-    
+    private final DataSourceManager _dsm;
+
     /** The dss. */
-    private final DataSourceSelector dss;
-    
+    private final DataSourceSelector _dss;
+
+    private final SQLDataSource _ds;
+
     /** The interpreter. */
     private final Interpreter interpreter;
+
+    /** The default isolation level. */
+    private final IsolationLevel _defaultIsolationLevel;
 
     /**
      * Instantiates a new executant.
@@ -90,24 +92,28 @@ public class Executant {
      * @throws UncheckedSQLException the unchecked SQL exception
      */
     public Executant(DataSourceManager dsm) throws UncheckedSQLException {
-        this.dsm = dsm;
-        this.dss = dsm.getDataSourceSelector();
+        this._dsm = dsm;
+        this._dss = dsm.getDataSourceSelector();
+        this._ds = (SQLDataSource) dsm.getPrimaryDataSource();
 
-        SQLDataSource ds = (SQLDataSource) dsm.getPrimaryDataSource();
         Connection conn = null;
 
         try {
-            conn = ds.getConnection();
+            conn = _ds.getConnection();
 
             DatabaseMetaData dmd = conn.getMetaData();
             String proudctName = dmd.getDatabaseProductName();
             String productVersion = dmd.getDatabaseProductVersion();
 
             interpreter = new InterpreterProxy(SQLInterpreterFactory.getInterpreter(proudctName, productVersion));
+
+            final IsolationLevel tmp = _ds instanceof SQLDataSource ? this._ds.getDefaultIsolationLevel() : IsolationLevel.DEFAULT;
+            _defaultIsolationLevel = tmp == IsolationLevel.DEFAULT ? IsolationLevel.valueOf(conn.getTransactionIsolation()) : tmp;
+
         } catch (SQLException e) {
             throw new UncheckedSQLException(AbacusException.getErrorMsg(e), e);
         } finally {
-            closeConnection(ds, conn, null);
+            closeConnection(_ds, conn, null);
         }
     }
 
@@ -199,32 +205,45 @@ public class Executant {
      * @return the string
      */
     public String beginTransaction(IsolationLevel isolationLevel, Map<String, Object> options) {
-        //
-        //        Connection conn = getConnection(null, options);
-        //
-        //        try {
-        //            conn.setAutoCommit(false);
-        //
-        //            if (isolationLevel.intValue() >= 0) {
-        //                conn.setTransactionIsolation(isolationLevel.intValue());
-        //            }
-        //        } catch (SQLException e) { 
-        //            throw new UncheckedSQLException(AbacusException.getErrorMsg(e), e);
-        //        }
-        //
-        //        String id = N.uuid();
-        //        SQLTransaction tran = new SQLTransaction(conn);
-        //        transactionPool.put(id, tran);
-        //
+        N.checkArgNotNull(isolationLevel, "isolationLevel");
 
-        if (isolationLevel == null) {
-            throw new IllegalArgumentException("the specified IsolationLevel is null. ");
+        final IsolationLevel isolation = isolationLevel == IsolationLevel.DEFAULT ? _defaultIsolationLevel : isolationLevel;
+        final boolean forUpdateOnly = EntityManagerUtil.isTransactionForUpdateOnly(options);
+        final String queryWithDataSource = EntityManagerUtil.getQueryWithDataSource(options);
+        final DataSource ds = N.isNullOrEmpty(queryWithDataSource) ? _ds : _dsm.getActiveDataSources().get(queryWithDataSource);
+
+        if (ds == null) {
+            throw new IllegalArgumentException("No active data source found by name: " + queryWithDataSource);
         }
 
-        String id = N.uuid();
-        transactionPool.put(id, new SQLTransaction(id, isolationLevel));
+        SQLTransaction tran = SQLTransaction.getTransaction(ds, CreatedBy.NEW_ENTITY_MANAGER);
 
-        return id;
+        if (tran == null) {
+            Connection conn = null;
+            boolean noException = false;
+
+            try {
+                conn = JdbcUtil.getConnection(ds);
+                tran = new SQLTransaction(ds, conn, isolation, CreatedBy.NEW_ENTITY_MANAGER, true);
+                tran.incrementAndGetRef(isolation, forUpdateOnly);
+
+                noException = true;
+            } catch (SQLException e) {
+                throw new UncheckedSQLException(e);
+            } finally {
+                if (noException == false) {
+                    JdbcUtil.releaseConnection(conn, ds);
+                }
+            }
+
+            logger.info("Create a new SQLTransaction(id={})", tran.id());
+            SQLTransaction.putTransaction(tran);
+        } else {
+            logger.info("Reusing the existing SQLTransaction(id={})", tran.id());
+            tran.incrementAndGetRef(isolation, forUpdateOnly);
+        }
+
+        return tran.id();
     }
 
     /**
@@ -234,7 +253,7 @@ public class Executant {
      * @return the transaction
      */
     public SQLTransaction getTransaction(String transactionId) {
-        SQLTransaction tran = transactionPool.get(transactionId);
+        SQLTransaction tran = SQLTransaction.getTransaction(transactionId);
 
         if (tran == null) {
             throw new InvalidTransactionIdException("No transaction found with transaction id: " + transactionId);
@@ -250,33 +269,19 @@ public class Executant {
      * @param transactionAction the transaction action
      * @param options the options
      */
+    @SuppressWarnings("deprecation")
     public void endTransaction(String transactionId, Action transactionAction, Map<String, Object> options) {
-        SQLTransaction tran = getTransaction(transactionId);
-
-        transactionPool.remove(transactionId);
+        final SQLTransaction tran = getTransaction(transactionId);
 
         // Should never happen.
         if (!(transactionAction == Action.COMMIT || transactionAction == Action.ROLLBACK)) {
             throw new IllegalArgumentException("Unsupported transaction action[" + transactionAction + "]. ");
         }
 
-        // Should never happen.
-        if (tran.status() != Status.ACTIVE) {
-            throw new IllegalStateException("Transaction with id " + transactionId + " is already " + tran.status());
-        }
-
-        if (tran.getConnection() != null) {
-            try {
-                if (Action.COMMIT == transactionAction) {
-                    tran.commit(EntityManagerUtil.isAutoRollbackTransaction(options));
-                } else {
-                    tran.rollback();
-                }
-            } finally {
-                resetConnection(tran.getDataSource(), tran.getConnection());
-
-                closeConnection(tran.getDataSource(), tran.getConnection(), null);
-            }
+        if (transactionAction == Action.COMMIT) {
+            tran.commit();
+        } else {
+            tran.rollback();
         }
     }
 
@@ -432,9 +437,9 @@ public class Executant {
 
         SQLDataSource ds = null;
         if (sqlCommand.isBatch()) {
-            ds = (SQLDataSource) dss.select(dsm, entityName, sqlCommand.getSql(), sqlCommand.getBatchParameters(), options);
+            ds = (SQLDataSource) _dss.select(_dsm, entityName, sqlCommand.getSql(), sqlCommand.getBatchParameters(), options);
         } else {
-            ds = (SQLDataSource) dss.select(dsm, entityName, sqlCommand.getSql(), sqlCommand.getParameters(), options);
+            ds = (SQLDataSource) _dss.select(_dsm, entityName, sqlCommand.getSql(), sqlCommand.getParameters(), options);
         }
 
         if (ds == null) {
@@ -456,7 +461,6 @@ public class Executant {
      */
     private Connection getConnection(SQLDataSource ds, SQLOperationCommand sqlCommand, boolean queryWithHandle, boolean queryInUpdate,
             Map<String, Object> options) {
-        Connection conn = null;
         boolean isQuery = (sqlCommand != null) && (sqlCommand.getOperationType() == OperationType.QUERY);
         boolean isInTransaction = EntityManagerUtil.isInTransaction(options);
 
@@ -465,22 +469,21 @@ public class Executant {
                 throw new IllegalArgumentException("Can't query with 'resultHandle' in transaction.");
             }
 
-            conn = ds.getPersistentConnection();
-        } else {
-            if (isInTransaction) {
-                SQLTransaction tran = getTransaction(options.get(Options.TRANSACTION_ID).toString(), ds);
-                conn = tran.getConnection();
-            } else {
-                if (isQuery && (ds.isQueryWithReadOnlyConnectionByDefault() || EntityManagerUtil.isQueryWithReadOnlyConection(options))
-                        && !(EntityManagerUtil.notQueryWithReadOnlyConection(options) || queryInUpdate)) {
-                    conn = ds.getReadOnlyConnection();
-                } else {
-                    conn = ds.getConnection();
-                }
+            return ds.getPersistentConnection();
+        } else if (isInTransaction) {
+            final SQLTransaction tran = getTransaction(options.get(Options.TRANSACTION_ID).toString(), ds);
+
+            if (isQuery == false || tran.isForUpdateOnly() == false) {
+                return getTransaction(options.get(Options.TRANSACTION_ID).toString(), ds).connection();
             }
         }
 
-        return conn;
+        if (isQuery && (ds.isQueryWithReadOnlyConnectionByDefault() || EntityManagerUtil.isQueryWithReadOnlyConection(options))
+                && !(EntityManagerUtil.notQueryWithReadOnlyConection(options) || queryInUpdate)) {
+            return ds.getReadOnlyConnection();
+        } else {
+            return JdbcUtil.getConnection(ds);
+        }
     }
 
     /**
@@ -492,42 +495,15 @@ public class Executant {
      * @throws UncheckedSQLException the unchecked SQL exception
      */
     private SQLTransaction getTransaction(String transactionId, SQLDataSource ds) throws UncheckedSQLException {
-        SQLTransaction tran = transactionPool.get(transactionId);
+        SQLTransaction tran = SQLTransaction.getTransaction(transactionId);
 
         if (tran == null) {
             throw new InvalidTransactionIdException("No transaction found with id: " + transactionId);
         }
 
-        if (tran.getDataSource() == null) {
-            tran.setDataSource(ds);
-        } else if (!ds.equals(tran.getDataSource())) {
+        if (!ds.equals(tran.dataSource())) {
             throw new IllegalStateException(
                     "Can't started mult-transaction between different data sources with transaction id: " + transactionId + "it's not supported yet");
-        }
-
-        if (tran.getConnection() == null) {
-            Connection conn = ds.getConnection();
-
-            try {
-                conn.setAutoCommit(false);
-
-                if (tran.isolationLevel() == IsolationLevel.DEFAULT) {
-                    if (ds.getDefaultIsolationLevel() == IsolationLevel.DEFAULT) {
-                        // ignore. by default.
-                    } else {
-                        conn.setTransactionIsolation(ds.getDefaultIsolationLevel().intValue());
-                    }
-                } else {
-                    conn.setTransactionIsolation(tran.isolationLevel().intValue());
-                }
-            } catch (SQLException e) {
-                resetConnection(ds, conn);
-                closeConnection(ds, conn, null);
-
-                throw new UncheckedSQLException(AbacusException.getErrorMsg(e), e);
-            }
-
-            tran.setConnection(conn);
         }
 
         return tran;
@@ -765,24 +741,6 @@ public class Executant {
     }
 
     /**
-     * Reset connection.
-     *
-     * @param ds the ds
-     * @param conn the conn
-     */
-    private void resetConnection(SQLDataSource ds, Connection conn) {
-        if (conn != null) {
-            try {
-                conn.setAutoCommit(true);
-                conn.setTransactionIsolation(ds.getDefaultConnectionIsolation());
-            } catch (SQLException e) {
-                // ignore.
-                logger.error("Failed to reset AutoCommit", e);
-            }
-        }
-    }
-
-    /**
      * Close result set.
      *
      * @param rs the rs
@@ -838,14 +796,10 @@ public class Executant {
      * @return true, if successful
      */
     boolean closeConnection(SQLDataSource ds, Connection conn, Map<String, Object> options) {
-        try {
-            if ((conn != null) && !ds.isPersistentConnection(conn) && !EntityManagerUtil.isInTransaction(options)) {
-                conn.close();
+        if ((conn != null) && !ds.isPersistentConnection(conn) && !EntityManagerUtil.isInTransaction(options)) {
+            JdbcUtil.releaseConnection(conn, ds);
 
-                return true;
-            }
-        } catch (SQLException e) {
-            logger.error("Failed to close Connection", e);
+            return true;
         }
 
         return false;
@@ -869,7 +823,7 @@ public class Executant {
      * The Class HandledSQLResult.
      */
     private static class HandledSQLResult extends SQLResult {
-        
+
         /**
          * Instantiates a new handled SQL result.
          *

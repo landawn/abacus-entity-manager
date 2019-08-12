@@ -20,7 +20,7 @@
 
 	<properties resource="abacus-entity-manager.properties" />
 
-	<initializerOnStartup>com.landawn.abacus.impl.MyAbacusInitializer
+	<initializerOnStartup>com.landawn.abacus.impl.MyEntityManagerInitializer
 	</initializerOnStartup>
 
 	<!-- extendDirtyEntityDefinition -->

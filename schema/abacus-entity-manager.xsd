@@ -11,7 +11,7 @@
 	<xsd:complexType name="Abacus">
 		<xsd:sequence>
 			<xsd:element name="properties" type="tns:Properties" />
-			<!-- the full name of the class which must implement com.landawn.abacus.core.AbacusInitializer -->
+			<!-- the full name of the class which must implement com.landawn.abacus.core.EntityManagerInitializer -->
 			<xsd:element name="initializerOnStartup" type="xsd:string" />
 			<xsd:element name="entityManager" type="tns:EntityManager" />
 			<xsd:element name="slog" type="tns:SLog" />

@@ -27,7 +27,6 @@ import com.landawn.abacus.EntityManager;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.EntityCacheConfiguration;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.EntityCacheConfiguration.CustomizedEntityCacheConfiguration;
-import com.landawn.abacus.core.sql.Executant;
 import com.landawn.abacus.dataSource.SQLDataSourceManager;
 import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.logging.Logger;
@@ -78,7 +77,7 @@ public class EntityManagerFactory {
         String initializerOnStartup = abacusConfig.getInitializerOnStartup();
 
         if (N.notNullOrEmpty(initializerOnStartup)) {
-            ((AbacusInitializer) N.newInstance(ClassUtil.forClass(initializerOnStartup))).initialize();
+            ((EntityManagerInitializer) N.newInstance(ClassUtil.forClass(initializerOnStartup))).initialize();
         }
 
         for (EntityManagerConfiguration entityManagerConfig : abacusConfig.getEntityManagerConfigurationList()) {
@@ -415,7 +414,7 @@ public class EntityManagerFactory {
 
             entityManagerEx = new EntityManagerEx<Object>(entityManager);
 
-            newEntityManager = new NewEntityManager(entityManagerEx);
+            newEntityManager = new NewEntityManager(entityManagerEx, dsm);
 
             //            if (dsm == null) {
             //                sqlExecutor = null;

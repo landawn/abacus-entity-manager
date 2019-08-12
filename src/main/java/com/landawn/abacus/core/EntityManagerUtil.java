@@ -1512,6 +1512,19 @@ public final class EntityManagerUtil {
         return (options == null) ? null : (String) options.get(Options.TRANSACTION_ID);
     }
 
+    public static boolean isTransactionForUpdateOnly(final Map<String, Object> options) {
+        return isYes(Options.TRANSACTION_FOR_UPDATE_ONLY, options);
+    }
+
+    /**
+     *
+     * @param options the options
+     * @return the transaction id
+     */
+    public static String getQueryWithDataSource(final Map<String, Object> options) {
+        return (options == null) ? null : (String) options.get(Query.QUERY_WITH_DATA_SOURCE);
+    }
+
     /**
      * Gets the batch size.
      *
@@ -1602,9 +1615,7 @@ public final class EntityManagerUtil {
      * @param resultHandle the result handle
      * @return true, if is gets the by result handle
      */
-    public static boolean isGetByResultHandle(Holder<String> resultHandle)
-
-    {
+    public static boolean isGetByResultHandle(Holder<String> resultHandle) {
         return (resultHandle != null) && (N.notNullOrEmpty(resultHandle.value()));
     }
 

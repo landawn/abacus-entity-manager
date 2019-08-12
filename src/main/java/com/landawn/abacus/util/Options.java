@@ -47,6 +47,11 @@ public final class Options {
     public static final String TRANSACTION_ID = "transactionId";
 
     /**
+     * 
+     */
+    public static final String TRANSACTION_FOR_UPDATE_ONLY = "transactionForUpdateOnly";
+
+    /**
      * This option is set to identify if need to automatically roll back transaction if fail to commit it.
      *  Default value is true.
      */

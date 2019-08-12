@@ -2,7 +2,7 @@
  * Copyright (c) 2015, Haiyang Li. All rights reserved.
  */
 
-package com.landawn.abacus.core.sql;
+package com.landawn.abacus.core;
 
 import java.util.Map;
 import java.util.Set;
@@ -10,9 +10,9 @@ import java.util.Set;
 import org.junit.Test;
 
 import com.landawn.abacus.AbstractEntityManager1Test;
-import com.landawn.abacus.core.sql.command.SQLCommandFactory;
-import com.landawn.abacus.core.sql.command.SQLCondCommand;
-import com.landawn.abacus.core.sql.command.SQLOperationCommand;
+import com.landawn.abacus.core.command.SQLCommandFactory;
+import com.landawn.abacus.core.command.SQLCondCommand;
+import com.landawn.abacus.core.command.SQLOperationCommand;
 import com.landawn.abacus.entity.extendDirty.basic.Account;
 import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.util.N;

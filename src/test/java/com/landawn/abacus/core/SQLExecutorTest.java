@@ -2,7 +2,7 @@
  * Copyright (c) 2015, Haiyang Li. All rights reserved.
  */
 
-package com.landawn.abacus.core.sql;
+package com.landawn.abacus.core;
 
 import java.util.ArrayList;
 import java.util.List;

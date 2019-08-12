@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.landawn.abacus.core.sql;
+package com.landawn.abacus.core;
 
 import java.lang.ref.SoftReference;
 import java.sql.SQLException;
@@ -30,9 +30,9 @@ import com.landawn.abacus.cache.AbstractQueryCache;
 import com.landawn.abacus.cache.Cache;
 import com.landawn.abacus.cache.DataGrid;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.QueryCacheConfiguration;
-import com.landawn.abacus.core.sql.command.Command;
-import com.landawn.abacus.core.sql.command.SQLCommandFactory;
-import com.landawn.abacus.core.sql.command.SQLOperationCommand;
+import com.landawn.abacus.core.command.Command;
+import com.landawn.abacus.core.command.SQLCommandFactory;
+import com.landawn.abacus.core.command.SQLOperationCommand;
 import com.landawn.abacus.exception.UncheckedSQLException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;

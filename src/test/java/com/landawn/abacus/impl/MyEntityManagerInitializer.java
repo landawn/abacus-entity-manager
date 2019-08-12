@@ -4,7 +4,7 @@
 
 package com.landawn.abacus.impl;
 
-import com.landawn.abacus.core.AbacusInitializer;
+import com.landawn.abacus.core.EntityManagerInitializer;
 import com.landawn.abacus.handler.HandlerFactory;
 
 /**
@@ -13,7 +13,7 @@ import com.landawn.abacus.handler.HandlerFactory;
  * 
  * @author Haiyang Li
  */
-public class MyAbacusInitializer implements AbacusInitializer {
+public class MyEntityManagerInitializer implements EntityManagerInitializer {
     @Override
     public void initialize() {
         HandlerFactory.registerHandler("EmptyHandler", EmptyHandler.class);

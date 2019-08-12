@@ -28,7 +28,7 @@ import com.landawn.abacus.annotation.Internal;
 import com.landawn.abacus.cache.CacheZipper;
 import com.landawn.abacus.cache.QueryCache;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.QueryCacheConfiguration;
-import com.landawn.abacus.core.sql.command.Command;
+import com.landawn.abacus.core.command.Command;
 import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
