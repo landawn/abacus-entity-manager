@@ -16,6 +16,7 @@
 			<customizedEntity name="Account">
 				<liveTime>1800000</liveTime>
 				<maxIdleTime>600000</maxIdleTime>
+				<excludedProperties>emailAddress</excludedProperties>
 			</customizedEntity>
 		</entityCache>
 		<entityDefinition>./samples/config/codes.xml</entityDefinition>

@@ -48,6 +48,7 @@ import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options.Query;
+import com.landawn.abacus.util.Seq;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -393,15 +394,15 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         }
 
         String entityName = cachedEntity.entityName();
-        long liveTime = EntityManagerUtil.getEntityCacheLiveTime(entityName, config.getEntityCacheConfiguration(), options);
-        long maxIdleTime = EntityManagerUtil.getEntityCacheMaxIdleTime(entityName, config.getEntityCacheConfiguration(), options);
+        long liveTime = EntityManagerUtil.getEntityCacheLiveTime(entityName, entityManagerConfig.getEntityCacheConfiguration(), options);
+        long maxIdleTime = EntityManagerUtil.getEntityCacheMaxIdleTime(entityName, entityManagerConfig.getEntityCacheConfiguration(), options);
         entityCacheDecorator.put(entityId, cachedEntity, liveTime, maxIdleTime);
 
         // add EntityId cache for unique id query.
         List<String> uidPropNameList = entityDef.getUIDPropertyNameList();
 
         if (N.notNullOrEmpty(uidPropNameList)) {
-            EntityCacheConfiguration ec = config.getEntityCacheConfiguration();
+            EntityCacheConfiguration ec = entityManagerConfig.getEntityCacheConfiguration();
             CustomizedEntityCacheConfiguration ece = (ec == null) ? null : ec.getCustomizedEntityCacheConfiguration(entityName);
 
             MapEntity idMapEntity = null;
@@ -447,6 +448,7 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     @SuppressWarnings({ "unchecked" })
     protected <T> T getEntityFromCache(Class<T> targetClass, EntityDefinition entityDef, EntityId entityId, Collection<String> selectPropNames,
             Map<String, Object> options) {
+        final String entityName = entityDef.getName();
         Object result = null;
         // TODO what to do for distribution
         rwEntityIdLock.lockReadOn(entityId);
@@ -458,7 +460,7 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
                 return null;
             }
 
-            result = N.newEntity(targetClass, entityDef.getName());
+            result = N.newEntity(targetClass, entityName);
 
             if (selectPropNames == null) {
                 selectPropNames = entityDef.getDefaultLoadPropertyNameList();
@@ -502,7 +504,12 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
             }
 
             if (N.notNullOrEmpty(uncachedPropNames)) {
-                MapEntity tmpEntity = getUncachedPropValues(entityId, uncachedPropNames, cachedEntity, options);
+                final CustomizedEntityCacheConfiguration entityCacheConfig = entityManagerConfig.getEntityCacheConfiguration() == null ? null
+                        : entityManagerConfig.getEntityCacheConfiguration().getCustomizedEntityCacheConfiguration(entityName);
+                final boolean areAllExecludedPropNames = entityCacheConfig != null
+                        && Seq.of(uncachedPropNames).allMatch(propName -> entityCacheConfig.isExcludedProperty(propName));
+                final boolean needToUpdateEntityCache = !areAllExecludedPropNames;
+                final MapEntity tmpEntity = getUncachedPropValues(entityId, uncachedPropNames, cachedEntity, options);
 
                 if (tmpEntity == null) {
                     remvoeFromCache(entityDef, entityId);
@@ -519,20 +526,28 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
                         prop = entityDef.getProperty(uncachedPropName);
                         propValue = tmpEntity.get(uncachedPropName);
                         anMapEntity.set(uncachedPropName, propValue);
-                        setCachingPropValue(tmpEntity, cachedEntity, prop, propValue, alwrite, options);
+
+                        if (needToUpdateEntityCache) {
+                            setCachingPropValue(tmpEntity, cachedEntity, prop, propValue, alwrite, options);
+                        }
                     }
                 } else {
                     for (String uncachedPropName : uncachedPropNames) {
                         prop = entityDef.getProperty(uncachedPropName);
                         propValue = tmpEntity.get(uncachedPropName);
                         EntityManagerUtil.setPropValueByMethod(result, prop, propValue);
-                        setCachingPropValue(tmpEntity, cachedEntity, prop, propValue, alwrite, options);
+
+                        if (needToUpdateEntityCache) {
+                            setCachingPropValue(tmpEntity, cachedEntity, prop, propValue, alwrite, options);
+                        }
                     }
                 }
 
-                synchronized (cachedEntity) {
-                    DirtyMarkerUtil.markDirty(cachedEntity, false);
-                    addToCache(entityDef, entityId, cachedEntity, options);
+                if (needToUpdateEntityCache) {
+                    synchronized (cachedEntity) {
+                        DirtyMarkerUtil.markDirty(cachedEntity, false);
+                        addToCache(entityDef, entityId, cachedEntity, options);
+                    }
                 }
             }
 
@@ -893,7 +908,7 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
             Property prop = entityDef.getProperty(b.getPropName());
             String propName = prop == null ? b.getPropName() : prop.getName();
 
-            EntityCacheConfiguration ec = config.getEntityCacheConfiguration();
+            EntityCacheConfiguration ec = entityManagerConfig.getEntityCacheConfiguration();
             CustomizedEntityCacheConfiguration ece = (ec == null) ? null : ec.getCustomizedEntityCacheConfiguration(entityName);
 
             if ((prop != null) && prop.isUID() && ((ece == null) || !ece.isExcludedProperty(propName))) {

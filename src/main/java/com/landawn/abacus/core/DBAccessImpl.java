@@ -101,7 +101,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     private final RefReentrantReadWriteLock queryCacheRefLock = new RefReentrantReadWriteLock();
 
     /** The config. */
-    private final EntityManagerConfiguration config;
+    private final EntityManagerConfiguration entityManagerConfig;
 
     /** The entity def factory. */
     private final EntityDefinitionFactory entityDefFactory;
@@ -121,13 +121,13 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Instantiates a new DB access impl.
      *
-     * @param config the config
+     * @param entityManagerConfig configuration for entity manager.
      * @param entityDefFactory the entity def factory
      * @param executant the executant
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    protected DBAccessImpl(EntityManagerConfiguration config, EntityDefinitionFactory entityDefFactory, Executant executant) {
-        this.config = config;
+    protected DBAccessImpl(EntityManagerConfiguration entityManagerConfig, EntityDefinitionFactory entityDefFactory, Executant executant) {
+        this.entityManagerConfig = entityManagerConfig;
         this.entityDefFactory = entityDefFactory;
         this.executant = executant;
 
@@ -137,7 +137,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
             }
         }
 
-        final QueryCacheConfiguration qcc = config.getQueryCacheConfiguration();
+        final QueryCacheConfiguration qcc = entityManagerConfig.getQueryCacheConfiguration();
 
         dataCridCache = ((qcc == null) || (qcc.getProvider() == null)) ? null : (Cache) CacheFactory.createCache(qcc.getProvider());
 
@@ -890,7 +890,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
                 }
             }
 
-            Options.Cache.Condition cacheCond = getCacheCondition(config.getQueryCacheConfiguration(), options);
+            Options.Cache.Condition cacheCond = getCacheCondition(entityManagerConfig.getQueryCacheConfiguration(), options);
             Options.Cache.Range range = getCacheRange(options);
 
             if (Query.CACHE_RESULT_SYNC.equals(options.get(Query.CACHE_RESULT))) {
@@ -1450,8 +1450,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
      * @return the query cache
      */
     private QueryCache createQueryCache(Map<String, Object> options) {
-        final long liveTime = getQueryCacheLiveTime(config.getQueryCacheConfiguration(), options);
-        final long maxIdleTime = getQueryCacheMaxIdleTime(config.getQueryCacheConfiguration(), options);
+        final long liveTime = getQueryCacheLiveTime(entityManagerConfig.getQueryCacheConfiguration(), options);
+        final long maxIdleTime = getQueryCacheMaxIdleTime(entityManagerConfig.getQueryCacheConfiguration(), options);
 
         return new SQLQueryCache(liveTime, maxIdleTime, dataCridCache);
     }

@@ -1,3 +1,8 @@
+### 0.9.2
+
+* Bug fixes and improvements.
+
+
 ### 0.9.1
 
 * Improve `NewEntityManager.beginTransaction`.

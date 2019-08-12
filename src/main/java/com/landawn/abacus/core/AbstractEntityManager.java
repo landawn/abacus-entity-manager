@@ -50,7 +50,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     protected final String domainName;
 
     /** The config. */
-    protected final EntityManagerConfiguration config;
+    protected final EntityManagerConfiguration entityManagerConfig;
 
     /** The handler list. */
     private final List<Handler<E>> handlerList;
@@ -59,15 +59,15 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
      * Instantiates a new abstract entity manager.
      *
      * @param domainName the domain name
-     * @param config the config
+     * @param entityManagerConfig configuration for entity manager.
      */
-    protected AbstractEntityManager(final String domainName, final EntityManagerConfiguration config) {
+    protected AbstractEntityManager(final String domainName, final EntityManagerConfiguration entityManagerConfig) {
         this.domainName = domainName;
-        this.config = config;
+        this.entityManagerConfig = entityManagerConfig;
 
         handlerList = new ArrayList<Handler<E>>();
 
-        for (String attr : config.getHandlerList()) {
+        for (String attr : entityManagerConfig.getHandlerList()) {
             Handler<E> handler = HandlerFactory.create(this, attr);
             handlerList.add(handler);
         }

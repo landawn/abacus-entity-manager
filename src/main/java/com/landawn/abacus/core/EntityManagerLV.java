@@ -354,7 +354,7 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
         }
 
         String lockCode = getLockCode(options);
-        long timeout = getRecordLockTimeout(options, config.getLockConfiguration());
+        long timeout = getRecordLockTimeout(options, entityManagerConfig.getLockConfiguration());
 
         return xRecordLock.lock(entityId, lockMode, lockCode, timeout);
     }
