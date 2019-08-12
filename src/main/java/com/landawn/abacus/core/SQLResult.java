@@ -54,7 +54,7 @@ import com.landawn.abacus.util.WD;
  */
 @Internal
 public class SQLResult {
-    
+
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(SQLResult.class);
 
@@ -63,19 +63,19 @@ public class SQLResult {
 
     /** The executant. */
     protected final Executant executant;
-    
+
     /** The sql cmd. */
     protected final SQLOperationCommand sqlCmd;
-    
+
     /** The options. */
     protected final Map<String, Object> options;
 
     /** The ds. */
     protected final SQLDataSource ds;
-    
+
     /** The stmt. */
     protected final Statement stmt;
-    
+
     /** The rs. */
     protected final ResultSet rs;
 
@@ -84,10 +84,10 @@ public class SQLResult {
 
     /** The execution time. */
     private final long executionTime;
-    
+
     /** The update count. */
     private final int updateCount;
-    
+
     /** The generated keys. */
     private final List<Object> generatedKeys;
 
@@ -569,13 +569,13 @@ public class SQLResult {
      * The Class ResultInfo.
      */
     private static class ResultInfo {
-        
+
         /** The prop names. */
         final List<String> propNames;
-        
+
         /** The prop indexes. */
         final Map<String, Integer> propIndexes;
-        
+
         /** The prop types. */
         final Type<Object>[] propTypes;
 

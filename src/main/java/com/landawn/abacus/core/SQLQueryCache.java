@@ -55,37 +55,37 @@ import com.landawn.abacus.util.WD;
  */
 @Internal
 public class SQLQueryCache extends AbstractQueryCache {
-    
+
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(SQLQueryCache.class);
 
     /** The Constant WHERE. */
     private static final String WHERE = WD.SPACE + WD.WHERE + WD.SPACE;
-    
+
     /** The Constant WHERE_PARENTHESES_L. */
     private static final String WHERE_PARENTHESES_L = WHERE + WD._PARENTHESES_L;
-    
+
     /** The Constant PARENTHESES_R_AND_PARENTHESES_L. */
     private static final String PARENTHESES_R_AND_PARENTHESES_L = WD.PARENTHESES_R_SPACE + WD.AND + WD.SPACE_PARENTHESES_L;
-    
+
     /** The Constant ASYNC_EXECUTOR. */
     private static final AsyncExecutor ASYNC_EXECUTOR = new AsyncExecutor();
-    
+
     /** The Constant CACHED_DATA_GRID_ID_IN_EXECUTING. */
     private static final Map<String, Object> CACHED_DATA_GRID_ID_IN_EXECUTING = new ConcurrentHashMap<>();
 
     /** The data grid cache. */
     private final Cache<String, DataGrid<Object>> dataGridCache;
-    
+
     /** The data grid cache id. */
     private final String dataGridCacheId;
-    
+
     /** The soft data grid. */
     private SoftReference<DataGrid<Object>> softDataGrid;
-    
+
     /** The executant. */
     private Executant executant;
-    
+
     /** The query cmd. */
     private SQLOperationCommand queryCmd;
 
