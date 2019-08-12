@@ -8,7 +8,7 @@ A general persistent library in Java. It's easy to learn and simple to use with 
 
 * [DBAccess](https://cdn.staticaly.com/gh/landawn/abacus-entity-manager/master/docs/DBAccess_view.html), 
 [Session](https://cdn.staticaly.com/gh/landawn/abacus-entity-manager/master/docs/Session_view.html), 
-[EntityManagerEx](https://cdn.staticaly.com/gh/landawn/abacus-entity-manager/master/docs/EntityManagerEx_view.html), 
+[EntityManager](https://cdn.staticaly.com/gh/landawn/abacus-entity-manager/master/docs/NewEntityManager_view.html), 
 [Mapper](https://cdn.staticaly.com/gh/landawn/abacus-entity-manager/master/docs/Mapper_view.html).
 
 ## Download/Installation & [Changes](https://github.com/landawn/abacus-entity-manager/blob/master/CHANGES.md):
