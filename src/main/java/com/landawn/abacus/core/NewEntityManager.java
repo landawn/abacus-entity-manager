@@ -99,8 +99,11 @@ public final class NewEntityManager {
             Mapper<T, ID> mapper = entityMapperPool.get(entityClass);
 
             if (mapper == null) {
-                mapper = new Mapper<T, ID>(this, entityClass);
+                mapper = new Mapper<T, ID>(this, entityClass, idClass);
                 entityMapperPool.put(entityClass, mapper);
+            } else if (!mapper.idClass.equals(idClass)) {
+                throw new IllegalArgumentException(
+                        "Mapper for entity \"" + mapper.entityName + "\" has already been created with different id class: " + mapper.idClass);
             }
 
             return mapper;
@@ -1434,6 +1437,8 @@ public final class NewEntityManager {
         /** The entity class. */
         final Class<T> entityClass;
 
+        final Class<ID> idClass;
+
         /** The entity name. */
         final String entityName;
 
@@ -1443,9 +1448,10 @@ public final class NewEntityManager {
          * @param nem the em
          * @param entityClass the entity class
          */
-        Mapper(final NewEntityManager nem, final Class<T> entityClass) {
+        Mapper(final NewEntityManager nem, final Class<T> entityClass, final Class<ID> idClass) {
             this.nem = nem;
             this.entityClass = entityClass;
+            this.idClass = idClass;
             this.entityName = EntityManagerUtil.getEntityName(entityClass);
         }
 
