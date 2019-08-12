@@ -28,7 +28,7 @@ public class ResultHandleTest extends AbstractEntityManager1Test {
         List<Account> accounts = addAccount(Account.class, 5);
 
         // --------------------------------
-        Map<String, Object> options = N.asProps(Query.CACHE_RESULT, Query.CACHE_RESULT_SYN, Query.QUERY_FROM_CACHE, true);
+        Map<String, Object> options = N.asProps(Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Query.QUERY_FROM_CACHE, true);
         Holder<String> resultHandle = new Holder<String>();
         ;
         DataSet dataSet = dbAccess.query(Account.__, null, null, resultHandle, options);

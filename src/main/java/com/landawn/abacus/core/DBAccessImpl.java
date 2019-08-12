@@ -893,9 +893,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
             Options.Cache.Condition cacheCond = getCacheCondition(config.getQueryCacheConfiguration(), options);
             Options.Cache.Range range = getCacheRange(options);
 
-            if (Query.CACHE_RESULT_SYN.equals(options.get(Query.CACHE_RESULT))) {
+            if (Query.CACHE_RESULT_SYNC.equals(options.get(Query.CACHE_RESULT))) {
                 queryCache.cacheResult(queryResult, cachePropNames, cacheCond, range);
-            } else if (Query.CACHE_RESULT_ASY.equals(options.get(Query.CACHE_RESULT))) {
+            } else if (Query.CACHE_RESULT_ASYNC.equals(options.get(Query.CACHE_RESULT))) {
                 queryCache.asyncCacheResult(queryResult, cachePropNames, cacheCond, range, closeResult);
                 closeResult = false;
             } else {

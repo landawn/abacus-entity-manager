@@ -44,7 +44,7 @@ public class DBAccessTest extends AbstractEntityManager1Test {
         Account dbAccount = dbAccess.gett(entityId, null, null);
         assertEquals(props.get(Account.FIRST_NAME), dbAccount.getFirstName());
 
-        Map<String, Object> options = N.asProps(Query.CACHE_RESULT, Query.CACHE_RESULT_SYN);
+        Map<String, Object> options = N.asProps(Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC);
         options.put(Cache.UNCACHED_PROP_NAMES, N.asList(Account.FIRST_NAME));
 
         List<Account> dbAccounts = dbAccess.list(Account.__, Account._PNL, CF.eq(Account.ID, dbAccount.getId()), options);

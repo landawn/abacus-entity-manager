@@ -39,7 +39,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
         addAccounts();
 
         Criteria cond = CF.criteria().where(CF.gt(Account.ID, 0)).orderBy(Account.FIRST_NAME);
-        Map<String, Object> options = N.asProps(Query.CACHE_RESULT, Query.CACHE_RESULT_SYN, Query.QUERY_FROM_CACHE, true);
+        Map<String, Object> options = N.asProps(Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Query.QUERY_FROM_CACHE, true);
         DataSet rs = em.query(Account.__, null, cond, options);
         assertEquals(0, getCachedPropNames(rs).size());
         rs = em.query(Account.__, null, cond, options);
@@ -54,7 +54,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
 
     public void test_asyncQueryCache_01() {
         Criteria cond = CF.criteria().where(CF.gt(Account.ID, 0)).limit(0, 100).orderBy(Account.FIRST_NAME);
-        Map<String, Object> options = N.asProps(Query.CACHE_RESULT, Query.CACHE_RESULT_SYN, Query.QUERY_FROM_CACHE, true);
+        Map<String, Object> options = N.asProps(Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Query.QUERY_FROM_CACHE, true);
 
         try {
             em.query(Account.__, null, cond, options);
@@ -66,7 +66,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
     public void test_asyncQueryCache_02() {
         addAccounts();
 
-        Map<String, Object> options = N.asProps(Query.OFFSET, 100, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_ASY);
+        Map<String, Object> options = N.asProps(Query.OFFSET, 100, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_ASYNC);
         DataSet result = em.query(Account.__, null, CF.ge(Account.ID, 100), null, options);
 
         N.sleep(1000);
@@ -100,7 +100,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
     public void testCRUD_zip() {
         addAccounts();
 
-        Map<String, Object> options = N.asProps(Query.OFFSET, 100, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN);
+        Map<String, Object> options = N.asProps(Query.OFFSET, 100, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC);
         DataSet result = em.query(Account.__, null, CF.ge(Account.ID, 100), null, options);
 
         options = N.asProps(Query.OFFSET, 9, Query.COUNT, 80, Query.QUERY_FROM_CACHE, true);
@@ -127,7 +127,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
     public void testCRUD() {
         addAccounts();
 
-        Map<String, Object> options = N.asProps(Query.OFFSET, 100, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN);
+        Map<String, Object> options = N.asProps(Query.OFFSET, 100, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC);
         DataSet result = em.query(Account.__, null, CF.ge(Account.ID, 100), null, options);
 
         options = N.asProps(Query.OFFSET, 9, Query.COUNT, 80, Query.QUERY_FROM_CACHE, true);
@@ -161,7 +161,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
     public void testCRUD1() {
         addAccounts();
 
-        DataSet result = em.query(Account.__, null, CF.ge(Account.ID, 100), null, N.asProps(Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN));
+        DataSet result = em.query(Account.__, null, CF.ge(Account.ID, 100), null, N.asProps(Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC));
 
         result = em.query(Account.__, null, CF.ge(Account.ID, 100), null, N.asProps(Query.OFFSET, 9, Query.COUNT, 80, Query.QUERY_FROM_CACHE, true));
 
@@ -194,7 +194,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
         addAccounts();
 
         DataSet result = em.query(Account.__, null, CF.ge(Account.ID, 100), null,
-                N.asProps(Query.OFFSET, 1000, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN));
+                N.asProps(Query.OFFSET, 1000, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC));
 
         result = em.query(Account.__, null, CF.ge(Account.ID, 100), null, N.asProps(Query.OFFSET, 9, Query.COUNT, 80, Query.QUERY_FROM_CACHE, true));
 
@@ -227,7 +227,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
     public void testCRUD3() {
         addAccounts();
 
-        Map<String, Object> options = N.asProps(Query.COUNT, 0, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN);
+        Map<String, Object> options = N.asProps(Query.COUNT, 0, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC);
 
         List<Object> ids = em.query(Account.__, N.asList(Account.ID), CF.ge(Account.ID, 100)).getColumn(0);
 
@@ -369,7 +369,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
         addAccounts();
 
         DataSet result = em.query(Account.__, null, CF.like(Account.FIRST_NAME, "first%"), null,
-                N.asProps(Query.OFFSET, 100, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN));
+                N.asProps(Query.OFFSET, 100, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC));
 
         result = em.query(Account.__, null, CF.like(Account.FIRST_NAME, "first%"), null,
                 N.asProps(Query.OFFSET, 9, Query.COUNT, 80, Query.QUERY_FROM_CACHE, true));
@@ -404,7 +404,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
     public void testCRUD8() {
         addAccounts();
 
-        Map<String, Object> options = Options.of(Query.OFFSET, 100, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN);
+        Map<String, Object> options = Options.of(Query.OFFSET, 100, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC);
         DataSet result = em.query(Account.__, null, CF.ge(Account.ID, 100), null, options);
 
         options = Options.of(Query.OFFSET, 9, Query.COUNT, 80, Query.QUERY_FROM_CACHE, true);
@@ -446,7 +446,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
     public void testCRUD9() {
         addAccounts();
 
-        Map<String, Object> options = Options.of(Query.OFFSET, 100, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN);
+        Map<String, Object> options = Options.of(Query.OFFSET, 100, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC);
         DataSet result = em.query(Account.__, null, CF.ge(Account.ID, 100), null, options);
 
         options = Options.of(Query.OFFSET, 9, Query.COUNT, 80, Query.QUERY_FROM_CACHE, true);
@@ -493,7 +493,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
         Collection<String> selectPropNames = N.asList(Account.ID, Account.BIRTH_DATE);
 
         DataSet result = em.query(Account.__, selectPropNames, CF.like(Account.FIRST_NAME, "firstN%"), null,
-                N.asProps(Query.OFFSET, 80, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN));
+                N.asProps(Query.OFFSET, 80, Query.COUNT, 1000, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC));
 
         result = em.query(Account.__, selectPropNames, CF.like(Account.FIRST_NAME, "firstN%"), null,
                 N.asProps(Query.OFFSET, 9, Query.COUNT, 1000, Query.QUERY_FROM_CACHE, true));
@@ -533,7 +533,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
                 em.delete(Account.__, cond, null);
                 super.addAccount(Account.class, resultSize);
 
-                Map<String, Object> options = N.asProps(Query.OFFSET, offset, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN, Cache.CACHE_RESULT_CONDITION,
+                Map<String, Object> options = N.asProps(Query.OFFSET, offset, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Cache.CACHE_RESULT_CONDITION,
                         Cache.condition(0, 1000000), Cache.CACHE_RESULT_RANGE, Cache.range(offset, Math.max(resultSize, offset)));
                 DataSet result = em.query(Account.__, null, cond, null, options);
 
@@ -574,11 +574,11 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
                 em.delete(Account.__, cond, null);
                 super.addAccount(Account.class, resultSize);
 
-                Map<String, Object> options = N.asProps(Query.OFFSET, offset, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN, Cache.CACHE_RESULT_CONDITION,
+                Map<String, Object> options = N.asProps(Query.OFFSET, offset, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Cache.CACHE_RESULT_CONDITION,
                         Cache.condition(0, 1000000), Cache.CACHE_RESULT_RANGE, Cache.range(Math.max(0, resultSize - 1), resultSize));
                 DataSet result = em.query(Account.__, null, cond, null, options);
 
-                options = N.asProps(Query.OFFSET, offset, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN, Cache.CACHE_RESULT_CONDITION, Cache.condition(0, 1000000),
+                options = N.asProps(Query.OFFSET, offset, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Cache.CACHE_RESULT_CONDITION, Cache.condition(0, 1000000),
                         Cache.CACHE_RESULT_RANGE, Cache.range(offset, Math.max(resultSize, offset)));
                 result = em.query(Account.__, null, cond, null, options);
 
@@ -619,7 +619,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
                 em.delete(Account.__, cond, null);
                 super.addAccount(Account.class, resultSize);
 
-                Map<String, Object> options = N.asProps(Query.OFFSET, offset, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN, Cache.CACHE_RESULT_CONDITION,
+                Map<String, Object> options = N.asProps(Query.OFFSET, offset, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Cache.CACHE_RESULT_CONDITION,
                         Cache.condition(0, 1000000), Cache.CACHE_RESULT_RANGE, Cache.range(offset + 1, Math.max(resultSize, offset + 1)));
                 DataSet result = em.query(Account.__, null, cond, null, options);
 
@@ -666,7 +666,7 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
                 em.delete(Account.__, cond, null);
                 super.addAccount(Account.class, resultSize);
 
-                Map<String, Object> options = N.asProps(Query.OFFSET, offset, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN, Cache.CACHE_RESULT_CONDITION,
+                Map<String, Object> options = N.asProps(Query.OFFSET, offset, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Cache.CACHE_RESULT_CONDITION,
                         Cache.condition(0, 1000000), Cache.CACHE_RESULT_RANGE, Cache.range(offset, Math.max(resultSize - 1, offset)));
                 DataSet result = em.query(Account.__, null, cond, null, options);
 

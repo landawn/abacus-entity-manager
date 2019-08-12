@@ -399,8 +399,8 @@ public final class Options {
         public static final String REFRESH_CACHE = "refreshCache";
 
         /**
-         * This option identify if cache the query result. If have set {@code CACHE_RESULT_SYN} or
-         * {@code CACHE_RESULT_ASY} for this option, and the result meets the {@code QueryCache.CACHE_RESULT_CONDITION}
+         * This option identify if cache the query result. If have set {@code CACHE_RESULT_SYNC} or
+         * {@code CACHE_RESULT_ASYNC} for this option, and the result meets the {@code QueryCache.CACHE_RESULT_CONDITION}
          * option, will cache the result in the specified {@code CACHE_RESULT_RANGE}.
          * 
          * No result will be cached in transaction.
@@ -410,14 +410,14 @@ public final class Options {
         public static final String CACHE_RESULT = "cacheResult";
 
         /**
-         * Predicate value for {@code CACHE_RESULT_SYN}.
+         * Predicate value for {@code CACHE_RESULT_SYNC}.
          */
-        public static final String CACHE_RESULT_SYN = "cacheResultSyn";
+        public static final String CACHE_RESULT_SYNC = "cacheResultSync";
 
         /**
-         * Predicate value for {@code  CACHE_RESULT_ASY}.
+         * Predicate value for {@code  CACHE_RESULT_ASYNC}.
          */
-        public static final String CACHE_RESULT_ASY = "cacheResultAsy";
+        public static final String CACHE_RESULT_ASYNC = "cacheResultAsync";
 
         /**
          * Field offset.

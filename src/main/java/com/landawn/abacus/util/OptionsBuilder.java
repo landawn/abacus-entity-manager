@@ -284,7 +284,7 @@ public class OptionsBuilder {
      * @return the options builder
      */
     public OptionsBuilder cacheResult(boolean async) {
-        options.put(Options.Query.CACHE_RESULT, async ? Options.Query.CACHE_RESULT_ASY : Options.Query.CACHE_RESULT_SYN);
+        options.put(Options.Query.CACHE_RESULT, async ? Options.Query.CACHE_RESULT_ASYNC : Options.Query.CACHE_RESULT_SYNC);
 
         return this;
     }

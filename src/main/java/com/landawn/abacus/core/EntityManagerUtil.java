@@ -1744,7 +1744,7 @@ public final class EntityManagerUtil {
             Object cacheResult = options.get(Query.CACHE_RESULT);
 
             if (cacheResult != null) {
-                if (Query.CACHE_RESULT_SYN.equals(cacheResult) || Query.CACHE_RESULT_ASY.equals(cacheResult)) {
+                if (Query.CACHE_RESULT_SYNC.equals(cacheResult) || Query.CACHE_RESULT_ASYNC.equals(cacheResult)) {
                     return true;
                 } else if (Boolean.FALSE.equals(cacheResult)) {
                     return false;

@@ -27,38 +27,38 @@ public class OptionsTest extends AbstractTest {
         Map<String, Object> options = Options.create(1, 5);
         assertEquals(N.asProps(Query.OFFSET, 1, Query.COUNT, 5), options);
 
-        options = Options.create(1, 5, true, Query.CACHE_RESULT_SYN);
-        assertEquals(N.asProps(Query.OFFSET, 1, Query.COUNT, 5, Query.QUERY_FROM_CACHE, true, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN), options);
+        options = Options.create(1, 5, true, Query.CACHE_RESULT_SYNC);
+        assertEquals(N.asProps(Query.OFFSET, 1, Query.COUNT, 5, Query.QUERY_FROM_CACHE, true, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC), options);
 
-        options = Options.create(1, 5, Query.CACHE_RESULT_SYN, Cache.range(1, 10, 20, 100), Cache.condition(100));
+        options = Options.create(1, 5, Query.CACHE_RESULT_SYNC, Cache.range(1, 10, 20, 100), Cache.condition(100));
 
-        assertEquals(N.asProps(Query.OFFSET, 1, Query.COUNT, 5, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN, Cache.CACHE_RESULT_RANGE,
+        assertEquals(N.asProps(Query.OFFSET, 1, Query.COUNT, 5, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Cache.CACHE_RESULT_RANGE,
                 Cache.range(1, 10, 20, 100), Cache.CACHE_RESULT_CONDITION, Cache.condition(100)), options);
 
-        options = Options.create(1, 5, true, Query.CACHE_RESULT_SYN, Cache.range(1, 10, 20, 100), Cache.condition(100), "abc123");
+        options = Options.create(1, 5, true, Query.CACHE_RESULT_SYNC, Cache.range(1, 10, 20, 100), Cache.condition(100), "abc123");
 
-        assertEquals(N.asProps(Query.OFFSET, 1, Query.COUNT, 5, Query.QUERY_FROM_CACHE, true, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN,
+        assertEquals(N.asProps(Query.OFFSET, 1, Query.COUNT, 5, Query.QUERY_FROM_CACHE, true, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC,
                 Cache.CACHE_RESULT_RANGE, Cache.range(1, 10, 20, 100), Cache.CACHE_RESULT_CONDITION, Cache.condition(100), Options.TRANSACTION_ID, "abc123"),
                 options);
 
-        options = Options.create(1, 5, Query.CACHE_RESULT_SYN, Cache.range(1, 10, 20, 100), Cache.condition(100), 1000, 100);
+        options = Options.create(1, 5, Query.CACHE_RESULT_SYNC, Cache.range(1, 10, 20, 100), Cache.condition(100), 1000, 100);
 
-        assertEquals(N.asProps(Query.OFFSET, 1, Query.COUNT, 5, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN, Cache.CACHE_RESULT_RANGE,
+        assertEquals(N.asProps(Query.OFFSET, 1, Query.COUNT, 5, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Cache.CACHE_RESULT_RANGE,
                 Cache.range(1, 10, 20, 100), Cache.CACHE_RESULT_CONDITION, Cache.condition(100), Cache.LIVE_TIME, 1000L, Cache.MAX_IDLE_TIME, 100L), options);
 
-        options = Options.create(1, 5, true, Query.CACHE_RESULT_SYN, Cache.range(1, 10, 20, 100), Cache.condition(100), 1000, 100, "abc123");
+        options = Options.create(1, 5, true, Query.CACHE_RESULT_SYNC, Cache.range(1, 10, 20, 100), Cache.condition(100), 1000, 100, "abc123");
 
-        assertEquals(N.asProps(Query.OFFSET, 1, Query.COUNT, 5, Query.QUERY_FROM_CACHE, true, Query.CACHE_RESULT, Query.CACHE_RESULT_SYN,
+        assertEquals(N.asProps(Query.OFFSET, 1, Query.COUNT, 5, Query.QUERY_FROM_CACHE, true, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC,
                 Cache.CACHE_RESULT_RANGE, Cache.range(1, 10, 20, 100), Cache.CACHE_RESULT_CONDITION, Cache.condition(100), Cache.LIVE_TIME, 1000L,
                 Cache.MAX_IDLE_TIME, 100L, Options.TRANSACTION_ID, "abc123"), options);
 
-        options = Options.create(Query.CACHE_RESULT_SYN, Cache.range(1, 10, 20, 100), Cache.condition(100), 1000, 100);
+        options = Options.create(Query.CACHE_RESULT_SYNC, Cache.range(1, 10, 20, 100), Cache.condition(100), 1000, 100);
 
-        assertEquals(N.asProps(Query.CACHE_RESULT, Query.CACHE_RESULT_SYN, Cache.CACHE_RESULT_RANGE, Cache.range(1, 10, 20, 100), Cache.CACHE_RESULT_CONDITION,
+        assertEquals(N.asProps(Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Cache.CACHE_RESULT_RANGE, Cache.range(1, 10, 20, 100), Cache.CACHE_RESULT_CONDITION,
                 Cache.condition(100), Cache.LIVE_TIME, 1000L, Cache.MAX_IDLE_TIME, 100L), options);
 
-        options = Options.create(Query.CACHE_RESULT_SYN, Cache.range(1, 10, 20, 100), Cache.condition(100));
-        assertEquals(N.asProps(Query.CACHE_RESULT, Query.CACHE_RESULT_SYN, Cache.CACHE_RESULT_RANGE, Cache.range(1, 10, 20, 100), Cache.CACHE_RESULT_CONDITION,
+        options = Options.create(Query.CACHE_RESULT_SYNC, Cache.range(1, 10, 20, 100), Cache.condition(100));
+        assertEquals(N.asProps(Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Cache.CACHE_RESULT_RANGE, Cache.range(1, 10, 20, 100), Cache.CACHE_RESULT_CONDITION,
                 Cache.condition(100)), options);
     }
 
