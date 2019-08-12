@@ -26,7 +26,7 @@ import com.landawn.abacus.annotation.Internal;
  * @since 0.8
  */
 @Internal
-public enum Mode {
+enum Mode {
     /**
      * Field basic.
      */

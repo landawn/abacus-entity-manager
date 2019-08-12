@@ -47,7 +47,7 @@ public final class Options {
     public static final String TRANSACTION_ID = "transactionId";
 
     /**
-     * 
+     * Type is boolean.
      */
     public static final String TRANSACTION_FOR_UPDATE_ONLY = "transactionForUpdateOnly";
 

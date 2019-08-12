@@ -54,7 +54,7 @@ import com.landawn.abacus.util.WD;
  * @since 0.8
  */
 @Internal
-public class SQLQueryCache extends AbstractQueryCache {
+ class SQLQueryCache extends AbstractQueryCache {
 
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(SQLQueryCache.class);
