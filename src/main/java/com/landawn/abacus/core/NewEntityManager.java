@@ -2208,7 +2208,7 @@ public final class NewEntityManager {
          * @param ids the ids
          * @return the int
          */
-        public int updateAll(final Map<String, Object> props, final List<? extends ID> ids) {
+        public int updateAll(final Map<String, Object> props, final Collection<? extends ID> ids) {
             return nem.updateAll(props, createEntityIds(ids));
         }
 
@@ -2220,7 +2220,7 @@ public final class NewEntityManager {
          * @param options the options
          * @return the int
          */
-        public int updateAll(final Map<String, Object> props, final List<? extends ID> ids, final Map<String, Object> options) {
+        public int updateAll(final Map<String, Object> props, final Collection<? extends ID> ids, final Map<String, Object> options) {
             return nem.updateAll(props, createEntityIds(ids), options);
         }
 
@@ -2293,7 +2293,7 @@ public final class NewEntityManager {
          * @param entityIds the entity ids
          * @return the int
          */
-        public int deleteByIds(final List<? extends ID> entityIds) {
+        public int deleteByIds(final Collection<? extends ID> entityIds) {
             return nem.deleteAll(createEntityIds(entityIds));
         }
 
@@ -2304,7 +2304,7 @@ public final class NewEntityManager {
          * @param options the options
          * @return the int
          */
-        public int deleteByIds(final List<? extends ID> entityIds, final Map<String, Object> options) {
+        public int deleteByIds(final Collection<? extends ID> entityIds, final Map<String, Object> options) {
             return nem.deleteAll(createEntityIds(entityIds), options);
         }
 
@@ -2314,7 +2314,7 @@ public final class NewEntityManager {
          * @param ids the ids
          * @return the list
          */
-        List<EntityId> createEntityIds(final List<? extends ID> ids) {
+        List<EntityId> createEntityIds(final Collection<? extends ID> ids) {
             final List<EntityId> entityIds = new ArrayList<>();
 
             if (N.notNullOrEmpty(ids)) {
