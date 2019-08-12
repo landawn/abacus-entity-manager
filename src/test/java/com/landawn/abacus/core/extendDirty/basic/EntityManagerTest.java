@@ -85,7 +85,7 @@ public class EntityManagerTest extends AbstractEntityManager1Test {
 
     @Test
     public void testCRUDByMapper() {
-        final Mapper<Account> accountMapper = newEntityManager.mapper(Account.class);
+        final Mapper<Account, Number> accountMapper = newEntityManager.mapper(Account.class, Number.class);
 
         Account account = accountMapper.gett(1);
         N.println(account);

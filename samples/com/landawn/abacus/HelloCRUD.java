@@ -38,7 +38,7 @@ public class HelloCRUD extends TestCase {
     static final DBAccess dbAccess = emf.getDBAccess(CodesPNL._DN);
     static final EntityManagerEx<Object> em = emf.getEntityManager(CodesPNL._DN);
     static final NewEntityManager nem = emf.getNewEntityManager(CodesPNL._DN);
-    static final Mapper<Account> accountMapper = emf.getNewEntityManager(CodesPNL._DN).mapper(Account.class);
+    static final Mapper<Account, Long> accountMapper = emf.getNewEntityManager(CodesPNL._DN).mapper(Account.class, long.class);
     static final DataSource ds;
 
     static {
@@ -112,7 +112,7 @@ public class HelloCRUD extends TestCase {
 
     @Test
     public void test_crud_by_mapper() {
-        Account account = accountMapper.gett(1);
+        Account account = accountMapper.gett(1L);
         N.println(account);
         account = new Account();
         account.setFirstName("firstName...................");
@@ -127,7 +127,7 @@ public class HelloCRUD extends TestCase {
         account = accountMapper.gett(id, N.asList(Account.FIRST_NAME, Account.LAST_NAME));
         N.println(account);
         accountMapper.delete(account);
-        assertNull(accountMapper.gett(EntityId.of(Account.ID, id)));
+        assertNull(accountMapper.gett(id));
     }
 
     @Test
