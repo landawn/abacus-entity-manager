@@ -210,7 +210,7 @@ public class Executant {
         final IsolationLevel isolation = isolationLevel == IsolationLevel.DEFAULT ? _defaultIsolationLevel : isolationLevel;
         final boolean forUpdateOnly = EntityManagerUtil.isTransactionForUpdateOnly(options);
         final String queryWithDataSource = EntityManagerUtil.getQueryWithDataSource(options);
-        final DataSource ds = N.isNullOrEmpty(queryWithDataSource) ? _ds : _dsm.getActiveDataSources().get(queryWithDataSource);
+        final DataSource ds = N.isNullOrEmpty(queryWithDataSource) ? _ds : _dsm.getActiveDataSource(queryWithDataSource);
 
         if (ds == null) {
             throw new IllegalArgumentException("No active data source found by name: " + queryWithDataSource);

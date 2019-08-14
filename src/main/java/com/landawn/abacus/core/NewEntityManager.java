@@ -1409,7 +1409,7 @@ public final class NewEntityManager {
     Map<String, Object> checkOptions(final Map<String, Object> options) {
         if (!EntityManagerUtil.isInTransaction(options)) {
             final String queryWithDataSource = EntityManagerUtil.getQueryWithDataSource(options);
-            final DataSource ds = N.isNullOrEmpty(queryWithDataSource) ? _ds : _dsm.getActiveDataSources().get(queryWithDataSource);
+            final DataSource ds = N.isNullOrEmpty(queryWithDataSource) ? _ds : _dsm.getActiveDataSource(queryWithDataSource);
             final SQLTransaction tran = SQLTransaction.getTransaction(ds, CreatedBy.NEW_ENTITY_MANAGER);
 
             if (tran != null) {
