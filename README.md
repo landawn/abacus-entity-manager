@@ -18,7 +18,7 @@ A general persistent library in Java. It's easy to learn and simple to use with 
 * Gradle:
 ```gradle
 // JDK 1.8 or above:
-compile 'com.landawn:abacus-entity-manager:0.9.2'
+compile 'com.landawn:abacus-entity-manager:0.9.3'
 ```
 
 ## Also See: [abacus-util](https://github.com/landawn/abacus-util).

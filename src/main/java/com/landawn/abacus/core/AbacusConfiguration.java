@@ -554,7 +554,7 @@ public final class AbacusConfiguration {
 
                 String attr = getAttribute(RECORD_LOCK_TIMEOUT);
 
-                recordLockTimeout = (attr == null) ? DEFAULT_RECORD_LOCK_TIMEOUT : Configuration.readTimeValue(attr);
+                recordLockTimeout = (attr == null) ? DEFAULT_RECORD_LOCK_TIMEOUT : Configuration.readTimeInMillis(attr);
             }
 
             /**
@@ -681,13 +681,13 @@ public final class AbacusConfiguration {
                 this.capacity = (attr == null) ? defaultCapacity : N.parseInt(attr);
 
                 attr = getAttribute(EVICT_DELAY);
-                this.evictDelay = (attr == null) ? defaultEvictDelay : Configuration.readTimeValue(attr);
+                this.evictDelay = (attr == null) ? defaultEvictDelay : Configuration.readTimeInMillis(attr);
 
                 attr = getAttribute(LIVE_TIME);
-                this.liveTime = (attr == null) ? defaultLiveTime : Configuration.readTimeValue(attr);
+                this.liveTime = (attr == null) ? defaultLiveTime : Configuration.readTimeInMillis(attr);
 
                 attr = getAttribute(MAX_IDLE_TIME);
-                this.maxIdleTime = (attr == null) ? defaultMaxIdleTime : Configuration.readTimeValue(attr);
+                this.maxIdleTime = (attr == null) ? defaultMaxIdleTime : Configuration.readTimeInMillis(attr);
             }
 
             /**
@@ -937,7 +937,7 @@ public final class AbacusConfiguration {
                         }
                     }
 
-                    liveTime = (attr == null) ? DEFAULT_LIVE_TIME : Configuration.readTimeValue(attr);
+                    liveTime = (attr == null) ? DEFAULT_LIVE_TIME : Configuration.readTimeInMillis(attr);
 
                     attr = getAttribute(MAX_IDLE_TIME);
 
@@ -950,7 +950,7 @@ public final class AbacusConfiguration {
                         }
                     }
 
-                    maxIdleTime = (attr == null) ? DEFAULT_MAX_IDLE_TIME : Configuration.readTimeValue(attr);
+                    maxIdleTime = (attr == null) ? DEFAULT_MAX_IDLE_TIME : Configuration.readTimeInMillis(attr);
 
                     final String entityNamePrefix = entityName + ".";
 
@@ -1153,7 +1153,7 @@ public final class AbacusConfiguration {
                 zipCache = (attr == null) ? DEFAULT_ZIP_CACHE : Boolean.valueOf(attr);
 
                 attr = getAttribute(MAX_CHECK_QUERY_CACHE_TIME);
-                maxCheckCacheTime = (attr == null) ? DEFAULT_MAX_CHECK_QUERY_CACHE_TIME : Configuration.readTimeValue(attr);
+                maxCheckCacheTime = (attr == null) ? DEFAULT_MAX_CHECK_QUERY_CACHE_TIME : Configuration.readTimeInMillis(attr);
 
                 attr = getAttribute(MIN_CHECK_QUERY_CACHE_SIZE);
                 minCheckCacheSize = (attr == null) ? DEFAULT_MIN_CHECK_QUERY_CACHE_SIZE : N.parseInt(attr);
@@ -1280,7 +1280,7 @@ public final class AbacusConfiguration {
                     maxCount = (attr == null) ? DEFAULT_MAX_COUNT : N.parseInt(attr);
 
                     attr = getAttribute(MIN_QUERY_TIME);
-                    minQueryTime = (attr == null) ? DEFAULT_MIN_QUERY_TIME : Configuration.readTimeValue(attr);
+                    minQueryTime = (attr == null) ? DEFAULT_MIN_QUERY_TIME : Configuration.readTimeInMillis(attr);
                 }
 
                 /**
@@ -1390,10 +1390,10 @@ public final class AbacusConfiguration {
                 maxConnection = N.isNullOrEmpty(attr) ? DEFAULT_MAX_CONNECTION : N.parseInt(attr);
 
                 attr = getAttribute(CONNECTION_TIMEOUT);
-                connTimeout = N.isNullOrEmpty(attr) ? DEFAULT_CONNECTION_TIMEOUT : (int) Configuration.readTimeValue(attr);
+                connTimeout = N.isNullOrEmpty(attr) ? DEFAULT_CONNECTION_TIMEOUT : (int) Configuration.readTimeInMillis(attr);
 
                 attr = getAttribute(READ_TIMEOUT);
-                readTimeout = N.isNullOrEmpty(attr) ? DEFAULT_READ_TIMEOUT : (int) Configuration.readTimeValue(attr);
+                readTimeout = N.isNullOrEmpty(attr) ? DEFAULT_READ_TIMEOUT : (int) Configuration.readTimeInMillis(attr);
 
                 attr = getAttribute(CONTENT_FORMAT);
                 contentFormat = N.isNullOrEmpty(attr) ? ContentFormat.XML : ContentFormat.valueOf(attr.toUpperCase());

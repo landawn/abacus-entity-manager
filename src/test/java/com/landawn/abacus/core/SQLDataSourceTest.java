@@ -4,10 +4,10 @@
 
 package com.landawn.abacus.core;
 
-import static com.landawn.abacus.dataSource.DataSourceConfiguration.C3P0;
-import static com.landawn.abacus.dataSource.DataSourceConfiguration.DBCP;
+import static com.landawn.abacus.dataSource.DataSourceConfiguration.DBCP2;
 import static com.landawn.abacus.dataSource.DataSourceConfiguration.DRIVER;
 import static com.landawn.abacus.dataSource.DataSourceConfiguration.EVICT_DELAY;
+import static com.landawn.abacus.dataSource.DataSourceConfiguration.HIKARI_CP;
 import static com.landawn.abacus.dataSource.DataSourceConfiguration.INITIAL_SIZE;
 import static com.landawn.abacus.dataSource.DataSourceConfiguration.JNDI_CONTEXT_FACTORY;
 import static com.landawn.abacus.dataSource.DataSourceConfiguration.JNDI_NAME;
@@ -205,7 +205,7 @@ public class SQLDataSourceTest extends AbstractTest {
     }
 
     @Test
-    public void test_dbcp() throws Exception {
+    public void test_dbcp2() throws Exception {
         Map<String, String> props = new HashMap<>();
         props.put(DRIVER, driver);
         props.put(URL, url);
@@ -224,7 +224,7 @@ public class SQLDataSourceTest extends AbstractTest {
         props.put(TEST_ON_RETURN, "true");
         props.put(SQL_LOG, "false");
         props.put(PERF_LOG, "3000");
-        props.put(PROVIDER, DBCP);
+        props.put(PROVIDER, DBCP2);
 
         SQLDataSource dataSource = new SQLDataSource(props);
 
@@ -310,7 +310,7 @@ public class SQLDataSourceTest extends AbstractTest {
     }
 
     @Test
-    public void test_c3p0() throws Exception {
+    public void test_HikariCP0() throws Exception {
         Map<String, String> props = new HashMap<>();
         props.put(DRIVER, driver);
         props.put(URL, url);
@@ -330,7 +330,7 @@ public class SQLDataSourceTest extends AbstractTest {
         props.put(TEST_ON_RETURN, "true");
         props.put(SQL_LOG, "false");
         props.put(PERF_LOG, "3000");
-        props.put(PROVIDER, C3P0);
+        props.put(PROVIDER, HIKARI_CP);
 
         SQLDataSource dataSource = new SQLDataSource(props);
 
@@ -348,7 +348,7 @@ public class SQLDataSourceTest extends AbstractTest {
         N.println(dataSource.getProperties());
 
         N.println(dataSource.getMaxActive());
-        N.println(dataSource.getCurrentActive());
+        // N.println(dataSource.getCurrentActive());
 
         Field field = SQLDataSource.class.getDeclaredField("connectionManager");
         field.setAccessible(true);
