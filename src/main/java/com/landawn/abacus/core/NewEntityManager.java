@@ -29,8 +29,11 @@ import com.landawn.abacus.IsolationLevel;
 import com.landawn.abacus.condition.Condition;
 import com.landawn.abacus.core.SQLTransaction.CreatedBy;
 import com.landawn.abacus.exception.DuplicatedResultException;
+import com.landawn.abacus.metadata.EntityDefinition;
+import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
+import com.landawn.abacus.util.Seq;
 import com.landawn.abacus.util.u.Holder;
 import com.landawn.abacus.util.u.Nullable;
 import com.landawn.abacus.util.u.Optional;
@@ -94,12 +97,14 @@ public final class NewEntityManager {
      * @param idClass the id class
      * @return the mapper
      */
+    @SuppressWarnings("deprecation")
     public <T, ID> Mapper<T, ID> mapper(final Class<T> entityClass, final Class<ID> idClass) {
         synchronized (entityMapperPool) {
             Mapper<T, ID> mapper = entityMapperPool.get(entityClass);
 
             if (mapper == null) {
-                mapper = new Mapper<T, ID>(this, entityClass, idClass);
+                mapper = new Mapper<T, ID>(this, entityClass, idClass,
+                        em.getEntityDefinitionFactory().getDefinition(EntityManagerUtil.getEntityName(entityClass)));
                 entityMapperPool.put(entityClass, mapper);
             } else if (!mapper.idClass.equals(idClass)) {
                 throw new IllegalArgumentException(
@@ -1396,8 +1401,27 @@ public final class NewEntityManager {
      * @param id the id
      * @return the entity id
      */
+    @SuppressWarnings("deprecation")
     EntityId createEntityId(final Class<?> entityClass, final Object id) {
-        return em.createEntityId(EntityManagerUtil.getEntityName(entityClass), id);
+        final String entityName = EntityManagerUtil.getEntityName(entityClass);
+
+        if (id instanceof EntityId) {
+            final EntityId entityId = (EntityId) id;
+
+            if (entityName.equals(entityId.entityName())) {
+                return entityId;
+            } else {
+                final Seid newEntityId = Seid.of(entityName);
+
+                for (String keyName : entityId.keySet()) {
+                    newEntityId.set(keyName, entityId.get(keyName));
+                }
+
+                return newEntityId;
+            }
+        } else {
+            return em.createEntityId(EntityManagerUtil.getEntityName(entityClass), id);
+        }
     }
 
     /**
@@ -1442,17 +1466,40 @@ public final class NewEntityManager {
         /** The entity name. */
         final String entityName;
 
+        final EntityDefinition entityDef;
+
+        final boolean isEntityId;
+        final boolean isVoidId;
+        final String idPropName;
+
         /**
          * Instantiates a new mapper.
          *
          * @param nem the em
          * @param entityClass the entity class
          */
-        Mapper(final NewEntityManager nem, final Class<T> entityClass, final Class<ID> idClass) {
+        Mapper(final NewEntityManager nem, final Class<T> entityClass, final Class<ID> idClass, final EntityDefinition entityDef) {
             this.nem = nem;
             this.entityClass = entityClass;
             this.idClass = idClass;
             this.entityName = EntityManagerUtil.getEntityName(entityClass);
+            this.entityDef = entityDef;
+            this.isEntityId = idClass.equals(EntityId.class);
+            this.isVoidId = idClass.equals(Void.class);
+
+            final List<Property> idPropList = entityDef.getIdPropertyList();
+
+            if (N.isNullOrEmpty(idPropList)) {
+                if (!(idClass.equals(Void.class) || idClass.equals(EntityId.class))) {
+                    throw new IllegalArgumentException("Id class only can be Void or EntityId class for entity with no id properties");
+                }
+            } else if (idPropList.size() > 1) {
+                if (!idClass.equals(EntityId.class)) {
+                    throw new IllegalArgumentException("Id class only can be EntityId class for entity with two or more id properties");
+                }
+            }
+
+            this.idPropName = N.isNullOrEmpty(idPropList) ? null : idPropList.get(0).getName();
         }
 
         /**
@@ -2083,8 +2130,8 @@ public final class NewEntityManager {
          * @param entity the entity
          * @return the entity id
          */
-        public EntityId add(final T entity) {
-            return nem.add(entity);
+        public ID add(final T entity) {
+            return add(entity, null);
         }
 
         /**
@@ -2094,8 +2141,16 @@ public final class NewEntityManager {
          * @param options the options
          * @return the entity id
          */
-        public EntityId add(final T entity, final Map<String, Object> options) {
-            return nem.add(entity, options);
+        public ID add(final T entity, final Map<String, Object> options) {
+            final EntityId entityId = nem.add(entity, options);
+
+            if (isEntityId) {
+                return (ID) entityId;
+            } else if (isVoidId) {
+                return null;
+            } else {
+                return entityId.get(idClass, idPropName);
+            }
         }
 
         /**
@@ -2104,8 +2159,8 @@ public final class NewEntityManager {
          * @param entities the entities
          * @return the list
          */
-        public List<EntityId> addAll(final Collection<? extends T> entities) {
-            return nem.addAll(entities);
+        public List<ID> addAll(final Collection<? extends T> entities) {
+            return addAll(entities, null);
         }
 
         /**
@@ -2115,8 +2170,16 @@ public final class NewEntityManager {
          * @param options the options
          * @return the list
          */
-        public List<EntityId> addAll(final Collection<? extends T> entities, final Map<String, Object> options) {
-            return nem.addAll(entities, options);
+        public List<ID> addAll(final Collection<? extends T> entities, final Map<String, Object> options) {
+            List<EntityId> entityIds = nem.addAll(entities, options);
+
+            if (isEntityId) {
+                return (List<ID>) entityIds;
+            } else if (isVoidId) {
+                return Seq.of(entityIds).map(entityId -> null);
+            } else {
+                return Seq.of(entityIds).map(entityId -> entityId.get(idClass, idPropName));
+            }
         }
 
         /**
@@ -2321,15 +2384,23 @@ public final class NewEntityManager {
          * @return the list
          */
         List<EntityId> createEntityIds(final Collection<? extends ID> ids) {
-            final List<EntityId> entityIds = new ArrayList<>();
-
-            if (N.notNullOrEmpty(ids)) {
-                for (ID id : ids) {
-                    entityIds.add(nem.createEntityId(entityClass, id));
+            if (isEntityId) {
+                if (ids instanceof List) {
+                    return (List<EntityId>) ids;
+                } else {
+                    return new ArrayList<EntityId>((Collection<EntityId>) ids);
                 }
-            }
+            } else {
+                final List<EntityId> entityIds = new ArrayList<>(ids.size());
 
-            return entityIds;
+                if (N.notNullOrEmpty(ids)) {
+                    for (ID id : ids) {
+                        entityIds.add(nem.createEntityId(entityClass, id));
+                    }
+                }
+
+                return entityIds;
+            }
         }
     }
 }

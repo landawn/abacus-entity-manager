@@ -36,6 +36,7 @@ import junit.framework.TestCase;
 public class HelloCRUD extends TestCase {
     static final EntityManagerFactory emf = EntityManagerFactory.getInstance("./samples/config/abacus-entity-manager.xml");
     static final DBAccess dbAccess = emf.getDBAccess(CodesPNL._DN);
+    @SuppressWarnings("deprecation")
     static final EntityManagerEx<Object> em = emf.getEntityManager(CodesPNL._DN);
     static final NewEntityManager nem = emf.getNewEntityManager(CodesPNL._DN);
     static final Mapper<Account, Long> accountMapper = emf.getNewEntityManager(CodesPNL._DN).mapper(Account.class, long.class);
@@ -118,7 +119,7 @@ public class HelloCRUD extends TestCase {
         account.setFirstName("firstName...................");
         account.setLastName("lastName...................");
         account.setEmailAddress("abc@email.com");
-        long id = accountMapper.add(account).get(Account.ID);
+        long id = accountMapper.add(account);
 
         account = accountMapper.gett(id);
 

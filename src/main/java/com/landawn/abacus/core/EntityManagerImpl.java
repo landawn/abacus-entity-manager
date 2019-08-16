@@ -675,7 +675,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
                 InsertPropsListView insertPropsListView = parseInsertPropsList(entityDef, propsList, true);
                 propsList = insertPropsListView.writePropsList;
 
-                entityIds = dbAccess.add(entityName, propsList, true, options);
+                entityIds = dbAccess.addAll(entityName, propsList, true, options);
 
                 Map<Property, List<PropEntityProps>> propEntitiesList = insertPropsListView.propEntityPropsList;
                 Map<Property, List<BiEntityProps>> propBiEntityPropsList = insertPropsListView.propBiEntityPropsList;

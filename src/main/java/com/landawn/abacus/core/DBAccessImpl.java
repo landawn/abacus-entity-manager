@@ -323,7 +323,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
      */
     @Override
     public List<EntityId> addAll(String entityName, List<Map<String, Object>> propsList, Map<String, Object> options) {
-        return add(entityName, propsList, false, options);
+        return addAll(entityName, propsList, false, options);
     }
 
     /**
@@ -335,7 +335,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
      * @param options the options
      * @return the list
      */
-    List<EntityId> add(String entityName, List<Map<String, Object>> propsList, boolean isPropChecked, Map<String, Object> options) {
+    List<EntityId> addAll(String entityName, List<Map<String, Object>> propsList, boolean isPropChecked, Map<String, Object> options) {
         final EntityDefinition entityDef = checkEntityName(entityName);
 
         checkPropsList(propsList);
