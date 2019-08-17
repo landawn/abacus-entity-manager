@@ -73,6 +73,7 @@ import com.landawn.abacus.metadata.EntityDefinitionFactory;
 import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.pool.KeyedObjectPool;
 import com.landawn.abacus.pool.PoolFactory;
+import com.landawn.abacus.util.ExceptionUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
 import com.landawn.abacus.util.Options.Query;
@@ -375,7 +376,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
                             endTransaction(transactionId, Action.ROLLBACK, null);
                         } catch (Exception e) {
                             // ignore
-                            logger.error("Failed to roll back with transaction id: " + transactionId + ". " + AbacusException.getErrorMsg(e), e);
+                            logger.error("Failed to roll back with transaction id: " + transactionId + ". " + ExceptionUtil.getMessage(e), e);
                         }
                     }
                 }

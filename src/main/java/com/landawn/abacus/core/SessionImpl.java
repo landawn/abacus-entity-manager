@@ -32,9 +32,9 @@ import com.landawn.abacus.Transaction;
 import com.landawn.abacus.Transaction.Action;
 import com.landawn.abacus.Transaction.Status;
 import com.landawn.abacus.condition.Condition;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
+import com.landawn.abacus.util.ExceptionUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.OperationType;
 import com.landawn.abacus.util.Options;
@@ -414,7 +414,7 @@ final class SessionImpl<E> implements Session<E> {
                         entityManager.endTransaction(transactionId, Action.ROLLBACK, null);
                     } catch (Exception e) {
                         // ignore
-                        logger.error("Failed to roll back with transaction id: " + transactionId + ". " + AbacusException.getErrorMsg(e), e);
+                        logger.error("Failed to roll back with transaction id: " + transactionId + ". " + ExceptionUtil.getMessage(e), e);
                     }
                 }
             }

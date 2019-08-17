@@ -29,11 +29,11 @@ import com.landawn.abacus.cache.CacheZipper;
 import com.landawn.abacus.cache.QueryCache;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.QueryCacheConfiguration;
 import com.landawn.abacus.core.command.Command;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.pool.EvictionPolicy;
 import com.landawn.abacus.pool.GenericKeyedObjectPool;
+import com.landawn.abacus.util.ExceptionUtil;
 import com.landawn.abacus.util.IOUtil;
 import com.landawn.abacus.util.MoreExecutors;
 import com.landawn.abacus.util.N;
@@ -101,7 +101,7 @@ class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, 
                         // ignore
 
                         if (logger.isWarnEnabled()) {
-                            logger.warn(AbacusException.getErrorMsg(e));
+                            logger.warn(ExceptionUtil.getMessage(e));
                         }
                     }
                 }

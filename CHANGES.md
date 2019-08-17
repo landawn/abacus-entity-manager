@@ -1,3 +1,8 @@
+### 0.9.4
+
+* Improve `NewEntityManager.Mapper`.
+
+
 ### 0.9.3
 
 * Bug fixes and improvements.

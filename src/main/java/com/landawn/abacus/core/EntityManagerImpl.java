@@ -63,7 +63,6 @@ import com.landawn.abacus.condition.Or;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration;
 import com.landawn.abacus.core.command.Command;
 import com.landawn.abacus.core.command.SQLCommand;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.exception.DuplicatedResultException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
@@ -73,6 +72,7 @@ import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.metadata.EntityDefinitionFactory;
 import com.landawn.abacus.metadata.OnDeleteAction;
 import com.landawn.abacus.metadata.Property;
+import com.landawn.abacus.util.ExceptionUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.OperationType;
 import com.landawn.abacus.util.Options;
@@ -1735,7 +1735,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
                 endTransaction(transactionId, Action.ROLLBACK, null);
             } catch (Exception e) {
                 // ignore
-                logger.error("Failed to roll back with transaction id: " + transactionId + ". " + AbacusException.getErrorMsg(e), e);
+                logger.error("Failed to roll back with transaction id: " + transactionId + ". " + ExceptionUtil.getMessage(e), e);
             } finally {
                 options.remove(Options.TRANSACTION_ID);
             }

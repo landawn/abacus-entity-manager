@@ -40,13 +40,13 @@ import com.landawn.abacus.core.interpreter.Interpreter;
 import com.landawn.abacus.core.interpreter.InterpreterProxy;
 import com.landawn.abacus.core.interpreter.SQLInterpreterFactory;
 import com.landawn.abacus.dataSource.SQLDataSource;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.exception.InvalidTransactionIdException;
 import com.landawn.abacus.exception.UncheckedSQLException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.type.Type;
 import com.landawn.abacus.type.TypeFactory;
+import com.landawn.abacus.util.ExceptionUtil;
 import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.OperationType;
@@ -111,7 +111,7 @@ public class Executant {
             _defaultIsolationLevel = tmp == IsolationLevel.DEFAULT ? IsolationLevel.valueOf(conn.getTransactionIsolation()) : tmp;
 
         } catch (SQLException e) {
-            throw new UncheckedSQLException(AbacusException.getErrorMsg(e), e);
+            throw new UncheckedSQLException(ExceptionUtil.getMessage(e), e);
         } finally {
             closeConnection(_ds, conn, null);
         }
@@ -343,7 +343,7 @@ public class Executant {
                 }
             }
         } catch (SQLException e) {
-            throw new UncheckedSQLException(AbacusException.getErrorMsg(e) + ". [SQL]:" + sqlCommand.getSql(), e);
+            throw new UncheckedSQLException(ExceptionUtil.getMessage(e) + ". [SQL]:" + sqlCommand.getSql(), e);
         } finally {
             executionTime = System.currentTimeMillis() - startTime;
 
@@ -409,7 +409,7 @@ public class Executant {
             closeResultSet(rs);
             closeStatement(ds, stmt, options);
 
-            throw new UncheckedSQLException(AbacusException.getErrorMsg(e) + ". [SQL]:" + sqlCommand.getSql(), e);
+            throw new UncheckedSQLException(ExceptionUtil.getMessage(e) + ". [SQL]:" + sqlCommand.getSql(), e);
         } finally {
             executionTime = System.currentTimeMillis() - startTime;
 
@@ -665,7 +665,7 @@ public class Executant {
             setParameterValue(sqlCommand, stmt);
             noException = true;
         } catch (SQLException e) {
-            throw new UncheckedSQLException(AbacusException.getErrorMsg(e) + ". [SQL]:" + sqlCommand.getSql(), e);
+            throw new UncheckedSQLException(ExceptionUtil.getMessage(e) + ". [SQL]:" + sqlCommand.getSql(), e);
         } finally {
             if (!noException) {
                 closeStatement(ds, stmt, options);
@@ -717,7 +717,7 @@ public class Executant {
                         // ignore
 
                         if (logger.isWarnEnabled()) {
-                            logger.warn("Failed to set parameter value(" + parameterValue + ") due to error: " + AbacusException.getErrorMsg(e)
+                            logger.warn("Failed to set parameter value(" + parameterValue + ") due to error: " + ExceptionUtil.getMessage(e)
                                     + ". Try to convert value and reset.");
                         }
 
@@ -727,7 +727,7 @@ public class Executant {
                         // ignore
 
                         if (logger.isWarnEnabled()) {
-                            logger.warn("Failed to set parameter value(" + parameterValue + ") due to error: " + AbacusException.getErrorMsg(e)
+                            logger.warn("Failed to set parameter value(" + parameterValue + ") due to error: " + ExceptionUtil.getMessage(e)
                                     + ". Try to reset it by setObject(...).");
                         }
 

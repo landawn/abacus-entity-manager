@@ -21,9 +21,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
+import com.landawn.abacus.util.ExceptionUtil;
 import com.landawn.abacus.util.IOUtil;
 import com.landawn.abacus.util.N;
 
@@ -260,7 +260,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -274,7 +274,7 @@ public final class CacheZipper {
                 } catch (OutOfMemoryError e) {
                     // ignore;
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -289,7 +289,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -304,7 +304,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -319,7 +319,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -334,7 +334,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -349,7 +349,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -363,7 +363,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -377,7 +377,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -391,7 +391,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -405,7 +405,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -424,7 +424,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -438,7 +438,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -452,7 +452,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 
@@ -466,7 +466,7 @@ public final class CacheZipper {
                     // ignore;
 
                     if (logger.isWarnEnabled()) {
-                        logger.warn(AbacusException.getErrorMsg(e));
+                        logger.warn(ExceptionUtil.getMessage(e));
                     }
                 }
 

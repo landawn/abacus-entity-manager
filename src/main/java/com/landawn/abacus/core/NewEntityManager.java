@@ -31,6 +31,7 @@ import com.landawn.abacus.core.SQLTransaction.CreatedBy;
 import com.landawn.abacus.exception.DuplicatedResultException;
 import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.metadata.Property;
+import com.landawn.abacus.util.ClassUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
 import com.landawn.abacus.util.Seq;
@@ -94,7 +95,8 @@ public final class NewEntityManager {
      * @param <T> the generic type
      * @param <ID> the generic type
      * @param entityClass the id class
-     * @param idClass the id class
+     * @param idClass the id class type of target id property. 
+     * It should be {@code Void} class if there is no id property defined for the target entity, or {@code EntityId} class if there is zero or multiple id properties. 
      * @return the mapper
      */
     @SuppressWarnings("deprecation")
@@ -1402,7 +1404,7 @@ public final class NewEntityManager {
      * @return the entity id
      */
     @SuppressWarnings("deprecation")
-    EntityId createEntityId(final Class<?> entityClass, final Object id) {
+    private EntityId createEntityId(final Class<?> entityClass, final Object id) {
         final String entityName = EntityManagerUtil.getEntityName(entityClass);
 
         if (id instanceof EntityId) {
@@ -1430,7 +1432,7 @@ public final class NewEntityManager {
      * @param options the options
      * @return the map
      */
-    Map<String, Object> checkOptions(final Map<String, Object> options) {
+    private Map<String, Object> checkOptions(final Map<String, Object> options) {
         if (!EntityManagerUtil.isInTransaction(options)) {
             final String queryWithDataSource = EntityManagerUtil.getQueryWithDataSource(options);
             final DataSource ds = N.isNullOrEmpty(queryWithDataSource) ? _ds : _dsm.getActiveDataSource(queryWithDataSource);
@@ -1463,13 +1465,14 @@ public final class NewEntityManager {
 
         final Class<ID> idClass;
 
+        final boolean isEntityId;
+        final boolean isVoidId;
+
         /** The entity name. */
         final String entityName;
 
         final EntityDefinition entityDef;
 
-        final boolean isEntityId;
-        final boolean isVoidId;
         final String idPropName;
 
         /**
@@ -1489,9 +1492,12 @@ public final class NewEntityManager {
 
             final List<Property> idPropList = entityDef.getIdPropertyList();
 
+            N.checkArgNotNullOrEmpty(idPropList, "Target class: " + ClassUtil.getCanonicalClassName(entityClass)
+                    + " must have at least one id property annotated by @Id or @ReadOnlyId on field or class");
+
             if (N.isNullOrEmpty(idPropList)) {
                 if (!(idClass.equals(Void.class) || idClass.equals(EntityId.class))) {
-                    throw new IllegalArgumentException("Id class only can be Void or EntityId class for entity with no id properties");
+                    throw new IllegalArgumentException("Id class only can be Void or EntityId class for entity with no id property");
                 }
             } else if (idPropList.size() > 1) {
                 if (!idClass.equals(EntityId.class)) {
@@ -1920,8 +1926,8 @@ public final class NewEntityManager {
          * @param props the props
          * @return the entity id
          */
-        public EntityId add(final Map<String, Object> props) {
-            return nem.add(entityClass, props);
+        public ID add(final Map<String, Object> props) {
+            return add(props, null);
         }
 
         /**
@@ -1931,8 +1937,10 @@ public final class NewEntityManager {
          * @param options the options
          * @return the entity id
          */
-        public EntityId add(final Map<String, Object> props, final Map<String, Object> options) {
-            return nem.add(entityClass, props, options);
+        public ID add(final Map<String, Object> props, final Map<String, Object> options) {
+            final EntityId entityId = nem.add(entityClass, props, options);
+
+            return convertId(entityId);
         }
 
         /**
@@ -1941,8 +1949,8 @@ public final class NewEntityManager {
          * @param propsList the props list
          * @return the list
          */
-        public List<EntityId> addAll(final List<Map<String, Object>> propsList) {
-            return nem.addAll(entityClass, propsList);
+        public List<ID> addAll(final List<Map<String, Object>> propsList) {
+            return addAll(propsList, null);
         }
 
         /**
@@ -1952,8 +1960,10 @@ public final class NewEntityManager {
          * @param options the options
          * @return the list
          */
-        public List<EntityId> addAll(final List<Map<String, Object>> propsList, final Map<String, Object> options) {
-            return nem.addAll(entityClass, propsList, options);
+        public List<ID> addAll(final List<Map<String, Object>> propsList, final Map<String, Object> options) {
+            final List<EntityId> entityIds = nem.addAll(entityClass, propsList, options);
+
+            return convertId(entityIds);
         }
 
         /**
@@ -2144,13 +2154,7 @@ public final class NewEntityManager {
         public ID add(final T entity, final Map<String, Object> options) {
             final EntityId entityId = nem.add(entity, options);
 
-            if (isEntityId) {
-                return (ID) entityId;
-            } else if (isVoidId) {
-                return null;
-            } else {
-                return entityId.get(idClass, idPropName);
-            }
+            return convertId(entityId);
         }
 
         /**
@@ -2171,15 +2175,9 @@ public final class NewEntityManager {
          * @return the list
          */
         public List<ID> addAll(final Collection<? extends T> entities, final Map<String, Object> options) {
-            List<EntityId> entityIds = nem.addAll(entities, options);
+            final List<EntityId> entityIds = nem.addAll(entities, options);
 
-            if (isEntityId) {
-                return (List<ID>) entityIds;
-            } else if (isVoidId) {
-                return Seq.of(entityIds).map(entityId -> null);
-            } else {
-                return Seq.of(entityIds).map(entityId -> entityId.get(idClass, idPropName));
-            }
+            return convertId(entityIds);
         }
 
         /**
@@ -2383,7 +2381,7 @@ public final class NewEntityManager {
          * @param ids the ids
          * @return the list
          */
-        List<EntityId> createEntityIds(final Collection<? extends ID> ids) {
+        private List<EntityId> createEntityIds(final Collection<? extends ID> ids) {
             if (isEntityId) {
                 if (ids instanceof List) {
                     return (List<EntityId>) ids;
@@ -2400,6 +2398,26 @@ public final class NewEntityManager {
                 }
 
                 return entityIds;
+            }
+        }
+
+        private ID convertId(final EntityId entityId) {
+            if (isEntityId) {
+                return (ID) entityId;
+            } else if (isVoidId) {
+                return null;
+            } else {
+                return entityId.get(idClass, idPropName);
+            }
+        }
+
+        private List<ID> convertId(List<EntityId> entityIds) {
+            if (isEntityId) {
+                return (List<ID>) entityIds;
+            } else if (isVoidId) {
+                return Seq.of(entityIds).map(entityId -> null);
+            } else {
+                return Seq.of(entityIds).map(entityId -> entityId.get(idClass, idPropName));
             }
         }
     }

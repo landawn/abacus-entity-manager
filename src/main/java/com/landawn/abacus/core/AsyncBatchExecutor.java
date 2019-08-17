@@ -26,6 +26,7 @@ import com.landawn.abacus.EntityManager;
 import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
+import com.landawn.abacus.util.ExceptionUtil;
 import com.landawn.abacus.util.MoreExecutors;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
@@ -253,7 +254,7 @@ public final class AsyncBatchExecutor<E> {
                     em.addAll(entities.subList(from, to), options);
                 } catch (Exception e) {
                     if (logger.isWarnEnabled()) {
-                        logger.warn("FAILED-BATCH-ADD[" + entities.size() + "]. " + AbacusException.getErrorMsg(e));
+                        logger.warn("FAILED-BATCH-ADD[" + entities.size() + "]. " + ExceptionUtil.getMessage(e));
                     }
                 }
             }
@@ -280,7 +281,7 @@ public final class AsyncBatchExecutor<E> {
                     em.updateAll(entities.subList(from, to), options);
                 } catch (Exception e) {
                     if (logger.isWarnEnabled()) {
-                        logger.warn("FAILED-BATCH-UPDATE[" + entities.size() + "]. " + AbacusException.getErrorMsg(e));
+                        logger.warn("FAILED-BATCH-UPDATE[" + entities.size() + "]. " + ExceptionUtil.getMessage(e));
                     }
                 }
             }
@@ -307,7 +308,7 @@ public final class AsyncBatchExecutor<E> {
                     em.deleteAll(entities.subList(from, to), options);
                 } catch (Exception e) {
                     if (logger.isWarnEnabled()) {
-                        logger.warn("FAILED-BATCH-DELETE[" + entities.size() + "]. " + AbacusException.getErrorMsg(e));
+                        logger.warn("FAILED-BATCH-DELETE[" + entities.size() + "]. " + ExceptionUtil.getMessage(e));
                     }
                 }
             }

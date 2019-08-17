@@ -15,9 +15,9 @@
 package com.landawn.abacus.version;
 
 import com.landawn.abacus.cache.DistributedCacheClient;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
+import com.landawn.abacus.util.ExceptionUtil;
 import com.landawn.abacus.util.N;
 
 // TODO: Auto-generated Javadoc
@@ -98,7 +98,7 @@ public class DistributedVersion<K> extends AbstractVersion<K> {
         } catch (Exception e) {
             // ignore
             if (logger.isWarnEnabled()) {
-                logger.warn(AbacusException.getErrorMsg(e));
+                logger.warn(ExceptionUtil.getMessage(e));
             }
         }
     }
@@ -115,7 +115,7 @@ public class DistributedVersion<K> extends AbstractVersion<K> {
         } catch (Exception e) {
             // ignore;
             if (logger.isWarnEnabled()) {
-                logger.warn(AbacusException.getErrorMsg(e));
+                logger.warn(ExceptionUtil.getMessage(e));
             }
         }
     }
@@ -130,7 +130,7 @@ public class DistributedVersion<K> extends AbstractVersion<K> {
         } catch (Exception e) {
             // ignore;
             if (logger.isWarnEnabled()) {
-                logger.warn(AbacusException.getErrorMsg(e));
+                logger.warn(ExceptionUtil.getMessage(e));
             }
         }
     }
