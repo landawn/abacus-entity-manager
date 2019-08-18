@@ -49,7 +49,7 @@ public interface Session<T> {
      * @param <TT> the target entity type
      * @param entityId the entity id
      * @param selectPropNames the select prop names
-     * @return the optional
+     * @return
      */
     <TT> Optional<TT> get(EntityId entityId, Collection<String> selectPropNames);
 
@@ -59,7 +59,7 @@ public interface Session<T> {
      * @param <TT> the target entity type
      * @param entityId the entity id
      * @param selectPropNames the select prop names
-     * @return the t
+     * @return
      */
     <TT> TT gett(EntityId entityId, Collection<String> selectPropNames);
 
@@ -70,7 +70,7 @@ public interface Session<T> {
      * @param entityName the entity name
      * @param selectPropNames the select prop names
      * @param condition the condition
-     * @return the list
+     * @return
      */
     <TT> List<TT> list(String entityName, Collection<String> selectPropNames, Condition condition);
 

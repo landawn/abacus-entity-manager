@@ -70,7 +70,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
      * Gets the t.
      *
      * @param entityId the entity id
-     * @return the t
+     * @return
      */
     @Override
     public MapEntity gett(EntityId entityId) {
@@ -167,7 +167,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * Key set.
      *
-     * @return the sets the
+     * @return
      */
     @Override
     public Set<EntityId> keySet() {
@@ -177,7 +177,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * Size.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int size() {
@@ -235,7 +235,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
      * New entity cache provider instance.
      *
      * @param config the config
-     * @return the cache
+     * @return
      */
     private Cache<EntityId, MapEntity> newEntityCacheProviderInstance(EntityCacheConfiguration config) {
         if (config == null) {
@@ -252,7 +252,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * Gets the properties.
      *
-     * @return the properties
+     * @return
      */
     @Override
     public Properties<String, Object> getProperties() {
@@ -264,7 +264,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
      *
      * @param <T> the generic type
      * @param propName the prop name
-     * @return the property
+     * @return
      */
     @Override
     public <T> T getProperty(String propName) {
@@ -277,7 +277,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
      * @param <T> the generic type
      * @param propName the prop name
      * @param propValue the prop value
-     * @return the t
+     * @return
      */
     @Override
     public <T> T setProperty(String propName, Object propValue) {
@@ -289,7 +289,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
      *
      * @param <T> the generic type
      * @param propName the prop name
-     * @return the t
+     * @return
      */
     @Override
     public <T> T removeProperty(String propName) {

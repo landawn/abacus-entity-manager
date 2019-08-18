@@ -183,7 +183,7 @@ public class Association implements Serializable {
      *
      * @param ed the ed
      * @param propName the prop name
-     * @return the property
+     * @return
      */
     private Property checkProperty(EntityDefinition ed, String propName) {
         propName = propName.trim();
@@ -205,7 +205,7 @@ public class Association implements Serializable {
     /**
      * Gets the property.
      *
-     * @return the property
+     * @return
      */
     public Property getProperty() {
         return prop;
@@ -214,7 +214,7 @@ public class Association implements Serializable {
     /**
      * Gets the src property.
      *
-     * @return the src property
+     * @return
      */
     public Property getSrcProperty() {
         return srcProp;
@@ -223,7 +223,7 @@ public class Association implements Serializable {
     /**
      * Gets the target property.
      *
-     * @return the target property
+     * @return
      */
     public Property getTargetProperty() {
         return targetProp;
@@ -232,7 +232,7 @@ public class Association implements Serializable {
     /**
      * Gets the bi entity properties.
      *
-     * @return the bi entity properties
+     * @return
      */
     public Property[] getBiEntityProperties() {
         return biEntityProps;
@@ -241,7 +241,7 @@ public class Association implements Serializable {
     /**
      * Gets the bi entity def.
      *
-     * @return the bi entity def
+     * @return
      */
     public EntityDefinition getBiEntityDef() {
         return biEntityDef;
@@ -250,7 +250,7 @@ public class Association implements Serializable {
     /**
      * Gets the join type.
      *
-     * @return the join type
+     * @return
      */
     public JoinType getJoinType() {
         return joinType;
@@ -259,7 +259,7 @@ public class Association implements Serializable {
     /**
      * Gets the join condition.
      *
-     * @return the join condition
+     * @return
      */
     public Collection<Join> getJoinCondition() {
         return joins;
@@ -279,7 +279,7 @@ public class Association implements Serializable {
     /**
      * Hash code.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int hashCode() {
@@ -289,7 +289,7 @@ public class Association implements Serializable {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {

@@ -207,7 +207,7 @@ public final class AbacusConfiguration {
     /**
      * Gets the factory.
      *
-     * @return the factory
+     * @return
      */
     public String getFactory() {
         return factory;
@@ -216,7 +216,7 @@ public final class AbacusConfiguration {
     /**
      * Gets the initializer on startup.
      *
-     * @return the initializer on startup
+     * @return
      */
     public String getInitializerOnStartup() {
         return initializerOnStartup;
@@ -225,7 +225,7 @@ public final class AbacusConfiguration {
     /**
      * Gets the entity manager configuration list.
      *
-     * @return the entity manager configuration list
+     * @return
      */
     public List<EntityManagerConfiguration> getEntityManagerConfigurationList() {
         return entityManagerConfigurationList;
@@ -234,7 +234,7 @@ public final class AbacusConfiguration {
     /**
      * Gets the s log configuration.
      *
-     * @return the s log configuration
+     * @return
      */
     public SLogConfiguration getSLogConfiguration() {
         return slogConfiguration;
@@ -397,7 +397,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the domain name.
          *
-         * @return the domain name
+         * @return
          */
         public String getDomainName() {
             return domainName;
@@ -406,7 +406,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the mode.
          *
-         * @return the mode
+         * @return
          */
         public Mode getMode() {
             return mode;
@@ -415,7 +415,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the batch size.
          *
-         * @return the batch size
+         * @return
          */
         public int getBatchSize() {
             return batchSize;
@@ -424,7 +424,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the entity definition file.
          *
-         * @return the entity definition file
+         * @return
          */
         public File getEntityDefinitionFile() {
             return entityDefinitionFile;
@@ -433,7 +433,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the SQL mapper.
          *
-         * @return the SQL mapper
+         * @return
          */
         public SQLMapper getSQLMapper() {
             return sqlMapper;
@@ -442,7 +442,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the handler list.
          *
-         * @return the handler list
+         * @return
          */
         public List<String> getHandlerList() {
             return handlerList;
@@ -451,7 +451,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the lock configuration.
          *
-         * @return the lock configuration
+         * @return
          */
         public LockConfiguration getLockConfiguration() {
             return lockConfig;
@@ -460,7 +460,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the version configuration.
          *
-         * @return the version configuration
+         * @return
          */
         public VersionConfiguration getVersionConfiguration() {
             return versionConfig;
@@ -469,7 +469,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the entity cache configuration.
          *
-         * @return the entity cache configuration
+         * @return
          */
         public EntityCacheConfiguration getEntityCacheConfiguration() {
             return entityCacheConfig;
@@ -478,7 +478,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the query cache configuration.
          *
-         * @return the query cache configuration
+         * @return
          */
         public QueryCacheConfiguration getQueryCacheConfiguration() {
             return queryCacheConfig;
@@ -487,7 +487,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the data source manager configuration.
          *
-         * @return the data source manager configuration
+         * @return
          */
         public DataSourceManagerConfiguration getDataSourceManagerConfiguration() {
             return dataSourceManagerConfig;
@@ -496,7 +496,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the server configuration.
          *
-         * @return the server configuration
+         * @return
          */
         public ServerConfiguration getServerConfiguration() {
             return serverConfig;
@@ -560,7 +560,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the RW lock provider.
              *
-             * @return the RW lock provider
+             * @return
              */
             public String getRWLockProvider() {
                 return rwLockProvider;
@@ -569,7 +569,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the record lock provider.
              *
-             * @return the record lock provider
+             * @return
              */
             public String getRecordLockProvider() {
                 return recordLockProvider;
@@ -578,7 +578,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the record lock timeout.
              *
-             * @return the record lock timeout
+             * @return
              */
             public long getRecordLockTimeout() {
                 return recordLockTimeout;
@@ -612,7 +612,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the provider.
              *
-             * @return the provider
+             * @return
              */
             public String getProvider() {
                 return provider;
@@ -693,7 +693,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the provider.
              *
-             * @return the provider
+             * @return
              */
             public String getProvider() {
                 return provider;
@@ -702,7 +702,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the capacity.
              *
-             * @return the capacity
+             * @return
              */
             public int getCapacity() {
                 return capacity;
@@ -711,7 +711,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the evict delay.
              *
-             * @return the evict delay
+             * @return
              */
             public long getEvictDelay() {
                 return evictDelay;
@@ -720,7 +720,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the live time.
              *
-             * @return the live time
+             * @return
              */
             public long getLiveTime() {
                 return liveTime;
@@ -729,7 +729,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the max idle time.
              *
-             * @return the max idle time
+             * @return
              */
             public long getMaxIdleTime() {
                 return maxIdleTime;
@@ -829,7 +829,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the included entity names.
              *
-             * @return the included entity names
+             * @return
              */
             Set<String> getIncludedEntityNames() {
                 return includedEntityNames;
@@ -838,7 +838,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the excluded entity names.
              *
-             * @return the excluded entity names
+             * @return
              */
             Set<String> getExcludedEntityNames() {
                 return excludedEntityNames;
@@ -863,7 +863,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the customized entity names.
              *
-             * @return the customized entity names
+             * @return
              */
             public Collection<String> getCustomizedEntityNames() {
                 return customizedEntities.keySet();
@@ -873,7 +873,7 @@ public final class AbacusConfiguration {
              * Gets the customized entity cache configuration.
              *
              * @param entityName the entity name
-             * @return the customized entity cache configuration
+             * @return
              */
             public CustomizedEntityCacheConfiguration getCustomizedEntityCacheConfiguration(String entityName) {
                 return customizedEntities.get(entityName);
@@ -992,7 +992,7 @@ public final class AbacusConfiguration {
                 /**
                  * Gets the entity name.
                  *
-                 * @return the entity name
+                 * @return
                  */
                 public String getEntityName() {
                     return entityName;
@@ -1001,7 +1001,7 @@ public final class AbacusConfiguration {
                 /**
                  * Gets the live time.
                  *
-                 * @return the live time
+                 * @return
                  */
                 public long getLiveTime() {
                     return liveTime;
@@ -1010,7 +1010,7 @@ public final class AbacusConfiguration {
                 /**
                  * Gets the max idle time.
                  *
-                 * @return the max idle time
+                 * @return
                  */
                 public long getMaxIdleTime() {
                     return maxIdleTime;
@@ -1019,7 +1019,7 @@ public final class AbacusConfiguration {
                 /**
                  * Gets the included property names.
                  *
-                 * @return the included property names
+                 * @return
                  */
                 Set<String> getIncludedPropertyNames() {
                     return includedPropNames;
@@ -1028,7 +1028,7 @@ public final class AbacusConfiguration {
                 /**
                  * Gets the excluded property names.
                  *
-                 * @return the excluded property names
+                 * @return
                  */
                 Set<String> getExcludedPropertyNames() {
                     return excludedPropNames;
@@ -1180,7 +1180,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the max check cache time.
              *
-             * @return the max check cache time
+             * @return
              */
             public long getMaxCheckCacheTime() {
                 return maxCheckCacheTime;
@@ -1189,7 +1189,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the min check cache size.
              *
-             * @return the min check cache size
+             * @return
              */
             public int getMinCheckCacheSize() {
                 return minCheckCacheSize;
@@ -1198,7 +1198,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the cache result condition configuration.
              *
-             * @return the cache result condition configuration
+             * @return
              */
             public CacheResultConditionConfiguration getCacheResultConditionConfiguration() {
                 return cacheResultConditionConfiguration;
@@ -1286,7 +1286,7 @@ public final class AbacusConfiguration {
                 /**
                  * Gets the min count.
                  *
-                 * @return the min count
+                 * @return
                  */
                 public int getMinCount() {
                     return minCount;
@@ -1295,7 +1295,7 @@ public final class AbacusConfiguration {
                 /**
                  * Gets the max count.
                  *
-                 * @return the max count
+                 * @return
                  */
                 public int getMaxCount() {
                     return maxCount;
@@ -1304,7 +1304,7 @@ public final class AbacusConfiguration {
                 /**
                  * Gets the min query time.
                  *
-                 * @return the min query time
+                 * @return
                  */
                 public long getMinQueryTime() {
                     return minQueryTime;
@@ -1402,7 +1402,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the url.
              *
-             * @return the url
+             * @return
              */
             public String getUrl() {
                 return url;
@@ -1411,7 +1411,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the max connection.
              *
-             * @return the max connection
+             * @return
              */
             public int getMaxConnection() {
                 return maxConnection;
@@ -1420,7 +1420,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the connection timeout.
              *
-             * @return the connection timeout
+             * @return
              */
             public int getConnectionTimeout() {
                 return connTimeout;
@@ -1429,7 +1429,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the read timeout.
              *
-             * @return the read timeout
+             * @return
              */
             public int getReadTimeout() {
                 return readTimeout;
@@ -1438,7 +1438,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the content format.
              *
-             * @return the content format
+             * @return
              */
             public ContentFormat getContentFormat() {
                 return contentFormat;
@@ -1522,7 +1522,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the batch size.
          *
-         * @return the batch size
+         * @return
          */
         public int getBatchSize() {
             return batchSize;
@@ -1532,7 +1532,7 @@ public final class AbacusConfiguration {
          * Gets the domain.
          *
          * @param domainName the domain name
-         * @return the domain
+         * @return
          */
         public DomainConfiguration getDomain(String domainName) {
             return domainList.get(domainName);
@@ -1541,7 +1541,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the table.
          *
-         * @return the table
+         * @return
          */
         public TableConfiguration getTable() {
             return table;
@@ -1615,7 +1615,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the operation code.
              *
-             * @return the operation code
+             * @return
              */
             public int getOperationCode() {
                 return operationCode;

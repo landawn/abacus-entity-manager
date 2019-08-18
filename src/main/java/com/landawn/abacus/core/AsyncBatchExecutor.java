@@ -160,7 +160,7 @@ public final class AsyncBatchExecutor<E> {
     /**
      * Gets the evict delay.
      *
-     * @return the evict delay
+     * @return
      */
     public long getEvictDelay() {
         return evictDelay;
@@ -169,7 +169,7 @@ public final class AsyncBatchExecutor<E> {
     /**
      * Gets the batch size.
      *
-     * @return the batch size
+     * @return
      */
     public int getBatchSize() {
         return batchSize;
@@ -178,7 +178,7 @@ public final class AsyncBatchExecutor<E> {
     /**
      * Gets the capacity.
      *
-     * @return the capacity
+     * @return
      */
     public int getCapacity() {
         return capacity;

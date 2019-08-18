@@ -52,7 +52,7 @@ public final class UUIDIdGenerator extends AbstractStringIdGenerator {
     /**
      * Allocate.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String allocate() {

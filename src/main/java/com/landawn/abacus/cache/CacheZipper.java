@@ -208,7 +208,7 @@ public final class CacheZipper {
      * Divide cache by processor.
      *
      * @param cacheList the cache list
-     * @return the list
+     * @return
      */
     static List<List<QueryCache>> divideCacheByProcessor(Collection<? extends QueryCache> cacheList) {
         List<List<QueryCache>> threadCachesList = new ArrayList<>();
@@ -231,7 +231,7 @@ public final class CacheZipper {
     /**
      * Creates the big array.
      *
-     * @return the object[]
+     * @return
      */
     public static Object[] createBigArray() {
         final long M8 = 1024 * 1024 * 8; // N.ONE_MB * 8;

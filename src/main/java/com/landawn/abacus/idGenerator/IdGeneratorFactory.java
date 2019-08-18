@@ -84,7 +84,7 @@ public final class IdGeneratorFactory {
      *
      * @param <T> the generic type
      * @param prop the prop
-     * @return the default id generator
+     * @return
      */
     public static <T> IdGenerator<T> getDefaultIdGenerator(Property prop) {
         if (prop.getType().clazz().equals(String.class)) {

@@ -45,7 +45,7 @@ public final class VersionFactory {
      * Creates a new Version object.
      *
      * @param <K> the key type
-     * @return the local version< k>
+     * @return
      */
     public static <K> LocalVersion<K> createLocalVersion() {
         return new LocalVersion<K>();
@@ -56,7 +56,7 @@ public final class VersionFactory {
      *
      * @param <K> the key type
      * @param capacity the capacity
-     * @return the local version< k>
+     * @return
      */
     public static <K> LocalVersion<K> createLocalVersion(int capacity) {
         return new LocalVersion<K>(capacity);
@@ -67,7 +67,7 @@ public final class VersionFactory {
      *
      * @param <K> the key type
      * @param provider the provider
-     * @return the version< k>
+     * @return
      */
     @SuppressWarnings("unchecked")
     public static <K> Version<K> createVersion(String provider) {

@@ -57,7 +57,7 @@ public final class EntityUtil {
      * @param <T> the generic type
      * @param entityDef the entity def
      * @param entity the entity
-     * @return the t
+     * @return
      */
     public static <T> T clone(EntityDefinition entityDef, T entity) {
         if (entity == null) {
@@ -75,7 +75,7 @@ public final class EntityUtil {
      * @param <T> the generic type
      * @param entityDef the entity def
      * @param entity the entity
-     * @return the t
+     * @return
      */
     public static <T> T copy(EntityDefinition entityDef, T entity) {
         return copy(entityDef, entity, null);
@@ -88,7 +88,7 @@ public final class EntityUtil {
      * @param entityDef the entity def
      * @param entity the entity
      * @param propNames the prop names
-     * @return the t
+     * @return
      */
     public static <T> T copy(EntityDefinition entityDef, T entity, Collection<String> propNames) {
         if (entity == null) {
@@ -110,7 +110,7 @@ public final class EntityUtil {
      * @param entity the entity
      * @param propNames the prop names
      * @param isDeepCopy the is deep copy
-     * @return the t
+     * @return
      */
     private static <T> T copy(EntityDefinition entityDef, T entity, Collection<String> propNames, boolean isDeepCopy) {
         @SuppressWarnings("unchecked")
@@ -180,7 +180,7 @@ public final class EntityUtil {
      * @param entityDef the entity def
      * @param sourceEntity the source entity
      * @param targetClass the target class
-     * @return the t
+     * @return
      */
     public static <T> T transfer(EntityDefinition entityDef, Object sourceEntity, Class<T> targetClass) {
         return transfer(entityDef, sourceEntity, null, targetClass);
@@ -194,7 +194,7 @@ public final class EntityUtil {
      * @param sourceEntity the source entity
      * @param propNames the prop names
      * @param targetClass the target class
-     * @return the t
+     * @return
      */
     @SuppressWarnings({ "unchecked" })
     public static <T> T transfer(EntityDefinition entityDef, Object sourceEntity, Collection<String> propNames, Class<T> targetClass) {
@@ -293,7 +293,7 @@ public final class EntityUtil {
      *
      * @param entityDef the entity def
      * @param sourceEntity the source entity
-     * @return the map entity
+     * @return
      */
     @SuppressWarnings("unchecked")
     public static MapEntity disassemble(EntityDefinition entityDef, Object sourceEntity) {
@@ -350,7 +350,7 @@ public final class EntityUtil {
      * @param entityDef the entity def
      * @param sourceEntity the source entity
      * @param targetClass the target class
-     * @return the t
+     * @return
      */
     @SuppressWarnings("unchecked")
     public static <T> T assemble(EntityDefinition entityDef, MapEntity sourceEntity, Class<T> targetClass) {
@@ -650,7 +650,7 @@ public final class EntityUtil {
      *
      * @param entityDef the entity def
      * @param thisEntity the this entity
-     * @return the int
+     * @return
      */
     public static int hashCode(EntityDefinition entityDef, Object thisEntity) {
         int h = 17;
@@ -772,7 +772,7 @@ public final class EntityUtil {
      *
      * @param entityDef the entity def
      * @param thisEntity the this entity
-     * @return the string
+     * @return
      */
     public static String toString(EntityDefinition entityDef, Object thisEntity) {
         Collection<String> signedPropNames = EntityManagerUtil.getSignedPropNames(entityDef, thisEntity);
@@ -836,7 +836,7 @@ public final class EntityUtil {
      * @param <T> the generic type
      * @param entityClass the entity class
      * @param prop the prop
-     * @return the prop ele class
+     * @return
      */
     @SuppressWarnings("unchecked")
     private static <T> T getPropEleClass(Class<?> entityClass, Property prop) {

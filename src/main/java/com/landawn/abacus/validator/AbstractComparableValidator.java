@@ -44,7 +44,7 @@ public abstract class AbstractComparableValidator<T> extends AbstractValidator<T
     /**
      * Gets the benchmark.
      *
-     * @return the benchmark
+     * @return
      */
     public T getBenchmark() {
         return benchmark;
@@ -53,7 +53,7 @@ public abstract class AbstractComparableValidator<T> extends AbstractValidator<T
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {

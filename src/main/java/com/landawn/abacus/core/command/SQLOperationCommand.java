@@ -78,7 +78,7 @@ public class SQLOperationCommand extends SQLCondCommand {
     /**
      * Gets the operation type.
      *
-     * @return the operation type
+     * @return
      */
     @Override
     public OperationType getOperationType() {
@@ -88,7 +88,7 @@ public class SQLOperationCommand extends SQLCondCommand {
     /**
      * Gets the entity def.
      *
-     * @return the entity def
+     * @return
      */
     @Override
     public EntityDefinition getEntityDef() {
@@ -98,7 +98,7 @@ public class SQLOperationCommand extends SQLCondCommand {
     /**
      * Gets the options.
      *
-     * @return the options
+     * @return
      */
     @Override
     public Map<String, Object> getOptions() {
@@ -108,7 +108,7 @@ public class SQLOperationCommand extends SQLCondCommand {
     /**
      * Gets the target prop names.
      *
-     * @return the target prop names
+     * @return
      */
     public Collection<String> getTargetPropNames() {
         return targetPropNames;
@@ -142,7 +142,7 @@ public class SQLOperationCommand extends SQLCondCommand {
     /**
      * Gets the batch parameters.
      *
-     * @return the batch parameters
+     * @return
      */
     public List<Object[]> getBatchParameters() {
         return batchParameterValues;
@@ -193,7 +193,7 @@ public class SQLOperationCommand extends SQLCondCommand {
     /**
      * Clone.
      *
-     * @return the object
+     * @return
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -226,7 +226,7 @@ public class SQLOperationCommand extends SQLCondCommand {
     /**
      * Hash code.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int hashCode() {
@@ -287,7 +287,7 @@ public class SQLOperationCommand extends SQLCondCommand {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {

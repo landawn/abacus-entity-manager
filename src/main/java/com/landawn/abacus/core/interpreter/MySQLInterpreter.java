@@ -57,7 +57,7 @@ public class MySQLInterpreter extends SQLInterpreter {
      * @param entityDef the entity def
      * @param propsList the props list
      * @param options the options
-     * @return the SQL operation command
+     * @return
      */
     @Override
     public SQLOperationCommand interpretAdd(EntityDefinition entityDef, List<Map<String, Object>> propsList, Map<String, Object> options) {

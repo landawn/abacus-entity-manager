@@ -66,7 +66,7 @@ final class HandleResult extends AbstractPoolable {
     /**
      * Gets the entity def.
      *
-     * @return the entity def
+     * @return
      */
     public EntityDefinition getEntityDef() {
         return entityDef;
@@ -75,7 +75,7 @@ final class HandleResult extends AbstractPoolable {
     /**
      * Gets the SQL result.
      *
-     * @return the SQL result
+     * @return
      */
     public SQLResult getSQLResult() {
         return queryResult;
@@ -84,7 +84,7 @@ final class HandleResult extends AbstractPoolable {
     /**
      * Gets the select prop names.
      *
-     * @return the select prop names
+     * @return
      */
     public Collection<String> getSelectPropNames() {
         return selectPropName;
@@ -102,7 +102,7 @@ final class HandleResult extends AbstractPoolable {
     /**
      * Gets the query cache.
      *
-     * @return the query cache
+     * @return
      */
     public QueryCache getQueryCache() {
         return queryCache;

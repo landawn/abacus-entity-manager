@@ -74,7 +74,7 @@ final class PropEntityProps {
     /**
      * Gets the prop entity.
      *
-     * @return the prop entity
+     * @return
      */
     public Object getPropEntity() {
         Association association = prop.getAssociation();
@@ -99,7 +99,7 @@ final class PropEntityProps {
     /**
      * Hash code.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int hashCode() {
@@ -135,7 +135,7 @@ final class PropEntityProps {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {

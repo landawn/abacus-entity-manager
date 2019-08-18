@@ -81,7 +81,7 @@ public final class SequenceIdGenerator extends AbstractNumberIdGenerator<Number>
     /**
      * Allocate.
      *
-     * @return the number
+     * @return
      */
     @Override
     public Number allocate() {

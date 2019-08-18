@@ -95,7 +95,7 @@ public class SQLColumn implements Column {
     /**
      * Gets the name.
      *
-     * @return the name
+     * @return
      */
     @Override
     public String getName() {
@@ -105,7 +105,7 @@ public class SQLColumn implements Column {
     /**
      * Gets the canonical name.
      *
-     * @return the canonical name
+     * @return
      */
     @Override
     public String getCanonicalName() {
@@ -115,7 +115,7 @@ public class SQLColumn implements Column {
     /**
      * Gets the java type.
      *
-     * @return the java type
+     * @return
      */
     @Override
     public String getJavaType() {
@@ -125,7 +125,7 @@ public class SQLColumn implements Column {
     /**
      * Gets the jdbc type.
      *
-     * @return the jdbc type
+     * @return
      */
     @Override
     public String getJdbcType() {
@@ -135,7 +135,7 @@ public class SQLColumn implements Column {
     /**
      * Gets the sql type.
      *
-     * @return the sql type
+     * @return
      */
     @Override
     public int getSqlType() {
@@ -225,7 +225,7 @@ public class SQLColumn implements Column {
     /**
      * Gets the attributes.
      *
-     * @return the attributes
+     * @return
      */
     @Override
     public Map<String, String> getAttributes() {
@@ -236,7 +236,7 @@ public class SQLColumn implements Column {
      * Gets the attribute.
      *
      * @param attrName the attr name
-     * @return the attribute
+     * @return
      */
     @Override
     public String getAttribute(String attrName) {
@@ -246,7 +246,7 @@ public class SQLColumn implements Column {
     /**
      * Gets the default value.
      *
-     * @return the default value
+     * @return
      */
     @Override
     public Object getDefaultValue() {
@@ -256,7 +256,7 @@ public class SQLColumn implements Column {
     /**
      * Gets the table.
      *
-     * @return the table
+     * @return
      */
     @Override
     public Table getTable() {
@@ -275,7 +275,7 @@ public class SQLColumn implements Column {
     /**
      * Hash code.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int hashCode() {
@@ -296,7 +296,7 @@ public class SQLColumn implements Column {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {

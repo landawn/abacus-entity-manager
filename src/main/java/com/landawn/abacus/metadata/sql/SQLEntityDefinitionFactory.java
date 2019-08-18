@@ -109,7 +109,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
      *
      * @param domainName the domain name
      * @param entityDefinitionXmlFile the entity definition xml file
-     * @return the SQL entity definition factory
+     * @return
      * @throws UncheckedIOException the unchecked IO exception
      */
     public static synchronized SQLEntityDefinitionFactory newInstance(String domainName, File entityDefinitionXmlFile) throws UncheckedIOException {
@@ -133,7 +133,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
      *
      * @param domainName the domain name
      * @param is the is
-     * @return the SQL entity definition factory
+     * @return
      */
     public static synchronized SQLEntityDefinitionFactory newInstance(String domainName, InputStream is) {
         return new SQLEntityDefinitionFactory(domainName, IOUtil.readBytes(is));
@@ -142,7 +142,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * Domain name.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String domainName() {
@@ -152,7 +152,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * Gets the entity name list.
      *
-     * @return the entity name list
+     * @return
      */
     @Override
     public Collection<String> getEntityNameList() {
@@ -163,7 +163,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
      * Gets the definition.
      *
      * @param entityName the entity name
-     * @return the definition
+     * @return
      */
     @Override
     public EntityDefinition getDefinition(String entityName) {
@@ -173,7 +173,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * Gets the definition list.
      *
-     * @return the definition list
+     * @return
      */
     @SuppressWarnings("rawtypes")
     @Override
@@ -184,7 +184,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * Gets the attributes.
      *
-     * @return the attributes
+     * @return
      */
     @Override
     public Map<String, String> getAttributes() {
@@ -195,7 +195,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
      * Gets the attribute.
      *
      * @param attrName the attr name
-     * @return the attribute
+     * @return
      */
     @Override
     public String getAttribute(String attrName) {
@@ -205,7 +205,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * Export definition.
      *
-     * @return the byte[]
+     * @return
      */
     @Override
     public byte[] exportDefinition() {
@@ -215,7 +215,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * Hash code.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int hashCode() {
@@ -238,7 +238,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {
@@ -249,7 +249,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
      * Parses the.
      *
      * @param entityDefElement the entity def element
-     * @return the object[]
+     * @return
      */
     private static Object[] parse(Element entityDefElement) {
         final String pkgName = entityDefElement.getAttribute(EntityDefEle.PACKAGE);

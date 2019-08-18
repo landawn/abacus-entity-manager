@@ -44,7 +44,7 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     /**
      * Gets the property.
      *
-     * @return the property
+     * @return
      */
     @Override
     public Property getProperty() {
@@ -64,7 +64,7 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     /**
      * Allocate.
      *
-     * @return the t
+     * @return
      */
     @Override
     public abstract T allocate();
@@ -82,7 +82,7 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     /**
      * Hash code.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int hashCode() {
@@ -117,7 +117,7 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {

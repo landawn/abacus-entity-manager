@@ -214,7 +214,7 @@ class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, 
     /**
      * Creates the pool key.
      *
-     * @return the string
+     * @return
      */
     protected String createPoolKey() {
         return N.uuid();

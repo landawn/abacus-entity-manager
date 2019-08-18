@@ -456,7 +456,7 @@ import com.landawn.abacus.util.WD;
     /**
      * Gets the data grid.
      *
-     * @return the data grid
+     * @return
      */
     @Override
     public DataGrid<Object> getDataGrid() {
@@ -558,7 +558,7 @@ import com.landawn.abacus.util.WD;
      * Creates the check sql cmd.
      *
      * @param updateCmd the update cmd
-     * @return the SQL operation command
+     * @return
      */
     private SQLOperationCommand createCheckSqlCmd(SQLOperationCommand updateCmd) {
         String checkSql = null;
@@ -619,7 +619,7 @@ import com.landawn.abacus.util.WD;
      * Gets the prop position in cache.
      *
      * @param cachingPropNames the caching prop names
-     * @return the prop position in cache
+     * @return
      * @throws UncheckedSQLException the unchecked SQL exception
      */
     private int[] getPropPositionInCache(Collection<String> cachingPropNames) throws UncheckedSQLException {
@@ -645,7 +645,7 @@ import com.landawn.abacus.util.WD;
      *
      * @param queryResult the query result
      * @param cachingPropNames the caching prop names
-     * @return the data grid
+     * @return
      * @throws UncheckedSQLException the unchecked SQL exception
      */
     private DataGrid<Object> init(SQLResult queryResult, Collection<String> cachingPropNames) throws UncheckedSQLException {

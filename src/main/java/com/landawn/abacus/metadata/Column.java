@@ -28,35 +28,35 @@ public interface Column {
     /**
      * Gets the name.
      *
-     * @return the name
+     * @return
      */
     String getName();
 
     /**
      * Gets the canonical name.
      *
-     * @return the canonical name
+     * @return
      */
     String getCanonicalName();
 
     /**
      * Gets the java type.
      *
-     * @return the java type
+     * @return
      */
     String getJavaType();
 
     /**
      * Gets the jdbc type.
      *
-     * @return the jdbc type
+     * @return
      */
     String getJdbcType();
 
     /**
      * Gets the sql type.
      *
-     * @return the sql type
+     * @return
      */
     int getSqlType();
 
@@ -119,7 +119,7 @@ public interface Column {
     /**
      * Gets the attributes.
      *
-     * @return the attributes
+     * @return
      */
     Map<String, String> getAttributes();
 
@@ -127,21 +127,21 @@ public interface Column {
      * Gets the attribute.
      *
      * @param attrName the attr name
-     * @return the attribute
+     * @return
      */
     String getAttribute(String attrName);
 
     /**
      * Gets the default value.
      *
-     * @return the default value
+     * @return
      */
     Object getDefaultValue();
 
     /**
      * Gets the table.
      *
-     * @return the table
+     * @return
      */
     Table getTable();
 }

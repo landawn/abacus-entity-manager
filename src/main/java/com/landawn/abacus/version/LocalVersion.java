@@ -60,7 +60,7 @@ public final class LocalVersion<K> extends AbstractVersion<K> {
      * Gets the.
      *
      * @param k the k
-     * @return the long
+     * @return
      */
     @Override
     public long get(K k) {

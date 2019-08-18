@@ -58,7 +58,7 @@ final class BiEntityProps {
     /**
      * Creates the props.
      *
-     * @return the map
+     * @return
      */
     Map<String, Object> createProps() {
         Map<String, Object> biProps = new HashMap<>();

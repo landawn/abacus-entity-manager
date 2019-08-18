@@ -29,35 +29,35 @@ public interface Database {
     /**
      * Gets the name.
      *
-     * @return the name
+     * @return
      */
     String getName();
 
     /**
      * Gets the product name.
      *
-     * @return the product name
+     * @return
      */
     String getProductName();
 
     /**
      * Gets the product version.
      *
-     * @return the product version
+     * @return
      */
     String getProductVersion();
 
     /**
      * Gets the table list.
      *
-     * @return the table list
+     * @return
      */
     Collection<Table> getTableList();
 
     /**
      * Gets the table name list.
      *
-     * @return the table name list
+     * @return
      */
     Collection<String> getTableNameList();
 
@@ -65,14 +65,14 @@ public interface Database {
      * Gets the table.
      *
      * @param tableName the table name
-     * @return the table
+     * @return
      */
     Table getTable(String tableName);
 
     /**
      * Gets the attributes.
      *
-     * @return the attributes
+     * @return
      */
     Map<String, String> getAttributes();
 
@@ -80,7 +80,7 @@ public interface Database {
      * Gets the attribute.
      *
      * @param attrName the attr name
-     * @return the attribute
+     * @return
      */
     String getAttribute(String attrName);
 }

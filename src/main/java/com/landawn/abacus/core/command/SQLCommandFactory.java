@@ -40,7 +40,7 @@ public final class SQLCommandFactory {
     /**
      * Creates a new SQLCommand object.
      *
-     * @return the SQL cond command
+     * @return
      */
     public static SQLCondCommand createSqlCondCmd() {
         return new SQLCondCommand();
@@ -50,7 +50,7 @@ public final class SQLCommandFactory {
      * Creates a new SQLCommand object.
      *
      * @param sql the sql
-     * @return the SQL cond command
+     * @return
      */
     public static SQLCondCommand createSqlCondCmd(String sql) {
         SQLCondCommand sqlCondCmd = new SQLCondCommand();
@@ -65,7 +65,7 @@ public final class SQLCommandFactory {
      * @param operationType the operation type
      * @param entityDef the entity def
      * @param options the options
-     * @return the SQL operation command
+     * @return
      */
     public static SQLOperationCommand createSqlCommand(OperationType operationType, EntityDefinition entityDef, Map<String, Object> options) {
         return new SQLOperationCommand(operationType, entityDef, options);
@@ -78,7 +78,7 @@ public final class SQLCommandFactory {
      * @param entityDef the entity def
      * @param sql the sql
      * @param options the options
-     * @return the SQL operation command
+     * @return
      */
     public static SQLOperationCommand createSqlCommand(OperationType operationType, EntityDefinition entityDef, String sql, Map<String, Object> options) {
         SQLOperationCommand sqlCommand = new SQLOperationCommand(operationType, entityDef, options);

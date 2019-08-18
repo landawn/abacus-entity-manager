@@ -155,7 +155,7 @@ public class EntityManagerFactory {
      * Gets the entity manager configuration.
      *
      * @param domainName the domain name
-     * @return the entity manager configuration
+     * @return
      */
     public EntityManagerConfiguration getEntityManagerConfiguration(String domainName) {
         return getDmainManager(domainName).getEntityManagerConfiguration();
@@ -165,7 +165,7 @@ public class EntityManagerFactory {
      * Gets the data source manager.
      *
      * @param domainName the domain name
-     * @return the data source manager
+     * @return
      */
     public DataSourceManager getDataSourceManager(String domainName) {
         return getDmainManager(domainName).getDataSourceManager();
@@ -174,7 +174,7 @@ public class EntityManagerFactory {
     /**
      * Gets the domain names.
      *
-     * @return the domain names
+     * @return
      */
     public Collection<String> getDomainNames() {
         synchronized (entityManagerPool) {
@@ -186,7 +186,7 @@ public class EntityManagerFactory {
      * Gets the DB access.
      *
      * @param domainName the domain name
-     * @return the DB access
+     * @return
      */
     public DBAccess getDBAccess(String domainName) {
         return getDmainManager(domainName).getDBAccess();
@@ -197,7 +197,7 @@ public class EntityManagerFactory {
      *
      * @param <T> the generic type
      * @param domainName the domain name
-     * @return the entity manager
+     * @return
      * @deprecated replaced by {@link #getNewEntityManager(String)}
      */
     @Deprecated
@@ -209,7 +209,7 @@ public class EntityManagerFactory {
      * Gets the entity manager.
      *
      * @param domainName the domain name
-     * @return the entity manager
+     * @return
      */
     public NewEntityManager getNewEntityManager(String domainName) {
         return getDmainManager(domainName).getNewEntityManager();
@@ -239,7 +239,7 @@ public class EntityManagerFactory {
      *
      * @param <T> the generic type
      * @param domainName the domain name
-     * @return the async batch executor< t>
+     * @return
      */
     @SuppressWarnings("unchecked")
     public <T> AsyncBatchExecutor<T> createAsyncBatchExecutor(String domainName) {
@@ -254,7 +254,7 @@ public class EntityManagerFactory {
      * @param batchSize the batch size
      * @param evictDelay the evict delay
      * @param capacity the capacity
-     * @return the async batch executor< t>
+     * @return
      */
     @SuppressWarnings("unchecked")
     public <T> AsyncBatchExecutor<T> createAsyncBatchExecutor(String domainName, int batchSize, long evictDelay, int capacity) {
@@ -265,7 +265,7 @@ public class EntityManagerFactory {
      * Find file.
      *
      * @param file the file
-     * @return the file
+     * @return
      */
     protected static File findFile(String file) {
         File configurationFile = new File(file);
@@ -290,7 +290,7 @@ public class EntityManagerFactory {
      * Gets the dmain manager.
      *
      * @param domainName the domain name
-     * @return the dmain manager
+     * @return
      */
     protected DomainEntityManager getDmainManager(String domainName) {
         synchronized (entityManagerPool) {
@@ -430,7 +430,7 @@ public class EntityManagerFactory {
         /**
          * Gets the domain name.
          *
-         * @return the domain name
+         * @return
          */
         String getDomainName() {
             return domainName;
@@ -439,7 +439,7 @@ public class EntityManagerFactory {
         /**
          * Gets the entity manager configuration.
          *
-         * @return the entity manager configuration
+         * @return
          */
         EntityManagerConfiguration getEntityManagerConfiguration() {
             return entityManagerConfig;
@@ -448,7 +448,7 @@ public class EntityManagerFactory {
         /**
          * Gets the data source manager.
          *
-         * @return the data source manager
+         * @return
          */
         DataSourceManager getDataSourceManager() {
             return dsm;
@@ -457,7 +457,7 @@ public class EntityManagerFactory {
         /**
          * Gets the DB access.
          *
-         * @return the DB access
+         * @return
          */
         DBAccess getDBAccess() {
             return dbAccess;
@@ -467,7 +467,7 @@ public class EntityManagerFactory {
          * Gets the entity manager.
          *
          * @param <T> the generic type
-         * @return the entity manager
+         * @return
          */
         @SuppressWarnings("unchecked")
         <T> EntityManagerEx<T> getEntityManager() {
@@ -477,7 +477,7 @@ public class EntityManagerFactory {
         /**
          * Gets the new entity manager.
          *
-         * @return the entity manager
+         * @return
          */
         @SuppressWarnings("unchecked")
         NewEntityManager getNewEntityManager() {

@@ -152,7 +152,7 @@ public class SQLTable implements Table {
     /**
      * Gets the name.
      *
-     * @return the name
+     * @return
      */
     @Override
     public String getName() {
@@ -162,7 +162,7 @@ public class SQLTable implements Table {
     /**
      * Gets the column list.
      *
-     * @return the column list
+     * @return
      */
     @SuppressWarnings("rawtypes")
     @Override
@@ -173,7 +173,7 @@ public class SQLTable implements Table {
     /**
      * Gets the column name list.
      *
-     * @return the column name list
+     * @return
      */
     @Override
     public Collection<String> getColumnNameList() {
@@ -184,7 +184,7 @@ public class SQLTable implements Table {
      * Gets the column.
      *
      * @param columnName the column name
-     * @return the column
+     * @return
      */
     @Override
     public Column getColumn(String columnName) {
@@ -194,7 +194,7 @@ public class SQLTable implements Table {
     /**
      * Gets the attributes.
      *
-     * @return the attributes
+     * @return
      */
     @Override
     public Map<String, String> getAttributes() {
@@ -205,7 +205,7 @@ public class SQLTable implements Table {
      * Gets the attribute.
      *
      * @param attrName the attr name
-     * @return the attribute
+     * @return
      */
     @Override
     public String getAttribute(String attrName) {
@@ -215,7 +215,7 @@ public class SQLTable implements Table {
     /**
      * Hash code.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int hashCode() {
@@ -236,7 +236,7 @@ public class SQLTable implements Table {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {
@@ -250,7 +250,7 @@ public class SQLTable implements Table {
      * @param columnClassName the column class name
      * @param precision the precision
      * @param scale the scale
-     * @return the string
+     * @return
      */
     public static String columnType2JavaType(String columnTypeName, String columnClassName, int precision, int scale) {
         String javaType = null;
@@ -295,7 +295,7 @@ public class SQLTable implements Table {
      *
      * @param tableName the table name
      * @param conn the conn
-     * @return the object[]
+     * @return
      */
     private static Object[] parse(String tableName, Connection conn) {
         final Map<String, SQLColumn> columnMap = new LinkedHashMap<>();
@@ -415,7 +415,7 @@ public class SQLTable implements Table {
      * Parses the.
      *
      * @param tableNode the table node
-     * @return the object[]
+     * @return
      */
     private static Object[] parse(Element tableNode) {
         final String tableName = tableNode.getAttribute(TableEle.NAME);

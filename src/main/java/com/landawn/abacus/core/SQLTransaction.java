@@ -126,7 +126,7 @@ public final class SQLTransaction implements Transaction {
     /**
      * Id.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String id() {
@@ -136,7 +136,7 @@ public final class SQLTransaction implements Transaction {
     /**
      * Connection.
      *
-     * @return the connection
+     * @return
      */
     javax.sql.DataSource dataSource() {
         return ds;
@@ -145,7 +145,7 @@ public final class SQLTransaction implements Transaction {
     /**
      * Connection.
      *
-     * @return the connection
+     * @return
      */
     public Connection connection() {
         return conn;
@@ -154,7 +154,7 @@ public final class SQLTransaction implements Transaction {
     /**
      * Isolation level.
      *
-     * @return the isolation level
+     * @return
      */
     @Override
     public IsolationLevel isolationLevel() {
@@ -164,7 +164,7 @@ public final class SQLTransaction implements Transaction {
     /**
      * Status.
      *
-     * @return the transaction. status
+     * @return
      */
     @Override
     public Transaction.Status status() {
@@ -396,7 +396,7 @@ public final class SQLTransaction implements Transaction {
      *
      * @param isolationLevel the isolation level
      * @param forUpdateOnly the for update only
-     * @return the int
+     * @return
      */
     synchronized int incrementAndGetRef(final IsolationLevel isolationLevel, final boolean forUpdateOnly) {
         if (!status.equals(Status.ACTIVE)) {
@@ -431,7 +431,7 @@ public final class SQLTransaction implements Transaction {
     /**
      * Decrement and get ref.
      *
-     * @return the int
+     * @return
      * @throws UncheckedSQLException the unchecked SQL exception
      */
     synchronized int decrementAndGetRef() throws UncheckedSQLException {
@@ -477,7 +477,7 @@ public final class SQLTransaction implements Transaction {
      *
      * @param dataSourceOrConnection the data source or connection
      * @param creator the creator
-     * @return the transaction id
+     * @return
      */
     static String getTransactionId(Object dataSourceOrConnection, final CreatedBy creator) {
         return StringUtil.concat(System.identityHashCode(dataSourceOrConnection), "_", Thread.currentThread().getId(), "_", Thread.currentThread().getName(),
@@ -489,7 +489,7 @@ public final class SQLTransaction implements Transaction {
      *
      * @param ds the ds
      * @param creator the creator
-     * @return the transaction
+     * @return
      */
     static SQLTransaction getTransaction(final javax.sql.DataSource ds, final CreatedBy creator) {
         return threadTransacionMap.get(getTransactionId(ds, creator));
@@ -508,7 +508,7 @@ public final class SQLTransaction implements Transaction {
      * Put transaction.
      *
      * @param tran the tran
-     * @return the SQL transaction
+     * @return
      */
     static SQLTransaction putTransaction(final SQLTransaction tran) {
         return threadTransacionMap.put(tran.id, tran);
@@ -517,7 +517,7 @@ public final class SQLTransaction implements Transaction {
     /**
      * Hash code.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int hashCode() {
@@ -538,7 +538,7 @@ public final class SQLTransaction implements Transaction {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {

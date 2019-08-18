@@ -110,7 +110,7 @@ public interface DBAccess {
      * @param entityName the entity name
      * @param selectPropNames the select prop names
      * @param condition the condition
-     * @return the list
+     * @return
      */
     <T> List<T> list(String entityName, Collection<String> selectPropNames, Condition condition);
 
@@ -122,7 +122,7 @@ public interface DBAccess {
      * @param selectPropNames the select prop names
      * @param condition the condition
      * @param options the options
-     * @return the list
+     * @return
      */
     <T> List<T> list(String entityName, Collection<String> selectPropNames, Condition condition, Map<String, Object> options);
 
@@ -132,7 +132,7 @@ public interface DBAccess {
      * @param entityName the entity name
      * @param props the props
      * @param options            supported option:{@code Tran.ID}.
-     * @return the {@code EntityId} of the new the added entity.
+     * @return
      */
     EntityId add(String entityName, Map<String, Object> props, Map<String, Object> options);
 
@@ -151,7 +151,7 @@ public interface DBAccess {
      * Update the records identified by the specified {@code entityId} with the specified {@code props}.
      * @param props            map key is property name; map value is property value.
      * @param entityId the entity id
-     * @return the number of updated entity.
+     * @return
      */
     int update(Map<String, Object> props, EntityId entityId);
 
@@ -160,7 +160,7 @@ public interface DBAccess {
      * @param props            map key is property name; map value is property value.
      * @param entityId the entity id
      * @param options            {@link com.landawn.abacus.util.Options}
-     * @return the number of updated entity.
+     * @return
      */
     int update(Map<String, Object> props, EntityId entityId, Map<String, Object> options);
 
@@ -168,7 +168,7 @@ public interface DBAccess {
      * Update the records identified by the specified {@code entityIds} with the specified {@code props}.
      * @param props            map key is property name; map value is property value.
      * @param entityIds the entity ids
-     * @return the number of updated entities.
+     * @return
      */
     int updateAll(Map<String, Object> props, List<? extends EntityId> entityIds);
 
@@ -177,7 +177,7 @@ public interface DBAccess {
      * @param props            map key is property name; map value is property value.
      * @param entityIds the entity ids
      * @param options            {@link com.landawn.abacus.util.Options}
-     * @return the number of updated entity.
+     * @return
      */
     int updateAll(Map<String, Object> props, List<? extends EntityId> entityIds, Map<String, Object> options);
 
@@ -189,7 +189,7 @@ public interface DBAccess {
      * @param condition            {@code com.landawn.abacus.condition.ConditionFactory}. All of the records will be returned by query or
      *            updated/deleted if condition is 'Empty' or 'null' .
      * @param options            {@link com.landawn.abacus.util.Options}
-     * @return the number of entities are updated.
+     * @return
      */
     int update(String entityName, Map<String, Object> props, Condition condition, Map<String, Object> options);
 
@@ -197,7 +197,7 @@ public interface DBAccess {
      * Delete record from data store by the specified {@code entityId}.
      *
      * @param entityId the entity id
-     * @return the number of deleted entity.
+     * @return
      */
     int delete(EntityId entityId);
 
@@ -206,7 +206,7 @@ public interface DBAccess {
      *
      * @param entityId the entity id
      * @param options            {@link com.landawn.abacus.util.Options}
-     * @return the number of deleted entity.
+     * @return
      */
     int delete(EntityId entityId, Map<String, Object> options);
 
@@ -214,7 +214,7 @@ public interface DBAccess {
      * Delete record from data store by the specified {@code entityIds}.
      *
      * @param entityIds the entity ids
-     * @return the number of deleted entity.
+     * @return
      */
     int deleteAll(List<? extends EntityId> entityIds);
 
@@ -223,7 +223,7 @@ public interface DBAccess {
      *
      * @param entityIds the entity ids
      * @param options            {@link com.landawn.abacus.util.Options}
-     * @return the number of deleted entity.
+     * @return
      */
     int deleteAll(List<? extends EntityId> entityIds, Map<String, Object> options);
 
@@ -234,7 +234,7 @@ public interface DBAccess {
      * @param condition            {@code com.landawn.abacus.condition.ConditionFactory}. All of the records will be returned by query or
      *            updated/deleted if condition is 'Empty' or 'null' .
      * @param options            {@link com.landawn.abacus.util.Options}
-     * @return the number of entities are deleted.
+     * @return
      */
     int delete(String entityName, Condition condition, Map<String, Object> options);
 
@@ -287,7 +287,7 @@ public interface DBAccess {
      *
      * @param isolationLevel the isolation level
      * @param options            {@link com.landawn.abacus.util.Options}
-     * @return the started transaction id which could be set in the options in next coming call.
+     * @return
      */
     String beginTransaction(IsolationLevel isolationLevel, Map<String, Object> options);
 

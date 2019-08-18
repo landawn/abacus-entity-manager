@@ -78,7 +78,7 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
      * Gets the prop index.
      *
      * @param propName the prop name
-     * @return the prop index
+     * @return
      */
     @Override
     public int getPropIndex(String propName) {
@@ -90,7 +90,7 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     /**
      * Gets the cached prop names.
      *
-     * @return the cached prop names
+     * @return
      */
     @Override
     public Collection<String> getCachedPropNames() {
@@ -153,7 +153,7 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
      * @param propName the prop name
      * @param beginIndex the begin index
      * @param endIndex the end index
-     * @return the result
+     * @return
      */
     @Override
     public Object[] getResult(String propName, int beginIndex, int endIndex) {
@@ -186,7 +186,7 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
      * @param propNames the prop names
      * @param beginIndex the begin index
      * @param endIndex the end index
-     * @return the result
+     * @return
      */
     @Override
     public Object[][] getResult(Collection<String> propNames, int beginIndex, int endIndex) {
@@ -231,7 +231,7 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
      *
      * @param beginIndex the begin index
      * @param endIndex the end index
-     * @return the result
+     * @return
      */
     @Override
     public Object[][] getResult(int beginIndex, int endIndex) {
@@ -241,7 +241,7 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     /**
      * Gets the last update time.
      *
-     * @return the last update time
+     * @return
      */
     @Override
     public long getLastUpdateTime() {
@@ -253,7 +253,7 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     /**
      * Size.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int size() {
@@ -324,7 +324,7 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {
@@ -341,7 +341,7 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
      * Check prop index.
      *
      * @param propName the prop name
-     * @return the int
+     * @return
      */
     protected int checkPropIndex(String propName) {
         Integer propIndex = propNameIndexMap.get(propName);

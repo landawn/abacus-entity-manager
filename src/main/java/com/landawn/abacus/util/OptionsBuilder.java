@@ -40,7 +40,7 @@ public class OptionsBuilder {
     /**
      * Creates the.
      *
-     * @return the options builder
+     * @return
      */
     public static OptionsBuilder create() {
         return new OptionsBuilder();
@@ -50,7 +50,7 @@ public class OptionsBuilder {
      * Offset.
      *
      * @param offset the offset
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder offset(int offset) {
         N.checkArgument(offset >= 0, "'offset' can't be negative %s", offset);
@@ -64,7 +64,7 @@ public class OptionsBuilder {
      * Count.
      *
      * @param count the count
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder count(int count) {
         N.checkArgument(count >= 0, "'count' can't be negative %s", count);
@@ -78,7 +78,7 @@ public class OptionsBuilder {
      * Batch size.
      *
      * @param batchSize the batch size
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder batchSize(int batchSize) {
         N.checkArgument(batchSize >= 0, "'batchSize' can't be negative %s", batchSize);
@@ -92,7 +92,7 @@ public class OptionsBuilder {
      * Transaction id.
      *
      * @param transactionId the transaction id
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder transactionId(String transactionId) {
         N.checkArgument(N.notNullOrEmpty(transactionId), "'transactionId' can't be null or empyt.");
@@ -106,7 +106,7 @@ public class OptionsBuilder {
      * Auto rollback transaction.
      *
      * @param autoRollbackTransaction the auto rollback transaction
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder autoRollbackTransaction(boolean autoRollbackTransaction) {
         options.put(Options.AUTO_ROLLBACK_TRANSACTION, autoRollbackTransaction);
@@ -118,7 +118,7 @@ public class OptionsBuilder {
      * Record lock code.
      *
      * @param recordLockCode the record lock code
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder recordLockCode(String recordLockCode) {
         N.checkArgument(N.notNullOrEmpty(recordLockCode), "'recordLockCode' can't be null or empyt.");
@@ -132,7 +132,7 @@ public class OptionsBuilder {
      * Record lock timeout.
      *
      * @param timeout the timeout
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder recordLockTimeout(long timeout) {
         N.checkArgument(timeout >= 0, "'recordLockTimeout' can't be negative %s", timeout);
@@ -146,7 +146,7 @@ public class OptionsBuilder {
      * Enable my SQL batch add.
      *
      * @param enableMySQLBatchAdd the enable my SQL batch add
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder enableMySQLBatchAdd(boolean enableMySQLBatchAdd) {
         options.put(Options.ENABLE_MYSQL_BATCH_ADD, enableMySQLBatchAdd);
@@ -158,7 +158,7 @@ public class OptionsBuilder {
      * Query with data source.
      *
      * @param dataSource the data source
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder queryWithDataSource(String dataSource) {
         N.checkArgument(N.notNullOrEmpty(dataSource), "'dataSource' can't be null or empyt.");
@@ -172,7 +172,7 @@ public class OptionsBuilder {
      * Query with data sources.
      *
      * @param dataSources the data sources
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder queryWithDataSources(Collection<String> dataSources) {
         N.checkArgument(N.notNullOrEmpty(dataSources), "'dataSources' can't be null or empyt.");
@@ -186,7 +186,7 @@ public class OptionsBuilder {
      * Query with read only connection.
      *
      * @param queryWithReadOnlyConnection the query with read only connection
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder queryWithReadOnlyConnection(boolean queryWithReadOnlyConnection) {
         options.put(Options.Query.QUERY_WITH_READ_ONLY_CONNECTION, queryWithReadOnlyConnection);
@@ -198,7 +198,7 @@ public class OptionsBuilder {
      * Query in parallel.
      *
      * @param queryInParallel the query in parallel
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder queryInParallel(boolean queryInParallel) {
         options.put(Options.Query.QUERY_IN_PARALLEL, queryInParallel);
@@ -211,7 +211,7 @@ public class OptionsBuilder {
      * property. Will union the repetition result if {@code COMBINE_PROPERTIES=true}.
      *
      * @param b the b
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder combineProperties(boolean b) {
         options.put(Options.Query.COMBINE_PROPERTIES, b);
@@ -223,7 +223,7 @@ public class OptionsBuilder {
      * Handle live time.
      *
      * @param liveTime the live time
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder handleLiveTime(long liveTime) {
         N.checkArgument(liveTime >= 0, "'handleLiveTime' can't be negative %s", liveTime);
@@ -237,7 +237,7 @@ public class OptionsBuilder {
      * Handle max idle time.
      *
      * @param maxIdleTime the max idle time
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder handleMaxIdleTime(long maxIdleTime) {
         N.checkArgument(maxIdleTime >= 0, "'handleMaxIdleTime' can't be negative %s", maxIdleTime);
@@ -251,7 +251,7 @@ public class OptionsBuilder {
      * Query from cache.
      *
      * @param queryFromCache the query from cache
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder queryFromCache(boolean queryFromCache) {
         options.put(Options.Query.QUERY_FROM_CACHE, queryFromCache);
@@ -263,7 +263,7 @@ public class OptionsBuilder {
      * Refresh cache.
      *
      * @param refreshCache the refresh cache
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder refreshCache(boolean refreshCache) {
         options.put(Options.Query.REFRESH_CACHE, refreshCache);
@@ -281,7 +281,7 @@ public class OptionsBuilder {
      * By the default, no query result will be cached if this options is not set.
      *
      * @param async the async
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder cacheResult(boolean async) {
         options.put(Options.Query.CACHE_RESULT, async ? Options.Query.CACHE_RESULT_ASYNC : Options.Query.CACHE_RESULT_SYNC);
@@ -293,7 +293,7 @@ public class OptionsBuilder {
      * Cache condition.
      *
      * @param queryTime the query time
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder cacheCondition(long queryTime) {
         N.checkArgument(queryTime >= 0, "'cacheConditionQueryTime' can't be negative %s", queryTime);
@@ -308,7 +308,7 @@ public class OptionsBuilder {
      *
      * @param minCount the min count
      * @param maxCount the max count
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder cacheCondition(int minCount, int maxCount) {
         N.checkArgument(minCount >= 0, "'cacheConditionMinCount' can't be negative %s", minCount);
@@ -325,7 +325,7 @@ public class OptionsBuilder {
      * @param queryTime the query time
      * @param minCount the min count
      * @param maxCount the max count
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder cacheCondition(long queryTime, int minCount, int maxCount) {
         N.checkArgument(queryTime >= 0, "'cacheConditionQueryTime' can't be negative %s", queryTime);
@@ -341,7 +341,7 @@ public class OptionsBuilder {
      * Cache range.
      *
      * @param range the range
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder cacheRange(int... range) {
         options.put(Options.Cache.CACHE_RESULT_RANGE, Options.Cache.range(range));
@@ -353,7 +353,7 @@ public class OptionsBuilder {
      * Uncached prop names.
      *
      * @param propNames the prop names
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder uncachedPropNames(Collection<String> propNames) {
         options.put(Options.Cache.UNCACHED_PROP_NAMES, propNames);
@@ -365,7 +365,7 @@ public class OptionsBuilder {
      * Cache live time.
      *
      * @param liveTime the live time
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder cacheLiveTime(long liveTime) {
         N.checkArgument(liveTime >= 0, "'cacheLiveTime' can't be negative %s", liveTime);
@@ -379,7 +379,7 @@ public class OptionsBuilder {
      * Cache max idle time.
      *
      * @param maxIdleTime the max idle time
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder cacheMaxIdleTime(long maxIdleTime) {
         N.checkArgument(maxIdleTime >= 0, "'cacheMaxIdleTime' can't be negative %s", maxIdleTime);
@@ -393,7 +393,7 @@ public class OptionsBuilder {
      * The limited time to update the cache after update data. unit is milliseconds.
      *
      * @param maxCheckQueryCacheTime the max check query cache time
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder maxCheckQueryCacheTime(long maxCheckQueryCacheTime) {
         N.checkArgument(maxCheckQueryCacheTime >= 0, "'maxCheckQueryCacheTime' can't be negative %s", maxCheckQueryCacheTime);
@@ -408,7 +408,7 @@ public class OptionsBuilder {
      * condition, it will be removed without checking if the result in it is updated when database was updated.
      *
      * @param minCheckQueryCacheSize the min check query cache size
-     * @return the options builder
+     * @return
      */
     public OptionsBuilder minCheckQueryCacheSize(int minCheckQueryCacheSize) {
         N.checkArgument(minCheckQueryCacheSize >= 0, "'minCheckQueryCacheSize' can't be negative %s", minCheckQueryCacheSize);
@@ -422,7 +422,7 @@ public class OptionsBuilder {
      * Jdbc query timeout.
      *
      * @param jdbcQueryTimeout the jdbc query timeout
-     * @return the options builder
+     * @return
      * @see java.sql.Statement#setQueryTimeout(int)
      */
     public OptionsBuilder jdbcQueryTimeout(long jdbcQueryTimeout) {
@@ -437,7 +437,7 @@ public class OptionsBuilder {
      * Jdbc result set type.
      *
      * @param jdbcResultSetType one of {<code>java.sql.ResultSet.TYPE_FORWARD_ONLY</code>, <code>java.sql.ResultSet.TYPE_SCROLL_INSENSITIVE</code> and <code>java.sql.ResultSet.TYPE_SCROLL_SENSITIVE</code>}
-     * @return the options builder
+     * @return
      * @see java.sql.Connection#prepareStatement(String, int, int, int)
      */
     public OptionsBuilder jdbcResultSetType(int jdbcResultSetType) {
@@ -452,7 +452,7 @@ public class OptionsBuilder {
      * Jdbc result set concurrency.
      *
      * @param jdbcResultSetConcurrency either <code>java.sql.ResultSet.CONCUR_READ_ONLY</code> or <code>java.sql.ResultSet.CONCUR_UPDATABLE</code>.
-     * @return the options builder
+     * @return
      * @see java.sql.Connection#prepareStatement(String, int, int, int)
      */
     public OptionsBuilder jdbcResultSetConcurrency(int jdbcResultSetConcurrency) {
@@ -467,7 +467,7 @@ public class OptionsBuilder {
      * Jdbc result set holdability.
      *
      * @param jdbcResultSetHoldability either <code>java.sql.ResultSet.HOLD_CURSORS_OVER_COMMIT</code> or <code>java.sql.ResultSet.CLOSE_CURSORS_AT_COMMIT</code>
-     * @return the options builder
+     * @return
      * @see java.sql.Connection#prepareStatement(String, int, int, int)
      */
     public OptionsBuilder jdbcResultSetHoldability(int jdbcResultSetHoldability) {
@@ -482,7 +482,7 @@ public class OptionsBuilder {
      * Jdbc fetch direction.
      *
      * @param jdbcFetchDirection the jdbc fetch direction
-     * @return the options builder
+     * @return
      * @see java.sql.ResultSet#setFetchDirection(int)
      */
     public OptionsBuilder jdbcFetchDirection(int jdbcFetchDirection) {
@@ -497,7 +497,7 @@ public class OptionsBuilder {
      * Jdbc fetch size.
      *
      * @param jdbcFetchSize the jdbc fetch size
-     * @return the options builder
+     * @return
      * @see java.sql.ResultSet#setFetchSize(int)
      */
     public OptionsBuilder jdbcFetchSize(int jdbcFetchSize) {
@@ -512,7 +512,7 @@ public class OptionsBuilder {
      * Jdbc max rows.
      *
      * @param jdbcMaxRows the jdbc max rows
-     * @return the options builder
+     * @return
      * @see java.sql.Statement#setMaxRows(int)
      */
     public OptionsBuilder jdbcMaxRows(int jdbcMaxRows) {
@@ -527,7 +527,7 @@ public class OptionsBuilder {
      * Jdbc max field size.
      *
      * @param jdbcMaxFieldSize the jdbc max field size
-     * @return the options builder
+     * @return
      * @see java.sql.Statement#setMaxFieldSize(int)
      */
     public OptionsBuilder jdbcMaxFieldSize(int jdbcMaxFieldSize) {
@@ -556,7 +556,7 @@ public class OptionsBuilder {
     /**
      * Builds the.
      *
-     * @return the map
+     * @return
      */
     public Map<String, Object> build() {
         return options;

@@ -34,35 +34,35 @@ public interface Command {
     /**
      * Gets the operation type.
      *
-     * @return the operation type
+     * @return
      */
     OperationType getOperationType();
 
     /**
      * Gets the entity def.
      *
-     * @return the entity def
+     * @return
      */
     EntityDefinition getEntityDef();
 
     /**
      * Gets the options.
      *
-     * @return the options
+     * @return
      */
     Map<String, Object> getOptions();
 
     /**
      * Gets the parameters.
      *
-     * @return the parameters
+     * @return
      */
     Object[] getParameters();
 
     /**
      * Gets the parameter types.
      *
-     * @return the parameter types
+     * @return
      */
     Type<Object>[] getParameterTypes();
 
@@ -70,7 +70,7 @@ public interface Command {
      * Gets the parameter.
      *
      * @param index the index
-     * @return the parameter
+     * @return
      */
     Object getParameter(int index);
 
@@ -78,7 +78,7 @@ public interface Command {
      * Gets the parameter type.
      *
      * @param index the index
-     * @return the parameter type
+     * @return
      */
     Type<Object> getParameterType(int index);
 
@@ -95,7 +95,7 @@ public interface Command {
      * Gets the parameter.
      *
      * @param parameterName the parameter name
-     * @return the parameter
+     * @return
      */
     Object getParameter(String parameterName);
 
@@ -103,7 +103,7 @@ public interface Command {
      * Gets the parameter type.
      *
      * @param parameterName the parameter name
-     * @return the parameter type
+     * @return
      */
     Type<Object> getParameterType(String parameterName);
 
@@ -119,7 +119,7 @@ public interface Command {
     /**
      * Gets the parameter count.
      *
-     * @return the parameter count
+     * @return
      */
     int getParameterCount();
 
@@ -132,7 +132,7 @@ public interface Command {
      * Copy.
      *
      * @param <T> the generic type
-     * @return the t
+     * @return
      */
     <T extends Command> T copy();
 

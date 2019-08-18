@@ -49,7 +49,7 @@ class EntityManagerVC<T> extends EntityManagerLVC<T> {
      * @param entityId the entity id
      * @param lockMode the lock mode
      * @param options the options
-     * @return the string
+     * @return
      */
     @Override
     protected String internalLockRecord(EntityId entityId, LockMode lockMode, Map<String, Object> options) {

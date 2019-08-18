@@ -90,7 +90,7 @@ final class SessionImpl<E> implements Session<E> {
      * Begin transaction.
      *
      * @param isolationLevel the isolation level
-     * @return the transaction
+     * @return
      */
     @Override
     public Transaction beginTransaction(IsolationLevel isolationLevel) {
@@ -111,7 +111,7 @@ final class SessionImpl<E> implements Session<E> {
      * @param <T> the generic type
      * @param entityId the entity id
      * @param selectPropNames the select prop names
-     * @return the optional
+     * @return
      */
     @Override
     public <T> Optional<T> get(EntityId entityId, Collection<String> selectPropNames) {
@@ -124,7 +124,7 @@ final class SessionImpl<E> implements Session<E> {
      * @param <T> the generic type
      * @param entityId the entity id
      * @param selectPropNames the select prop names
-     * @return the t
+     * @return
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -149,7 +149,7 @@ final class SessionImpl<E> implements Session<E> {
      * @param entityName the entity name
      * @param selectPropNames the select prop names
      * @param condition the condition
-     * @return the list
+     * @return
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -536,7 +536,7 @@ final class SessionImpl<E> implements Session<E> {
      * Collection 2 array.
      *
      * @param entities the entities
-     * @return the e[]
+     * @return
      */
     @SuppressWarnings("unchecked")
     private E[] collection2Array(Collection<?> entities) {
@@ -571,7 +571,7 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Sets the transaction.
      *
-     * @return the map
+     * @return
      */
     private Map<String, Object> setTransaction() {
         if (isInTransaction()) {
@@ -618,7 +618,7 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {
@@ -662,7 +662,7 @@ final class SessionImpl<E> implements Session<E> {
         /**
          * Id.
          *
-         * @return the string
+         * @return
          */
         @Override
         public String id() {
@@ -672,7 +672,7 @@ final class SessionImpl<E> implements Session<E> {
         /**
          * Isolation level.
          *
-         * @return the isolation level
+         * @return
          */
         @Override
         public IsolationLevel isolationLevel() {
@@ -682,7 +682,7 @@ final class SessionImpl<E> implements Session<E> {
         /**
          * Status.
          *
-         * @return the status
+         * @return
          */
         @Override
         public Status status() {

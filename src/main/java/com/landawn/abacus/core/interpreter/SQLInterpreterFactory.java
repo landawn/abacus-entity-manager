@@ -95,7 +95,7 @@ public final class SQLInterpreterFactory {
      *
      * @param productName the product name
      * @param productVersion the product version
-     * @return the interpreter
+     * @return
      */
     public static Interpreter getInterpreter(String productName, String productVersion) {
         productName = productName.toUpperCase();

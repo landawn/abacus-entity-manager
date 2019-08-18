@@ -260,7 +260,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the name.
      *
-     * @return the name
+     * @return
      */
     @Override
     public String getName() {
@@ -270,7 +270,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the canonical name.
      *
-     * @return the canonical name
+     * @return
      */
     @Override
     public String getCanonicalName() {
@@ -280,7 +280,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the type.
      *
-     * @return the type
+     * @return
      */
     @Override
     public Type<Object> getType() {
@@ -293,7 +293,7 @@ public class SQLProperty implements Property {
      * Gets the default on insert.
      *
      * @param <T> the generic type
-     * @return the default on insert
+     * @return
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -311,7 +311,7 @@ public class SQLProperty implements Property {
      * Gets the default on update.
      *
      * @param <T> the generic type
-     * @return the default on update
+     * @return
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -328,7 +328,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the column name.
      *
-     * @return the column name
+     * @return
      */
     @Override
     public String getColumnName() {
@@ -338,7 +338,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the canonical column name.
      *
-     * @return the canonical column name
+     * @return
      */
     @Override
     public String getCanonicalColumnName() {
@@ -348,7 +348,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the column type.
      *
-     * @return the column type
+     * @return
      */
     @Override
     public ColumnType getColumnType() {
@@ -358,7 +358,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the column entity def.
      *
-     * @return the column entity def
+     * @return
      */
     @Override
     public EntityDefinition getColumnEntityDef() {
@@ -370,7 +370,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the on update action.
      *
-     * @return the on update action
+     * @return
      */
     @Override
     public OnUpdateAction getOnUpdateAction() {
@@ -380,7 +380,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the on delete action.
      *
-     * @return the on delete action
+     * @return
      */
     @Override
     public OnDeleteAction getOnDeleteAction() {
@@ -390,7 +390,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the order by.
      *
-     * @return the order by
+     * @return
      */
     @Override
     public String getOrderBy() {
@@ -400,7 +400,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the association.
      *
-     * @return the association
+     * @return
      */
     @Override
     public Association getAssociation() {
@@ -412,7 +412,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the validator list.
      *
-     * @return the validator list
+     * @return
      */
     @Override
     public List<Validator<Object>> getValidatorList() {
@@ -424,7 +424,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the sub property list.
      *
-     * @return the sub property list
+     * @return
      */
     @Override
     public List<Property> getSubPropertyList() {
@@ -436,7 +436,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the sub property name list.
      *
-     * @return the sub property name list
+     * @return
      */
     @Override
     public List<String> getSubPropertyNameList() {
@@ -449,7 +449,7 @@ public class SQLProperty implements Property {
      * Gets the sub property.
      *
      * @param propName the prop name
-     * @return the sub property
+     * @return
      */
     @Override
     public Property getSubProperty(String propName) {
@@ -563,7 +563,7 @@ public class SQLProperty implements Property {
      *
      * @param <T> the generic type
      * @param entities the entities
-     * @return the collection
+     * @return
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -581,7 +581,7 @@ public class SQLProperty implements Property {
      *
      * @param <T> the generic type
      * @param entities the entities
-     * @return the collection
+     * @return
      */
     @Override
     public <T> Collection<T> asCollection(Collection<T> entities) {
@@ -596,7 +596,7 @@ public class SQLProperty implements Property {
      * Gets the gets the method.
      *
      * @param clazz the clazz
-     * @return the gets the method
+     * @return
      */
     @Override
     public Method getGetMethod(Class<?> clazz) {
@@ -616,7 +616,7 @@ public class SQLProperty implements Property {
      * Gets the sets the method.
      *
      * @param clazz the clazz
-     * @return the sets the method
+     * @return
      */
     @Override
     public Method getSetMethod(Class<?> clazz) {
@@ -642,7 +642,7 @@ public class SQLProperty implements Property {
      *
      * @param <T> the generic type
      * @param st the st
-     * @return the t
+     * @return
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -654,7 +654,7 @@ public class SQLProperty implements Property {
      * String of.
      *
      * @param propVlaue the prop vlaue
-     * @return the string
+     * @return
      */
     @Override
     public String stringOf(Object propVlaue) {
@@ -664,7 +664,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the attributes.
      *
-     * @return the attributes
+     * @return
      */
     @Override
     public Map<String, String> getAttributes() {
@@ -675,7 +675,7 @@ public class SQLProperty implements Property {
      * Gets the attribute.
      *
      * @param attrName the attr name
-     * @return the attribute
+     * @return
      */
     @Override
     public String getAttribute(String attrName) {
@@ -685,7 +685,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the id generator.
      *
-     * @return the id generator
+     * @return
      */
     @SuppressWarnings("rawtypes")
     @Override
@@ -706,7 +706,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the entity definition.
      *
-     * @return the entity definition
+     * @return
      */
     @Override
     public EntityDefinition getEntityDefinition() {
@@ -725,7 +725,7 @@ public class SQLProperty implements Property {
     /**
      * Hash code.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int hashCode() {
@@ -746,7 +746,7 @@ public class SQLProperty implements Property {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {
@@ -863,7 +863,7 @@ public class SQLProperty implements Property {
      *
      * @param typeName the type name
      * @param pkgName the pkg name
-     * @return the real type
+     * @return
      */
     private Type<Object> getRealType(String typeName, String pkgName) {
         Type<Object> type = TypeFactory.getType(typeName);
@@ -952,7 +952,7 @@ public class SQLProperty implements Property {
      * Parses the validator attr.
      *
      * @param validatorAttr the validator attr
-     * @return the list
+     * @return
      */
     private List<String> parseValidatorAttr(String validatorAttr) {
         List<String> validatorElementList = new ArrayList<>();

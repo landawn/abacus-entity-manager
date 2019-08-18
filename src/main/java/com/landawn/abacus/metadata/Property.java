@@ -35,21 +35,21 @@ public interface Property {
     /**
      * Gets the name.
      *
-     * @return the name
+     * @return
      */
     String getName();
 
     /**
      * Gets the canonical name.
      *
-     * @return the canonical name
+     * @return
      */
     String getCanonicalName();
 
     /**
      * Gets the type.
      *
-     * @return the type
+     * @return
      */
     Type<Object> getType();
 
@@ -57,7 +57,7 @@ public interface Property {
      * Gets the default on insert.
      *
      * @param <T> the generic type
-     * @return the default on insert
+     * @return
      */
     <T> T getDefaultOnInsert();
 
@@ -65,84 +65,84 @@ public interface Property {
      * Gets the default on update.
      *
      * @param <T> the generic type
-     * @return the default on update
+     * @return
      */
     <T> T getDefaultOnUpdate();
 
     /**
      * Gets the column name.
      *
-     * @return the column name
+     * @return
      */
     String getColumnName();
 
     /**
      * Gets the canonical column name.
      *
-     * @return the canonical column name
+     * @return
      */
     String getCanonicalColumnName();
 
     /**
      * Gets the column type.
      *
-     * @return the column type
+     * @return
      */
     ColumnType getColumnType();
 
     /**
      * Gets the column entity def.
      *
-     * @return the column entity def
+     * @return
      */
     EntityDefinition getColumnEntityDef();
 
     /**
      * Gets the on update action.
      *
-     * @return the on update action
+     * @return
      */
     OnUpdateAction getOnUpdateAction();
 
     /**
      * Gets the on delete action.
      *
-     * @return the on delete action
+     * @return
      */
     OnDeleteAction getOnDeleteAction();
 
     /**
      * Gets the order by.
      *
-     * @return the order by
+     * @return
      */
     String getOrderBy();
 
     /**
      * Gets the association.
      *
-     * @return the association
+     * @return
      */
     Association getAssociation();
 
     /**
      * Gets the validator list.
      *
-     * @return the validator list
+     * @return
      */
     List<Validator<Object>> getValidatorList();
 
     /**
      * Gets the sub property list.
      *
-     * @return the sub property list
+     * @return
      */
     List<Property> getSubPropertyList();
 
     /**
      * Gets the sub property name list.
      *
-     * @return the sub property name list
+     * @return
      */
     List<String> getSubPropertyNameList();
 
@@ -150,7 +150,7 @@ public interface Property {
      * Gets the sub property.
      *
      * @param propName the prop name
-     * @return the sub property
+     * @return
      */
     Property getSubProperty(String propName);
 
@@ -229,7 +229,7 @@ public interface Property {
      *
      * @param <T> the generic type
      * @param entities the entities
-     * @return the collection
+     * @return
      */
     @SuppressWarnings("unchecked")
     <T> Collection<T> asCollection(T... entities);
@@ -239,7 +239,7 @@ public interface Property {
      *
      * @param <T> the generic type
      * @param entities the entities
-     * @return the collection
+     * @return
      */
     <T> Collection<T> asCollection(Collection<T> entities);
 
@@ -247,7 +247,7 @@ public interface Property {
      * Gets the sets the method.
      *
      * @param clazz the clazz
-     * @return the sets the method
+     * @return
      */
     Method getSetMethod(Class<?> clazz);
 
@@ -255,7 +255,7 @@ public interface Property {
      * Gets the gets the method.
      *
      * @param clazz the clazz
-     * @return the gets the method
+     * @return
      */
     Method getGetMethod(Class<?> clazz);
 
@@ -264,7 +264,7 @@ public interface Property {
      *
      * @param <T> the generic type
      * @param st the st
-     * @return the t
+     * @return
      */
     <T> T valueOf(String st);
 
@@ -272,14 +272,14 @@ public interface Property {
      * String of.
      *
      * @param propvalue the propvalue
-     * @return the string
+     * @return
      */
     String stringOf(Object propvalue);
 
     /**
      * Gets the attributes.
      *
-     * @return the attributes
+     * @return
      */
     Map<String, String> getAttributes();
 
@@ -287,14 +287,14 @@ public interface Property {
      * Gets the attribute.
      *
      * @param attrName the attr name
-     * @return the attribute
+     * @return
      */
     String getAttribute(String attrName);
 
     /**
      * Gets the id generator.
      *
-     * @return the id generator
+     * @return
      */
     @SuppressWarnings("rawtypes")
     IdGenerator getIdGenerator();
@@ -302,7 +302,7 @@ public interface Property {
     /**
      * Gets the entity definition.
      *
-     * @return the entity definition
+     * @return
      */
     EntityDefinition getEntityDefinition();
 }

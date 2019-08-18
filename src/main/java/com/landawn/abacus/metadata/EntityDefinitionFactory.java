@@ -29,14 +29,14 @@ public interface EntityDefinitionFactory {
     /**
      * Domain name.
      *
-     * @return the string
+     * @return
      */
     String domainName();
 
     /**
      * Gets the definition list.
      *
-     * @return the definition list
+     * @return
      */
     Collection<EntityDefinition> getDefinitionList();
 
@@ -44,21 +44,21 @@ public interface EntityDefinitionFactory {
      * Gets the definition.
      *
      * @param entityName the entity name
-     * @return the definition
+     * @return
      */
     EntityDefinition getDefinition(String entityName);
 
     /**
      * Gets the entity name list.
      *
-     * @return the entity name list
+     * @return
      */
     Collection<String> getEntityNameList();
 
     /**
      * Gets the attributes.
      *
-     * @return the attributes
+     * @return
      */
     Map<String, String> getAttributes();
 
@@ -66,14 +66,14 @@ public interface EntityDefinitionFactory {
      * Gets the attribute.
      *
      * @param attrName the attr name
-     * @return the attribute
+     * @return
      */
     String getAttribute(String attrName);
 
     /**
      * Export definition.
      *
-     * @return the byte[]
+     * @return
      */
     byte[] exportDefinition();
 }

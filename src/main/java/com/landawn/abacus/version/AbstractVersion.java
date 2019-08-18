@@ -28,7 +28,7 @@ public abstract class AbstractVersion<K> implements Version<K> {
     /**
      * Gets the default capacity.
      *
-     * @return the default capacity
+     * @return
      */
     protected static int getDefaultCapacity() {
         long maxMemory = Runtime.getRuntime().maxMemory() / 1024 * 1024; // N.ONE_MB;
@@ -47,7 +47,7 @@ public abstract class AbstractVersion<K> implements Version<K> {
     /**
      * Gets the start number.
      *
-     * @return the start number
+     * @return
      */
     protected long getStartNumber() {
         // return (System.currentTimeMillis() % (1000000000000000000L /

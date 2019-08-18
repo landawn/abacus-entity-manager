@@ -71,7 +71,7 @@ public class DistributedVersion<K> extends AbstractVersion<K> {
      * Gets the.
      *
      * @param k the k
-     * @return the long
+     * @return
      */
     @Override
     public long get(K k) {
@@ -139,7 +139,7 @@ public class DistributedVersion<K> extends AbstractVersion<K> {
      * Generate key.
      *
      * @param k the k
-     * @return the string
+     * @return
      */
     protected String generateKey(K k) {
         return N.isNullOrEmpty(keyPrefix) ? N.base64Encode(N.toString(k).getBytes()) : (keyPrefix + N.base64Encode(N.toString(k).getBytes()));

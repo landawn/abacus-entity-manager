@@ -44,7 +44,7 @@ public enum ColumnType {
     /**
      * Method getName.
      *
-     * @return the name
+     * @return
      */
     public String getName() {
         return name;

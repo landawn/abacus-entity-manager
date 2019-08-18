@@ -29,21 +29,21 @@ public interface Table {
     /**
      * Gets the name.
      *
-     * @return the name
+     * @return
      */
     String getName();
 
     /**
      * Gets the column list.
      *
-     * @return the column list
+     * @return
      */
     Collection<Column> getColumnList();
 
     /**
      * Gets the column name list.
      *
-     * @return the column name list
+     * @return
      */
     Collection<String> getColumnNameList();
 
@@ -51,14 +51,14 @@ public interface Table {
      * Gets the column.
      *
      * @param columnName the column name
-     * @return the column
+     * @return
      */
     Column getColumn(String columnName);
 
     /**
      * Gets the attributes.
      *
-     * @return the attributes
+     * @return
      */
     Map<String, String> getAttributes();
 
@@ -66,7 +66,7 @@ public interface Table {
      * Gets the attribute.
      *
      * @param attrName the attr name
-     * @return the attribute
+     * @return
      */
     String getAttribute(String attrName);
 }

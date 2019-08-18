@@ -208,7 +208,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entityName the entity name
      * @param cond the cond
-     * @return the int
+     * @return
      */
     public int count(final String entityName, final Condition cond) {
         return count(entityName, cond, null);
@@ -220,7 +220,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param cond the cond
      * @param options the options
-     * @return the int
+     * @return
      */
     public int count(final String entityName, final Condition cond, final Map<String, Object> options) {
         Map<String, Object> newOptions = setSingleResultOption(options);
@@ -232,7 +232,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Sets the single result option.
      *
      * @param options the options
-     * @return the map
+     * @return
      */
     protected Map<String, Object> setSingleResultOption(final Map<String, Object> options) {
         Map<String, Object> newOptions = EntityManagerUtil.copyOptions(options);
@@ -245,7 +245,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Sets the unique result option.
      *
      * @param options the options
-     * @return the map
+     * @return
      */
     protected Map<String, Object> setUniqueResultOption(final Map<String, Object> options) {
         Map<String, Object> newOptions = EntityManagerUtil.copyOptions(options);
@@ -260,7 +260,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the optional boolean
+     * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalBoolean queryForBoolean(final String entityName, final String propName, final Condition cond) {
@@ -273,7 +273,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the optional char
+     * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalChar queryForChar(final String entityName, final String propName, final Condition cond) {
@@ -286,7 +286,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the optional byte
+     * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalByte queryForByte(final String entityName, final String propName, final Condition cond) {
@@ -299,7 +299,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the optional short
+     * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalShort queryForShort(final String entityName, final String propName, final Condition cond) {
@@ -312,7 +312,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the optional int
+     * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalInt queryForInt(final String entityName, final String propName, final Condition cond) {
@@ -325,7 +325,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the optional long
+     * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalLong queryForLong(final String entityName, final String propName, final Condition cond) {
@@ -338,7 +338,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the optional float
+     * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalFloat queryForFloat(final String entityName, final String propName, final Condition cond) {
@@ -351,7 +351,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the optional double
+     * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public OptionalDouble queryForDouble(final String entityName, final String propName, final Condition cond) {
@@ -364,7 +364,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the nullable
+     * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<String> queryForString(final String entityName, final String propName, final Condition cond) {
@@ -377,7 +377,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the nullable
+     * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<java.sql.Date> queryForDate(final String entityName, final String propName, final Condition cond) {
@@ -390,7 +390,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the nullable
+     * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<java.sql.Time> queryForTime(final String entityName, final String propName, final Condition cond) {
@@ -403,7 +403,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the nullable
+     * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
     public Nullable<java.sql.Timestamp> queryForTimestamp(final String entityName, final String propName, final Condition cond) {
@@ -418,7 +418,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the nullable
+     * @return
      * @see SQLExecutor#queryForSingleResult(Class, String, String, Condition, Map<String, Object>).
      */
     public <V> Nullable<V> queryForSingleResult(final Class<V> targetClass, final String entityName, final String propName, final Condition cond) {
@@ -438,7 +438,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param propName the prop name
      * @param cond the cond
      * @param options the options
-     * @return the nullable
+     * @return
      */
     @SuppressWarnings("unchecked")
     public <V> Nullable<V> queryForSingleResult(final Class<V> targetClass, final String entityName, final String propName, final Condition cond,
@@ -464,7 +464,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the optional
+     * @return
      */
     public <V> Optional<V> queryForSingleNonNull(final Class<V> targetClass, final String entityName, final String propName, final Condition cond) {
         return queryForSingleNonNull(targetClass, entityName, propName, cond, null);
@@ -483,7 +483,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param propName the prop name
      * @param cond the cond
      * @param options the options
-     * @return the optional
+     * @return
      */
     @SuppressWarnings("unchecked")
     public <V> Optional<V> queryForSingleNonNull(final Class<V> targetClass, final String entityName, final String propName, final Condition cond,
@@ -509,7 +509,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the nullable
+     * @return
      * @throws DuplicatedResultException if more than one record found.
      * @see SQLExecutor#queryForUniqueResult(Class, String, String, Condition, Map<String, Object>).
      */
@@ -532,7 +532,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param propName the prop name
      * @param cond the cond
      * @param options the options
-     * @return the nullable
+     * @return
      * @throws DuplicatedResultException if more than one record found.
      */
     @SuppressWarnings("unchecked")
@@ -565,7 +565,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propName the prop name
      * @param cond the cond
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException if more than one record found.
      */
     public <V> Optional<V> queryForUniqueNonNull(final Class<V> targetClass, final String entityName, final String propName, final Condition cond)
@@ -587,7 +587,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param propName the prop name
      * @param cond the cond
      * @param options the options
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException if more than one record found.
      */
     @SuppressWarnings("unchecked")
@@ -618,7 +618,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param selectPropNames the select prop names
      * @param cond the cond
-     * @return the data set
+     * @return
      */
     @Override
     public DataSet query(final String entityName, final Collection<String> selectPropNames, final Condition cond) {
@@ -632,7 +632,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param selectPropNames the select prop names
      * @param cond the cond
      * @param options the options
-     * @return the data set
+     * @return
      */
     public DataSet query(final String entityName, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
         return entityManager.query(entityName, selectPropNames, cond, null, options);
@@ -646,7 +646,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param cond the cond
      * @param resultHandle the result handle
      * @param options the options
-     * @return the data set
+     * @return
      */
     @Override
     public DataSet query(final String entityName, final Collection<String> selectPropNames, final Condition cond, final Holder<String> resultHandle,
@@ -689,7 +689,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param selectPropNames the select prop names
      * @param cond the cond
      * @param options            Multiple data sources can be specified by query options: <code>Query.QUERY_WITH_DATA_SOURCES</code>
-     * @return the merged result
+     * @return
      */
     public DataSet queryAll(final String entityName, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
         final EntityDefinition entityDef = checkEntityName(entityName);
@@ -733,7 +733,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityClass the entity class
      * @param selectPropNames the select prop names
      * @param cond the cond
-     * @return the optional
+     * @return
      */
     //
     public <TT> Optional<TT> findFirst(final Class<TT> entityClass, final Collection<String> selectPropNames, final Condition cond) {
@@ -752,7 +752,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param selectPropNames the select prop names
      * @param cond the cond
      * @param options the options
-     * @return the optional
+     * @return
      */
     public <TT> Optional<TT> findFirst(final Class<TT> entityClass, final Collection<String> selectPropNames, final Condition cond,
             final Map<String, Object> options) {
@@ -769,7 +769,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param selectPropNames the select prop names
      * @param cond the cond
-     * @return the optional
+     * @return
      */
     public <TT> Optional<TT> findFirst(final String entityName, final Collection<String> selectPropNames, final Condition cond) {
         return findFirst(entityName, selectPropNames, cond, null);
@@ -787,7 +787,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param selectPropNames the select prop names
      * @param cond the cond
      * @param options the options
-     * @return the optional
+     * @return
      */
     public <TT> Optional<TT> findFirst(final String entityName, final Collection<String> selectPropNames, final Condition cond,
             final Map<String, Object> options) {
@@ -805,7 +805,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param cond the cond
      * @param options the options
      * @param counter the counter
-     * @return the data set
+     * @return
      */
     private DataSet queryAll(final EntityDefinition entityDef, final Collection<String> selectPropNames, final Condition cond,
             final Map<String, Object> options, final AtomicInteger counter) {
@@ -1003,7 +1003,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param selectPropNames the select prop names
      * @param cond the cond
-     * @return the list
+     * @return
      */
     @Override
     public <TT> List<TT> list(final String entityName, final Collection<String> selectPropNames, final Condition cond) {
@@ -1018,7 +1018,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param selectPropNames the select prop names
      * @param cond the cond
      * @param options the options
-     * @return the list
+     * @return
      */
     @Override
     public <TT> List<TT> list(final String entityName, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
@@ -1036,7 +1036,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param selectPropNames the select prop names
      * @param cond the cond
      * @param options            Multiple data sources can be specified by query options: <code>Query.QUERY_WITH_DATA_SOURCES</code>
-     * @return the merged result
+     * @return
      */
     @SuppressWarnings("unchecked")
     public <TT> List<TT> listAll(final String entityName, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
@@ -1061,7 +1061,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param cond the cond
      * @param options the options
      * @param counter the counter
-     * @return the list
+     * @return
      */
     @SuppressWarnings("unchecked")
     private <TT> List<TT> listAll(final EntityDefinition entityDef, final Collection<String> selectPropNames, final Condition cond,
@@ -1262,7 +1262,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entityName the entity name
      * @param props the props
-     * @return the entity id
+     * @return
      */
     public EntityId add(final String entityName, final Map<String, Object> props) {
         return add(entityName, props, null);
@@ -1274,7 +1274,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param props the props
      * @param options the options
-     * @return the entity id
+     * @return
      */
     @Override
     public EntityId add(final String entityName, final Map<String, Object> props, final Map<String, Object> options) {
@@ -1286,7 +1286,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entityName the entity name
      * @param propsList the props list
-     * @return the list
+     * @return
      */
     public List<EntityId> addAll(final String entityName, final List<Map<String, Object>> propsList) {
         return addAll(entityName, propsList, null);
@@ -1298,7 +1298,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param propsList the props list
      * @param options the options
-     * @return the list
+     * @return
      */
     @Override
     public List<EntityId> addAll(final String entityName, final List<Map<String, Object>> propsList, final Map<String, Object> options) {
@@ -1311,7 +1311,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param props the props
      * @param cond the cond
-     * @return the int
+     * @return
      */
     public int update(final String entityName, final Map<String, Object> props, final Condition cond) {
         return update(entityName, props, cond, null);
@@ -1324,7 +1324,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param props the props
      * @param cond the cond
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     public int update(final String entityName, final Map<String, Object> props, final Condition cond, final Map<String, Object> options) {
@@ -1336,7 +1336,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entityName the entity name
      * @param cond the cond
-     * @return the int
+     * @return
      */
     public int delete(final String entityName, final Condition cond) {
         return delete(entityName, cond, null);
@@ -1348,7 +1348,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param cond the cond
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     public int delete(final String entityName, final Condition cond, final Map<String, Object> options) {
@@ -1361,7 +1361,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param resultHandle the result handle
      * @param selectPropNames the select prop names
      * @param options the options
-     * @return the result by handle
+     * @return
      */
     @Override
     public DataSet getResultByHandle(final String resultHandle, final Collection<String> selectPropNames, final Map<String, Object> options) {
@@ -1382,7 +1382,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Begin transaction.
      *
      * @param isolationLevel the isolation level 
-     * @return the string
+     * @return
      */
     public String beginTransaction(final IsolationLevel isolationLevel) {
         return beginTransaction(isolationLevel, null);
@@ -1393,7 +1393,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param isolationLevel the isolation level
      * @param options the options
-     * @return the string
+     * @return
      */
     @Override
     public String beginTransaction(final IsolationLevel isolationLevel, final Map<String, Object> options) {
@@ -1428,7 +1428,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param <TT> the target entity type
      * @param entityName the entity name
      * @param id the id
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1443,7 +1443,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param id the id
      * @param selectPropNames the select prop names
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1459,7 +1459,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param id the id
      * @param selectPropNames the select prop names
      * @param options the options
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1474,7 +1474,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param <TT> the target entity type
      * @param entityName the entity name
      * @param id the id
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1489,7 +1489,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param id the id
      * @param selectPropNames the select prop names
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1505,7 +1505,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param id the id
      * @param selectPropNames the select prop names
      * @param options the options
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1519,7 +1519,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param <TT> the target entity type
      * @param entityId the entity id
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @Override
@@ -1534,7 +1534,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param <TT> the target entity type
      * @param entityId the entity id
      * @param selectPropNames the select prop names
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @Override
@@ -1550,7 +1550,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityId the entity id
      * @param selectPropNames the select prop names
      * @param options the options
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @Override
@@ -1566,7 +1566,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param <TT> the target entity type
      * @param entityName the entity name
      * @param id the id
-     * @return the t
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1581,7 +1581,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param id the id
      * @param selectPropNames the select prop names
-     * @return the t
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     <TT> TT gett(final String entityName, final long id, final String... selectPropNames) throws DuplicatedResultException {
@@ -1597,7 +1597,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param id the id
      * @param selectPropNames the select prop names
-     * @return the t
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1613,7 +1613,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param id the id
      * @param selectPropNames the select prop names
      * @param options the options
-     * @return the t
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1628,7 +1628,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param <TT> the target entity type
      * @param entityName the entity name
      * @param id the id
-     * @return the t
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1643,7 +1643,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param id the id
      * @param selectPropNames the select prop names
-     * @return the t
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     <TT> TT gett(final String entityName, final String id, final String... selectPropNames) throws DuplicatedResultException {
@@ -1659,7 +1659,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param id the id
      * @param selectPropNames the select prop names
-     * @return the t
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1675,7 +1675,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param id the id
      * @param selectPropNames the select prop names
      * @param options the options
-     * @return the t
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1689,7 +1689,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param <TT> the target entity type
      * @param entityId the entity id
-     * @return the t
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1704,7 +1704,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param <TT> the target entity type
      * @param entityId the entity id
      * @param selectPropNames the select prop names
-     * @return the t
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     <TT> TT gett(final EntityId entityId, final String... selectPropNames) throws DuplicatedResultException {
@@ -1719,7 +1719,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param <TT> the target entity type
      * @param entityId the entity id
      * @param selectPropNames the select prop names
-     * @return the t
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1735,7 +1735,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityId the entity id
      * @param selectPropNames the select prop names
      * @param options the options
-     * @return the t
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     @SuppressWarnings("unchecked")
@@ -1751,7 +1751,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param id the id
      * @param selectPropNames the select prop names
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     <TT> Optional<TT> get(final String entityName, final long id, final String... selectPropNames) throws DuplicatedResultException {
@@ -1767,7 +1767,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityName the entity name
      * @param id the id
      * @param selectPropNames the select prop names
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     <TT> Optional<TT> get(final String entityName, final String id, final String... selectPropNames) throws DuplicatedResultException {
@@ -1782,7 +1782,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param <TT> the target entity type
      * @param entityId the entity id
      * @param selectPropNames the select prop names
-     * @return the optional
+     * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
     <TT> Optional<TT> get(final EntityId entityId, final String... selectPropNames) throws DuplicatedResultException {
@@ -1857,7 +1857,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Refresh all.
      *
      * @param entities the entities
-     * @return the int
+     * @return
      */
     @Deprecated
     public int refreshAll(final Collection<? extends T> entities) {
@@ -1869,7 +1869,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entities the entities
      * @param options the options
-     * @return the int
+     * @return
      */
     @Deprecated
     public int refreshAll(final Collection<? extends T> entities, final Map<String, Object> options) {
@@ -1925,7 +1925,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Adds the.
      *
      * @param entity the entity
-     * @return the entity id
+     * @return
      */
     @Override
     public EntityId add(final T entity) {
@@ -1937,7 +1937,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entity the entity
      * @param options the options
-     * @return the entity id
+     * @return
      */
     @Override
     public EntityId add(final T entity, final Map<String, Object> options) {
@@ -1948,7 +1948,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Adds the all.
      *
      * @param entities the entities
-     * @return the list
+     * @return
      */
     @Override
     public List<EntityId> addAll(final Collection<? extends T> entities) {
@@ -1960,7 +1960,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entities the entities
      * @param options the options
-     * @return the list
+     * @return
      */
     @Override
     public List<EntityId> addAll(final Collection<? extends T> entities, final Map<String, Object> options) {
@@ -1972,7 +1972,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entity the entity
      * @param cond the cond
-     * @return the e
+     * @return
      */
     public T addOrUpdate(final T entity, final Condition cond) {
         return addOrUpdate(entity, cond, null);
@@ -1984,7 +1984,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entity the entity
      * @param cond the cond
      * @param options the options
-     * @return the e
+     * @return
      */
     public T addOrUpdate(final T entity, final Condition cond, final Map<String, Object> options) {
         if (cond == null) {
@@ -2015,7 +2015,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Update.
      *
      * @param entity the entity
-     * @return the int
+     * @return
      */
     @Override
     public int update(final T entity) {
@@ -2027,7 +2027,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entity the entity
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     public int update(final T entity, final Map<String, Object> options) {
@@ -2038,7 +2038,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Update all.
      *
      * @param entities the entities
-     * @return the int
+     * @return
      */
     @Override
     public int updateAll(final Collection<? extends T> entities) {
@@ -2050,7 +2050,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entities the entities
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     public int updateAll(final Collection<? extends T> entities, final Map<String, Object> options) {
@@ -2061,7 +2061,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Update.
      * @param props the props
      * @param entityId the entity id
-     * @return the int
+     * @return
      */
     @Override
     public int update(final Map<String, Object> props, final EntityId entityId) {
@@ -2073,7 +2073,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param props the props
      * @param entityId the entity id
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     public int update(final Map<String, Object> props, final EntityId entityId, final Map<String, Object> options) {
@@ -2084,7 +2084,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Update all.
      * @param props the props
      * @param entityIds the entity ids
-     * @return the int
+     * @return
      */
     @Override
     public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds) {
@@ -2096,7 +2096,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param props the props
      * @param entityIds the entity ids
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds, final Map<String, Object> options) {
@@ -2107,7 +2107,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Delete.
      *
      * @param entity the entity
-     * @return the int
+     * @return
      */
     @Override
     public int delete(final T entity) {
@@ -2119,7 +2119,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entity the entity
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     public int delete(final T entity, final Map<String, Object> options) {
@@ -2130,7 +2130,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Delete all.
      *
      * @param entities the elements in the collection must be the same type
-     * @return the int
+     * @return
      */
     @Override
     public int deleteAll(final Collection<? extends T> entities) {
@@ -2142,7 +2142,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entities the elements in the collection must be the same type
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     public int deleteAll(final Collection<? extends T> entities, final Map<String, Object> options) {
@@ -2153,7 +2153,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Delete.
      *
      * @param entityId the entity id
-     * @return the int
+     * @return
      */
     @Override
     public int delete(final EntityId entityId) {
@@ -2165,7 +2165,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entityId the entity id
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     public int delete(final EntityId entityId, final Map<String, Object> options) {
@@ -2176,7 +2176,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Delete all.
      *
      * @param entityIds the entity ids
-     * @return the int
+     * @return
      */
     @Override
     public int deleteAll(final List<? extends EntityId> entityIds) {
@@ -2188,7 +2188,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entityIds the entity ids
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     public int deleteAll(final List<? extends EntityId> entityIds, final Map<String, Object> options) {
@@ -2200,7 +2200,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entityId the entity id
      * @param options the options
-     * @return the record version
+     * @return
      */
     @Override
     @Deprecated
@@ -2214,7 +2214,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityId the entity id
      * @param lockMode the lock mode
      * @param options the options
-     * @return the string
+     * @return
      */
     @Override
     @Deprecated
@@ -2239,7 +2239,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     /**
      * Gets the entity definition factory.
      *
-     * @return the entity definition factory
+     * @return
      */
     @Override
     @Deprecated
@@ -2253,7 +2253,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param <TT> the target entity type
      * @param c the c
-     * @return the t[]
+     * @return
      */
     protected <TT> TT[] toArray(final Collection<? extends TT> c) {
         if (N.isNullOrEmpty(c)) {
@@ -2281,7 +2281,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Check entity.
      *
      * @param entity the entity
-     * @return the entity definition
+     * @return
      */
     protected EntityDefinition checkEntity(final T entity) {
         return EntityManagerUtil.checkEntity(getEntityDefinitionFactory(), entity);
@@ -2291,7 +2291,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Check entity.
      *
      * @param entities the entities
-     * @return the entity definition
+     * @return
      */
     protected EntityDefinition checkEntity(final T[] entities) {
         return EntityManagerUtil.checkEntity(getEntityDefinitionFactory(), entities);
@@ -2301,7 +2301,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Check entity.
      *
      * @param entities the entities
-     * @return the entity definition
+     * @return
      */
     protected EntityDefinition checkEntity(final Collection<?> entities) {
         return EntityManagerUtil.checkEntity(getEntityDefinitionFactory(), entities);
@@ -2311,7 +2311,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Check entity name.
      *
      * @param entityName the entity name
-     * @return the entity definition
+     * @return
      */
     protected EntityDefinition checkEntityName(final String entityName) {
         return EntityManagerUtil.checkEntityName(getEntityDefinitionFactory(), entityName);
@@ -2322,7 +2322,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      *
      * @param entityName the entity name
      * @param id the id
-     * @return the entity id
+     * @return
      */
     protected EntityId createEntityId(final String entityName, final Object id) {
         final EntityDefinition entityDef = checkEntityName(entityName);

@@ -326,7 +326,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the name.
      *
-     * @return the name
+     * @return
      */
     @Override
     public String getName() {
@@ -336,7 +336,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the table name.
      *
-     * @return the table name
+     * @return
      */
     @Override
     public String getTableName() {
@@ -346,7 +346,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the java type.
      *
-     * @return the java type
+     * @return
      */
     @Override
     public String getJavaType() {
@@ -357,7 +357,7 @@ public class SQLEntityDefinition implements EntityDefinition {
      * Gets the type class.
      *
      * @param <T> the generic type
-     * @return the type class
+     * @return
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -369,7 +369,7 @@ public class SQLEntityDefinition implements EntityDefinition {
      * Gets the array type class.
      *
      * @param <T> the generic type
-     * @return the array type class
+     * @return
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -380,7 +380,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the property list.
      *
-     * @return the property list
+     * @return
      */
     @Override
     public List<Property> getPropertyList() {
@@ -390,7 +390,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the property name list.
      *
-     * @return the property name list
+     * @return
      */
     @Override
     public List<String> getPropertyNameList() {
@@ -401,7 +401,7 @@ public class SQLEntityDefinition implements EntityDefinition {
      * Gets the property.
      *
      * @param propName the prop name
-     * @return the property
+     * @return
      */
     @Override
     public Property getProperty(String propName) {
@@ -452,7 +452,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the id property list.
      *
-     * @return the id property list
+     * @return
      */
     @Override
     public List<Property> getIdPropertyList() {
@@ -462,7 +462,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the id property name list.
      *
-     * @return the id property name list
+     * @return
      */
     @Override
     public List<String> getIdPropertyNameList() {
@@ -472,7 +472,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the UID property list.
      *
-     * @return the UID property list
+     * @return
      */
     @Override
     public List<Property> getUIDPropertyList() {
@@ -482,7 +482,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the UID property name list.
      *
-     * @return the UID property name list
+     * @return
      */
     @Override
     public List<String> getUIDPropertyNameList() {
@@ -492,7 +492,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the entiy property list.
      *
-     * @return the entiy property list
+     * @return
      */
     @Override
     public List<Property> getEntiyPropertyList() {
@@ -502,7 +502,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the default load property list.
      *
-     * @return the default load property list
+     * @return
      */
     @Override
     public List<Property> getDefaultLoadPropertyList() {
@@ -512,7 +512,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the default load property name list.
      *
-     * @return the default load property name list
+     * @return
      */
     @Override
     public List<String> getDefaultLoadPropertyNameList() {
@@ -522,7 +522,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the default on insert property list.
      *
-     * @return the default on insert property list
+     * @return
      */
     @Override
     public List<Property> getDefaultOnInsertPropertyList() {
@@ -532,7 +532,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the default on update property list.
      *
-     * @return the default on update property list
+     * @return
      */
     @Override
     public List<Property> getDefaultOnUpdatePropertyList() {
@@ -552,7 +552,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the id generator list.
      *
-     * @return the id generator list
+     * @return
      */
     @Override
     public List<IdGenerator<Object>> getIdGeneratorList() {
@@ -563,7 +563,7 @@ public class SQLEntityDefinition implements EntityDefinition {
      * Gets the id generator.
      *
      * @param idPropName the id prop name
-     * @return the id generator
+     * @return
      */
     @Override
     public IdGenerator<Object> getIdGenerator(String idPropName) {
@@ -583,7 +583,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the slice entity list.
      *
-     * @return the slice entity list
+     * @return
      */
     @Override
     public List<EntityDefinition> getSliceEntityList() {
@@ -593,7 +593,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the attributes.
      *
-     * @return the attributes
+     * @return
      */
     @Override
     public Map<String, String> getAttributes() {
@@ -604,7 +604,7 @@ public class SQLEntityDefinition implements EntityDefinition {
      * Gets the attribute.
      *
      * @param attrName the attr name
-     * @return the attribute
+     * @return
      */
     @Override
     public String getAttribute(String attrName) {
@@ -620,7 +620,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the parent entity.
      *
-     * @return the parent entity
+     * @return
      */
     @Override
     public EntityDefinition getParentEntity() {
@@ -639,7 +639,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the factory.
      *
-     * @return the factory
+     * @return
      */
     @Override
     public EntityDefinitionFactory getFactory() {
@@ -658,7 +658,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Hash code.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int hashCode() {
@@ -679,7 +679,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {
@@ -692,7 +692,7 @@ public class SQLEntityDefinition implements EntityDefinition {
      * @param entityName the entity name
      * @param table the table
      * @param columnName2PropName the column name 2 prop name
-     * @return the object[]
+     * @return
      */
     private static Object[] parse(final String entityName, final Table table, final Method columnName2PropName) {
         if (columnName2PropName != null) {
@@ -754,7 +754,7 @@ public class SQLEntityDefinition implements EntityDefinition {
      * @param factory the factory
      * @param pkgName the pkg name
      * @param entityElement the entity element
-     * @return the object[]
+     * @return
      */
     private static Object[] parse(EntityDefinitionFactory factory, String pkgName, Element entityElement) {
         return new Object[] { XMLUtil.readAttributes(entityElement),
@@ -769,7 +769,7 @@ public class SQLEntityDefinition implements EntityDefinition {
      * @param tableName the table name
      * @param entityElement the entity element
      * @param isSliceEntity the is slice entity
-     * @return the map
+     * @return
      */
     private static Map<String, SQLProperty> parseProperties(String entityName, String tableName, Element entityElement, boolean isSliceEntity) {
         final Map<String, SQLProperty> props = new LinkedHashMap<>();
@@ -819,7 +819,7 @@ public class SQLEntityDefinition implements EntityDefinition {
      * @param factory the factory
      * @param pkgName the pkg name
      * @param entityElement the entity element
-     * @return the list
+     * @return
      */
     private static List<EntityDefinition> parseSlices(EntityDefinitionFactory factory, String pkgName, Element entityElement) {
         final List<EntityDefinition> sliceEntityDefList = new ArrayList<>();
@@ -848,7 +848,7 @@ public class SQLEntityDefinition implements EntityDefinition {
      *
      * @param pkgName the pkg name
      * @param entityNode the entity node
-     * @return the class
+     * @return
      */
     private static Class<?> initClass(String pkgName, Element entityNode) {
         final String entityName = entityNode.getAttribute(EntityEle.NAME);

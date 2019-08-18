@@ -175,7 +175,7 @@ public class SQLResult {
     /**
      * Gets the executant.
      *
-     * @return the executant
+     * @return
      */
     public Executant getExecutant() {
         return executant;
@@ -184,7 +184,7 @@ public class SQLResult {
     /**
      * Gets the SQL command.
      *
-     * @return the SQL command
+     * @return
      */
     public SQLCommand getSQLCommand() {
         return sqlCmd;
@@ -193,7 +193,7 @@ public class SQLResult {
     /**
      * Gets the options.
      *
-     * @return the options
+     * @return
      */
     public Map<String, Object> getOptions() {
         return options;
@@ -202,7 +202,7 @@ public class SQLResult {
     /**
      * Gets the execution time.
      *
-     * @return the execution time
+     * @return
      */
     public long getExecutionTime() {
         return executionTime;
@@ -211,7 +211,7 @@ public class SQLResult {
     /**
      * Gets the upate count.
      *
-     * @return the upate count
+     * @return
      */
     public int getUpateCount() {
         return updateCount;
@@ -220,7 +220,7 @@ public class SQLResult {
     /**
      * Gets the generated keys.
      *
-     * @return the generated keys
+     * @return
      */
     public List<Object> getGeneratedKeys() {
         return generatedKeys;
@@ -229,7 +229,7 @@ public class SQLResult {
     /**
      * Gets the prop name list.
      *
-     * @return the prop name list
+     * @return
      */
     public List<String> getPropNameList() {
         return resultInfo.propNames;
@@ -239,7 +239,7 @@ public class SQLResult {
      * Gets the prop name.
      *
      * @param propIndex the prop index
-     * @return the prop name
+     * @return
      */
     public String getPropName(int propIndex) {
         return resultInfo.propNames.get(propIndex);
@@ -249,7 +249,7 @@ public class SQLResult {
      * Gets the prop index.
      *
      * @param propName the prop name
-     * @return the prop index
+     * @return
      */
     public int getPropIndex(String propName) {
         Integer index = resultInfo.propIndexes.get(propName);
@@ -266,7 +266,7 @@ public class SQLResult {
      *
      * @param <T> the generic type
      * @param propIndex the prop index
-     * @return the t
+     * @return
      * @throws SQLException the SQL exception
      */
     @SuppressWarnings("unchecked")
@@ -279,7 +279,7 @@ public class SQLResult {
      *
      * @param <T> the generic type
      * @param propName the prop name
-     * @return the t
+     * @return
      * @throws SQLException the SQL exception
      */
     @SuppressWarnings("unchecked")
@@ -318,7 +318,7 @@ public class SQLResult {
     /**
      * Gets the current row num.
      *
-     * @return the current row num
+     * @return
      * @throws SQLException the SQL exception
      */
     public int getCurrentRowNum() throws SQLException {
@@ -330,7 +330,7 @@ public class SQLResult {
      *
      * @param selectPropNames the select prop names
      * @param options the options
-     * @return the result set
+     * @return
      * @throws UncheckedSQLException the unchecked SQL exception
      */
     public DataSet getResultSet(Collection<String> selectPropNames, Map<String, Object> options) throws UncheckedSQLException {
@@ -346,7 +346,7 @@ public class SQLResult {
     /**
      * Size.
      *
-     * @return the int
+     * @return
      */
     public int size() {
         assertNotClosed();
@@ -410,7 +410,7 @@ public class SQLResult {
      *
      * @param selectPropNames the select prop names
      * @param options the options
-     * @return the data set
+     * @return
      * @throws SQLException the SQL exception
      */
     private DataSet createResultSet(Collection<String> selectPropNames, Map<String, Object> options) throws SQLException {
@@ -470,7 +470,7 @@ public class SQLResult {
      *
      * @param sqlCmd the sql cmd
      * @param rs the rs
-     * @return the result info
+     * @return
      * @throws UncheckedSQLException the unchecked SQL exception
      */
     private ResultInfo getResultInfo(SQLOperationCommand sqlCmd, ResultSet rs) throws UncheckedSQLException {

@@ -33,7 +33,7 @@ public abstract class AbstractCommand implements Command, Cloneable {
     /**
      * Gets the operation type.
      *
-     * @return the operation type
+     * @return
      */
     @Override
     public OperationType getOperationType() {
@@ -43,7 +43,7 @@ public abstract class AbstractCommand implements Command, Cloneable {
     /**
      * Gets the entity def.
      *
-     * @return the entity def
+     * @return
      */
     @Override
     public EntityDefinition getEntityDef() {
@@ -53,7 +53,7 @@ public abstract class AbstractCommand implements Command, Cloneable {
     /**
      * Gets the options.
      *
-     * @return the options
+     * @return
      */
     @Override
     public Map<String, Object> getOptions() {
@@ -63,7 +63,7 @@ public abstract class AbstractCommand implements Command, Cloneable {
     /**
      * Clone.
      *
-     * @return the object
+     * @return
      */
     @Override
     public Object clone() {
@@ -82,7 +82,7 @@ public abstract class AbstractCommand implements Command, Cloneable {
      * Copy.
      *
      * @param <T> the generic type
-     * @return the t
+     * @return
      */
     @Override
     @SuppressWarnings("unchecked")

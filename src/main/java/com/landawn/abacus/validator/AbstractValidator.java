@@ -70,7 +70,7 @@ public abstract class AbstractValidator<T> implements Validator<T> {
      * Method check.
      *
      * @param propValue the prop value
-     * @return the t
+     * @return
      * @throws ValidationException the validation exception
      * @see com.landawn.abacus.validator.Validator#validate(T)
      */
@@ -86,7 +86,7 @@ public abstract class AbstractValidator<T> implements Validator<T> {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {

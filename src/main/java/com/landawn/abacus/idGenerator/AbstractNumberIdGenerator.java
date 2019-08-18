@@ -71,7 +71,7 @@ public abstract class AbstractNumberIdGenerator<T extends Number> extends Abstra
      * Value of.
      *
      * @param t the t
-     * @return the number
+     * @return
      */
     protected Number valueOf(Number t) {
         switch (numberType) {

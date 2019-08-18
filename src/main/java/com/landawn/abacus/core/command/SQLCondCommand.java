@@ -44,7 +44,7 @@ public class SQLCondCommand extends SQLCommand {
     /**
      * Gets the where begin index.
      *
-     * @return the where begin index
+     * @return
      */
     public int getWhereBeginIndex() {
         return whereBeginIndex;
@@ -62,7 +62,7 @@ public class SQLCondCommand extends SQLCommand {
     /**
      * Gets the where end index.
      *
-     * @return the where end index
+     * @return
      */
     public int getWhereEndIndex() {
         return whereEndIdnex;
@@ -80,7 +80,7 @@ public class SQLCondCommand extends SQLCommand {
     /**
      * Gets the join tables.
      *
-     * @return the join tables
+     * @return
      */
     public Set<String> getJoinTables() {
         return joinTables;
@@ -150,7 +150,7 @@ public class SQLCondCommand extends SQLCommand {
     /**
      * Clone.
      *
-     * @return the object
+     * @return
      */
     @Override
     public Object clone() {

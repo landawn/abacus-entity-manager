@@ -166,7 +166,7 @@ public class SQLDatabase implements Database {
     /**
      * Gets the name.
      *
-     * @return the name
+     * @return
      */
     @Override
     public String getName() {
@@ -176,7 +176,7 @@ public class SQLDatabase implements Database {
     /**
      * Gets the product name.
      *
-     * @return the product name
+     * @return
      */
     @Override
     public String getProductName() {
@@ -186,7 +186,7 @@ public class SQLDatabase implements Database {
     /**
      * Gets the product version.
      *
-     * @return the product version
+     * @return
      */
     @Override
     public String getProductVersion() {
@@ -196,7 +196,7 @@ public class SQLDatabase implements Database {
     /**
      * Gets the table list.
      *
-     * @return the table list
+     * @return
      */
     @SuppressWarnings("rawtypes")
     @Override
@@ -207,7 +207,7 @@ public class SQLDatabase implements Database {
     /**
      * Gets the table name list.
      *
-     * @return the table name list
+     * @return
      */
     @Override
     public Collection<String> getTableNameList() {
@@ -218,7 +218,7 @@ public class SQLDatabase implements Database {
      * Gets the table.
      *
      * @param tableName the table name
-     * @return the table
+     * @return
      */
     @Override
     public Table getTable(String tableName) {
@@ -228,7 +228,7 @@ public class SQLDatabase implements Database {
     /**
      * Gets the attributes.
      *
-     * @return the attributes
+     * @return
      */
     @Override
     public Map<String, String> getAttributes() {
@@ -239,7 +239,7 @@ public class SQLDatabase implements Database {
      * Gets the attribute.
      *
      * @param attrName the attr name
-     * @return the attribute
+     * @return
      */
     @Override
     public String getAttribute(String attrName) {
@@ -249,7 +249,7 @@ public class SQLDatabase implements Database {
     /**
      * Hash code.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int hashCode() {
@@ -270,7 +270,7 @@ public class SQLDatabase implements Database {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {
@@ -286,7 +286,7 @@ public class SQLDatabase implements Database {
      * @param tableNamePattern the table name pattern
      * @param types the types
      * @param selectTableNames the select table names
-     * @return the object[]
+     * @return
      */
     private static Object[] parse(Connection conn, String dbName, String schemaPattern, String tableNamePattern, String[] types,
             Collection<String> selectTableNames) {
@@ -351,7 +351,7 @@ public class SQLDatabase implements Database {
      * Parses the.
      *
      * @param databaseNode the database node
-     * @return the object[]
+     * @return
      */
     private static Object[] parse(Element databaseNode) {
         final Map<String, String> attrs = XMLUtil.readAttributes(databaseNode);

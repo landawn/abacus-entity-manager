@@ -110,7 +110,7 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
      * @param selectPropNames the select prop names
      * @param condition the condition
      * @param options the options
-     * @return the list
+     * @return
      */
     @Override
     protected <T> List<T> internalList(Class<T> targetClass, String entityName, Collection<String> selectPropNames, Condition condition,
@@ -145,7 +145,7 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
      * @param entityIds the entity ids
      * @param selectPropNames the select prop names
      * @param options the options
-     * @return the entities
+     * @return
      */
     @Override
     protected <T> List<T> getEntities(Class<T> targetClass, EntityDefinition entityDef, List<? extends EntityId> entityIds, Collection<String> selectPropNames,
@@ -193,7 +193,7 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
      * @param entityDef the entity def
      * @param propsList the props list
      * @param options the options
-     * @return the list
+     * @return
      */
     @Override
     protected List<EntityId> addEntities(EntityDefinition entityDef, List<Map<String, Object>> propsList, Map<String, Object> options) {
@@ -221,7 +221,7 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
      * @param props the props
      * @param condition the condition
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     protected int internalUpdate(String entityName, Map<String, Object> props, Condition condition, Map<String, Object> options) {
@@ -244,7 +244,7 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
      * @param entityIds the entity ids
      * @param props the props
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     protected int updateEntities(EntityDefinition entityDef, List<? extends EntityId> entityIds, Map<String, Object> props, Map<String, Object> options) {
@@ -277,7 +277,7 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
      * @param entityName the entity name
      * @param cond the cond
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     protected int internalDelete(String entityName, Condition cond, Map<String, Object> options) {
@@ -299,7 +299,7 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
      * @param entityDef the entity def
      * @param entityIds the entity ids
      * @param options the options
-     * @return the int
+     * @return
      */
     @Override
     protected int deleteEntities(EntityDefinition entityDef, List<? extends EntityId> entityIds, Map<String, Object> options) {
@@ -327,7 +327,7 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
      *
      * @param entityId the entity id
      * @param options the options
-     * @return the long
+     * @return
      */
     @Override
     protected long internalGetRecordVersion(EntityId entityId, Map<String, Object> options) {
@@ -342,7 +342,7 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
      * @param entityId the entity id
      * @param lockMode the lock mode
      * @param options the options
-     * @return the string
+     * @return
      */
     @SuppressWarnings("deprecation")
     @Override
@@ -482,7 +482,7 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
      * @param entityName the entity name
      * @param cond the cond
      * @param options the options
-     * @return the entity id by condition
+     * @return
      */
     protected List<EntityId> getEntityIdByCondition(String entityName, Condition cond, Map<String, Object> options) {
         final EntityDefinition entityDef = checkEntityName(entityName);

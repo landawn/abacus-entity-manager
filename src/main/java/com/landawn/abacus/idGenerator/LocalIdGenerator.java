@@ -100,7 +100,7 @@ public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
     /**
      * Allocate.
      *
-     * @return the number
+     * @return
      */
     @Override
     public synchronized Number allocate() {

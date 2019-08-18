@@ -86,7 +86,7 @@ public final class Options {
     /**
      * Creates the.
      *
-     * @return the map
+     * @return
      */
     public static Map<String, Object> create() {
         return new HashMap<>();
@@ -337,7 +337,7 @@ public final class Options {
      * Copy.
      *
      * @param options the options
-     * @return the map
+     * @return
      */
     public static Map<String, Object> copy(final Map<String, Object> options) {
         return N.isNullOrEmpty(options) ? new HashMap<String, Object>() : new HashMap<String, Object>(options);
@@ -347,7 +347,7 @@ public final class Options {
      * Of.
      *
      * @param a the a
-     * @return the map
+     * @return
      */
     @SafeVarargs
     public static Map<String, Object> of(final Object... a) {
@@ -753,7 +753,7 @@ public final class Options {
             /**
              * Hash code.
              *
-             * @return the int
+             * @return
              */
             @Override
             public int hashCode() {
@@ -791,7 +791,7 @@ public final class Options {
             /**
              * To string.
              *
-             * @return the string
+             * @return
              */
             @Override
             public String toString() {
@@ -886,7 +886,7 @@ public final class Options {
             /**
              * Hash code.
              *
-             * @return the int
+             * @return
              */
             @Override
             public int hashCode() {
@@ -910,7 +910,7 @@ public final class Options {
             /**
              * To string.
              *
-             * @return the string
+             * @return
              */
             @Override
             public String toString() {

@@ -31,21 +31,21 @@ public interface EntityDefinition {
     /**
      * Gets the name.
      *
-     * @return the name
+     * @return
      */
     String getName();
 
     /**
      * Gets the table name.
      *
-     * @return the table name
+     * @return
      */
     String getTableName();
 
     /**
      * Gets the java type.
      *
-     * @return the java type
+     * @return
      */
     String getJavaType();
 
@@ -53,7 +53,7 @@ public interface EntityDefinition {
      * Gets the type class.
      *
      * @param <T> the generic type
-     * @return the type class
+     * @return
      */
     <T> Class<T> getTypeClass();
 
@@ -61,21 +61,21 @@ public interface EntityDefinition {
      * Gets the array type class.
      *
      * @param <T> the generic type
-     * @return the array type class
+     * @return
      */
     <T> Class<T> getArrayTypeClass();
 
     /**
      * Gets the property list.
      *
-     * @return the property list
+     * @return
      */
     List<Property> getPropertyList();
 
     /**
      * Gets the property name list.
      *
-     * @return the property name list
+     * @return
      */
     List<String> getPropertyNameList();
 
@@ -83,14 +83,14 @@ public interface EntityDefinition {
      * Gets the property.
      *
      * @param propName the prop name
-     * @return the property
+     * @return
      */
     Property getProperty(String propName);
 
     /**
      * Gets the id generator list.
      *
-     * @return the id generator list
+     * @return
      */
     List<IdGenerator<Object>> getIdGeneratorList();
 
@@ -98,70 +98,70 @@ public interface EntityDefinition {
      * Gets the id generator.
      *
      * @param propName the prop name
-     * @return the id generator
+     * @return
      */
     IdGenerator<Object> getIdGenerator(String propName);
 
     /**
      * Gets the id property list.
      *
-     * @return the id property list
+     * @return
      */
     List<Property> getIdPropertyList();
 
     /**
      * Gets the id property name list.
      *
-     * @return the id property name list
+     * @return
      */
     List<String> getIdPropertyNameList();
 
     /**
      * Gets the UID property list.
      *
-     * @return the UID property list
+     * @return
      */
     List<Property> getUIDPropertyList();
 
     /**
      * Gets the UID property name list.
      *
-     * @return the UID property name list
+     * @return
      */
     List<String> getUIDPropertyNameList();
 
     /**
      * Gets the entiy property list.
      *
-     * @return the entiy property list
+     * @return
      */
     List<Property> getEntiyPropertyList();
 
     /**
      * Gets the default load property list.
      *
-     * @return the default load property list
+     * @return
      */
     List<Property> getDefaultLoadPropertyList();
 
     /**
      * Gets the default load property name list.
      *
-     * @return the default load property name list
+     * @return
      */
     List<String> getDefaultLoadPropertyNameList();
 
     /**
      * Gets the default on insert property list.
      *
-     * @return the default on insert property list
+     * @return
      */
     List<Property> getDefaultOnInsertPropertyList();
 
     /**
      * Gets the default on update property list.
      *
-     * @return the default on update property list
+     * @return
      */
     List<Property> getDefaultOnUpdatePropertyList();
 
@@ -182,14 +182,14 @@ public interface EntityDefinition {
     /**
      * Gets the slice entity list.
      *
-     * @return the slice entity list
+     * @return
      */
     List<EntityDefinition> getSliceEntityList();
 
     /**
      * Gets the attributes.
      *
-     * @return the attributes
+     * @return
      */
     Map<String, String> getAttributes();
 
@@ -197,21 +197,21 @@ public interface EntityDefinition {
      * Gets the attribute.
      *
      * @param attrName the attr name
-     * @return the attribute
+     * @return
      */
     String getAttribute(String attrName);
 
     /**
      * Gets the parent entity.
      *
-     * @return the parent entity
+     * @return
      */
     EntityDefinition getParentEntity();
 
     /**
      * Gets the factory.
      *
-     * @return the factory
+     * @return
      */
     EntityDefinitionFactory getFactory();
 }

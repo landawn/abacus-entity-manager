@@ -39,7 +39,7 @@ final class ParametersUtil {
      *
      * @param <T> the generic type
      * @param a the a
-     * @return the list
+     * @return
      */
     @SafeVarargs
     public static <T> List<T> asList(T... a) {
@@ -57,7 +57,7 @@ final class ParametersUtil {
      *
      * @param <T> the generic type
      * @param a the a
-     * @return the sets the
+     * @return
      */
     @SafeVarargs
     public static <T> Set<T> asSet(T... a) {
@@ -76,7 +76,7 @@ final class ParametersUtil {
      * @param <K> the key type
      * @param <V> the value type
      * @param a the a
-     * @return the map
+     * @return
      */
     @SuppressWarnings("unchecked")
     @SafeVarargs
@@ -98,7 +98,7 @@ final class ParametersUtil {
      * As props.
      *
      * @param propNameValues the prop name values
-     * @return the map
+     * @return
      */
     @SafeVarargs
     public static Map<String, Object> asProps(Object... propNameValues) {
@@ -109,7 +109,7 @@ final class ParametersUtil {
      * As options.
      *
      * @param a the a
-     * @return the map
+     * @return
      */
     @SafeVarargs
     public static Map<String, Object> asOptions(Object... a) {
@@ -121,7 +121,7 @@ final class ParametersUtil {
      *
      * @param <T> the generic type
      * @param c the c
-     * @return the collection
+     * @return
      */
     public static <T> Collection<T> copy(Collection<T> c) {
         if (c instanceof List) {
@@ -142,7 +142,7 @@ final class ParametersUtil {
      *
      * @param <T> the generic type
      * @param c the c
-     * @return the list
+     * @return
      */
     public static <T> List<T> copy(List<T> c) {
         if (c == null) {
@@ -157,7 +157,7 @@ final class ParametersUtil {
      *
      * @param <T> the generic type
      * @param c the c
-     * @return the sets the
+     * @return
      */
     public static <T> Set<T> copy(Set<T> c) {
         if (c == null) {
@@ -173,7 +173,7 @@ final class ParametersUtil {
      * @param <K> the key type
      * @param <V> the value type
      * @param m the m
-     * @return the map
+     * @return
      */
     public static <K, V> Map<K, V> copy(Map<K, V> m) {
         if (m == null) {

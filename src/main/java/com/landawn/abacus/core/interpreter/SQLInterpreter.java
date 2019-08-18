@@ -119,7 +119,7 @@ public class SQLInterpreter extends AbstractInterpreter {
      * @param entityDef the entity def
      * @param propsList the props list
      * @param options the options
-     * @return the SQL operation command
+     * @return
      */
     @Override
     public SQLOperationCommand interpretAdd(EntityDefinition entityDef, List<Map<String, Object>> propsList, Map<String, Object> options) {
@@ -244,7 +244,7 @@ public class SQLInterpreter extends AbstractInterpreter {
      * @param props the props
      * @param condition the condition
      * @param options the options
-     * @return the SQL operation command
+     * @return
      */
     @Override
     public SQLOperationCommand interpretUpdate(EntityDefinition entityDef, Map<String, Object> props, Condition condition, Map<String, Object> options) {
@@ -319,7 +319,7 @@ public class SQLInterpreter extends AbstractInterpreter {
      * @param entityDef the entity def
      * @param condition the condition
      * @param options the options
-     * @return the SQL operation command
+     * @return
      */
     @Override
     public SQLOperationCommand interpretDelete(EntityDefinition entityDef, Condition condition, Map<String, Object> options) {
@@ -354,7 +354,7 @@ public class SQLInterpreter extends AbstractInterpreter {
      * @param propNames the prop names
      * @param condition the condition
      * @param options the options
-     * @return the command
+     * @return
      */
     @Override
     public Command interpretQuery(EntityDefinition entityDef, Collection<String> propNames, Condition condition, Map<String, Object> options) {
@@ -487,7 +487,7 @@ public class SQLInterpreter extends AbstractInterpreter {
      * @param querySql the query sql
      * @param parameters the parameters
      * @param options the options
-     * @return the SQL operation command
+     * @return
      */
     @Override
     public SQLOperationCommand interpretQuery(EntityDefinition entityDef, String querySql, List<?> parameters, Map<String, Object> options) {
@@ -516,7 +516,7 @@ public class SQLInterpreter extends AbstractInterpreter {
      *
      * @param entityDef the entity def
      * @param condition the condition
-     * @return the SQL cond command
+     * @return
      */
     @Override
     public SQLCondCommand interpretCondition(EntityDefinition entityDef, Condition condition) {
@@ -548,7 +548,7 @@ public class SQLInterpreter extends AbstractInterpreter {
      * @param condition the condition
      * @param sqlCondCmd the sql cond cmd
      * @param sql the sql
-     * @return the SQL cond command
+     * @return
      */
     protected SQLCondCommand interpretCondition(EntityDefinition entityDef, Condition condition, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         // TODO [performance improvement]. how to improve the performance here?
@@ -946,7 +946,7 @@ public class SQLInterpreter extends AbstractInterpreter {
      * Condition 2 criteria.
      *
      * @param condition the condition
-     * @return the criteria
+     * @return
      */
     protected final Criteria condition2Criteria(Condition condition) {
         if (condition == null) {
@@ -963,7 +963,7 @@ public class SQLInterpreter extends AbstractInterpreter {
      *
      * @param entityDef the entity def
      * @param propName the prop name
-     * @return the write column name
+     * @return
      */
     protected final String getWriteColumnName(EntityDefinition entityDef, String propName) {
         Property prop = entityDef.getProperty(propName);
@@ -984,7 +984,7 @@ public class SQLInterpreter extends AbstractInterpreter {
      *
      * @param entityDef the entity def
      * @param propName the prop name
-     * @return the update column name
+     * @return
      */
     protected final String getUpdateColumnName(EntityDefinition entityDef, String propName) {
         Property prop = entityDef.getProperty(propName);
@@ -1005,7 +1005,7 @@ public class SQLInterpreter extends AbstractInterpreter {
      *
      * @param entityDef the entity def
      * @param join the join
-     * @return the join table names
+     * @return
      */
     protected final List<String> getJoinTableNames(EntityDefinition entityDef, Join join) {
         List<String> joinTableNames = new ArrayList<>();

@@ -107,7 +107,7 @@ public class DataGrid<E> implements Serializable {
     /**
      * Gets the x.
      *
-     * @return the x
+     * @return
      */
     public int getX() {
         return x;
@@ -116,7 +116,7 @@ public class DataGrid<E> implements Serializable {
     /**
      * Gets the y.
      *
-     * @return the y
+     * @return
      */
     public int getY() {
         return y;
@@ -139,7 +139,7 @@ public class DataGrid<E> implements Serializable {
      * Inits the Y.
      *
      * @param y the y
-     * @return the int
+     * @return
      */
     private int initY(int y) {
         if (isBigY) {
@@ -167,7 +167,7 @@ public class DataGrid<E> implements Serializable {
      *
      * @param x the x
      * @param y the y
-     * @return the e
+     * @return
      */
     @SuppressWarnings("unchecked")
     public E get(int x, int y) {
@@ -184,7 +184,7 @@ public class DataGrid<E> implements Serializable {
      * Index of Y.
      *
      * @param y the y
-     * @return the int
+     * @return
      */
     private int indexOfY(int y) {
         if (isBigY) {
@@ -260,7 +260,7 @@ public class DataGrid<E> implements Serializable {
      * @param x the x
      * @param fromY the from Y
      * @param toY the to Y
-     * @return the x
+     * @return
      */
     public Object[] getX(int x, int fromY, int toY) {
         Object[] objects = new Object[toY - fromY];
@@ -388,7 +388,7 @@ public class DataGrid<E> implements Serializable {
     /**
      * Hash code.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int hashCode() {
@@ -398,7 +398,7 @@ public class DataGrid<E> implements Serializable {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {
@@ -425,7 +425,7 @@ public class DataGrid<E> implements Serializable {
         /**
          * Hash code.
          *
-         * @return the int
+         * @return
          */
         @Override
         public int hashCode() {
@@ -446,7 +446,7 @@ public class DataGrid<E> implements Serializable {
         /**
          * To string.
          *
-         * @return the string
+         * @return
          */
         @Override
         public String toString() {

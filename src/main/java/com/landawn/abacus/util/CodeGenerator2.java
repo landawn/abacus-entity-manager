@@ -245,7 +245,7 @@ public final class CodeGenerator2 {
      * @param database the database
      * @param node the node
      * @param databaseElementAttrs the database element attrs
-     * @return the element
+     * @return
      */
     static Element database2Node(final Database database, final Element node, final Map<String, String> databaseElementAttrs) {
         Document doc = node.getOwnerDocument();
@@ -278,7 +278,7 @@ public final class CodeGenerator2 {
      *
      * @param table the table
      * @param node the node
-     * @return the element
+     * @return
      */
     static Element table2Node(final Table table, final Element node) {
         Document doc = node.getOwnerDocument();
@@ -727,7 +727,7 @@ public final class CodeGenerator2 {
      * Gets the entity element list.
      *
      * @param doc the doc
-     * @return the entity element list
+     * @return
      */
     private static Map<String, Element> getEntityElementList(final Document doc) {
         Map<String, Element> result = new LinkedHashMap<>();
@@ -756,7 +756,7 @@ public final class CodeGenerator2 {
      *
      * @param entityName the entity name
      * @param entityEleList the entity ele list
-     * @return the entity ele by name
+     * @return
      */
     private static Element getEntityEleByName(final String entityName, final Map<String, Element> entityEleList) {
         Element importedElement = null;
@@ -776,7 +776,7 @@ public final class CodeGenerator2 {
      * Gets the simple prop name table class name.
      *
      * @param className the class name
-     * @return the simple prop name table class name
+     * @return
      */
     protected static String getSimplePropNameTableClassName(final String className) {
         String simpleClassName = className;
@@ -1063,7 +1063,7 @@ public final class CodeGenerator2 {
      * Gets the prop name table class name.
      *
      * @param entityDefinitionFactory the entity definition factory
-     * @return the prop name table class name
+     * @return
      */
     private static String getPropNameTableClassName(final EntityDefinitionFactory entityDefinitionFactory) {
         String propNameTableClass = POSTFIX_OF_PROP_NAME_LIST;
@@ -2796,7 +2796,7 @@ public final class CodeGenerator2 {
      *
      * @param pkgName the pkg name
      * @param entry the entry
-     * @return the parameter type name
+     * @return
      */
     private static String getParameterTypeName(final String pkgName, Map.Entry<String, Method> entry) {
         String paraTypeName = ClassUtil.getParameterizedTypeNameByMethod(entry.getValue());
@@ -2833,7 +2833,7 @@ public final class CodeGenerator2 {
      * @param type the type
      * @param packageName the package name
      * @param importedClasses the imported classes
-     * @return the anno type
+     * @return
      */
     static String getAnnoType(Type<?> type, final String packageName, Map<String, Class<?>> importedClasses) {
         if (N.isNullOrEmpty(type.getParameterTypes()) && !type.clazz().equals(Object.class)) {
@@ -2975,7 +2975,7 @@ public final class CodeGenerator2 {
      * Prop name 2 var name.
      *
      * @param propName the prop name
-     * @return the string
+     * @return
      */
     static String propName2VarName(final String propName) {
         return ClassUtil.toUpperCaseWithUnderscore(ClassUtil.formalizePropName(propName));
@@ -2985,7 +2985,7 @@ public final class CodeGenerator2 {
      * Prop name 2 method name.
      *
      * @param propName the prop name
-     * @return the string
+     * @return
      */
     static String propName2MethodName(final String propName) {
         return StringUtil.capitalize(propName);
@@ -2995,7 +2995,7 @@ public final class CodeGenerator2 {
      * Prop name 2 field name.
      *
      * @param propName the prop name
-     * @return the string
+     * @return
      */
     static String propName2FieldName(final String propName) {
         if (propName.toUpperCase().equals(propName)) {
@@ -3120,7 +3120,7 @@ public final class CodeGenerator2 {
      * @param generateToStringMethod the generate to string method
      * @param utilClass the util class
      * @param annotationImportClasses the annotation import classes
-     * @return the map
+     * @return
      * @throws IOException Signals that an I/O exception has occurred.
      */
     private static Map<String, Class<?>> writeImport(final EntityDefinition entityDef, final String pkgName, final String propNameTableClass,
@@ -3588,7 +3588,7 @@ public final class CodeGenerator2 {
      * @param headSpace the head space
      * @param fileWrite the file write
      * @param importedClasses the imported classes
-     * @return the collection
+     * @return
      * @throws IOException Signals that an I/O exception has occurred.
      */
     private static Collection<String> writeIdPropertyConstructor(final EntityDefinition entityDef, final String pkgName, final Method propName2MethodName,
@@ -4659,7 +4659,7 @@ public final class CodeGenerator2 {
      * @param prop the prop
      * @param pkgName the pkg name
      * @param importedClasses the imported classes
-     * @return the simple type
+     * @return
      */
     private static String getSimpleType(Type<?> type, final Property prop, final String pkgName, final Map<String, Class<?>> importedClasses) {
         type = type == null ? prop.getType() : type;
@@ -4755,7 +4755,7 @@ public final class CodeGenerator2 {
      *
      * @param set the set
      * @param type the type
-     * @return the usual type
+     * @return
      */
     private static void getUsualType(final Set<Class<?>> set, final Type<?> type) {
         if (isUsualType(type.clazz().getCanonicalName())) {
@@ -4788,7 +4788,7 @@ public final class CodeGenerator2 {
      * Gets the package name.
      *
      * @param entityDef the entity def
-     * @return the package name
+     * @return
      */
     /*
      * static String getSimpleType(EntityDefinition entityDef, String pkgName) { String type =
@@ -4810,7 +4810,7 @@ public final class CodeGenerator2 {
      * @param pkgName the pkg name
      * @param idPropList the id prop list
      * @param importedClasses the imported classes
-     * @return the id para string
+     * @return
      */
     private static String getIdParaString(final String pkgName, final List<Property> idPropList, final Map<String, Class<?>> importedClasses) {
         String idPropParaStr = "";

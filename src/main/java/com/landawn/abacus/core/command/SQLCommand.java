@@ -65,7 +65,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Gets the parameters.
      *
-     * @return the parameters
+     * @return
      */
     @Override
     public Object[] getParameters() {
@@ -75,7 +75,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Gets the parameter types.
      *
-     * @return the parameter types
+     * @return
      */
     @Override
     public Type<Object>[] getParameterTypes() {
@@ -86,7 +86,7 @@ public class SQLCommand extends AbstractCommand {
      * Gets the parameter.
      *
      * @param index the index
-     * @return the parameter
+     * @return
      */
     @Override
     public Object getParameter(int index) {
@@ -97,7 +97,7 @@ public class SQLCommand extends AbstractCommand {
      * Gets the parameter type.
      *
      * @param index the index
-     * @return the parameter type
+     * @return
      */
     @Override
     public Type<Object> getParameterType(int index) {
@@ -125,7 +125,7 @@ public class SQLCommand extends AbstractCommand {
      * Gets the parameter.
      *
      * @param parameterName the parameter name
-     * @return the parameter
+     * @return
      */
     @Override
     public Object getParameter(String parameterName) {
@@ -136,7 +136,7 @@ public class SQLCommand extends AbstractCommand {
      * Gets the parameter type.
      *
      * @param parameterName the parameter name
-     * @return the parameter type
+     * @return
      */
     @Override
     public Type<Object> getParameterType(String parameterName) {
@@ -231,7 +231,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Gets the parameter count.
      *
-     * @return the parameter count
+     * @return
      */
     @Override
     public int getParameterCount() {
@@ -241,7 +241,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Gets the sql.
      *
-     * @return the sql
+     * @return
      */
     public String getSql() {
         return sql;
@@ -259,7 +259,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Gets the target tables.
      *
-     * @return the target tables
+     * @return
      */
     public Set<String> getTargetTables() {
         return targetTables;
@@ -315,7 +315,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Gets the sub query tables.
      *
-     * @return the sub query tables
+     * @return
      */
     public Set<String> getSubQueryTables() {
         return subQueryTables;
@@ -383,7 +383,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Clone.
      *
-     * @return the object
+     * @return
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -427,7 +427,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Hash code.
      *
-     * @return the int
+     * @return
      */
     @Override
     public int hashCode() {
@@ -462,7 +462,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * To string.
      *
-     * @return the string
+     * @return
      */
     @Override
     public String toString() {
