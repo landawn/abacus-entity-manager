@@ -32,7 +32,7 @@ import com.landawn.abacus.util.N;
  * [x][][][][][][][][][][][][][]...[y]
  *
  * @author Haiyang Li
- * @param <E> the element type
+ * @param <E>
  * @since 0.8
  */
 public class DataGrid<E> implements Serializable {

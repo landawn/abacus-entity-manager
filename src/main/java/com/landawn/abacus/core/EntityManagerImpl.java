@@ -84,7 +84,7 @@ import com.landawn.abacus.util.u.Holder;
  * The Class EntityManagerImpl.
  *
  * @author Haiyang Li
- * @param <E> the element type
+ * @param <E>
  * @since 0.8
  */
 class EntityManagerImpl<E> extends AbstractEntityManager<E> {

@@ -54,7 +54,7 @@ import com.landawn.abacus.version.VersionFactory;
  * The Class EntityManagerLV.
  *
  * @author Haiyang Li
- * @param <E> the element type
+ * @param <E>
  * @since 0.8
  */
 class EntityManagerLV<E> extends EntityManagerImpl<E> {

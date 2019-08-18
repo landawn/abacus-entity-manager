@@ -36,7 +36,7 @@ import com.landawn.abacus.util.Options;
  * The Class AsyncBatchExecutor.
  *
  * @author Haiyang Li
- * @param <E> the element type
+ * @param <E>
  * @since 0.8
  */
 public final class AsyncBatchExecutor<E> {

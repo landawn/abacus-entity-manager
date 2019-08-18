@@ -286,7 +286,7 @@ final class ParametersUtil {
     /**
      * The Class HashSet.
      *
-     * @param <E> the element type
+     * @param <E>
      */
     static final class HashSet<E> extends java.util.HashSet<E> implements Local {
 
@@ -332,7 +332,7 @@ final class ParametersUtil {
     /**
      * The Class LinkedHashSet.
      *
-     * @param <E> the element type
+     * @param <E>
      */
     static final class LinkedHashSet<E> extends java.util.LinkedHashSet<E> implements Local {
 
@@ -378,7 +378,7 @@ final class ParametersUtil {
     /**
      * The Class ArrayList.
      *
-     * @param <E> the element type
+     * @param <E>
      */
     static final class ArrayList<E> extends java.util.ArrayList<E> implements Local {
 

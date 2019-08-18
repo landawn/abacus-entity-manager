@@ -41,7 +41,7 @@ import com.landawn.abacus.util.u.Optional;
  * The Class AbstractEntityManager.
  *
  * @author Haiyang Li
- * @param <E> the element type
+ * @param <E>
  * @since 0.8
  */
 abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityManager<E> {

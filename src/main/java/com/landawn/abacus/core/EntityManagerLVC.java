@@ -55,7 +55,7 @@ import com.landawn.abacus.util.Seq;
  * The Class EntityManagerLVC.
  *
  * @author Haiyang Li
- * @param <E> the element type
+ * @param <E>
  * @since 0.8
  */
 class EntityManagerLVC<E> extends EntityManagerLV<E> {

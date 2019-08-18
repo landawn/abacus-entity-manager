@@ -45,7 +45,7 @@ import com.landawn.abacus.util.u.Optional;
  * The Class SessionImpl.
  *
  * @author Haiyang Li
- * @param <E> the element type
+ * @param <E>
  * @since 0.8
  */
 @SuppressWarnings("deprecation")
