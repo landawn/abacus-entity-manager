@@ -40,8 +40,8 @@ public interface DBAccess {
     /**
      * Find entity from data store by the specified {@code entityId}.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
+     * @param <T>
+     * @param entityId
      * @return T
      * @throws DuplicatedResultException if more than one record found by the specified {@code entityId}.
      */
@@ -50,9 +50,9 @@ public interface DBAccess {
     /**
      * Find entity from data store by the specified {@code entityId}.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames            specifies the properties need to be load. all properties will be loaded if it's null.
+     * @param <T>
+     * @param entityId
+mes specifies the properties need to be load. all properties will be loaded if it's null.
      * @return T
      * @throws DuplicatedResultException if more than one record found by the specified {@code entityId}.
      */
@@ -61,10 +61,10 @@ public interface DBAccess {
     /**
      * Find entity from data store by the specified {@code entityId}.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames            specifies the properties need to be load. all properties will be loaded if it's null.
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames specifies the properties need to be load. all properties will be loaded if it's null.
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return T
      * @throws DuplicatedResultException if more than one record found by the specified {@code entityId}.
      */
@@ -73,8 +73,8 @@ public interface DBAccess {
     /**
      * Find entity from data store by the specified {@code entityId}.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
+     * @param <T>
+     * @param entityId
      * @return T
      * @throws DuplicatedResultException if more than one record found by the specified {@code entityId}.
      */
@@ -83,9 +83,9 @@ public interface DBAccess {
     /**
      * Find entity from data store by the specified {@code entityId}.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames            specifies the properties need to be load. all properties will be loaded if it's null.
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames specifies the properties need to be load. all properties will be loaded if it's null.
      * @return T
      * @throws DuplicatedResultException if more than one record found by the specified {@code entityId}.
      */
@@ -94,10 +94,10 @@ public interface DBAccess {
     /**
      * Find entity from data store by the specified {@code entityId}.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames            specifies the properties need to be load. all properties will be loaded if it's null.
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames specifies the properties need to be load. all properties will be loaded if it's null.
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return T
      * @throws DuplicatedResultException if more than one record found by the specified {@code entityId}.
      */
@@ -106,10 +106,10 @@ public interface DBAccess {
     /**
      * List.
      *
-     * @param <T> the generic type
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
+     * @param <T>
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
      * @return
      */
     <T> List<T> list(String entityName, Collection<String> selectPropNames, Condition condition);
@@ -117,11 +117,11 @@ public interface DBAccess {
     /**
      * List.
      *
-     * @param <T> the generic type
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param options the options
+     * @param <T>
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param options
      * @return
      */
     <T> List<T> list(String entityName, Collection<String> selectPropNames, Condition condition, Map<String, Object> options);
@@ -129,9 +129,9 @@ public interface DBAccess {
     /**
      * Insert a new entity into data store.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param options            supported option:{@code Tran.ID}.
+     * @param entityName
+     * @param props
+     * @param options supported option:{@code Tran.ID}.
      * @return
      */
     EntityId add(String entityName, Map<String, Object> props, Map<String, Object> options);
@@ -140,43 +140,43 @@ public interface DBAccess {
      * Insert entities into data store. If the size of element in the {@code propsList} is different, or the element has
      * different properties, The vacancy property is inserted with {@code default} value.
      *
-     * @param entityName the entity name
-     * @param propsList the props list
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param entityName
+     * @param propsList
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return List<EntityId>
      */
     List<EntityId> addAll(String entityName, List<Map<String, Object>> propsList, Map<String, Object> options);
 
     /**
      * Update the records identified by the specified {@code entityId} with the specified {@code props}.
-     * @param props            map key is property name; map value is property value.
-     * @param entityId the entity id
+     * @param props map key is property name; map value is property value.
+     * @param entityId
      * @return
      */
     int update(Map<String, Object> props, EntityId entityId);
 
     /**
      * Update the records identified by the specified {@code entityId} with the specified {@code props}.
-     * @param props            map key is property name; map value is property value.
-     * @param entityId the entity id
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param props map key is property name; map value is property value.
+     * @param entityId
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return
      */
     int update(Map<String, Object> props, EntityId entityId, Map<String, Object> options);
 
     /**
      * Update the records identified by the specified {@code entityIds} with the specified {@code props}.
-     * @param props            map key is property name; map value is property value.
-     * @param entityIds the entity ids
+     * @param props map key is property name; map value is property value.
+     * @param entityIds
      * @return
      */
     int updateAll(Map<String, Object> props, List<? extends EntityId> entityIds);
 
     /**
      * Update the records identified by the specified {@code entityIds} with the specified {@code props}.
-     * @param props            map key is property name; map value is property value.
-     * @param entityIds the entity ids
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param props map key is property name; map value is property value.
+     * @param entityIds
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return
      */
     int updateAll(Map<String, Object> props, List<? extends EntityId> entityIds, Map<String, Object> options);
@@ -184,11 +184,11 @@ public interface DBAccess {
     /**
      * Update entities by the specified {@code condition} with the values in {@code props}.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param condition            {@code com.landawn.abacus.condition.ConditionFactory}. All of the records will be returned by query or
+     * @param entityName
+     * @param props
+     * @param condition {@code com.landawn.abacus.condition.ConditionFactory}. All of the records will be returned by query or
      *            updated/deleted if condition is 'Empty' or 'null' .
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return
      */
     int update(String entityName, Map<String, Object> props, Condition condition, Map<String, Object> options);
@@ -196,7 +196,7 @@ public interface DBAccess {
     /**
      * Delete record from data store by the specified {@code entityId}.
      *
-     * @param entityId the entity id
+     * @param entityId
      * @return
      */
     int delete(EntityId entityId);
@@ -204,8 +204,8 @@ public interface DBAccess {
     /**
      * Delete record from data store by the specified {@code entityId}.
      *
-     * @param entityId the entity id
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param entityId
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return
      */
     int delete(EntityId entityId, Map<String, Object> options);
@@ -213,7 +213,7 @@ public interface DBAccess {
     /**
      * Delete record from data store by the specified {@code entityIds}.
      *
-     * @param entityIds the entity ids
+     * @param entityIds
      * @return
      */
     int deleteAll(List<? extends EntityId> entityIds);
@@ -221,8 +221,8 @@ public interface DBAccess {
     /**
      * Delete record from data store by the specified {@code entityIds}.
      *
-     * @param entityIds the entity ids
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param entityIds
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return
      */
     int deleteAll(List<? extends EntityId> entityIds, Map<String, Object> options);
@@ -230,10 +230,10 @@ public interface DBAccess {
     /**
      * Delete the entities from data store by the specified {@code condition}.
      *
-     * @param entityName the entity name
-     * @param condition            {@code com.landawn.abacus.condition.ConditionFactory}. All of the records will be returned by query or
+     * @param entityName
+     * @param condition {@code com.landawn.abacus.condition.ConditionFactory}. All of the records will be returned by query or
      *            updated/deleted if condition is 'Empty' or 'null' .
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return
      */
     int delete(String entityName, Condition condition, Map<String, Object> options);
@@ -242,9 +242,9 @@ public interface DBAccess {
      * Find the result from data store by the specified {@code condition}. . An empty {@code ResueltSet} will be
      * returned if no result found.
      *
-     * @param entityName the entity name
-     * @param selectPropNames            specifies the properties need to be load. all properties will be loaded if it's null.
-     * @param condition            {@code com.landawn.abacus.condition.ConditionFactory}. All of the records will be returned by query or
+     * @param entityName
+     * @param selectPropNames specifies the properties need to be load. all properties will be loaded if it's null.
+     * @param condition {@code com.landawn.abacus.condition.ConditionFactory}. All of the records will be returned by query or
      *            updated/deleted if condition is 'Empty' or 'null' .
      * @return DataSet
      */
@@ -256,11 +256,11 @@ public interface DBAccess {
      * 
      * Note: the cache in result handle won't be auto refreshed.
      *
-     * @param entityName the entity name
-     * @param selectPropNames            specifies the properties need to be load. all properties will be loaded if it's null.
-     * @param condition            the condition will be ignored is {@code resultHandle} is not empty.
-     * @param resultHandle the result handle
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param entityName
+     * @param selectPropNames specifies the properties need to be load. all properties will be loaded if it's null.
+     * @param condition the condition will be ignored is {@code resultHandle} is not empty.
+     * @param resultHandle
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return DataSet
      */
     DataSet query(String entityName, Collection<String> selectPropNames, Condition condition, Holder<String> resultHandle, Map<String, Object> options);
@@ -268,9 +268,9 @@ public interface DBAccess {
     /**
      * Get result by the specified {@code resultHandle}.
      *
-     * @param resultHandle the result handle
-     * @param selectPropNames            specifies the properties need to be load. all properties will be loaded if it's null.
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param resultHandle
+     * @param selectPropNames specifies the properties need to be load. all properties will be loaded if it's null.
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return DataSet
      */
     DataSet getResultByHandle(String resultHandle, Collection<String> selectPropNames, Map<String, Object> options);
@@ -278,15 +278,15 @@ public interface DBAccess {
     /**
      * Release the result hook by the specified {@code resultHandle}.
      *
-     * @param resultHandle the result handle
+     * @param resultHandle
      */
     void releaseResultHandle(String resultHandle);
 
     /**
      * Start a transaction.
      *
-     * @param isolationLevel the isolation level
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param isolationLevel
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return
      */
     String beginTransaction(IsolationLevel isolationLevel, Map<String, Object> options);
@@ -296,9 +296,9 @@ public interface DBAccess {
      * <br>Transaction will be automatically rolled back if error occurs when commit the transaction if <code>Options.AUTO_ROLLBACK_TRANSACTION</code> is not set or it's set to <code>true</code>
      * <br>No matter there is an error occurring or not, the transaction will be closed finally.
      *
-     * @param transactionId the transaction id
-     * @param transactionAction the transaction action
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param transactionId
+     * @param transactionAction
+     * @param options {@link com.landawn.abacus.util.Options}
      * @throws InvalidTransactionIdException             If there is no transaction mapping to the specified {@code transactionId}.
      * @see com.landawn.abacus.Transaction
      */

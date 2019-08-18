@@ -56,7 +56,7 @@ public interface Property {
     /**
      * Gets the default on insert.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @return
      */
     <T> T getDefaultOnInsert();
@@ -64,7 +64,7 @@ public interface Property {
     /**
      * Gets the default on update.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @return
      */
     <T> T getDefaultOnUpdate();
@@ -149,7 +149,7 @@ public interface Property {
     /**
      * Gets the sub property.
      *
-     * @param propName the prop name
+     * @param propName
      * @return
      */
     Property getSubProperty(String propName);
@@ -227,8 +227,8 @@ public interface Property {
     /**
      * As collection.
      *
-     * @param <T> the generic type
-     * @param entities the entities
+     * @param <T>
+     * @param entities
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -237,8 +237,8 @@ public interface Property {
     /**
      * As collection.
      *
-     * @param <T> the generic type
-     * @param entities the entities
+     * @param <T>
+     * @param entities
      * @return
      */
     <T> Collection<T> asCollection(Collection<T> entities);
@@ -246,7 +246,7 @@ public interface Property {
     /**
      * Gets the sets the method.
      *
-     * @param clazz the clazz
+     * @param clazz
      * @return
      */
     Method getSetMethod(Class<?> clazz);
@@ -254,7 +254,7 @@ public interface Property {
     /**
      * Gets the gets the method.
      *
-     * @param clazz the clazz
+     * @param clazz
      * @return
      */
     Method getGetMethod(Class<?> clazz);
@@ -262,8 +262,8 @@ public interface Property {
     /**
      * Value of.
      *
-     * @param <T> the generic type
-     * @param st the st
+     * @param <T>
+     * @param st
      * @return
      */
     <T> T valueOf(String st);
@@ -271,7 +271,7 @@ public interface Property {
     /**
      * String of.
      *
-     * @param propvalue the propvalue
+     * @param propvalue
      * @return
      */
     String stringOf(Object propvalue);
@@ -286,7 +286,7 @@ public interface Property {
     /**
      * Gets the attribute.
      *
-     * @param attrName the attr name
+     * @param attrName
      * @return
      */
     String getAttribute(String attrName);

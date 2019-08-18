@@ -28,7 +28,7 @@ import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration;
  * The Class EntityManagerVC.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.8
  */
 class EntityManagerVC<T> extends EntityManagerLVC<T> {
@@ -36,8 +36,8 @@ class EntityManagerVC<T> extends EntityManagerLVC<T> {
     /**
      * Instantiates a new entity manager VC.
      *
-     * @param entityManagerConfig the entity manager config
-     * @param dbAccess the db access
+     * @param entityManagerConfig
+     * @param dbAccess
      */
     protected EntityManagerVC(EntityManagerConfiguration entityManagerConfig, DBAccessImpl dbAccess) {
         super(entityManagerConfig, dbAccess);
@@ -46,9 +46,9 @@ class EntityManagerVC<T> extends EntityManagerLVC<T> {
     /**
      * Internal lock record.
      *
-     * @param entityId the entity id
-     * @param lockMode the lock mode
-     * @param options the options
+     * @param entityId
+     * @param lockMode
+     * @param options
      * @return
      */
     @Override
@@ -59,9 +59,9 @@ class EntityManagerVC<T> extends EntityManagerLVC<T> {
     /**
      * Internal unlock record.
      *
-     * @param entityId the entity id
-     * @param lockCode the lock code
-     * @param options the options
+     * @param entityId
+     * @param lockCode
+     * @param options
      * @return true, if successful
      */
     @Override
@@ -72,9 +72,9 @@ class EntityManagerVC<T> extends EntityManagerLVC<T> {
     /**
      * Check lock.
      *
-     * @param entityIds the entity ids
-     * @param requiredLockMode the required lock mode
-     * @param options the options
+     * @param entityIds
+     * @param requiredLockMode
+     * @param options
      */
     @Override
     protected void checkLock(List<? extends EntityId> entityIds, LockMode requiredLockMode, Map<String, Object> options) {

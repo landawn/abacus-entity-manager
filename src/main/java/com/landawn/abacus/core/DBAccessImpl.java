@@ -123,8 +123,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
      * Instantiates a new DB access impl.
      *
      * @param entityManagerConfig configuration for entity manager.
-     * @param entityDefFactory the entity def factory
-     * @param executant the executant
+     * @param entityDefFactory
+     * @param executant
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     protected DBAccessImpl(EntityManagerConfiguration entityManagerConfig, EntityDefinitionFactory entityDefFactory, Executant executant) {
@@ -150,7 +150,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Creates the query cache pool.
      *
-     * @param qcc the qcc
+     * @param qcc
      * @return
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -165,8 +165,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
+     * @param <T>
+     * @param entityId
      * @return
      */
     @Override
@@ -177,9 +177,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
      * @return
      */
     @Override
@@ -190,10 +190,10 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
+     * @param options
      * @return
      */
     @Override
@@ -204,8 +204,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
+     * @param <T>
+     * @param entityId
      * @return
      */
     @Override
@@ -216,9 +216,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
      * @return
      */
     @Override
@@ -229,10 +229,10 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
+     * @param options
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -256,7 +256,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Check offset count for get.
      *
-     * @param options the options
+     * @param options
      */
     private void checkOffsetCountForGet(Map<String, Object> options) {
         if (hasOffsetCount(options)) {
@@ -268,10 +268,10 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * List.
      *
-     * @param <T> the generic type
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
+     * @param <T>
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
      * @return
      */
     @Override
@@ -282,11 +282,11 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * List.
      *
-     * @param <T> the generic type
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param options the options
+     * @param <T>
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param options
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -304,9 +304,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Adds the.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param options the options
+     * @param entityName
+     * @param props
+     * @param options
      * @return
      */
     @Override
@@ -317,9 +317,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Adds the all.
      *
-     * @param entityName the entity name
-     * @param propsList the props list
-     * @param options the options
+     * @param entityName
+     * @param propsList
+     * @param options
      * @return
      */
     @Override
@@ -330,10 +330,10 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Adds the.
      *
-     * @param entityName the entity name
-     * @param propsList the props list
-     * @param isPropChecked the is prop checked
-     * @param options the options
+     * @param entityName
+     * @param propsList
+     * @param isPropChecked
+     * @param options
      * @return
      */
     List<EntityId> addAll(String entityName, List<Map<String, Object>> propsList, boolean isPropChecked, Map<String, Object> options) {
@@ -389,7 +389,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Check entity name.
      *
-     * @param entityName the entity name
+     * @param entityName
      * @return
      */
     private EntityDefinition checkEntityName(String entityName) {
@@ -399,10 +399,10 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Adds the entities.
      *
-     * @param entityDef the entity def
-     * @param propsList the props list
-     * @param isPropChecked the is prop checked
-     * @param options the options
+     * @param entityDef
+     * @param propsList
+     * @param isPropChecked
+     * @param options
      * @return
      */
     private List<EntityId> addEntities(EntityDefinition entityDef, List<Map<String, Object>> propsList, boolean isPropChecked, Map<String, Object> options) {
@@ -454,9 +454,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Creates the entity id.
      *
-     * @param entityDef the entity def
-     * @param propsList the props list
-     * @param autoGeneratedkeys the auto generatedkeys
+     * @param entityDef
+     * @param propsList
+     * @param autoGeneratedkeys
      * @return
      */
     @SuppressWarnings("deprecation")
@@ -527,8 +527,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
 
     /**
      * Update.
-     * @param props the props
-     * @param entityId the entity id
+     * @param props
+     * @param entityId
      * @return
      */
     @Override
@@ -538,9 +538,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
 
     /**
      * Update.
-     * @param props the props
-     * @param entityId the entity id
-     * @param options the options
+     * @param props
+     * @param entityId
+     * @param options
      * @return
      */
     @Override
@@ -554,8 +554,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
 
     /**
      * Update all.
-     * @param props the props
-     * @param entityIds the entity ids
+     * @param props
+     * @param entityIds
      * @return
      */
     @Override
@@ -565,9 +565,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
 
     /**
      * Update all.
-     * @param props the props
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param props
+     * @param entityIds
+     * @param options
      * @return
      */
     @Override
@@ -582,10 +582,10 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Update.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param condition the condition
-     * @param options the options
+     * @param entityName
+     * @param props
+     * @param condition
+     * @param options
      * @return
      */
     @Override
@@ -596,11 +596,11 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Update.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param condition the condition
-     * @param isPropChecked the is prop checked
-     * @param options the options
+     * @param entityName
+     * @param props
+     * @param condition
+     * @param isPropChecked
+     * @param options
      * @return
      */
     int update(String entityName, Map<String, Object> props, Condition condition, boolean isPropChecked, Map<String, Object> options) {
@@ -637,7 +637,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Delete.
      *
-     * @param entityId the entity id
+     * @param entityId
      * @return
      */
     @Override
@@ -648,8 +648,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Delete.
      *
-     * @param entityId the entity id
-     * @param options the options
+     * @param entityId
+     * @param options
      * @return
      */
     @Override
@@ -664,7 +664,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Delete all.
      *
-     * @param entityIds the entity ids
+     * @param entityIds
      * @return
      */
     @Override
@@ -675,8 +675,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Delete all.
      *
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param entityIds
+     * @param options
      * @return
      */
     @Override
@@ -691,9 +691,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Delete.
      *
-     * @param entityName the entity name
-     * @param condition the condition
-     * @param options the options
+     * @param entityName
+     * @param condition
+     * @param options
      * @return
      */
     @Override
@@ -720,9 +720,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Query.
      *
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
      * @return
      */
     @Override
@@ -733,11 +733,11 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Query.
      *
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param resultHandle the result handle
-     * @param options the options
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param resultHandle
+     * @param options
      * @return
      */
     @Override
@@ -748,12 +748,12 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Query.
      *
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param resultHandle the result handle
-     * @param isGet the is get
-     * @param options the options
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param resultHandle
+     * @param isGet
+     * @param options
      * @return
      */
     DataSet query(String entityName, Collection<String> selectPropNames, Condition condition, Holder<String> resultHandle, boolean isGet,
@@ -865,12 +865,12 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Cache result.
      *
-     * @param queryCache the query cache
-     * @param cacheKey the cache key
-     * @param selectPropNames the select prop names
-     * @param queryResult the query result
-     * @param closeResult the close result
-     * @param options the options
+     * @param queryCache
+     * @param cacheKey
+     * @param selectPropNames
+     * @param queryResult
+     * @param closeResult
+     * @param options
      * @return true, if successful
      */
     @SuppressWarnings("unchecked")
@@ -977,9 +977,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Gets the result by handle.
      *
-     * @param resultHandle the result handle
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param resultHandle
+     * @param selectPropNames
+     * @param options
      * @return
      */
     @Override
@@ -993,7 +993,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Release result handle.
      *
-     * @param resultHandle the result handle
+     * @param resultHandle
      */
     @Override
     public void releaseResultHandle(String resultHandle) {
@@ -1005,8 +1005,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Begin transaction.
      *
-     * @param isolationLevel the isolation level
-     * @param options the options
+     * @param isolationLevel
+     * @param options
      * @return
      */
     @Override
@@ -1025,7 +1025,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Start default transaction for update.
      *
-     * @param options the options
+     * @param options
      * @return
      */
     String startDefaultTransactionForUpdate(Map<String, Object> options) {
@@ -1035,9 +1035,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * End transaction.
      *
-     * @param transactionId the transaction id
-     * @param transactionAction the transaction action
-     * @param options the options
+     * @param transactionId
+     * @param transactionAction
+     * @param options
      */
     @Override
     public void endTransaction(String transactionId, Action transactionAction, Map<String, Object> options) {
@@ -1076,9 +1076,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Execute update.
      *
-     * @param command the command
-     * @param isAutoGeneratedKeys the is auto generated keys
-     * @param options the options
+     * @param command
+     * @param isAutoGeneratedKeys
+     * @param options
      * @return
      */
     private SQLResult executeUpdate(Command command, boolean isAutoGeneratedKeys, Map<String, Object> options) {
@@ -1088,8 +1088,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Execute query.
      *
-     * @param command the command
-     * @param options the options
+     * @param command
+     * @param options
      * @return
      */
     SQLResult executeQuery(Command command, Map<String, Object> options) {
@@ -1099,9 +1099,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Gets the result list by SQL result.
      *
-     * @param queryResult the query result
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param queryResult
+     * @param selectPropNames
+     * @param options
      * @return
      */
     DataSet getResultListBySQLResult(SQLResult queryResult, Collection<String> selectPropNames, Map<String, Object> options) {
@@ -1113,7 +1113,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Gets the handle result.
      *
-     * @param resultHandle the result handle
+     * @param resultHandle
      * @return
      */
     HandleResult getHandleResult(String resultHandle) {
@@ -1158,10 +1158,10 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Gets the SQL result by search.
      *
-     * @param entityDef the entity def
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param options the options
+     * @param entityDef
+     * @param selectPropNames
+     * @param condition
+     * @param options
      * @return
      */
     private SQLResult getSQLResultBySearch(EntityDefinition entityDef, Collection<String> selectPropNames, Condition condition, Map<String, Object> options) {
@@ -1173,10 +1173,10 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Gets the SQL result with handle by search.
      *
-     * @param entityDef the entity def
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param options the options
+     * @param entityDef
+     * @param selectPropNames
+     * @param condition
+     * @param options
      * @return
      */
     private SQLResult getSQLResultWithHandleBySearch(EntityDefinition entityDef, Collection<String> selectPropNames, Condition condition,
@@ -1189,9 +1189,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Gets the cached prop names.
      *
-     * @param queryCache the query cache
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param queryCache
+     * @param selectPropNames
+     * @param options
      * @return
      */
     private List<String> getCachedPropNames(QueryCache queryCache, Collection<String> selectPropNames, Map<String, Object> options) {
@@ -1220,9 +1220,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Gets the result from cache.
      *
-     * @param queryCache the query cache
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param queryCache
+     * @param selectPropNames
+     * @param options
      * @return
      */
     private DataSet getResultFromCache(QueryCache queryCache, Collection<String> selectPropNames, Map<String, Object> options) {
@@ -1268,8 +1268,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Combine result list.
      *
-     * @param sourceResult the source result
-     * @param targetResult the target result
+     * @param sourceResult
+     * @param targetResult
      * @return
      */
     private DataSet combineResultList(DataSet sourceResult, DataSet targetResult) {
@@ -1293,9 +1293,9 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Data set 2 entities.
      *
-     * @param <C> the generic type
-     * @param entityDef the entity def
-     * @param result the result
+     * @param <C>
+     * @param entityDef
+     * @param result
      * @return
      */
     private <C> List<C> dataSet2Entities(EntityDefinition entityDef, DataSet result) {
@@ -1305,10 +1305,10 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Check select prop names.
      *
-     * @param entityDef the entity def
-     * @param selectPropNames the select prop names
-     * @param resultHandle the result handle
-     * @param isGet the is get
+     * @param entityDef
+     * @param selectPropNames
+     * @param resultHandle
+     * @param isGet
      * @return
      */
     private Collection<String> checkSelectPropNames(EntityDefinition entityDef, Collection<String> selectPropNames, Holder<String> resultHandle,
@@ -1346,8 +1346,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Check insert props list.
      *
-     * @param entityDef the entity def
-     * @param propsList the props list
+     * @param entityDef
+     * @param propsList
      * @return
      */
     private List<Map<String, Object>> checkInsertPropsList(EntityDefinition entityDef, List<Map<String, Object>> propsList) {
@@ -1359,8 +1359,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Check upate props.
      *
-     * @param entityDef the entity def
-     * @param props the props
+     * @param entityDef
+     * @param props
      * @return
      */
     private Map<String, Object> checkUpateProps(EntityDefinition entityDef, Map<String, Object> props) {
@@ -1372,12 +1372,12 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Save handle result.
      *
-     * @param resultHandle the result handle
-     * @param entityDef the entity def
-     * @param selectPropNames the select prop names
-     * @param queryResult the query result
-     * @param queryCache the query cache
-     * @param options the options
+     * @param resultHandle
+     * @param entityDef
+     * @param selectPropNames
+     * @param queryResult
+     * @param queryCache
+     * @param options
      */
     private void saveHandleResult(Holder<String> resultHandle, EntityDefinition entityDef, Collection<String> selectPropNames, SQLResult queryResult,
             QueryCache queryCache, Map<String, Object> options) {
@@ -1404,8 +1404,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Creates the query cache key.
      *
-     * @param entityDef the entity def
-     * @param condition the condition
+     * @param entityDef
+     * @param condition
      * @return
      */
     private String createQueryCacheKey(EntityDefinition entityDef, Condition condition) {
@@ -1423,8 +1423,8 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Creates the query cache.
      *
-     * @param cacheKey the cache key
-     * @param options the options
+     * @param cacheKey
+     * @param options
      * @return
      */
     private QueryCache createQueryCache(String cacheKey, final Map<String, Object> options) {
@@ -1447,7 +1447,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     /**
      * Creates the query cache.
      *
-     * @param options the options
+     * @param options
      * @return
      */
     private QueryCache createQueryCache(Map<String, Object> options) {

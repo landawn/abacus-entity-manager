@@ -55,7 +55,7 @@ public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
     /**
      * Instantiates a new local id generator.
      *
-     * @param prop the prop
+     * @param prop
      */
     public LocalIdGenerator(Property prop) {
         this(prop, "0");
@@ -64,8 +64,8 @@ public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
     /**
      * Instantiates a new local id generator.
      *
-     * @param prop the prop
-     * @param initValue the init value
+     * @param prop
+     * @param initValue
      */
     public LocalIdGenerator(Property prop, String initValue) {
         this(prop, initValue, "1");
@@ -74,9 +74,9 @@ public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
     /**
      * Instantiates a new local id generator.
      *
-     * @param prop the prop
-     * @param initValue the init value
-     * @param delta the delta
+     * @param prop
+     * @param initValue
+     * @param delta
      */
     public LocalIdGenerator(Property prop, String initValue, String delta) {
         super(prop);
@@ -90,7 +90,7 @@ public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
     /**
      * Initialize.
      *
-     * @param executor the executor
+     * @param executor
      */
     @Override
     public void initialize(Executant executor) {
@@ -116,7 +116,7 @@ public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
     /**
      * Reserve.
      *
-     * @param value the value
+     * @param value
      */
     @Override
     public synchronized void reserve(Number value) {

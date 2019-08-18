@@ -75,8 +75,8 @@ public class SQLDatabase implements Database {
     /**
      * Instantiates a new SQL database.
      *
-     * @param conn the conn
-     * @param dbName the db name
+     * @param conn
+     * @param dbName
      */
     public SQLDatabase(Connection conn, String dbName) {
         this(conn, dbName, null);
@@ -85,9 +85,9 @@ public class SQLDatabase implements Database {
     /**
      * Instantiates a new SQL database.
      *
-     * @param conn the conn
-     * @param dbName the db name
-     * @param selectTableNames the select table names
+     * @param conn
+     * @param dbName
+     * @param selectTableNames
      */
     public SQLDatabase(Connection conn, String dbName, Collection<String> selectTableNames) {
         this(conn, dbName, null, null, null, selectTableNames);
@@ -96,11 +96,11 @@ public class SQLDatabase implements Database {
     /**
      * Instantiates a new SQL database.
      *
-     * @param conn the conn
-     * @param dbName the db name
-     * @param schemaPattern the schema pattern
-     * @param tableNamePattern the table name pattern
-     * @param types the types
+     * @param conn
+     * @param dbName
+     * @param schemaPattern
+     * @param tableNamePattern
+     * @param types
      */
     public SQLDatabase(Connection conn, String dbName, String schemaPattern, String tableNamePattern, String[] types) {
         this(conn, dbName, schemaPattern, tableNamePattern, types, null);
@@ -109,12 +109,12 @@ public class SQLDatabase implements Database {
     /**
      * Instantiates a new SQL database.
      *
-     * @param conn the conn
-     * @param dbName the db name
-     * @param schemaPattern the schema pattern
-     * @param tableNamePattern the table name pattern
-     * @param types the types
-     * @param selectTableNames the select table names
+     * @param conn
+     * @param dbName
+     * @param schemaPattern
+     * @param tableNamePattern
+     * @param types
+     * @param selectTableNames
      */
     SQLDatabase(Connection conn, String dbName, String schemaPattern, String tableNamePattern, String[] types, Collection<String> selectTableNames) {
         this(parse(conn, dbName, schemaPattern, tableNamePattern, types, selectTableNames));
@@ -123,7 +123,7 @@ public class SQLDatabase implements Database {
     /**
      * Instantiates a new SQL database.
      *
-     * @param is the is
+     * @param is
      * @throws SAXException the SAX exception
      * @throws IOException Signals that an I/O exception has occurred.
      */
@@ -134,7 +134,7 @@ public class SQLDatabase implements Database {
     /**
      * Instantiates a new SQL database.
      *
-     * @param databaseNode the database node
+     * @param databaseNode
      */
     public SQLDatabase(Element databaseNode) {
         this(parse(databaseNode));
@@ -143,7 +143,7 @@ public class SQLDatabase implements Database {
     /**
      * Instantiates a new SQL database.
      *
-     * @param attrsTableMap the attrs table map
+     * @param attrsTableMap
      */
     SQLDatabase(Object[] attrsTableMap) {
         this((Map<String, String>) attrsTableMap[0], (Map<String, SQLTable>) attrsTableMap[1]);
@@ -152,8 +152,8 @@ public class SQLDatabase implements Database {
     /**
      * Instantiates a new SQL database.
      *
-     * @param attrs the attrs
-     * @param tableMap the table map
+     * @param attrs
+     * @param tableMap
      */
     SQLDatabase(Map<String, String> attrs, Map<String, SQLTable> tableMap) {
         this.name = NameUtil.getCachedName(attrs.get(TableEle.NAME));
@@ -217,7 +217,7 @@ public class SQLDatabase implements Database {
     /**
      * Gets the table.
      *
-     * @param tableName the table name
+     * @param tableName
      * @return
      */
     @Override
@@ -238,7 +238,7 @@ public class SQLDatabase implements Database {
     /**
      * Gets the attribute.
      *
-     * @param attrName the attr name
+     * @param attrName
      * @return
      */
     @Override
@@ -259,7 +259,7 @@ public class SQLDatabase implements Database {
     /**
      * Equals.
      *
-     * @param obj the obj
+     * @param obj
      * @return true, if successful
      */
     @Override
@@ -280,12 +280,12 @@ public class SQLDatabase implements Database {
     /**
      * Parses the.
      *
-     * @param conn the conn
-     * @param dbName the db name
-     * @param schemaPattern the schema pattern
-     * @param tableNamePattern the table name pattern
-     * @param types the types
-     * @param selectTableNames the select table names
+     * @param conn
+     * @param dbName
+     * @param schemaPattern
+     * @param tableNamePattern
+     * @param types
+     * @param selectTableNames
      * @return
      */
     private static Object[] parse(Connection conn, String dbName, String schemaPattern, String tableNamePattern, String[] types,
@@ -350,7 +350,7 @@ public class SQLDatabase implements Database {
     /**
      * Parses the.
      *
-     * @param databaseNode the database node
+     * @param databaseNode
      * @return
      */
     private static Object[] parse(Element databaseNode) {

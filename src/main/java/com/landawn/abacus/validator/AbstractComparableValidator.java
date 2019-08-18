@@ -21,7 +21,7 @@ import com.landawn.abacus.type.Type;
  * The Class AbstractComparableValidator.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.8
  */
 public abstract class AbstractComparableValidator<T> extends AbstractValidator<T> {
@@ -32,9 +32,9 @@ public abstract class AbstractComparableValidator<T> extends AbstractValidator<T
     /**
      * Instantiates a new abstract comparable validator.
      *
-     * @param propName the prop name
-     * @param type the type
-     * @param benchmark the benchmark
+     * @param propName
+     * @param type
+     * @param benchmark
      */
     protected AbstractComparableValidator(String propName, Type<T> type, String benchmark) {
         super(propName, type);

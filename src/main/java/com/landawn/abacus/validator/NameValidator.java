@@ -31,8 +31,8 @@ public class NameValidator extends PatternValidator {
     /**
      * Instantiates a new name validator.
      *
-     * @param propName the prop name
-     * @param type the type
+     * @param propName
+     * @param type
      */
     public NameValidator(String propName, Type<String> type) {
         super(propName, type, namePattern);

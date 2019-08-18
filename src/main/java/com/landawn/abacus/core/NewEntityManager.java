@@ -80,8 +80,8 @@ public final class NewEntityManager {
     /**
      * Instantiates a new entity manager ex.
      *
-     * @param entityManager the entity manager
-     * @param dsm the dsm
+     * @param entityManager
+     * @param dsm
      */
     NewEntityManager(final EntityManagerEx<Object> entityManager, final DataSourceManager dsm) {
         this.em = entityManager;
@@ -92,8 +92,8 @@ public final class NewEntityManager {
     /**
      * Mapper.
      *
-     * @param <T> the generic type
-     * @param <ID> the generic type
+     * @param <T>
+     * @param <ID>
      * @param entityClass the id class
      * @param idClass the id class type of target id property. 
      * It should be {@code Void} class if there is no id property defined for the target entity, or {@code EntityId} class if there is zero or multiple id properties. 
@@ -120,8 +120,8 @@ public final class NewEntityManager {
     /**
      * Exists.
      *
-     * @param entityClass the entity Class
-     * @param id the id
+     * @param entityClass
+     * @param id
      * @return true, if successful
      */
     public boolean exists(final Class<?> entityClass, final long id) {
@@ -131,8 +131,8 @@ public final class NewEntityManager {
     /**
      * Exists.
      *
-     * @param entityClass the entity Class
-     * @param id the id
+     * @param entityClass
+     * @param id
      * @return true, if successful
      */
     public boolean exists(final Class<?> entityClass, final String id) {
@@ -142,7 +142,7 @@ public final class NewEntityManager {
     /**
      * Exists.
      *
-     * @param entityId the entity id
+     * @param entityId
      * @return true, if successful
      */
     public boolean exists(final EntityId entityId) {
@@ -152,8 +152,8 @@ public final class NewEntityManager {
     /**
      * Exists.
      *
-     * @param entityId the entity id
-     * @param options the options
+     * @param entityId
+     * @param options
      * @return true, if successful
      */
     public boolean exists(final EntityId entityId, final Map<String, Object> options) {
@@ -163,8 +163,8 @@ public final class NewEntityManager {
     /**
      * Exists.
      *
-     * @param entityClass the entity Class
-     * @param cond the cond
+     * @param entityClass
+     * @param cond
      * @return true, if successful
      */
     public boolean exists(final Class<?> entityClass, final Condition cond) {
@@ -174,9 +174,9 @@ public final class NewEntityManager {
     /**
      * Exists.
      *
-     * @param entityClass the entity Class
-     * @param cond the cond
-     * @param options the options
+     * @param entityClass
+     * @param cond
+     * @param options
      * @return true, if successful
      */
     public boolean exists(final Class<?> entityClass, final Condition cond, final Map<String, Object> options) {
@@ -186,8 +186,8 @@ public final class NewEntityManager {
     /**
      * Count.
      *
-     * @param entityClass the entity Class
-     * @param cond the cond
+     * @param entityClass
+     * @param cond
      * @return
      */
     public int count(final Class<?> entityClass, final Condition cond) {
@@ -197,9 +197,9 @@ public final class NewEntityManager {
     /**
      * Count.
      *
-     * @param entityClass the entity Class
-     * @param cond the cond
-     * @param options the options
+     * @param entityClass
+     * @param cond
+     * @param options
      * @return
      */
     public int count(final Class<?> entityClass, final Condition cond, final Map<String, Object> options) {
@@ -209,9 +209,9 @@ public final class NewEntityManager {
     /**
      * Query for boolean.
      *
-     * @param entityClass the entity class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
@@ -222,9 +222,9 @@ public final class NewEntityManager {
     /**
      * Query for char.
      *
-     * @param entityClass the entity class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
@@ -235,9 +235,9 @@ public final class NewEntityManager {
     /**
      * Query for byte.
      *
-     * @param entityClass the entity class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
@@ -248,9 +248,9 @@ public final class NewEntityManager {
     /**
      * Query for short.
      *
-     * @param entityClass the entity class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
@@ -261,9 +261,9 @@ public final class NewEntityManager {
     /**
      * Query for int.
      *
-     * @param entityClass the entity class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
@@ -274,9 +274,9 @@ public final class NewEntityManager {
     /**
      * Query for long.
      *
-     * @param entityClass the entity class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
@@ -287,9 +287,9 @@ public final class NewEntityManager {
     /**
      * Query for float.
      *
-     * @param entityClass the entity class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
@@ -300,9 +300,9 @@ public final class NewEntityManager {
     /**
      * Query for double.
      *
-     * @param entityClass the entity class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
@@ -313,9 +313,9 @@ public final class NewEntityManager {
     /**
      * Query for string.
      *
-     * @param entityClass the entity class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
@@ -326,9 +326,9 @@ public final class NewEntityManager {
     /**
      * Query for date.
      *
-     * @param entityClass the entity class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
@@ -339,9 +339,9 @@ public final class NewEntityManager {
     /**
      * Query for time.
      *
-     * @param entityClass the entity class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
@@ -352,9 +352,9 @@ public final class NewEntityManager {
     /**
      * Query for timestamp.
      *
-     * @param entityClass the entity class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @see SQLExecutor#queryForSingleResult(String, String, Condition).
      */
@@ -366,10 +366,10 @@ public final class NewEntityManager {
      * Query for single result.
      *
      * @param <V> the value type
-     * @param targetClass the target class
-     * @param entityClass the entity Class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param targetClass
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @see SQLExecutor#queryForSingleResult(Class, String, String, Condition, Map<String, Object>).
      */
@@ -384,12 +384,12 @@ public final class NewEntityManager {
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <V> the value type
-     * @param targetClass            set result type to avoid the NullPointerException if result is null and T is primitive type
+     * @param targetClass set result type to avoid the NullPointerException if result is null and T is primitive type
      *            "int, long. short ... char, boolean..".
-     * @param entityClass the entity Class
-     * @param propName the prop name
-     * @param cond the cond
-     * @param options the options
+     * @param entityClass
+     * @param propName
+     * @param cond
+     * @param options
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -402,10 +402,10 @@ public final class NewEntityManager {
      * Query for single non null.
      *
      * @param <V> the value type
-     * @param targetClass the target class
-     * @param entityClass the entity Class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param targetClass
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      */
     public <V> Optional<V> queryForSingleNonNull(final Class<V> targetClass, final Class<?> entityClass, final String propName, final Condition cond) {
@@ -419,12 +419,12 @@ public final class NewEntityManager {
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <V> the value type
-     * @param targetClass            set result type to avoid the NullPointerException if result is null and T is primitive type
+     * @param targetClass set result type to avoid the NullPointerException if result is null and T is primitive type
      *            "int, long. short ... char, boolean..".
-     * @param entityClass the entity Class
-     * @param propName the prop name
-     * @param cond the cond
-     * @param options the options
+     * @param entityClass
+     * @param propName
+     * @param cond
+     * @param options
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -437,10 +437,10 @@ public final class NewEntityManager {
      * Query for unique result.
      *
      * @param <V> the value type
-     * @param targetClass the target class
-     * @param entityClass the entity Class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param targetClass
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @throws DuplicatedResultException if more than one record found.
      * @see SQLExecutor#queryForUniqueResult(Class, String, String, Condition, Map<String, Object>).
@@ -458,12 +458,12 @@ public final class NewEntityManager {
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <V> the value type
-     * @param targetClass            set result type to avoid the NullPointerException if result is null and T is primitive type
+     * @param targetClass set result type to avoid the NullPointerException if result is null and T is primitive type
      *            "int, long. short ... char, boolean..".
-     * @param entityClass the entity Class
-     * @param propName the prop name
-     * @param cond the cond
-     * @param options the options
+     * @param entityClass
+     * @param propName
+     * @param cond
+     * @param options
      * @return
      * @throws DuplicatedResultException if more than one record found.
      */
@@ -477,10 +477,10 @@ public final class NewEntityManager {
      * Query for unique non null.
      *
      * @param <V> the value type
-     * @param targetClass the target class
-     * @param entityClass the entity Class
-     * @param propName the prop name
-     * @param cond the cond
+     * @param targetClass
+     * @param entityClass
+     * @param propName
+     * @param cond
      * @return
      * @throws DuplicatedResultException if more than one record found.
      */
@@ -497,12 +497,12 @@ public final class NewEntityManager {
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <V> the value type
-     * @param targetClass            set result type to avoid the NullPointerException if result is null and T is primitive type
+     * @param targetClass set result type to avoid the NullPointerException if result is null and T is primitive type
      *            "int, long. short ... char, boolean..".
-     * @param entityClass the entity Class
-     * @param propName the prop name
-     * @param cond the cond
-     * @param options the options
+     * @param entityClass
+     * @param propName
+     * @param cond
+     * @param options
      * @return
      * @throws DuplicatedResultException if more than one record found.
      */
@@ -515,9 +515,9 @@ public final class NewEntityManager {
     /**
      * Query.
      *
-     * @param entityClass the entity Class
-     * @param selectPropNames the select prop names
-     * @param cond the cond
+     * @param entityClass
+     * @param selectPropNames
+     * @param cond
      * @return
      */
     public DataSet query(final Class<?> entityClass, final Collection<String> selectPropNames, final Condition cond) {
@@ -527,10 +527,10 @@ public final class NewEntityManager {
     /**
      * Query.
      *
-     * @param entityClass the entity Class
-     * @param selectPropNames the select prop names
-     * @param cond the cond
-     * @param options the options
+     * @param entityClass
+     * @param selectPropNames
+     * @param cond
+     * @param options
      * @return
      */
     public DataSet query(final Class<?> entityClass, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
@@ -540,11 +540,11 @@ public final class NewEntityManager {
     /**
      * Query.
      *
-     * @param entityClass the entity Class
-     * @param selectPropNames the select prop names
-     * @param cond the cond
-     * @param resultHandle the result handle
-     * @param options the options
+     * @param entityClass
+     * @param selectPropNames
+     * @param cond
+     * @param resultHandle
+     * @param options
      * @return
      */
     public DataSet query(final Class<?> entityClass, final Collection<String> selectPropNames, final Condition cond, final Holder<String> resultHandle,
@@ -558,10 +558,10 @@ public final class NewEntityManager {
      * 
      * By default it's queried in parallel. but it can be set to sequential query by set <code>Query.QUERY_IN_PARALLEL=false</code> in options
      *
-     * @param entityClass the entity Class
-     * @param selectPropNames the select prop names
-     * @param cond the cond
-     * @param options            Multiple data sources can be specified by query options: <code>Query.QUERY_WITH_DATA_SOURCES</code>
+     * @param entityClass
+     * @param selectPropNames
+     * @param cond
+     * @param options Multiple data sources can be specified by query options: <code>Query.QUERY_WITH_DATA_SOURCES</code>
      * @return
      */
     public DataSet queryAll(final Class<?> entityClass, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
@@ -571,10 +571,10 @@ public final class NewEntityManager {
     /**
      * Find first.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity class
-     * @param selectPropNames the select prop names
-     * @param cond the cond
+     * @param <T>
+     * @param entityClass
+     * @param selectPropNames
+     * @param cond
      * @return
      */
     //
@@ -589,11 +589,11 @@ public final class NewEntityManager {
      * 
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity class
-     * @param selectPropNames the select prop names
-     * @param cond the cond
-     * @param options the options
+     * @param <T>
+     * @param entityClass
+     * @param selectPropNames
+     * @param cond
+     * @param options
      * @return
      */
     public <T> Optional<T> findFirst(final Class<T> entityClass, final Collection<String> selectPropNames, final Condition cond,
@@ -604,10 +604,10 @@ public final class NewEntityManager {
     /**
      * List.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param selectPropNames the select prop names
-     * @param cond the cond
+     * @param <T>
+     * @param entityClass
+     * @param selectPropNames
+     * @param cond
      * @return
      */
     public <T> List<T> list(final Class<T> entityClass, final Collection<String> selectPropNames, final Condition cond) {
@@ -617,11 +617,11 @@ public final class NewEntityManager {
     /**
      * List.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param selectPropNames the select prop names
-     * @param cond the cond
-     * @param options the options
+     * @param <T>
+     * @param entityClass
+     * @param selectPropNames
+     * @param cond
+     * @param options
      * @return
      */
     public <T> List<T> list(final Class<T> entityClass, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
@@ -631,11 +631,11 @@ public final class NewEntityManager {
     /**
      * List all.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity class
-     * @param selectPropNames the select prop names
-     * @param cond the cond
-     * @param options the options
+     * @param <T>
+     * @param entityClass
+     * @param selectPropNames
+     * @param cond
+     * @param options
      * @return
      */
     public <T> List<T> listAll(final Class<T> entityClass, final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
@@ -645,8 +645,8 @@ public final class NewEntityManager {
     /**
      * Adds the.
      *
-     * @param entityClass the entity Class
-     * @param props the props
+     * @param entityClass
+     * @param props
      * @return
      */
     public EntityId add(final Class<?> entityClass, final Map<String, Object> props) {
@@ -656,9 +656,9 @@ public final class NewEntityManager {
     /**
      * Adds the.
      *
-     * @param entityClass the entity Class
-     * @param props the props
-     * @param options the options
+     * @param entityClass
+     * @param props
+     * @param options
      * @return
      */
     public EntityId add(final Class<?> entityClass, final Map<String, Object> props, final Map<String, Object> options) {
@@ -668,8 +668,8 @@ public final class NewEntityManager {
     /**
      * Adds the all.
      *
-     * @param entityClass the entity Class
-     * @param propsList the props list
+     * @param entityClass
+     * @param propsList
      * @return
      */
     public List<EntityId> addAll(final Class<?> entityClass, final List<Map<String, Object>> propsList) {
@@ -679,9 +679,9 @@ public final class NewEntityManager {
     /**
      * Adds the all.
      *
-     * @param entityClass the entity Class
-     * @param propsList the props list
-     * @param options the options
+     * @param entityClass
+     * @param propsList
+     * @param options
      * @return
      */
     public List<EntityId> addAll(final Class<?> entityClass, final List<Map<String, Object>> propsList, final Map<String, Object> options) {
@@ -691,9 +691,9 @@ public final class NewEntityManager {
     /**
      * Update.
      *
-     * @param entityClass the entity Class
-     * @param props the props
-     * @param cond the cond
+     * @param entityClass
+     * @param props
+     * @param cond
      * @return
      */
     public int update(final Class<?> entityClass, final Map<String, Object> props, final Condition cond) {
@@ -703,10 +703,10 @@ public final class NewEntityManager {
     /**
      * Update.
      *
-     * @param entityClass the entity Class
-     * @param props the props
-     * @param cond the cond
-     * @param options the options
+     * @param entityClass
+     * @param props
+     * @param cond
+     * @param options
      * @return
      */
     public int update(final Class<?> entityClass, final Map<String, Object> props, final Condition cond, final Map<String, Object> options) {
@@ -716,8 +716,8 @@ public final class NewEntityManager {
     /**
      * Delete.
      *
-     * @param entityClass the entity Class
-     * @param cond the cond
+     * @param entityClass
+     * @param cond
      * @return
      */
     public int delete(final Class<?> entityClass, final Condition cond) {
@@ -727,9 +727,9 @@ public final class NewEntityManager {
     /**
      * Delete.
      *
-     * @param entityClass the entity Class
-     * @param cond the cond
-     * @param options the options
+     * @param entityClass
+     * @param cond
+     * @param options
      * @return
      */
     public int delete(final Class<?> entityClass, final Condition cond, final Map<String, Object> options) {
@@ -739,9 +739,9 @@ public final class NewEntityManager {
     /**
      * Gets the result by handle.
      *
-     * @param resultHandle the result handle
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param resultHandle
+     * @param selectPropNames
+     * @param options
      * @return
      */
     public DataSet getResultByHandle(final String resultHandle, final Collection<String> selectPropNames, final Map<String, Object> options) {
@@ -751,7 +751,7 @@ public final class NewEntityManager {
     /**
      * Release result handle.
      *
-     * @param resultHandle the result handle
+     * @param resultHandle
      */
     public void releaseResultHandle(final String resultHandle) {
         em.releaseResultHandle(resultHandle);
@@ -771,7 +771,7 @@ public final class NewEntityManager {
      *   
      * Refer to {@code beginTransaction(IsolationLevel, boolean, Map<String, Object>)}.
      *
-     * @param isolationLevel the isolation level
+     * @param isolationLevel
      * @return
      * @see #beginTransaction(IsolationLevel, boolean, Map<String, Object>)
      */
@@ -783,7 +783,7 @@ public final class NewEntityManager {
      *  
      * Refer to {@code beginTransaction(IsolationLevel, boolean, Map<String, Object>)}.
      *
-     * @param forUpdateOnly the for update only
+     * @param forUpdateOnly
      * @return
      * @see #beginTransaction(IsolationLevel, boolean, Map<String, Object>)
      */
@@ -795,8 +795,8 @@ public final class NewEntityManager {
      *  
      * Refer to {@code beginTransaction(IsolationLevel, boolean, Map<String, Object>)}.
      *
-     * @param isolationLevel the isolation level
-     * @param forUpdateOnly the for update only
+     * @param isolationLevel
+     * @param forUpdateOnly
      * @return
      * @see #beginTransaction(IsolationLevel, boolean, Map<String, Object>)
      */
@@ -826,9 +826,9 @@ public final class NewEntityManager {
      * </code>
      * </pre>
      *
-     * @param isolationLevel the isolation level
-     * @param forUpdateOnly the for update only
-     * @param options the options
+     * @param isolationLevel
+     * @param forUpdateOnly
+     * @param options
      * @return
      */
     public SQLTransaction beginTransaction(final IsolationLevel isolationLevel, final boolean forUpdateOnly, final Map<String, Object> options) {
@@ -849,9 +849,9 @@ public final class NewEntityManager {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param id the id
+     * @param <T>
+     * @param entityClass
+     * @param id
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -863,10 +863,10 @@ public final class NewEntityManager {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param id the id
-     * @param selectPropNames the select prop names
+     * @param <T>
+     * @param entityClass
+     * @param id
+     * @param selectPropNames
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -878,11 +878,11 @@ public final class NewEntityManager {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param id the id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param entityClass
+     * @param id
+     * @param selectPropNames
+     * @param options
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -895,9 +895,9 @@ public final class NewEntityManager {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param id the id
+     * @param <T>
+     * @param entityClass
+     * @param id
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -909,10 +909,10 @@ public final class NewEntityManager {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param id the id
-     * @param selectPropNames the select prop names
+     * @param <T>
+     * @param entityClass
+     * @param id
+     * @param selectPropNames
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -924,11 +924,11 @@ public final class NewEntityManager {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param id the id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param entityClass
+     * @param id
+     * @param selectPropNames
+     * @param options
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -941,8 +941,8 @@ public final class NewEntityManager {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
+     * @param <T>
+     * @param entityId
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -954,9 +954,9 @@ public final class NewEntityManager {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -968,10 +968,10 @@ public final class NewEntityManager {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
+     * @param options
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -984,9 +984,9 @@ public final class NewEntityManager {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param id the id
+     * @param <T>
+     * @param entityClass
+     * @param id
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -998,10 +998,10 @@ public final class NewEntityManager {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param id the id
-     * @param selectPropNames the select prop names
+     * @param <T>
+     * @param entityClass
+     * @param id
+     * @param selectPropNames
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -1013,11 +1013,11 @@ public final class NewEntityManager {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param id the id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param entityClass
+     * @param id
+     * @param selectPropNames
+     * @param options
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -1030,9 +1030,9 @@ public final class NewEntityManager {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param id the id
+     * @param <T>
+     * @param entityClass
+     * @param id
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -1044,10 +1044,10 @@ public final class NewEntityManager {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param id the id
-     * @param selectPropNames the select prop names
+     * @param <T>
+     * @param entityClass
+     * @param id
+     * @param selectPropNames
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -1059,11 +1059,11 @@ public final class NewEntityManager {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity Class
-     * @param id the id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param entityClass
+     * @param id
+     * @param selectPropNames
+     * @param options
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -1076,8 +1076,8 @@ public final class NewEntityManager {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
+     * @param <T>
+     * @param entityId
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -1089,9 +1089,9 @@ public final class NewEntityManager {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -1103,10 +1103,10 @@ public final class NewEntityManager {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
+     * @param options
      * @return
      * @throws DuplicatedResultException the duplicated result exception
      */
@@ -1118,7 +1118,7 @@ public final class NewEntityManager {
     /**
      * Refresh.
      *
-     * @param entity the entity
+     * @param entity
      * @return true, if successful
      */
     @Deprecated
@@ -1129,8 +1129,8 @@ public final class NewEntityManager {
     /**
      * Refresh.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      * @return true, if successful
      */
     @Deprecated
@@ -1141,7 +1141,7 @@ public final class NewEntityManager {
     /**
      * Refresh all.
      *
-     * @param entities the entities
+     * @param entities
      * @return
      */
     @Deprecated
@@ -1152,8 +1152,8 @@ public final class NewEntityManager {
     /**
      * Refresh all.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      * @return
      */
     @Deprecated
@@ -1164,7 +1164,7 @@ public final class NewEntityManager {
     /**
      * Adds the.
      *
-     * @param entity the entity
+     * @param entity
      * @return
      */
     public EntityId add(final Object entity) {
@@ -1174,8 +1174,8 @@ public final class NewEntityManager {
     /**
      * Adds the.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      * @return
      */
     public EntityId add(final Object entity, final Map<String, Object> options) {
@@ -1185,7 +1185,7 @@ public final class NewEntityManager {
     /**
      * Adds the all.
      *
-     * @param entities the entities
+     * @param entities
      * @return
      */
     public List<EntityId> addAll(final Collection<?> entities) {
@@ -1195,8 +1195,8 @@ public final class NewEntityManager {
     /**
      * Adds the all.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      * @return
      */
     public List<EntityId> addAll(final Collection<?> entities, final Map<String, Object> options) {
@@ -1206,9 +1206,9 @@ public final class NewEntityManager {
     /**
      * Execute {@code add} and return the added entity if the record doesn't, otherwise, {@code update} is executed and updated db record is returned. 
      *
-     * @param <T> the generic type
-     * @param entity the entity
-     * @param cond the cond
+     * @param <T>
+     * @param entity
+     * @param cond
      * @return
      */
     public <T> T addOrUpdate(final T entity, final Condition cond) {
@@ -1218,10 +1218,10 @@ public final class NewEntityManager {
     /**
      * Execute {@code add} and return the added entity if the record doesn't, otherwise, {@code update} is executed and updated db record is returned. 
      *
-     * @param <T> the generic type
-     * @param entity the entity
-     * @param cond the cond
-     * @param options the options
+     * @param <T>
+     * @param entity
+     * @param cond
+     * @param options
      * @return
      */
     public <T> T addOrUpdate(final T entity, final Condition cond, final Map<String, Object> options) {
@@ -1231,7 +1231,7 @@ public final class NewEntityManager {
     /**
      * Update.
      *
-     * @param entity the entity
+     * @param entity
      * @return
      */
     public int update(final Object entity) {
@@ -1241,8 +1241,8 @@ public final class NewEntityManager {
     /**
      * Update.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      * @return
      */
     public int update(final Object entity, final Map<String, Object> options) {
@@ -1252,7 +1252,7 @@ public final class NewEntityManager {
     /**
      * Update all.
      *
-     * @param entities the entities
+     * @param entities
      * @return
      */
     public int updateAll(final Collection<?> entities) {
@@ -1262,8 +1262,8 @@ public final class NewEntityManager {
     /**
      * Update all.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      * @return
      */
     public int updateAll(final Collection<?> entities, final Map<String, Object> options) {
@@ -1272,8 +1272,8 @@ public final class NewEntityManager {
 
     /**
      * Update.
-     * @param props the props
-     * @param entityId the entity id
+     * @param props
+     * @param entityId
      * @return
      */
     public int update(final Map<String, Object> props, final EntityId entityId) {
@@ -1282,9 +1282,9 @@ public final class NewEntityManager {
 
     /**
      * Update.
-     * @param props the props
-     * @param entityId the entity id
-     * @param options the options
+     * @param props
+     * @param entityId
+     * @param options
      * @return
      */
     public int update(final Map<String, Object> props, final EntityId entityId, final Map<String, Object> options) {
@@ -1293,8 +1293,8 @@ public final class NewEntityManager {
 
     /**
      * Update all.
-     * @param props the props
-     * @param entityIds the entity ids
+     * @param props
+     * @param entityIds
      * @return
      */
     public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds) {
@@ -1303,9 +1303,9 @@ public final class NewEntityManager {
 
     /**
      * Update all.
-     * @param props the props
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param props
+     * @param entityIds
+     * @param options
      * @return
      */
     public int updateAll(final Map<String, Object> props, final List<? extends EntityId> entityIds, final Map<String, Object> options) {
@@ -1315,7 +1315,7 @@ public final class NewEntityManager {
     /**
      * Delete.
      *
-     * @param entity the entity
+     * @param entity
      * @return
      */
     public int delete(final Object entity) {
@@ -1325,8 +1325,8 @@ public final class NewEntityManager {
     /**
      * Delete.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      * @return
      */
     public int delete(final Object entity, final Map<String, Object> options) {
@@ -1347,7 +1347,7 @@ public final class NewEntityManager {
      * Delete all.
      *
      * @param entities the elements in the collection must be the same type
-     * @param options the options
+     * @param options
      * @return
      */
     public int deleteAll(final Collection<?> entities, final Map<String, Object> options) {
@@ -1357,7 +1357,7 @@ public final class NewEntityManager {
     /**
      * Delete.
      *
-     * @param entityId the entity id
+     * @param entityId
      * @return
      */
     public int delete(final EntityId entityId) {
@@ -1367,8 +1367,8 @@ public final class NewEntityManager {
     /**
      * Delete.
      *
-     * @param entityId the entity id
-     * @param options the options
+     * @param entityId
+     * @param options
      * @return
      */
     public int delete(final EntityId entityId, final Map<String, Object> options) {
@@ -1378,7 +1378,7 @@ public final class NewEntityManager {
     /**
      * Delete all.
      *
-     * @param entityIds the entity ids
+     * @param entityIds
      * @return
      */
     public int deleteAll(final List<? extends EntityId> entityIds) {
@@ -1388,8 +1388,8 @@ public final class NewEntityManager {
     /**
      * Delete all.
      *
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param entityIds
+     * @param options
      * @return
      */
     public int deleteAll(final List<? extends EntityId> entityIds, final Map<String, Object> options) {
@@ -1399,8 +1399,8 @@ public final class NewEntityManager {
     /**
      * Creates the entity id.
      *
-     * @param entityClass the entity class
-     * @param id the id
+     * @param entityClass
+     * @param id
      * @return
      */
     @SuppressWarnings("deprecation")
@@ -1429,7 +1429,7 @@ public final class NewEntityManager {
     /**
      * Check options.
      *
-     * @param options the options
+     * @param options
      * @return
      */
     private Map<String, Object> checkOptions(final Map<String, Object> options) {
@@ -1453,7 +1453,7 @@ public final class NewEntityManager {
      * Multi-thread safe.
      *
      * @param <T> the entity type
-     * @param <ID> the generic type
+     * @param <ID>
      */
     public static class Mapper<T, ID> {
 
@@ -1479,7 +1479,7 @@ public final class NewEntityManager {
          * Instantiates a new mapper.
          *
          * @param nem the em
-         * @param entityClass the entity class
+         * @param entityClass
          */
         Mapper(final NewEntityManager nem, final Class<T> entityClass, final Class<ID> idClass, final EntityDefinition entityDef) {
             this.nem = nem;
@@ -1511,7 +1511,7 @@ public final class NewEntityManager {
         /**
          * Exists.
          *
-         * @param id the id
+         * @param id
          * @return true, if successful
          */
         public boolean exists(final ID id) {
@@ -1521,7 +1521,7 @@ public final class NewEntityManager {
         /**
          * Exists.
          *
-         * @param cond the cond
+         * @param cond
          * @return true, if successful
          */
         public boolean exists(final Condition cond) {
@@ -1531,8 +1531,8 @@ public final class NewEntityManager {
         /**
          * Exists.
          *
-         * @param cond the cond
-         * @param options the options
+         * @param cond
+         * @param options
          * @return true, if successful
          */
         public boolean exists(final Condition cond, final Map<String, Object> options) {
@@ -1542,7 +1542,7 @@ public final class NewEntityManager {
         /**
          * Count.
          *
-         * @param cond the cond
+         * @param cond
          * @return
          */
         public int count(final Condition cond) {
@@ -1552,8 +1552,8 @@ public final class NewEntityManager {
         /**
          * Count.
          *
-         * @param cond the cond
-         * @param options the options
+         * @param cond
+         * @param options
          * @return
          */
         public int count(final Condition cond, final Map<String, Object> options) {
@@ -1563,8 +1563,8 @@ public final class NewEntityManager {
         /**
          * Query for boolean.
          *
-         * @param propName the prop name
-         * @param cond the cond
+         * @param propName
+         * @param cond
          * @return
          */
         public OptionalBoolean queryForBoolean(final String propName, final Condition cond) {
@@ -1574,8 +1574,8 @@ public final class NewEntityManager {
         /**
          * Query for char.
          *
-         * @param propName the prop name
-         * @param cond the cond
+         * @param propName
+         * @param cond
          * @return
          */
         public OptionalChar queryForChar(final String propName, final Condition cond) {
@@ -1585,8 +1585,8 @@ public final class NewEntityManager {
         /**
          * Query for byte.
          *
-         * @param propName the prop name
-         * @param cond the cond
+         * @param propName
+         * @param cond
          * @return
          */
         public OptionalByte queryForByte(final String propName, final Condition cond) {
@@ -1596,8 +1596,8 @@ public final class NewEntityManager {
         /**
          * Query for short.
          *
-         * @param propName the prop name
-         * @param cond the cond
+         * @param propName
+         * @param cond
          * @return
          */
         public OptionalShort queryForShort(final String propName, final Condition cond) {
@@ -1607,8 +1607,8 @@ public final class NewEntityManager {
         /**
          * Query for int.
          *
-         * @param propName the prop name
-         * @param cond the cond
+         * @param propName
+         * @param cond
          * @return
          */
         public OptionalInt queryForInt(final String propName, final Condition cond) {
@@ -1618,8 +1618,8 @@ public final class NewEntityManager {
         /**
          * Query for long.
          *
-         * @param propName the prop name
-         * @param cond the cond
+         * @param propName
+         * @param cond
          * @return
          */
         public OptionalLong queryForLong(final String propName, final Condition cond) {
@@ -1629,8 +1629,8 @@ public final class NewEntityManager {
         /**
          * Query for float.
          *
-         * @param propName the prop name
-         * @param cond the cond
+         * @param propName
+         * @param cond
          * @return
          */
         public OptionalFloat queryForFloat(final String propName, final Condition cond) {
@@ -1640,8 +1640,8 @@ public final class NewEntityManager {
         /**
          * Query for double.
          *
-         * @param propName the prop name
-         * @param cond the cond
+         * @param propName
+         * @param cond
          * @return
          */
         public OptionalDouble queryForDouble(final String propName, final Condition cond) {
@@ -1651,8 +1651,8 @@ public final class NewEntityManager {
         /**
          * Query for string.
          *
-         * @param propName the prop name
-         * @param cond the cond
+         * @param propName
+         * @param cond
          * @return
          */
         public Nullable<String> queryForString(final String propName, final Condition cond) {
@@ -1662,8 +1662,8 @@ public final class NewEntityManager {
         /**
          * Query for date.
          *
-         * @param propName the prop name
-         * @param cond the cond
+         * @param propName
+         * @param cond
          * @return
          */
         public Nullable<java.sql.Date> queryForDate(final String propName, final Condition cond) {
@@ -1673,8 +1673,8 @@ public final class NewEntityManager {
         /**
          * Query for time.
          *
-         * @param propName the prop name
-         * @param cond the cond
+         * @param propName
+         * @param cond
          * @return
          */
         public Nullable<java.sql.Time> queryForTime(final String propName, final Condition cond) {
@@ -1684,8 +1684,8 @@ public final class NewEntityManager {
         /**
          * Query for timestamp.
          *
-         * @param propName the prop name
-         * @param cond the cond
+         * @param propName
+         * @param cond
          * @return
          */
         public Nullable<java.sql.Timestamp> queryForTimestamp(final String propName, final Condition cond) {
@@ -1696,9 +1696,9 @@ public final class NewEntityManager {
          * Query for single result.
          *
          * @param <V> the value type
-         * @param targetClass the target class
-         * @param propName the prop name
-         * @param cond the cond
+         * @param targetClass
+         * @param propName
+         * @param cond
          * @return
          */
         public <V> Nullable<V> queryForSingleResult(final Class<V> targetClass, final String propName, final Condition cond) {
@@ -1709,10 +1709,10 @@ public final class NewEntityManager {
          * Query for single result.
          *
          * @param <V> the value type
-         * @param targetClass the target class
-         * @param propName the prop name
-         * @param cond the cond
-         * @param options the options
+         * @param targetClass
+         * @param propName
+         * @param cond
+         * @param options
          * @return
          */
         @SuppressWarnings("unchecked")
@@ -1725,9 +1725,9 @@ public final class NewEntityManager {
          * Query for single non null.
          *
          * @param <V> the value type
-         * @param targetClass the target class
-         * @param propName the prop name
-         * @param cond the cond
+         * @param targetClass
+         * @param propName
+         * @param cond
          * @return
          */
         public <V> Optional<V> queryForSingleNonNull(final Class<V> targetClass, final String propName, final Condition cond) {
@@ -1738,10 +1738,10 @@ public final class NewEntityManager {
          * Query for single non null.
          *
          * @param <V> the value type
-         * @param targetClass the target class
-         * @param propName the prop name
-         * @param cond the cond
-         * @param options the options
+         * @param targetClass
+         * @param propName
+         * @param cond
+         * @param options
          * @return
          */
         @SuppressWarnings("unchecked")
@@ -1754,9 +1754,9 @@ public final class NewEntityManager {
          * Query for unique result.
          *
          * @param <V> the value type
-         * @param targetClass the target class
-         * @param propName the prop name
-         * @param cond the cond
+         * @param targetClass
+         * @param propName
+         * @param cond
          * @return
          * @throws DuplicatedResultException the duplicated result exception
          */
@@ -1768,10 +1768,10 @@ public final class NewEntityManager {
          * Query for unique result.
          *
          * @param <V> the value type
-         * @param targetClass the target class
-         * @param propName the prop name
-         * @param cond the cond
-         * @param options the options
+         * @param targetClass
+         * @param propName
+         * @param cond
+         * @param options
          * @return
          * @throws DuplicatedResultException the duplicated result exception
          */
@@ -1785,9 +1785,9 @@ public final class NewEntityManager {
          * Query for unique non null.
          *
          * @param <V> the value type
-         * @param targetClass the target class
-         * @param propName the prop name
-         * @param cond the cond
+         * @param targetClass
+         * @param propName
+         * @param cond
          * @return
          * @throws DuplicatedResultException the duplicated result exception
          */
@@ -1799,10 +1799,10 @@ public final class NewEntityManager {
          * Query for unique non null.
          *
          * @param <V> the value type
-         * @param targetClass the target class
-         * @param propName the prop name
-         * @param cond the cond
-         * @param options the options
+         * @param targetClass
+         * @param propName
+         * @param cond
+         * @param options
          * @return
          * @throws DuplicatedResultException the duplicated result exception
          */
@@ -1815,8 +1815,8 @@ public final class NewEntityManager {
         /**
          * Find first.
          *
-         * @param selectPropNames the select prop names
-         * @param cond the cond
+         * @param selectPropNames
+         * @param cond
          * @return
          */
         public Optional<T> findFirst(final Collection<String> selectPropNames, final Condition cond) {
@@ -1826,9 +1826,9 @@ public final class NewEntityManager {
         /**
          * Find first.
          *
-         * @param selectPropNames the select prop names
-         * @param cond the cond
-         * @param options the options
+         * @param selectPropNames
+         * @param cond
+         * @param options
          * @return
          */
         public Optional<T> findFirst(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
@@ -1838,8 +1838,8 @@ public final class NewEntityManager {
         /**
          * Query.
          *
-         * @param selectPropNames the select prop names
-         * @param cond the cond
+         * @param selectPropNames
+         * @param cond
          * @return
          */
         public DataSet query(final Collection<String> selectPropNames, final Condition cond) {
@@ -1849,9 +1849,9 @@ public final class NewEntityManager {
         /**
          * Query.
          *
-         * @param selectPropNames the select prop names
-         * @param cond the cond
-         * @param options the options
+         * @param selectPropNames
+         * @param cond
+         * @param options
          * @return
          */
         public DataSet query(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
@@ -1861,10 +1861,10 @@ public final class NewEntityManager {
         /**
          * Query.
          *
-         * @param selectPropNames the select prop names
-         * @param cond the cond
-         * @param resultHandle the result handle
-         * @param options the options
+         * @param selectPropNames
+         * @param cond
+         * @param resultHandle
+         * @param options
          * @return
          */
         public DataSet query(final Collection<String> selectPropNames, final Condition cond, final Holder<String> resultHandle,
@@ -1875,9 +1875,9 @@ public final class NewEntityManager {
         /**
          * Query all.
          *
-         * @param selectPropNames the select prop names
-         * @param cond the cond
-         * @param options the options
+         * @param selectPropNames
+         * @param cond
+         * @param options
          * @return
          */
         public DataSet queryAll(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
@@ -1887,8 +1887,8 @@ public final class NewEntityManager {
         /**
          * List.
          *
-         * @param selectPropNames the select prop names
-         * @param cond the cond
+         * @param selectPropNames
+         * @param cond
          * @return
          */
         public List<T> list(final Collection<String> selectPropNames, final Condition cond) {
@@ -1898,9 +1898,9 @@ public final class NewEntityManager {
         /**
          * List.
          *
-         * @param selectPropNames the select prop names
-         * @param cond the cond
-         * @param options the options
+         * @param selectPropNames
+         * @param cond
+         * @param options
          * @return
          */
         public List<T> list(final Collection<String> selectPropNames, final Condition cond, final Map<String, Object> options) {
@@ -1910,9 +1910,9 @@ public final class NewEntityManager {
         /**
          * List all.
          *
-         * @param selectPropNames the select prop names
-         * @param cond the cond
-         * @param options the options
+         * @param selectPropNames
+         * @param cond
+         * @param options
          * @return
          */
         @SuppressWarnings("unchecked")
@@ -1923,7 +1923,7 @@ public final class NewEntityManager {
         /**
          * Adds the.
          *
-         * @param props the props
+         * @param props
          * @return
          */
         public ID add(final Map<String, Object> props) {
@@ -1933,8 +1933,8 @@ public final class NewEntityManager {
         /**
          * Adds the.
          *
-         * @param props the props
-         * @param options the options
+         * @param props
+         * @param options
          * @return
          */
         public ID add(final Map<String, Object> props, final Map<String, Object> options) {
@@ -1946,7 +1946,7 @@ public final class NewEntityManager {
         /**
          * Adds the all.
          *
-         * @param propsList the props list
+         * @param propsList
          * @return
          */
         public List<ID> addAll(final List<Map<String, Object>> propsList) {
@@ -1956,8 +1956,8 @@ public final class NewEntityManager {
         /**
          * Adds the all.
          *
-         * @param propsList the props list
-         * @param options the options
+         * @param propsList
+         * @param options
          * @return
          */
         public List<ID> addAll(final List<Map<String, Object>> propsList, final Map<String, Object> options) {
@@ -1969,8 +1969,8 @@ public final class NewEntityManager {
         /**
          * Update.
          *
-         * @param props the props
-         * @param cond the cond
+         * @param props
+         * @param cond
          * @return
          */
         public int update(final Map<String, Object> props, final Condition cond) {
@@ -1980,9 +1980,9 @@ public final class NewEntityManager {
         /**
          * Update.
          *
-         * @param props the props
-         * @param cond the cond
-         * @param options the options
+         * @param props
+         * @param cond
+         * @param options
          * @return
          */
         public int update(final Map<String, Object> props, final Condition cond, final Map<String, Object> options) {
@@ -1992,7 +1992,7 @@ public final class NewEntityManager {
         /**
          * Delete.
          *
-         * @param cond the cond
+         * @param cond
          * @return
          */
         public int delete(final Condition cond) {
@@ -2002,8 +2002,8 @@ public final class NewEntityManager {
         /**
          * Delete.
          *
-         * @param cond the cond
-         * @param options the options
+         * @param cond
+         * @param options
          * @return
          */
         public int delete(final Condition cond, final Map<String, Object> options) {
@@ -2013,7 +2013,7 @@ public final class NewEntityManager {
         /**
          * Gets the.
          *
-         * @param id the id
+         * @param id
          * @return
          * @throws DuplicatedResultException the duplicated result exception
          */
@@ -2025,8 +2025,8 @@ public final class NewEntityManager {
         /**
          * Gets the.
          *
-         * @param id the id
-         * @param selectPropNames the select prop names
+         * @param id
+         * @param selectPropNames
          * @return
          * @throws DuplicatedResultException the duplicated result exception
          */
@@ -2038,9 +2038,9 @@ public final class NewEntityManager {
         /**
          * Gets the.
          *
-         * @param id the id
-         * @param selectPropNames the select prop names
-         * @param options the options
+         * @param id
+         * @param selectPropNames
+         * @param options
          * @return
          * @throws DuplicatedResultException the duplicated result exception
          */
@@ -2052,7 +2052,7 @@ public final class NewEntityManager {
         /**
          * Gets the t.
          *
-         * @param id the id
+         * @param id
          * @return
          * @throws DuplicatedResultException the duplicated result exception
          */
@@ -2064,8 +2064,8 @@ public final class NewEntityManager {
         /**
          * Gets the t.
          *
-         * @param id the id
-         * @param selectPropNames the select prop names
+         * @param id
+         * @param selectPropNames
          * @return
          * @throws DuplicatedResultException the duplicated result exception
          */
@@ -2077,9 +2077,9 @@ public final class NewEntityManager {
         /**
          * Gets the t.
          *
-         * @param id the id
-         * @param selectPropNames the select prop names
-         * @param options the options
+         * @param id
+         * @param selectPropNames
+         * @param options
          * @return
          * @throws DuplicatedResultException the duplicated result exception
          */
@@ -2091,7 +2091,7 @@ public final class NewEntityManager {
         /**
          * Refresh.
          *
-         * @param entity the entity
+         * @param entity
          * @return true, if successful
          */
         @Deprecated
@@ -2102,8 +2102,8 @@ public final class NewEntityManager {
         /**
          * Refresh.
          *
-         * @param entity the entity
-         * @param options the options
+         * @param entity
+         * @param options
          * @return true, if successful
          */
         @Deprecated
@@ -2114,7 +2114,7 @@ public final class NewEntityManager {
         /**
          * Refresh all.
          *
-         * @param entities the entities
+         * @param entities
          * @return
          */
         @Deprecated
@@ -2125,8 +2125,8 @@ public final class NewEntityManager {
         /**
          * Refresh all.
          *
-         * @param entities the entities
-         * @param options the options
+         * @param entities
+         * @param options
          * @return
          */
         @Deprecated
@@ -2137,7 +2137,7 @@ public final class NewEntityManager {
         /**
          * Adds the.
          *
-         * @param entity the entity
+         * @param entity
          * @return
          */
         public ID add(final T entity) {
@@ -2147,8 +2147,8 @@ public final class NewEntityManager {
         /**
          * Adds the.
          *
-         * @param entity the entity
-         * @param options the options
+         * @param entity
+         * @param options
          * @return
          */
         public ID add(final T entity, final Map<String, Object> options) {
@@ -2160,7 +2160,7 @@ public final class NewEntityManager {
         /**
          * Adds the all.
          *
-         * @param entities the entities
+         * @param entities
          * @return
          */
         public List<ID> addAll(final Collection<? extends T> entities) {
@@ -2170,8 +2170,8 @@ public final class NewEntityManager {
         /**
          * Adds the all.
          *
-         * @param entities the entities
-         * @param options the options
+         * @param entities
+         * @param options
          * @return
          */
         public List<ID> addAll(final Collection<? extends T> entities, final Map<String, Object> options) {
@@ -2183,8 +2183,8 @@ public final class NewEntityManager {
         /**
          * Adds the or update.
          *
-         * @param entity the entity
-         * @param cond the cond
+         * @param entity
+         * @param cond
          * @return
          */
         public T addOrUpdate(final T entity, final Condition cond) {
@@ -2194,9 +2194,9 @@ public final class NewEntityManager {
         /**
          * Adds the or update.
          *
-         * @param entity the entity
-         * @param cond the cond
-         * @param options the options
+         * @param entity
+         * @param cond
+         * @param options
          * @return
          */
         public T addOrUpdate(final T entity, final Condition cond, final Map<String, Object> options) {
@@ -2206,7 +2206,7 @@ public final class NewEntityManager {
         /**
          * Update.
          *
-         * @param entity the entity
+         * @param entity
          * @return
          */
         public int update(final T entity) {
@@ -2216,8 +2216,8 @@ public final class NewEntityManager {
         /**
          * Update.
          *
-         * @param entity the entity
-         * @param options the options
+         * @param entity
+         * @param options
          * @return
          */
         public int update(final T entity, final Map<String, Object> options) {
@@ -2227,7 +2227,7 @@ public final class NewEntityManager {
         /**
          * Update all.
          *
-         * @param entities the entities
+         * @param entities
          * @return
          */
         public int updateAll(final Collection<? extends T> entities) {
@@ -2237,8 +2237,8 @@ public final class NewEntityManager {
         /**
          * Update all.
          *
-         * @param entities the entities
-         * @param options the options
+         * @param entities
+         * @param options
          * @return
          */
         public int updateAll(final Collection<? extends T> entities, final Map<String, Object> options) {
@@ -2248,8 +2248,8 @@ public final class NewEntityManager {
         /**
          * Update.
          *
-         * @param props the props
-         * @param id the id
+         * @param props
+         * @param id
          * @return
          */
         public int update(final Map<String, Object> props, final ID id) {
@@ -2259,9 +2259,9 @@ public final class NewEntityManager {
         /**
          * Update.
          *
-         * @param props the props
-         * @param id the id
-         * @param options the options
+         * @param props
+         * @param id
+         * @param options
          * @return
          */
         public int update(final Map<String, Object> props, final ID id, final Map<String, Object> options) {
@@ -2271,8 +2271,8 @@ public final class NewEntityManager {
         /**
          * Update all.
          *
-         * @param props the props
-         * @param ids the ids
+         * @param props
+         * @param ids
          * @return
          */
         public int updateAll(final Map<String, Object> props, final Collection<? extends ID> ids) {
@@ -2282,9 +2282,9 @@ public final class NewEntityManager {
         /**
          * Update all.
          *
-         * @param props the props
-         * @param ids the ids
-         * @param options the options
+         * @param props
+         * @param ids
+         * @param options
          * @return
          */
         public int updateAll(final Map<String, Object> props, final Collection<? extends ID> ids, final Map<String, Object> options) {
@@ -2294,7 +2294,7 @@ public final class NewEntityManager {
         /**
          * Delete.
          *
-         * @param entity the entity
+         * @param entity
          * @return
          */
         public int delete(final T entity) {
@@ -2304,8 +2304,8 @@ public final class NewEntityManager {
         /**
          * Delete.
          *
-         * @param entity the entity
-         * @param options the options
+         * @param entity
+         * @param options
          * @return
          */
         public int delete(final T entity, final Map<String, Object> options) {
@@ -2315,7 +2315,7 @@ public final class NewEntityManager {
         /**
          * Delete all.
          *
-         * @param entities the entities
+         * @param entities
          * @return
          */
         public int deleteAll(final Collection<? extends T> entities) {
@@ -2325,8 +2325,8 @@ public final class NewEntityManager {
         /**
          * Delete all.
          *
-         * @param entities the entities
-         * @param options the options
+         * @param entities
+         * @param options
          * @return
          */
         public int deleteAll(final Collection<? extends T> entities, final Map<String, Object> options) {
@@ -2336,7 +2336,7 @@ public final class NewEntityManager {
         /**
          * Delete.
          *
-         * @param id the id
+         * @param id
          * @return
          */
         public int deleteById(final ID id) {
@@ -2346,8 +2346,8 @@ public final class NewEntityManager {
         /**
          * Delete.
          *
-         * @param id the id
-         * @param options the options
+         * @param id
+         * @param options
          * @return
          */
         public int deleteById(final ID id, final Map<String, Object> options) {
@@ -2357,7 +2357,7 @@ public final class NewEntityManager {
         /**
          * Delete all.
          *
-         * @param entityIds the entity ids
+         * @param entityIds
          * @return
          */
         public int deleteByIds(final Collection<? extends ID> entityIds) {
@@ -2367,8 +2367,8 @@ public final class NewEntityManager {
         /**
          * Delete all.
          *
-         * @param entityIds the entity ids
-         * @param options the options
+         * @param entityIds
+         * @param options
          * @return
          */
         public int deleteByIds(final Collection<? extends ID> entityIds, final Map<String, Object> options) {
@@ -2378,7 +2378,7 @@ public final class NewEntityManager {
         /**
          * Creates the entity ids.
          *
-         * @param ids the ids
+         * @param ids
          * @return
          */
         private List<EntityId> createEntityIds(final Collection<? extends ID> ids) {

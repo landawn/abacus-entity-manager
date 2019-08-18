@@ -45,10 +45,10 @@ final class SelectPropNameView {
     /**
      * Instantiates a new select prop name view.
      *
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param simplePropNames the simple prop names
-     * @param entityPropNames the entity prop names
+     * @param entityName
+     * @param selectPropNames
+     * @param simplePropNames
+     * @param entityPropNames
      */
     SelectPropNameView(String entityName, Collection<String> selectPropNames, Collection<String> simplePropNames, Collection<String> entityPropNames) {
         this.entityName = entityName;

@@ -31,8 +31,8 @@ public class EmailValidator extends PatternValidator {
     /**
      * Instantiates a new email validator.
      *
-     * @param propName the prop name
-     * @param type the type
+     * @param propName
+     * @param type
      */
     protected EmailValidator(String propName, Type<String> type) {
         super(propName, type, EMAIL_PATTERN);

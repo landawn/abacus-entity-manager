@@ -54,9 +54,9 @@ public final class EntityUtil {
     /**
      * Clone.
      *
-     * @param <T> the generic type
-     * @param entityDef the entity def
-     * @param entity the entity
+     * @param <T>
+     * @param entityDef
+     * @param entity
      * @return
      */
     public static <T> T clone(EntityDefinition entityDef, T entity) {
@@ -72,9 +72,9 @@ public final class EntityUtil {
     /**
      * Copy.
      *
-     * @param <T> the generic type
-     * @param entityDef the entity def
-     * @param entity the entity
+     * @param <T>
+     * @param entityDef
+     * @param entity
      * @return
      */
     public static <T> T copy(EntityDefinition entityDef, T entity) {
@@ -84,10 +84,10 @@ public final class EntityUtil {
     /**
      * Copy.
      *
-     * @param <T> the generic type
-     * @param entityDef the entity def
-     * @param entity the entity
-     * @param propNames the prop names
+     * @param <T>
+     * @param entityDef
+     * @param entity
+     * @param propNames
      * @return
      */
     public static <T> T copy(EntityDefinition entityDef, T entity, Collection<String> propNames) {
@@ -105,11 +105,11 @@ public final class EntityUtil {
     /**
      * Copy.
      *
-     * @param <T> the generic type
-     * @param entityDef the entity def
-     * @param entity the entity
-     * @param propNames the prop names
-     * @param isDeepCopy the is deep copy
+     * @param <T>
+     * @param entityDef
+     * @param entity
+     * @param propNames
+     * @param isDeepCopy
      * @return
      */
     private static <T> T copy(EntityDefinition entityDef, T entity, Collection<String> propNames, boolean isDeepCopy) {
@@ -176,10 +176,10 @@ public final class EntityUtil {
     /**
      * Transfer.
      *
-     * @param <T> the generic type
-     * @param entityDef the entity def
-     * @param sourceEntity the source entity
-     * @param targetClass the target class
+     * @param <T>
+     * @param entityDef
+     * @param sourceEntity
+     * @param targetClass
      * @return
      */
     public static <T> T transfer(EntityDefinition entityDef, Object sourceEntity, Class<T> targetClass) {
@@ -189,11 +189,11 @@ public final class EntityUtil {
     /**
      * Transfer.
      *
-     * @param <T> the generic type
-     * @param entityDef the entity def
-     * @param sourceEntity the source entity
-     * @param propNames the prop names
-     * @param targetClass the target class
+     * @param <T>
+     * @param entityDef
+     * @param sourceEntity
+     * @param propNames
+     * @param targetClass
      * @return
      */
     @SuppressWarnings({ "unchecked" })
@@ -291,8 +291,8 @@ public final class EntityUtil {
     /**
      * Disassemble.
      *
-     * @param entityDef the entity def
-     * @param sourceEntity the source entity
+     * @param entityDef
+     * @param sourceEntity
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -346,10 +346,10 @@ public final class EntityUtil {
     /**
      * Assemble.
      *
-     * @param <T> the generic type
-     * @param entityDef the entity def
-     * @param sourceEntity the source entity
-     * @param targetClass the target class
+     * @param <T>
+     * @param entityDef
+     * @param sourceEntity
+     * @param targetClass
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -403,9 +403,9 @@ public final class EntityUtil {
     /**
      * Refresh.
      *
-     * @param entityDef the entity def
-     * @param sourceEntity the source entity
-     * @param targetEntity the target entity
+     * @param entityDef
+     * @param sourceEntity
+     * @param targetEntity
      */
     public static void refresh(EntityDefinition entityDef, Object sourceEntity, Object targetEntity) {
         if (sourceEntity == null) {
@@ -467,11 +467,11 @@ public final class EntityUtil {
     /**
      * Merge.
      *
-     * @param entityDef the entity def
-     * @param sourceEntity the source entity
-     * @param targetEntity the target entity
-     * @param ignoreNullValue the ignore null value
-     * @param ignoreEqualValue the ignore equal value
+     * @param entityDef
+     * @param sourceEntity
+     * @param targetEntity
+     * @param ignoreNullValue
+     * @param ignoreEqualValue
      */
     public static void merge(EntityDefinition entityDef, Object sourceEntity, Object targetEntity, boolean ignoreNullValue, boolean ignoreEqualValue) {
         if (sourceEntity == null) {
@@ -648,8 +648,8 @@ public final class EntityUtil {
     /**
      * Hash code.
      *
-     * @param entityDef the entity def
-     * @param thisEntity the this entity
+     * @param entityDef
+     * @param thisEntity
      * @return
      */
     public static int hashCode(EntityDefinition entityDef, Object thisEntity) {
@@ -685,9 +685,9 @@ public final class EntityUtil {
     /**
      * Equals.
      *
-     * @param entityDef the entity def
-     * @param entity the entity
-     * @param anObject the an object
+     * @param entityDef
+     * @param entity
+     * @param anObject
      * @return true, if successful
      */
     public static boolean equals(EntityDefinition entityDef, Object entity, Object anObject) {
@@ -770,8 +770,8 @@ public final class EntityUtil {
     /**
      * To string.
      *
-     * @param entityDef the entity def
-     * @param thisEntity the this entity
+     * @param entityDef
+     * @param thisEntity
      * @return
      */
     public static String toString(EntityDefinition entityDef, Object thisEntity) {
@@ -833,9 +833,9 @@ public final class EntityUtil {
     /**
      * Gets the prop ele class.
      *
-     * @param <T> the generic type
-     * @param entityClass the entity class
-     * @param prop the prop
+     * @param <T>
+     * @param entityClass
+     * @param prop
      * @return
      */
     @SuppressWarnings("unchecked")

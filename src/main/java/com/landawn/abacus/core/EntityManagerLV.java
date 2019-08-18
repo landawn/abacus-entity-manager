@@ -77,8 +77,8 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Instantiates a new entity manager LV.
      *
-     * @param entityManagerConfig the entity manager config
-     * @param dbAccess the db access
+     * @param entityManagerConfig
+     * @param dbAccess
      */
     protected EntityManagerLV(EntityManagerConfiguration entityManagerConfig, DBAccessImpl dbAccess) {
         super(entityManagerConfig, dbAccess);
@@ -104,12 +104,12 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Internal list.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param options the options
+     * @param <T>
+     * @param targetClass
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param options
      * @return
      */
     @Override
@@ -139,12 +139,12 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Gets the entities.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param entityDef the entity def
-     * @param entityIds the entity ids
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param targetClass
+     * @param entityDef
+     * @param entityIds
+     * @param selectPropNames
+     * @param options
      * @return
      */
     @Override
@@ -190,9 +190,9 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Adds the entities.
      *
-     * @param entityDef the entity def
-     * @param propsList the props list
-     * @param options the options
+     * @param entityDef
+     * @param propsList
+     * @param options
      * @return
      */
     @Override
@@ -217,10 +217,10 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Internal update.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param condition the condition
-     * @param options the options
+     * @param entityName
+     * @param props
+     * @param condition
+     * @param options
      * @return
      */
     @Override
@@ -240,10 +240,10 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Update entities.
      *
-     * @param entityDef the entity def
-     * @param entityIds the entity ids
-     * @param props the props
-     * @param options the options
+     * @param entityDef
+     * @param entityIds
+     * @param props
+     * @param options
      * @return
      */
     @Override
@@ -274,9 +274,9 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Internal delete.
      *
-     * @param entityName the entity name
-     * @param cond the cond
-     * @param options the options
+     * @param entityName
+     * @param cond
+     * @param options
      * @return
      */
     @Override
@@ -296,9 +296,9 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Delete entities.
      *
-     * @param entityDef the entity def
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param entityDef
+     * @param entityIds
+     * @param options
      * @return
      */
     @Override
@@ -325,8 +325,8 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Internal get record version.
      *
-     * @param entityId the entity id
-     * @param options the options
+     * @param entityId
+     * @param options
      * @return
      */
     @Override
@@ -339,9 +339,9 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Internal lock record.
      *
-     * @param entityId the entity id
-     * @param lockMode the lock mode
-     * @param options the options
+     * @param entityId
+     * @param lockMode
+     * @param options
      * @return
      */
     @SuppressWarnings("deprecation")
@@ -362,9 +362,9 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Internal unlock record.
      *
-     * @param entityId the entity id
-     * @param lockCode the lock code
-     * @param options the options
+     * @param entityId
+     * @param lockCode
+     * @param options
      * @return true, if successful
      */
     @Override
@@ -377,9 +377,9 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Check lock.
      *
-     * @param entityIds the entity ids
-     * @param requiredLockMode the required lock mode
-     * @param options the options
+     * @param entityIds
+     * @param requiredLockMode
+     * @param options
      */
     protected void checkLock(List<? extends EntityId> entityIds, LockMode requiredLockMode, Map<String, Object> options) {
         String lockCode = getLockCode(options);
@@ -394,9 +394,9 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Internal end transaction.
      *
-     * @param transactionId the transaction id
-     * @param transactionAction the transaction action
-     * @param options the options
+     * @param transactionId
+     * @param transactionAction
+     * @param options
      */
     @Override
     protected void internalEndTransaction(String transactionId, Action transactionAction, Map<String, Object> options) {
@@ -412,8 +412,8 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Update record version by tran.
      *
-     * @param transactionId the transaction id
-     * @param tran the tran
+     * @param transactionId
+     * @param tran
      */
     protected void updateRecordVersionByTran(String transactionId, Transaction tran) {
         if (N.isNullOrEmpty(transactionId) || (tran == null)) {
@@ -459,9 +459,9 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Adds the entity ids by tran.
      *
-     * @param transactionId the transaction id
-     * @param entityIds the entity ids
-     * @param op the op
+     * @param transactionId
+     * @param entityIds
+     * @param op
      */
     protected void addEntityIdsByTran(String transactionId, List<? extends EntityId> entityIds, OperationType op) {
         synchronized (tranIdEntityIdsMap) {
@@ -479,9 +479,9 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Gets the entity id by condition.
      *
-     * @param entityName the entity name
-     * @param cond the cond
-     * @param options the options
+     * @param entityName
+     * @param cond
+     * @param options
      * @return
      */
     protected List<EntityId> getEntityIdByCondition(String entityName, Condition cond, Map<String, Object> options) {
@@ -496,8 +496,8 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Update record version.
      *
-     * @param entityId the entity id
-     * @param delta the delta
+     * @param entityId
+     * @param delta
      */
     private void updateRecordVersion(EntityId entityId, int delta) {
         if (delta == VERSION_DELTA_FOR_DELETE) {
@@ -510,8 +510,8 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     /**
      * Update record version.
      *
-     * @param entityIds the entity ids
-     * @param delta the delta
+     * @param entityIds
+     * @param delta
      */
     private void updateRecordVersion(List<? extends EntityId> entityIds, int delta) {
         for (EntityId entityId : entityIds) {

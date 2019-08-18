@@ -167,12 +167,12 @@ public class SQLProperty implements Property {
     /**
      * Instantiates a new SQL property.
      *
-     * @param entityName the entity name
-     * @param tableName the table name
-     * @param name the name
-     * @param attrs the attrs
-     * @param isId the is id
-     * @param isUID the is UID
+     * @param entityName
+     * @param tableName
+     * @param name
+     * @param attrs
+     * @param isId
+     * @param isUID
      */
     protected SQLProperty(String entityName, String tableName, String name, Map<String, String> attrs, boolean isId, boolean isUID) {
         this.name = NameUtil.getCachedName(name);
@@ -292,7 +292,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the default on insert.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -310,7 +310,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the default on update.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -448,7 +448,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the sub property.
      *
-     * @param propName the prop name
+     * @param propName
      * @return
      */
     @Override
@@ -561,8 +561,8 @@ public class SQLProperty implements Property {
     /**
      * As collection.
      *
-     * @param <T> the generic type
-     * @param entities the entities
+     * @param <T>
+     * @param entities
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -579,8 +579,8 @@ public class SQLProperty implements Property {
     /**
      * As collection.
      *
-     * @param <T> the generic type
-     * @param entities the entities
+     * @param <T>
+     * @param entities
      * @return
      */
     @Override
@@ -595,7 +595,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the gets the method.
      *
-     * @param clazz the clazz
+     * @param clazz
      * @return
      */
     @Override
@@ -615,7 +615,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the sets the method.
      *
-     * @param clazz the clazz
+     * @param clazz
      * @return
      */
     @Override
@@ -640,8 +640,8 @@ public class SQLProperty implements Property {
     /**
      * Value of.
      *
-     * @param <T> the generic type
-     * @param st the st
+     * @param <T>
+     * @param st
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -653,7 +653,7 @@ public class SQLProperty implements Property {
     /**
      * String of.
      *
-     * @param propVlaue the prop vlaue
+     * @param propVlaue
      * @return
      */
     @Override
@@ -674,7 +674,7 @@ public class SQLProperty implements Property {
     /**
      * Gets the attribute.
      *
-     * @param attrName the attr name
+     * @param attrName
      * @return
      */
     @Override
@@ -735,7 +735,7 @@ public class SQLProperty implements Property {
     /**
      * Equals.
      *
-     * @param obj the obj
+     * @param obj
      * @return true, if successful
      */
     @Override
@@ -861,8 +861,8 @@ public class SQLProperty implements Property {
     /**
      * Gets the real type.
      *
-     * @param typeName the type name
-     * @param pkgName the pkg name
+     * @param typeName
+     * @param pkgName
      * @return
      */
     private Type<Object> getRealType(String typeName, String pkgName) {
@@ -951,7 +951,7 @@ public class SQLProperty implements Property {
     /**
      * Parses the validator attr.
      *
-     * @param validatorAttr the validator attr
+     * @param validatorAttr
      * @return
      */
     private List<String> parseValidatorAttr(String validatorAttr) {

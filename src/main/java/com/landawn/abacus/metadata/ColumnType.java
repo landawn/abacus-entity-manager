@@ -35,7 +35,7 @@ public enum ColumnType {
     /**
      * Constructor.
      *
-     * @param name the name
+     * @param name
      */
     ColumnType(String name) {
         this.name = name;
@@ -53,7 +53,7 @@ public enum ColumnType {
     /**
      * Gets the.
      *
-     * @param typeName the type name
+     * @param typeName
      * @return EntityType
      */
     public static ColumnType get(String typeName) {

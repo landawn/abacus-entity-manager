@@ -95,8 +95,8 @@ public final class Options {
     /**
      * Method create.
      *
-     * @param offset the offset
-     * @param count the count
+     * @param offset
+     * @param count
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count) {
@@ -110,10 +110,10 @@ public final class Options {
     /**
      * Method create.
      *
-     * @param offset the offset
-     * @param count the count
-     * @param fromCache the from cache
-     * @param cacheResult the cache result
+     * @param offset
+     * @param count
+     * @param fromCache
+     * @param cacheResult
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count, boolean fromCache, String cacheResult) {
@@ -132,9 +132,9 @@ public final class Options {
     /**
      * Method create.
      *
-     * @param cacheResult the cache result
-     * @param range the range
-     * @param cond the cond
+     * @param cacheResult
+     * @param range
+     * @param cond
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(String cacheResult, Cache.Range range, Cache.Condition cond) {
@@ -158,11 +158,11 @@ public final class Options {
     /**
      * Method create.
      *
-     * @param cacheResult the cache result
-     * @param range the range
-     * @param cond the cond
-     * @param liveTime the live time
-     * @param maxIdleTime the max idle time
+     * @param cacheResult
+     * @param range
+     * @param cond
+     * @param liveTime
+     * @param maxIdleTime
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(String cacheResult, Cache.Range range, Cache.Condition cond, long liveTime, long maxIdleTime) {
@@ -189,11 +189,11 @@ public final class Options {
     /**
      * Method create.
      *
-     * @param offset the offset
-     * @param count the count
-     * @param cacheResult the cache result
-     * @param range the range
-     * @param cond the cond
+     * @param offset
+     * @param count
+     * @param cacheResult
+     * @param range
+     * @param cond
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count, String cacheResult, Cache.Range range, Cache.Condition cond) {
@@ -219,13 +219,13 @@ public final class Options {
     /**
      * Method create.
      *
-     * @param offset the offset
-     * @param count the count
-     * @param cacheResult the cache result
-     * @param range the range
-     * @param cond the cond
-     * @param liveTime the live time
-     * @param maxIdleTime the max idle time
+     * @param offset
+     * @param count
+     * @param cacheResult
+     * @param range
+     * @param cond
+     * @param liveTime
+     * @param maxIdleTime
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count, String cacheResult, Cache.Range range, Cache.Condition cond, long liveTime,
@@ -255,13 +255,13 @@ public final class Options {
     /**
      * Method create.
      *
-     * @param offset the offset
-     * @param count the count
-     * @param fromCache the from cache
-     * @param cacheResult the cache result
-     * @param range the range
-     * @param cond the cond
-     * @param transactionId the transaction id
+     * @param offset
+     * @param count
+     * @param fromCache
+     * @param cacheResult
+     * @param range
+     * @param cond
+     * @param transactionId
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count, boolean fromCache, String cacheResult, Cache.Range range, Cache.Condition cond,
@@ -293,15 +293,15 @@ public final class Options {
     /**
      * Method create.
      *
-     * @param offset the offset
-     * @param count the count
-     * @param fromCache the from cache
-     * @param cacheResult the cache result
-     * @param range the range
-     * @param cond the cond
-     * @param liveTime the live time
-     * @param maxIdleTime the max idle time
-     * @param transactionId the transaction id
+     * @param offset
+     * @param count
+     * @param fromCache
+     * @param cacheResult
+     * @param range
+     * @param cond
+     * @param liveTime
+     * @param maxIdleTime
+     * @param transactionId
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count, boolean fromCache, String cacheResult, Cache.Range range, Cache.Condition cond,
@@ -336,7 +336,7 @@ public final class Options {
     /**
      * Copy.
      *
-     * @param options the options
+     * @param options
      * @return
      */
     public static Map<String, Object> copy(final Map<String, Object> options) {
@@ -346,7 +346,7 @@ public final class Options {
     /**
      * Of.
      *
-     * @param a the a
+     * @param a
      * @return
      */
     @SafeVarargs
@@ -768,7 +768,7 @@ public final class Options {
             /**
              * Equals.
              *
-             * @param obj the obj
+             * @param obj
              * @return true, if successful
              */
             @Override
@@ -837,7 +837,7 @@ public final class Options {
             /**
              * Constructor for Range.
              *
-             * @param range the range
+             * @param range
              */
             @SafeVarargs
             public Range(int... range) {
@@ -899,7 +899,7 @@ public final class Options {
             /**
              * Equals.
              *
-             * @param obj the obj
+             * @param obj
              * @return true, if successful
              */
             @Override

@@ -70,7 +70,7 @@ public interface EntityManager<T> extends DBAccess {
     /**
      * Insert the specified {@code entity} into data store.
      *
-     * @param entity the entity
+     * @param entity
      * @return EntityId
      * @see #add(T[], Map)
      */
@@ -79,8 +79,8 @@ public interface EntityManager<T> extends DBAccess {
     /**
      * Insert the specified {@code entity} into data store.
      *
-     * @param entity the entity
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param entity
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return EntityId
      * @see #add(T[], Map)
      */
@@ -90,7 +90,7 @@ public interface EntityManager<T> extends DBAccess {
      * Insert the specified {@code entities} into data store. The entity in {@code entities} must be the same type
      * entity.
      *
-     * @param entities the entities
+     * @param entities
      * @return EntityId[]
      * @see #add(T[], Map)
      */
@@ -100,8 +100,8 @@ public interface EntityManager<T> extends DBAccess {
      * Insert the specified {@code entities} into data store. The entity in {@code entities} must be the same type
      * entity.
      *
-     * @param entities the entities
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param entities
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return int
      */
     List<EntityId> addAll(Collection<? extends T> entities, Map<String, Object> options);
@@ -109,7 +109,7 @@ public interface EntityManager<T> extends DBAccess {
     /**
      * Update the record in data store by the updated properties in the specified {@code entity}.
      *
-     * @param entity the entity
+     * @param entity
      * @return int
      * @see com.landawn.abacus.util.Options.Tran
      */
@@ -118,8 +118,8 @@ public interface EntityManager<T> extends DBAccess {
     /**
      * Update the record in data store by the updated properties in the specified {@code entity}.
      *
-     * @param entity the entity
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param entity
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return int
      */
     int update(T entity, Map<String, Object> options);
@@ -128,7 +128,7 @@ public interface EntityManager<T> extends DBAccess {
      * Update the records in data store by the updated properties in the specified {@code entities}. The entity in
      * specified {@code entities} could be different type. The method will start a transaction to update.
      *
-     * @param entities the entities
+     * @param entities
      * @return int
      * @see com.landawn.abacus.util.Options.Tran
      */
@@ -138,8 +138,8 @@ public interface EntityManager<T> extends DBAccess {
      * Update the records in data store by the updated properties in the specified {@code entities}. The entity in
      * specified {@code entities} could be different type. The method will start a transaction to update.
      *
-     * @param entities the entities
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param entities
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return int
      */
     int updateAll(Collection<? extends T> entities, Map<String, Object> options);
@@ -147,7 +147,7 @@ public interface EntityManager<T> extends DBAccess {
     /**
      * Delete record from data store by the specified {@code entity}.
      *
-     * @param entity the entity
+     * @param entity
      * @return int
      * @see com.landawn.abacus.util.Options.Tran
      */
@@ -156,8 +156,8 @@ public interface EntityManager<T> extends DBAccess {
     /**
      * Delete record from data store by the specified {@code entity}.
      *
-     * @param entity the entity
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param entity
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return int
      */
     int delete(T entity, Map<String, Object> options);
@@ -165,7 +165,7 @@ public interface EntityManager<T> extends DBAccess {
     /**
      * Delete record from data store by the specified {@code entities}.
      *
-     * @param entities the entities
+     * @param entities
      * @return int
      */
     int deleteAll(Collection<? extends T> entities);
@@ -173,8 +173,8 @@ public interface EntityManager<T> extends DBAccess {
     /**
      * Delete record from data store by the specified {@code entities}.
      *
-     * @param entities the entities
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param entities
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return int
      */
     int deleteAll(Collection<? extends T> entities, Map<String, Object> options);
@@ -182,9 +182,9 @@ public interface EntityManager<T> extends DBAccess {
     /**
      * Lock the record identified by the specified {@code entityId} on the specified level {@code lockMode}.
      *
-     * @param entityId the entity id
-     * @param lockMode the lock mode
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param entityId
+     * @param lockMode
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return lock code. Return null if record has lock by other.
      * @deprecated 
      */
@@ -194,9 +194,9 @@ public interface EntityManager<T> extends DBAccess {
     /**
      * Release the lock on the record identified by the specified {@code entityId}.
      *
-     * @param entityId the entity id
-     * @param lockCode the lock code
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param entityId
+     * @param lockCode
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return <code>true</code> if the record is locked by the specified {@code lockCode}.or already unlocked return
      *         {@code false} otherwise.
      * @deprecated 
@@ -207,8 +207,8 @@ public interface EntityManager<T> extends DBAccess {
     /**
      * Return the version of the record identified by the specified {@code entityId}.
      *
-     * @param entityId the entity id
-     * @param options            {@link com.landawn.abacus.util.Options}
+     * @param entityId
+     * @param options {@link com.landawn.abacus.util.Options}
      * @return long
      * @deprecated 
      */

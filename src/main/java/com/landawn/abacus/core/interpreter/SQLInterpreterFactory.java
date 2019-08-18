@@ -93,8 +93,8 @@ public final class SQLInterpreterFactory {
     /**
      * Gets the interpreter.
      *
-     * @param productName the product name
-     * @param productVersion the product version
+     * @param productName
+     * @param productVersion
      * @return
      */
     public static Interpreter getInterpreter(String productName, String productVersion) {
@@ -126,8 +126,8 @@ public final class SQLInterpreterFactory {
     /**
      * Register interpreter.
      *
-     * @param interpreter the interpreter
-     * @param clazz the clazz
+     * @param interpreter
+     * @param clazz
      */
     public static void registerInterpreter(String interpreter, Class<?> clazz) {
         registeredInterpreters.put(interpreter.toUpperCase(), clazz);

@@ -81,7 +81,7 @@ public abstract class AbstractCommand implements Command, Cloneable {
     /**
      * Copy.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @return
      */
     @Override

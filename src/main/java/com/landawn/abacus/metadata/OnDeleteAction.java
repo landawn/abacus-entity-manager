@@ -42,7 +42,7 @@ public enum OnDeleteAction {
     /**
      * Instantiates a new on delete action.
      *
-     * @param intValue the int value
+     * @param intValue
      */
     OnDeleteAction(int intValue) {
         this.intValue = intValue;
@@ -60,7 +60,7 @@ public enum OnDeleteAction {
     /**
      * Method get.
      *
-     * @param name the name
+     * @param name
      * @return ConstraintType
      */
     public static OnDeleteAction get(String name) {

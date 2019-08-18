@@ -24,7 +24,7 @@ import com.landawn.abacus.util.ClassUtil;
  * The Class AbstractIdGenerator.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.8
  */
 public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
@@ -35,7 +35,7 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     /**
      * Instantiates a new abstract id generator.
      *
-     * @param prop the prop
+     * @param prop
      */
     protected AbstractIdGenerator(Property prop) {
         this.prop = prop;
@@ -54,7 +54,7 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     /**
      * Initialize.
      *
-     * @param executor the executor
+     * @param executor
      */
     @Override
     public void initialize(Executant executor) {
@@ -72,7 +72,7 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     /**
      * Reserve.
      *
-     * @param value the value
+     * @param value
      */
     @Override
     public void reserve(T value) {
@@ -96,7 +96,7 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     /**
      * Equals.
      *
-     * @param obj the obj
+     * @param obj
      * @return true, if successful
      */
     @Override

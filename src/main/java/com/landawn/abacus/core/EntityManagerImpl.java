@@ -110,8 +110,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Instantiates a new entity manager impl.
      *
-     * @param entityManagerConfig the entity manager config
-     * @param dbAccess the db access
+     * @param entityManagerConfig
+     * @param dbAccess
      */
     protected EntityManagerImpl(EntityManagerConfiguration entityManagerConfig, DBAccessImpl dbAccess) {
         super(dbAccess.getEntityDefinitionFactory().domainName(), entityManagerConfig);
@@ -131,11 +131,11 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal get.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param targetClass
+     * @param entityId
+     * @param selectPropNames
+     * @param options
      * @return
      */
     @Override
@@ -152,11 +152,11 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal get.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param entityIds the entity ids
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param targetClass
+     * @param entityIds
+     * @param selectPropNames
+     * @param options
      * @return
      */
     @Override
@@ -186,12 +186,12 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Gets the entities.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param entityDef the entity def
-     * @param entityIds the entity ids
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param targetClass
+     * @param entityDef
+     * @param entityIds
+     * @param selectPropNames
+     * @param options
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -223,12 +223,12 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Gets the entities.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param entityDef the entity def
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param options the options
+     * @param <T>
+     * @param targetClass
+     * @param entityDef
+     * @param selectPropNames
+     * @param condition
+     * @param options
      * @return
      */
     protected <T> List<T> getEntities(Class<T> targetClass, final EntityDefinition entityDef, Collection<String> selectPropNames, Condition condition,
@@ -265,8 +265,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Check select prop names in get.
      *
-     * @param entityDef the entity def
-     * @param selectPropNames the select prop names
+     * @param entityDef
+     * @param selectPropNames
      * @return
      */
     private SelectPropNameView checkSelectPropNamesInGet(final EntityDefinition entityDef, Collection<String> selectPropNames) {
@@ -296,10 +296,10 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Compose property.
      *
-     * @param cls the cls
-     * @param prop the prop
-     * @param dataSet the data set
-     * @param isResultCombined the is result combined
+     * @param cls
+     * @param prop
+     * @param dataSet
+     * @param isResultCombined
      */
     protected void composeProperty(Class<?> cls, Property prop, DataSet dataSet, boolean isResultCombined) {
         EntityDefinition columnEntityDef = prop.getColumnEntityDef();
@@ -331,9 +331,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Gets the prop entity.
      *
-     * @param entityProp the entity prop
-     * @param rs the rs
-     * @param options the options
+     * @param entityProp
+     * @param rs
+     * @param options
      * @return
      */
     @SuppressWarnings({ "unchecked" })
@@ -546,12 +546,12 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal list.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param options the options
+     * @param <T>
+     * @param targetClass
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param options
      * @return
      */
     @Override
@@ -563,8 +563,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal add.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      * @return
      */
     @Override
@@ -575,8 +575,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal add.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      * @return
      */
     @Override
@@ -587,9 +587,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Adds the entities.
      *
-     * @param entityDef the entity def
-     * @param entities the entities
-     * @param options the options
+     * @param entityDef
+     * @param entities
+     * @param options
      * @return
      */
     protected List<EntityId> addEntities(final EntityDefinition entityDef, Collection<? extends E> entities, Map<String, Object> options) {
@@ -609,9 +609,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal add.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param options the options
+     * @param entityName
+     * @param props
+     * @param options
      * @return
      */
     @Override
@@ -622,9 +622,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal add.
      *
-     * @param entityName the entity name
-     * @param propsList the props list
-     * @param options the options
+     * @param entityName
+     * @param propsList
+     * @param options
      * @return
      */
     @Override
@@ -637,9 +637,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Adds the entities.
      *
-     * @param entityDef the entity def
-     * @param propsList the props list
-     * @param options the options
+     * @param entityDef
+     * @param propsList
+     * @param options
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -729,8 +729,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal update.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      * @return
      */
     @Override
@@ -754,9 +754,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal update.
      *
-     * @param entityId the entity id
-     * @param props the props
-     * @param options the options
+     * @param entityId
+     * @param props
+     * @param options
      * @return
      */
     @Override
@@ -767,8 +767,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal update.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      * @return
      */
     @Override
@@ -808,9 +808,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal update.
      *
-     * @param entityIds the entity ids
-     * @param props the props
-     * @param options the options
+     * @param entityIds
+     * @param props
+     * @param options
      * @return
      */
     @Override
@@ -821,10 +821,10 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Update entities.
      *
-     * @param entityDef the entity def
-     * @param entityIds the entity ids
-     * @param props the props
-     * @param options the options
+     * @param entityDef
+     * @param entityIds
+     * @param props
+     * @param options
      * @return
      */
     protected int updateEntities(final EntityDefinition entityDef, List<? extends EntityId> entityIds, Map<String, Object> props, Map<String, Object> options) {
@@ -865,10 +865,10 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal update.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param condition the condition
-     * @param options the options
+     * @param entityName
+     * @param props
+     * @param condition
+     * @param options
      * @return
      */
     @Override
@@ -879,10 +879,10 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Update entities.
      *
-     * @param entityDef the entity def
-     * @param props the props
-     * @param condition the condition
-     * @param options the options
+     * @param entityDef
+     * @param props
+     * @param condition
+     * @param options
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -939,8 +939,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal delete.
      *
-     * @param entityId the entity id
-     * @param options the options
+     * @param entityId
+     * @param options
      * @return
      */
     @Override
@@ -951,8 +951,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal delete.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      * @return
      */
     @Override
@@ -963,8 +963,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal delete.
      *
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param entityIds
+     * @param options
      * @return
      */
     @Override
@@ -975,9 +975,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Delete entities.
      *
-     * @param entityDef the entity def
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param entityDef
+     * @param entityIds
+     * @param options
      * @return
      */
     protected int deleteEntities(final EntityDefinition entityDef, List<? extends EntityId> entityIds, Map<String, Object> options) {
@@ -1032,8 +1032,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal delete.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      * @return
      */
     @Override
@@ -1051,9 +1051,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal delete.
      *
-     * @param entityName the entity name
-     * @param cond the cond
-     * @param options the options
+     * @param entityName
+     * @param cond
+     * @param options
      * @return
      */
     @Override
@@ -1095,10 +1095,10 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Delete cascade.
      *
-     * @param entityDef the entity def
-     * @param entityIds the entity ids
-     * @param cond the cond
-     * @param options the options
+     * @param entityDef
+     * @param entityIds
+     * @param cond
+     * @param options
      * @return
      */
     protected CascadeDeleteResult deleteCascade(final EntityDefinition entityDef, List<? extends EntityId> entityIds, Condition cond,
@@ -1329,11 +1329,11 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal query.
      *
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param resultHandle the result handle
-     * @param options the options
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param resultHandle
+     * @param options
      * @return
      */
     @Override
@@ -1408,10 +1408,10 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Check select prop names in query.
      *
-     * @param entityDef the entity def
-     * @param selectPropNames the select prop names
-     * @param resultHandle the result handle
-     * @param options the options
+     * @param entityDef
+     * @param selectPropNames
+     * @param resultHandle
+     * @param options
      * @return
      */
     SelectPropNameView checkSelectPropNamesInQuery(final EntityDefinition entityDef, Collection<String> selectPropNames, Holder<String> resultHandle,
@@ -1454,11 +1454,11 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Compose result set.
      *
-     * @param entityDef the entity def
-     * @param selectPropNames the select prop names
-     * @param entityPropNames the entity prop names
-     * @param result the result
-     * @param options the options
+     * @param entityDef
+     * @param selectPropNames
+     * @param entityPropNames
+     * @param result
+     * @param options
      */
     protected void composeResultSet(final EntityDefinition entityDef, Collection<String> selectPropNames, Collection<String> entityPropNames, DataSet result,
             Map<String, Object> options) {
@@ -1488,9 +1488,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal get result by handle.
      *
-     * @param resultHandle the result handle
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param resultHandle
+     * @param selectPropNames
+     * @param options
      * @return
      */
     @Override
@@ -1507,7 +1507,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal release result handle.
      *
-     * @param resultHandle the result handle
+     * @param resultHandle
      */
     @Override
     protected void internalReleaseResultHandle(String resultHandle) {
@@ -1517,8 +1517,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal begin transaction.
      *
-     * @param isolationLevel the isolation level
-     * @param options the options
+     * @param isolationLevel
+     * @param options
      * @return
      */
     @Override
@@ -1529,9 +1529,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal end transaction.
      *
-     * @param transactionId the transaction id
-     * @param transactionAction the transaction action
-     * @param options the options
+     * @param transactionId
+     * @param transactionAction
+     * @param options
      */
     @Override
     protected void internalEndTransaction(String transactionId, Action transactionAction, Map<String, Object> options) {
@@ -1541,8 +1541,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal get record version.
      *
-     * @param entityId the entity id
-     * @param options the options
+     * @param entityId
+     * @param options
      * @return
      */
     @Override
@@ -1553,9 +1553,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal lock record.
      *
-     * @param entityId the entity id
-     * @param lockMode the lock mode
-     * @param options the options
+     * @param entityId
+     * @param lockMode
+     * @param options
      * @return
      */
     @Override
@@ -1566,9 +1566,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Internal unlock record.
      *
-     * @param entityId the entity id
-     * @param lockCode the lock code
-     * @param options the options
+     * @param entityId
+     * @param lockCode
+     * @param options
      * @return true, if successful
      */
     @Override
@@ -1579,7 +1579,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Condition 2 criteria.
      *
-     * @param condition the condition
+     * @param condition
      * @return
      */
     private Criteria condition2Criteria(Condition condition) {
@@ -1602,7 +1602,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Checks if is cachable.
      *
-     * @param condition the condition
+     * @param condition
      * @return true, if is cachable
      */
     private boolean isCachable(Condition condition) {
@@ -1620,9 +1620,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Gets the cached query cmd.
      *
-     * @param conditionKey the condition key
-     * @param entityDef the entity def
-     * @param selectPropNames the select prop names
+     * @param conditionKey
+     * @param entityDef
+     * @param selectPropNames
      * @return
      */
     private CachedQueryCmd getCachedQueryCmd(String conditionKey, final EntityDefinition entityDef, Collection<String> selectPropNames) {
@@ -1646,8 +1646,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Creates the condition cache key.
      *
-     * @param entityDef the entity def
-     * @param condition the condition
+     * @param entityDef
+     * @param condition
      * @return
      */
     private String createConditionCacheKey(final EntityDefinition entityDef, Condition condition) {
@@ -1674,12 +1674,12 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Cache query cmd.
      *
-     * @param conditionKey the condition key
-     * @param entityDef the entity def
-     * @param selectPropNames the select prop names
-     * @param xa the xa
-     * @param condition the condition
-     * @param options the options
+     * @param conditionKey
+     * @param entityDef
+     * @param selectPropNames
+     * @param xa
+     * @param condition
+     * @param options
      */
     private void cacheQueryCmd(String conditionKey, final EntityDefinition entityDef, Collection<String> selectPropNames, SelectPropNameView xa,
             Condition condition, Map<String, Object> options) {
@@ -1710,8 +1710,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Commit transaction.
      *
-     * @param transactionId the transaction id
-     * @param options the options
+     * @param transactionId
+     * @param options
      */
     void commitTransaction(String transactionId, Map<String, Object> options) {
         if (transactionId != null) {
@@ -1726,8 +1726,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Rollback transaction.
      *
-     * @param transactionId the transaction id
-     * @param options the options
+     * @param transactionId
+     * @param options
      */
     void rollbackTransaction(String transactionId, Map<String, Object> options) {
         if (transactionId != null) {
@@ -1745,10 +1745,10 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     /**
      * Result list 2 entities.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param entityDef the entity def
-     * @param result the result
+     * @param <T>
+     * @param targetClass
+     * @param entityDef
+     * @param result
      * @return
      */
     protected <T> List<T> resultList2Entities(Class<T> targetClass, final EntityDefinition entityDef, DataSet result) {
@@ -1773,8 +1773,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
         /**
          * Instantiates a new cached query cmd.
          *
-         * @param queryCmd the query cmd
-         * @param xa the xa
+         * @param queryCmd
+         * @param xa
          */
         CachedQueryCmd(Command queryCmd, SelectPropNameView xa) {
             this.queryCmd = queryCmd;
@@ -1784,7 +1784,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
         /**
          * Gets the command.
          *
-         * @param condition the condition
+         * @param condition
          * @return
          */
         Command getCommand(Condition condition) {
@@ -1823,9 +1823,9 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
         /**
          * Instantiates a new cascade delete result.
          *
-         * @param transactionId the transaction id
-         * @param cond the cond
-         * @param options the options
+         * @param transactionId
+         * @param cond
+         * @param options
          */
         CascadeDeleteResult(String transactionId, Condition cond, Map<String, Object> options) {
             this.transactionId = transactionId;
@@ -1848,8 +1848,8 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
         /**
          * Instantiates a new entity id memo.
          *
-         * @param entityIds the entity ids
-         * @param op the op
+         * @param entityIds
+         * @param op
          */
         EntityIdMemo(List<? extends EntityId> entityIds, OperationType op) {
             this.entityIds = entityIds;

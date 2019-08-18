@@ -45,9 +45,9 @@ final class BiEntityProps {
     /**
      * Instantiates a new bi entity props.
      *
-     * @param prop the prop
-     * @param insertProps the insert props
-     * @param associatedEntity the associated entity
+     * @param prop
+     * @param insertProps
+     * @param associatedEntity
      */
     BiEntityProps(Property prop, Map<String, Object> insertProps, Object associatedEntity) {
         this.entityProp = prop;

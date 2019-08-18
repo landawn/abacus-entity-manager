@@ -28,7 +28,7 @@ public abstract class AbstractStringIdGenerator extends AbstractIdGenerator<Stri
     /**
      * Instantiates a new abstract string id generator.
      *
-     * @param prop the prop
+     * @param prop
      */
     protected AbstractStringIdGenerator(Property prop) {
         super(prop);

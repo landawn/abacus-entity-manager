@@ -23,7 +23,7 @@ import com.landawn.abacus.type.Type;
  * The Class AfterValidator.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.8
  */
 public final class AfterValidator<T extends Date> extends AbstractDateValidator<T> {
@@ -31,9 +31,9 @@ public final class AfterValidator<T extends Date> extends AbstractDateValidator<
     /**
      * Instantiates a new after validator.
      *
-     * @param propName the prop name
-     * @param type the type
-     * @param time the time
+     * @param propName
+     * @param type
+     * @param time
      */
     public AfterValidator(String propName, Type<T> type, String time) {
         super(propName, type, time);
@@ -42,7 +42,7 @@ public final class AfterValidator<T extends Date> extends AbstractDateValidator<
     /**
      * Method isValid.
      *
-     * @param propValue the prop value
+     * @param propValue
      * @return boolean
      * @see com.landawn.abacus.validator.Validator#isValid(T)
      */

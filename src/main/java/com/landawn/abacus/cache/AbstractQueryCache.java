@@ -51,8 +51,8 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     /**
      * Instantiates a new abstract query cache.
      *
-     * @param liveTime the live time
-     * @param maxIdleTime the max idle time
+     * @param liveTime
+     * @param maxIdleTime
      */
     protected AbstractQueryCache(long liveTime, long maxIdleTime) {
         super(liveTime, maxIdleTime);
@@ -77,7 +77,7 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     /**
      * Gets the prop index.
      *
-     * @param propName the prop name
+     * @param propName
      * @return
      */
     @Override
@@ -108,8 +108,8 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     /**
      * Checks if is cached result.
      *
-     * @param propName the prop name
-     * @param range the range
+     * @param propName
+     * @param range
      * @return true, if is cached result
      */
     @Override
@@ -150,9 +150,9 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     /**
      * Gets the result.
      *
-     * @param propName the prop name
-     * @param beginIndex the begin index
-     * @param endIndex the end index
+     * @param propName
+     * @param beginIndex
+     * @param endIndex
      * @return
      */
     @Override
@@ -183,9 +183,9 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     /**
      * Gets the result.
      *
-     * @param propNames the prop names
-     * @param beginIndex the begin index
-     * @param endIndex the end index
+     * @param propNames
+     * @param beginIndex
+     * @param endIndex
      * @return
      */
     @Override
@@ -229,8 +229,8 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     /**
      * Gets the result.
      *
-     * @param beginIndex the begin index
-     * @param endIndex the end index
+     * @param beginIndex
+     * @param endIndex
      * @return
      */
     @Override
@@ -340,7 +340,7 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     /**
      * Check prop index.
      *
-     * @param propName the prop name
+     * @param propName
      * @return
      */
     protected int checkPropIndex(String propName) {
@@ -356,8 +356,8 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     /**
      * Check bound.
      *
-     * @param beginIndex the begin index
-     * @param endIndex the end index
+     * @param beginIndex
+     * @param endIndex
      */
     protected void checkBound(int beginIndex, int endIndex) {
         if (beginIndex < 0) {

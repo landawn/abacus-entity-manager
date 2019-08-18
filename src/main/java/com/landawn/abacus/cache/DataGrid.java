@@ -76,8 +76,8 @@ public class DataGrid<E> implements Serializable {
     /**
      * Instantiates a new data grid.
      *
-     * @param x the x
-     * @param y the y
+     * @param x
+     * @param y
      */
     public DataGrid(int x, int y) {
         if ((x < 0) || (y < 0)) {
@@ -125,9 +125,9 @@ public class DataGrid<E> implements Serializable {
     /**
      * Put.
      *
-     * @param x the x
-     * @param y the y
-     * @param e the e
+     * @param x
+     * @param y
+     * @param e
      */
     public void put(int x, int y, E e) {
         y = initY(y);
@@ -138,7 +138,7 @@ public class DataGrid<E> implements Serializable {
     /**
      * Inits the Y.
      *
-     * @param y the y
+     * @param y
      * @return
      */
     private int initY(int y) {
@@ -165,8 +165,8 @@ public class DataGrid<E> implements Serializable {
     /**
      * Gets the.
      *
-     * @param x the x
-     * @param y the y
+     * @param x
+     * @param y
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -183,7 +183,7 @@ public class DataGrid<E> implements Serializable {
     /**
      * Index of Y.
      *
-     * @param y the y
+     * @param y
      * @return
      */
     private int indexOfY(int y) {
@@ -199,8 +199,8 @@ public class DataGrid<E> implements Serializable {
     /**
      * Clear.
      *
-     * @param x the x
-     * @param y the y
+     * @param x
+     * @param y
      */
     public void clear(int x, int y) {
         y = indexOfY(y);
@@ -213,8 +213,8 @@ public class DataGrid<E> implements Serializable {
     /**
      * Checks if is clean.
      *
-     * @param x the x
-     * @param y the y
+     * @param x
+     * @param y
      * @return true, if is clean
      */
     public boolean isClean(int x, int y) {
@@ -226,7 +226,7 @@ public class DataGrid<E> implements Serializable {
     /**
      * Clear X.
      *
-     * @param x the x
+     * @param x
      */
     public void clearX(int x) {
         if (xyArray[x].length > 0) {
@@ -237,9 +237,9 @@ public class DataGrid<E> implements Serializable {
     /**
      * Checks if is x full.
      *
-     * @param x the x
-     * @param fromY the from Y
-     * @param toY the to Y
+     * @param x
+     * @param fromY
+     * @param toY
      * @return true, if is x full
      */
     public boolean isXFull(int x, int fromY, int toY) {
@@ -257,9 +257,9 @@ public class DataGrid<E> implements Serializable {
     /**
      * Gets the x.
      *
-     * @param x the x
-     * @param fromY the from Y
-     * @param toY the to Y
+     * @param x
+     * @param fromY
+     * @param toY
      * @return
      */
     public Object[] getX(int x, int fromY, int toY) {
@@ -288,7 +288,7 @@ public class DataGrid<E> implements Serializable {
     /**
      * Extend X.
      *
-     * @param newX the new X
+     * @param newX
      */
     public void extendX(int newX) {
         if (x >= newX) {
@@ -377,7 +377,7 @@ public class DataGrid<E> implements Serializable {
     /**
      * Equals.
      *
-     * @param obj the obj
+     * @param obj
      * @return true, if successful
      */
     @Override
@@ -435,7 +435,7 @@ public class DataGrid<E> implements Serializable {
         /**
          * Equals.
          *
-         * @param obj the obj
+         * @param obj
          * @return true, if successful
          */
         @Override

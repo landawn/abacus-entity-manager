@@ -37,9 +37,9 @@ public interface Interpreter {
     /**
      * Interpret add.
      *
-     * @param entityDef the entity def
-     * @param propsList the props list
-     * @param options the options
+     * @param entityDef
+     * @param propsList
+     * @param options
      * @return
      */
     Command interpretAdd(EntityDefinition entityDef, List<Map<String, Object>> propsList, Map<String, Object> options);
@@ -47,10 +47,10 @@ public interface Interpreter {
     /**
      * Interpret update.
      *
-     * @param entityDef the entity def
-     * @param props the props
-     * @param condition the condition
-     * @param options the options
+     * @param entityDef
+     * @param props
+     * @param condition
+     * @param options
      * @return
      */
     Command interpretUpdate(EntityDefinition entityDef, Map<String, Object> props, Condition condition, Map<String, Object> options);
@@ -58,9 +58,9 @@ public interface Interpreter {
     /**
      * Interpret delete.
      *
-     * @param entityDef the entity def
-     * @param condition the condition
-     * @param options the options
+     * @param entityDef
+     * @param condition
+     * @param options
      * @return
      */
     Command interpretDelete(EntityDefinition entityDef, Condition condition, Map<String, Object> options);
@@ -68,10 +68,10 @@ public interface Interpreter {
     /**
      * Interpret query.
      *
-     * @param entityDef the entity def
-     * @param propNames the prop names
-     * @param condition the condition
-     * @param options the options
+     * @param entityDef
+     * @param propNames
+     * @param condition
+     * @param options
      * @return
      */
     Command interpretQuery(EntityDefinition entityDef, Collection<String> propNames, Condition condition, Map<String, Object> options);
@@ -79,10 +79,10 @@ public interface Interpreter {
     /**
      * Interpret query.
      *
-     * @param entityDef the entity def
-     * @param query the query
-     * @param parameters the parameters
-     * @param options the options
+     * @param entityDef
+     * @param query
+     * @param parameters
+     * @param options
      * @return
      */
     Command interpretQuery(EntityDefinition entityDef, String query, List<?> parameters, Map<String, Object> options);
@@ -90,8 +90,8 @@ public interface Interpreter {
     /**
      * Interpret condition.
      *
-     * @param entityDef the entity def
-     * @param condition the condition
+     * @param entityDef
+     * @param condition
      * @return
      */
     Command interpretCondition(EntityDefinition entityDef, Condition condition);

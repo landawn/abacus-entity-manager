@@ -52,7 +52,7 @@ public interface EntityDefinition {
     /**
      * Gets the type class.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @return
      */
     <T> Class<T> getTypeClass();
@@ -60,7 +60,7 @@ public interface EntityDefinition {
     /**
      * Gets the array type class.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @return
      */
     <T> Class<T> getArrayTypeClass();
@@ -82,7 +82,7 @@ public interface EntityDefinition {
     /**
      * Gets the property.
      *
-     * @param propName the prop name
+     * @param propName
      * @return
      */
     Property getProperty(String propName);
@@ -97,7 +97,7 @@ public interface EntityDefinition {
     /**
      * Gets the id generator.
      *
-     * @param propName the prop name
+     * @param propName
      * @return
      */
     IdGenerator<Object> getIdGenerator(String propName);
@@ -196,7 +196,7 @@ public interface EntityDefinition {
     /**
      * Gets the attribute.
      *
-     * @param attrName the attr name
+     * @param attrName
      * @return
      */
     String getAttribute(String attrName);

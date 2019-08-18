@@ -34,9 +34,9 @@ public class PatternValidator extends AbstractValidator<String> {
     /**
      * Instantiates a new pattern validator.
      *
-     * @param propName the prop name
-     * @param type the type
-     * @param pattern the pattern
+     * @param propName
+     * @param type
+     * @param pattern
      */
     public PatternValidator(String propName, Type<String> type, String pattern) {
         super(propName, type);
@@ -46,7 +46,7 @@ public class PatternValidator extends AbstractValidator<String> {
     /**
      * Checks if is valid.
      *
-     * @param propValue the prop value
+     * @param propValue
      * @return true, if is valid
      */
     @Override

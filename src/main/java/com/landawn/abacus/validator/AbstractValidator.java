@@ -22,7 +22,7 @@ import com.landawn.abacus.type.Type;
  * The Class AbstractValidator.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.8
  */
 public abstract class AbstractValidator<T> implements Validator<T> {
@@ -36,8 +36,8 @@ public abstract class AbstractValidator<T> implements Validator<T> {
     /**
      * Instantiates a new abstract validator.
      *
-     * @param propName the prop name
-     * @param type the type
+     * @param propName
+     * @param type
      */
     protected AbstractValidator(String propName, Type<T> type) {
         this.propName = propName;
@@ -69,7 +69,7 @@ public abstract class AbstractValidator<T> implements Validator<T> {
     /**
      * Method check.
      *
-     * @param propValue the prop value
+     * @param propValue
      * @return
      * @throws ValidationException the validation exception
      * @see com.landawn.abacus.validator.Validator#validate(T)

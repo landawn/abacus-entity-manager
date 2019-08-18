@@ -27,7 +27,7 @@ public interface Version<K> {
     /**
      * Method get.
      *
-     * @param k the k
+     * @param k
      * @return long
      */
     long get(K k);
@@ -35,15 +35,15 @@ public interface Version<K> {
     /**
      * Method update.
      *
-     * @param k the k
-     * @param delta the delta
+     * @param k
+     * @param delta
      */
     void update(K k, int delta);
 
     /**
      * Method remove.
      *
-     * @param k the k
+     * @param k
      */
     void remove(K k);
 

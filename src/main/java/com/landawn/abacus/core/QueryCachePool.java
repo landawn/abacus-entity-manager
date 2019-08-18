@@ -80,9 +80,9 @@ class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, 
     /**
      * Instantiates a new query cache pool.
      *
-     * @param capacity the capacity
-     * @param evictDelay the evict delay
-     * @param queryCacheConfig the query cache config
+     * @param capacity
+     * @param evictDelay
+     * @param queryCacheConfig
      */
     public QueryCachePool(int capacity, long evictDelay, QueryCacheConfiguration queryCacheConfig) {
         super(capacity, evictDelay, EvictionPolicy.LAST_ACCESS_TIME);
@@ -114,8 +114,8 @@ class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, 
     /**
      * Update cache.
      *
-     * @param command the command
-     * @param options the options
+     * @param command
+     * @param options
      */
     public void updateCache(Command command, Map<String, Object> options) {
         // TODO [how to handle distribution].

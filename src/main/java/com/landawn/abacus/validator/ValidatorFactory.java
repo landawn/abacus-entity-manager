@@ -95,10 +95,10 @@ public final class ValidatorFactory {
     /**
      * Method create.
      *
-     * @param <T> the generic type
-     * @param propName the prop name
-     * @param type the type
-     * @param validatorAttr the validator attr
+     * @param <T>
+     * @param propName
+     * @param type
+     * @param validatorAttr
      * @return Validator
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -139,8 +139,8 @@ public final class ValidatorFactory {
     /**
      * Register validator.
      *
-     * @param validator the validator
-     * @param clazz the clazz
+     * @param validator
+     * @param clazz
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public static void registerValidator(String validator, Class<? extends Validator> clazz) {
@@ -150,7 +150,7 @@ public final class ValidatorFactory {
     /**
      * Method getBuiltinValidatorName.
      *
-     * @param clazz the clazz
+     * @param clazz
      * @return String
      */
     private static String getBuiltinValidatorName(Class<?> clazz) {
@@ -160,8 +160,8 @@ public final class ValidatorFactory {
     /**
      * Method createValidatorKey.
      *
-     * @param propName the prop name
-     * @param validatorAttr the validator attr
+     * @param propName
+     * @param validatorAttr
      * @return String
      */
     private static String createValidatorKey(String propName, String validatorAttr) {

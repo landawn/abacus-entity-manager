@@ -100,13 +100,13 @@ public class SQLResult {
     /**
      * Instantiates a new SQL result.
      *
-     * @param executant the executant
-     * @param sqlCmd the sql cmd
-     * @param options the options
-     * @param ds the ds
-     * @param stmt the stmt
-     * @param rs the rs
-     * @param executionTime the execution time
+     * @param executant
+     * @param sqlCmd
+     * @param options
+     * @param ds
+     * @param stmt
+     * @param rs
+     * @param executionTime
      */
     public SQLResult(Executant executant, SQLOperationCommand sqlCmd, Map<String, Object> options, SQLDataSource ds, Statement stmt, ResultSet rs,
             long executionTime) {
@@ -116,10 +116,10 @@ public class SQLResult {
     /**
      * Instantiates a new SQL result.
      *
-     * @param executant the executant
-     * @param sqlCmd the sql cmd
-     * @param executionTime the execution time
-     * @param updateCount the update count
+     * @param executant
+     * @param sqlCmd
+     * @param executionTime
+     * @param updateCount
      */
     public SQLResult(Executant executant, SQLOperationCommand sqlCmd, long executionTime, int updateCount) {
         this(executant, sqlCmd, null, null, null, null, executionTime, updateCount, null);
@@ -128,11 +128,11 @@ public class SQLResult {
     /**
      * Instantiates a new SQL result.
      *
-     * @param executant the executant
-     * @param sqlCmd the sql cmd
-     * @param executionTime the execution time
-     * @param updateCount the update count
-     * @param generatedKeys the generated keys
+     * @param executant
+     * @param sqlCmd
+     * @param executionTime
+     * @param updateCount
+     * @param generatedKeys
      */
     public SQLResult(Executant executant, SQLOperationCommand sqlCmd, long executionTime, int updateCount, List<Object> generatedKeys) {
         this(executant, sqlCmd, null, null, null, null, executionTime, updateCount, generatedKeys);
@@ -141,15 +141,15 @@ public class SQLResult {
     /**
      * Instantiates a new SQL result.
      *
-     * @param executant the executant
-     * @param sqlCmd the sql cmd
-     * @param options the options
-     * @param ds the ds
-     * @param stmt the stmt
-     * @param rs the rs
-     * @param executionTime the execution time
-     * @param updateCount the update count
-     * @param generatedKeys the generated keys
+     * @param executant
+     * @param sqlCmd
+     * @param options
+     * @param ds
+     * @param stmt
+     * @param rs
+     * @param executionTime
+     * @param updateCount
+     * @param generatedKeys
      */
     SQLResult(Executant executant, SQLOperationCommand sqlCmd, Map<String, Object> options, SQLDataSource ds, Statement stmt, ResultSet rs, long executionTime,
             int updateCount, List<Object> generatedKeys) {
@@ -238,7 +238,7 @@ public class SQLResult {
     /**
      * Gets the prop name.
      *
-     * @param propIndex the prop index
+     * @param propIndex
      * @return
      */
     public String getPropName(int propIndex) {
@@ -248,7 +248,7 @@ public class SQLResult {
     /**
      * Gets the prop index.
      *
-     * @param propName the prop name
+     * @param propName
      * @return
      */
     public int getPropIndex(String propName) {
@@ -264,8 +264,8 @@ public class SQLResult {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param propIndex the prop index
+     * @param <T>
+     * @param propIndex
      * @return
      * @throws SQLException the SQL exception
      */
@@ -277,8 +277,8 @@ public class SQLResult {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param propName the prop name
+     * @param <T>
+     * @param propName
      * @return
      * @throws SQLException the SQL exception
      */
@@ -290,7 +290,7 @@ public class SQLResult {
     /**
      * Absolute.
      *
-     * @param row the row
+     * @param row
      * @return true, if successful
      * @throws SQLException the SQL exception
      */
@@ -328,8 +328,8 @@ public class SQLResult {
     /**
      * Gets the result set.
      *
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param selectPropNames
+     * @param options
      * @return
      * @throws UncheckedSQLException the unchecked SQL exception
      */
@@ -408,8 +408,8 @@ public class SQLResult {
     /**
      * Creates the result set.
      *
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param selectPropNames
+     * @param options
      * @return
      * @throws SQLException the SQL exception
      */
@@ -468,8 +468,8 @@ public class SQLResult {
     /**
      * Gets the result info.
      *
-     * @param sqlCmd the sql cmd
-     * @param rs the rs
+     * @param sqlCmd
+     * @param rs
      * @return
      * @throws UncheckedSQLException the unchecked SQL exception
      */
@@ -582,9 +582,9 @@ public class SQLResult {
         /**
          * Instantiates a new result info.
          *
-         * @param propNames the prop names
-         * @param propIndexes the prop indexes
-         * @param propTypes the prop types
+         * @param propNames
+         * @param propIndexes
+         * @param propTypes
          */
         ResultInfo(final List<String> propNames, final Map<String, Integer> propIndexes, final Type<Object>[] propTypes) {
             this.propNames = propNames;

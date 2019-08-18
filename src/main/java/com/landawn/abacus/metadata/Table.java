@@ -50,7 +50,7 @@ public interface Table {
     /**
      * Gets the column.
      *
-     * @param columnName the column name
+     * @param columnName
      * @return
      */
     Column getColumn(String columnName);
@@ -65,7 +65,7 @@ public interface Table {
     /**
      * Gets the attribute.
      *
-     * @param attrName the attr name
+     * @param attrName
      * @return
      */
     String getAttribute(String attrName);

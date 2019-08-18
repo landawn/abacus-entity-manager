@@ -47,8 +47,8 @@ public final class SequenceIdGenerator extends AbstractNumberIdGenerator<Number>
     /**
      * Instantiates a new sequence id generator.
      *
-     * @param prop the prop
-     * @param sequenceName the sequence name
+     * @param prop
+     * @param sequenceName
      */
     public SequenceIdGenerator(Property prop, String sequenceName) {
         super(prop);
@@ -68,7 +68,7 @@ public final class SequenceIdGenerator extends AbstractNumberIdGenerator<Number>
     /**
      * Initialize.
      *
-     * @param executor the executor
+     * @param executor
      */
     @Override
     public void initialize(Executant executor) {

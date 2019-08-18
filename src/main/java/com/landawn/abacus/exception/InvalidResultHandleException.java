@@ -37,7 +37,7 @@ public class InvalidResultHandleException extends AbacusException {
     /**
      * Constructor for InvalidResultHandleException.
      *
-     * @param message the message
+     * @param message
      */
     public InvalidResultHandleException(String message) {
         super(message);
@@ -46,8 +46,8 @@ public class InvalidResultHandleException extends AbacusException {
     /**
      * Constructor for InvalidResultHandleException.
      *
-     * @param message the message
-     * @param cause the cause
+     * @param message
+     * @param cause
      */
     public InvalidResultHandleException(String message, Throwable cause) {
         super(message, cause);
@@ -56,7 +56,7 @@ public class InvalidResultHandleException extends AbacusException {
     /**
      * Constructor for InvalidResultHandleException.
      *
-     * @param cause the cause
+     * @param cause
      */
     public InvalidResultHandleException(Throwable cause) {
         super(cause);

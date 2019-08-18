@@ -22,7 +22,7 @@ import com.landawn.abacus.metadata.Property;
  * The Interface IdGenerator.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.8
  */
 public interface IdGenerator<T> {
@@ -33,7 +33,7 @@ public interface IdGenerator<T> {
     /**
      * Initialize.
      *
-     * @param executor the executor
+     * @param executor
      */
     void initialize(Executant executor);
 
@@ -54,7 +54,7 @@ public interface IdGenerator<T> {
     /**
      * Method reserve.
      *
-     * @param value the value
+     * @param value
      */
     void reserve(T value);
 }

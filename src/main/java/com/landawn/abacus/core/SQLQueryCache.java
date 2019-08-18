@@ -99,9 +99,9 @@ import com.landawn.abacus.util.WD;
     /**
      * Instantiates a new SQL query cache.
      *
-     * @param liveTime the live time
-     * @param maxIdleTime the max idle time
-     * @param dataGridCache the data grid cache
+     * @param liveTime
+     * @param maxIdleTime
+     * @param dataGridCache
      */
     public SQLQueryCache(long liveTime, long maxIdleTime, Cache<String, DataGrid<Object>> dataGridCache) {
         super(liveTime, maxIdleTime);
@@ -113,10 +113,10 @@ import com.landawn.abacus.util.WD;
     /**
      * Cache result.
      *
-     * @param queryResult the query result
-     * @param cachePropNames the cache prop names
-     * @param cacheCond the cache cond
-     * @param range the range
+     * @param queryResult
+     * @param cachePropNames
+     * @param cacheCond
+     * @param range
      */
     @Override
     public void cacheResult(SQLResult queryResult, Collection<String> cachePropNames, Options.Cache.Condition cacheCond, Options.Cache.Range range) {
@@ -143,11 +143,11 @@ import com.landawn.abacus.util.WD;
     /**
      * Async cache result.
      *
-     * @param queryResult the query result
-     * @param cachePropNames the cache prop names
-     * @param cacheCond the cache cond
-     * @param range the range
-     * @param closeResult the close result
+     * @param queryResult
+     * @param cachePropNames
+     * @param cacheCond
+     * @param range
+     * @param closeResult
      */
     @Override
     public void asyncCacheResult(final SQLResult queryResult, final Collection<String> cachePropNames, final Options.Cache.Condition cacheCond,
@@ -171,9 +171,9 @@ import com.landawn.abacus.util.WD;
     /**
      * Cache result.
      *
-     * @param queryResult the query result
-     * @param rowRange the row range
-     * @param selectPropNames the select prop names
+     * @param queryResult
+     * @param rowRange
+     * @param selectPropNames
      * @throws UncheckedSQLException the unchecked SQL exception
      */
     private void cacheResult(SQLResult queryResult, BitSet rowRange, Collection<String> selectPropNames) throws UncheckedSQLException {
@@ -278,8 +278,8 @@ import com.landawn.abacus.util.WD;
     /**
      * Update.
      *
-     * @param command the command
-     * @param options the options
+     * @param command
+     * @param options
      * @return true, if successful
      */
     @Override
@@ -420,7 +420,7 @@ import com.landawn.abacus.util.WD;
     /**
      * Removes the result.
      *
-     * @param propName the prop name
+     * @param propName
      */
     @Override
     public void removeResult(String propName) {
@@ -557,7 +557,7 @@ import com.landawn.abacus.util.WD;
     /**
      * Creates the check sql cmd.
      *
-     * @param updateCmd the update cmd
+     * @param updateCmd
      * @return
      */
     private SQLOperationCommand createCheckSqlCmd(SQLOperationCommand updateCmd) {
@@ -618,7 +618,7 @@ import com.landawn.abacus.util.WD;
     /**
      * Gets the prop position in cache.
      *
-     * @param cachingPropNames the caching prop names
+     * @param cachingPropNames
      * @return
      * @throws UncheckedSQLException the unchecked SQL exception
      */
@@ -643,8 +643,8 @@ import com.landawn.abacus.util.WD;
     /**
      * Inits the.
      *
-     * @param queryResult the query result
-     * @param cachingPropNames the caching prop names
+     * @param queryResult
+     * @param cachingPropNames
      * @return
      * @throws UncheckedSQLException the unchecked SQL exception
      */

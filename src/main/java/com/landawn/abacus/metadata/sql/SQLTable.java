@@ -92,8 +92,8 @@ public class SQLTable implements Table {
     /**
      * Instantiates a new SQL table.
      *
-     * @param name the name
-     * @param conn the conn
+     * @param name
+     * @param conn
      */
     public SQLTable(String name, Connection conn) {
         this(parse(name, conn));
@@ -102,7 +102,7 @@ public class SQLTable implements Table {
     /**
      * Instantiates a new SQL table.
      *
-     * @param is the is
+     * @param is
      * @throws SAXException the SAX exception
      * @throws IOException Signals that an I/O exception has occurred.
      */
@@ -113,7 +113,7 @@ public class SQLTable implements Table {
     /**
      * Instantiates a new SQL table.
      *
-     * @param tableNode the table node
+     * @param tableNode
      */
     public SQLTable(Element tableNode) {
         this(parse(tableNode));
@@ -122,7 +122,7 @@ public class SQLTable implements Table {
     /**
      * Instantiates a new SQL table.
      *
-     * @param attrsColumnMap the attrs column map
+     * @param attrsColumnMap
      */
     SQLTable(Object[] attrsColumnMap) {
         this((Map<String, String>) attrsColumnMap[0], (Map<String, SQLColumn>) attrsColumnMap[1]);
@@ -131,8 +131,8 @@ public class SQLTable implements Table {
     /**
      * Instantiates a new SQL table.
      *
-     * @param attrs the attrs
-     * @param columnMap the column map
+     * @param attrs
+     * @param columnMap
      */
     SQLTable(Map<String, String> attrs, Map<String, SQLColumn> columnMap) {
         this.name = NameUtil.getCachedName(attrs.get(TableEle.NAME));
@@ -183,7 +183,7 @@ public class SQLTable implements Table {
     /**
      * Gets the column.
      *
-     * @param columnName the column name
+     * @param columnName
      * @return
      */
     @Override
@@ -204,7 +204,7 @@ public class SQLTable implements Table {
     /**
      * Gets the attribute.
      *
-     * @param attrName the attr name
+     * @param attrName
      * @return
      */
     @Override
@@ -225,7 +225,7 @@ public class SQLTable implements Table {
     /**
      * Equals.
      *
-     * @param obj the obj
+     * @param obj
      * @return true, if successful
      */
     @Override
@@ -246,10 +246,10 @@ public class SQLTable implements Table {
     /**
      * Column type 2 java type.
      *
-     * @param columnTypeName the column type name
-     * @param columnClassName the column class name
-     * @param precision the precision
-     * @param scale the scale
+     * @param columnTypeName
+     * @param columnClassName
+     * @param precision
+     * @param scale
      * @return
      */
     public static String columnType2JavaType(String columnTypeName, String columnClassName, int precision, int scale) {
@@ -293,8 +293,8 @@ public class SQLTable implements Table {
     /**
      * Parses the.
      *
-     * @param tableName the table name
-     * @param conn the conn
+     * @param tableName
+     * @param conn
      * @return
      */
     private static Object[] parse(String tableName, Connection conn) {
@@ -414,7 +414,7 @@ public class SQLTable implements Table {
     /**
      * Parses the.
      *
-     * @param tableNode the table node
+     * @param tableNode
      * @return
      */
     private static Object[] parse(Element tableNode) {

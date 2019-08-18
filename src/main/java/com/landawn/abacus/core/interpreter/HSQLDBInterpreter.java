@@ -28,8 +28,8 @@ public class HSQLDBInterpreter extends SQLInterpreter {
     /**
      * Instantiates a new HSQLDB interpreter.
      *
-     * @param productName the product name
-     * @param productVersion the product version
+     * @param productName
+     * @param productVersion
      */
     public HSQLDBInterpreter(String productName, String productVersion) {
         super(productName, productVersion);

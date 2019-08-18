@@ -47,8 +47,8 @@ public class SQLServerInterpreter extends SQLInterpreter {
     /**
      * Instantiates a new SQL server interpreter.
      *
-     * @param productName the product name
-     * @param productVersion the product version
+     * @param productName
+     * @param productVersion
      */
     public SQLServerInterpreter(String productName, String productVersion) {
         super(productName, productVersion);
@@ -60,11 +60,11 @@ public class SQLServerInterpreter extends SQLInterpreter {
     /**
      * Interpret query.
      *
-     * @param entityDef the entity def
-     * @param propNames the prop names
-     * @param criteria the criteria
-     * @param sqlCommand the sql command
-     * @param sql the sql
+     * @param entityDef
+     * @param propNames
+     * @param criteria
+     * @param sqlCommand
+     * @param sql
      */
     @Override
     protected void interpretQuery(EntityDefinition entityDef, Collection<String> propNames, Criteria criteria, SQLCondCommand sqlCommand, StringBuilder sql) {
@@ -116,10 +116,10 @@ public class SQLServerInterpreter extends SQLInterpreter {
     /**
      * Builds the criteria.
      *
-     * @param entityDef the entity def
-     * @param criteria the criteria
-     * @param sqlCondCmd the sql cond cmd
-     * @param sql the sql
+     * @param entityDef
+     * @param criteria
+     * @param sqlCondCmd
+     * @param sql
      */
     @Override
     protected void buildCriteria(EntityDefinition entityDef, Criteria criteria, SQLCondCommand sqlCondCmd, StringBuilder sql) {

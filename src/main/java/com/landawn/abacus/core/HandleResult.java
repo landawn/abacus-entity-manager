@@ -48,12 +48,12 @@ final class HandleResult extends AbstractPoolable {
     /**
      * Instantiates a new handle result.
      *
-     * @param entityDef the entity def
-     * @param selectPropName the select prop name
-     * @param queryResult the query result
-     * @param queryCache the query cache
-     * @param liveTime the live time
-     * @param maxIdleTime the max idle time
+     * @param entityDef
+     * @param selectPropName
+     * @param queryResult
+     * @param queryCache
+     * @param liveTime
+     * @param maxIdleTime
      */
     HandleResult(EntityDefinition entityDef, Collection<String> selectPropName, SQLResult queryResult, QueryCache queryCache, long liveTime, long maxIdleTime) {
         super(liveTime, maxIdleTime);

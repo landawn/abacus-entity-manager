@@ -44,8 +44,8 @@ public class MySQLInterpreter extends SQLInterpreter {
     /**
      * Instantiates a new my SQL interpreter.
      *
-     * @param productName the product name
-     * @param productVersion the product version
+     * @param productName
+     * @param productVersion
      */
     public MySQLInterpreter(String productName, String productVersion) {
         super(productName, productVersion);
@@ -54,9 +54,9 @@ public class MySQLInterpreter extends SQLInterpreter {
     /**
      * Interpret add.
      *
-     * @param entityDef the entity def
-     * @param propsList the props list
-     * @param options the options
+     * @param entityDef
+     * @param propsList
+     * @param options
      * @return
      */
     @Override
@@ -93,11 +93,11 @@ public class MySQLInterpreter extends SQLInterpreter {
     /**
      * Builds the insert props list with one sql.
      *
-     * @param entityDef the entity def
-     * @param propNames the prop names
-     * @param propsList the props list
-     * @param sqlCommand the sql command
-     * @param sql the sql
+     * @param entityDef
+     * @param propNames
+     * @param propsList
+     * @param sqlCommand
+     * @param sql
      */
     protected void buildInsertPropsListWithOneSql(EntityDefinition entityDef, Collection<String> propNames, List<Map<String, Object>> propsList,
             SQLOperationCommand sqlCommand, StringBuilder sql) {

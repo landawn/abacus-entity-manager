@@ -49,11 +49,11 @@ final class DataSetUtil {
     /**
      * Row 2 entity.
      *
-     * @param <T> the generic type
-     * @param targetType the target type
-     * @param dataSet the data set
-     * @param entityDef the entity def
-     * @param rowNum the row num
+     * @param <T>
+     * @param targetType
+     * @param dataSet
+     * @param entityDef
+     * @param rowNum
      * @return
      */
     static <T> T row2Entity(final Class<T> targetType, final RowDataSet dataSet, final EntityDefinition entityDef, final int rowNum) {
@@ -65,12 +65,12 @@ final class DataSetUtil {
     /**
      * Row 2 entity.
      *
-     * @param <T> the generic type
-     * @param targetType the target type
-     * @param dataSet the data set
-     * @param entityDef the entity def
-     * @param fromRowIndex the from row index
-     * @param toRowIndex the to row index
+     * @param <T>
+     * @param targetType
+     * @param dataSet
+     * @param entityDef
+     * @param fromRowIndex
+     * @param toRowIndex
      * @return
      */
     static <T> List<T> row2Entity(final Class<T> targetType, final RowDataSet dataSet, final EntityDefinition entityDef, final int fromRowIndex,
@@ -157,9 +157,9 @@ final class DataSetUtil {
     /**
      * Combine.
      *
-     * @param dataSet the data set
-     * @param prop the prop
-     * @param idPropNames the id prop names
+     * @param dataSet
+     * @param prop
+     * @param idPropNames
      */
     static void combine(final RowDataSet dataSet, final Property prop, final String... idPropNames) {
         // TODO [performance improvement]. How to improve performance? 
@@ -246,9 +246,9 @@ final class DataSetUtil {
     /**
      * Sets the prop value by method.
      *
-     * @param entity the entity
-     * @param prop the prop
-     * @param propValue the prop value
+     * @param entity
+     * @param prop
+     * @param propValue
      */
     private static void setPropValueByMethod(final Object entity, final Property prop, Object propValue) {
         if (propValue == null) {

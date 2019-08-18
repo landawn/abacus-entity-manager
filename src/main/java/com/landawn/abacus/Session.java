@@ -37,7 +37,7 @@ public interface Session<T> {
     /**
      * Start a transaction.
      *
-     * @param isolationLevel the isolation level
+     * @param isolationLevel
      * @return Transaction
      * @see com.landawn.abacus.DBAccess#startTransaction(IsolationLevel, Map)
      */
@@ -47,8 +47,8 @@ public interface Session<T> {
      * Gets the.
      *
      * @param <TT> the target entity type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
+     * @param entityId
+     * @param selectPropNames
      * @return
      */
     <TT> Optional<TT> get(EntityId entityId, Collection<String> selectPropNames);
@@ -57,8 +57,8 @@ public interface Session<T> {
      * Gets the t.
      *
      * @param <TT> the target entity type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
+     * @param entityId
+     * @param selectPropNames
      * @return
      */
     <TT> TT gett(EntityId entityId, Collection<String> selectPropNames);
@@ -67,9 +67,9 @@ public interface Session<T> {
      * List.
      *
      * @param <TT> the target entity type
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
      * @return
      */
     <TT> List<TT> list(String entityName, Collection<String> selectPropNames, Condition condition);
@@ -78,7 +78,7 @@ public interface Session<T> {
      * Make the entity instances managed and persistent. The entity in {@code entities} must be the same type entity.
      * the changes will be committed to data store when flush API is called or the session is closed.
      *
-     * @param entities the entities
+     * @param entities
      */
     void add(T... entities);
 
@@ -86,7 +86,7 @@ public interface Session<T> {
      * Make the entity instances managed and persistent. The entity in {@code entities} must be the same type entity.
      * the changes will be committed to data store when flush API is called or the session is closed.
      *
-     * @param entities the entities
+     * @param entities
      */
     void add(Collection<? extends T> entities);
 
@@ -94,7 +94,7 @@ public interface Session<T> {
      * Add these entities to the entity list managed by this session. Any update in these entities will be committed to
      * data store when flush this session.
      *
-     * @param entities the entities
+     * @param entities
      */
     void update(T... entities);
 
@@ -102,7 +102,7 @@ public interface Session<T> {
      * Add these entities to the entity list managed by this session. Any update in these entities will be committed to
      * data store when flush this session.s Collection<? extends E>
      *
-     * @param entities the entities
+     * @param entities
      */
     void update(Collection<? extends T> entities);
 
@@ -110,7 +110,7 @@ public interface Session<T> {
      * Mark these entities to delete from data store. the changes will be committed to data store when flush API is
      * called or the session is closed. the specified entities will be detached if flush successfully.
      *
-     * @param entities the entities
+     * @param entities
      * @see com.landawn.abacus.util.Options.Eran
      */
     void delete(T... entities);
@@ -119,7 +119,7 @@ public interface Session<T> {
      * Mark these entities to delete from data store. the changes will be committed to data store when flush API is
      * called or the session is closed. the specified entities will be detached if flush successfully.
      *
-     * @param entities the entities
+     * @param entities
      * @see com.landawn.abacus.util.Options.Eran
      */
     void delete(Collection<? extends T> entities);
@@ -128,7 +128,7 @@ public interface Session<T> {
      * Remove these entities from the entity list managed by this session. Any update in these entities will not be
      * committed to data store when flush this session.
      *
-     * @param entities the entities
+     * @param entities
      */
     void detach(T... entities);
 
@@ -136,14 +136,14 @@ public interface Session<T> {
      * Remove these entities from the entity list managed by this session. Any update in these entities will not be
      * committed to data store when flush this session.
      *
-     * @param entities the entities
+     * @param entities
      */
     void detach(Collection<? extends T> entities);
 
     /**
      * Check if the instance belongs to the current persistence context.
      *
-     * @param entity the entity
+     * @param entity
      * @return boolean
      */
     boolean contains(T entity);

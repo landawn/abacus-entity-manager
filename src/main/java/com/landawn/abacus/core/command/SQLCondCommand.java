@@ -89,7 +89,7 @@ public class SQLCondCommand extends SQLCommand {
     /**
      * Adds the join table.
      *
-     * @param tableName the table name
+     * @param tableName
      */
     public void addJoinTable(String tableName) {
         joinTables.add(tableName);
@@ -98,7 +98,7 @@ public class SQLCondCommand extends SQLCommand {
     /**
      * Adds the join tables.
      *
-     * @param tableNames the table names
+     * @param tableNames
      */
     public void addJoinTables(Collection<String> tableNames) {
         if (N.notNullOrEmpty(tableNames)) {
@@ -109,7 +109,7 @@ public class SQLCondCommand extends SQLCommand {
     /**
      * Removes the join table.
      *
-     * @param tableName the table name
+     * @param tableName
      */
     public void removeJoinTable(String tableName) {
         joinTables.remove(tableName);
@@ -118,7 +118,7 @@ public class SQLCondCommand extends SQLCommand {
     /**
      * Removes the join tables.
      *
-     * @param tableNames the table names
+     * @param tableNames
      */
     public void removeJoinTables(Collection<String> tableNames) {
         if (N.notNullOrEmpty(tableNames)) {
@@ -136,7 +136,7 @@ public class SQLCondCommand extends SQLCommand {
     /**
      * Combine.
      *
-     * @param sqlCondCmd the sql cond cmd
+     * @param sqlCondCmd
      */
     @Override
     public void combine(SQLCommand sqlCondCmd) {

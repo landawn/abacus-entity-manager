@@ -44,9 +44,9 @@ final class InsertPropsListView {
     /**
      * Instantiates a new insert props list view.
      *
-     * @param writePropsList the write props list
-     * @param propEntityPropsList the prop entity props list
-     * @param propBiEntityPropsList the prop bi entity props list
+     * @param writePropsList
+     * @param propEntityPropsList
+     * @param propBiEntityPropsList
      */
     InsertPropsListView(List<Map<String, Object>> writePropsList, Map<Property, List<PropEntityProps>> propEntityPropsList,
             Map<Property, List<BiEntityProps>> propBiEntityPropsList) {

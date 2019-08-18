@@ -38,9 +38,9 @@ public class SizeValidator extends AbstractValidator<Object> {
     /**
      * Instantiates a new size validator.
      *
-     * @param propName the prop name
-     * @param type the type
-     * @param size the size
+     * @param propName
+     * @param type
+     * @param size
      */
     public SizeValidator(String propName, Type<Object> type, String size) {
         super(propName, type);
@@ -51,10 +51,10 @@ public class SizeValidator extends AbstractValidator<Object> {
     /**
      * Constructor SizeValidator.
      *
-     * @param propName the prop name
-     * @param type the type
-     * @param minSize the min size
-     * @param maxSize the max size
+     * @param propName
+     * @param type
+     * @param minSize
+     * @param maxSize
      */
     public SizeValidator(String propName, Type<Object> type, String minSize, String maxSize) {
         super(propName, type);
@@ -65,7 +65,7 @@ public class SizeValidator extends AbstractValidator<Object> {
     /**
      * Method isValid.
      *
-     * @param propValue the prop value
+     * @param propValue
      * @return boolean
      * @see com.landawn.abacus.validator.Validator#isValid(T)
      */

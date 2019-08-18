@@ -37,7 +37,7 @@ public class RecordLockedException extends AbacusException {
     /**
      * Constructor for RecordLockedException.
      *
-     * @param message the message
+     * @param message
      */
     public RecordLockedException(String message) {
         super(message);
@@ -46,8 +46,8 @@ public class RecordLockedException extends AbacusException {
     /**
      * Constructor for RecordLockedException.
      *
-     * @param message the message
-     * @param cause the cause
+     * @param message
+     * @param cause
      */
     public RecordLockedException(String message, Throwable cause) {
         super(message, cause);
@@ -56,7 +56,7 @@ public class RecordLockedException extends AbacusException {
     /**
      * Constructor for RecordLockedException.
      *
-     * @param cause the cause
+     * @param cause
      */
     public RecordLockedException(Throwable cause) {
         super(cause);

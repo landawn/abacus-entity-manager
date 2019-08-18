@@ -64,7 +64,7 @@ public interface Database {
     /**
      * Gets the table.
      *
-     * @param tableName the table name
+     * @param tableName
      * @return
      */
     Table getTable(String tableName);
@@ -79,7 +79,7 @@ public interface Database {
     /**
      * Gets the attribute.
      *
-     * @param attrName the attr name
+     * @param attrName
      * @return
      */
     String getAttribute(String attrName);

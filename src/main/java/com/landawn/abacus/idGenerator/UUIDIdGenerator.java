@@ -32,7 +32,7 @@ public final class UUIDIdGenerator extends AbstractStringIdGenerator {
     /**
      * Instantiates a new UUID id generator.
      *
-     * @param prop the prop
+     * @param prop
      */
     public UUIDIdGenerator(Property prop) {
         this(prop, null);
@@ -41,8 +41,8 @@ public final class UUIDIdGenerator extends AbstractStringIdGenerator {
     /**
      * Instantiates a new UUID id generator.
      *
-     * @param prop the prop
-     * @param header the header
+     * @param prop
+     * @param header
      */
     public UUIDIdGenerator(Property prop, String header) {
         super(prop);

@@ -28,8 +28,8 @@ public class PostgreSQLInterpreter extends SQLInterpreter {
     /**
      * Instantiates a new postgre SQL interpreter.
      *
-     * @param productName the product name
-     * @param productVersion the product version
+     * @param productName
+     * @param productVersion
      */
     public PostgreSQLInterpreter(String productName, String productVersion) {
         super(productName, productVersion);

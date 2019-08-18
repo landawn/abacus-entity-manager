@@ -22,7 +22,7 @@ import com.landawn.abacus.type.Type;
  * The Interface Validator.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.8
  */
 public interface Validator<T> {
@@ -43,7 +43,7 @@ public interface Validator<T> {
     /**
      * Method isValid.
      *
-     * @param propValue the prop value
+     * @param propValue
      * @return boolean
      */
     boolean isValid(T propValue);
@@ -51,7 +51,7 @@ public interface Validator<T> {
     /**
      * Method validate.
      *
-     * @param propValue the prop value
+     * @param propValue
      * @return TODO
      * @throws ValidationException             if {@code isValid()} returns {@code false}
      */

@@ -70,7 +70,7 @@ public final class CacheZipper {
     /**
      * Zip.
      *
-     * @param cacheList the cache list
+     * @param cacheList
      */
     public void zip(Collection<? extends QueryCache> cacheList) {
         boolean isCacheUpdated = false;
@@ -123,8 +123,8 @@ public final class CacheZipper {
     /**
      * Zip cache.
      *
-     * @param hashArray the hash array
-     * @param cacheList the cache list
+     * @param hashArray
+     * @param cacheList
      */
     @SuppressWarnings("unchecked")
     void zipCache(final Object[] hashArray, final List<? extends QueryCache> cacheList) {
@@ -207,7 +207,7 @@ public final class CacheZipper {
     /**
      * Divide cache by processor.
      *
-     * @param cacheList the cache list
+     * @param cacheList
      * @return
      */
     static List<List<QueryCache>> divideCacheByProcessor(Collection<? extends QueryCache> cacheList) {

@@ -85,7 +85,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Gets the parameter.
      *
-     * @param index the index
+     * @param index
      * @return
      */
     @Override
@@ -96,7 +96,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Gets the parameter type.
      *
-     * @param index the index
+     * @param index
      * @return
      */
     @Override
@@ -107,9 +107,9 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Sets the parameter.
      *
-     * @param index the index
-     * @param value the value
-     * @param type the type
+     * @param index
+     * @param value
+     * @param type
      */
     @Override
     public void setParameter(int index, Object value, Type<Object> type) {
@@ -124,7 +124,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Gets the parameter.
      *
-     * @param parameterName the parameter name
+     * @param parameterName
      * @return
      */
     @Override
@@ -135,7 +135,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Gets the parameter type.
      *
-     * @param parameterName the parameter name
+     * @param parameterName
      * @return
      */
     @Override
@@ -146,9 +146,9 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Sets the parameter.
      *
-     * @param parameterName the parameter name
-     * @param value the value
-     * @param type the type
+     * @param parameterName
+     * @param value
+     * @param type
      */
     @Override
     public void setParameter(String parameterName, Object value, Type<Object> type) {
@@ -158,7 +158,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Append parameters.
      *
-     * @param sqlCmd the sql cmd
+     * @param sqlCmd
      */
     public void appendParameters(SQLCommand sqlCmd) {
         appendParameters(sqlCmd, 0, sqlCmd.parameterCount);
@@ -167,9 +167,9 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Append parameters.
      *
-     * @param sqlCmd the sql cmd
-     * @param fromIndex the from index
-     * @param toIndex the to index
+     * @param sqlCmd
+     * @param fromIndex
+     * @param toIndex
      */
     public void appendParameters(SQLCommand sqlCmd, int fromIndex, int toIndex) {
         for (int i = fromIndex; i < toIndex; i++) {
@@ -180,9 +180,9 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Internal set parameter.
      *
-     * @param index the index
-     * @param value the value
-     * @param type the type
+     * @param index
+     * @param value
+     * @param type
      */
     protected void internalSetParameter(int index, Object value, Type<Object> type) {
         internalSetParameter(index, value);
@@ -192,8 +192,8 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Internal set parameter.
      *
-     * @param index the index
-     * @param value the value
+     * @param index
+     * @param value
      */
     protected void internalSetParameter(int index, Object value) {
         if (index >= parameterValues.length) {
@@ -207,8 +207,8 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Internal set parameter type.
      *
-     * @param index the index
-     * @param type the type
+     * @param index
+     * @param type
      */
     protected void internalSetParameterType(int index, Type<Object> type) {
         if (index >= parameterTypes.length) {
@@ -268,7 +268,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Adds the target table.
      *
-     * @param tableName the table name
+     * @param tableName
      */
     public void addTargetTable(String tableName) {
         targetTables.add(tableName);
@@ -277,7 +277,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Adds the target tables.
      *
-     * @param tableNames the table names
+     * @param tableNames
      */
     public void addTargetTables(Collection<String> tableNames) {
         if (N.notNullOrEmpty(tableNames)) {
@@ -288,7 +288,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Removes the target table.
      *
-     * @param tableName the table name
+     * @param tableName
      */
     public void removeTargetTable(String tableName) {
         targetTables.remove(tableName);
@@ -297,7 +297,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Removes the target tables.
      *
-     * @param tableNames the table names
+     * @param tableNames
      */
     public void removeTargetTables(Collection<String> tableNames) {
         if (N.notNullOrEmpty(tableNames)) {
@@ -324,7 +324,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Adds the sub query table.
      *
-     * @param tableName the table name
+     * @param tableName
      */
     public void addSubQueryTable(String tableName) {
         subQueryTables.add(tableName);
@@ -333,7 +333,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Adds the sub query tables.
      *
-     * @param tableNames the table names
+     * @param tableNames
      */
     public void addSubQueryTables(Collection<String> tableNames) {
         if (N.notNullOrEmpty(tableNames)) {
@@ -344,7 +344,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Removes the sub query table.
      *
-     * @param tableName the table name
+     * @param tableName
      */
     public void removeSubQueryTable(String tableName) {
         subQueryTables.remove(tableName);
@@ -353,7 +353,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Removes the sub query tables.
      *
-     * @param tableNames the table names
+     * @param tableNames
      */
     public void removeSubQueryTables(Collection<String> tableNames) {
         if (N.notNullOrEmpty(tableNames)) {
@@ -371,7 +371,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Combine.
      *
-     * @param sqlCmd the sql cmd
+     * @param sqlCmd
      */
     public void combine(SQLCommand sqlCmd) {
         sql += (_SPACE + sqlCmd.sql);
@@ -441,7 +441,7 @@ public class SQLCommand extends AbstractCommand {
     /**
      * Equals.
      *
-     * @param obj the obj
+     * @param obj
      * @return true, if successful
      */
     @Override

@@ -49,8 +49,8 @@ final class PropEntityProps {
     /**
      * Instantiates a new prop entity props.
      *
-     * @param prop the prop
-     * @param entity the entity
+     * @param prop
+     * @param entity
      */
     PropEntityProps(Property prop, Object entity) {
         this(prop, entity, null, null);
@@ -59,10 +59,10 @@ final class PropEntityProps {
     /**
      * Instantiates a new prop entity props.
      *
-     * @param prop the prop
-     * @param entity the entity
-     * @param srcPropValue the src prop value
-     * @param props the props
+     * @param prop
+     * @param entity
+     * @param srcPropValue
+     * @param props
      */
     PropEntityProps(Property prop, Object entity, Object srcPropValue, Map<String, Object> props) {
         this.prop = prop;
@@ -114,7 +114,7 @@ final class PropEntityProps {
     /**
      * Equals.
      *
-     * @param obj the obj
+     * @param obj
      * @return true, if successful
      */
     @Override

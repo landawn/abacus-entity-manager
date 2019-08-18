@@ -24,7 +24,7 @@ import com.landawn.abacus.metadata.Property;
  * The Class AbstractNumberIdGenerator.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.8
  */
 public abstract class AbstractNumberIdGenerator<T extends Number> extends AbstractIdGenerator<T> {
@@ -47,7 +47,7 @@ public abstract class AbstractNumberIdGenerator<T extends Number> extends Abstra
     /**
      * Instantiates a new abstract number id generator.
      *
-     * @param prop the prop
+     * @param prop
      */
     protected AbstractNumberIdGenerator(Property prop) {
         super(prop);
@@ -70,7 +70,7 @@ public abstract class AbstractNumberIdGenerator<T extends Number> extends Abstra
     /**
      * Value of.
      *
-     * @param t the t
+     * @param t
      * @return
      */
     protected Number valueOf(Number t) {

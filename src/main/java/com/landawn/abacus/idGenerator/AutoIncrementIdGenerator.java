@@ -29,7 +29,7 @@ public final class AutoIncrementIdGenerator extends AbstractNumberIdGenerator<Nu
     /**
      * Instantiates a new auto increment id generator.
      *
-     * @param prop the prop
+     * @param prop
      */
     public AutoIncrementIdGenerator(Property prop) {
         super(prop);

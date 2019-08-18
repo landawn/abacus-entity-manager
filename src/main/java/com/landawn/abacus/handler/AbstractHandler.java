@@ -32,7 +32,7 @@ import com.landawn.abacus.util.u.Holder;
  * The Class AbstractHandler.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.8
  */
 public abstract class AbstractHandler<T> implements Handler<T> {
@@ -43,7 +43,7 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Instantiates a new abstract handler.
      *
-     * @param entityManager the entity manager
+     * @param entityManager
      */
     public AbstractHandler(EntityManager<T> entityManager) {
         this.entityManager = entityManager;
@@ -52,9 +52,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre get.
      *
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param entityId
+     * @param selectPropNames
+     * @param options
      */
     @Override
     public void preGet(EntityId entityId, Collection<String> selectPropNames, Map<String, Object> options) {
@@ -64,10 +64,10 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post get.
      *
-     * @param result the result
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param result
+     * @param entityId
+     * @param selectPropNames
+     * @param options
      */
     @Override
     public void postGet(T result, EntityId entityId, Collection<String> selectPropNames, Map<String, Object> options) {
@@ -77,9 +77,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre get.
      *
-     * @param entityIds the entity ids
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param entityIds
+     * @param selectPropNames
+     * @param options
      */
     @Override
     public void preGet(List<? extends EntityId> entityIds, Collection<String> selectPropNames, Map<String, Object> options) {
@@ -89,10 +89,10 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post get.
      *
-     * @param result the result
-     * @param entityIds the entity ids
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param result
+     * @param entityIds
+     * @param selectPropNames
+     * @param options
      */
     @Override
     public void postGet(List<T> result, List<? extends EntityId> entityIds, Collection<String> selectPropNames, Map<String, Object> options) {
@@ -102,10 +102,10 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre list.
      *
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param options the options
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param options
      */
     @Override
     public void preList(String entityName, Collection<String> selectPropNames, Condition condition, Map<String, Object> options) {
@@ -115,11 +115,11 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post list.
      *
-     * @param result the result
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param options the options
+     * @param result
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param options
      */
     @Override
     public void postList(List<T> result, String entityName, Collection<String> selectPropNames, Condition condition, Map<String, Object> options) {
@@ -129,8 +129,8 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre add.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      */
     @Override
     public void preAdd(T entity, Map<String, Object> options) {
@@ -140,9 +140,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post add.
      *
-     * @param entityId the entity id
-     * @param entity the entity
-     * @param options the options
+     * @param entityId
+     * @param entity
+     * @param options
      */
     @Override
     public void postAdd(EntityId entityId, T entity, Map<String, Object> options) {
@@ -152,8 +152,8 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre add.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      */
     @Override
     public void preAdd(Collection<? extends T> entities, Map<String, Object> options) {
@@ -163,9 +163,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post add.
      *
-     * @param entityIds the entity ids
-     * @param entities the entities
-     * @param options the options
+     * @param entityIds
+     * @param entities
+     * @param options
      */
     @Override
     public void postAdd(List<EntityId> entityIds, Collection<? extends T> entities, Map<String, Object> options) {
@@ -175,9 +175,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre add.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param options the options
+     * @param entityName
+     * @param props
+     * @param options
      */
     @Override
     public void preAdd(String entityName, Map<String, Object> props, Map<String, Object> options) {
@@ -187,10 +187,10 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post add.
      *
-     * @param entityId the entity id
-     * @param entityName the entity name
-     * @param props the props
-     * @param options the options
+     * @param entityId
+     * @param entityName
+     * @param props
+     * @param options
      */
     @Override
     public void postAdd(EntityId entityId, String entityName, Map<String, Object> props, Map<String, Object> options) {
@@ -200,9 +200,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre add.
      *
-     * @param entityName the entity name
-     * @param propsList the props list
-     * @param options the options
+     * @param entityName
+     * @param propsList
+     * @param options
      */
     @Override
     public void preAdd(String entityName, List<Map<String, Object>> propsList, Map<String, Object> options) {
@@ -212,10 +212,10 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post add.
      *
-     * @param entityIds the entity ids
-     * @param entityName the entity name
-     * @param propsList the props list
-     * @param options the options
+     * @param entityIds
+     * @param entityName
+     * @param propsList
+     * @param options
      */
     @Override
     public void postAdd(List<EntityId> entityIds, String entityName, List<Map<String, Object>> propsList, Map<String, Object> options) {
@@ -225,8 +225,8 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre update.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      */
     @Override
     public void preUpdate(T entity, Map<String, Object> options) {
@@ -236,9 +236,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post update.
      *
-     * @param result the result
-     * @param entity the entity
-     * @param options the options
+     * @param result
+     * @param entity
+     * @param options
      */
     @Override
     public void postUpdate(int result, T entity, Map<String, Object> options) {
@@ -248,9 +248,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre update.
      *
-     * @param props the props
-     * @param entityId the entity id
-     * @param options the options
+     * @param props
+     * @param entityId
+     * @param options
      */
     @Override
     public void preUpdate(Map<String, Object> props, EntityId entityId, Map<String, Object> options) {
@@ -260,10 +260,10 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post update.
      *
-     * @param result the result
-     * @param props the props
-     * @param entityId the entity id
-     * @param options the options
+     * @param result
+     * @param props
+     * @param entityId
+     * @param options
      */
     @Override
     public void postUpdate(int result, Map<String, Object> props, EntityId entityId, Map<String, Object> options) {
@@ -273,8 +273,8 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre update.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      */
     @Override
     public void preUpdate(Collection<? extends T> entities, Map<String, Object> options) {
@@ -284,9 +284,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post update.
      *
-     * @param result the result
-     * @param entities the entities
-     * @param options the options
+     * @param result
+     * @param entities
+     * @param options
      */
     @Override
     public void postUpdate(int result, Collection<? extends T> entities, Map<String, Object> options) {
@@ -296,9 +296,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre update.
      *
-     * @param props the props
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param props
+     * @param entityIds
+     * @param options
      */
     @Override
     public void preUpdate(Map<String, Object> props, List<? extends EntityId> entityIds, Map<String, Object> options) {
@@ -308,10 +308,10 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post update.
      *
-     * @param result the result
-     * @param props the props
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param result
+     * @param props
+     * @param entityIds
+     * @param options
      */
     @Override
     public void postUpdate(int result, Map<String, Object> props, List<? extends EntityId> entityIds, Map<String, Object> options) {
@@ -321,10 +321,10 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre update.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param condition the condition
-     * @param options the options
+     * @param entityName
+     * @param props
+     * @param condition
+     * @param options
      */
     @Override
     public void preUpdate(String entityName, Map<String, Object> props, Condition condition, Map<String, Object> options) {
@@ -334,11 +334,11 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post update.
      *
-     * @param result the result
-     * @param entityName the entity name
-     * @param props the props
-     * @param condition the condition
-     * @param options the options
+     * @param result
+     * @param entityName
+     * @param props
+     * @param condition
+     * @param options
      */
     @Override
     public void postUpdate(int result, String entityName, Map<String, Object> props, Condition condition, Map<String, Object> options) {
@@ -348,8 +348,8 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre delete.
      *
-     * @param entityId the entity id
-     * @param options the options
+     * @param entityId
+     * @param options
      */
     @Override
     public void preDelete(EntityId entityId, Map<String, Object> options) {
@@ -359,9 +359,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post delete.
      *
-     * @param result the result
-     * @param entityId the entity id
-     * @param options the options
+     * @param result
+     * @param entityId
+     * @param options
      */
     @Override
     public void postDelete(int result, EntityId entityId, Map<String, Object> options) {
@@ -371,8 +371,8 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre delete.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      */
     @Override
     public void preDelete(T entity, Map<String, Object> options) {
@@ -382,9 +382,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post delete.
      *
-     * @param result the result
-     * @param entity the entity
-     * @param options the options
+     * @param result
+     * @param entity
+     * @param options
      */
     @Override
     public void postDelete(int result, T entity, Map<String, Object> options) {
@@ -394,8 +394,8 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre delete.
      *
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param entityIds
+     * @param options
      */
     @Override
     public void preDelete(List<? extends EntityId> entityIds, Map<String, Object> options) {
@@ -405,9 +405,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post delete.
      *
-     * @param result the result
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param result
+     * @param entityIds
+     * @param options
      */
     @Override
     public void postDelete(int result, List<? extends EntityId> entityIds, Map<String, Object> options) {
@@ -417,8 +417,8 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre delete.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      */
     @Override
     public void preDelete(Collection<? extends T> entities, Map<String, Object> options) {
@@ -428,9 +428,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post delete.
      *
-     * @param result the result
-     * @param entities the entities
-     * @param options the options
+     * @param result
+     * @param entities
+     * @param options
      */
     @Override
     public void postDelete(int result, Collection<? extends T> entities, Map<String, Object> options) {
@@ -440,9 +440,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre delete.
      *
-     * @param entityName the entity name
-     * @param condition the condition
-     * @param options the options
+     * @param entityName
+     * @param condition
+     * @param options
      */
     @Override
     public void preDelete(String entityName, Condition condition, Map<String, Object> options) {
@@ -452,10 +452,10 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post delete.
      *
-     * @param result the result
-     * @param entityName the entity name
-     * @param condition the condition
-     * @param options the options
+     * @param result
+     * @param entityName
+     * @param condition
+     * @param options
      */
     @Override
     public void postDelete(int result, String entityName, Condition condition, Map<String, Object> options) {
@@ -465,11 +465,11 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre query.
      *
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param resultHandle the result handle
-     * @param options the options
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param resultHandle
+     * @param options
      */
     @Override
     public void preQuery(String entityName, Collection<String> selectPropNames, Condition condition, Holder<String> resultHandle, Map<String, Object> options) {
@@ -479,12 +479,12 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post query.
      *
-     * @param dataSet the data set
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param resultHandle the result handle
-     * @param options the options
+     * @param dataSet
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param resultHandle
+     * @param options
      */
     @Override
     public void postQuery(DataSet dataSet, String entityName, Collection<String> selectPropNames, Condition condition, Holder<String> resultHandle,
@@ -495,9 +495,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre get result by handle.
      *
-     * @param resultHandle the result handle
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param resultHandle
+     * @param selectPropNames
+     * @param options
      */
     @Override
     public void preGetResultByHandle(String resultHandle, Collection<String> selectPropNames, Map<String, Object> options) {
@@ -507,10 +507,10 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post get result by handle.
      *
-     * @param dataSet the data set
-     * @param resultHandle the result handle
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param dataSet
+     * @param resultHandle
+     * @param selectPropNames
+     * @param options
      */
     @Override
     public void postGetResultByHandle(DataSet dataSet, String resultHandle, Collection<String> selectPropNames, Map<String, Object> options) {
@@ -520,7 +520,7 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre release result handle.
      *
-     * @param resultHandle the result handle
+     * @param resultHandle
      */
     @Override
     public void preReleaseResultHandle(String resultHandle) {
@@ -530,7 +530,7 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post release result handle.
      *
-     * @param resultHandle the result handle
+     * @param resultHandle
      */
     @Override
     public void postReleaseResultHandle(String resultHandle) {
@@ -540,8 +540,8 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre begin transaction.
      *
-     * @param isolationLevel the isolation level
-     * @param options the options
+     * @param isolationLevel
+     * @param options
      */
     @Override
     public void preBeginTransaction(IsolationLevel isolationLevel, Map<String, Object> options) {
@@ -551,9 +551,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post begin transaction.
      *
-     * @param transactionId the transaction id
-     * @param isolationLevel the isolation level
-     * @param options the options
+     * @param transactionId
+     * @param isolationLevel
+     * @param options
      */
     @Override
     public void postBeginTransaction(String transactionId, IsolationLevel isolationLevel, Map<String, Object> options) {
@@ -563,9 +563,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre end transaction.
      *
-     * @param transactionId the transaction id
-     * @param tractionAction the traction action
-     * @param options the options
+     * @param transactionId
+     * @param tractionAction
+     * @param options
      */
     @Override
     public void preEndTransaction(String transactionId, Action tractionAction, Map<String, Object> options) {
@@ -575,9 +575,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post end transaction.
      *
-     * @param transactionId the transaction id
-     * @param tractionAction the traction action
-     * @param options the options
+     * @param transactionId
+     * @param tractionAction
+     * @param options
      */
     @Override
     public void postEndTransaction(String transactionId, Action tractionAction, Map<String, Object> options) {
@@ -587,8 +587,8 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre get record version.
      *
-     * @param entityId the entity id
-     * @param options the options
+     * @param entityId
+     * @param options
      */
     @Override
     public void preGetRecordVersion(EntityId entityId, Map<String, Object> options) {
@@ -598,9 +598,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post get record version.
      *
-     * @param version the version
-     * @param entityId the entity id
-     * @param options the options
+     * @param version
+     * @param entityId
+     * @param options
      */
     @Override
     public void postGetRecordVersion(long version, EntityId entityId, Map<String, Object> options) {
@@ -610,9 +610,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre lock record.
      *
-     * @param entityId the entity id
-     * @param lockMode the lock mode
-     * @param options the options
+     * @param entityId
+     * @param lockMode
+     * @param options
      */
     @Override
     public void preLockRecord(EntityId entityId, LockMode lockMode, Map<String, Object> options) {
@@ -622,10 +622,10 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post lock record.
      *
-     * @param lockCode the lock code
-     * @param entityId the entity id
-     * @param lockMode the lock mode
-     * @param options the options
+     * @param lockCode
+     * @param entityId
+     * @param lockMode
+     * @param options
      */
     @Override
     public void postLockRecord(String lockCode, EntityId entityId, LockMode lockMode, Map<String, Object> options) {
@@ -635,9 +635,9 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Pre unlock record.
      *
-     * @param entityId the entity id
-     * @param lockCode the lock code
-     * @param options the options
+     * @param entityId
+     * @param lockCode
+     * @param options
      */
     @Override
     public void preUnlockRecord(EntityId entityId, String lockCode, Map<String, Object> options) {
@@ -647,10 +647,10 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     /**
      * Post unlock record.
      *
-     * @param result the result
-     * @param entityId the entity id
-     * @param lockCode the lock code
-     * @param options the options
+     * @param result
+     * @param entityId
+     * @param lockCode
+     * @param options
      */
     @Override
     public void postUnlockRecord(boolean result, EntityId entityId, String lockCode, Map<String, Object> options) {

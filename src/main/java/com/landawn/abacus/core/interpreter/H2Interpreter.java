@@ -28,8 +28,8 @@ public class H2Interpreter extends SQLInterpreter {
     /**
      * Instantiates a new h 2 interpreter.
      *
-     * @param productName the product name
-     * @param productVersion the product version
+     * @param productName
+     * @param productVersion
      */
     public H2Interpreter(String productName, String productVersion) {
         super(productName, productVersion);

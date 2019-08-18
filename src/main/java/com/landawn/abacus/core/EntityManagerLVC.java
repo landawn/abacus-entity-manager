@@ -69,8 +69,8 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Instantiates a new entity manager LVC.
      *
-     * @param entityManagerConfig the entity manager config
-     * @param dbAccess the db access
+     * @param entityManagerConfig
+     * @param dbAccess
      */
     protected EntityManagerLVC(EntityManagerConfiguration entityManagerConfig, DBAccessImpl dbAccess) {
         super(entityManagerConfig, dbAccess);
@@ -88,12 +88,12 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Gets the entities.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param entityDef the entity def
-     * @param entityIds the entity ids
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param targetClass
+     * @param entityDef
+     * @param entityIds
+     * @param selectPropNames
+     * @param options
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -191,10 +191,10 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Update entities.
      *
-     * @param entityDef the entity def
-     * @param entityIds the entity ids
-     * @param props the props
-     * @param options the options
+     * @param entityDef
+     * @param entityIds
+     * @param props
+     * @param options
      * @return
      */
     @Override
@@ -219,9 +219,9 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Delete entities.
      *
-     * @param entityDef the entity def
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param entityDef
+     * @param entityIds
+     * @param options
      * @return
      */
     @Override
@@ -240,11 +240,11 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Cache entity.
      *
-     * @param entityDef the entity def
-     * @param entity the entity
-     * @param selectPropNames the select prop names
-     * @param alwrite the alwrite
-     * @param options the options
+     * @param entityDef
+     * @param entity
+     * @param selectPropNames
+     * @param alwrite
+     * @param options
      */
     protected void cacheEntity(EntityDefinition entityDef, Object entity, Collection<String> selectPropNames, Set<EntityId> alwrite,
             Map<String, Object> options) {
@@ -300,12 +300,12 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Sets the caching prop value.
      *
-     * @param entity the entity
-     * @param cachingEntity the caching entity
-     * @param prop the prop
-     * @param propValue the prop value
-     * @param alCached the al cached
-     * @param options the options
+     * @param entity
+     * @param cachingEntity
+     * @param prop
+     * @param propValue
+     * @param alCached
+     * @param options
      */
     private void setCachingPropValue(Object entity, MapEntity cachingEntity, Property prop, Object propValue, Set<EntityId> alCached,
             Map<String, Object> options) {
@@ -367,10 +367,10 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Cache entity.
      *
-     * @param entityDef the entity def
-     * @param entity the entity
-     * @param alwrite the alwrite
-     * @param options the options
+     * @param entityDef
+     * @param entity
+     * @param alwrite
+     * @param options
      */
     private void cacheEntity(EntityDefinition entityDef, Object entity, Set<EntityId> alwrite, Map<String, Object> options) {
         if (entity instanceof DirtyMarker) {
@@ -381,10 +381,10 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Adds the to cache.
      *
-     * @param entityDef the entity def
-     * @param entityId the entity id
-     * @param cachedEntity the cached entity
-     * @param options the options
+     * @param entityDef
+     * @param entityId
+     * @param cachedEntity
+     * @param options
      */
     private void addToCache(EntityDefinition entityDef, EntityId entityId, MapEntity cachedEntity, Map<String, Object> options) {
         if ((cachedEntity == null) || (cachedEntity.version() != getRecordVersion(entityId, options))) {
@@ -437,12 +437,12 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Gets the entity from cache.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param entityDef the entity def
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param targetClass
+     * @param entityDef
+     * @param entityId
+     * @param selectPropNames
+     * @param options
      * @return
      */
     @SuppressWarnings({ "unchecked" })
@@ -567,9 +567,9 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Gets the from cache.
      *
-     * @param entityDef the entity def
-     * @param entityId the entity id
-     * @param options the options
+     * @param entityDef
+     * @param entityId
+     * @param options
      * @return
      */
     private MapEntity getFromCache(EntityDefinition entityDef, EntityId entityId, Map<String, Object> options) {
@@ -586,9 +586,9 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Gets the cached prop value.
      *
-     * @param prop the prop
-     * @param cachedEntity the cached entity
-     * @param options the options
+     * @param prop
+     * @param cachedEntity
+     * @param options
      * @return
      */
     private Object getCachedPropValue(Property prop, MapEntity cachedEntity, Map<String, Object> options) {
@@ -667,10 +667,10 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Gets the uncached prop values.
      *
-     * @param entityId the entity id
-     * @param uncachedPropNames the uncached prop names
-     * @param cachedEntity the cached entity
-     * @param options the options
+     * @param entityId
+     * @param uncachedPropNames
+     * @param cachedEntity
+     * @param options
      * @return
      */
     private MapEntity getUncachedPropValues(EntityId entityId, Collection<String> uncachedPropNames, MapEntity cachedEntity, Map<String, Object> options) {
@@ -773,9 +773,9 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Update cached entity.
      *
-     * @param entityId the entity id
-     * @param props the props
-     * @param options the options
+     * @param entityId
+     * @param props
+     * @param options
      */
     protected void updateCachedEntity(EntityId entityId, Map<String, Object> props, Map<String, Object> options) {
         // TODO what to do for distribution
@@ -824,8 +824,8 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Remvoe from cache.
      *
-     * @param entityDef the entity def
-     * @param entityId the entity id
+     * @param entityDef
+     * @param entityId
      */
     @SuppressWarnings("deprecation")
     protected void remvoeFromCache(EntityDefinition entityDef, EntityId entityId) {
@@ -864,8 +864,8 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Entities 2 prop value.
      *
-     * @param prop the prop
-     * @param entities the entities
+     * @param prop
+     * @param entities
      * @return
      */
     private Object entities2PropValue(Property prop, List<?> entities) {
@@ -875,9 +875,9 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Gets the signed prop names.
      *
-     * @param entityDef the entity def
-     * @param entity the entity
-     * @param selectPropNames the select prop names
+     * @param entityDef
+     * @param entity
+     * @param selectPropNames
      * @return
      */
     private Collection<String> getSignedPropNames(EntityDefinition entityDef, Object entity, Collection<String> selectPropNames) {
@@ -891,9 +891,9 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     /**
      * Gets the entity id by condition.
      *
-     * @param entityName the entity name
-     * @param cond the cond
-     * @param options the options
+     * @param entityName
+     * @param cond
+     * @param options
      * @return
      */
     @SuppressWarnings("deprecation")

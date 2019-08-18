@@ -66,8 +66,8 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * Instantiates a new SQL entity definition factory.
      *
-     * @param domainName the domain name
-     * @param byteDef the byte def
+     * @param domainName
+     * @param byteDef
      */
     protected SQLEntityDefinitionFactory(String domainName, byte[] byteDef) {
         this.domainName = NameUtil.getCachedName(domainName);
@@ -107,8 +107,8 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * New instance.
      *
-     * @param domainName the domain name
-     * @param entityDefinitionXmlFile the entity definition xml file
+     * @param domainName
+     * @param entityDefinitionXmlFile
      * @return
      * @throws UncheckedIOException the unchecked IO exception
      */
@@ -131,8 +131,8 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * New instance.
      *
-     * @param domainName the domain name
-     * @param is the is
+     * @param domainName
+     * @param is
      * @return
      */
     public static synchronized SQLEntityDefinitionFactory newInstance(String domainName, InputStream is) {
@@ -162,7 +162,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * Gets the definition.
      *
-     * @param entityName the entity name
+     * @param entityName
      * @return
      */
     @Override
@@ -194,7 +194,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * Gets the attribute.
      *
-     * @param attrName the attr name
+     * @param attrName
      * @return
      */
     @Override
@@ -225,7 +225,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * Equals.
      *
-     * @param obj the obj
+     * @param obj
      * @return true, if successful
      */
     @Override
@@ -248,7 +248,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     /**
      * Parses the.
      *
-     * @param entityDefElement the entity def element
+     * @param entityDefElement
      * @return
      */
     private static Object[] parse(Element entityDefElement) {

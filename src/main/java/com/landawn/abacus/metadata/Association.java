@@ -66,8 +66,8 @@ public class Association implements Serializable {
     /**
      * Instantiates a new association.
      *
-     * @param prop the prop
-     * @param joinOn the join on
+     * @param prop
+     * @param joinOn
      */
     public Association(Property prop, String joinOn) {
         this.joinOn = joinOn;
@@ -181,8 +181,8 @@ public class Association implements Serializable {
     /**
      * Check property.
      *
-     * @param ed the ed
-     * @param propName the prop name
+     * @param ed
+     * @param propName
      * @return
      */
     private Property checkProperty(EntityDefinition ed, String propName) {
@@ -268,7 +268,7 @@ public class Association implements Serializable {
     /**
      * Equals.
      *
-     * @param obj the obj
+     * @param obj
      * @return true, if successful
      */
     @Override

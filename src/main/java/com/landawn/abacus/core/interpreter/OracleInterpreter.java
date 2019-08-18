@@ -40,8 +40,8 @@ public class OracleInterpreter extends SQLInterpreter {
     /**
      * Instantiates a new oracle interpreter.
      *
-     * @param productName the product name
-     * @param productVersion the product version
+     * @param productName
+     * @param productVersion
      */
     public OracleInterpreter(String productName, String productVersion) {
         super(productName, productVersion);
@@ -50,10 +50,10 @@ public class OracleInterpreter extends SQLInterpreter {
     /**
      * Builds the criteria.
      *
-     * @param entityDef the entity def
-     * @param criteria the criteria
-     * @param sqlCondCmd the sql cond cmd
-     * @param sql the sql
+     * @param entityDef
+     * @param criteria
+     * @param sqlCondCmd
+     * @param sql
      */
     @Override
     protected void buildCriteria(EntityDefinition entityDef, Criteria criteria, SQLCondCommand sqlCondCmd, StringBuilder sql) {

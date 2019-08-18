@@ -63,9 +63,9 @@ public class SQLOperationCommand extends SQLCondCommand {
     /**
      * Instantiates a new SQL operation command.
      *
-     * @param operationType the operation type
-     * @param entityDef the entity def
-     * @param options the options
+     * @param operationType
+     * @param entityDef
+     * @param options
      */
     public SQLOperationCommand(OperationType operationType, EntityDefinition entityDef, Map<String, Object> options) {
         super();
@@ -175,7 +175,7 @@ public class SQLOperationCommand extends SQLCondCommand {
     /**
      * Combine.
      *
-     * @param sqlCmd the sql cmd
+     * @param sqlCmd
      */
     @Override
     public void combine(SQLCommand sqlCmd) {
@@ -241,7 +241,7 @@ public class SQLOperationCommand extends SQLCondCommand {
     /**
      * Equals.
      *
-     * @param obj the obj
+     * @param obj
      * @return true, if successful
      */
     @Override

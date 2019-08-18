@@ -37,8 +37,8 @@ final class ParametersUtil {
     /**
      * As list.
      *
-     * @param <T> the generic type
-     * @param a the a
+     * @param <T>
+     * @param a
      * @return
      */
     @SafeVarargs
@@ -55,8 +55,8 @@ final class ParametersUtil {
     /**
      * As set.
      *
-     * @param <T> the generic type
-     * @param a the a
+     * @param <T>
+     * @param a
      * @return
      */
     @SafeVarargs
@@ -75,7 +75,7 @@ final class ParametersUtil {
      *
      * @param <K> the key type
      * @param <V> the value type
-     * @param a the a
+     * @param a
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -97,7 +97,7 @@ final class ParametersUtil {
     /**
      * As props.
      *
-     * @param propNameValues the prop name values
+     * @param propNameValues
      * @return
      */
     @SafeVarargs
@@ -108,7 +108,7 @@ final class ParametersUtil {
     /**
      * As options.
      *
-     * @param a the a
+     * @param a
      * @return
      */
     @SafeVarargs
@@ -119,8 +119,8 @@ final class ParametersUtil {
     /**
      * Copy.
      *
-     * @param <T> the generic type
-     * @param c the c
+     * @param <T>
+     * @param c
      * @return
      */
     public static <T> Collection<T> copy(Collection<T> c) {
@@ -140,8 +140,8 @@ final class ParametersUtil {
     /**
      * Copy.
      *
-     * @param <T> the generic type
-     * @param c the c
+     * @param <T>
+     * @param c
      * @return
      */
     public static <T> List<T> copy(List<T> c) {
@@ -155,8 +155,8 @@ final class ParametersUtil {
     /**
      * Copy.
      *
-     * @param <T> the generic type
-     * @param c the c
+     * @param <T>
+     * @param c
      * @return
      */
     public static <T> Set<T> copy(Set<T> c) {
@@ -172,7 +172,7 @@ final class ParametersUtil {
      *
      * @param <K> the key type
      * @param <V> the value type
-     * @param m the m
+     * @param m
      * @return
      */
     public static <K, V> Map<K, V> copy(Map<K, V> m) {
@@ -210,7 +210,7 @@ final class ParametersUtil {
         /**
          * Instantiates a new hash map.
          *
-         * @param initialCapacity the initial capacity
+         * @param initialCapacity
          */
         public HashMap(int initialCapacity) {
             super(initialCapacity);
@@ -219,8 +219,8 @@ final class ParametersUtil {
         /**
          * Instantiates a new hash map.
          *
-         * @param initialCapacity the initial capacity
-         * @param loadFactor the load factor
+         * @param initialCapacity
+         * @param loadFactor
          */
         public HashMap(int initialCapacity, float loadFactor) {
             super(initialCapacity, loadFactor);
@@ -229,7 +229,7 @@ final class ParametersUtil {
         /**
          * Instantiates a new hash map.
          *
-         * @param m the m
+         * @param m
          */
         public HashMap(Map<? extends K, ? extends V> m) {
             super(m);
@@ -257,7 +257,7 @@ final class ParametersUtil {
         /**
          * Instantiates a new linked hash map.
          *
-         * @param initialCapacity the initial capacity
+         * @param initialCapacity
          */
         public LinkedHashMap(int initialCapacity) {
             super(initialCapacity);
@@ -266,8 +266,8 @@ final class ParametersUtil {
         /**
          * Instantiates a new linked hash map.
          *
-         * @param initialCapacity the initial capacity
-         * @param loadFactor the load factor
+         * @param initialCapacity
+         * @param loadFactor
          */
         public LinkedHashMap(int initialCapacity, float loadFactor) {
             super(initialCapacity, loadFactor);
@@ -276,7 +276,7 @@ final class ParametersUtil {
         /**
          * Instantiates a new linked hash map.
          *
-         * @param m the m
+         * @param m
          */
         public LinkedHashMap(Map<? extends K, ? extends V> m) {
             super(m);
@@ -303,7 +303,7 @@ final class ParametersUtil {
         /**
          * Instantiates a new hash set.
          *
-         * @param initialCapacity the initial capacity
+         * @param initialCapacity
          */
         public HashSet(int initialCapacity) {
             super(initialCapacity);
@@ -312,8 +312,8 @@ final class ParametersUtil {
         /**
          * Instantiates a new hash set.
          *
-         * @param initialCapacity the initial capacity
-         * @param loadFactor the load factor
+         * @param initialCapacity
+         * @param loadFactor
          */
         public HashSet(int initialCapacity, float loadFactor) {
             super(initialCapacity, loadFactor);
@@ -322,7 +322,7 @@ final class ParametersUtil {
         /**
          * Instantiates a new hash set.
          *
-         * @param c the c
+         * @param c
          */
         public HashSet(Collection<? extends E> c) {
             super(c);
@@ -349,7 +349,7 @@ final class ParametersUtil {
         /**
          * Instantiates a new linked hash set.
          *
-         * @param initialCapacity the initial capacity
+         * @param initialCapacity
          */
         public LinkedHashSet(int initialCapacity) {
             super(initialCapacity);
@@ -358,8 +358,8 @@ final class ParametersUtil {
         /**
          * Instantiates a new linked hash set.
          *
-         * @param initialCapacity the initial capacity
-         * @param loadFactor the load factor
+         * @param initialCapacity
+         * @param loadFactor
          */
         public LinkedHashSet(int initialCapacity, float loadFactor) {
             super(initialCapacity, loadFactor);
@@ -368,7 +368,7 @@ final class ParametersUtil {
         /**
          * Instantiates a new linked hash set.
          *
-         * @param c the c
+         * @param c
          */
         public LinkedHashSet(Collection<? extends E> c) {
             super(c);
@@ -395,7 +395,7 @@ final class ParametersUtil {
         /**
          * Instantiates a new array list.
          *
-         * @param initialCapacity the initial capacity
+         * @param initialCapacity
          */
         public ArrayList(int initialCapacity) {
             super(initialCapacity);
@@ -404,7 +404,7 @@ final class ParametersUtil {
         /**
          * Instantiates a new array list.
          *
-         * @param c the c
+         * @param c
          */
         public ArrayList(Collection<? extends E> c) {
             super(c);

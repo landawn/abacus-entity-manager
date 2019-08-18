@@ -78,8 +78,8 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Instantiates a new session impl.
      *
-     * @param entityManager the entity manager
-     * @param isolationLevel the isolation level
+     * @param entityManager
+     * @param isolationLevel
      */
     SessionImpl(EntityManager<E> entityManager, IsolationLevel isolationLevel) {
         this.entityManager = entityManager;
@@ -89,7 +89,7 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Begin transaction.
      *
-     * @param isolationLevel the isolation level
+     * @param isolationLevel
      * @return
      */
     @Override
@@ -108,9 +108,9 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
      * @return
      */
     @Override
@@ -121,9 +121,9 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -145,10 +145,10 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * List.
      *
-     * @param <T> the generic type
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
+     * @param <T>
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -172,7 +172,7 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Adds the.
      *
-     * @param entities the entities
+     * @param entities
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -186,7 +186,7 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Adds the.
      *
-     * @param entities the entities
+     * @param entities
      */
     @Override
     public void add(Collection<? extends E> entities) {
@@ -198,7 +198,7 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Update.
      *
-     * @param entities the entities
+     * @param entities
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -210,7 +210,7 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Update.
      *
-     * @param entities the entities
+     * @param entities
      */
     @Override
     public void update(Collection<? extends E> entities) {
@@ -222,7 +222,7 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Delete.
      *
-     * @param entities the entities
+     * @param entities
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -236,7 +236,7 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Delete.
      *
-     * @param entities the entities
+     * @param entities
      */
     @Override
     public void delete(Collection<? extends E> entities) {
@@ -248,8 +248,8 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Attach.
      *
-     * @param operationType the operation type
-     * @param entities the entities
+     * @param operationType
+     * @param entities
      */
     @SuppressWarnings("unchecked")
     protected void attach(OperationType operationType, E... entities) {
@@ -269,8 +269,8 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Attach.
      *
-     * @param operationType the operation type
-     * @param entities the entities
+     * @param operationType
+     * @param entities
      */
     @SuppressWarnings("unchecked")
     protected void attach(OperationType operationType, List<E> entities) {
@@ -290,7 +290,7 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Detach.
      *
-     * @param entities the entities
+     * @param entities
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -318,7 +318,7 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Detach.
      *
-     * @param entities the entities
+     * @param entities
      */
     @Override
     public void detach(Collection<? extends E> entities) {
@@ -330,7 +330,7 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Contains.
      *
-     * @param entity the entity
+     * @param entity
      * @return true, if successful
      */
     @Override
@@ -507,9 +507,9 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Commit.
      *
-     * @param entities the entities
-     * @param operationType the operation type
-     * @param options the options
+     * @param entities
+     * @param operationType
+     * @param options
      */
     @SuppressWarnings("unchecked")
     private void commit(List<E> entities, OperationType operationType, Map<String, Object> options) {
@@ -535,7 +535,7 @@ final class SessionImpl<E> implements Session<E> {
     /**
      * Collection 2 array.
      *
-     * @param entities the entities
+     * @param entities
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -649,8 +649,8 @@ final class SessionImpl<E> implements Session<E> {
         /**
          * Instantiates a new transaction proxy.
          *
-         * @param entityManager the entity manager
-         * @param isolationLevel the isolation level
+         * @param entityManager
+         * @param isolationLevel
          */
         TransactionProxy(EntityManager<?> entityManager, IsolationLevel isolationLevel) {
             this.entityManager = entityManager;

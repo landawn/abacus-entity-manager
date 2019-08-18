@@ -54,7 +54,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * Instantiates a new entity cache decorator.
      *
-     * @param config the config
+     * @param config
      */
     public EntityCacheDecorator(EntityCacheConfiguration config) {
         this.config = config;
@@ -69,7 +69,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * Gets the t.
      *
-     * @param entityId the entity id
+     * @param entityId
      * @return
      */
     @Override
@@ -90,10 +90,10 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * Put.
      *
-     * @param entityId the entity id
-     * @param entity the entity
-     * @param liveTime the live time
-     * @param maxIdleTime the max idle time
+     * @param entityId
+     * @param entity
+     * @param liveTime
+     * @param maxIdleTime
      * @return true, if successful
      */
     @Override
@@ -136,7 +136,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * Removes the.
      *
-     * @param entityId the entity id
+     * @param entityId
      */
     @Override
     public void remove(EntityId entityId) {
@@ -154,7 +154,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * Contains key.
      *
-     * @param entityId the entity id
+     * @param entityId
      * @return true, if successful
      */
     @Override
@@ -213,7 +213,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * Check entity id.
      *
-     * @param entityId the entity id
+     * @param entityId
      */
     private void checkEntityId(EntityId entityId) {
         if ((entityId == null) || entityId.isEmpty()) {
@@ -224,7 +224,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * Checks if is excluded entity.
      *
-     * @param entityName the entity name
+     * @param entityName
      * @return true, if is excluded entity
      */
     private boolean isExcludedEntity(String entityName) {
@@ -234,7 +234,7 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * New entity cache provider instance.
      *
-     * @param config the config
+     * @param config
      * @return
      */
     private Cache<EntityId, MapEntity> newEntityCacheProviderInstance(EntityCacheConfiguration config) {
@@ -262,8 +262,8 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * Gets the property.
      *
-     * @param <T> the generic type
-     * @param propName the prop name
+     * @param <T>
+     * @param propName
      * @return
      */
     @Override
@@ -274,9 +274,9 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * Sets the property.
      *
-     * @param <T> the generic type
-     * @param propName the prop name
-     * @param propValue the prop value
+     * @param <T>
+     * @param propName
+     * @param propValue
      * @return
      */
     @Override
@@ -287,8 +287,8 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     /**
      * Removes the property.
      *
-     * @param <T> the generic type
-     * @param propName the prop name
+     * @param <T>
+     * @param propName
      * @return
      */
     @Override

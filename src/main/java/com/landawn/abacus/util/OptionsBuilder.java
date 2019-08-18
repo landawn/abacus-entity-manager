@@ -49,7 +49,7 @@ public class OptionsBuilder {
     /**
      * Offset.
      *
-     * @param offset the offset
+     * @param offset
      * @return
      */
     public OptionsBuilder offset(int offset) {
@@ -63,7 +63,7 @@ public class OptionsBuilder {
     /**
      * Count.
      *
-     * @param count the count
+     * @param count
      * @return
      */
     public OptionsBuilder count(int count) {
@@ -77,7 +77,7 @@ public class OptionsBuilder {
     /**
      * Batch size.
      *
-     * @param batchSize the batch size
+     * @param batchSize
      * @return
      */
     public OptionsBuilder batchSize(int batchSize) {
@@ -91,7 +91,7 @@ public class OptionsBuilder {
     /**
      * Transaction id.
      *
-     * @param transactionId the transaction id
+     * @param transactionId
      * @return
      */
     public OptionsBuilder transactionId(String transactionId) {
@@ -105,7 +105,7 @@ public class OptionsBuilder {
     /**
      * Auto rollback transaction.
      *
-     * @param autoRollbackTransaction the auto rollback transaction
+     * @param autoRollbackTransaction
      * @return
      */
     public OptionsBuilder autoRollbackTransaction(boolean autoRollbackTransaction) {
@@ -117,7 +117,7 @@ public class OptionsBuilder {
     /**
      * Record lock code.
      *
-     * @param recordLockCode the record lock code
+     * @param recordLockCode
      * @return
      */
     public OptionsBuilder recordLockCode(String recordLockCode) {
@@ -131,7 +131,7 @@ public class OptionsBuilder {
     /**
      * Record lock timeout.
      *
-     * @param timeout the timeout
+     * @param timeout
      * @return
      */
     public OptionsBuilder recordLockTimeout(long timeout) {
@@ -145,7 +145,7 @@ public class OptionsBuilder {
     /**
      * Enable my SQL batch add.
      *
-     * @param enableMySQLBatchAdd the enable my SQL batch add
+     * @param enableMySQLBatchAdd
      * @return
      */
     public OptionsBuilder enableMySQLBatchAdd(boolean enableMySQLBatchAdd) {
@@ -157,7 +157,7 @@ public class OptionsBuilder {
     /**
      * Query with data source.
      *
-     * @param dataSource the data source
+     * @param dataSource
      * @return
      */
     public OptionsBuilder queryWithDataSource(String dataSource) {
@@ -171,7 +171,7 @@ public class OptionsBuilder {
     /**
      * Query with data sources.
      *
-     * @param dataSources the data sources
+     * @param dataSources
      * @return
      */
     public OptionsBuilder queryWithDataSources(Collection<String> dataSources) {
@@ -185,7 +185,7 @@ public class OptionsBuilder {
     /**
      * Query with read only connection.
      *
-     * @param queryWithReadOnlyConnection the query with read only connection
+     * @param queryWithReadOnlyConnection
      * @return
      */
     public OptionsBuilder queryWithReadOnlyConnection(boolean queryWithReadOnlyConnection) {
@@ -197,7 +197,7 @@ public class OptionsBuilder {
     /**
      * Query in parallel.
      *
-     * @param queryInParallel the query in parallel
+     * @param queryInParallel
      * @return
      */
     public OptionsBuilder queryInParallel(boolean queryInParallel) {
@@ -210,7 +210,7 @@ public class OptionsBuilder {
      * If search between two or more objects, like {@code join}, the result maybe is repetition beside some
      * property. Will union the repetition result if {@code COMBINE_PROPERTIES=true}.
      *
-     * @param b the b
+     * @param b
      * @return
      */
     public OptionsBuilder combineProperties(boolean b) {
@@ -222,7 +222,7 @@ public class OptionsBuilder {
     /**
      * Handle live time.
      *
-     * @param liveTime the live time
+     * @param liveTime
      * @return
      */
     public OptionsBuilder handleLiveTime(long liveTime) {
@@ -236,7 +236,7 @@ public class OptionsBuilder {
     /**
      * Handle max idle time.
      *
-     * @param maxIdleTime the max idle time
+     * @param maxIdleTime
      * @return
      */
     public OptionsBuilder handleMaxIdleTime(long maxIdleTime) {
@@ -250,7 +250,7 @@ public class OptionsBuilder {
     /**
      * Query from cache.
      *
-     * @param queryFromCache the query from cache
+     * @param queryFromCache
      * @return
      */
     public OptionsBuilder queryFromCache(boolean queryFromCache) {
@@ -262,7 +262,7 @@ public class OptionsBuilder {
     /**
      * Refresh cache.
      *
-     * @param refreshCache the refresh cache
+     * @param refreshCache
      * @return
      */
     public OptionsBuilder refreshCache(boolean refreshCache) {
@@ -280,7 +280,7 @@ public class OptionsBuilder {
      * 
      * By the default, no query result will be cached if this options is not set.
      *
-     * @param async the async
+     * @param async
      * @return
      */
     public OptionsBuilder cacheResult(boolean async) {
@@ -292,7 +292,7 @@ public class OptionsBuilder {
     /**
      * Cache condition.
      *
-     * @param queryTime the query time
+     * @param queryTime
      * @return
      */
     public OptionsBuilder cacheCondition(long queryTime) {
@@ -306,8 +306,8 @@ public class OptionsBuilder {
     /**
      * Cache condition.
      *
-     * @param minCount the min count
-     * @param maxCount the max count
+     * @param minCount
+     * @param maxCount
      * @return
      */
     public OptionsBuilder cacheCondition(int minCount, int maxCount) {
@@ -322,9 +322,9 @@ public class OptionsBuilder {
     /**
      * Cache condition.
      *
-     * @param queryTime the query time
-     * @param minCount the min count
-     * @param maxCount the max count
+     * @param queryTime
+     * @param minCount
+     * @param maxCount
      * @return
      */
     public OptionsBuilder cacheCondition(long queryTime, int minCount, int maxCount) {
@@ -340,7 +340,7 @@ public class OptionsBuilder {
     /**
      * Cache range.
      *
-     * @param range the range
+     * @param range
      * @return
      */
     public OptionsBuilder cacheRange(int... range) {
@@ -352,7 +352,7 @@ public class OptionsBuilder {
     /**
      * Uncached prop names.
      *
-     * @param propNames the prop names
+     * @param propNames
      * @return
      */
     public OptionsBuilder uncachedPropNames(Collection<String> propNames) {
@@ -364,7 +364,7 @@ public class OptionsBuilder {
     /**
      * Cache live time.
      *
-     * @param liveTime the live time
+     * @param liveTime
      * @return
      */
     public OptionsBuilder cacheLiveTime(long liveTime) {
@@ -378,7 +378,7 @@ public class OptionsBuilder {
     /**
      * Cache max idle time.
      *
-     * @param maxIdleTime the max idle time
+     * @param maxIdleTime
      * @return
      */
     public OptionsBuilder cacheMaxIdleTime(long maxIdleTime) {
@@ -392,7 +392,7 @@ public class OptionsBuilder {
     /**
      * The limited time to update the cache after update data. unit is milliseconds.
      *
-     * @param maxCheckQueryCacheTime the max check query cache time
+     * @param maxCheckQueryCacheTime
      * @return
      */
     public OptionsBuilder maxCheckQueryCacheTime(long maxCheckQueryCacheTime) {
@@ -407,7 +407,7 @@ public class OptionsBuilder {
      * The condition that a cache must meet when to check if it's need be update. If the cache's size less than this
      * condition, it will be removed without checking if the result in it is updated when database was updated.
      *
-     * @param minCheckQueryCacheSize the min check query cache size
+     * @param minCheckQueryCacheSize
      * @return
      */
     public OptionsBuilder minCheckQueryCacheSize(int minCheckQueryCacheSize) {
@@ -421,7 +421,7 @@ public class OptionsBuilder {
     /**
      * Jdbc query timeout.
      *
-     * @param jdbcQueryTimeout the jdbc query timeout
+     * @param jdbcQueryTimeout
      * @return
      * @see java.sql.Statement#setQueryTimeout(int)
      */
@@ -481,7 +481,7 @@ public class OptionsBuilder {
     /**
      * Jdbc fetch direction.
      *
-     * @param jdbcFetchDirection the jdbc fetch direction
+     * @param jdbcFetchDirection
      * @return
      * @see java.sql.ResultSet#setFetchDirection(int)
      */
@@ -496,7 +496,7 @@ public class OptionsBuilder {
     /**
      * Jdbc fetch size.
      *
-     * @param jdbcFetchSize the jdbc fetch size
+     * @param jdbcFetchSize
      * @return
      * @see java.sql.ResultSet#setFetchSize(int)
      */
@@ -511,7 +511,7 @@ public class OptionsBuilder {
     /**
      * Jdbc max rows.
      *
-     * @param jdbcMaxRows the jdbc max rows
+     * @param jdbcMaxRows
      * @return
      * @see java.sql.Statement#setMaxRows(int)
      */
@@ -526,7 +526,7 @@ public class OptionsBuilder {
     /**
      * Jdbc max field size.
      *
-     * @param jdbcMaxFieldSize the jdbc max field size
+     * @param jdbcMaxFieldSize
      * @return
      * @see java.sql.Statement#setMaxFieldSize(int)
      */

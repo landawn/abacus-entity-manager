@@ -69,7 +69,7 @@ public interface Command {
     /**
      * Gets the parameter.
      *
-     * @param index the index
+     * @param index
      * @return
      */
     Object getParameter(int index);
@@ -77,7 +77,7 @@ public interface Command {
     /**
      * Gets the parameter type.
      *
-     * @param index the index
+     * @param index
      * @return
      */
     Type<Object> getParameterType(int index);
@@ -85,16 +85,16 @@ public interface Command {
     /**
      * Sets the parameter.
      *
-     * @param index the index
-     * @param value the value
-     * @param type the type
+     * @param index
+     * @param value
+     * @param type
      */
     void setParameter(int index, Object value, Type<Object> type);
 
     /**
      * Gets the parameter.
      *
-     * @param parameterName the parameter name
+     * @param parameterName
      * @return
      */
     Object getParameter(String parameterName);
@@ -102,7 +102,7 @@ public interface Command {
     /**
      * Gets the parameter type.
      *
-     * @param parameterName the parameter name
+     * @param parameterName
      * @return
      */
     Type<Object> getParameterType(String parameterName);
@@ -110,9 +110,9 @@ public interface Command {
     /**
      * Sets the parameter.
      *
-     * @param parameterName the parameter name
-     * @param value the value
-     * @param type the type
+     * @param parameterName
+     * @param value
+     * @param type
      */
     void setParameter(String parameterName, Object value, Type<Object> type);
 
@@ -131,7 +131,7 @@ public interface Command {
     /**
      * Copy.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @return
      */
     <T extends Command> T copy();

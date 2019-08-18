@@ -70,7 +70,7 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Instantiates a new interpreter proxy.
      *
-     * @param interpreter the interpreter
+     * @param interpreter
      */
     public InterpreterProxy(Interpreter interpreter) {
         this.interpreter = interpreter;
@@ -100,9 +100,9 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Interpret add.
      *
-     * @param entityDef the entity def
-     * @param propsList the props list
-     * @param options the options
+     * @param entityDef
+     * @param propsList
+     * @param options
      * @return
      */
     @Override
@@ -130,10 +130,10 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Interpret update.
      *
-     * @param entityDef the entity def
-     * @param props the props
-     * @param condition the condition
-     * @param options the options
+     * @param entityDef
+     * @param props
+     * @param condition
+     * @param options
      * @return
      */
     @Override
@@ -180,9 +180,9 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Interpret delete.
      *
-     * @param entityDef the entity def
-     * @param condition the condition
-     * @param options the options
+     * @param entityDef
+     * @param condition
+     * @param options
      * @return
      */
     @Override
@@ -229,10 +229,10 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Interpret query.
      *
-     * @param entityDef the entity def
-     * @param propNames the prop names
-     * @param condition the condition
-     * @param options the options
+     * @param entityDef
+     * @param propNames
+     * @param condition
+     * @param options
      * @return
      */
     @Override
@@ -260,10 +260,10 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Interpret query.
      *
-     * @param entityDef the entity def
-     * @param query the query
-     * @param parameters the parameters
-     * @param options the options
+     * @param entityDef
+     * @param query
+     * @param parameters
+     * @param options
      * @return
      */
     @Override
@@ -306,8 +306,8 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Interpret condition.
      *
-     * @param entityDef the entity def
-     * @param condition the condition
+     * @param entityDef
+     * @param condition
      * @return
      */
     @Override
@@ -356,7 +356,7 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Checks if is cachable.
      *
-     * @param condition the condition
+     * @param condition
      * @return true, if is cachable
      */
     private boolean isCachable(Condition condition) {
@@ -374,7 +374,7 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Checks if is cachable.
      *
-     * @param props the props
+     * @param props
      * @return true, if is cachable
      */
     private boolean isCachable(Map<String, Object> props) {
@@ -390,7 +390,7 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Checks if is cachable.
      *
-     * @param propsList the props list
+     * @param propsList
      * @return true, if is cachable
      */
     private boolean isCachable(List<Map<String, Object>> propsList) {
@@ -406,8 +406,8 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Checks if is cachable.
      *
-     * @param props the props
-     * @param condition the condition
+     * @param props
+     * @param condition
      * @return true, if is cachable
      */
     private boolean isCachable(Map<String, Object> props, Condition condition) {
@@ -417,8 +417,8 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Creates the condition cache key.
      *
-     * @param entityDef the entity def
-     * @param condition the condition
+     * @param entityDef
+     * @param condition
      * @return
      */
     private String createConditionCacheKey(EntityDefinition entityDef, Condition condition) {
@@ -466,9 +466,9 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Cache add cmd.
      *
-     * @param entityDef the entity def
-     * @param propsList the props list
-     * @param command the command
+     * @param entityDef
+     * @param propsList
+     * @param command
      */
     private void cacheAddCmd(EntityDefinition entityDef, List<Map<String, Object>> propsList, Command command) {
         synchronized (addCmdPool) {
@@ -524,8 +524,8 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Gets the cached add cmd.
      *
-     * @param entityDef the entity def
-     * @param propsList the props list
+     * @param entityDef
+     * @param propsList
      * @return
      */
     private Command getCachedAddCmd(EntityDefinition entityDef, List<Map<String, Object>> propsList) {
@@ -564,10 +564,10 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Cache update cmd.
      *
-     * @param entityDef the entity def
-     * @param props the props
-     * @param conditionKey the condition key
-     * @param command the command
+     * @param entityDef
+     * @param props
+     * @param conditionKey
+     * @param command
      */
     private void cacheUpdateCmd(EntityDefinition entityDef, Map<String, Object> props, String conditionKey, Command command) {
         synchronized (updateCmdPool) {
@@ -600,10 +600,10 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Gets the cached update cmd.
      *
-     * @param entityDef the entity def
-     * @param props the props
-     * @param condition the condition
-     * @param conditionKey the condition key
+     * @param entityDef
+     * @param props
+     * @param condition
+     * @param conditionKey
      * @return
      */
     private Command getCachedUpdateCmd(EntityDefinition entityDef, Map<String, Object> props, Condition condition, String conditionKey) {
@@ -645,9 +645,9 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Cache delete cmd.
      *
-     * @param entityDef the entity def
-     * @param conditionKey the condition key
-     * @param command the command
+     * @param entityDef
+     * @param conditionKey
+     * @param command
      */
     private void cacheDeleteCmd(EntityDefinition entityDef, String conditionKey, Command command) {
         synchronized (deleteCmdPool) {
@@ -673,9 +673,9 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Gets the cached delete cmd.
      *
-     * @param entityDef the entity def
-     * @param condition the condition
-     * @param conditionKey the condition key
+     * @param entityDef
+     * @param condition
+     * @param conditionKey
      * @return
      */
     private Command getCachedDeleteCmd(EntityDefinition entityDef, Condition condition, String conditionKey) {
@@ -705,10 +705,10 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Cache query cmd.
      *
-     * @param entityDef the entity def
-     * @param propNames the prop names
-     * @param conditionKey the condition key
-     * @param command the command
+     * @param entityDef
+     * @param propNames
+     * @param conditionKey
+     * @param command
      */
     private void cacheQueryCmd(EntityDefinition entityDef, Collection<String> propNames, String conditionKey, Command command) {
         synchronized (queryCmdPool) {
@@ -741,10 +741,10 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Gets the cached query cmd.
      *
-     * @param entityDef the entity def
-     * @param propNames the prop names
-     * @param condition the condition
-     * @param conditionKey the condition key
+     * @param entityDef
+     * @param propNames
+     * @param condition
+     * @param conditionKey
      * @return
      */
     private Command getCachedQueryCmd(EntityDefinition entityDef, Collection<String> propNames, Condition condition, String conditionKey) {
@@ -778,9 +778,9 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Cache condtion cmd.
      *
-     * @param entityDef the entity def
-     * @param conditionKey the condition key
-     * @param command the command
+     * @param entityDef
+     * @param conditionKey
+     * @param command
      */
     private void cacheCondtionCmd(EntityDefinition entityDef, String conditionKey, Command command) {
         synchronized (conditionCmdPool) {
@@ -807,9 +807,9 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Gets the cached condtion cmd.
      *
-     * @param entityDef the entity def
-     * @param condition the condition
-     * @param conditionKey the condition key
+     * @param entityDef
+     * @param condition
+     * @param conditionKey
      * @return
      */
     private Command getCachedCondtionCmd(EntityDefinition entityDef, Condition condition, String conditionKey) {
@@ -920,8 +920,8 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Sets the parameter.
      *
-     * @param command the command
-     * @param parameterValue the parameter value
+     * @param command
+     * @param parameterValue
      */
     private void setParameter(Command command, Object parameterValue) {
         command.setParameter(command.getParameterCount(), parameterValue, command.getParameterType(command.getParameterCount()));
@@ -930,7 +930,7 @@ public class InterpreterProxy extends AbstractInterpreter {
     /**
      * Copy.
      *
-     * @param command the command
+     * @param command
      * @return
      */
     private Command copy(Command command) {

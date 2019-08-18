@@ -126,7 +126,7 @@ public interface Column {
     /**
      * Gets the attribute.
      *
-     * @param attrName the attr name
+     * @param attrName
      * @return
      */
     String getAttribute(String attrName);

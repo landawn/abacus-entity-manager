@@ -21,7 +21,7 @@ import com.landawn.abacus.type.Type;
  * The Class RangeValidator.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.8
  */
 public final class RangeValidator<T extends Comparable<T>> extends AbstractValidator<T> {
@@ -35,10 +35,10 @@ public final class RangeValidator<T extends Comparable<T>> extends AbstractValid
     /**
      * Instantiates a new range validator.
      *
-     * @param propName the prop name
-     * @param type the type
-     * @param minValue the min value
-     * @param maxValue the max value
+     * @param propName
+     * @param type
+     * @param minValue
+     * @param maxValue
      */
     public RangeValidator(String propName, Type<T> type, String minValue, String maxValue) {
         super(propName, type);
@@ -49,7 +49,7 @@ public final class RangeValidator<T extends Comparable<T>> extends AbstractValid
     /**
      * Method isValid.
      *
-     * @param propValue the prop value
+     * @param propValue
      * @return boolean
      * @see com.landawn.abacus.validator.Validator#isValid(T)
      */

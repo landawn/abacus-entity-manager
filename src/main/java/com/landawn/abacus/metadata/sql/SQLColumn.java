@@ -70,8 +70,8 @@ public class SQLColumn implements Column {
     /**
      * Instantiates a new SQL column.
      *
-     * @param attrs the attrs
-     * @param tableName the table name
+     * @param attrs
+     * @param tableName
      */
     public SQLColumn(Map<String, String> attrs, String tableName) {
         this.name = NameUtil.getCachedName(attrs.get(ColumnEle.NAME));
@@ -235,7 +235,7 @@ public class SQLColumn implements Column {
     /**
      * Gets the attribute.
      *
-     * @param attrName the attr name
+     * @param attrName
      * @return
      */
     @Override
@@ -285,7 +285,7 @@ public class SQLColumn implements Column {
     /**
      * Equals.
      *
-     * @param obj the obj
+     * @param obj
      * @return true, if successful
      */
     @Override

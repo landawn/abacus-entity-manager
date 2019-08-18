@@ -45,7 +45,7 @@ public final class LocalVersion<K> extends AbstractVersion<K> {
     /**
      * Instantiates a new local version.
      *
-     * @param capacity the capacity
+     * @param capacity
      */
     public LocalVersion(int capacity) {
         if (capacity < 0) {
@@ -59,7 +59,7 @@ public final class LocalVersion<K> extends AbstractVersion<K> {
     /**
      * Gets the.
      *
-     * @param k the k
+     * @param k
      * @return
      */
     @Override
@@ -83,8 +83,8 @@ public final class LocalVersion<K> extends AbstractVersion<K> {
     /**
      * Update.
      *
-     * @param k the k
-     * @param delta the delta
+     * @param k
+     * @param delta
      */
     @Override
     public void update(K k, int delta) {
@@ -101,7 +101,7 @@ public final class LocalVersion<K> extends AbstractVersion<K> {
     /**
      * Removes the.
      *
-     * @param k the k
+     * @param k
      */
     @Override
     public void remove(K k) {

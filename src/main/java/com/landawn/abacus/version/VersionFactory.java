@@ -55,7 +55,7 @@ public final class VersionFactory {
      * Creates a new Version object.
      *
      * @param <K> the key type
-     * @param capacity the capacity
+     * @param capacity
      * @return
      */
     public static <K> LocalVersion<K> createLocalVersion(int capacity) {
@@ -66,7 +66,7 @@ public final class VersionFactory {
      * Creates a new Version object.
      *
      * @param <K> the key type
-     * @param provider the provider
+     * @param provider
      * @return
      */
     @SuppressWarnings("unchecked")

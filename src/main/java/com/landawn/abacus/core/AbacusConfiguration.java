@@ -116,7 +116,7 @@ public final class AbacusConfiguration {
     /**
      * Instantiates a new abacus configuration.
      *
-     * @param abacusFile the abacus file
+     * @param abacusFile
      * @throws UncheckedIOException the unchecked IO exception
      */
     public AbacusConfiguration(File abacusFile) throws UncheckedIOException {
@@ -323,8 +323,8 @@ public final class AbacusConfiguration {
         /**
          * Instantiates a new entity manager configuration.
          *
-         * @param element the element
-         * @param abacusFile the abacus file
+         * @param element
+         * @param abacusFile
          */
         EntityManagerConfiguration(Element element, File abacusFile) {
             super(element, AbacusConfiguration.this.props);
@@ -371,7 +371,7 @@ public final class AbacusConfiguration {
         /**
          * Complex element 2 attr.
          *
-         * @param element the element
+         * @param element
          */
         @Override
         protected void complexElement2Attr(Element element) {
@@ -543,7 +543,7 @@ public final class AbacusConfiguration {
             /**
              * Instantiates a new lock configuration.
              *
-             * @param element the element
+             * @param element
              */
             LockConfiguration(Element element) {
                 super(element, AbacusConfiguration.this.props);
@@ -602,7 +602,7 @@ public final class AbacusConfiguration {
             /**
              * Instantiates a new version configuration.
              *
-             * @param element the element
+             * @param element
              */
             VersionConfiguration(Element element) {
                 super(element, AbacusConfiguration.this.props);
@@ -666,11 +666,11 @@ public final class AbacusConfiguration {
             /**
              * Instantiates a new cache configuration.
              *
-             * @param element the element
-             * @param defaultCapacity the default capacity
-             * @param defaultEvictDelay the default evict delay
-             * @param defaultLiveTime the default live time
-             * @param defaultMaxIdleTime the default max idle time
+             * @param element
+             * @param defaultCapacity
+             * @param defaultEvictDelay
+             * @param defaultLiveTime
+             * @param defaultMaxIdleTime
              */
             CacheConfiguration(Element element, int defaultCapacity, long defaultEvictDelay, long defaultLiveTime, long defaultMaxIdleTime) {
                 super(element, AbacusConfiguration.this.props);
@@ -787,7 +787,7 @@ public final class AbacusConfiguration {
             /**
              * Instantiates a new entity cache configuration.
              *
-             * @param element the element
+             * @param element
              */
             EntityCacheConfiguration(Element element) {
                 super(element, DEFAULT_CAPACITY, DEFAULT_EVICT_DELAY, DEFAULT_LIVE_TIME, DEFAULT_MAX_IDLE_TIME);
@@ -812,7 +812,7 @@ public final class AbacusConfiguration {
             /**
              * Complex element 2 attr.
              *
-             * @param element the element
+             * @param element
              */
             @Override
             protected void complexElement2Attr(Element element) {
@@ -847,7 +847,7 @@ public final class AbacusConfiguration {
             /**
              * Checks if is excluded entity.
              *
-             * @param entityName the entity name
+             * @param entityName
              * @return true, if is excluded entity
              */
             public boolean isExcludedEntity(String entityName) {
@@ -872,7 +872,7 @@ public final class AbacusConfiguration {
             /**
              * Gets the customized entity cache configuration.
              *
-             * @param entityName the entity name
+             * @param entityName
              * @return
              */
             public CustomizedEntityCacheConfiguration getCustomizedEntityCacheConfiguration(String entityName) {
@@ -919,7 +919,7 @@ public final class AbacusConfiguration {
                 /**
                  * Instantiates a new customized entity cache configuration.
                  *
-                 * @param element the element
+                 * @param element
                  */
                 CustomizedEntityCacheConfiguration(Element element) {
                     super(element, AbacusConfiguration.this.props);
@@ -1037,7 +1037,7 @@ public final class AbacusConfiguration {
                 /**
                  * Checks if is excluded property.
                  *
-                 * @param propName the prop name
+                 * @param propName
                  * @return true, if is excluded property
                  */
                 public boolean isExcludedProperty(String propName) {
@@ -1141,7 +1141,7 @@ public final class AbacusConfiguration {
             /**
              * Instantiates a new query cache configuration.
              *
-             * @param element the element
+             * @param element
              */
             QueryCacheConfiguration(Element element) {
                 super(element, DEFAULT_CAPACITY, DEFAULT_EVICT_DELAY, DEFAULT_LIVE_TIME, DEFAULT_MAX_IDLE_TIME);
@@ -1207,7 +1207,7 @@ public final class AbacusConfiguration {
             /**
              * Complex element 2 attr.
              *
-             * @param element the element
+             * @param element
              */
             @Override
             protected void complexElement2Attr(Element element) {
@@ -1268,7 +1268,7 @@ public final class AbacusConfiguration {
                 /**
                  * Instantiates a new cache result condition configuration.
                  *
-                 * @param element the element
+                 * @param element
                  */
                 public CacheResultConditionConfiguration(Element element) {
                     super(element, AbacusConfiguration.this.props);
@@ -1379,7 +1379,7 @@ public final class AbacusConfiguration {
             /**
              * Instantiates a new server configuration.
              *
-             * @param element the element
+             * @param element
              */
             ServerConfiguration(Element element) {
                 super(element, AbacusConfiguration.this.props);
@@ -1495,7 +1495,7 @@ public final class AbacusConfiguration {
         /**
          * Instantiates a new s log configuration.
          *
-         * @param element the element
+         * @param element
          */
         SLogConfiguration(Element element) {
             super(element, AbacusConfiguration.this.props);
@@ -1531,7 +1531,7 @@ public final class AbacusConfiguration {
         /**
          * Gets the domain.
          *
-         * @param domainName the domain name
+         * @param domainName
          * @return
          */
         public DomainConfiguration getDomain(String domainName) {
@@ -1558,7 +1558,7 @@ public final class AbacusConfiguration {
         /**
          * Complex element 2 attr.
          *
-         * @param element the element
+         * @param element
          */
         @Override
         protected void complexElement2Attr(Element element) {
@@ -1594,7 +1594,7 @@ public final class AbacusConfiguration {
             /**
              * Instantiates a new domain configuration.
              *
-             * @param element the element
+             * @param element
              */
             DomainConfiguration(Element element) {
                 super(element, AbacusConfiguration.this.props);
@@ -1634,7 +1634,7 @@ public final class AbacusConfiguration {
             /**
              * Instantiates a new table configuration.
              *
-             * @param element the element
+             * @param element
              */
             TableConfiguration(Element element) {
                 super(element, AbacusConfiguration.this.props);

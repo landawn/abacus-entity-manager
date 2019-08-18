@@ -100,7 +100,7 @@ public final class AsyncBatchExecutor<E> {
     /**
      * Instantiates a new async batch executor.
      *
-     * @param em the em
+     * @param em
      */
     public AsyncBatchExecutor(final EntityManager<E> em) {
         this(em, DEFAULT_CAPACITY, DEFAULT_EVICT_DELAY, DEFAULT_BATCH_SIZE);
@@ -109,10 +109,10 @@ public final class AsyncBatchExecutor<E> {
     /**
      * Instantiates a new async batch executor.
      *
-     * @param em the em
-     * @param capacity the capacity
-     * @param evictDelay the evict delay
-     * @param batchSize the batch size
+     * @param em
+     * @param capacity
+     * @param evictDelay
+     * @param batchSize
      */
     public AsyncBatchExecutor(final EntityManager<E> em, final int capacity, final long evictDelay, final int batchSize) {
         if ((em == null) || (evictDelay <= 0) || (batchSize <= 0) || (capacity <= 0)) {
@@ -187,7 +187,7 @@ public final class AsyncBatchExecutor<E> {
     /**
      * Adds the.
      *
-     * @param e the e
+     * @param e
      */
     public void add(E e) {
         assertNotClosed();
@@ -200,7 +200,7 @@ public final class AsyncBatchExecutor<E> {
     /**
      * Update.
      *
-     * @param e the e
+     * @param e
      */
     public void update(E e) {
         assertNotClosed();
@@ -213,7 +213,7 @@ public final class AsyncBatchExecutor<E> {
     /**
      * Delete.
      *
-     * @param e the e
+     * @param e
      */
     public void delete(E e) {
         assertNotClosed();
@@ -322,8 +322,8 @@ public final class AsyncBatchExecutor<E> {
     /**
      * Adds the element.
      *
-     * @param queue the queue
-     * @param e the e
+     * @param queue
+     * @param e
      */
     protected void addElement(List<E> queue, E e) {
         if ((addQueue.size() + updateQueue.size() + deleteQueue.size()) > capacity) {

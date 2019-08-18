@@ -28,8 +28,8 @@ public final class NullValidator extends AbstractValidator<Object> {
     /**
      * Instantiates a new null validator.
      *
-     * @param propName the prop name
-     * @param type the type
+     * @param propName
+     * @param type
      */
     public NullValidator(String propName, Type<Object> type) {
         super(propName, type);
@@ -38,7 +38,7 @@ public final class NullValidator extends AbstractValidator<Object> {
     /**
      * Method isValid.
      *
-     * @param propValue the prop value
+     * @param propValue
      * @return boolean
      */
     @Override

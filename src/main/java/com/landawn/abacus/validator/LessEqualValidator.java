@@ -21,7 +21,7 @@ import com.landawn.abacus.type.Type;
  * The Class LessEqualValidator.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.8
  */
 public final class LessEqualValidator<T extends Comparable<T>> extends AbstractComparableValidator<T> {
@@ -29,9 +29,9 @@ public final class LessEqualValidator<T extends Comparable<T>> extends AbstractC
     /**
      * Constructor for LessEqualValidator.
      *
-     * @param propName the prop name
-     * @param type the type
-     * @param value the value
+     * @param propName
+     * @param type
+     * @param value
      */
     public LessEqualValidator(String propName, Type<T> type, String value) {
         super(propName, type, value);
@@ -40,7 +40,7 @@ public final class LessEqualValidator<T extends Comparable<T>> extends AbstractC
     /**
      * Method isValid.
      *
-     * @param propValue the prop value
+     * @param propValue
      * @return boolean
      * @see com.landawn.abacus.validator.Validator#isValid(T)
      */

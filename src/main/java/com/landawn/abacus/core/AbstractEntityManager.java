@@ -58,7 +58,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Instantiates a new abstract entity manager.
      *
-     * @param domainName the domain name
+     * @param domainName
      * @param entityManagerConfig configuration for entity manager.
      */
     protected AbstractEntityManager(final String domainName, final EntityManagerConfiguration entityManagerConfig) {
@@ -76,8 +76,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
+     * @param <T>
+     * @param entityId
      * @return
      */
     @Override
@@ -88,9 +88,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
      * @return
      */
     @Override
@@ -101,10 +101,10 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Gets the.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
+     * @param options
      * @return
      */
     @Override
@@ -115,8 +115,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
+     * @param <T>
+     * @param entityId
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -128,9 +128,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -142,10 +142,10 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Gets the t.
      *
-     * @param <T> the generic type
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param entityId
+     * @param selectPropNames
+     * @param options
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -208,10 +208,10 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * List.
      *
-     * @param <T> the generic type
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
+     * @param <T>
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
      * @return
      */
     @Override
@@ -222,11 +222,11 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * List.
      *
-     * @param <T> the generic type
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param options the options
+     * @param <T>
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param options
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -252,7 +252,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Adds the.
      *
-     * @param entity the entity
+     * @param entity
      * @return
      */
     @Override
@@ -263,8 +263,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Adds the.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      * @return
      */
     @Override
@@ -293,7 +293,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Adds the all.
      *
-     * @param entities the entities
+     * @param entities
      * @return
      */
     @Override
@@ -304,8 +304,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Adds the all.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      * @return
      */
     @Override
@@ -332,9 +332,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Adds the.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param options the options
+     * @param entityName
+     * @param props
+     * @param options
      * @return
      */
     @Override
@@ -359,9 +359,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Adds the all.
      *
-     * @param entityName the entity name
-     * @param propsList the props list
-     * @param options the options
+     * @param entityName
+     * @param propsList
+     * @param options
      * @return
      */
     @Override
@@ -388,7 +388,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Update.
      *
-     * @param entity the entity
+     * @param entity
      * @return
      */
     @Override
@@ -399,8 +399,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Update.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      * @return
      */
     @Override
@@ -433,7 +433,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Update all.
      *
-     * @param entities the entities
+     * @param entities
      * @return
      */
     @Override
@@ -444,8 +444,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Update all.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      * @return
      */
     @Override
@@ -471,8 +471,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
 
     /**
      * Update.
-     * @param props the props
-     * @param entityId the entity id
+     * @param props
+     * @param entityId
      * @return
      */
     @Override
@@ -482,9 +482,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
 
     /**
      * Update.
-     * @param props the props
-     * @param entityId the entity id
-     * @param options the options
+     * @param props
+     * @param entityId
+     * @param options
      * @return
      */
     @Override
@@ -510,8 +510,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
 
     /**
      * Update all.
-     * @param props the props
-     * @param entityIds the entity ids
+     * @param props
+     * @param entityIds
      * @return
      */
     @Override
@@ -521,9 +521,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
 
     /**
      * Update all.
-     * @param props the props
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param props
+     * @param entityIds
+     * @param options
      * @return
      */
     @Override
@@ -551,10 +551,10 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Update.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param condition the condition
-     * @param options the options
+     * @param entityName
+     * @param props
+     * @param condition
+     * @param options
      * @return
      */
     @Override
@@ -579,7 +579,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Delete.
      *
-     * @param entityId the entity id
+     * @param entityId
      * @return
      */
     @Override
@@ -590,8 +590,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Delete.
      *
-     * @param entityId the entity id
-     * @param options the options
+     * @param entityId
+     * @param options
      * @return
      */
     @Override
@@ -618,7 +618,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Delete all.
      *
-     * @param entityIds the entity ids
+     * @param entityIds
      * @return
      */
     @Override
@@ -629,8 +629,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Delete all.
      *
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param entityIds
+     * @param options
      * @return
      */
     @Override
@@ -658,7 +658,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Delete.
      *
-     * @param entity the entity
+     * @param entity
      * @return
      */
     @Override
@@ -669,8 +669,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Delete.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      * @return
      */
     @Override
@@ -699,7 +699,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Delete all.
      *
-     * @param entities the entities
+     * @param entities
      * @return
      */
     @Override
@@ -710,8 +710,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Delete all.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      * @return
      */
     @Override
@@ -738,9 +738,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Delete.
      *
-     * @param entityName the entity name
-     * @param condition the condition
-     * @param options the options
+     * @param entityName
+     * @param condition
+     * @param options
      * @return
      */
     @Override
@@ -765,9 +765,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Query.
      *
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
      * @return
      */
     @Override
@@ -778,11 +778,11 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Query.
      *
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param resultHandle the result handle
-     * @param options the options
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param resultHandle
+     * @param options
      * @return
      */
     @Override
@@ -808,9 +808,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Gets the result by handle.
      *
-     * @param resultHandle the result handle
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param resultHandle
+     * @param selectPropNames
+     * @param options
      * @return
      */
     @Override
@@ -835,7 +835,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Release result handle.
      *
-     * @param resultHandle the result handle
+     * @param resultHandle
      */
     @Override
     public void releaseResultHandle(String resultHandle)
@@ -857,8 +857,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Begin transaction.
      *
-     * @param isolationLevel the isolation level
-     * @param options the options
+     * @param isolationLevel
+     * @param options
      * @return
      */
     @Override
@@ -883,9 +883,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * End transaction.
      *
-     * @param transactionId the transaction id
-     * @param transactionAction the transaction action
-     * @param options the options
+     * @param transactionId
+     * @param transactionAction
+     * @param options
      */
     @Override
     public void endTransaction(final String transactionId, final Action transactionAction, final Map<String, Object> options) {
@@ -905,8 +905,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Gets the record version.
      *
-     * @param entityId the entity id
-     * @param options the options
+     * @param entityId
+     * @param options
      * @return
      */
     @Override
@@ -934,9 +934,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Lock record.
      *
-     * @param entityId the entity id
-     * @param lockMode the lock mode
-     * @param options the options
+     * @param entityId
+     * @param lockMode
+     * @param options
      * @return
      */
     @Override
@@ -964,9 +964,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Unlock record.
      *
-     * @param entityId the entity id
-     * @param lockCode the lock code
-     * @param options the options
+     * @param entityId
+     * @param lockCode
+     * @param options
      * @return true, if successful
      */
     @Override
@@ -1004,11 +1004,11 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal get.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param entityId the entity id
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param targetClass
+     * @param entityId
+     * @param selectPropNames
+     * @param options
      * @return
      */
     protected abstract <T> T internalGet(Class<T> targetClass, EntityId entityId, Collection<String> selectPropNames, Map<String, Object> options);
@@ -1016,11 +1016,11 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal get.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param entityIds the entity ids
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param <T>
+     * @param targetClass
+     * @param entityIds
+     * @param selectPropNames
+     * @param options
      * @return
      */
     protected abstract <T> List<T> internalGet(Class<T> targetClass, List<? extends EntityId> entityIds, Collection<String> selectPropNames,
@@ -1029,12 +1029,12 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal list.
      *
-     * @param <T> the generic type
-     * @param targetClass the target class
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param options the options
+     * @param <T>
+     * @param targetClass
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param options
      * @return
      */
     protected abstract <T> List<T> internalList(Class<T> targetClass, String entityName, Collection<String> selectPropNames, Condition condition,
@@ -1043,8 +1043,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal add.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      * @return
      */
     protected abstract EntityId internalAdd(E entity, Map<String, Object> options);
@@ -1052,8 +1052,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal add.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      * @return
      */
     protected abstract List<EntityId> internalAdd(Collection<? extends E> entities, Map<String, Object> options);
@@ -1061,9 +1061,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal add.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param options the options
+     * @param entityName
+     * @param props
+     * @param options
      * @return
      */
     protected abstract EntityId internalAdd(String entityName, Map<String, Object> props, Map<String, Object> options);
@@ -1071,9 +1071,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal add.
      *
-     * @param entityName the entity name
-     * @param propsList the props list
-     * @param options the options
+     * @param entityName
+     * @param propsList
+     * @param options
      * @return
      */
     protected abstract List<EntityId> internalAdd(String entityName, List<Map<String, Object>> propsList, Map<String, Object> options);
@@ -1081,8 +1081,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal update.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      * @return
      */
     protected abstract int internalUpdate(E entity, Map<String, Object> options);
@@ -1090,8 +1090,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal update.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      * @return
      */
     protected abstract int internalUpdate(Collection<? extends E> entities, Map<String, Object> options);
@@ -1099,9 +1099,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal update.
      *
-     * @param entityId the entity id
-     * @param props the props
-     * @param options the options
+     * @param entityId
+     * @param props
+     * @param options
      * @return
      */
     protected abstract int internalUpdate(EntityId entityId, Map<String, Object> props, Map<String, Object> options);
@@ -1109,9 +1109,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal update.
      *
-     * @param entityIds the entity ids
-     * @param props the props
-     * @param options the options
+     * @param entityIds
+     * @param props
+     * @param options
      * @return
      */
     protected abstract int internalUpdate(List<? extends EntityId> entityIds, Map<String, Object> props, Map<String, Object> options);
@@ -1119,10 +1119,10 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal update.
      *
-     * @param entityName the entity name
-     * @param props the props
-     * @param condition the condition
-     * @param options the options
+     * @param entityName
+     * @param props
+     * @param condition
+     * @param options
      * @return
      */
     protected abstract int internalUpdate(String entityName, Map<String, Object> props, Condition condition, Map<String, Object> options);
@@ -1130,8 +1130,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal delete.
      *
-     * @param entityId the entity id
-     * @param options the options
+     * @param entityId
+     * @param options
      * @return
      */
     protected abstract int internalDelete(EntityId entityId, Map<String, Object> options);
@@ -1139,8 +1139,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal delete.
      *
-     * @param entityIds the entity ids
-     * @param options the options
+     * @param entityIds
+     * @param options
      * @return
      */
     protected abstract int internalDelete(List<? extends EntityId> entityIds, Map<String, Object> options);
@@ -1148,8 +1148,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal delete.
      *
-     * @param entity the entity
-     * @param options the options
+     * @param entity
+     * @param options
      * @return
      */
     protected abstract int internalDelete(E entity, Map<String, Object> options);
@@ -1157,8 +1157,8 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal delete.
      *
-     * @param entities the entities
-     * @param options the options
+     * @param entities
+     * @param options
      * @return
      */
     protected abstract int internalDelete(Collection<? extends E> entities, Map<String, Object> options);
@@ -1166,9 +1166,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal delete.
      *
-     * @param entityName the entity name
-     * @param condition the condition
-     * @param options the options
+     * @param entityName
+     * @param condition
+     * @param options
      * @return
      */
     protected abstract int internalDelete(String entityName, Condition condition, Map<String, Object> options);
@@ -1176,11 +1176,11 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal query.
      *
-     * @param entityName the entity name
-     * @param selectPropNames the select prop names
-     * @param condition the condition
-     * @param resultHandle the result handle
-     * @param options the options
+     * @param entityName
+     * @param selectPropNames
+     * @param condition
+     * @param resultHandle
+     * @param options
      * @return
      */
     protected abstract DataSet internalQuery(String entityName, Collection<String> selectPropNames, Condition condition, Holder<String> resultHandle,
@@ -1189,9 +1189,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal get result by handle.
      *
-     * @param resultHandle the result handle
-     * @param selectPropNames the select prop names
-     * @param options the options
+     * @param resultHandle
+     * @param selectPropNames
+     * @param options
      * @return
      */
     protected abstract DataSet internalGetResultByHandle(String resultHandle, Collection<String> selectPropNames, Map<String, Object> options);
@@ -1199,15 +1199,15 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal release result handle.
      *
-     * @param resultHandle the result handle
+     * @param resultHandle
      */
     protected abstract void internalReleaseResultHandle(String resultHandle);
 
     /**
      * Internal begin transaction.
      *
-     * @param isolationLevel the isolation level
-     * @param options the options
+     * @param isolationLevel
+     * @param options
      * @return
      */
     protected abstract String internalBeginTransaction(IsolationLevel isolationLevel, Map<String, Object> options);
@@ -1215,17 +1215,17 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal end transaction.
      *
-     * @param transactionId the transaction id
-     * @param transactionAction the transaction action
-     * @param options the options
+     * @param transactionId
+     * @param transactionAction
+     * @param options
      */
     protected abstract void internalEndTransaction(String transactionId, Action transactionAction, Map<String, Object> options);
 
     /**
      * Internal get record version.
      *
-     * @param entityId the entity id
-     * @param options the options
+     * @param entityId
+     * @param options
      * @return
      */
     protected abstract long internalGetRecordVersion(EntityId entityId, Map<String, Object> options);
@@ -1233,9 +1233,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal lock record.
      *
-     * @param entityId the entity id
-     * @param lockMode the lock mode
-     * @param options the options
+     * @param entityId
+     * @param lockMode
+     * @param options
      * @return
      */
     protected abstract String internalLockRecord(EntityId entityId, LockMode lockMode, Map<String, Object> options);
@@ -1243,9 +1243,9 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Internal unlock record.
      *
-     * @param entityId the entity id
-     * @param lockCode the lock code
-     * @param options the options
+     * @param entityId
+     * @param lockCode
+     * @param options
      * @return true, if successful
      */
     protected abstract boolean internalUnlockRecord(EntityId entityId, String lockCode, Map<String, Object> options);
@@ -1260,7 +1260,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Check entity name.
      *
-     * @param entityName the entity name
+     * @param entityName
      * @return
      */
     protected EntityDefinition checkEntityName(final String entityName) {
@@ -1270,7 +1270,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Check entity id.
      *
-     * @param entityId the entity id
+     * @param entityId
      * @return
      */
     protected EntityDefinition checkEntityId(final EntityId entityId) {
@@ -1280,7 +1280,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
     /**
      * Check entity.
      *
-     * @param entity the entity
+     * @param entity
      * @return
      */
     protected EntityDefinition checkEntity(final E entity) {

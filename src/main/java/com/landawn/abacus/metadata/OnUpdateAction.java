@@ -42,7 +42,7 @@ public enum OnUpdateAction {
     /**
      * Instantiates a new on update action.
      *
-     * @param intValue the int value
+     * @param intValue
      */
     OnUpdateAction(int intValue) {
         this.intValue = intValue;
@@ -60,7 +60,7 @@ public enum OnUpdateAction {
     /**
      * Method get.
      *
-     * @param name the name
+     * @param name
      * @return ConstraintType
      */
     public static OnUpdateAction get(String name) {

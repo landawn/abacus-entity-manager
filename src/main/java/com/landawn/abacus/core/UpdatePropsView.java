@@ -41,8 +41,8 @@ final class UpdatePropsView {
     /**
      * Instantiates a new update props view.
      *
-     * @param updateProps the update props
-     * @param propEntityList the prop entity list
+     * @param updateProps
+     * @param propEntityList
      */
     UpdatePropsView(Map<String, Object> updateProps, Map<Property, List<Object>> propEntityList) {
         this.updateProps = updateProps;

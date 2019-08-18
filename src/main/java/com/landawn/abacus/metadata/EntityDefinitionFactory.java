@@ -43,7 +43,7 @@ public interface EntityDefinitionFactory {
     /**
      * Gets the definition.
      *
-     * @param entityName the entity name
+     * @param entityName
      * @return
      */
     EntityDefinition getDefinition(String entityName);
@@ -65,7 +65,7 @@ public interface EntityDefinitionFactory {
     /**
      * Gets the attribute.
      *
-     * @param attrName the attr name
+     * @param attrName
      * @return
      */
     String getAttribute(String attrName);

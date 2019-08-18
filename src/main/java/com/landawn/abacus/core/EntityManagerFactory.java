@@ -69,7 +69,7 @@ public class EntityManagerFactory {
     /**
      * Instantiates a new entity manager factory.
      *
-     * @param abacusConfig the abacus config
+     * @param abacusConfig
      */
     EntityManagerFactory(AbacusConfiguration abacusConfig) {
         this.abacusConfig = abacusConfig;
@@ -109,7 +109,7 @@ public class EntityManagerFactory {
     /**
      * Gets the single instance of EntityManagerFactory.
      *
-     * @param file the file
+     * @param file
      * @return single instance of EntityManagerFactory
      */
     public synchronized static EntityManagerFactory getInstance(String file) {
@@ -119,8 +119,8 @@ public class EntityManagerFactory {
     /**
      * Gets the single instance of EntityManagerFactory.
      *
-     * @param file the file
-     * @param ignoreFactory the ignore factory
+     * @param file
+     * @param ignoreFactory
      * @return single instance of EntityManagerFactory
      */
     synchronized static EntityManagerFactory getInstance(String file, boolean ignoreFactory) {
@@ -154,7 +154,7 @@ public class EntityManagerFactory {
     /**
      * Gets the entity manager configuration.
      *
-     * @param domainName the domain name
+     * @param domainName
      * @return
      */
     public EntityManagerConfiguration getEntityManagerConfiguration(String domainName) {
@@ -164,7 +164,7 @@ public class EntityManagerFactory {
     /**
      * Gets the data source manager.
      *
-     * @param domainName the domain name
+     * @param domainName
      * @return
      */
     public DataSourceManager getDataSourceManager(String domainName) {
@@ -185,7 +185,7 @@ public class EntityManagerFactory {
     /**
      * Gets the DB access.
      *
-     * @param domainName the domain name
+     * @param domainName
      * @return
      */
     public DBAccess getDBAccess(String domainName) {
@@ -195,8 +195,8 @@ public class EntityManagerFactory {
     /**
      * Gets the entity manager.
      *
-     * @param <T> the generic type
-     * @param domainName the domain name
+     * @param <T>
+     * @param domainName
      * @return
      * @deprecated replaced by {@link #getNewEntityManager(String)}
      */
@@ -208,7 +208,7 @@ public class EntityManagerFactory {
     /**
      * Gets the entity manager.
      *
-     * @param domainName the domain name
+     * @param domainName
      * @return
      */
     public NewEntityManager getNewEntityManager(String domainName) {
@@ -237,8 +237,8 @@ public class EntityManagerFactory {
     /**
      * Creates a new EntityManager object.
      *
-     * @param <T> the generic type
-     * @param domainName the domain name
+     * @param <T>
+     * @param domainName
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -249,11 +249,11 @@ public class EntityManagerFactory {
     /**
      * Creates a new EntityManager object.
      *
-     * @param <T> the generic type
-     * @param domainName the domain name
-     * @param batchSize the batch size
-     * @param evictDelay the evict delay
-     * @param capacity the capacity
+     * @param <T>
+     * @param domainName
+     * @param batchSize
+     * @param evictDelay
+     * @param capacity
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -264,7 +264,7 @@ public class EntityManagerFactory {
     /**
      * Find file.
      *
-     * @param file the file
+     * @param file
      * @return
      */
     protected static File findFile(String file) {
@@ -289,7 +289,7 @@ public class EntityManagerFactory {
     /**
      * Gets the dmain manager.
      *
-     * @param domainName the domain name
+     * @param domainName
      * @return
      */
     protected DomainEntityManager getDmainManager(String domainName) {
@@ -355,7 +355,7 @@ public class EntityManagerFactory {
         /**
          * Instantiates a new domain entity manager.
          *
-         * @param entityManagerConfig the entity manager config
+         * @param entityManagerConfig
          */
         @SuppressWarnings("deprecation")
         DomainEntityManager(EntityManagerConfiguration entityManagerConfig) {
@@ -466,7 +466,7 @@ public class EntityManagerFactory {
         /**
          * Gets the entity manager.
          *
-         * @param <T> the generic type
+         * @param <T>
          * @return
          */
         @SuppressWarnings("unchecked")

@@ -25,7 +25,7 @@ import com.landawn.abacus.util.DateUtil;
  * The Class AbstractDateValidator.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.8
  */
 public abstract class AbstractDateValidator<T extends Date> extends AbstractValidator<T> {
@@ -39,9 +39,9 @@ public abstract class AbstractDateValidator<T extends Date> extends AbstractVali
     /**
      * Instantiates a new abstract date validator.
      *
-     * @param propName the prop name
-     * @param type the type
-     * @param value the value
+     * @param propName
+     * @param type
+     * @param value
      */
     protected AbstractDateValidator(String propName, Type<T> type, String value) {
         super(propName, type);

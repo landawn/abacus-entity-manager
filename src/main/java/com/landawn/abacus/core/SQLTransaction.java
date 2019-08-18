@@ -94,11 +94,11 @@ public final class SQLTransaction implements Transaction {
     /**
      * Instantiates a new SQL transaction.
      *
-     * @param ds the ds
-     * @param conn the conn
-     * @param isolationLevel the isolation level
-     * @param creator the creator
-     * @param closeConnection the close connection
+     * @param ds
+     * @param conn
+     * @param isolationLevel
+     * @param creator
+     * @param closeConnection
      * @throws SQLException the SQL exception
      */
     SQLTransaction(final javax.sql.DataSource ds, final Connection conn, final IsolationLevel isolationLevel, final CreatedBy creator,
@@ -394,8 +394,8 @@ public final class SQLTransaction implements Transaction {
     /**
      * Increment and get ref.
      *
-     * @param isolationLevel the isolation level
-     * @param forUpdateOnly the for update only
+     * @param isolationLevel
+     * @param forUpdateOnly
      * @return
      */
     synchronized int incrementAndGetRef(final IsolationLevel isolationLevel, final boolean forUpdateOnly) {
@@ -475,8 +475,8 @@ public final class SQLTransaction implements Transaction {
     /**
      * Gets the transaction id.
      *
-     * @param dataSourceOrConnection the data source or connection
-     * @param creator the creator
+     * @param dataSourceOrConnection
+     * @param creator
      * @return
      */
     static String getTransactionId(Object dataSourceOrConnection, final CreatedBy creator) {
@@ -487,8 +487,8 @@ public final class SQLTransaction implements Transaction {
     /**
      * Gets the transaction.
      *
-     * @param ds the ds
-     * @param creator the creator
+     * @param ds
+     * @param creator
      * @return
      */
     static SQLTransaction getTransaction(final javax.sql.DataSource ds, final CreatedBy creator) {
@@ -507,7 +507,7 @@ public final class SQLTransaction implements Transaction {
     /**
      * Put transaction.
      *
-     * @param tran the tran
+     * @param tran
      * @return
      */
     static SQLTransaction putTransaction(final SQLTransaction tran) {
@@ -527,7 +527,7 @@ public final class SQLTransaction implements Transaction {
     /**
      * Equals.
      *
-     * @param obj the obj
+     * @param obj
      * @return true, if successful
      */
     @Override

@@ -43,7 +43,7 @@ public final class DirtyMarkerImpl extends AbstractDirtyMarker {
     /**
      * Instantiates a new dirty marker impl.
      *
-     * @param entityName the entity name
+     * @param entityName
      */
     public DirtyMarkerImpl(String entityName) {
         super(entityName);
@@ -74,7 +74,7 @@ public final class DirtyMarkerImpl extends AbstractDirtyMarker {
     /**
      * Checks if is entity dirty.
      *
-     * @param entities the entities
+     * @param entities
      * @return true, if is entity dirty
      */
     @Override
@@ -86,8 +86,8 @@ public final class DirtyMarkerImpl extends AbstractDirtyMarker {
     /**
      * Mark entity dirty.
      *
-     * @param entities the entities
-     * @param isDirty the is dirty
+     * @param entities
+     * @param isDirty
      */
     @Override
     public void markEntityDirty(Collection<? extends DirtyMarker> entities, boolean isDirty) {

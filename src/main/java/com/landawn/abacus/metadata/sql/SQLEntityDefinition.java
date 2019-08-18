@@ -145,9 +145,9 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Instantiates a new SQL entity definition.
      *
-     * @param name the name
-     * @param table the table
-     * @param columnName2PropName the column name 2 prop name
+     * @param name
+     * @param table
+     * @param columnName2PropName
      */
     public SQLEntityDefinition(String name, Table table, Method columnName2PropName) {
         this(null, Object.class, name, table.getName(), false, parse(name, table, columnName2PropName));
@@ -156,9 +156,9 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Instantiates a new SQL entity definition.
      *
-     * @param factory the factory
-     * @param pkgName the pkg name
-     * @param is the is
+     * @param factory
+     * @param pkgName
+     * @param is
      */
     protected SQLEntityDefinition(EntityDefinitionFactory factory, String pkgName, InputStream is) {
         this(factory, pkgName, Configuration.parse(is).getDocumentElement());
@@ -167,9 +167,9 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Instantiates a new SQL entity definition.
      *
-     * @param factory the factory
-     * @param pkgName the pkg name
-     * @param entityNode the entity node
+     * @param factory
+     * @param pkgName
+     * @param entityNode
      */
     protected SQLEntityDefinition(EntityDefinitionFactory factory, String pkgName, Element entityNode) {
         this(factory, initClass(pkgName, entityNode), entityNode.getAttribute(EntityEle.NAME), entityNode.getAttribute(EntityEle.TABLE), false,
@@ -179,12 +179,12 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Instantiates a new SQL entity definition.
      *
-     * @param factory the factory
-     * @param cls the cls
-     * @param name the name
-     * @param tableName the table name
-     * @param isSliceEntity the is slice entity
-     * @param propsAndSlices the props and slices
+     * @param factory
+     * @param cls
+     * @param name
+     * @param tableName
+     * @param isSliceEntity
+     * @param propsAndSlices
      */
     SQLEntityDefinition(final EntityDefinitionFactory factory, final Class<?> cls, final String name, final String tableName, boolean isSliceEntity,
             final Object[] propsAndSlices) {
@@ -356,7 +356,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the type class.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -368,7 +368,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the array type class.
      *
-     * @param <T> the generic type
+     * @param <T>
      * @return
      */
     @SuppressWarnings("unchecked")
@@ -400,7 +400,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the property.
      *
-     * @param propName the prop name
+     * @param propName
      * @return
      */
     @Override
@@ -562,7 +562,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the id generator.
      *
-     * @param idPropName the id prop name
+     * @param idPropName
      * @return
      */
     @Override
@@ -603,7 +603,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Gets the attribute.
      *
-     * @param attrName the attr name
+     * @param attrName
      * @return
      */
     @Override
@@ -668,7 +668,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Equals.
      *
-     * @param obj the obj
+     * @param obj
      * @return true, if successful
      */
     @Override
@@ -689,9 +689,9 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Parses the.
      *
-     * @param entityName the entity name
-     * @param table the table
-     * @param columnName2PropName the column name 2 prop name
+     * @param entityName
+     * @param table
+     * @param columnName2PropName
      * @return
      */
     private static Object[] parse(final String entityName, final Table table, final Method columnName2PropName) {
@@ -751,9 +751,9 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Parses the.
      *
-     * @param factory the factory
-     * @param pkgName the pkg name
-     * @param entityElement the entity element
+     * @param factory
+     * @param pkgName
+     * @param entityElement
      * @return
      */
     private static Object[] parse(EntityDefinitionFactory factory, String pkgName, Element entityElement) {
@@ -765,10 +765,10 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Parses the properties.
      *
-     * @param entityName the entity name
-     * @param tableName the table name
-     * @param entityElement the entity element
-     * @param isSliceEntity the is slice entity
+     * @param entityName
+     * @param tableName
+     * @param entityElement
+     * @param isSliceEntity
      * @return
      */
     private static Map<String, SQLProperty> parseProperties(String entityName, String tableName, Element entityElement, boolean isSliceEntity) {
@@ -816,9 +816,9 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Parses the slices.
      *
-     * @param factory the factory
-     * @param pkgName the pkg name
-     * @param entityElement the entity element
+     * @param factory
+     * @param pkgName
+     * @param entityElement
      * @return
      */
     private static List<EntityDefinition> parseSlices(EntityDefinitionFactory factory, String pkgName, Element entityElement) {
@@ -846,8 +846,8 @@ public class SQLEntityDefinition implements EntityDefinition {
     /**
      * Inits the class.
      *
-     * @param pkgName the pkg name
-     * @param entityNode the entity node
+     * @param pkgName
+     * @param entityNode
      * @return
      */
     private static Class<?> initClass(String pkgName, Element entityNode) {

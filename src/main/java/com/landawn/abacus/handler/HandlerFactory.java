@@ -44,9 +44,9 @@ public final class HandlerFactory {
     /**
      * Method create.
      *
-     * @param <T> the generic type
-     * @param entityManager the entity manager
-     * @param handlerAttr the handler attr
+     * @param <T>
+     * @param entityManager
+     * @param handlerAttr
      * @return Handler
      */
     public static <T> Handler<T> create(EntityManager<T> entityManager, String handlerAttr) {
@@ -67,8 +67,8 @@ public final class HandlerFactory {
     /**
      * Register handler.
      *
-     * @param handler the handler
-     * @param clazz the clazz
+     * @param handler
+     * @param clazz
      */
     @SuppressWarnings("unchecked")
     public static void registerHandler(String handler, @SuppressWarnings("rawtypes") Class<? extends Handler> clazz) {

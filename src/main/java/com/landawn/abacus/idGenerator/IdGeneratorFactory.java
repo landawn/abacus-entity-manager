@@ -52,9 +52,9 @@ public final class IdGeneratorFactory {
     /**
      * Method create.
      *
-     * @param <T> the generic type
-     * @param idGeneratorAttr the id generator attr
-     * @param prop the prop
+     * @param <T>
+     * @param idGeneratorAttr
+     * @param prop
      * @return IdGenerator
      */
     public static <T> IdGenerator<T> create(String idGeneratorAttr, Property prop) {
@@ -82,8 +82,8 @@ public final class IdGeneratorFactory {
     /**
      * Gets the default id generator.
      *
-     * @param <T> the generic type
-     * @param prop the prop
+     * @param <T>
+     * @param prop
      * @return
      */
     public static <T> IdGenerator<T> getDefaultIdGenerator(Property prop) {
@@ -97,7 +97,7 @@ public final class IdGeneratorFactory {
     /**
      * Method initBuiltinIdGeneratorName.
      *
-     * @param clazz the clazz
+     * @param clazz
      */
     private static void initBuiltinIdGeneratorName(Class<? extends IdGenerator<?>> clazz) {
         registerIdGenerator(clazz.getSimpleName().replaceAll(IdGenerator.ID_GENERATOR, N.EMPTY_STRING), clazz);
@@ -107,8 +107,8 @@ public final class IdGeneratorFactory {
     /**
      * Register id generator.
      *
-     * @param idGenerator the id generator
-     * @param clazz the clazz
+     * @param idGenerator
+     * @param clazz
      */
     public static void registerIdGenerator(String idGenerator, Class<? extends IdGenerator<?>> clazz) {
         registeredIdGenerator.put(idGenerator, clazz);

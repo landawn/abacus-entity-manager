@@ -25,7 +25,7 @@ import com.landawn.abacus.util.StringUtil;
  * The Class InValidator.
  *
  * @author Haiyang Li
- * @param <T> the generic type
+ * @param <T>
  * @since 0.8
  */
 public final class InValidator<T> extends AbstractValidator<T> {
@@ -36,9 +36,9 @@ public final class InValidator<T> extends AbstractValidator<T> {
     /**
      * Instantiates a new in validator.
      *
-     * @param propName the prop name
-     * @param type the type
-     * @param values the values
+     * @param propName
+     * @param type
+     * @param values
      */
     @SafeVarargs
     public InValidator(String propName, Type<T> type, String... values) {
@@ -52,7 +52,7 @@ public final class InValidator<T> extends AbstractValidator<T> {
     /**
      * Method isValid.
      *
-     * @param propValue the prop value
+     * @param propValue
      * @return boolean
      * @see com.landawn.abacus.validator.Validator#isValid(T)
      */
