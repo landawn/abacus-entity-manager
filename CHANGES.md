@@ -1,3 +1,8 @@
+### 0.9.6
+
+* Bug fixes and improvements.
+
+
 ### 0.9.5
 
 * Improve Java Docs.

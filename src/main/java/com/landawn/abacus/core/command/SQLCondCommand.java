@@ -15,9 +15,8 @@
  */
 
 package com.landawn.abacus.core.command;
-
+ 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
 
 import com.landawn.abacus.util.Iterables;
@@ -33,7 +32,7 @@ import com.landawn.abacus.util.N;
 public class SQLCondCommand extends SQLCommand {
     
     /** The join tables. */
-    private Set<String> joinTables = new HashSet<>();
+    private Set<String> joinTables = N.newHashSet();
 
     /** The where begin index. */
     private int whereBeginIndex = -1;
@@ -156,7 +155,7 @@ public class SQLCondCommand extends SQLCommand {
     public Object clone() {
         SQLCondCommand copy = (SQLCondCommand) super.clone();
 
-        copy.joinTables = new HashSet<>(joinTables);
+        copy.joinTables = N.newHashSet(joinTables);
 
         return copy;
     }

@@ -14,10 +14,10 @@
 
 package com.landawn.abacus.validator;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import com.landawn.abacus.type.Type;
+import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.StringUtil;
 
 // TODO: Auto-generated Javadoc
@@ -31,7 +31,7 @@ import com.landawn.abacus.util.StringUtil;
 public final class InValidator<T> extends AbstractValidator<T> {
 
     /** The value set. */
-    private final Set<T> valueSet = new HashSet<T>();
+    private final Set<T> valueSet = N.newHashSet();
 
     /**
      * Instantiates a new in validator.

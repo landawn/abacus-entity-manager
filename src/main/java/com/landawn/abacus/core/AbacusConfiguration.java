@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -954,7 +953,7 @@ public final class AbacusConfiguration {
 
                     final String entityNamePrefix = entityName + ".";
 
-                    includedPropNames = new HashSet<>();
+                    includedPropNames = N.newHashSet();
 
                     if (N.notNullOrEmpty(getAttribute(INCLUDED_PROPERTIES))) {
                         Set<String> tmpSet = string2Set(getAttribute(INCLUDED_PROPERTIES));
@@ -969,7 +968,7 @@ public final class AbacusConfiguration {
                         }
                     }
 
-                    excludedPropNames = new HashSet<>();
+                    excludedPropNames = N.newHashSet();
 
                     if (N.notNullOrEmpty(getAttribute(EXCLUDED_PROPERTIES))) {
                         Set<String> tmpSet = string2Set(getAttribute(EXCLUDED_PROPERTIES));

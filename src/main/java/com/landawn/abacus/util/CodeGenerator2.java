@@ -34,7 +34,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
@@ -186,7 +185,7 @@ public final class CodeGenerator2 {
     /**
      * Field USUAL_TYPES.
      */
-    private static Set<String> USUAL_TYPES = new LinkedHashSet<>();
+    private static Set<String> USUAL_TYPES = N.newLinkedHashSet();
 
     static {
         USUAL_TYPES.add("java.lang");
@@ -474,7 +473,7 @@ public final class CodeGenerator2 {
         }
 
         Map<String, Element> existedEntityEleList = getEntityElementList(existedDoc);
-        Set<String> entityNameList = new LinkedHashSet<>();
+        Set<String> entityNameList = N.newLinkedHashSet();
         Collection<Table> tables = database.getTableList();
 
         for (Table table : tables) {
@@ -572,9 +571,9 @@ public final class CodeGenerator2 {
         }
 
         if (excludedPropNames == null) {
-            excludedPropNames = new LinkedHashSet<>();
+            excludedPropNames = N.newLinkedHashSet();
         } else {
-            Set<String> tempList = new LinkedHashSet<>(excludedPropNames);
+            Set<String> tempList = N.newLinkedHashSet(excludedPropNames);
 
             for (String propName : excludedPropNames) {
                 tempList.add(propName.toUpperCase());
@@ -1010,7 +1009,8 @@ public final class CodeGenerator2 {
         if (_N.equals(utilClass)) {
             File utilClassFile = new File(classFilePath + ClassUtil.getSimpleClassName(_N) + POSTFIX_OF_JAVA_FILE);
             if (!utilClassFile.exists()) {
-                String sourceCode = _N_STRING.replaceFirst("package com.landawn.abacus.util;", N.isNullOrEmpty(pkgName) ? "" : "package " + pkgName + ";");
+                String sourceCode = CodeGenerator._N_STRING.replaceFirst("package com.landawn.abacus.util;",
+                        N.isNullOrEmpty(pkgName) ? "" : "package " + pkgName + ";");
                 IOUtil.write(utilClassFile, sourceCode);
             }
         }
@@ -1205,7 +1205,7 @@ public final class CodeGenerator2 {
             }
 
             Map<String, List<String>> annotationLinesMapper = new LinkedHashMap<>();
-            Set<Class<?>> annotationImportClasses = new LinkedHashSet<>();
+            Set<Class<?>> annotationImportClasses = N.newLinkedHashSet();
 
             if (classFile.exists()) {
                 List<String> lines = IOUtil.readLines(classFile);
@@ -2169,7 +2169,7 @@ public final class CodeGenerator2 {
         if (_N.equals(utilClass)) {
             File utilClassFile = new File(dirFile.getAbsolutePath() + IOUtil.FILE_SEPARATOR + ClassUtil.getSimpleClassName(_N) + POSTFIX_OF_JAVA_FILE);
             if (!utilClassFile.exists()) {
-                String sourceCode = _N_STRING.replaceFirst("package com.landawn.abacus.util;",
+                String sourceCode = CodeGenerator._N_STRING.replaceFirst("package com.landawn.abacus.util;",
                         N.isNullOrEmpty(packageName) ? "" : "package " + packageName + ";");
                 IOUtil.write(utilClassFile, sourceCode);
             }
@@ -2383,7 +2383,7 @@ public final class CodeGenerator2 {
     //            Set<String> ignoreFieldNames, final Map<String, String> fieldName2MethodName, final ParentPropertyMode parentPropertyModeForHashEquals,
     //            final ParentPropertyMode parentPropertyModeForToString) {
     //        if (ignoreFieldNames == null) {
-    //            ignoreFieldNames = new LinkedHashSet<>();
+    //            ignoreFieldNames = N.newLinkedHashSet();
     //        }
     //
     //        final Map<String, Type<?>> fieldTypes = new LinkedHashMap<>();
@@ -4737,7 +4737,7 @@ public final class CodeGenerator2 {
      * @return Set<String>
      */
     private static Set<Class<?>> getUsualType(final EntityDefinition entityDef) {
-        Set<Class<?>> set = new LinkedHashSet<>();
+        Set<Class<?>> set = N.newLinkedHashSet();
 
         for (Property prop : entityDef.getPropertyList()) {
             if (prop.getColumnType().isEntity()) {
@@ -4864,287 +4864,4 @@ public final class CodeGenerator2 {
         /** The extend dirty marker. */
         EXTEND_DIRTY_MARKER;
     }
-
-    /** The Constant _N_STRING. */
-    private static final String _N_STRING = "/*\r\n" + " * Licensed to the Apache Software Foundation (ASF) under one or more\r\n"
-            + " * contributor license agreements.  See the NOTICE file distributed with\r\n"
-            + " * this work for additional information regarding copyright ownership.\r\n"
-            + " * The ASF licenses this file to You under the Apache License, Version 2.0\r\n"
-            + " * (the \"License\"); you may not use this file except in compliance with\r\n" + " * the License.  You may obtain a copy of the License at\r\n"
-            + " *\r\n" + " *      http://www.apache.org/licenses/LICENSE-2.0\r\n" + " *\r\n"
-            + " * Unless required by applicable law or agreed to in writing, software\r\n"
-            + " * distributed under the License is distributed on an \"AS IS\" BASIS,\r\n"
-            + " * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\r\n"
-            + " * See the License for the specific language governing permissions and\r\n" + " * limitations under the License.\r\n" + " */\r\n"
-            + "package com.landawn.abacus.util;\r\n" + "\r\n" + "import java.util.ArrayList;\r\n" + "import java.util.HashMap;\r\n"
-            + "import java.util.HashSet;\r\n" + "import java.util.LinkedHashMap;\r\n" + "import java.util.LinkedHashSet;\r\n"
-            + "import java.util.LinkedList;\r\n" + "import java.util.List;\r\n" + "import java.util.Map;\r\n" + "import java.util.Set;\r\n" + "\r\n" + "/**\r\n"
-            + " * \r\n" + " * @author Haiyang Li\r\n" + " * \r\n" + " * @since 0.8\r\n" + " */\r\n" + "public final class _N {\r\n" + "\r\n"
-            + "    private _N() {\r\n" + "        //singleton\r\n" + "    }\r\n" + "\r\n"
-            + "    private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;\r\n"
-            + "    private static final int MAX_HASH_LENGTH = (int) (MAX_ARRAY_SIZE / 1.25) - 1;\r\n"
-            + "    private static final String NULL_STRING = \"null\";\r\n" + "\r\n"
-            + "    public static boolean equals(final boolean a, final boolean b) {\r\n" + "        return a == b;\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final char a, final char b) {\r\n" + "        return a == b;\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final byte a, final byte b) {\r\n" + "        return a == b;\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final short a, final short b) {\r\n" + "        return a == b;\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final int a, final int b) {\r\n" + "        return a == b;\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final long a, final long b) {\r\n" + "        return a == b;\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final float a, final float b) {\r\n" + "        return Float.compare(a, b) == 0;\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final double a, final double b) {\r\n" + "        return Double.compare(a, b) == 0;\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final String a, final String b) {\r\n"
-            + "        return (a == null) ? b == null : (b == null ? false : a.length() == b.length() && a.equals(b));\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final Object a, final Object b) {\r\n"
-            + "        return (a == null) ? b == null : (b == null ? false : a.equals(b));\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final boolean[] a, final boolean[] b) {\r\n"
-            + "        return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final boolean[] a, final int fromIndex, final int toIndex, final boolean[] b) {\r\n"
-            + "        if (a == b) {\r\n" + "            return true;\r\n" + "        }\r\n" + "\r\n"
-            + "        if ((a == null && b != null) || (a != null && b == null) || a.length < toIndex || b.length < toIndex) {\r\n"
-            + "            return false;\r\n" + "        }\r\n" + "\r\n" + "        for (int i = fromIndex; i < toIndex; i++) {\r\n"
-            + "            if (a[i] != b[i]) {\r\n" + "                return false;\r\n" + "            }\r\n" + "        }\r\n" + "\r\n"
-            + "        return true;\r\n" + "    }\r\n" + "\r\n" + "    public static boolean equals(final char[] a, final char[] b) {\r\n"
-            + "        return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final char[] a, final int fromIndex, final int toIndex, final char[] b) {\r\n" + "        if (a == b) {\r\n"
-            + "            return true;\r\n" + "        }\r\n" + "\r\n"
-            + "        if ((a == null && b != null) || (a != null && b == null) || a.length < toIndex || b.length < toIndex) {\r\n"
-            + "            return false;\r\n" + "        }\r\n" + "\r\n" + "        for (int i = fromIndex; i < toIndex; i++) {\r\n"
-            + "            if (a[i] != b[i]) {\r\n" + "                return false;\r\n" + "            }\r\n" + "        }\r\n" + "\r\n"
-            + "        return true;\r\n" + "    }\r\n" + "\r\n" + "    public static boolean equals(final byte[] a, final byte[] b) {\r\n"
-            + "        return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final byte[] a, final int fromIndex, final int toIndex, final byte[] b) {\r\n" + "        if (a == b) {\r\n"
-            + "            return true;\r\n" + "        }\r\n" + "\r\n"
-            + "        if ((a == null && b != null) || (a != null && b == null) || a.length < toIndex || b.length < toIndex) {\r\n"
-            + "            return false;\r\n" + "        }\r\n" + "\r\n" + "        for (int i = fromIndex; i < toIndex; i++) {\r\n"
-            + "            if (a[i] != b[i]) {\r\n" + "                return false;\r\n" + "            }\r\n" + "        }\r\n" + "\r\n"
-            + "        return true;\r\n" + "    }\r\n" + "\r\n" + "    public static boolean equals(final short[] a, final short[] b) {\r\n"
-            + "        return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final short[] a, final int fromIndex, final int toIndex, final short[] b) {\r\n" + "        if (a == b) {\r\n"
-            + "            return true;\r\n" + "        }\r\n" + "\r\n"
-            + "        if ((a == null && b != null) || (a != null && b == null) || a.length < toIndex || b.length < toIndex) {\r\n"
-            + "            return false;\r\n" + "        }\r\n" + "\r\n" + "        for (int i = fromIndex; i < toIndex; i++) {\r\n"
-            + "            if (a[i] != b[i]) {\r\n" + "                return false;\r\n" + "            }\r\n" + "        }\r\n" + "\r\n"
-            + "        return true;\r\n" + "    }\r\n" + "\r\n" + "    public static boolean equals(final int[] a, final int[] b) {\r\n"
-            + "        return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final int[] a, final int fromIndex, final int toIndex, final int[] b) {\r\n" + "        if (a == b) {\r\n"
-            + "            return true;\r\n" + "        }\r\n" + "\r\n"
-            + "        if ((a == null && b != null) || (a != null && b == null) || a.length < toIndex || b.length < toIndex) {\r\n"
-            + "            return false;\r\n" + "        }\r\n" + "\r\n" + "        for (int i = fromIndex; i < toIndex; i++) {\r\n"
-            + "            if (a[i] != b[i]) {\r\n" + "                return false;\r\n" + "            }\r\n" + "        }\r\n" + "\r\n"
-            + "        return true;\r\n" + "    }\r\n" + "\r\n" + "    public static boolean equals(final long[] a, final long[] b) {\r\n"
-            + "        return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final long[] a, final int fromIndex, final int toIndex, final long[] b) {\r\n" + "        if (a == b) {\r\n"
-            + "            return true;\r\n" + "        }\r\n" + "\r\n"
-            + "        if ((a == null && b != null) || (a != null && b == null) || a.length < toIndex || b.length < toIndex) {\r\n"
-            + "            return false;\r\n" + "        }\r\n" + "\r\n" + "        for (int i = fromIndex; i < toIndex; i++) {\r\n"
-            + "            if (a[i] != b[i]) {\r\n" + "                return false;\r\n" + "            }\r\n" + "        }\r\n" + "\r\n"
-            + "        return true;\r\n" + "    }\r\n" + "\r\n" + "    public static boolean equals(final float[] a, final float[] b) {\r\n"
-            + "        return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final float[] a, final int fromIndex, final int toIndex, final float[] b) {\r\n" + "        if (a == b) {\r\n"
-            + "            return true;\r\n" + "        }\r\n" + "\r\n"
-            + "        if ((a == null && b != null) || (a != null && b == null) || a.length < toIndex || b.length < toIndex) {\r\n"
-            + "            return false;\r\n" + "        }\r\n" + "\r\n" + "        for (int i = fromIndex; i < toIndex; i++) {\r\n"
-            + "            if (Float.compare(a[i], b[i]) != 0) {\r\n" + "                return false;\r\n" + "            }\r\n" + "        }\r\n" + "\r\n"
-            + "        return true;\r\n" + "    }\r\n" + "\r\n" + "    public static boolean equals(final double[] a, final double[] b) {\r\n"
-            + "        return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final double[] a, final int fromIndex, final int toIndex, final double[] b) {\r\n" + "        if (a == b) {\r\n"
-            + "            return true;\r\n" + "        }\r\n" + "\r\n"
-            + "        if ((a == null && b != null) || (a != null && b == null) || a.length < toIndex || b.length < toIndex) {\r\n"
-            + "            return false;\r\n" + "        }\r\n" + "\r\n" + "        for (int i = fromIndex; i < toIndex; i++) {\r\n"
-            + "            if (Double.compare(a[i], b[i]) != 0) {\r\n" + "                return false;\r\n" + "            }\r\n" + "        }\r\n" + "\r\n"
-            + "        return true;\r\n" + "    }\r\n" + "\r\n" + "    public static boolean equals(final Object[] a, final Object[] b) {\r\n"
-            + "        return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));\r\n" + "    }\r\n" + "\r\n"
-            + "    public static boolean equals(final Object[] a, final int fromIndex, final int toIndex, final Object[] b) {\r\n" + "        if (a == b) {\r\n"
-            + "            return true;\r\n" + "        }\r\n" + "\r\n"
-            + "        if ((a == null && b != null) || (a != null && b == null) || a.length < toIndex || b.length < toIndex) {\r\n"
-            + "            return false;\r\n" + "        }\r\n" + "\r\n" + "        for (int i = fromIndex; i < toIndex; i++) {\r\n"
-            + "            if (!(a[i] == null ? b[i] == null : a[i].equals(b[i]))) {\r\n" + "                return false;\r\n" + "            }\r\n"
-            + "        }\r\n" + "\r\n" + "        return true;\r\n" + "    }\r\n" + "\r\n" + "    public static int hashCode(final boolean value) {\r\n"
-            + "        return value ? 1231 : 1237;\r\n" + "    }\r\n" + "\r\n" + "    public static int hashCode(final char value) {\r\n"
-            + "        return value;\r\n" + "    }\r\n" + "\r\n" + "    public static int hashCode(final byte value) {\r\n" + "        return value;\r\n"
-            + "    }\r\n" + "\r\n" + "    public static int hashCode(final short value) {\r\n" + "        return value;\r\n" + "    }\r\n" + "\r\n"
-            + "    public static int hashCode(final int value) {\r\n" + "        return value;\r\n" + "    }\r\n" + "\r\n"
-            + "    public static int hashCode(final long value) {\r\n" + "        return (int) (value ^ (value >>> 32));\r\n" + "    }\r\n" + "\r\n"
-            + "    public static int hashCode(final float value) {\r\n" + "        return Float.floatToIntBits(value);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static int hashCode(final double value) {\r\n" + "        long bits = Double.doubleToLongBits(value);\r\n" + "\r\n"
-            + "        return (int) (bits ^ (bits >>> 32));\r\n" + "    }\r\n" + "\r\n" + "    public static int hashCode(final Object obj) {\r\n"
-            + "        if (obj == null) {\r\n" + "            return 0;\r\n" + "        }\r\n" + "\r\n" + "        return obj.hashCode();\r\n" + "    }\r\n"
-            + "\r\n" + "    public static int hashCode(final boolean[] a) {\r\n" + "        return a == null ? 0 : hashCode(a, 0, a.length);\r\n" + "    }\r\n"
-            + "\r\n" + "    public static int hashCode(final boolean[] a, final int fromIndex, final int toIndex) {\r\n" + "        if (a == null) {\r\n"
-            + "            return 0;\r\n" + "        }\r\n" + "\r\n" + "        int result = 1;\r\n" + "\r\n"
-            + "        for (int i = fromIndex; i < toIndex; i++) {\r\n" + "            result = 31 * result + (a[i] ? 1231 : 1237);\r\n" + "        }\r\n"
-            + "\r\n" + "        return result;\r\n" + "    }\r\n" + "\r\n" + "    public static int hashCode(final char[] a) {\r\n"
-            + "        return a == null ? 0 : hashCode(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static int hashCode(final char[] a, final int fromIndex, final int toIndex) {\r\n" + "        if (a == null) {\r\n"
-            + "            return 0;\r\n" + "        }\r\n" + "\r\n" + "        int result = 1;\r\n" + "\r\n"
-            + "        for (int i = fromIndex; i < toIndex; i++) {\r\n" + "            result = 31 * result + a[i];\r\n" + "        }\r\n" + "\r\n"
-            + "        return result;\r\n" + "    }\r\n" + "\r\n" + "    public static int hashCode(final byte[] a) {\r\n"
-            + "        return a == null ? 0 : hashCode(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static int hashCode(final byte[] a, final int fromIndex, final int toIndex) {\r\n" + "        if (a == null) {\r\n"
-            + "            return 0;\r\n" + "        }\r\n" + "\r\n" + "        int result = 1;\r\n" + "\r\n"
-            + "        for (int i = fromIndex; i < toIndex; i++) {\r\n" + "            result = 31 * result + a[i];\r\n" + "        }\r\n" + "\r\n"
-            + "        return result;\r\n" + "    }\r\n" + "\r\n" + "    public static int hashCode(final short[] a) {\r\n"
-            + "        return a == null ? 0 : hashCode(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static int hashCode(final short[] a, final int fromIndex, final int toIndex) {\r\n" + "        if (a == null) {\r\n"
-            + "            return 0;\r\n" + "        }\r\n" + "\r\n" + "        int result = 1;\r\n" + "\r\n"
-            + "        for (int i = fromIndex; i < toIndex; i++) {\r\n" + "            result = 31 * result + a[i];\r\n" + "        }\r\n" + "\r\n"
-            + "        return result;\r\n" + "    }\r\n" + "\r\n" + "    public static int hashCode(final int[] a) {\r\n"
-            + "        return a == null ? 0 : hashCode(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static int hashCode(final int[] a, final int fromIndex, final int toIndex) {\r\n" + "        if (a == null) {\r\n"
-            + "            return 0;\r\n" + "        }\r\n" + "\r\n" + "        int result = 1;\r\n" + "\r\n"
-            + "        for (int i = fromIndex; i < toIndex; i++) {\r\n" + "            result = 31 * result + a[i];\r\n" + "        }\r\n" + "\r\n"
-            + "        return result;\r\n" + "    }\r\n" + "\r\n" + "    public static int hashCode(final long[] a) {\r\n"
-            + "        return a == null ? 0 : hashCode(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static int hashCode(final long[] a, final int fromIndex, final int toIndex) {\r\n" + "        if (a == null) {\r\n"
-            + "            return 0;\r\n" + "        }\r\n" + "\r\n" + "        int result = 1;\r\n" + "\r\n"
-            + "        for (int i = fromIndex; i < toIndex; i++) {\r\n" + "            result = 31 * result + (int) (a[i] ^ (a[i] >>> 32));\r\n"
-            + "        }\r\n" + "\r\n" + "        return result;\r\n" + "    }\r\n" + "\r\n" + "    public static int hashCode(final float[] a) {\r\n"
-            + "        return a == null ? 0 : hashCode(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static int hashCode(final float[] a, final int fromIndex, final int toIndex) {\r\n" + "        if (a == null) {\r\n"
-            + "            return 0;\r\n" + "        }\r\n" + "\r\n" + "        int result = 1;\r\n" + "\r\n"
-            + "        for (int i = fromIndex; i < toIndex; i++) {\r\n" + "            result = 31 * result + Float.floatToIntBits(a[i]);\r\n" + "        }\r\n"
-            + "\r\n" + "        return result;\r\n" + "    }\r\n" + "\r\n" + "    public static int hashCode(final double[] a) {\r\n"
-            + "        return a == null ? 0 : hashCode(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static int hashCode(final double[] a, final int fromIndex, final int toIndex) {\r\n" + "        if (a == null) {\r\n"
-            + "            return 0;\r\n" + "        }\r\n" + "\r\n" + "        int result = 1;\r\n" + "\r\n"
-            + "        for (int i = fromIndex; i < toIndex; i++) {\r\n" + "            long bits = Double.doubleToLongBits(a[i]);\r\n"
-            + "            result = 31 * result + (int) (bits ^ (bits >>> 32));\r\n" + "        }\r\n" + "\r\n" + "        return result;\r\n" + "    }\r\n"
-            + "\r\n" + "    public static int hashCode(final Object[] a) {\r\n" + "        return a == null ? 0 : hashCode(a, 0, a.length);\r\n" + "    }\r\n"
-            + "\r\n" + "    public static int hashCode(final Object[] a, final int fromIndex, final int toIndex) {\r\n" + "        if (a == null) {\r\n"
-            + "            return 0;\r\n" + "        }\r\n" + "\r\n" + "        int result = 1;\r\n" + "\r\n"
-            + "        for (int i = fromIndex; i < toIndex; i++) {\r\n" + "            result = 31 * result + (a[i] == null ? 0 : a[i].hashCode());\r\n"
-            + "        }\r\n" + "\r\n" + "        return result;\r\n" + "    }\r\n" + "\r\n" + "    public static String toString(final boolean value) {\r\n"
-            + "        return String.valueOf(value);\r\n" + "    }\r\n" + "\r\n" + "    public static String toString(final char value) {\r\n"
-            + "        return String.valueOf(value);\r\n" + "    }\r\n" + "\r\n" + "    public static String toString(final byte value) {\r\n"
-            + "        return String.valueOf(value);\r\n" + "    }\r\n" + "\r\n" + "    public static String toString(final short value) {\r\n"
-            + "        return String.valueOf(value);\r\n" + "    }\r\n" + "\r\n" + "    public static String toString(final int value) {\r\n"
-            + "        return String.valueOf(value);\r\n" + "    }\r\n" + "\r\n" + "    public static String toString(final long value) {\r\n"
-            + "        return String.valueOf(value);\r\n" + "    }\r\n" + "\r\n" + "    public static String toString(final float value) {\r\n"
-            + "        return String.valueOf(value);\r\n" + "    }\r\n" + "\r\n" + "    public static String toString(final double value) {\r\n"
-            + "        return String.valueOf(value);\r\n" + "    }\r\n" + "\r\n" + "    public static String toString(final Object obj) {\r\n"
-            + "        if (obj == null) {\r\n" + "            return NULL_STRING;\r\n" + "        }\r\n" + "\r\n" + "        return obj.toString();\r\n"
-            + "    }\r\n" + "\r\n" + "    public static String toString(final boolean[] a) {\r\n" + "        if (a == null) {\r\n"
-            + "            return NULL_STRING;\r\n" + "        }\r\n" + "\r\n" + "        if (a.length == 0) {\r\n" + "            return \"[]\";\r\n"
-            + "        }\r\n" + "\r\n" + "        return toString(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static String toString(final boolean[] a, final int from, final int to) {\r\n"
-            + "        final StringBuilder sb = new StringBuilder();\r\n" + "\r\n" + "        toString(sb, a, from, to);\r\n" + "\r\n"
-            + "        return sb.toString();\r\n" + "    }\r\n" + "\r\n" + "    static void toString(final StringBuilder sb, final boolean[] a) {\r\n"
-            + "        if (a == null) {\r\n" + "            sb.append(NULL_STRING);\r\n" + "        } else if (a.length == 0) {\r\n"
-            + "            sb.append(\"[]\");\r\n" + "        } else {\r\n" + "            toString(sb, a, 0, a.length);\r\n" + "        }\r\n" + "    }\r\n"
-            + "\r\n" + "    static void toString(final StringBuilder sb, final boolean[] a, final int from, final int to) {\r\n" + "        sb.append('[');\r\n"
-            + "\r\n" + "        for (int i = from; i < to; i++) {\r\n" + "            if (i > from) {\r\n" + "                sb.append(\", \");\r\n"
-            + "            }\r\n" + "\r\n" + "            sb.append(a[i]);\r\n" + "        }\r\n" + "\r\n" + "        sb.append(']');\r\n" + "    }\r\n"
-            + "\r\n" + "    public static String toString(final char[] a) {\r\n" + "        if (a == null) {\r\n" + "            return NULL_STRING;\r\n"
-            + "        }\r\n" + "\r\n" + "        if (a.length == 0) {\r\n" + "            return \"[]\";\r\n" + "        }\r\n" + "\r\n"
-            + "        return toString(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static String toString(final char[] a, final int from, final int to) {\r\n"
-            + "        final StringBuilder sb = new StringBuilder();\r\n" + "\r\n" + "        toString(sb, a, from, to);\r\n" + "\r\n"
-            + "        return sb.toString();\r\n" + "    }\r\n" + "\r\n" + "    static void toString(final StringBuilder sb, final char[] a) {\r\n"
-            + "        if (a == null) {\r\n" + "            sb.append(NULL_STRING);\r\n" + "        } else if (a.length == 0) {\r\n"
-            + "            sb.append(\"[]\");\r\n" + "        } else {\r\n" + "            toString(sb, a, 0, a.length);\r\n" + "        }\r\n" + "    }\r\n"
-            + "\r\n" + "    static void toString(final StringBuilder sb, final char[] a, final int from, final int to) {\r\n" + "        sb.append('[');\r\n"
-            + "\r\n" + "        for (int i = from; i < to; i++) {\r\n" + "            if (i > from) {\r\n" + "                sb.append(\", \");\r\n"
-            + "            }\r\n" + "\r\n" + "            sb.append(a[i]);\r\n" + "        }\r\n" + "\r\n" + "        sb.append(']');\r\n" + "    }\r\n"
-            + "\r\n" + "    public static String toString(final byte[] a) {\r\n" + "        if (a == null) {\r\n" + "            return NULL_STRING;\r\n"
-            + "        }\r\n" + "\r\n" + "        if (a.length == 0) {\r\n" + "            return \"[]\";\r\n" + "        }\r\n" + "\r\n"
-            + "        return toString(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static String toString(final byte[] a, final int from, final int to) {\r\n"
-            + "        final StringBuilder sb = new StringBuilder();\r\n" + "\r\n" + "        toString(sb, a, from, to);\r\n" + "\r\n"
-            + "        return sb.toString();\r\n" + "    }\r\n" + "\r\n" + "    static void toString(final StringBuilder sb, final byte[] a) {\r\n"
-            + "        if (a == null) {\r\n" + "            sb.append(NULL_STRING);\r\n" + "        } else if (a.length == 0) {\r\n"
-            + "            sb.append(\"[]\");\r\n" + "        } else {\r\n" + "            toString(sb, a, 0, a.length);\r\n" + "        }\r\n" + "    }\r\n"
-            + "\r\n" + "    static void toString(final StringBuilder sb, final byte[] a, final int from, final int to) {\r\n" + "        sb.append('[');\r\n"
-            + "\r\n" + "        for (int i = from; i < to; i++) {\r\n" + "            if (i > from) {\r\n" + "                sb.append(\", \");\r\n"
-            + "            }\r\n" + "\r\n" + "            sb.append(a[i]);\r\n" + "        }\r\n" + "\r\n" + "        sb.append(']');\r\n" + "    }\r\n"
-            + "\r\n" + "    public static String toString(final short[] a) {\r\n" + "        if (a == null) {\r\n" + "            return NULL_STRING;\r\n"
-            + "        }\r\n" + "\r\n" + "        if (a.length == 0) {\r\n" + "            return \"[]\";\r\n" + "        }\r\n" + "\r\n"
-            + "        return toString(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static String toString(final short[] a, final int from, final int to) {\r\n"
-            + "        final StringBuilder sb = new StringBuilder();\r\n" + "\r\n" + "        toString(sb, a, from, to);\r\n" + "\r\n"
-            + "        return sb.toString();\r\n" + "    }\r\n" + "\r\n" + "    static void toString(final StringBuilder sb, final short[] a) {\r\n"
-            + "        if (a == null) {\r\n" + "            sb.append(NULL_STRING);\r\n" + "        } else if (a.length == 0) {\r\n"
-            + "            sb.append(\"[]\");\r\n" + "        } else {\r\n" + "            toString(sb, a, 0, a.length);\r\n" + "        }\r\n" + "    }\r\n"
-            + "\r\n" + "    static void toString(final StringBuilder sb, final short[] a, final int from, final int to) {\r\n" + "        sb.append('[');\r\n"
-            + "\r\n" + "        for (int i = from; i < to; i++) {\r\n" + "            if (i > from) {\r\n" + "                sb.append(\", \");\r\n"
-            + "            }\r\n" + "\r\n" + "            sb.append(a[i]);\r\n" + "        }\r\n" + "\r\n" + "        sb.append(']');\r\n" + "    }\r\n"
-            + "\r\n" + "    public static String toString(final int[] a) {\r\n" + "        if (a == null) {\r\n" + "            return NULL_STRING;\r\n"
-            + "        }\r\n" + "\r\n" + "        if (a.length == 0) {\r\n" + "            return \"[]\";\r\n" + "        }\r\n" + "\r\n"
-            + "        return toString(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static String toString(final int[] a, final int from, final int to) {\r\n"
-            + "        final StringBuilder sb = new StringBuilder();\r\n" + "\r\n" + "        toString(sb, a, from, to);\r\n" + "\r\n"
-            + "        return sb.toString();\r\n" + "    }\r\n" + "\r\n" + "    static void toString(final StringBuilder sb, final int[] a) {\r\n"
-            + "        if (a == null) {\r\n" + "            sb.append(NULL_STRING);\r\n" + "        } else if (a.length == 0) {\r\n"
-            + "            sb.append(\"[]\");\r\n" + "        } else {\r\n" + "            toString(sb, a, 0, a.length);\r\n" + "        }\r\n" + "    }\r\n"
-            + "\r\n" + "    static void toString(final StringBuilder sb, final int[] a, final int from, final int to) {\r\n" + "        sb.append('[');\r\n"
-            + "\r\n" + "        for (int i = from; i < to; i++) {\r\n" + "            if (i > from) {\r\n" + "                sb.append(\", \");\r\n"
-            + "            }\r\n" + "\r\n" + "            sb.append(a[i]);\r\n" + "        }\r\n" + "\r\n" + "        sb.append(']');\r\n" + "    }\r\n"
-            + "\r\n" + "    public static String toString(final long[] a) {\r\n" + "        if (a == null) {\r\n" + "            return NULL_STRING;\r\n"
-            + "        }\r\n" + "\r\n" + "        if (a.length == 0) {\r\n" + "            return \"[]\";\r\n" + "        }\r\n" + "\r\n"
-            + "        return toString(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static String toString(final long[] a, final int from, final int to) {\r\n"
-            + "        final StringBuilder sb = new StringBuilder();\r\n" + "\r\n" + "        toString(sb, a, from, to);\r\n" + "\r\n"
-            + "        return sb.toString();\r\n" + "    }\r\n" + "\r\n" + "    static void toString(final StringBuilder sb, final long[] a) {\r\n"
-            + "        if (a == null) {\r\n" + "            sb.append(NULL_STRING);\r\n" + "        } else if (a.length == 0) {\r\n"
-            + "            sb.append(\"[]\");\r\n" + "        } else {\r\n" + "            toString(sb, a, 0, a.length);\r\n" + "        }\r\n" + "    }\r\n"
-            + "\r\n" + "    static void toString(final StringBuilder sb, final long[] a, final int from, final int to) {\r\n" + "        sb.append('[');\r\n"
-            + "\r\n" + "        for (int i = from; i < to; i++) {\r\n" + "            if (i > from) {\r\n" + "                sb.append(\", \");\r\n"
-            + "            }\r\n" + "\r\n" + "            sb.append(a[i]);\r\n" + "        }\r\n" + "\r\n" + "        sb.append(']');\r\n" + "    }\r\n"
-            + "\r\n" + "    public static String toString(final float[] a) {\r\n" + "        if (a == null) {\r\n" + "            return NULL_STRING;\r\n"
-            + "        }\r\n" + "\r\n" + "        if (a.length == 0) {\r\n" + "            return \"[]\";\r\n" + "        }\r\n" + "\r\n"
-            + "        return toString(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static String toString(final float[] a, final int from, final int to) {\r\n"
-            + "        final StringBuilder sb = new StringBuilder();\r\n" + "\r\n" + "        toString(sb, a, from, to);\r\n" + "\r\n"
-            + "        return sb.toString();\r\n" + "    }\r\n" + "\r\n" + "    static void toString(final StringBuilder sb, final float[] a) {\r\n"
-            + "        if (a == null) {\r\n" + "            sb.append(NULL_STRING);\r\n" + "        } else if (a.length == 0) {\r\n"
-            + "            sb.append(\"[]\");\r\n" + "        } else {\r\n" + "            toString(sb, a, 0, a.length);\r\n" + "        }\r\n" + "    }\r\n"
-            + "\r\n" + "    static void toString(final StringBuilder sb, final float[] a, final int from, final int to) {\r\n" + "        sb.append('[');\r\n"
-            + "\r\n" + "        for (int i = from; i < to; i++) {\r\n" + "            if (i > from) {\r\n" + "                sb.append(\", \");\r\n"
-            + "            }\r\n" + "\r\n" + "            sb.append(a[i]);\r\n" + "        }\r\n" + "\r\n" + "        sb.append(']');\r\n" + "    }\r\n"
-            + "\r\n" + "    public static String toString(final double[] a) {\r\n" + "        if (a == null) {\r\n" + "            return NULL_STRING;\r\n"
-            + "        }\r\n" + "\r\n" + "        if (a.length == 0) {\r\n" + "            return \"[]\";\r\n" + "        }\r\n" + "\r\n"
-            + "        return toString(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static String toString(final double[] a, final int from, final int to) {\r\n"
-            + "        final StringBuilder sb = new StringBuilder();\r\n" + "\r\n" + "        toString(sb, a, from, to);\r\n" + "\r\n"
-            + "        return sb.toString();\r\n" + "    }\r\n" + "\r\n" + "    static void toString(final StringBuilder sb, final double[] a) {\r\n"
-            + "        if (a == null) {\r\n" + "            sb.append(NULL_STRING);\r\n" + "        } else if (a.length == 0) {\r\n"
-            + "            sb.append(\"[]\");\r\n" + "        } else {\r\n" + "            toString(sb, a, 0, a.length);\r\n" + "        }\r\n" + "    }\r\n"
-            + "\r\n" + "    static void toString(final StringBuilder sb, final double[] a, final int from, final int to) {\r\n" + "        sb.append('[');\r\n"
-            + "\r\n" + "        for (int i = from; i < to; i++) {\r\n" + "            if (i > from) {\r\n" + "                sb.append(\", \");\r\n"
-            + "            }\r\n" + "\r\n" + "            sb.append(a[i]);\r\n" + "        }\r\n" + "\r\n" + "        sb.append(']');\r\n" + "    }\r\n"
-            + "\r\n" + "    public static String toString(final Object[] a) {\r\n" + "        if (a == null) {\r\n" + "            return NULL_STRING;\r\n"
-            + "        }\r\n" + "\r\n" + "        if (a.length == 0) {\r\n" + "            return \"[]\";\r\n" + "        }\r\n" + "\r\n"
-            + "        return toString(a, 0, a.length);\r\n" + "    }\r\n" + "\r\n"
-            + "    public static String toString(final Object[] a, final int from, final int to) {\r\n"
-            + "        final StringBuilder sb = new StringBuilder();\r\n" + "\r\n" + "        toString(sb, a, from, to);\r\n" + "\r\n"
-            + "        return sb.toString();\r\n" + "    }\r\n" + "\r\n" + "    static void toString(final StringBuilder sb, final Object[] a) {\r\n"
-            + "        if (a == null) {\r\n" + "            sb.append(NULL_STRING);\r\n" + "        } else if (a.length == 0) {\r\n"
-            + "            sb.append(\"[]\");\r\n" + "        } else {\r\n" + "            toString(sb, a, 0, a.length);\r\n" + "        }\r\n" + "    }\r\n"
-            + "\r\n" + "    static void toString(final StringBuilder sb, final Object[] a, final int from, final int to) {\r\n" + "        sb.append('[');\r\n"
-            + "\r\n" + "        for (int i = from; i < to; i++) {\r\n" + "            if (i > from) {\r\n" + "                sb.append(\", \");\r\n"
-            + "            }\r\n" + "\r\n" + "            sb.append(toString(a[i]));\r\n" + "        }\r\n" + "\r\n" + "        sb.append(']');\r\n"
-            + "    }\r\n" + "\r\n" + "    @SafeVarargs\r\n" + "    public static <T> List<T> asList(final T... a) {\r\n" + "        if (a == null) {\r\n"
-            + "            return new ArrayList<>();\r\n" + "        }\r\n" + "\r\n" + "        final List<T> list = new ArrayList<T>(a.length);\r\n" + "\r\n"
-            + "        for (T e : a) {\r\n" + "            list.add(e);\r\n" + "        }\r\n" + "\r\n" + "        return list;\r\n" + "    }\r\n" + "\r\n"
-            + "    @SafeVarargs\r\n" + "    public static <T> LinkedList<T> asLinkedList(final T... a) {\r\n" + "        if (a == null) {\r\n"
-            + "            return new LinkedList<>();\r\n" + "        }\r\n" + "\r\n" + "        LinkedList<T> list = new LinkedList<T>();\r\n" + "\r\n"
-            + "        for (T e : a) {\r\n" + "            list.add(e);\r\n" + "        }\r\n" + "\r\n" + "        return list;\r\n" + "    }\r\n" + "\r\n"
-            + "    @SafeVarargs\r\n" + "    public static <T> Set<T> asSet(final T... a) {\r\n" + "        if (a == null) {\r\n"
-            + "            return new HashSet<>();\r\n" + "        }\r\n" + "\r\n"
-            + "        final Set<T> set = new HashSet<T>(initHashCapacity(a.length));\r\n" + "\r\n" + "        for (T e : a) {\r\n"
-            + "            set.add(e);\r\n" + "        }\r\n" + "\r\n" + "        return set;\r\n" + "    }\r\n" + "\r\n" + "    @SafeVarargs\r\n"
-            + "    public static <T> LinkedHashSet<T> asLinkedHashSet(final T... a) {\r\n" + "        if (a == null) {\r\n"
-            + "            return new LinkedHashSet<>();\r\n" + "        }\r\n" + "\r\n"
-            + "        final LinkedHashSet<T> set = new LinkedHashSet<T>(initHashCapacity(a.length));\r\n" + "\r\n" + "        for (T e : a) {\r\n"
-            + "            set.add(e);\r\n" + "        }\r\n" + "\r\n" + "        return set;\r\n" + "    }\r\n" + "\r\n"
-            + "    @SuppressWarnings(\"unchecked\")\r\n" + "    @SafeVarargs\r\n" + "    public static <K, V> Map<K, V> asMap(final Object... a) {\r\n"
-            + "        if (a == null) {\r\n" + "            return new HashMap<>();\r\n" + "        }\r\n" + "\r\n"
-            + "        final Map<K, V> m = new HashMap<K, V>(initHashCapacity(a.length / 2));\r\n" + "\r\n" + "        for (int i = 0; i < a.length; i++) {\r\n"
-            + "            m.put((K) a[i], (V) a[++i]);\r\n" + "        }\r\n" + "\r\n" + "        return m;\r\n" + "    }\r\n" + "\r\n"
-            + "    @SuppressWarnings(\"unchecked\")\r\n" + "    @SafeVarargs\r\n"
-            + "    public static <K, V> LinkedHashMap<K, V> asLinkedHashMap(final Object... a) {\r\n" + "        if (a == null) {\r\n"
-            + "            return new LinkedHashMap<>();\r\n" + "        }\r\n" + "\r\n"
-            + "        final LinkedHashMap<K, V> m = new LinkedHashMap<K, V>(initHashCapacity(a.length / 2));\r\n" + "\r\n"
-            + "        for (int i = 0; i < a.length; i++) {\r\n" + "            m.put((K) a[i], (V) a[++i]);\r\n" + "        }\r\n" + "\r\n"
-            + "        return m;\r\n" + "    }\r\n" + "\r\n" + "    private static int initHashCapacity(final int size) {\r\n"
-            + "        return size < MAX_HASH_LENGTH ? (int) (size * 1.25) + 1 : MAX_ARRAY_SIZE;\r\n" + "    }\r\n" + "}";
 }

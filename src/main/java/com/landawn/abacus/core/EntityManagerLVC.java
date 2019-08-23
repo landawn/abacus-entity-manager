@@ -21,7 +21,6 @@ import static com.landawn.abacus.core.EntityManagerUtil.resultSet2EntityId;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -253,7 +252,7 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
         }
 
         if (alwrite == null) {
-            alwrite = new HashSet<>();
+            alwrite = N.newHashSet();
         }
 
         EntityId entityId = EntityManagerUtil.getEntityIdByEntity(entityDef, entity);
@@ -517,7 +516,7 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
                     return null;
                 }
 
-                Set<EntityId> alwrite = new HashSet<>();
+                Set<EntityId> alwrite = N.newHashSet();
 
                 if (result instanceof MapEntity) {
                     MapEntity anMapEntity = (MapEntity) result;
@@ -747,7 +746,7 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
                     }
 
                     if (gotPropNames == null) {
-                        gotPropNames = new HashSet<>();
+                        gotPropNames = N.newHashSet();
                     }
 
                     gotPropNames.add(propName);

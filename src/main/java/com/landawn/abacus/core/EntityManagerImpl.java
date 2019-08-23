@@ -43,7 +43,6 @@ import static com.landawn.abacus.core.EntityManagerUtil.setIdValue;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -482,7 +481,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
 
                     Collection<Object> c = rightLeftPropValueMap.get(rightPropValue);
                     if (c == null) {
-                        c = new HashSet<>();
+                        c = N.newHashSet();
 
                         rightLeftPropValueMap.put(rightPropValue, c);
                     }
@@ -1250,7 +1249,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
                 final Property leftProp = association.getBiEntityProperties()[0];
                 final Property rightProp = association.getBiEntityProperties()[1];
 
-                final Set<String> selectPropNames = new HashSet<>(biEntityDef.getIdPropertyNameList());
+                final Set<String> selectPropNames = N.newHashSet(biEntityDef.getIdPropertyNameList());
                 selectPropNames.add(leftProp.getName());
                 selectPropNames.add(rightProp.getName());
 

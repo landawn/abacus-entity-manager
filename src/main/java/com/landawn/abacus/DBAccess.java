@@ -52,7 +52,7 @@ public interface DBAccess {
      *
      * @param <T>
      * @param entityId
-mes specifies the properties need to be load. all properties will be loaded if it's null.
+    mes specifies the properties need to be load. all properties will be loaded if it's null.
      * @return T
      * @throws DuplicatedResultException if more than one record found by the specified {@code entityId}.
      */

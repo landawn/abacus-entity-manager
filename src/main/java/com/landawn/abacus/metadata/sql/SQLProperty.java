@@ -13,14 +13,13 @@
  */
 
 package com.landawn.abacus.metadata.sql;
-
+ 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -586,7 +585,7 @@ public class SQLProperty implements Property {
     @Override
     public <T> Collection<T> asCollection(Collection<T> entities) {
         if (isSet()) {
-            return new LinkedHashSet<>(entities);
+            return N.newLinkedHashSet(entities);
         } else {
             return new ArrayList<>(entities);
         }

@@ -13,14 +13,13 @@
  */
 
 package com.landawn.abacus.metadata.sql;
-
+ 
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,7 +81,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
         // http://en.wikipedia.org/wiki/Double-checked_locking
         // http://www.ibm.com/developerworks/java/library/j-dcl/index.html
 
-        final Set<Class<?>> entityTypeClass = new HashSet<>();
+        final Set<Class<?>> entityTypeClass = N.newHashSet();
 
         for (SQLEntityDefinition entityDef : entityDefinitionPool.values()) {
             entityDef.setFactory(this);

@@ -15,7 +15,7 @@
  */
 
 package com.landawn.abacus.core.command;
-
+ 
 import static com.landawn.abacus.util.WD.COMMA_SPACE;
 import static com.landawn.abacus.util.WD._BRACE_L;
 import static com.landawn.abacus.util.WD._BRACE_R;
@@ -24,7 +24,6 @@ import static com.landawn.abacus.util.WD._SPACE;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
 
 import com.landawn.abacus.type.Type;
@@ -45,10 +44,10 @@ public class SQLCommand extends AbstractCommand {
     private static final int INIT_SIZE = 9;
 
     /** The target tables. */
-    private Set<String> targetTables = new HashSet<>();
+    private Set<String> targetTables = N.newHashSet();
     
     /** The sub query tables. */
-    private Set<String> subQueryTables = new HashSet<>();
+    private Set<String> subQueryTables = N.newHashSet();
 
     /** The parameter values. */
     protected Object[] parameterValues = new Object[INIT_SIZE];
@@ -390,8 +389,8 @@ public class SQLCommand extends AbstractCommand {
     public Object clone() {
         SQLCommand copy = (SQLCommand) super.clone();
 
-        copy.targetTables = new HashSet<>(targetTables);
-        copy.subQueryTables = new HashSet<>(subQueryTables);
+        copy.targetTables = N.newHashSet(targetTables);
+        copy.subQueryTables = N.newHashSet(subQueryTables);
         copy.parameterValues = N.copyOfRange(parameterValues, 0, parameterValues.length);
         copy.parameterTypes = N.copyOfRange(parameterTypes, 0, parameterTypes.length);
 

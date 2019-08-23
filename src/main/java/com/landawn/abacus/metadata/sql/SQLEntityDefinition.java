@@ -13,7 +13,7 @@
  */
 
 package com.landawn.abacus.metadata.sql;
-
+ 
 import static com.landawn.abacus.util.WD._PERIOD;
 
 import java.io.InputStream;
@@ -24,7 +24,6 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -841,7 +840,7 @@ public class SQLEntityDefinition implements EntityDefinition {
     }
 
     /** The Constant cachedFieldInterfaceSet. */
-    private static final Set<Class<?>> cachedFieldInterfaceSet = new HashSet<>();
+    private static final Set<Class<?>> cachedFieldInterfaceSet = N.newHashSet();
 
     /**
      * Inits the class.

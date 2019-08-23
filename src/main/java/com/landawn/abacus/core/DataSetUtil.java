@@ -19,7 +19,6 @@ package com.landawn.abacus.core;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -215,7 +214,7 @@ final class DataSetUtil {
             propValueSet = idPropValueSetMap.get(id);
 
             if (propValueSet == null) {
-                propValueSet = new LinkedHashSet<>();
+                propValueSet = N.newLinkedHashSet();
                 idPropValueSetMap.put(id, propValueSet);
 
                 for (int k = 0; k < columnCount; k++) {

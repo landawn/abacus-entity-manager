@@ -61,7 +61,7 @@ final class ParametersUtil {
      */
     @SafeVarargs
     public static <T> Set<T> asSet(T... a) {
-        Set<T> set = (a.length == 0) ? new HashSet<T>() : new HashSet<T>(a.length + 3);
+        Set<T> set = (a.length == 0) ? N.newHashSet() : N.newHashSet(a.length + 3);
 
         for (int i = 0; i < a.length; i++) {
             set.add(a[i]);
@@ -161,9 +161,9 @@ final class ParametersUtil {
      */
     public static <T> Set<T> copy(Set<T> c) {
         if (c == null) {
-            return new LinkedHashSet<T>();
+            return N.newLinkedHashSet();
         } else {
-            return (c instanceof Local) ? c : new LinkedHashSet<T>(c);
+            return (c instanceof Local) ? c : N.newLinkedHashSet(c);
         }
     }
 

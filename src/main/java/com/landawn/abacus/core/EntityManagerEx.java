@@ -17,7 +17,6 @@ package com.landawn.abacus.core;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -1894,7 +1893,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
 
         if (oldEntityMap.size() > 0) {
             T entity = null;
-            final Collection<String> selectPropNames = new HashSet<>();
+            final Collection<String> selectPropNames = N.newHashSet();
 
             for (EntityId entityId : oldEntityMap.keySet()) {
                 entity = oldEntityMap.get(entityId);

@@ -19,7 +19,6 @@ package com.landawn.abacus.core;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -706,7 +705,7 @@ public final class EntityUtil {
         if (entity instanceof MapEntity) {
             final MapEntity anMapEntity = (MapEntity) entity;
             final MapEntity anotherMapEntity = (MapEntity) anObject;
-            final Set<String> signedPropNames = new HashSet<>(DirtyMarkerUtil.signedPropNames(anMapEntity));
+            final Set<String> signedPropNames = N.newHashSet(DirtyMarkerUtil.signedPropNames(anMapEntity));
             signedPropNames.addAll(DirtyMarkerUtil.signedPropNames(anotherMapEntity));
 
             Collection<String> idPropNames = entityDef.getIdPropertyNameList();
@@ -733,7 +732,7 @@ public final class EntityUtil {
                 }
             }
         } else {
-            Set<String> signedPropNames = new HashSet<>(EntityManagerUtil.getSignedPropNames(entityDef, entity));
+            Set<String> signedPropNames = N.newHashSet(EntityManagerUtil.getSignedPropNames(entityDef, entity));
             signedPropNames.addAll(EntityManagerUtil.getSignedPropNames(entityDef, anObject));
 
             Collection<String> idPropNames = entityDef.getIdPropertyNameList();
