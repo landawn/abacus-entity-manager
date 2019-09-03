@@ -33,7 +33,6 @@ public enum ColumnType {
     private final String name;
 
     /**
-     * Constructor.
      *
      * @param name
      */
@@ -42,7 +41,6 @@ public enum ColumnType {
     }
 
     /**
-     * Method getName.
      *
      * @return
      */
@@ -51,7 +49,6 @@ public enum ColumnType {
     }
 
     /**
-     * Gets the.
      *
      * @param typeName
      * @return EntityType
@@ -65,7 +62,6 @@ public enum ColumnType {
     }
 
     /**
-     * Method isEntity.
      * 
      * @return boolean
      */
@@ -74,7 +70,6 @@ public enum ColumnType {
     }
 
     /**
-     * Method toString.
      * 
      * @return String
      */

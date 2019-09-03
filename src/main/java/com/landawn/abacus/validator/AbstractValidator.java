@@ -45,7 +45,6 @@ public abstract class AbstractValidator<T> implements Validator<T> {
     }
 
     /**
-     * Method getProperty.
      * 
      * @return Property
      * @see com.landawn.abacus.validator.Validator#getPropName()
@@ -56,7 +55,6 @@ public abstract class AbstractValidator<T> implements Validator<T> {
     }
 
     /**
-     * Method getType.
      * 
      * @return Type
      * @see com.landawn.abacus.validator.Validator#getType()
@@ -67,7 +65,6 @@ public abstract class AbstractValidator<T> implements Validator<T> {
     }
 
     /**
-     * Method check.
      *
      * @param propValue
      * @return
@@ -84,7 +81,6 @@ public abstract class AbstractValidator<T> implements Validator<T> {
     }
 
     /**
-     * To string.
      *
      * @return
      */

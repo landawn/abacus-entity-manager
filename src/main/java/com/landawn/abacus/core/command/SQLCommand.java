@@ -155,7 +155,6 @@ public class SQLCommand extends AbstractCommand {
     }
 
     /**
-     * Append parameters.
      *
      * @param sqlCmd
      */
@@ -164,7 +163,6 @@ public class SQLCommand extends AbstractCommand {
     }
 
     /**
-     * Append parameters.
      *
      * @param sqlCmd
      * @param fromIndex
@@ -368,7 +366,6 @@ public class SQLCommand extends AbstractCommand {
     }
 
     /**
-     * Combine.
      *
      * @param sqlCmd
      */
@@ -380,7 +377,6 @@ public class SQLCommand extends AbstractCommand {
     }
 
     /**
-     * Clone.
      *
      * @return
      */
@@ -424,7 +420,6 @@ public class SQLCommand extends AbstractCommand {
     }
 
     /**
-     * Hash code.
      *
      * @return
      */
@@ -438,7 +433,6 @@ public class SQLCommand extends AbstractCommand {
     }
 
     /**
-     * Equals.
      *
      * @param obj
      * @return true, if successful
@@ -459,7 +453,6 @@ public class SQLCommand extends AbstractCommand {
     }
 
     /**
-     * To string.
      *
      * @return
      */
@@ -496,7 +489,6 @@ public class SQLCommand extends AbstractCommand {
     }
 
     /**
-     * Finalize.
      *
      * @throws Throwable the throwable
      */

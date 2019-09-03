@@ -54,7 +54,6 @@ public final class NotEqualValidator<T> extends AbstractComparableValidator<T> {
     }
 
     /**
-     * Method isValid.
      *
      * @param propValue
      * @return boolean

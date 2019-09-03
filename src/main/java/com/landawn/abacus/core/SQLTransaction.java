@@ -125,7 +125,6 @@ public final class SQLTransaction implements Transaction {
     }
 
     /**
-     * Id.
      *
      * @return
      */
@@ -135,7 +134,6 @@ public final class SQLTransaction implements Transaction {
     }
 
     /**
-     * Connection.
      *
      * @return
      */
@@ -144,7 +142,6 @@ public final class SQLTransaction implements Transaction {
     }
 
     /**
-     * Connection.
      *
      * @return
      */
@@ -153,7 +150,6 @@ public final class SQLTransaction implements Transaction {
     }
 
     /**
-     * Isolation level.
      *
      * @return
      */
@@ -163,7 +159,6 @@ public final class SQLTransaction implements Transaction {
     }
 
     /**
-     * Status.
      *
      * @return
      */
@@ -218,7 +213,6 @@ public final class SQLTransaction implements Transaction {
     //    }
 
     /**
-     * Commit.
      *
      * @throws UncheckedSQLException the unchecked SQL exception
      */
@@ -348,7 +342,6 @@ public final class SQLTransaction implements Transaction {
     }
 
     /**
-     * Execute rollback.
      *
      * @throws UncheckedSQLException the unchecked SQL exception
      */
@@ -506,7 +499,6 @@ public final class SQLTransaction implements Transaction {
     }
 
     /**
-     * Put transaction.
      *
      * @param tran
      * @return
@@ -556,7 +548,6 @@ public final class SQLTransaction implements Transaction {
     }
 
     /**
-     * Hash code.
      *
      * @return
      */
@@ -566,7 +557,6 @@ public final class SQLTransaction implements Transaction {
     }
 
     /**
-     * Equals.
      *
      * @param obj
      * @return true, if successful
@@ -577,7 +567,6 @@ public final class SQLTransaction implements Transaction {
     }
 
     /**
-     * To string.
      *
      * @return
      */

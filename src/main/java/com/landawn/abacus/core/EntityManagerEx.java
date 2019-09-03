@@ -67,7 +67,6 @@ import com.landawn.abacus.util.function.ToShortFunction;
 
 // TODO: Auto-generated Javadoc
 /**
- * Multi-thread safe.
  *
  * @author Haiyang Li
  * @param <T> the entity type
@@ -135,7 +134,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Exists.
      *
      * @param entityName
      * @param id
@@ -146,7 +144,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Exists.
      *
      * @param entityName
      * @param id
@@ -157,7 +154,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Exists.
      *
      * @param entityId
      * @return true, if successful
@@ -167,7 +163,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Exists.
      *
      * @param entityId
      * @param options
@@ -178,7 +173,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Exists.
      *
      * @param entityName
      * @param cond
@@ -189,7 +183,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Exists.
      *
      * @param entityName
      * @param cond
@@ -203,7 +196,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Count.
      *
      * @param entityName
      * @param cond
@@ -214,7 +206,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Count.
      *
      * @param entityName
      * @param cond
@@ -612,7 +603,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Query.
      *
      * @param entityName
      * @param selectPropNames
@@ -625,7 +615,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Query.
      *
      * @param entityName
      * @param selectPropNames
@@ -638,7 +627,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Query.
      *
      * @param entityName
      * @param selectPropNames
@@ -726,7 +714,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     //        return (dataSet.size() == 0) ? null : (Map<String, Object>) dataSet.getRow(Map.class, 0);
     //    }
     /**
-     * Find first.
      *
      * @param <TT> the target entity type
      * @param entityClass
@@ -762,7 +749,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Find first.
      *
      * @param <TT> the target entity type
      * @param entityName
@@ -797,7 +783,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Query all.
      *
      * @param entityDef
      * @param selectPropNames
@@ -996,7 +981,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * List.
      *
      * @param <TT> the target entity type
      * @param entityName
@@ -1010,7 +994,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * List.
      *
      * @param <TT> the target entity type
      * @param entityName
@@ -1052,7 +1035,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * List all.
      *
      * @param <TT> the target entity type
      * @param entityDef
@@ -1257,7 +1239,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Adds the.
      *
      * @param entityName
      * @param props
@@ -1268,7 +1249,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Adds the.
      *
      * @param entityName
      * @param props
@@ -1305,7 +1285,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Update.
      *
      * @param entityName
      * @param props
@@ -1317,7 +1296,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Update.
      *
      * @param entityName
      * @param props
@@ -1331,7 +1309,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Delete.
      *
      * @param entityName
      * @param cond
@@ -1342,7 +1319,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Delete.
      *
      * @param entityName
      * @param cond
@@ -1378,7 +1354,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Begin transaction.
      *
      * @param isolationLevel
      * @return
@@ -1388,7 +1363,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Begin transaction.
      *
      * @param isolationLevel
      * @param options
@@ -1400,7 +1374,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * End transaction.
      *
      * @param transactionId
      * @param transactionAction
@@ -1410,7 +1383,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * End transaction.
      *
      * @param transactionId
      * @param transactionAction
@@ -1422,7 +1394,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Gets the.
      *
      * @param <TT> the target entity type
      * @param entityName
@@ -1436,7 +1407,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Gets the.
      *
      * @param <TT> the target entity type
      * @param entityName
@@ -1451,7 +1421,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Gets the.
      *
      * @param <TT> the target entity type
      * @param entityName
@@ -1468,7 +1437,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Gets the.
      *
      * @param <TT> the target entity type
      * @param entityName
@@ -1482,7 +1450,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Gets the.
      *
      * @param <TT> the target entity type
      * @param entityName
@@ -1497,7 +1464,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Gets the.
      *
      * @param <TT> the target entity type
      * @param entityName
@@ -1514,7 +1480,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Gets the.
      *
      * @param <TT> the target entity type
      * @param entityId
@@ -1528,7 +1493,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Gets the.
      *
      * @param <TT> the target entity type
      * @param entityId
@@ -1543,7 +1507,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Gets the.
      *
      * @param <TT> the target entity type
      * @param entityId
@@ -1744,7 +1707,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Gets the.
      *
      * @param <TT> the target entity type
      * @param entityName
@@ -1760,7 +1722,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Gets the.
      *
      * @param <TT> the target entity type
      * @param entityName
@@ -1776,7 +1737,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Gets the.
      *
      * @param <TT> the target entity type
      * @param entityId
@@ -1814,7 +1774,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     //    }
 
     /**
-     * Refresh.
      *
      * @param entity
      * @return true, if successful
@@ -1825,7 +1784,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Refresh.
      *
      * @param entity
      * @param options
@@ -1853,7 +1811,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Refresh all.
      *
      * @param entities
      * @return
@@ -1864,7 +1821,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Refresh all.
      *
      * @param entities
      * @param options
@@ -1921,7 +1877,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Adds the.
      *
      * @param entity
      * @return
@@ -1932,7 +1887,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Adds the.
      *
      * @param entity
      * @param options
@@ -2011,7 +1965,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Update.
      *
      * @param entity
      * @return
@@ -2022,7 +1975,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Update.
      *
      * @param entity
      * @param options
@@ -2034,7 +1986,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Update all.
      *
      * @param entities
      * @return
@@ -2045,7 +1996,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Update all.
      *
      * @param entities
      * @param options
@@ -2103,7 +2053,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Delete.
      *
      * @param entity
      * @return
@@ -2114,7 +2063,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Delete.
      *
      * @param entity
      * @param options
@@ -2126,7 +2074,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Delete all.
      *
      * @param entities the elements in the collection must be the same type
      * @return
@@ -2137,7 +2084,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Delete all.
      *
      * @param entities the elements in the collection must be the same type
      * @param options
@@ -2149,7 +2095,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Delete.
      *
      * @param entityId
      * @return
@@ -2160,7 +2105,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Delete.
      *
      * @param entityId
      * @param options
@@ -2172,7 +2116,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Delete all.
      *
      * @param entityIds
      * @return
@@ -2183,7 +2126,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Delete all.
      *
      * @param entityIds
      * @param options
@@ -2208,7 +2150,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Lock record.
      *
      * @param entityId
      * @param lockMode
@@ -2222,7 +2163,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Unlock record.
      *
      * @param entityId
      * @param lockCode
@@ -2248,7 +2188,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * To array.
      *
      * @param <TT> the target entity type
      * @param c
@@ -2277,7 +2216,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Check entity.
      *
      * @param entity
      * @return
@@ -2287,7 +2225,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Check entity.
      *
      * @param entities
      * @return
@@ -2297,7 +2234,6 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Check entity.
      *
      * @param entities
      * @return

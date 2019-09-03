@@ -40,7 +40,6 @@ public final class AfterValidator<T extends Date> extends AbstractDateValidator<
     }
 
     /**
-     * Method isValid.
      *
      * @param propValue
      * @return boolean

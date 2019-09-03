@@ -112,7 +112,6 @@ class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, 
     }
 
     /**
-     * Update cache.
      *
      * @param command
      * @param options

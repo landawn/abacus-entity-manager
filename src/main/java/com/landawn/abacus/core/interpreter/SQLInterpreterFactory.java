@@ -124,7 +124,6 @@ public final class SQLInterpreterFactory {
     }
 
     /**
-     * Register interpreter.
      *
      * @param interpreter
      * @param clazz

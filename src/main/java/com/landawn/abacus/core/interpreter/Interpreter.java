@@ -35,7 +35,6 @@ public interface Interpreter {
     //    Command interpretAdd(EntityDefinition entityDef, Map<String, Object> props, Map<String, Object> options);
 
     /**
-     * Interpret add.
      *
      * @param entityDef
      * @param propsList
@@ -45,7 +44,6 @@ public interface Interpreter {
     Command interpretAdd(EntityDefinition entityDef, List<Map<String, Object>> propsList, Map<String, Object> options);
 
     /**
-     * Interpret update.
      *
      * @param entityDef
      * @param props
@@ -56,7 +54,6 @@ public interface Interpreter {
     Command interpretUpdate(EntityDefinition entityDef, Map<String, Object> props, Condition condition, Map<String, Object> options);
 
     /**
-     * Interpret delete.
      *
      * @param entityDef
      * @param condition
@@ -66,7 +63,6 @@ public interface Interpreter {
     Command interpretDelete(EntityDefinition entityDef, Condition condition, Map<String, Object> options);
 
     /**
-     * Interpret query.
      *
      * @param entityDef
      * @param propNames
@@ -77,7 +73,6 @@ public interface Interpreter {
     Command interpretQuery(EntityDefinition entityDef, Collection<String> propNames, Condition condition, Map<String, Object> options);
 
     /**
-     * Interpret query.
      *
      * @param entityDef
      * @param query
@@ -88,7 +83,6 @@ public interface Interpreter {
     Command interpretQuery(EntityDefinition entityDef, String query, List<?> parameters, Map<String, Object> options);
 
     /**
-     * Interpret condition.
      *
      * @param entityDef
      * @param condition

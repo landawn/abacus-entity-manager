@@ -185,7 +185,6 @@ public final class AsyncBatchExecutor<E> {
     }
 
     /**
-     * Adds the.
      *
      * @param e
      */
@@ -198,7 +197,6 @@ public final class AsyncBatchExecutor<E> {
     }
 
     /**
-     * Update.
      *
      * @param e
      */
@@ -211,7 +209,6 @@ public final class AsyncBatchExecutor<E> {
     }
 
     /**
-     * Delete.
      *
      * @param e
      */

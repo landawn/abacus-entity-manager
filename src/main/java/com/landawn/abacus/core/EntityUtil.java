@@ -51,7 +51,6 @@ public final class EntityUtil {
     }
 
     /**
-     * Clone.
      *
      * @param <T>
      * @param entityDef
@@ -69,7 +68,6 @@ public final class EntityUtil {
     }
 
     /**
-     * Copy.
      *
      * @param <T>
      * @param entityDef
@@ -81,7 +79,6 @@ public final class EntityUtil {
     }
 
     /**
-     * Copy.
      *
      * @param <T>
      * @param entityDef
@@ -102,7 +99,6 @@ public final class EntityUtil {
     }
 
     /**
-     * Copy.
      *
      * @param <T>
      * @param entityDef
@@ -173,7 +169,6 @@ public final class EntityUtil {
     }
 
     /**
-     * Transfer.
      *
      * @param <T>
      * @param entityDef
@@ -186,7 +181,6 @@ public final class EntityUtil {
     }
 
     /**
-     * Transfer.
      *
      * @param <T>
      * @param entityDef
@@ -288,7 +282,6 @@ public final class EntityUtil {
     }
 
     /**
-     * Disassemble.
      *
      * @param entityDef
      * @param sourceEntity
@@ -343,7 +336,6 @@ public final class EntityUtil {
     }
 
     /**
-     * Assemble.
      *
      * @param <T>
      * @param entityDef
@@ -400,7 +392,6 @@ public final class EntityUtil {
     }
 
     /**
-     * Refresh.
      *
      * @param entityDef
      * @param sourceEntity
@@ -464,7 +455,6 @@ public final class EntityUtil {
     }
 
     /**
-     * Merge.
      *
      * @param entityDef
      * @param sourceEntity
@@ -645,7 +635,6 @@ public final class EntityUtil {
     }
 
     /**
-     * Hash code.
      *
      * @param entityDef
      * @param thisEntity
@@ -682,7 +671,6 @@ public final class EntityUtil {
     }
 
     /**
-     * Equals.
      *
      * @param entityDef
      * @param entity
@@ -767,7 +755,6 @@ public final class EntityUtil {
     }
 
     /**
-     * To string.
      *
      * @param entityDef
      * @param thisEntity

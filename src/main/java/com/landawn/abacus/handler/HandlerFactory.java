@@ -42,7 +42,6 @@ public final class HandlerFactory {
     }
 
     /**
-     * Method create.
      *
      * @param <T>
      * @param entityManager
@@ -65,7 +64,6 @@ public final class HandlerFactory {
     }
 
     /**
-     * Register handler.
      *
      * @param handler
      * @param clazz

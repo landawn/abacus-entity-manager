@@ -16,7 +16,6 @@ package com.landawn.abacus.version;
 
 // TODO: Auto-generated Javadoc
 /**
- * Keyed Version.
  *
  * @author Haiyang Li
  * @param <K> the key type
@@ -25,7 +24,6 @@ package com.landawn.abacus.version;
 public interface Version<K> {
 
     /**
-     * Method get.
      *
      * @param k
      * @return long
@@ -33,7 +31,6 @@ public interface Version<K> {
     long get(K k);
 
     /**
-     * Method update.
      *
      * @param k
      * @param delta
@@ -41,7 +38,6 @@ public interface Version<K> {
     void update(K k, int delta);
 
     /**
-     * Method remove.
      *
      * @param k
      */

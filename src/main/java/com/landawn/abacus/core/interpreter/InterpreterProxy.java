@@ -98,7 +98,6 @@ public class InterpreterProxy extends AbstractInterpreter {
     //    }
 
     /**
-     * Interpret add.
      *
      * @param entityDef
      * @param propsList
@@ -128,7 +127,6 @@ public class InterpreterProxy extends AbstractInterpreter {
     }
 
     /**
-     * Interpret update.
      *
      * @param entityDef
      * @param props
@@ -178,7 +176,6 @@ public class InterpreterProxy extends AbstractInterpreter {
     }
 
     /**
-     * Interpret delete.
      *
      * @param entityDef
      * @param condition
@@ -227,7 +224,6 @@ public class InterpreterProxy extends AbstractInterpreter {
     }
 
     /**
-     * Interpret query.
      *
      * @param entityDef
      * @param propNames
@@ -258,7 +254,6 @@ public class InterpreterProxy extends AbstractInterpreter {
     }
 
     /**
-     * Interpret query.
      *
      * @param entityDef
      * @param query
@@ -304,7 +299,6 @@ public class InterpreterProxy extends AbstractInterpreter {
     }
 
     /**
-     * Interpret condition.
      *
      * @param entityDef
      * @param condition
@@ -928,7 +922,6 @@ public class InterpreterProxy extends AbstractInterpreter {
     }
 
     /**
-     * Copy.
      *
      * @param command
      * @return

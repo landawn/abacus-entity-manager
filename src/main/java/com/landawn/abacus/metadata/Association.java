@@ -179,7 +179,6 @@ public class Association implements Serializable {
     }
 
     /**
-     * Check property.
      *
      * @param ed
      * @param propName
@@ -266,7 +265,6 @@ public class Association implements Serializable {
     }
 
     /**
-     * Equals.
      *
      * @param obj
      * @return true, if successful
@@ -277,7 +275,6 @@ public class Association implements Serializable {
     }
 
     /**
-     * Hash code.
      *
      * @return
      */
@@ -287,7 +284,6 @@ public class Association implements Serializable {
     }
 
     /**
-     * To string.
      *
      * @return
      */

@@ -38,7 +38,6 @@ public final class LessEqualValidator<T extends Comparable<T>> extends AbstractC
     }
 
     /**
-     * Method isValid.
      *
      * @param propValue
      * @return boolean

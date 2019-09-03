@@ -173,7 +173,6 @@ public class SQLOperationCommand extends SQLCondCommand {
     }
 
     /**
-     * Combine.
      *
      * @param sqlCmd
      */
@@ -191,7 +190,6 @@ public class SQLOperationCommand extends SQLCondCommand {
     }
 
     /**
-     * Clone.
      *
      * @return
      */
@@ -224,7 +222,6 @@ public class SQLOperationCommand extends SQLCondCommand {
     }
 
     /**
-     * Hash code.
      *
      * @return
      */
@@ -239,7 +236,6 @@ public class SQLOperationCommand extends SQLCondCommand {
     }
 
     /**
-     * Equals.
      *
      * @param obj
      * @return true, if successful
@@ -285,7 +281,6 @@ public class SQLOperationCommand extends SQLCondCommand {
     }
 
     /**
-     * To string.
      *
      * @return
      */

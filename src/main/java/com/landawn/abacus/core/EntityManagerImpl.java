@@ -128,7 +128,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal get.
      *
      * @param <T>
      * @param targetClass
@@ -149,7 +148,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal get.
      *
      * @param <T>
      * @param targetClass
@@ -293,7 +291,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Compose property.
      *
      * @param cls
      * @param prop
@@ -543,7 +540,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     //    }
 
     /**
-     * Internal list.
      *
      * @param <T>
      * @param targetClass
@@ -560,7 +556,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal add.
      *
      * @param entity
      * @param options
@@ -572,7 +567,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal add.
      *
      * @param entities
      * @param options
@@ -606,7 +600,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal add.
      *
      * @param entityName
      * @param props
@@ -619,7 +612,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal add.
      *
      * @param entityName
      * @param propsList
@@ -726,7 +718,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal update.
      *
      * @param entity
      * @param options
@@ -751,7 +742,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal update.
      *
      * @param entityId
      * @param props
@@ -764,7 +754,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal update.
      *
      * @param entities
      * @param options
@@ -805,7 +794,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal update.
      *
      * @param entityIds
      * @param props
@@ -818,7 +806,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Update entities.
      *
      * @param entityDef
      * @param entityIds
@@ -862,7 +849,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal update.
      *
      * @param entityName
      * @param props
@@ -876,7 +862,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Update entities.
      *
      * @param entityDef
      * @param props
@@ -936,7 +921,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal delete.
      *
      * @param entityId
      * @param options
@@ -948,7 +932,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal delete.
      *
      * @param entity
      * @param options
@@ -960,7 +943,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal delete.
      *
      * @param entityIds
      * @param options
@@ -972,7 +954,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Delete entities.
      *
      * @param entityDef
      * @param entityIds
@@ -1029,7 +1010,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal delete.
      *
      * @param entities
      * @param options
@@ -1048,7 +1028,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal delete.
      *
      * @param entityName
      * @param cond
@@ -1092,7 +1071,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Delete cascade.
      *
      * @param entityDef
      * @param entityIds
@@ -1326,7 +1304,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Internal query.
      *
      * @param entityName
      * @param selectPropNames
@@ -1707,7 +1684,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Commit transaction.
      *
      * @param transactionId
      * @param options
@@ -1723,7 +1699,6 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
     }
 
     /**
-     * Rollback transaction.
      *
      * @param transactionId
      * @param options

@@ -84,7 +84,6 @@ public final class Options {
     }
 
     /**
-     * Creates the.
      *
      * @return
      */
@@ -93,7 +92,6 @@ public final class Options {
     }
 
     /**
-     * Method create.
      *
      * @param offset
      * @param count
@@ -108,7 +106,6 @@ public final class Options {
     }
 
     /**
-     * Method create.
      *
      * @param offset
      * @param count
@@ -130,7 +127,6 @@ public final class Options {
     }
 
     /**
-     * Method create.
      *
      * @param cacheResult
      * @param range
@@ -156,7 +152,6 @@ public final class Options {
     }
 
     /**
-     * Method create.
      *
      * @param cacheResult
      * @param range
@@ -187,7 +182,6 @@ public final class Options {
     }
 
     /**
-     * Method create.
      *
      * @param offset
      * @param count
@@ -217,7 +211,6 @@ public final class Options {
     }
 
     /**
-     * Method create.
      *
      * @param offset
      * @param count
@@ -253,7 +246,6 @@ public final class Options {
     }
 
     /**
-     * Method create.
      *
      * @param offset
      * @param count
@@ -291,7 +283,6 @@ public final class Options {
     }
 
     /**
-     * Method create.
      *
      * @param offset
      * @param count
@@ -334,7 +325,6 @@ public final class Options {
     }
 
     /**
-     * Copy.
      *
      * @param options
      * @return
@@ -344,7 +334,6 @@ public final class Options {
     }
 
     /**
-     * Of.
      *
      * @param a
      * @return
@@ -522,7 +511,6 @@ public final class Options {
         }
 
         /**
-         * Method condition.
          * 
          * @param queryTime
          *            long
@@ -533,7 +521,6 @@ public final class Options {
         }
 
         /**
-         * Method condition.
          * 
          * @param minCount
          *            int
@@ -546,7 +533,6 @@ public final class Options {
         }
 
         /**
-         * Method condition.
          * 
          * @param queryTime
          *            long
@@ -561,7 +547,6 @@ public final class Options {
         }
 
         /**
-         * Method range.
          * 
          * @param range
          *            int[]
@@ -674,7 +659,6 @@ public final class Options {
             }
 
             /**
-             * Method getMinQueryTime.
              * 
              * @return long
              */
@@ -683,7 +667,6 @@ public final class Options {
             }
 
             /**
-             * Method setMinQueryTime.
              * 
              * @param minQueryTime
              *            long
@@ -697,7 +680,6 @@ public final class Options {
             }
 
             /**
-             * Method getMinCount.
              * 
              * @return int
              */
@@ -706,7 +688,6 @@ public final class Options {
             }
 
             /**
-             * Method setMinCount.
              * 
              * @param minCount
              *            int
@@ -724,7 +705,6 @@ public final class Options {
             }
 
             /**
-             * Method getMaxCount.
              * 
              * @return int
              */
@@ -733,7 +713,6 @@ public final class Options {
             }
 
             /**
-             * Method setMaxCount.
              * 
              * @param maxCount
              *            int
@@ -751,7 +730,6 @@ public final class Options {
             }
 
             /**
-             * Hash code.
              *
              * @return
              */
@@ -766,7 +744,6 @@ public final class Options {
             }
 
             /**
-             * Equals.
              *
              * @param obj
              * @return true, if successful
@@ -789,7 +766,6 @@ public final class Options {
             }
 
             /**
-             * To string.
              *
              * @return
              */
@@ -853,7 +829,6 @@ public final class Options {
             }
 
             /**
-             * Method getRangeBitSet.
              * 
              * @return BitSet
              */
@@ -862,7 +837,6 @@ public final class Options {
             }
 
             /**
-             * Method getRangeCount.
              * 
              * @return int
              */
@@ -884,7 +858,6 @@ public final class Options {
              */
 
             /**
-             * Hash code.
              *
              * @return
              */
@@ -897,7 +870,6 @@ public final class Options {
             }
 
             /**
-             * Equals.
              *
              * @param obj
              * @return true, if successful
@@ -908,7 +880,6 @@ public final class Options {
             }
 
             /**
-             * To string.
              *
              * @return
              */

@@ -36,7 +36,6 @@ public final class NullValidator extends AbstractValidator<Object> {
     }
 
     /**
-     * Method isValid.
      *
      * @param propValue
      * @return boolean

@@ -133,7 +133,6 @@ public class SQLCondCommand extends SQLCommand {
     }
 
     /**
-     * Combine.
      *
      * @param sqlCondCmd
      */
@@ -147,7 +146,6 @@ public class SQLCondCommand extends SQLCommand {
     }
 
     /**
-     * Clone.
      *
      * @return
      */

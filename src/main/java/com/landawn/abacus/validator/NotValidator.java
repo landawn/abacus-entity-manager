@@ -42,7 +42,6 @@ final class NotValidator<T> extends AbstractValidator<T> {
     }
 
     /**
-     * Method isValid.
      *
      * @param value
      * @return boolean
@@ -58,7 +57,6 @@ final class NotValidator<T> extends AbstractValidator<T> {
     }
 
     /**
-     * Method toString.
      * 
      * @return String
      */

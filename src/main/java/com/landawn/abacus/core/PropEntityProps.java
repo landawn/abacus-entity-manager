@@ -97,7 +97,6 @@ final class PropEntityProps {
     }
 
     /**
-     * Hash code.
      *
      * @return
      */
@@ -112,7 +111,6 @@ final class PropEntityProps {
     }
 
     /**
-     * Equals.
      *
      * @param obj
      * @return true, if successful
@@ -133,7 +131,6 @@ final class PropEntityProps {
     }
 
     /**
-     * To string.
      *
      * @return
      */

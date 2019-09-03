@@ -82,7 +82,6 @@ public final class EntityManagerUtil {
     }
 
     /**
-     * Copy options.
      *
      * @param options
      * @return
@@ -204,7 +203,6 @@ public final class EntityManagerUtil {
     }
 
     /**
-     * Check entity.
      *
      * @param entityDefinitionFactory
      * @param entity
@@ -266,7 +264,6 @@ public final class EntityManagerUtil {
     }
 
     /**
-     * Check entity.
      *
      * @param entityDefinitionFactory
      * @param entities
@@ -718,7 +715,6 @@ public final class EntityManagerUtil {
     }
 
     /**
-     * Method validatePropValue.
      *
      * @param prop
      * @param propValue

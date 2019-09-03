@@ -129,7 +129,6 @@ public interface Command {
     void clearParameters();
 
     /**
-     * Copy.
      *
      * @param <T>
      * @return

@@ -57,7 +57,6 @@ public final class LocalVersion<K> extends AbstractVersion<K> {
     }
 
     /**
-     * Gets the.
      *
      * @param k
      * @return
@@ -81,7 +80,6 @@ public final class LocalVersion<K> extends AbstractVersion<K> {
     }
 
     /**
-     * Update.
      *
      * @param k
      * @param delta
@@ -99,7 +97,6 @@ public final class LocalVersion<K> extends AbstractVersion<K> {
     }
 
     /**
-     * Removes the.
      *
      * @param k
      */

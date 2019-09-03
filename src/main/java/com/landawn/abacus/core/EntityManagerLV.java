@@ -102,7 +102,6 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     }
 
     /**
-     * Internal list.
      *
      * @param <T>
      * @param targetClass
@@ -215,7 +214,6 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     }
 
     /**
-     * Internal update.
      *
      * @param entityName
      * @param props
@@ -238,7 +236,6 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     }
 
     /**
-     * Update entities.
      *
      * @param entityDef
      * @param entityIds
@@ -272,7 +269,6 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     }
 
     /**
-     * Internal delete.
      *
      * @param entityName
      * @param cond
@@ -294,7 +290,6 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     }
 
     /**
-     * Delete entities.
      *
      * @param entityDef
      * @param entityIds
@@ -375,7 +370,6 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
     }
 
     /**
-     * Check lock.
      *
      * @param entityIds
      * @param requiredLockMode

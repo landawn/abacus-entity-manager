@@ -35,7 +35,6 @@ import com.landawn.abacus.util.N;
 final class ParametersUtil {
 
     /**
-     * As list.
      *
      * @param <T>
      * @param a
@@ -53,7 +52,6 @@ final class ParametersUtil {
     }
 
     /**
-     * As set.
      *
      * @param <T>
      * @param a
@@ -71,7 +69,6 @@ final class ParametersUtil {
     }
 
     /**
-     * As map.
      *
      * @param <K> the key type
      * @param <V> the value type
@@ -95,7 +92,6 @@ final class ParametersUtil {
     }
 
     /**
-     * As props.
      *
      * @param propNameValues
      * @return
@@ -106,7 +102,6 @@ final class ParametersUtil {
     }
 
     /**
-     * As options.
      *
      * @param a
      * @return
@@ -117,7 +112,6 @@ final class ParametersUtil {
     }
 
     /**
-     * Copy.
      *
      * @param <T>
      * @param c
@@ -138,7 +132,6 @@ final class ParametersUtil {
     }
 
     /**
-     * Copy.
      *
      * @param <T>
      * @param c
@@ -153,7 +146,6 @@ final class ParametersUtil {
     }
 
     /**
-     * Copy.
      *
      * @param <T>
      * @param c
@@ -168,7 +160,6 @@ final class ParametersUtil {
     }
 
     /**
-     * Copy.
      *
      * @param <K> the key type
      * @param <V> the value type

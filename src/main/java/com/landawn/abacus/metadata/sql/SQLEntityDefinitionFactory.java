@@ -104,7 +104,6 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     }
 
     /**
-     * New instance.
      *
      * @param domainName
      * @param entityDefinitionXmlFile
@@ -128,7 +127,6 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     }
 
     /**
-     * New instance.
      *
      * @param domainName
      * @param is
@@ -139,7 +137,6 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     }
 
     /**
-     * Domain name.
      *
      * @return
      */
@@ -202,7 +199,6 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     }
 
     /**
-     * Export definition.
      *
      * @return
      */
@@ -212,7 +208,6 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     }
 
     /**
-     * Hash code.
      *
      * @return
      */
@@ -222,7 +217,6 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     }
 
     /**
-     * Equals.
      *
      * @param obj
      * @return true, if successful
@@ -235,7 +229,6 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     }
 
     /**
-     * To string.
      *
      * @return
      */
@@ -245,7 +238,6 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
     }
 
     /**
-     * Parses the.
      *
      * @param entityDefElement
      * @return

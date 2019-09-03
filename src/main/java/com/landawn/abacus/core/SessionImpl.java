@@ -87,7 +87,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Begin transaction.
      *
      * @param isolationLevel
      * @return
@@ -106,7 +105,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Gets the.
      *
      * @param <T>
      * @param entityId
@@ -143,7 +141,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * List.
      *
      * @param <T>
      * @param entityName
@@ -170,7 +167,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Adds the.
      *
      * @param entities
      */
@@ -184,7 +180,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Adds the.
      *
      * @param entities
      */
@@ -196,7 +191,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Update.
      *
      * @param entities
      */
@@ -208,7 +202,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Update.
      *
      * @param entities
      */
@@ -220,7 +213,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Delete.
      *
      * @param entities
      */
@@ -234,7 +226,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Delete.
      *
      * @param entities
      */
@@ -246,7 +237,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Attach.
      *
      * @param operationType
      * @param entities
@@ -267,7 +257,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Attach.
      *
      * @param operationType
      * @param entities
@@ -288,7 +277,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Detach.
      *
      * @param entities
      */
@@ -316,7 +304,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Detach.
      *
      * @param entities
      */
@@ -328,7 +315,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Contains.
      *
      * @param entity
      * @return true, if successful
@@ -505,7 +491,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * Commit.
      *
      * @param entities
      * @param operationType
@@ -616,7 +601,6 @@ final class SessionImpl<E> implements Session<E> {
     }
 
     /**
-     * To string.
      *
      * @return
      */
@@ -660,7 +644,6 @@ final class SessionImpl<E> implements Session<E> {
         }
 
         /**
-         * Id.
          *
          * @return
          */
@@ -670,7 +653,6 @@ final class SessionImpl<E> implements Session<E> {
         }
 
         /**
-         * Isolation level.
          *
          * @return
          */
@@ -680,7 +662,6 @@ final class SessionImpl<E> implements Session<E> {
         }
 
         /**
-         * Status.
          *
          * @return
          */

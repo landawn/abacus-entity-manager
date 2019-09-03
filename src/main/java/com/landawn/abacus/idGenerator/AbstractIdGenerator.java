@@ -52,7 +52,6 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     }
 
     /**
-     * Initialize.
      *
      * @param executor
      */
@@ -62,7 +61,6 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     }
 
     /**
-     * Allocate.
      *
      * @return
      */
@@ -70,7 +68,6 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     public abstract T allocate();
 
     /**
-     * Reserve.
      *
      * @param value
      */
@@ -80,7 +77,6 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     }
 
     /**
-     * Hash code.
      *
      * @return
      */
@@ -94,7 +90,6 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     }
 
     /**
-     * Equals.
      *
      * @param obj
      * @return true, if successful
@@ -115,7 +110,6 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     }
 
     /**
-     * To string.
      *
      * @return
      */

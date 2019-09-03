@@ -50,7 +50,6 @@ public final class InValidator<T> extends AbstractValidator<T> {
     }
 
     /**
-     * Method isValid.
      *
      * @param propValue
      * @return boolean
@@ -66,7 +65,6 @@ public final class InValidator<T> extends AbstractValidator<T> {
     }
 
     /**
-     * Method toString.
      * 
      * @return String
      */

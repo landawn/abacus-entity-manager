@@ -50,7 +50,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre get.
      *
      * @param entityId
      * @param selectPropNames
@@ -62,7 +61,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post get.
      *
      * @param result
      * @param entityId
@@ -75,7 +73,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre get.
      *
      * @param entityIds
      * @param selectPropNames
@@ -87,7 +84,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post get.
      *
      * @param result
      * @param entityIds
@@ -100,7 +96,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre list.
      *
      * @param entityName
      * @param selectPropNames
@@ -113,7 +108,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post list.
      *
      * @param result
      * @param entityName
@@ -127,7 +121,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre add.
      *
      * @param entity
      * @param options
@@ -138,7 +131,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post add.
      *
      * @param entityId
      * @param entity
@@ -150,7 +142,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre add.
      *
      * @param entities
      * @param options
@@ -161,7 +152,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post add.
      *
      * @param entityIds
      * @param entities
@@ -173,7 +163,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre add.
      *
      * @param entityName
      * @param props
@@ -185,7 +174,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post add.
      *
      * @param entityId
      * @param entityName
@@ -198,7 +186,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre add.
      *
      * @param entityName
      * @param propsList
@@ -210,7 +197,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post add.
      *
      * @param entityIds
      * @param entityName
@@ -223,7 +209,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre update.
      *
      * @param entity
      * @param options
@@ -234,7 +219,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post update.
      *
      * @param result
      * @param entity
@@ -246,7 +230,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre update.
      *
      * @param props
      * @param entityId
@@ -258,7 +241,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post update.
      *
      * @param result
      * @param props
@@ -271,7 +253,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre update.
      *
      * @param entities
      * @param options
@@ -282,7 +263,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post update.
      *
      * @param result
      * @param entities
@@ -294,7 +274,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre update.
      *
      * @param props
      * @param entityIds
@@ -306,7 +285,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post update.
      *
      * @param result
      * @param props
@@ -319,7 +297,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre update.
      *
      * @param entityName
      * @param props
@@ -332,7 +309,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post update.
      *
      * @param result
      * @param entityName
@@ -346,7 +322,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre delete.
      *
      * @param entityId
      * @param options
@@ -357,7 +332,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post delete.
      *
      * @param result
      * @param entityId
@@ -369,7 +343,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre delete.
      *
      * @param entity
      * @param options
@@ -380,7 +353,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post delete.
      *
      * @param result
      * @param entity
@@ -392,7 +364,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre delete.
      *
      * @param entityIds
      * @param options
@@ -403,7 +374,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post delete.
      *
      * @param result
      * @param entityIds
@@ -415,7 +385,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre delete.
      *
      * @param entities
      * @param options
@@ -426,7 +395,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post delete.
      *
      * @param result
      * @param entities
@@ -438,7 +406,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre delete.
      *
      * @param entityName
      * @param condition
@@ -450,7 +417,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post delete.
      *
      * @param result
      * @param entityName
@@ -463,7 +429,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Pre query.
      *
      * @param entityName
      * @param selectPropNames
@@ -477,7 +442,6 @@ public abstract class AbstractHandler<T> implements Handler<T> {
     }
 
     /**
-     * Post query.
      *
      * @param dataSet
      * @param entityName

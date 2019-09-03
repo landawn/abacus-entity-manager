@@ -68,7 +68,6 @@ public abstract class AbstractNumberIdGenerator<T extends Number> extends Abstra
     }
 
     /**
-     * Value of.
      *
      * @param t
      * @return

@@ -56,7 +56,6 @@ public abstract class AbstractDateValidator<T extends Date> extends AbstractVali
     }
 
     /**
-     * Method getBenchmark.
      * 
      * @return long
      */
@@ -69,7 +68,6 @@ public abstract class AbstractDateValidator<T extends Date> extends AbstractVali
     }
 
     /**
-     * Method toString.
      * 
      * @return String
      */

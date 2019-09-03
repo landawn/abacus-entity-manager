@@ -54,7 +54,6 @@ public final class EqualValidator<T> extends AbstractComparableValidator<T> {
     }
 
     /**
-     * Method isValid.
      *
      * @param propValue
      * @return boolean

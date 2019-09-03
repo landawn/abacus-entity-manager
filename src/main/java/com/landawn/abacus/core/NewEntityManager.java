@@ -57,7 +57,6 @@ import com.landawn.abacus.util.function.ToShortFunction;
 
 // TODO: Auto-generated Javadoc
 /**
- * Multi-thread safe.
  *
  * @author Haiyang Li
  * @since 0.8
@@ -90,7 +89,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Mapper.
      *
      * @param <T>
      * @param <ID>
@@ -118,7 +116,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Exists.
      *
      * @param entityClass
      * @param id
@@ -129,7 +126,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Exists.
      *
      * @param entityClass
      * @param id
@@ -140,7 +136,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Exists.
      *
      * @param entityId
      * @return true, if successful
@@ -150,7 +145,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Exists.
      *
      * @param entityId
      * @param options
@@ -161,7 +155,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Exists.
      *
      * @param entityClass
      * @param cond
@@ -172,7 +165,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Exists.
      *
      * @param entityClass
      * @param cond
@@ -184,7 +176,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Count.
      *
      * @param entityClass
      * @param cond
@@ -195,7 +186,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Count.
      *
      * @param entityClass
      * @param cond
@@ -513,7 +503,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Query.
      *
      * @param entityClass
      * @param selectPropNames
@@ -525,7 +514,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Query.
      *
      * @param entityClass
      * @param selectPropNames
@@ -538,7 +526,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Query.
      *
      * @param entityClass
      * @param selectPropNames
@@ -569,7 +556,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Find first.
      *
      * @param <T>
      * @param entityClass
@@ -602,7 +588,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * List.
      *
      * @param <T>
      * @param entityClass
@@ -615,7 +600,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * List.
      *
      * @param <T>
      * @param entityClass
@@ -629,7 +613,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * List all.
      *
      * @param <T>
      * @param entityClass
@@ -643,7 +626,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Adds the.
      *
      * @param entityClass
      * @param props
@@ -654,7 +636,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Adds the.
      *
      * @param entityClass
      * @param props
@@ -689,7 +670,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Update.
      *
      * @param entityClass
      * @param props
@@ -701,7 +681,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Update.
      *
      * @param entityClass
      * @param props
@@ -714,7 +693,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Delete.
      *
      * @param entityClass
      * @param cond
@@ -725,7 +703,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Delete.
      *
      * @param entityClass
      * @param cond
@@ -847,7 +824,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Gets the.
      *
      * @param <T>
      * @param entityClass
@@ -861,7 +837,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Gets the.
      *
      * @param <T>
      * @param entityClass
@@ -876,7 +851,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Gets the.
      *
      * @param <T>
      * @param entityClass
@@ -893,7 +867,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Gets the.
      *
      * @param <T>
      * @param entityClass
@@ -907,7 +880,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Gets the.
      *
      * @param <T>
      * @param entityClass
@@ -922,7 +894,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Gets the.
      *
      * @param <T>
      * @param entityClass
@@ -939,7 +910,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Gets the.
      *
      * @param <T>
      * @param entityId
@@ -952,7 +922,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Gets the.
      *
      * @param <T>
      * @param entityId
@@ -966,7 +935,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Gets the.
      *
      * @param <T>
      * @param entityId
@@ -1116,7 +1084,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Refresh.
      *
      * @param entity
      * @return true, if successful
@@ -1127,7 +1094,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Refresh.
      *
      * @param entity
      * @param options
@@ -1139,7 +1105,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Refresh all.
      *
      * @param entities
      * @return
@@ -1150,7 +1115,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Refresh all.
      *
      * @param entities
      * @param options
@@ -1162,7 +1126,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Adds the.
      *
      * @param entity
      * @return
@@ -1172,7 +1135,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Adds the.
      *
      * @param entity
      * @param options
@@ -1229,7 +1191,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Update.
      *
      * @param entity
      * @return
@@ -1239,7 +1200,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Update.
      *
      * @param entity
      * @param options
@@ -1250,7 +1210,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Update all.
      *
      * @param entities
      * @return
@@ -1260,7 +1219,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Update all.
      *
      * @param entities
      * @param options
@@ -1313,7 +1271,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Delete.
      *
      * @param entity
      * @return
@@ -1323,7 +1280,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Delete.
      *
      * @param entity
      * @param options
@@ -1334,7 +1290,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Delete all.
      *
      * @param entities the elements in the collection must be the same type
      * @return
@@ -1344,7 +1299,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Delete all.
      *
      * @param entities the elements in the collection must be the same type
      * @param options
@@ -1355,7 +1309,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Delete.
      *
      * @param entityId
      * @return
@@ -1365,7 +1318,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Delete.
      *
      * @param entityId
      * @param options
@@ -1376,7 +1328,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Delete all.
      *
      * @param entityIds
      * @return
@@ -1386,7 +1337,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Delete all.
      *
      * @param entityIds
      * @param options
@@ -1427,7 +1377,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Check options.
      *
      * @param options
      * @return
@@ -1450,7 +1399,6 @@ public final class NewEntityManager {
     }
 
     /**
-     * Multi-thread safe.
      *
      * @param <T> the entity type
      * @param <ID>
@@ -1509,7 +1457,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Exists.
          *
          * @param id
          * @return true, if successful
@@ -1519,7 +1466,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Exists.
          *
          * @param cond
          * @return true, if successful
@@ -1529,7 +1475,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Exists.
          *
          * @param cond
          * @param options
@@ -1540,7 +1485,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Count.
          *
          * @param cond
          * @return
@@ -1550,7 +1494,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Count.
          *
          * @param cond
          * @param options
@@ -1813,7 +1756,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Find first.
          *
          * @param selectPropNames
          * @param cond
@@ -1824,7 +1766,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Find first.
          *
          * @param selectPropNames
          * @param cond
@@ -1836,7 +1777,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Query.
          *
          * @param selectPropNames
          * @param cond
@@ -1847,7 +1787,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Query.
          *
          * @param selectPropNames
          * @param cond
@@ -1859,7 +1798,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Query.
          *
          * @param selectPropNames
          * @param cond
@@ -1873,7 +1811,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Query all.
          *
          * @param selectPropNames
          * @param cond
@@ -1885,7 +1822,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * List.
          *
          * @param selectPropNames
          * @param cond
@@ -1896,7 +1832,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * List.
          *
          * @param selectPropNames
          * @param cond
@@ -1908,7 +1843,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * List all.
          *
          * @param selectPropNames
          * @param cond
@@ -1921,7 +1855,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Adds the.
          *
          * @param props
          * @return
@@ -1931,7 +1864,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Adds the.
          *
          * @param props
          * @param options
@@ -1967,7 +1899,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Update.
          *
          * @param props
          * @param cond
@@ -1978,7 +1909,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Update.
          *
          * @param props
          * @param cond
@@ -1990,7 +1920,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Delete.
          *
          * @param cond
          * @return
@@ -2000,7 +1929,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Delete.
          *
          * @param cond
          * @param options
@@ -2011,7 +1939,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Gets the.
          *
          * @param id
          * @return
@@ -2023,7 +1950,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Gets the.
          *
          * @param id
          * @param selectPropNames
@@ -2036,7 +1962,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Gets the.
          *
          * @param id
          * @param selectPropNames
@@ -2089,7 +2014,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Refresh.
          *
          * @param entity
          * @return true, if successful
@@ -2100,7 +2024,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Refresh.
          *
          * @param entity
          * @param options
@@ -2112,7 +2035,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Refresh all.
          *
          * @param entities
          * @return
@@ -2123,7 +2045,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Refresh all.
          *
          * @param entities
          * @param options
@@ -2135,7 +2056,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Adds the.
          *
          * @param entity
          * @return
@@ -2145,7 +2065,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Adds the.
          *
          * @param entity
          * @param options
@@ -2204,7 +2123,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Update.
          *
          * @param entity
          * @return
@@ -2214,7 +2132,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Update.
          *
          * @param entity
          * @param options
@@ -2225,7 +2142,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Update all.
          *
          * @param entities
          * @return
@@ -2235,7 +2151,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Update all.
          *
          * @param entities
          * @param options
@@ -2246,7 +2161,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Update.
          *
          * @param props
          * @param id
@@ -2257,7 +2171,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Update.
          *
          * @param props
          * @param id
@@ -2269,7 +2182,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Update all.
          *
          * @param props
          * @param ids
@@ -2280,7 +2192,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Update all.
          *
          * @param props
          * @param ids
@@ -2292,7 +2203,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Delete.
          *
          * @param entity
          * @return
@@ -2302,7 +2212,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Delete.
          *
          * @param entity
          * @param options
@@ -2313,7 +2222,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Delete all.
          *
          * @param entities
          * @return
@@ -2323,7 +2231,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Delete all.
          *
          * @param entities
          * @param options
@@ -2334,7 +2241,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Delete.
          *
          * @param id
          * @return
@@ -2344,7 +2250,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Delete.
          *
          * @param id
          * @param options
@@ -2355,7 +2260,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Delete all.
          *
          * @param entityIds
          * @return
@@ -2365,7 +2269,6 @@ public final class NewEntityManager {
         }
 
         /**
-         * Delete all.
          *
          * @param entityIds
          * @param options

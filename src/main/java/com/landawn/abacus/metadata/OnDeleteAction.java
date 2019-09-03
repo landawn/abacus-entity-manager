@@ -49,7 +49,6 @@ public enum OnDeleteAction {
     }
 
     /**
-     * Value.
      *
      * @return int
      */
@@ -58,7 +57,6 @@ public enum OnDeleteAction {
     }
 
     /**
-     * Method get.
      *
      * @param name
      * @return ConstraintType

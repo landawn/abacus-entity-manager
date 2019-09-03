@@ -93,7 +93,6 @@ public final class ValidatorFactory {
     }
 
     /**
-     * Method create.
      *
      * @param <T>
      * @param propName
@@ -137,7 +136,6 @@ public final class ValidatorFactory {
     }
 
     /**
-     * Register validator.
      *
      * @param validator
      * @param clazz
@@ -148,7 +146,6 @@ public final class ValidatorFactory {
     }
 
     /**
-     * Method getBuiltinValidatorName.
      *
      * @param clazz
      * @return String
@@ -158,7 +155,6 @@ public final class ValidatorFactory {
     }
 
     /**
-     * Method createValidatorKey.
      *
      * @param propName
      * @param validatorAttr

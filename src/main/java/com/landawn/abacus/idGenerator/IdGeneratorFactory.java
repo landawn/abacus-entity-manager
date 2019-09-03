@@ -50,7 +50,6 @@ public final class IdGeneratorFactory {
     }
 
     /**
-     * Method create.
      *
      * @param <T>
      * @param idGeneratorAttr
@@ -95,7 +94,6 @@ public final class IdGeneratorFactory {
     }
 
     /**
-     * Method initBuiltinIdGeneratorName.
      *
      * @param clazz
      */

@@ -68,7 +68,6 @@ public final class CacheZipper {
     //    }
 
     /**
-     * Zip.
      *
      * @param cacheList
      */
@@ -121,7 +120,6 @@ public final class CacheZipper {
     }
 
     /**
-     * Zip cache.
      *
      * @param hashArray
      * @param cacheList

@@ -61,7 +61,6 @@ public abstract class AbstractCommand implements Command, Cloneable {
     }
 
     /**
-     * Clone.
      *
      * @return
      */
@@ -79,7 +78,6 @@ public abstract class AbstractCommand implements Command, Cloneable {
     }
 
     /**
-     * Copy.
      *
      * @param <T>
      * @return

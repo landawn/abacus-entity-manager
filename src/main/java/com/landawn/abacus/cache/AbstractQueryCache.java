@@ -251,7 +251,6 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     }
 
     /**
-     * Size.
      *
      * @return
      */
@@ -322,7 +321,6 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     }
 
     /**
-     * To string.
      *
      * @return
      */
@@ -354,7 +352,6 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
     }
 
     /**
-     * Check bound.
      *
      * @param beginIndex
      * @param endIndex

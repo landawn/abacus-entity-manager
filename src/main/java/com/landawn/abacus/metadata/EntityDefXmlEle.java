@@ -139,7 +139,6 @@ public final class EntityDefXmlEle {
                 public static final String NAME = "name";
 
                 /**
-                 * Field ID_GENERATOR.
                  * 
                  * you can set 'ID_GENERATOR=default', Then Abacus will manage id automatically according to its type.
                  * You also can set 'ID_GENERATOR=yourself id generator which must implements the interface

@@ -273,7 +273,6 @@ public class SQLColumn implements Column {
     }
 
     /**
-     * Hash code.
      *
      * @return
      */
@@ -283,7 +282,6 @@ public class SQLColumn implements Column {
     }
 
     /**
-     * Equals.
      *
      * @param obj
      * @return true, if successful
@@ -294,7 +292,6 @@ public class SQLColumn implements Column {
     }
 
     /**
-     * To string.
      *
      * @return
      */

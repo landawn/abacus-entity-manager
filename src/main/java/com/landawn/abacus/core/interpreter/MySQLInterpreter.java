@@ -52,7 +52,6 @@ public class MySQLInterpreter extends SQLInterpreter {
     }
 
     /**
-     * Interpret add.
      *
      * @param entityDef
      * @param propsList

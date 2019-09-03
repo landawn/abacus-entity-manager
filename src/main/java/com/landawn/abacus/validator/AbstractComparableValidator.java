@@ -51,7 +51,6 @@ public abstract class AbstractComparableValidator<T> extends AbstractValidator<T
     }
 
     /**
-     * To string.
      *
      * @return
      */

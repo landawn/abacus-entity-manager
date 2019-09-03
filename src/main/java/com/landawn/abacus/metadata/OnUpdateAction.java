@@ -49,7 +49,6 @@ public enum OnUpdateAction {
     }
 
     /**
-     * Value.
      *
      * @return int
      */
@@ -58,7 +57,6 @@ public enum OnUpdateAction {
     }
 
     /**
-     * Method get.
      *
      * @param name
      * @return ConstraintType

@@ -247,7 +247,6 @@ public class SQLDatabase implements Database {
     }
 
     /**
-     * Hash code.
      *
      * @return
      */
@@ -257,7 +256,6 @@ public class SQLDatabase implements Database {
     }
 
     /**
-     * Equals.
      *
      * @param obj
      * @return true, if successful
@@ -268,7 +266,6 @@ public class SQLDatabase implements Database {
     }
 
     /**
-     * To string.
      *
      * @return
      */
@@ -278,7 +275,6 @@ public class SQLDatabase implements Database {
     }
 
     /**
-     * Parses the.
      *
      * @param conn
      * @param dbName
@@ -348,7 +344,6 @@ public class SQLDatabase implements Database {
     }
 
     /**
-     * Parses the.
      *
      * @param databaseNode
      * @return

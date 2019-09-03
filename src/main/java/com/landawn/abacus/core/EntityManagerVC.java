@@ -70,7 +70,6 @@ class EntityManagerVC<T> extends EntityManagerLVC<T> {
     }
 
     /**
-     * Check lock.
      *
      * @param entityIds
      * @param requiredLockMode

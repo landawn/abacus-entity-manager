@@ -50,7 +50,6 @@ public final class UUIDIdGenerator extends AbstractStringIdGenerator {
     }
 
     /**
-     * Allocate.
      *
      * @return
      */

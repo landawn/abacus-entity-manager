@@ -66,7 +66,6 @@ public final class SequenceIdGenerator extends AbstractNumberIdGenerator<Number>
     }
 
     /**
-     * Initialize.
      *
      * @param executor
      */
@@ -79,7 +78,6 @@ public final class SequenceIdGenerator extends AbstractNumberIdGenerator<Number>
     }
 
     /**
-     * Allocate.
      *
      * @return
      */

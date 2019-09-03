@@ -38,7 +38,6 @@ public final class GreaterEqualValidator<T extends Comparable<T>> extends Abstra
     }
 
     /**
-     * Method isValid.
      *
      * @param propValue
      * @return boolean

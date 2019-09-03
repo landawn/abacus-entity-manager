@@ -154,7 +154,6 @@ final class DataSetUtil {
     }
 
     /**
-     * Combine.
      *
      * @param dataSet
      * @param prop

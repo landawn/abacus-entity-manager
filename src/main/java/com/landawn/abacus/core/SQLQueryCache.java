@@ -111,7 +111,6 @@ class SQLQueryCache extends AbstractQueryCache {
     }
 
     /**
-     * Cache result.
      *
      * @param queryResult
      * @param cachePropNames
@@ -169,7 +168,6 @@ class SQLQueryCache extends AbstractQueryCache {
     }
 
     /**
-     * Cache result.
      *
      * @param queryResult
      * @param rowRange
@@ -276,7 +274,6 @@ class SQLQueryCache extends AbstractQueryCache {
     }
 
     /**
-     * Update.
      *
      * @param command
      * @param options
@@ -641,7 +638,6 @@ class SQLQueryCache extends AbstractQueryCache {
     }
 
     /**
-     * Inits the.
      *
      * @param queryResult
      * @param cachingPropNames

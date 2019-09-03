@@ -49,7 +49,6 @@ public class SizeValidator extends AbstractValidator<Object> {
     }
 
     /**
-     * Constructor SizeValidator.
      *
      * @param propName
      * @param type
@@ -63,7 +62,6 @@ public class SizeValidator extends AbstractValidator<Object> {
     }
 
     /**
-     * Method isValid.
      *
      * @param propValue
      * @return boolean
@@ -91,7 +89,6 @@ public class SizeValidator extends AbstractValidator<Object> {
     }
 
     /**
-     * Method toString.
      * 
      * @return String
      */

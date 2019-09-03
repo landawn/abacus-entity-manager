@@ -38,7 +38,6 @@ public final class GreaterThanValidator<T extends Comparable<T>> extends Abstrac
     }
 
     /**
-     * Method isValid.
      *
      * @param propValue
      * @return boolean

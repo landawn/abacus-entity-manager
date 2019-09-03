@@ -47,7 +47,6 @@ public final class RangeValidator<T extends Comparable<T>> extends AbstractValid
     }
 
     /**
-     * Method isValid.
      *
      * @param propValue
      * @return boolean
@@ -63,7 +62,6 @@ public final class RangeValidator<T extends Comparable<T>> extends AbstractValid
     }
 
     /**
-     * Method toString.
      * 
      * @return String
      */

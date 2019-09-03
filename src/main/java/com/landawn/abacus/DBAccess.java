@@ -104,7 +104,6 @@ public interface DBAccess {
     <T> T gett(EntityId entityId, Collection<String> selectPropNames, Map<String, Object> options) throws DuplicatedResultException;
 
     /**
-     * List.
      *
      * @param <T>
      * @param entityName
@@ -115,7 +114,6 @@ public interface DBAccess {
     <T> List<T> list(String entityName, Collection<String> selectPropNames, Condition condition);
 
     /**
-     * List.
      *
      * @param <T>
      * @param entityName

@@ -68,7 +68,6 @@ public class DistributedVersion<K> extends AbstractVersion<K> {
     }
 
     /**
-     * Gets the.
      *
      * @param k
      * @return
@@ -86,7 +85,6 @@ public class DistributedVersion<K> extends AbstractVersion<K> {
     }
 
     /**
-     * Update.
      *
      * @param k
      * @param delta
@@ -104,7 +102,6 @@ public class DistributedVersion<K> extends AbstractVersion<K> {
     }
 
     /**
-     * Removes the.
      *
      * @param k
      */
@@ -136,7 +133,6 @@ public class DistributedVersion<K> extends AbstractVersion<K> {
     }
 
     /**
-     * Generate key.
      *
      * @param k
      * @return

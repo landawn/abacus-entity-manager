@@ -188,7 +188,6 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     }
 
     /**
-     * Update entities.
      *
      * @param entityDef
      * @param entityIds
@@ -216,7 +215,6 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     }
 
     /**
-     * Delete entities.
      *
      * @param entityDef
      * @param entityIds
@@ -237,7 +235,6 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     }
 
     /**
-     * Cache entity.
      *
      * @param entityDef
      * @param entity
@@ -364,7 +361,6 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
     }
 
     /**
-     * Cache entity.
      *
      * @param entityDef
      * @param entity

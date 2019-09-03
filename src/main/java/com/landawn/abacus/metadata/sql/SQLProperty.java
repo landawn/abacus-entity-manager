@@ -558,7 +558,6 @@ public class SQLProperty implements Property {
     }
 
     /**
-     * As collection.
      *
      * @param <T>
      * @param entities
@@ -576,7 +575,6 @@ public class SQLProperty implements Property {
     }
 
     /**
-     * As collection.
      *
      * @param <T>
      * @param entities
@@ -637,7 +635,6 @@ public class SQLProperty implements Property {
     }
 
     /**
-     * Value of.
      *
      * @param <T>
      * @param st
@@ -650,7 +647,6 @@ public class SQLProperty implements Property {
     }
 
     /**
-     * String of.
      *
      * @param propVlaue
      * @return
@@ -722,7 +718,6 @@ public class SQLProperty implements Property {
     }
 
     /**
-     * Hash code.
      *
      * @return
      */
@@ -732,7 +727,6 @@ public class SQLProperty implements Property {
     }
 
     /**
-     * Equals.
      *
      * @param obj
      * @return true, if successful
@@ -743,7 +737,6 @@ public class SQLProperty implements Property {
     }
 
     /**
-     * To string.
      *
      * @return
      */

@@ -114,7 +114,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     //
 
     /**
-     * Interpret add.
      *
      * @param entityDef
      * @param propsList
@@ -238,7 +237,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret update.
      *
      * @param entityDef
      * @param props
@@ -314,7 +312,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret delete.
      *
      * @param entityDef
      * @param condition
@@ -348,7 +345,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret query.
      *
      * @param entityDef
      * @param propNames
@@ -374,7 +370,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret query.
      *
      * @param entityDef
      * @param propNames
@@ -481,7 +476,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret query.
      *
      * @param entityDef
      * @param querySql
@@ -512,7 +506,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret condition.
      *
      * @param entityDef
      * @param condition
@@ -542,7 +535,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret condition.
      *
      * @param entityDef
      * @param condition
@@ -635,7 +627,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     //    }
 
     /**
-     * Interpret binary.
      *
      * @param entityDef
      * @param binary
@@ -651,7 +642,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret join.
      *
      * @param entityDef
      * @param join
@@ -689,7 +679,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret cell.
      *
      * @param entityDef
      * @param cell
@@ -704,7 +693,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret between.
      *
      * @param entityDef
      * @param between
@@ -724,7 +712,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret in.
      *
      * @param entityDef
      * @param in
@@ -752,7 +739,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret junction.
      *
      * @param entityDef
      * @param junction
@@ -790,7 +776,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret limit.
      *
      * @param limit
      * @param sql
@@ -845,7 +830,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret criteria.
      *
      * @param entityDef
      * @param criteria
@@ -901,7 +885,6 @@ public class SQLInterpreter extends AbstractInterpreter {
     }
 
     /**
-     * Interpret expression.
      *
      * @param entityDef
      * @param literal

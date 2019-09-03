@@ -58,7 +58,6 @@ public class SQLServerInterpreter extends SQLInterpreter {
     }
 
     /**
-     * Interpret query.
      *
      * @param entityDef
      * @param propNames

@@ -262,7 +262,6 @@ public class SQLResult {
     }
 
     /**
-     * Gets the.
      *
      * @param <T>
      * @param propIndex
@@ -275,7 +274,6 @@ public class SQLResult {
     }
 
     /**
-     * Gets the.
      *
      * @param <T>
      * @param propName
@@ -288,7 +286,6 @@ public class SQLResult {
     }
 
     /**
-     * Absolute.
      *
      * @param row
      * @return true, if successful
@@ -306,7 +303,6 @@ public class SQLResult {
     }
 
     /**
-     * Next.
      *
      * @return true, if successful
      * @throws SQLException the SQL exception
@@ -344,7 +340,6 @@ public class SQLResult {
     }
 
     /**
-     * Size.
      *
      * @return
      */

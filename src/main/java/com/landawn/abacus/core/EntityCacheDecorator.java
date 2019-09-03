@@ -88,7 +88,6 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     }
 
     /**
-     * Put.
      *
      * @param entityId
      * @param entity
@@ -134,7 +133,6 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     }
 
     /**
-     * Removes the.
      *
      * @param entityId
      */
@@ -152,7 +150,6 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     }
 
     /**
-     * Contains key.
      *
      * @param entityId
      * @return true, if successful
@@ -165,7 +162,6 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     }
 
     /**
-     * Key set.
      *
      * @return
      */
@@ -175,7 +171,6 @@ class EntityCacheDecorator extends AbstractCache<EntityId, MapEntity> {
     }
 
     /**
-     * Size.
      *
      * @return
      */

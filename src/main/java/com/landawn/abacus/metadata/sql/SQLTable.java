@@ -213,7 +213,6 @@ public class SQLTable implements Table {
     }
 
     /**
-     * Hash code.
      *
      * @return
      */
@@ -223,7 +222,6 @@ public class SQLTable implements Table {
     }
 
     /**
-     * Equals.
      *
      * @param obj
      * @return true, if successful
@@ -234,7 +232,6 @@ public class SQLTable implements Table {
     }
 
     /**
-     * To string.
      *
      * @return
      */
@@ -291,7 +288,6 @@ public class SQLTable implements Table {
     }
 
     /**
-     * Parses the.
      *
      * @param tableName
      * @param conn
@@ -412,7 +408,6 @@ public class SQLTable implements Table {
     }
 
     /**
-     * Parses the.
      *
      * @param tableNode
      * @return

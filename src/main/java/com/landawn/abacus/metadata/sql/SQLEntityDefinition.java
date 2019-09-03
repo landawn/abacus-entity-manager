@@ -655,7 +655,6 @@ public class SQLEntityDefinition implements EntityDefinition {
     }
 
     /**
-     * Hash code.
      *
      * @return
      */
@@ -665,7 +664,6 @@ public class SQLEntityDefinition implements EntityDefinition {
     }
 
     /**
-     * Equals.
      *
      * @param obj
      * @return true, if successful
@@ -676,7 +674,6 @@ public class SQLEntityDefinition implements EntityDefinition {
     }
 
     /**
-     * To string.
      *
      * @return
      */
@@ -686,7 +683,6 @@ public class SQLEntityDefinition implements EntityDefinition {
     }
 
     /**
-     * Parses the.
      *
      * @param entityName
      * @param table
@@ -748,7 +744,6 @@ public class SQLEntityDefinition implements EntityDefinition {
     }
 
     /**
-     * Parses the.
      *
      * @param factory
      * @param pkgName

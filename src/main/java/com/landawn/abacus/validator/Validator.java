@@ -27,21 +27,18 @@ import com.landawn.abacus.type.Type;
  */
 public interface Validator<T> {
     /**
-     * Method getPropName.
      * 
      * @return Property
      */
     String getPropName();
 
     /**
-     * Method getType.
      *
      * @return Type
      */
     Type<T> getType();
 
     /**
-     * Method isValid.
      *
      * @param propValue
      * @return boolean
@@ -49,7 +46,6 @@ public interface Validator<T> {
     boolean isValid(T propValue);
 
     /**
-     * Method validate.
      *
      * @param propValue
      * @return TODO

@@ -225,7 +225,6 @@ public interface Property {
     boolean isCollection();
 
     /**
-     * As collection.
      *
      * @param <T>
      * @param entities
@@ -235,7 +234,6 @@ public interface Property {
     <T> Collection<T> asCollection(T... entities);
 
     /**
-     * As collection.
      *
      * @param <T>
      * @param entities
@@ -260,7 +258,6 @@ public interface Property {
     Method getGetMethod(Class<?> clazz);
 
     /**
-     * Value of.
      *
      * @param <T>
      * @param st
@@ -269,7 +266,6 @@ public interface Property {
     <T> T valueOf(String st);
 
     /**
-     * String of.
      *
      * @param propvalue
      * @return

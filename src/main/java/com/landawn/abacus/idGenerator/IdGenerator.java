@@ -31,28 +31,24 @@ public interface IdGenerator<T> {
     public static final String ID_GENERATOR = IdGenerator.class.getSimpleName();
 
     /**
-     * Initialize.
      *
      * @param executor
      */
     void initialize(Executant executor);
 
     /**
-     * Method getProperty.
      * 
      * @return Property
      */
     Property getProperty();
 
     /**
-     * Method allocate.
      * 
      * @return T
      */
     T allocate();
 
     /**
-     * Method reserve.
      *
      * @param value
      */

@@ -37,7 +37,6 @@ import com.landawn.abacus.util.u.Holder;
 public interface Handler<T> {
 
     /**
-     * Pre get.
      *
      * @param entityId
      * @param selectPropNames
@@ -46,7 +45,6 @@ public interface Handler<T> {
     void preGet(EntityId entityId, Collection<String> selectPropNames, Map<String, Object> options);
 
     /**
-     * Post get.
      *
      * @param result
      * @param entityId
@@ -56,7 +54,6 @@ public interface Handler<T> {
     void postGet(T result, EntityId entityId, Collection<String> selectPropNames, Map<String, Object> options);
 
     /**
-     * Pre get.
      *
      * @param entityIds
      * @param selectPropNames
@@ -65,7 +62,6 @@ public interface Handler<T> {
     void preGet(List<? extends EntityId> entityIds, Collection<String> selectPropNames, Map<String, Object> options);
 
     /**
-     * Post get.
      *
      * @param result
      * @param entityIds
@@ -75,7 +71,6 @@ public interface Handler<T> {
     void postGet(List<T> result, List<? extends EntityId> entityIds, Collection<String> selectPropNames, Map<String, Object> options);
 
     /**
-     * Pre list.
      *
      * @param entityName
      * @param selectPropNames
@@ -85,7 +80,6 @@ public interface Handler<T> {
     void preList(String entityName, Collection<String> selectPropNames, Condition condition, Map<String, Object> options);
 
     /**
-     * Post list.
      *
      * @param result
      * @param entityName
@@ -96,7 +90,6 @@ public interface Handler<T> {
     void postList(List<T> result, String entityName, Collection<String> selectPropNames, Condition condition, Map<String, Object> options);
 
     /**
-     * Pre add.
      *
      * @param entity
      * @param options
@@ -104,7 +97,6 @@ public interface Handler<T> {
     void preAdd(T entity, Map<String, Object> options);
 
     /**
-     * Post add.
      *
      * @param entityId
      * @param entity
@@ -113,7 +105,6 @@ public interface Handler<T> {
     void postAdd(EntityId entityId, T entity, Map<String, Object> options);
 
     /**
-     * Pre add.
      *
      * @param entities
      * @param options
@@ -121,7 +112,6 @@ public interface Handler<T> {
     void preAdd(Collection<? extends T> entities, Map<String, Object> options);
 
     /**
-     * Post add.
      *
      * @param entityIds
      * @param entities
@@ -130,7 +120,6 @@ public interface Handler<T> {
     void postAdd(List<EntityId> entityIds, Collection<? extends T> entities, Map<String, Object> options);
 
     /**
-     * Pre add.
      *
      * @param entityName
      * @param props
@@ -139,7 +128,6 @@ public interface Handler<T> {
     void preAdd(String entityName, Map<String, Object> props, Map<String, Object> options);
 
     /**
-     * Post add.
      *
      * @param entityId
      * @param entityName
@@ -149,7 +137,6 @@ public interface Handler<T> {
     void postAdd(EntityId entityId, String entityName, Map<String, Object> props, Map<String, Object> options);
 
     /**
-     * Pre add.
      *
      * @param entityName
      * @param propsList
@@ -158,7 +145,6 @@ public interface Handler<T> {
     void preAdd(String entityName, List<Map<String, Object>> propsList, Map<String, Object> options);
 
     /**
-     * Post add.
      *
      * @param entityIds
      * @param entityName
@@ -168,7 +154,6 @@ public interface Handler<T> {
     void postAdd(List<EntityId> entityIds, String entityName, List<Map<String, Object>> propsList, Map<String, Object> options);
 
     /**
-     * Pre update.
      *
      * @param entity
      * @param options
@@ -176,7 +161,6 @@ public interface Handler<T> {
     void preUpdate(T entity, Map<String, Object> options);
 
     /**
-     * Post update.
      *
      * @param result
      * @param entity
@@ -185,7 +169,6 @@ public interface Handler<T> {
     void postUpdate(int result, T entity, Map<String, Object> options);
 
     /**
-     * Pre update.
      *
      * @param props
      * @param entityId
@@ -194,7 +177,6 @@ public interface Handler<T> {
     void preUpdate(Map<String, Object> props, EntityId entityId, Map<String, Object> options);
 
     /**
-     * Post update.
      *
      * @param result
      * @param props
@@ -204,7 +186,6 @@ public interface Handler<T> {
     void postUpdate(int result, Map<String, Object> props, EntityId entityId, Map<String, Object> options);
 
     /**
-     * Pre update.
      *
      * @param entities
      * @param options
@@ -212,7 +193,6 @@ public interface Handler<T> {
     void preUpdate(Collection<? extends T> entities, Map<String, Object> options);
 
     /**
-     * Post update.
      *
      * @param result
      * @param entities
@@ -221,7 +201,6 @@ public interface Handler<T> {
     void postUpdate(int result, Collection<? extends T> entities, Map<String, Object> options);
 
     /**
-     * Pre update.
      *
      * @param props
      * @param entityIds
@@ -230,7 +209,6 @@ public interface Handler<T> {
     void preUpdate(Map<String, Object> props, List<? extends EntityId> entityIds, Map<String, Object> options);
 
     /**
-     * Post update.
      *
      * @param result
      * @param props
@@ -240,7 +218,6 @@ public interface Handler<T> {
     void postUpdate(int result, Map<String, Object> props, List<? extends EntityId> entityIds, Map<String, Object> options);
 
     /**
-     * Pre update.
      *
      * @param entityName
      * @param props
@@ -250,7 +227,6 @@ public interface Handler<T> {
     void preUpdate(String entityName, Map<String, Object> props, Condition condition, Map<String, Object> options);
 
     /**
-     * Post update.
      *
      * @param result
      * @param entityName
@@ -261,7 +237,6 @@ public interface Handler<T> {
     void postUpdate(int result, String entityName, Map<String, Object> props, Condition condition, Map<String, Object> options);
 
     /**
-     * Pre delete.
      *
      * @param entityId
      * @param options
@@ -269,7 +244,6 @@ public interface Handler<T> {
     void preDelete(EntityId entityId, Map<String, Object> options);
 
     /**
-     * Post delete.
      *
      * @param result
      * @param entityId
@@ -278,7 +252,6 @@ public interface Handler<T> {
     void postDelete(int result, EntityId entityId, Map<String, Object> options);
 
     /**
-     * Pre delete.
      *
      * @param entity
      * @param options
@@ -286,7 +259,6 @@ public interface Handler<T> {
     void preDelete(T entity, Map<String, Object> options);
 
     /**
-     * Post delete.
      *
      * @param result
      * @param entity
@@ -295,7 +267,6 @@ public interface Handler<T> {
     void postDelete(int result, T entity, Map<String, Object> options);
 
     /**
-     * Pre delete.
      *
      * @param entityIds
      * @param options
@@ -303,7 +274,6 @@ public interface Handler<T> {
     void preDelete(List<? extends EntityId> entityIds, Map<String, Object> options);
 
     /**
-     * Post delete.
      *
      * @param result
      * @param entityIds
@@ -312,7 +282,6 @@ public interface Handler<T> {
     void postDelete(int result, List<? extends EntityId> entityIds, Map<String, Object> options);
 
     /**
-     * Pre delete.
      *
      * @param entities
      * @param options
@@ -320,7 +289,6 @@ public interface Handler<T> {
     void preDelete(Collection<? extends T> entities, Map<String, Object> options);
 
     /**
-     * Post delete.
      *
      * @param result
      * @param entities
@@ -329,7 +297,6 @@ public interface Handler<T> {
     void postDelete(int result, Collection<? extends T> entities, Map<String, Object> options);
 
     /**
-     * Pre delete.
      *
      * @param entityName
      * @param condition
@@ -338,7 +305,6 @@ public interface Handler<T> {
     void preDelete(String entityName, Condition condition, Map<String, Object> options);
 
     /**
-     * Post delete.
      *
      * @param result
      * @param entityName
@@ -348,7 +314,6 @@ public interface Handler<T> {
     void postDelete(int result, String entityName, Condition condition, Map<String, Object> options);
 
     /**
-     * Pre query.
      *
      * @param entityName
      * @param selectPropNames
@@ -359,7 +324,6 @@ public interface Handler<T> {
     void preQuery(String entityName, Collection<String> selectPropNames, Condition condition, Holder<String> resultHandle, Map<String, Object> options);
 
     /**
-     * Post query.
      *
      * @param dataSet
      * @param entityName

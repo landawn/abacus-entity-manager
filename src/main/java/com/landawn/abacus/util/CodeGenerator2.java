@@ -2006,7 +2006,6 @@ public final class CodeGenerator2 {
     }
 
     /**
-     * Generate entity.
      *
      * @param srcDir
      * @param packageName
@@ -2018,7 +2017,6 @@ public final class CodeGenerator2 {
     }
 
     /**
-     * Generate entity.
      *
      * @param srcDir
      * @param packageName
@@ -2037,7 +2035,6 @@ public final class CodeGenerator2 {
     }
 
     /**
-     * Generate entity.
      *
      * @param srcDir
      * @param packageName
@@ -2922,7 +2919,6 @@ public final class CodeGenerator2 {
     //    }
 
     /**
-     * Method newFileWriter.
      *
      * @param classFile
      * @return Writer
@@ -2937,7 +2933,6 @@ public final class CodeGenerator2 {
     }
 
     /**
-     * Method writeDomanPropNameClass.
      *
      * @param domainName
      * @param fileWrite
@@ -3006,7 +3001,6 @@ public final class CodeGenerator2 {
     }
 
     /**
-     * Method rule.
      *
      * @param st
      * @return String
@@ -3107,7 +3101,6 @@ public final class CodeGenerator2 {
     }
 
     /**
-     * Write import.
      *
      * @param entityDef
      * @param pkgName
@@ -3257,7 +3250,6 @@ public final class CodeGenerator2 {
     }
 
     /**
-     * Write class.
      *
      * @param entityDef
      * @param pkgName
@@ -3344,7 +3336,6 @@ public final class CodeGenerator2 {
     }
 
     /**
-     * Method writeClassComment2.
      *
      * @param fileWrite
      * @throws IOException Signals that an I/O exception has occurred.
@@ -3450,7 +3441,6 @@ public final class CodeGenerator2 {
     // }
 
     /**
-     * Write field.
      *
      * @param entityDef
      * @param pkgName
@@ -3751,7 +3741,6 @@ public final class CodeGenerator2 {
     }
 
     /**
-     * Method writeCopyConstructor.
      *
      * @param entityDef
      * @param pkgName
@@ -4731,7 +4720,6 @@ public final class CodeGenerator2 {
     }
 
     /**
-     * Method getUsualType.
      *
      * @param entityDef
      * @return Set<String>

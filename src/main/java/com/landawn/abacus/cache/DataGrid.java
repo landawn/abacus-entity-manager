@@ -123,7 +123,6 @@ public class DataGrid<E> implements Serializable {
     }
 
     /**
-     * Put.
      *
      * @param x
      * @param y
@@ -163,7 +162,6 @@ public class DataGrid<E> implements Serializable {
     }
 
     /**
-     * Gets the.
      *
      * @param x
      * @param y
@@ -197,7 +195,6 @@ public class DataGrid<E> implements Serializable {
     }
 
     /**
-     * Clear.
      *
      * @param x
      * @param y
@@ -224,7 +221,6 @@ public class DataGrid<E> implements Serializable {
     }
 
     /**
-     * Clear X.
      *
      * @param x
      */
@@ -286,7 +282,6 @@ public class DataGrid<E> implements Serializable {
     }
 
     /**
-     * Extend X.
      *
      * @param newX
      */
@@ -375,7 +370,6 @@ public class DataGrid<E> implements Serializable {
     }
 
     /**
-     * Equals.
      *
      * @param obj
      * @return true, if successful
@@ -386,7 +380,6 @@ public class DataGrid<E> implements Serializable {
     }
 
     /**
-     * Hash code.
      *
      * @return
      */
@@ -396,7 +389,6 @@ public class DataGrid<E> implements Serializable {
     }
 
     /**
-     * To string.
      *
      * @return
      */
@@ -423,7 +415,6 @@ public class DataGrid<E> implements Serializable {
         }
 
         /**
-         * Hash code.
          *
          * @return
          */
@@ -433,7 +424,6 @@ public class DataGrid<E> implements Serializable {
         }
 
         /**
-         * Equals.
          *
          * @param obj
          * @return true, if successful
@@ -444,7 +434,6 @@ public class DataGrid<E> implements Serializable {
         }
 
         /**
-         * To string.
          *
          * @return
          */

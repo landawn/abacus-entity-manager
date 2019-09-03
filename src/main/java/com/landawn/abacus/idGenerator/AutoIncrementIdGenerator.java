@@ -36,7 +36,6 @@ public final class AutoIncrementIdGenerator extends AbstractNumberIdGenerator<Nu
     }
 
     /**
-     * Allocate.
      *
      * @return
      */

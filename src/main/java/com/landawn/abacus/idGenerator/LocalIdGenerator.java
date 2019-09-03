@@ -88,7 +88,6 @@ public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
     }
 
     /**
-     * Initialize.
      *
      * @param executor
      */
@@ -98,7 +97,6 @@ public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
     }
 
     /**
-     * Allocate.
      *
      * @return
      */
@@ -114,7 +112,6 @@ public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
     }
 
     /**
-     * Reserve.
      *
      * @param value
      */

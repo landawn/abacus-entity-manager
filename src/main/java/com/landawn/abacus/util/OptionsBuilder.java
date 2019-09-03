@@ -38,7 +38,6 @@ public class OptionsBuilder {
     }
 
     /**
-     * Creates the.
      *
      * @return
      */
@@ -47,7 +46,6 @@ public class OptionsBuilder {
     }
 
     /**
-     * Offset.
      *
      * @param offset
      * @return
@@ -61,7 +59,6 @@ public class OptionsBuilder {
     }
 
     /**
-     * Count.
      *
      * @param count
      * @return
@@ -75,7 +72,6 @@ public class OptionsBuilder {
     }
 
     /**
-     * Batch size.
      *
      * @param batchSize
      * @return
@@ -89,7 +85,6 @@ public class OptionsBuilder {
     }
 
     /**
-     * Transaction id.
      *
      * @param transactionId
      * @return
@@ -260,7 +255,6 @@ public class OptionsBuilder {
     }
 
     /**
-     * Refresh cache.
      *
      * @param refreshCache
      * @return
@@ -290,7 +284,6 @@ public class OptionsBuilder {
     }
 
     /**
-     * Cache condition.
      *
      * @param queryTime
      * @return
@@ -304,7 +297,6 @@ public class OptionsBuilder {
     }
 
     /**
-     * Cache condition.
      *
      * @param minCount
      * @param maxCount
@@ -320,7 +312,6 @@ public class OptionsBuilder {
     }
 
     /**
-     * Cache condition.
      *
      * @param queryTime
      * @param minCount
@@ -338,7 +329,6 @@ public class OptionsBuilder {
     }
 
     /**
-     * Cache range.
      *
      * @param range
      * @return
@@ -554,7 +544,6 @@ public class OptionsBuilder {
     //    }
 
     /**
-     * Builds the.
      *
      * @return
      */

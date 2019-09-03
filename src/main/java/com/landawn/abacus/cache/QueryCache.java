@@ -41,7 +41,6 @@ public interface QueryCache extends Poolable {
     void unlock();
 
     /**
-     * Method getPropIndex.
      *
      * @param propName
      * @return int
@@ -49,7 +48,6 @@ public interface QueryCache extends Poolable {
     int getPropIndex(String propName);
 
     /**
-     * Method cacheResult.
      *
      * @param queryResult
      * @param cachePropNames
@@ -59,7 +57,6 @@ public interface QueryCache extends Poolable {
     void cacheResult(SQLResult queryResult, Collection<String> cachePropNames, Cache.Condition cond, Cache.Range range);
 
     /**
-     * Method asyncCacheResult.
      *
      * @param queryResult
      * @param cachePropNames
@@ -71,7 +68,6 @@ public interface QueryCache extends Poolable {
             final boolean closeResult);
 
     /**
-     * Method update.
      *
      * @param command
      * @param options
@@ -80,14 +76,12 @@ public interface QueryCache extends Poolable {
     boolean update(Command command, Map<String, Object> options);
 
     /**
-     * Method getCachedPropNames.
      * 
      * @return Collection<String>
      */
     Collection<String> getCachedPropNames();
 
     /**
-     * Method isCachedResult.
      *
      * @param propName
      * @param range
@@ -96,14 +90,12 @@ public interface QueryCache extends Poolable {
     boolean isCachedResult(String propName, Cache.Range range);
 
     /**
-     * Method getDataGrid.
      * 
      * @return DataGrid<Object>
      */
     DataGrid<Object> getDataGrid();
 
     /**
-     * Method getResult.
      *
      * @param propName
      * @param beginIndex
@@ -113,7 +105,6 @@ public interface QueryCache extends Poolable {
     Object[] getResult(String propName, int beginIndex, int endIndex);
 
     /**
-     * Method getResult.
      *
      * @param propNames
      * @param beginIndex
@@ -123,7 +114,6 @@ public interface QueryCache extends Poolable {
     Object[][] getResult(Collection<String> propNames, int beginIndex, int endIndex);
 
     /**
-     * Method getResult.
      *
      * @param beginIndex
      * @param endIndex
@@ -146,7 +136,6 @@ public interface QueryCache extends Poolable {
     long getLastUpdateTime();
 
     /**
-     * Size.
      *
      * @return
      */

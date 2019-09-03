@@ -44,7 +44,6 @@ public interface Session<T> {
     Transaction beginTransaction(IsolationLevel isolationLevel);
 
     /**
-     * Gets the.
      *
      * @param <TT> the target entity type
      * @param entityId
@@ -64,7 +63,6 @@ public interface Session<T> {
     <TT> TT gett(EntityId entityId, Collection<String> selectPropNames);
 
     /**
-     * List.
      *
      * @param <TT> the target entity type
      * @param entityName
@@ -149,7 +147,6 @@ public interface Session<T> {
     boolean contains(T entity);
 
     /**
-     * Method isDirty.
      * 
      * @return boolean
      */
@@ -171,7 +168,6 @@ public interface Session<T> {
     void close();
 
     /**
-     * Method close.
      * 
      * @return boolean
      */
