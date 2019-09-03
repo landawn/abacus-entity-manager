@@ -46,9 +46,9 @@ public final class SQLTransaction implements Transaction {
     /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(SQLTransaction.class);
 
-    /** The Constant threadTransacionMap. */
+    /** The Constant threadTransactionMap. */
     private static final Map<String, SQLTransaction> threadTransactionMap = new ConcurrentHashMap<>();
-    // private static final Map<String, SQLTransaction> attachedThreadTransacionMap = new ConcurrentHashMap<>();
+    // private static final Map<String, SQLTransaction> attachedThreadTransactionMap = new ConcurrentHashMap<>();
 
     /** The id. */
     private final String id;
@@ -191,16 +191,16 @@ public final class SQLTransaction implements Transaction {
     //        final String resourceId = ttid.substring(ttid.lastIndexOf('_') + 1);
     //        final String targetTTID = currentThreadName + "_" + resourceId;
     //
-    //        if (attachedThreadTransacionMap.containsKey(targetTTID)) {
-    //            throw new IllegalStateException("Transaction(id=" + attachedThreadTransacionMap.get(targetTTID).id()
+    //        if (attachedThreadTransactionMap.containsKey(targetTTID)) {
+    //            throw new IllegalStateException("Transaction(id=" + attachedThreadTransactionMap.get(targetTTID).id()
     //                    + ") has already been attached to current thread: " + currentThreadName);
-    //        } else if (threadTransacionMap.containsKey(targetTTID)) {
+    //        } else if (threadTransactionMap.containsKey(targetTTID)) {
     //            throw new IllegalStateException(
-    //                    "Transaction(id=" + threadTransacionMap.get(targetTTID).id() + ") has already been created in current thread: " + currentThreadName);
+    //                    "Transaction(id=" + threadTransactionMap.get(targetTTID).id() + ") has already been created in current thread: " + currentThreadName);
     //        }
     //
-    //        attachedThreadTransacionMap.put(targetTTID, this);
-    //        threadTransacionMap.put(targetTTID, this);
+    //        attachedThreadTransactionMap.put(targetTTID, this);
+    //        threadTransactionMap.put(targetTTID, this);
     //    }
     //
     //    public void detach() {
@@ -208,13 +208,13 @@ public final class SQLTransaction implements Transaction {
     //        final String resourceId = ttid.substring(ttid.lastIndexOf('_') + 1);
     //        final String targetTTID = currentThreadName + "_" + resourceId;
     //
-    //        if (!attachedThreadTransacionMap.containsKey(targetTTID)) {
+    //        if (!attachedThreadTransactionMap.containsKey(targetTTID)) {
     //            throw new IllegalStateException(
-    //                    "Transaction(id=" + attachedThreadTransacionMap.get(targetTTID).id() + ") is not attached to current thread: " + currentThreadName);
+    //                    "Transaction(id=" + attachedThreadTransactionMap.get(targetTTID).id() + ") is not attached to current thread: " + currentThreadName);
     //        }
     //
-    //        threadTransacionMap.remove(targetTTID);
-    //        attachedThreadTransacionMap.remove(targetTTID);
+    //        threadTransactionMap.remove(targetTTID);
+    //        attachedThreadTransactionMap.remove(targetTTID);
     //    }
 
     /**
