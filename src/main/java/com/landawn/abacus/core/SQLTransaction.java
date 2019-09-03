@@ -47,7 +47,7 @@ public final class SQLTransaction implements Transaction {
     private static final Logger logger = LoggerFactory.getLogger(SQLTransaction.class);
 
     /** The Constant threadTransacionMap. */
-    private static final Map<String, SQLTransaction> threadTransacionMap = new ConcurrentHashMap<>();
+    private static final Map<String, SQLTransaction> threadTransactionMap = new ConcurrentHashMap<>();
     // private static final Map<String, SQLTransaction> attachedThreadTransacionMap = new ConcurrentHashMap<>();
 
     /** The id. */
@@ -439,11 +439,11 @@ public final class SQLTransaction implements Transaction {
         final int res = refCount.decrementAndGet();
 
         if (res == 0) {
-            threadTransacionMap.remove(id);
+            threadTransactionMap.remove(id);
 
             logger.info("Finishing transaction(id={})", timedId);
 
-            logger.debug("Remaining active transactions: {}", threadTransacionMap.values());
+            logger.debug("Remaining active transactions: {}", threadTransactionMap.values());
         } else if (res > 0) {
             this.isolationLevel = isolationLevelStack.pop();
             this.isForUpdateOnly = isForUpdateOnlyStack.pop();
@@ -493,7 +493,7 @@ public final class SQLTransaction implements Transaction {
      * @return
      */
     static SQLTransaction getTransaction(final javax.sql.DataSource ds, final CreatedBy creator) {
-        return threadTransacionMap.get(getTransactionId(ds, creator));
+        return threadTransactionMap.get(getTransactionId(ds, creator));
     }
 
     /**
@@ -502,7 +502,7 @@ public final class SQLTransaction implements Transaction {
      * @param tranId
      */
     static SQLTransaction getTransaction(String tranId) {
-        return threadTransacionMap.get(tranId);
+        return threadTransactionMap.get(tranId);
     }
 
     /**
@@ -512,7 +512,7 @@ public final class SQLTransaction implements Transaction {
      * @return
      */
     static SQLTransaction putTransaction(final SQLTransaction tran) {
-        return threadTransacionMap.put(tran.id, tran);
+        return threadTransactionMap.put(tran.id, tran);
     }
 
     /**
@@ -523,12 +523,12 @@ public final class SQLTransaction implements Transaction {
      * @throws E
      */
     public <E extends Exception> void runNotInMe(Try.Runnable<E> cmd) throws E {
-        threadTransacionMap.remove(id);
+        threadTransactionMap.remove(id);
 
         try {
             cmd.run();
         } finally {
-            if (threadTransacionMap.put(id, this) != null) {
+            if (threadTransactionMap.put(id, this) != null) {
                 throw new IllegalStateException("Another transaction is opened but not closed in 'Transaction.runNotInMe'.");
             }
         }
@@ -544,12 +544,12 @@ public final class SQLTransaction implements Transaction {
      * @throws E
      */
     public <R, E extends Exception> R callNotInMe(Try.Callable<R, E> cmd) throws E {
-        threadTransacionMap.remove(id);
+        threadTransactionMap.remove(id);
 
         try {
             return cmd.call();
         } finally {
-            if (threadTransacionMap.put(id, this) != null) {
+            if (threadTransactionMap.put(id, this) != null) {
                 throw new IllegalStateException("Another transaction is opened but not closed in 'Transaction.callNotInMe'.");
             }
         }
