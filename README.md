@@ -21,7 +21,7 @@ A general persistent library in Java. It's easy to learn and simple to use with 
 compile 'com.landawn:abacus-entity-manager:1.9.1'
 ```
 
-## Also See: [abacus-util](https://github.com/landawn/abacus-util).
+## Also See: [abacus-util](https://github.com/landawn/abacus-util), [abacus-jdbc](https://github.com/landawn/abacus-jdbc).
 
 ## Recommended Java programming libraries/frameworks:
 [lombok](https://github.com/rzwitserloot/lombok), [Guava](https://github.com/google/guava), [Abacus-StreamEx](https://github.com/landawn/streamex), [Kyro](https://github.com/EsotericSoftware/kryo), [snappy-java](https://github.com/xerial/snappy-java), [lz4-java](https://github.com/lz4/lz4-java), [Caffeine](https://github.com/ben-manes/caffeine), [Ehcache](http://www.ehcache.org/), [Chronicle-Map](https://github.com/OpenHFT/Chronicle-Map), [echarts](https://github.com/apache/incubator-echarts), 
