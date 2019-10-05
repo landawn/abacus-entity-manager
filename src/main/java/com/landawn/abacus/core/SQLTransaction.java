@@ -402,7 +402,7 @@ public final class SQLTransaction implements Transaction {
         if (conn != null) {
             try {
                 if (isolationLevel == IsolationLevel.DEFAULT) {
-                    conn.setTransactionIsolation(originalIsolationLevel);
+                    // conn.setTransactionIsolation(originalIsolationLevel);
                 } else {
                     conn.setTransactionIsolation(isolationLevel.intValue());
                 }

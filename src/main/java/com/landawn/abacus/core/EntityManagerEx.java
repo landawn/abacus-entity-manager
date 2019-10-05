@@ -89,7 +89,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param entityManager
      */
     EntityManagerEx(final EntityManager<T> entityManager) {
-        this(entityManager, new AsyncExecutor(Math.min(8, IOUtil.CPU_CORES), 64, 180L, TimeUnit.SECONDS));
+        this(entityManager, new AsyncExecutor(Math.max(8, IOUtil.CPU_CORES), Math.max(64, IOUtil.CPU_CORES), 180L, TimeUnit.SECONDS));
     }
 
     /**
@@ -417,8 +417,8 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
 
     /**
      * Returns a {@code Nullable} describing the value in the first row/column if it exists, otherwise return an empty {@code Nullable}.
-     * 
-     * 
+     *
+     *
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <V> the value type
@@ -462,8 +462,8 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
 
     /**
      * Returns an {@code Optional} describing the value in the first row/column if it exists, otherwise return an empty {@code Optional}.
-     * 
-     * 
+     *
+     *
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <V> the value type
@@ -511,8 +511,8 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     /**
      * Returns a {@code Nullable} describing the value in the first row/column if it exists, otherwise return an empty {@code Nullable}.
      * And throws {@code DuplicatedResultException} if more than one record found.
-     * 
-     * 
+     *
+     *
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <V> the value type
@@ -566,8 +566,8 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     /**
      * Returns an {@code Optional} describing the value in the first row/column if it exists, otherwise return an empty {@code Optional}.
      * And throws {@code DuplicatedResultException} if more than one record found.
-     * 
-     * 
+     *
+     *
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <V> the value type
@@ -643,7 +643,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
 
     //    /**
     //     * Query the same property list with the same condition from multiple entities(main entity and history entities).
-    //     * 
+    //     *
     //     * @param entityNameList
     //     * @param selectPropNames
     //     *            the property name should not contains any entity name.
@@ -669,7 +669,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     /**
      * Returns the merged ResultSet acquired by querying with the specified entity and its slices if it has.
      * Mostly it's designed for partition to query different partitioning tables in the specified data sources.
-     * 
+     *
      * By default it's queried in parallel. but it can be set to sequential query by set <code>Query.QUERY_IN_PARALLEL=false</code> in options
      *
      * @param entityName
@@ -699,7 +699,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     //    /**
     //     * Just fetch the result in the 1st row. {@code null} is returned if no result is found. Remember to add
     //     * {@code limit} condition if big result will be returned by the query.
-    //     * 
+    //     *
     //     * @param entityName
     //     * @param selectPropNames
     //     * @param cond
@@ -730,7 +730,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Just fetch the result in the 1st row. {@code null} is returned if no result is found. This method will try to
      * convert the column value to the type of mapping entity property if the mapping entity property is not assignable
      * from column value.
-     * 
+     *
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <TT> the target entity type
@@ -764,7 +764,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * Just fetch the result in the 1st row. {@code null} is returned if no result is found. This method will try to
      * convert the column value to the type of mapping entity property if the mapping entity property is not assignable
      * from column value.
-     * 
+     *
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <TT> the target entity type
@@ -1010,7 +1010,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     /**
      * Returns the merged entity list acquired by querying with the specified entity and its slices if it has.
      * Mostly it's designed for partition to query different partitioning tables in the specified data sources.
-     * 
+     *
      * By default it's queried in parallel. but it can be set to sequential query by set <code>Query.QUERY_IN_PARALLEL=false</code> in options
      *
      * @param <TT> the target entity type
@@ -1921,7 +1921,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Execute {@code add} and return the added entity if the record doesn't, otherwise, {@code update} is executed and updated db record is returned. 
+     * Execute {@code add} and return the added entity if the record doesn't, otherwise, {@code update} is executed and updated db record is returned.
      *
      * @param entity
      * @param cond
@@ -1932,7 +1932,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     }
 
     /**
-     * Execute {@code add} and return the added entity if the record doesn't, otherwise, {@code update} is executed and updated db record is returned. 
+     * Execute {@code add} and return the added entity if the record doesn't, otherwise, {@code update} is executed and updated db record is returned.
      *
      * @param entity
      * @param cond
