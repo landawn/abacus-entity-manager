@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2015, Haiyang Li.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -43,7 +43,6 @@ import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.type.ObjectType;
 import com.landawn.abacus.type.Type;
 import com.landawn.abacus.type.TypeFactory;
-import com.landawn.abacus.util.Iterables;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Objectory;
 import com.landawn.abacus.util.OperationType;
@@ -58,7 +57,7 @@ import com.landawn.abacus.util.WD;
  * @since 0.8
  */
 public class SQLInterpreter extends AbstractInterpreter {
-    
+
     /** The Constant operatorChars. */
     static final char[] operatorChars = new char[128];
     static {
@@ -91,7 +90,7 @@ public class SQLInterpreter extends AbstractInterpreter {
 
     /** The product name. */
     protected final String productName;
-    
+
     /** The product version. */
     protected final String productVersion;
 
@@ -158,7 +157,7 @@ public class SQLInterpreter extends AbstractInterpreter {
         sqlCommand.addTargetTable(targetTableName);
 
         Set<String> tableNameSet = sqlCommand.getTargetTables();
-        Iterables.removeAll(tableNameSet, sqlCommand.getJoinTables());
+        N.removeAll(tableNameSet, sqlCommand.getJoinTables());
 
         if (tableNameSet.size() > 0) {
             sql.append(WD._SPACE);

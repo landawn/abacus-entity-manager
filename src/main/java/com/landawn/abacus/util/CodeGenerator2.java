@@ -1208,7 +1208,7 @@ public final class CodeGenerator2 {
             Set<Class<?>> annotationImportClasses = N.newLinkedHashSet();
 
             if (classFile.exists()) {
-                List<String> lines = IOUtil.readLines(classFile);
+                List<String> lines = IOUtil.readAllLines(classFile);
                 List<String> annotationLines = null;
                 for (String line : lines) {
                     if (line.startsWith("import")) {
@@ -1281,7 +1281,7 @@ public final class CodeGenerator2 {
             if (N.notNullOrEmpty(annotationLinesMapper)) {
                 IOUtil.close(fileWrite);
 
-                List<String> lines = IOUtil.readLines(classFile);
+                List<String> lines = IOUtil.readAllLines(classFile);
                 List<String> newLines = new ArrayList<>(lines.size() + 64);
 
                 for (String line : lines) {
@@ -2304,7 +2304,7 @@ public final class CodeGenerator2 {
     //    }
     //
     //    /**
-    //     * 
+    //     *
     //     * @param srcDir
     //     * @param packageName
     //     * @param classNameFields
@@ -2318,7 +2318,7 @@ public final class CodeGenerator2 {
     //    }
     //
     //    /**
-    //     * 
+    //     *
     //     * @param srcDir
     //     * @param packageName
     //     * @param classNameFields
@@ -2341,7 +2341,7 @@ public final class CodeGenerator2 {
 
     //    /**
     //     * Generate and Print out the methods according to fields defined the in specified class.
-    //     * 
+    //     *
     //     * @param cls
     //     */
     //    public static void printClassMethod(final Class<?> cls) {
@@ -2350,7 +2350,7 @@ public final class CodeGenerator2 {
     //
     //    /**
     //     * Generate and Print out the methods according to fields defined the in specified class.
-    //     * 
+    //     *
     //     * @param cls
     //     * @param constructor generate constructor
     //     * @param copyMethod generate the copy method.
@@ -2366,7 +2366,7 @@ public final class CodeGenerator2 {
     //
     //    /**
     //     * Generate and Print out the methods according to fields defined the in specified class.
-    //     * 
+    //     *
     //     * @param cls
     //     * @param constructor
     //     * @param copyMethod
@@ -2540,7 +2540,7 @@ public final class CodeGenerator2 {
             final String fieldName = entry.getKey();
             final String simpleTypeName = getSimpleType(entry.getValue(), null, pkgName, importedClasses);
             //            final String getPrefix = boolean.class.equals(entry.getValue().getTypeClass()) || Boolean.class.equals(entry.getValue().getTypeClass()) ? "is"
-            //                    : "get"; 
+            //                    : "get";
             final String postfix = fieldName2MethodName.containsKey(fieldName) ? fieldName2MethodName.get(fieldName)
                     : (StringUtil.isAllUpperCase(fieldName) ? fieldName : StringUtil.capitalize(fieldName));
 
@@ -2898,7 +2898,7 @@ public final class CodeGenerator2 {
     }
 
     //    /**
-    //     * 
+    //     *
     //     * @param pkgName
     //     */
     //    public static void printUtilClassForHashEqualsToString(final String pkgName) {
@@ -2906,7 +2906,7 @@ public final class CodeGenerator2 {
     //    }
     //
     //    /**
-    //     * 
+    //     *
     //     * @param pkgName
     //     * @param utilClassName
     //     */
@@ -4689,7 +4689,7 @@ public final class CodeGenerator2 {
                 tmp += ">";
                 typeName = tmp;
 
-                //                for (Type<?> paraType : parameterTypes) {                    
+                //                for (Type<?> paraType : parameterTypes) {
                 //                    try {
                 //                        if (isUsualType(paraType.getTypeClass().getCanonicalName())) {
                 //                            typeName = typeName.replace(ClassUtil.getPackageName(paraType.getTypeClass()) + ".", "");

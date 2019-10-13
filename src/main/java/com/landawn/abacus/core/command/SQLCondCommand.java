@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2015, Haiyang Li.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,11 +15,10 @@
  */
 
 package com.landawn.abacus.core.command;
- 
+
 import java.util.Collection;
 import java.util.Set;
 
-import com.landawn.abacus.util.Iterables;
 import com.landawn.abacus.util.N;
 
 // TODO: Auto-generated Javadoc
@@ -30,13 +29,13 @@ import com.landawn.abacus.util.N;
  * @since 0.8
  */
 public class SQLCondCommand extends SQLCommand {
-    
+
     /** The join tables. */
     private Set<String> joinTables = N.newHashSet();
 
     /** The where begin index. */
     private int whereBeginIndex = -1;
-    
+
     /** The where end idnex. */
     private int whereEndIdnex = -1;
 
@@ -121,7 +120,7 @@ public class SQLCondCommand extends SQLCommand {
      */
     public void removeJoinTables(Collection<String> tableNames) {
         if (N.notNullOrEmpty(tableNames)) {
-            Iterables.removeAll(joinTables, tableNames);
+            N.removeAll(joinTables, tableNames);
         }
     }
 

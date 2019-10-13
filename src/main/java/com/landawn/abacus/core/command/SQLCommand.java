@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2015, Haiyang Li.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,7 +15,7 @@
  */
 
 package com.landawn.abacus.core.command;
- 
+
 import static com.landawn.abacus.util.WD.COMMA_SPACE;
 import static com.landawn.abacus.util.WD._BRACE_L;
 import static com.landawn.abacus.util.WD._BRACE_R;
@@ -27,7 +27,6 @@ import java.util.Collection;
 import java.util.Set;
 
 import com.landawn.abacus.type.Type;
-import com.landawn.abacus.util.Iterables;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Objectory;
 
@@ -39,25 +38,25 @@ import com.landawn.abacus.util.Objectory;
  * @since 0.8
  */
 public class SQLCommand extends AbstractCommand {
-    
+
     /** The Constant INIT_SIZE. */
     private static final int INIT_SIZE = 9;
 
     /** The target tables. */
     private Set<String> targetTables = N.newHashSet();
-    
+
     /** The sub query tables. */
     private Set<String> subQueryTables = N.newHashSet();
 
     /** The parameter values. */
     protected Object[] parameterValues = new Object[INIT_SIZE];
-    
+
     /** The parameter types. */
     protected Type<Object>[] parameterTypes = new Type[INIT_SIZE];
 
     /** The parameter count. */
     protected int parameterCount;
-    
+
     /** The sql. */
     protected String sql = N.EMPTY_STRING;
 
@@ -298,7 +297,7 @@ public class SQLCommand extends AbstractCommand {
      */
     public void removeTargetTables(Collection<String> tableNames) {
         if (N.notNullOrEmpty(tableNames)) {
-            Iterables.removeAll(targetTables, tableNames);
+            N.removeAll(targetTables, tableNames);
         }
     }
 
@@ -354,7 +353,7 @@ public class SQLCommand extends AbstractCommand {
      */
     public void removeSubQueryTables(Collection<String> tableNames) {
         if (N.notNullOrEmpty(tableNames)) {
-            Iterables.removeAll(subQueryTables, tableNames);
+            N.removeAll(subQueryTables, tableNames);
         }
     }
 

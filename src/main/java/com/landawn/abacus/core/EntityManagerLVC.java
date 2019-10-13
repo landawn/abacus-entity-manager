@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2015, Haiyang Li.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -47,7 +47,7 @@ import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options.Query;
-import com.landawn.abacus.util.Seq;
+import com.landawn.abacus.util.stream.Stream.StreamEx;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -502,7 +502,7 @@ class EntityManagerLVC<E> extends EntityManagerLV<E> {
                 final CustomizedEntityCacheConfiguration entityCacheConfig = entityManagerConfig.getEntityCacheConfiguration() == null ? null
                         : entityManagerConfig.getEntityCacheConfiguration().getCustomizedEntityCacheConfiguration(entityName);
                 final boolean areAllExecludedPropNames = entityCacheConfig != null
-                        && Seq.of(uncachedPropNames).allMatch(propName -> entityCacheConfig.isExcludedProperty(propName));
+                        && StreamEx.of(uncachedPropNames).allMatch(propName -> entityCacheConfig.isExcludedProperty(propName));
                 final boolean needToUpdateEntityCache = !areAllExecludedPropNames;
                 final MapEntity tmpEntity = getUncachedPropValues(entityId, uncachedPropNames, cachedEntity, options);
 

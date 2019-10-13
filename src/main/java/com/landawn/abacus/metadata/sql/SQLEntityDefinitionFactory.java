@@ -13,7 +13,7 @@
  */
 
 package com.landawn.abacus.metadata.sql;
- 
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -49,16 +49,16 @@ import com.landawn.abacus.util.XMLUtil;
  * @since 0.8
  */
 public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
-    
+
     /** The domain name. */
     private final String domainName;
-    
+
     /** The domain definition. */
     private final byte[] domainDefinition;
-    
+
     /** The attrs. */
     private final Map<String, String> attrs;
-    
+
     /** The entity definition pool. */
     private final Map<String, SQLEntityDefinition> entityDefinitionPool;
 
@@ -133,7 +133,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
      * @return
      */
     public static synchronized SQLEntityDefinitionFactory newInstance(String domainName, InputStream is) {
-        return new SQLEntityDefinitionFactory(domainName, IOUtil.readBytes(is));
+        return new SQLEntityDefinitionFactory(domainName, IOUtil.readAllBytes(is));
     }
 
     /**

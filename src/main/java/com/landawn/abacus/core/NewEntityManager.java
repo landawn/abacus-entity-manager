@@ -34,7 +34,6 @@ import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.ClassUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
-import com.landawn.abacus.util.Seq;
 import com.landawn.abacus.util.u.Holder;
 import com.landawn.abacus.util.u.Nullable;
 import com.landawn.abacus.util.u.Optional;
@@ -93,8 +92,8 @@ public final class NewEntityManager {
      * @param <T>
      * @param <ID>
      * @param entityClass the id class
-     * @param idClass the id class type of target id property. 
-     * It should be {@code Void} class if there is no id property defined for the target entity, or {@code EntityId} class if there is zero or multiple id properties. 
+     * @param idClass the id class type of target id property.
+     * It should be {@code Void} class if there is no id property defined for the target entity, or {@code EntityId} class if there is zero or multiple id properties.
      * @return
      */
     @SuppressWarnings("deprecation")
@@ -103,7 +102,7 @@ public final class NewEntityManager {
             Mapper<T, ID> mapper = entityMapperPool.get(entityClass);
 
             if (mapper == null) {
-                mapper = new Mapper<T, ID>(this, entityClass, idClass,
+                mapper = new Mapper<>(this, entityClass, idClass,
                         em.getEntityDefinitionFactory().getDefinition(EntityManagerUtil.getEntityName(entityClass)));
                 entityMapperPool.put(entityClass, mapper);
             } else if (!mapper.idClass.equals(idClass)) {
@@ -369,8 +368,8 @@ public final class NewEntityManager {
 
     /**
      * Returns a {@code Nullable} describing the value in the first row/column if it exists, otherwise return an empty {@code Nullable}.
-     * 
-     * 
+     *
+     *
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <V> the value type
@@ -404,8 +403,8 @@ public final class NewEntityManager {
 
     /**
      * Returns an {@code Optional} describing the value in the first row/column if it exists, otherwise return an empty {@code Optional}.
-     * 
-     * 
+     *
+     *
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <V> the value type
@@ -443,8 +442,8 @@ public final class NewEntityManager {
     /**
      * Returns a {@code Nullable} describing the value in the first row/column if it exists, otherwise return an empty {@code Nullable}.
      * And throws {@code DuplicatedResultException} if more than one record found.
-     * 
-     * 
+     *
+     *
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <V> the value type
@@ -482,8 +481,8 @@ public final class NewEntityManager {
     /**
      * Returns an {@code Optional} describing the value in the first row/column if it exists, otherwise return an empty {@code Optional}.
      * And throws {@code DuplicatedResultException} if more than one record found.
-     * 
-     * 
+     *
+     *
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <V> the value type
@@ -542,7 +541,7 @@ public final class NewEntityManager {
     /**
      * Returns the merged ResultSet acquired by querying with the specified entity and its slices if it has.
      * Mostly it's designed for partition to query different partitioning tables in the specified data sources.
-     * 
+     *
      * By default it's queried in parallel. but it can be set to sequential query by set <code>Query.QUERY_IN_PARALLEL=false</code> in options
      *
      * @param entityClass
@@ -572,7 +571,7 @@ public final class NewEntityManager {
      * Just fetch the result in the 1st row. {@code null} is returned if no result is found. This method will try to
      * convert the column value to the type of mapping entity property if the mapping entity property is not assignable
      * from column value.
-     * 
+     *
      * Remember to add {@code limit} condition if big result will be returned by the query.
      *
      * @param <T>
@@ -745,7 +744,7 @@ public final class NewEntityManager {
     }
 
     /**
-     *   
+     *
      * Refer to {@code beginTransaction(IsolationLevel, boolean, Map<String, Object>)}.
      *
      * @param isolationLevel
@@ -757,7 +756,7 @@ public final class NewEntityManager {
     }
 
     /**
-     *  
+     *
      * Refer to {@code beginTransaction(IsolationLevel, boolean, Map<String, Object>)}.
      *
      * @param forUpdateOnly
@@ -769,7 +768,7 @@ public final class NewEntityManager {
     }
 
     /**
-     *  
+     *
      * Refer to {@code beginTransaction(IsolationLevel, boolean, Map<String, Object>)}.
      *
      * @param isolationLevel
@@ -782,11 +781,11 @@ public final class NewEntityManager {
     }
 
     /**
-     *   
-     * 
+     *
+     *
      * The general programming way with SQLExeucte is to execute sql scripts(generated by SQLBuilder) with array/list/map/entity by calling (batch)insert/update/delete/query/... methods.
      * if transaction is required, it can be started:
-     * 
+     *
      * <pre>
      * <code>
      *   final SQLTransaction tran = entityManager.beginTransaction(IsolationLevel.READ_COMMITTED);
@@ -794,10 +793,10 @@ public final class NewEntityManager {
      *       // entityManager.insert(...);
      *       // entityManager.update(...);
      *       // entityManager.query(...);
-     * 
+     *
      *       tran.commit();
      *   } finally {
-     *       // The connection will be automatically closed after the transaction is committed or rolled back.            
+     *       // The connection will be automatically closed after the transaction is committed or rolled back.
      *       tran.rollbackIfNotCommitted();
      *   }
      * </code>
@@ -1166,7 +1165,7 @@ public final class NewEntityManager {
     }
 
     /**
-     * Execute {@code add} and return the added entity if the record doesn't, otherwise, {@code update} is executed and updated db record is returned. 
+     * Execute {@code add} and return the added entity if the record doesn't, otherwise, {@code update} is executed and updated db record is returned.
      *
      * @param <T>
      * @param entity
@@ -1178,7 +1177,7 @@ public final class NewEntityManager {
     }
 
     /**
-     * Execute {@code add} and return the added entity if the record doesn't, otherwise, {@code update} is executed and updated db record is returned. 
+     * Execute {@code add} and return the added entity if the record doesn't, otherwise, {@code update} is executed and updated db record is returned.
      *
      * @param <T>
      * @param entity
@@ -2289,7 +2288,7 @@ public final class NewEntityManager {
                 if (ids instanceof List) {
                     return (List<EntityId>) ids;
                 } else {
-                    return new ArrayList<EntityId>((Collection<EntityId>) ids);
+                    return new ArrayList<>((Collection<EntityId>) ids);
                 }
             } else {
                 final List<EntityId> entityIds = new ArrayList<>(ids.size());
@@ -2318,9 +2317,9 @@ public final class NewEntityManager {
             if (isEntityId) {
                 return (List<ID>) entityIds;
             } else if (isVoidId) {
-                return Seq.of(entityIds).map(entityId -> null);
+                return N.map(entityIds, entityId -> null);
             } else {
-                return Seq.of(entityIds).map(entityId -> entityId.get(idClass, idPropName));
+                return N.map(entityIds, entityId -> entityId.get(idClass, idPropName));
             }
         }
     }
