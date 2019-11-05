@@ -17,8 +17,6 @@ import com.landawn.abacus.entity.extendDirty.lvc.AclGroup;
 import com.landawn.abacus.entity.extendDirty.lvc.AclUser;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
-import com.landawn.abacus.type.TypeFactory;
-import com.landawn.abacus.types.WeekDay;
 import com.landawn.abacus.util.ClassUtil;
 import com.landawn.abacus.util.DateUtil;
 import com.landawn.abacus.util.IOUtil;
@@ -27,9 +25,9 @@ import com.landawn.abacus.util.N;
 import junit.framework.TestCase;
 
 /**
- * 
+ *
  * @since 0.8
- * 
+ *
  * @author Haiyang Li
  */
 public abstract class AbstractTest extends TestCase {
@@ -53,7 +51,7 @@ public abstract class AbstractTest extends TestCase {
 
     static {
         N.println(IOUtil.JAVA_VERSION);
-        TypeFactory.registerClass(WeekDay.class, "WeekDay");
+        // TypeFactory.registerClass(WeekDay.class, "WeekDay");
     }
 
     public static void println(Object obj) {
