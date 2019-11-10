@@ -33,37 +33,37 @@ import com.landawn.abacus.util.N;
  * @since 0.8
  */
 public class SQLColumn implements Column {
-    
+
     /** The name. */
     private final String name;
-    
+
     /** The canonical name. */
     private final String canonicalName;
-    
+
     /** The attrs. */
-    private final Map<String, String> attrs;
-    
+    private final ImmutableMap<String, String> attrs;
+
     /** The java type. */
     private final String javaType;
-    
+
     /** The jdbc type. */
     private final String jdbcType;
-    
+
     /** The sql type. */
     private final int sqlType;
-    
+
     /** The is primary key. */
     private final boolean isPrimaryKey;
-    
+
     /** The is unique. */
     private final boolean isUnique;
 
     /** The is auto increment. */
     private final boolean isAutoIncrement;
-    
+
     /** The default value. */
     private final Object defaultValue;
-    
+
     /** The table. */
     private Table table;
 

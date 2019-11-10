@@ -2457,8 +2457,8 @@ public final class CodeGenerator2 {
             }
 
             for (Class<?> superClass : allClasses) {
-                parentGetterMethods.addAll(ClassUtil.getPropGetMethodList(superClass).values());
-                parentSettterMethods.putAll(ClassUtil.getPropSetMethodList(superClass));
+                parentGetterMethods.addAll(ClassUtil.getPropGetMethods(superClass).values());
+                parentSettterMethods.putAll(ClassUtil.getPropSetMethods(superClass));
             }
         }
 
@@ -3778,7 +3778,7 @@ public final class CodeGenerator2 {
                         ? ClassUtil.forClass(entityDef.getAttribute("extends"))
                         : extendedClass;
                 if (superClass != null) {
-                    Map<String, Method> propSetMethodMap = ClassUtil.getPropSetMethodList(superClass);
+                    Map<String, Method> propSetMethodMap = ClassUtil.getPropSetMethods(superClass);
                     for (String propName : propSetMethodMap.keySet()) {
                         if (entityDef.getProperty(propName) != null) {
                             continue;
@@ -4139,7 +4139,7 @@ public final class CodeGenerator2 {
         }
 
         if (extendedClass != null && hashEqualsWithParentProperties) {
-            Map<String, Method> propMethodMap = ClassUtil.getPropGetMethodList(extendedClass);
+            Map<String, Method> propMethodMap = ClassUtil.getPropGetMethods(extendedClass);
 
             for (Method method : propMethodMap.values()) {
                 st += (IOUtil.LINE_SEPARATOR + headSpace + "        ");
@@ -4224,7 +4224,7 @@ public final class CodeGenerator2 {
         }
 
         if (extendedClass != null && hashEqualsWithParentProperties) {
-            Map<String, Method> propMethodMap = ClassUtil.getPropGetMethodList(extendedClass);
+            Map<String, Method> propMethodMap = ClassUtil.getPropGetMethods(extendedClass);
 
             for (Method method : propMethodMap.values()) {
                 if (i++ > 0) {
@@ -4274,7 +4274,7 @@ public final class CodeGenerator2 {
          */
 
         if (extendedClass != null && toStringWithParentProperties) {
-            Map<String, Method> propMethodMap = ClassUtil.getPropGetMethodList(extendedClass);
+            Map<String, Method> propMethodMap = ClassUtil.getPropGetMethods(extendedClass);
 
             for (Method method : propMethodMap.values()) {
                 String propName = ClassUtil.getPropNameByMethod(method);

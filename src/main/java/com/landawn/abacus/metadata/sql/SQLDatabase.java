@@ -48,10 +48,10 @@ import com.landawn.abacus.util.XMLUtil;
  * @since 0.8
  */
 public class SQLDatabase implements Database {
-    
+
     /** The Constant TABLE_NAME. */
     private static final String TABLE_NAME = "TABLE_NAME";
-    
+
     /** The Constant TABLE. */
     private static final String TABLE = "TABLE";
 
@@ -59,18 +59,18 @@ public class SQLDatabase implements Database {
     /** The Constant ORACLE. */
     // private static final String USER = "USER";
     private static final String ORACLE = "ORACLE";
-    
+
     /** The Constant BIN$. */
     private static final String BIN$ = "BIN$";
 
     /** The name. */
     private final String name;
-    
+
     /** The attrs. */
-    private final Map<String, String> attrs;
-    
+    private final ImmutableMap<String, String> attrs;
+
     /** The table map. */
-    private final Map<String, SQLTable> tableMap;
+    private final ImmutableMap<String, SQLTable> tableMap;
 
     /**
      * Instantiates a new SQL database.
