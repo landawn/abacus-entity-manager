@@ -34,6 +34,7 @@ import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.ClassUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
+import com.landawn.abacus.util.Primitives;
 import com.landawn.abacus.util.u.Holder;
 import com.landawn.abacus.util.u.Nullable;
 import com.landawn.abacus.util.u.Optional;
@@ -102,8 +103,7 @@ public final class NewEntityManager {
             Mapper<T, ID> mapper = entityMapperPool.get(entityClass);
 
             if (mapper == null) {
-                mapper = new Mapper<>(this, entityClass, idClass,
-                        em.getEntityDefinitionFactory().getDefinition(EntityManagerUtil.getEntityName(entityClass)));
+                mapper = new Mapper<>(this, entityClass, idClass, em.getEntityDefinitionFactory().getDefinition(EntityManagerUtil.getEntityName(entityClass)));
                 entityMapperPool.put(entityClass, mapper);
             } else if (!mapper.idClass.equals(idClass)) {
                 throw new IllegalArgumentException(
@@ -1443,12 +1443,17 @@ public final class NewEntityManager {
                     + " must have at least one id property annotated by @Id or @ReadOnlyId on field or class");
 
             if (N.isNullOrEmpty(idPropList)) {
-                if (!(idClass.equals(Void.class) || idClass.equals(EntityId.class))) {
-                    throw new IllegalArgumentException("Id class only can be Void or EntityId class for entity with no id property");
+                if (!idClass.equals(Void.class)) {
+                    throw new IllegalArgumentException("'ID' type only can be Void for entity with no id property");
+                }
+            } else if (idPropList.size() == 1) {
+                if (!(Primitives.wrap(idClass)
+                        .isAssignableFrom(Primitives.wrap(ClassUtil.getPropGetMethod(entityClass, idPropList.get(0).getName()).getReturnType())))) {
+                    throw new IllegalArgumentException("'ID' type should not be EntityId for entity with single id property");
                 }
             } else if (idPropList.size() > 1) {
                 if (!idClass.equals(EntityId.class)) {
-                    throw new IllegalArgumentException("Id class only can be EntityId class for entity with two or more id properties");
+                    throw new IllegalArgumentException("'ID' type only can be EntityId for entity with two or more id properties");
                 }
             }
 
