@@ -1447,8 +1447,7 @@ public final class NewEntityManager {
                     throw new IllegalArgumentException("'ID' type only can be Void for entity with no id property");
                 }
             } else if (idPropList.size() == 1) {
-                if (!(Primitives.wrap(idClass)
-                        .isAssignableFrom(Primitives.wrap(ClassUtil.getPropGetMethod(entityClass, idPropList.get(0).getName()).getReturnType())))) {
+                if (!(Primitives.wrap(idClass).equals(Primitives.wrap(ClassUtil.getPropGetMethod(entityClass, idPropList.get(0).getName()).getReturnType())))) {
                     throw new IllegalArgumentException("'ID' type should not be EntityId for entity with single id property");
                 }
             } else if (idPropList.size() > 1) {
