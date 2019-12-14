@@ -1447,8 +1447,11 @@ public final class NewEntityManager {
                     throw new IllegalArgumentException("'ID' type only can be Void for entity with no id property");
                 }
             } else if (idPropList.size() == 1) {
-                if (!(Primitives.wrap(idClass).equals(Primitives.wrap(ClassUtil.getPropGetMethod(entityClass, idPropList.get(0).getName()).getReturnType())))) {
-                    throw new IllegalArgumentException("'ID' type should not be EntityId for entity with single id property");
+                if (!(Primitives.wrap(idClass)
+                        .isAssignableFrom(Primitives.wrap(ClassUtil.getPropGetMethod(entityClass, idPropList.get(0).getName()).getReturnType())))) {
+                    throw new IllegalArgumentException(
+                            "The 'ID' type declared in Dao type parameters: " + idClass + " is not assignable from the id property type in the entity class: "
+                                    + ClassUtil.getPropGetMethod(entityClass, idPropList.get(0).getName()).getReturnType());
                 }
             } else if (idPropList.size() > 1) {
                 if (!idClass.equals(EntityId.class)) {
