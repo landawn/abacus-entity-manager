@@ -1413,7 +1413,7 @@ public final class NewEntityManager {
         final Class<ID> idClass;
 
         final boolean isEntityId;
-        final boolean isVoidId;
+        final boolean isNoId;
 
         /** The entity name. */
         final String entityName;
@@ -1429,35 +1429,36 @@ public final class NewEntityManager {
          * @param entityClass
          */
         Mapper(final NewEntityManager nem, final Class<T> entityClass, final Class<ID> idClass, final EntityDefinition entityDef) {
-            this.nem = nem;
-            this.entityClass = entityClass;
-            this.idClass = idClass;
-            this.entityName = EntityManagerUtil.getEntityName(entityClass);
-            this.entityDef = entityDef;
-            this.isEntityId = idClass.equals(EntityId.class);
-            this.isVoidId = idClass.equals(Void.class);
-
             final List<Property> idPropList = entityDef.getIdPropertyList();
 
             N.checkArgNotNullOrEmpty(idPropList, "Target class: " + ClassUtil.getCanonicalClassName(entityClass)
                     + " must have at least one id property annotated by @Id or @ReadOnlyId on field or class");
+
+            final Class<?> idReturnType = idPropList.size() == 1 ? ClassUtil.getPropGetMethod(entityClass, idPropList.get(0).getName()).getReturnType()
+                    : Object.class;
 
             if (N.isNullOrEmpty(idPropList)) {
                 if (!idClass.equals(Void.class)) {
                     throw new IllegalArgumentException("'ID' type only can be Void for entity with no id property");
                 }
             } else if (idPropList.size() == 1) {
-                if (!(Primitives.wrap(idClass)
-                        .isAssignableFrom(Primitives.wrap(ClassUtil.getPropGetMethod(entityClass, idPropList.get(0).getName()).getReturnType())))) {
-                    throw new IllegalArgumentException(
-                            "The 'ID' type declared in Dao type parameters: " + idClass + " is not assignable from the id property type in the entity class: "
-                                    + ClassUtil.getPropGetMethod(entityClass, idPropList.get(0).getName()).getReturnType());
+                if (!(Primitives.wrap(idClass).isAssignableFrom(Primitives.wrap(idReturnType)))) {
+                    throw new IllegalArgumentException("The 'ID' type declared in Dao type parameters: " + idClass
+                            + " is not assignable from the id property type in the entity class: " + idReturnType);
                 }
             } else if (idPropList.size() > 1) {
                 if (!idClass.equals(EntityId.class)) {
                     throw new IllegalArgumentException("'ID' type only can be EntityId for entity with two or more id properties");
                 }
             }
+
+            this.nem = nem;
+            this.entityClass = entityClass;
+            this.idClass = Primitives.wrap(idClass).isAssignableFrom(Primitives.wrap(idReturnType)) ? (Class<ID>) idReturnType : idClass;
+            this.entityName = EntityManagerUtil.getEntityName(entityClass);
+            this.entityDef = entityDef;
+            this.isEntityId = idClass.equals(EntityId.class);
+            this.isNoId = idClass.equals(Void.class);
 
             this.idPropName = N.isNullOrEmpty(idPropList) ? null : idPropList.get(0).getName();
         }
@@ -2313,7 +2314,7 @@ public final class NewEntityManager {
         private ID convertId(final EntityId entityId) {
             if (isEntityId) {
                 return (ID) entityId;
-            } else if (isVoidId) {
+            } else if (isNoId) {
                 return null;
             } else {
                 return entityId.get(idClass, idPropName);
@@ -2323,7 +2324,7 @@ public final class NewEntityManager {
         private List<ID> convertId(List<EntityId> entityIds) {
             if (isEntityId) {
                 return (List<ID>) entityIds;
-            } else if (isVoidId) {
+            } else if (isNoId) {
                 return N.map(entityIds, entityId -> null);
             } else {
                 return N.map(entityIds, entityId -> entityId.get(idClass, idPropName));
