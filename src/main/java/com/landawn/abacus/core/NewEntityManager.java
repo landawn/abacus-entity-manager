@@ -1431,6 +1431,7 @@ public final class NewEntityManager {
         Mapper(final NewEntityManager nem, final Class<T> entityClass, final Class<ID> idClass, final EntityDefinition entityDef) {
             final List<Property> idPropList = entityDef.getIdPropertyList();
 
+            // Not a good idea to define Mapper<SomeEntity, Void>.
             N.checkArgNotNullOrEmpty(idPropList, "Target class: " + ClassUtil.getCanonicalClassName(entityClass)
                     + " must have at least one id property annotated by @Id or @ReadOnlyId on field or class");
 
