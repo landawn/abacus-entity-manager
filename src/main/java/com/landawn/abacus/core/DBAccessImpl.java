@@ -61,7 +61,6 @@ import com.landawn.abacus.condition.Condition;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.QueryCacheConfiguration;
 import com.landawn.abacus.core.command.Command;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.exception.DuplicatedResultException;
 import com.landawn.abacus.exception.InvalidResultHandleException;
 import com.landawn.abacus.idGenerator.IdGenerator;
@@ -1368,7 +1367,7 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
                 if (!handleResultPool.put(resultHandle.value(), handleResult)) {
                     handleResult.close();
 
-                    throw new AbacusException(
+                    throw new RuntimeException(
                             "Failed to save the handled result because the pool is full. The max pool capacity is: " + handleResultPool.getCapacity());
                 }
             } else {

@@ -21,7 +21,7 @@ package com.landawn.abacus.exception;
  * @author Haiyang Li
  * @since 0.8
  */
-public class RecordLockedException extends AbacusException {
+public class RecordLockedException extends IllegalStateException {
     /**
      * Field serialVersionUID. (value is 4114166553192938433L)
      */

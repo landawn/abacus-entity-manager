@@ -33,7 +33,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import com.landawn.abacus.dataSource.DataSourceManagerConfiguration;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.exception.UncheckedIOException;
 import com.landawn.abacus.http.ContentFormat;
 import com.landawn.abacus.logging.Logger;
@@ -125,7 +124,7 @@ public final class AbacusConfiguration {
         Element abacusEle = doc.getDocumentElement();
 
         if (!abacusEle.getNodeName().equals(ABACUS)) {
-            throw new AbacusException("Wrong configuration file, There is no root element: 'abacus'. ");
+            throw new RuntimeException("Wrong configuration file, There is no root element: 'abacus'. ");
         }
 
         List<Element> propertiesElementList = XMLUtil.getElementsByTagName(abacusEle, PROPERTIES);
@@ -159,7 +158,7 @@ public final class AbacusConfiguration {
         List<Element> entityManagerElementList = XMLUtil.getElementsByTagName(abacusEle, EntityManagerConfiguration.ENTITY_MANAGER);
 
         if (N.isNullOrEmpty(entityManagerElementList)) {
-            throw new AbacusException("At least configure one 'entityManager' element in 'abacus' element");
+            throw new RuntimeException("At least configure one 'entityManager' element in 'abacus' element");
         }
 
         List<EntityManagerConfiguration> tmpEntityManagerConfigurationList = new ArrayList<>();
@@ -174,7 +173,7 @@ public final class AbacusConfiguration {
 
         if (N.notNullOrEmpty(slogElementList)) {
             if (slogElementList.size() > 1) {
-                throw new AbacusException("Only can configure one 'slog' element in 'abacus' element");
+                throw new RuntimeException("Only can configure one 'slog' element in 'abacus' element");
             }
 
             slogConfiguration = new SLogConfiguration(slogElementList.get(0));
@@ -186,7 +185,7 @@ public final class AbacusConfiguration {
 
         if (N.notNullOrEmpty(initializeElementList)) {
             if (initializeElementList.size() > 1) {
-                throw new AbacusException("Only can configure one 'initializerOnStartup' element in 'abacus' element");
+                throw new RuntimeException("Only can configure one 'initializerOnStartup' element in 'abacus' element");
             }
 
             initializerOnStartup = Configuration.getTextContent(initializeElementList.get(0));
@@ -196,7 +195,7 @@ public final class AbacusConfiguration {
 
         if (N.notNullOrEmpty(factoryElementList)) {
             if (factoryElementList.size() > 1) {
-                throw new AbacusException("Only can configure one 'factory' element in 'abacus' element");
+                throw new RuntimeException("Only can configure one 'factory' element in 'abacus' element");
             }
 
             factory = Configuration.getTextContent(factoryElementList.get(0));
@@ -341,7 +340,7 @@ public final class AbacusConfiguration {
                 entityDefinitionFile = findFileByFile(abacusFile, attr);
 
                 if ((entityDefinitionFile == null) || !entityDefinitionFile.exists()) {
-                    throw new AbacusException("Can't find entity definition file: " + attr);
+                    throw new RuntimeException("Can't find entity definition file: " + attr);
                 }
 
                 if (logger.isWarnEnabled()) {
@@ -389,7 +388,7 @@ public final class AbacusConfiguration {
             } else if (ServerConfiguration.SERVER.equals(eleName)) {
                 serverConfig = new ServerConfiguration(element);
             } else {
-                throw new AbacusException("Unknown element: " + eleName);
+                throw new RuntimeException("Unknown element: " + eleName);
             }
         }
 
@@ -796,7 +795,7 @@ public final class AbacusConfiguration {
                 excludedEntityNames = Collections.unmodifiableSet(string2Set(getAttribute(EXCLUDED_ENTITIES)));
 
                 if ((includedEntityNames.size() > 0) && (excludedEntityNames.size() > 0)) {
-                    throw new AbacusException("Can't set 'includedEntities' and 'excludedEntities' element at the same time. ");
+                    throw new RuntimeException("Can't set 'includedEntities' and 'excludedEntities' element at the same time. ");
                 }
             }
 
@@ -821,7 +820,7 @@ public final class AbacusConfiguration {
                     CustomizedEntityCacheConfiguration customizedEntity = new CustomizedEntityCacheConfiguration(element);
                     customizedEntities.put(customizedEntity.getEntityName(), customizedEntity);
                 } else {
-                    throw new AbacusException("Unknow element: " + eleName);
+                    throw new RuntimeException("Unknow element: " + eleName);
                 }
             }
 
@@ -984,7 +983,7 @@ public final class AbacusConfiguration {
                     }
 
                     if ((includedPropNames.size() > 0) && (excludedPropNames.size() > 0)) {
-                        throw new AbacusException("Can't set 'includedProperty' and 'excludedProperty' element at the same time. ");
+                        throw new RuntimeException("Can't set 'includedProperty' and 'excludedProperty' element at the same time. ");
                     }
                 }
 
@@ -1215,7 +1214,7 @@ public final class AbacusConfiguration {
                 if (CacheResultConditionConfiguration.CACHE_RESULT_CONDITION.equals(eleName)) {
                     cacheResultConditionConfiguration = new CacheResultConditionConfiguration(element);
                 } else {
-                    throw new AbacusException("Unknown element: " + eleName);
+                    throw new RuntimeException("Unknown element: " + eleName);
                 }
             }
 
@@ -1571,7 +1570,7 @@ public final class AbacusConfiguration {
                 DomainConfiguration domain = new DomainConfiguration(element);
                 domainList.put(domain.getAttribute(DomainConfiguration.NAME), domain);
             } else {
-                throw new AbacusException("Unknow element: " + element.getNodeName());
+                throw new RuntimeException("Unknow element: " + element.getNodeName());
             }
         }
 

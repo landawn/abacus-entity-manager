@@ -20,7 +20,6 @@ import com.landawn.abacus.core.Executant;
 import com.landawn.abacus.core.SQLResult;
 import com.landawn.abacus.core.command.Command;
 import com.landawn.abacus.core.command.SQLCommandFactory;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.exception.UncheckedSQLException;
 import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.metadata.Property;
@@ -89,7 +88,7 @@ public final class SequenceIdGenerator extends AbstractNumberIdGenerator<Number>
             if (queryResult.next()) {
                 return valueOf((Number) queryResult.get(0));
             } else {
-                throw new AbacusException("Failed to allocate value for id property: " + prop.getName());
+                throw new RuntimeException("Failed to allocate value for id property: " + prop.getName());
             }
         } catch (SQLException e) {
             throw new UncheckedSQLException(e);

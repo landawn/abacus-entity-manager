@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.List;
 
 import com.landawn.abacus.condition.Join;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.util.WD;
 import com.landawn.abacus.util.N;
 
@@ -174,7 +173,7 @@ public class Association implements Serializable {
         joinType = (targetProp.isId() && (biEntityDef == null)) ? JoinType.OUTER : JoinType.INNER;
 
         if ((biEntityDef == null) && (srcProp.isId() && targetProp.isId())) {
-            throw new AbacusException("Not supported assocation. The foreigin and reference properties can't both be id.");
+            throw new RuntimeException("Not supported assocation. The foreigin and reference properties can't both be id.");
         }
     }
 

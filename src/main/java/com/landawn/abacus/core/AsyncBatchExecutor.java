@@ -23,7 +23,6 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import com.landawn.abacus.EntityManager;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.util.ExceptionUtil;
@@ -325,7 +324,7 @@ public final class AsyncBatchExecutor<E> {
     protected void addElement(List<E> queue, E e) {
         if ((addQueue.size() + updateQueue.size() + deleteQueue.size()) > capacity) {
             String msg = "Queue is full. The capacity is " + capacity;
-            throw new AbacusException(msg);
+            throw new RuntimeException(msg);
         }
 
         queue.add(e);
@@ -355,7 +354,7 @@ public final class AsyncBatchExecutor<E> {
      */
     protected void assertNotClosed() {
         if (isClosed) {
-            throw new AbacusException("This object pool has been closed");
+            throw new RuntimeException("This object pool has been closed");
         }
     }
 }

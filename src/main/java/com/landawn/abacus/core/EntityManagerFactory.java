@@ -28,7 +28,6 @@ import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.EntityCacheConfiguration;
 import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.EntityCacheConfiguration.CustomizedEntityCacheConfiguration;
 import com.landawn.abacus.dataSource.SQLDataSourceManager;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.metadata.EntityDefinitionFactory;
@@ -275,7 +274,7 @@ public class EntityManagerFactory {
         }
 
         if (configurationFile == null) {
-            throw new AbacusException("Can't find entity manager configuration file: " + file);
+            throw new RuntimeException("Can't find entity manager configuration file: " + file);
         }
 
         if (logger.isWarnEnabled()) {
@@ -382,7 +381,7 @@ public class EntityManagerFactory {
                         } else if (N.notNullOrEmpty(cecConfig.getExcludedPropertyNames())) {
                             for (Property idProp : entityDefFactory.getDefinition(entityName).getIdPropertyList()) {
                                 if (cecConfig.getExcludedPropertyNames().contains(idProp.getName())) {
-                                    throw new AbacusException("Id property(" + idProp.getName() + ") must not be excluded");
+                                    throw new RuntimeException("Id property(" + idProp.getName() + ") must not be excluded");
                                 }
                             }
                         }

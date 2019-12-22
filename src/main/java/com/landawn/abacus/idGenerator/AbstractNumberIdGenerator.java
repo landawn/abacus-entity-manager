@@ -16,7 +16,6 @@ package com.landawn.abacus.idGenerator;
 
 import java.math.BigInteger;
 
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.metadata.Property;
 
 // TODO: Auto-generated Javadoc
@@ -63,7 +62,7 @@ public abstract class AbstractNumberIdGenerator<T extends Number> extends Abstra
         } else if (typeClass.equals(byte.class) || typeClass.equals(Byte.class)) {
             numberType = BYTE_TYPE;
         } else {
-            throw new AbacusException("'" + prop.getName() + "' property's is not a valid number type for  " + getClass().getName());
+            throw new RuntimeException("'" + prop.getName() + "' property's is not a valid number type for  " + getClass().getName());
         }
     }
 

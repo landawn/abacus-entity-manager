@@ -843,7 +843,7 @@ public final class EntityUtil {
          * (clazz.getPackage() .getName() + PERIOD + propClassName);
          * 
          * try { return (T) N.forClass(propClassName); } catch (ClassNotFoundException e) { throw new
-         * AbacusException(e); }
+         * RuntimeException(e); }
          */
     }
 }

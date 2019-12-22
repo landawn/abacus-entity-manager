@@ -21,7 +21,6 @@ import com.landawn.abacus.entity.extendDirty.Book;
 import com.landawn.abacus.entity.extendDirty.Contact;
 import com.landawn.abacus.entity.extendDirty.Email;
 import com.landawn.abacus.entity.extendDirty.basic.DataType;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.N;
 
@@ -43,7 +42,7 @@ public abstract class AbstractEntityManager0Test extends AbstractTest {
 
     protected abstract String getDomainName();
 
-    protected void prepareTest(boolean... reinit) throws AbacusException {
+    protected void prepareTest(boolean... reinit) throws RuntimeException {
         if (entityManager == null) {
             entityManager = emf.getEntityManager(getDomainName());
             DataSource ds = emf.getDataSourceManager(getDomainName()).getPrimaryDataSource();
@@ -71,7 +70,7 @@ public abstract class AbstractEntityManager0Test extends AbstractTest {
         }
     }
 
-    protected void importHugeData(int number) throws AbacusException {
+    protected void importHugeData(int number) throws RuntimeException {
         long startTime = System.currentTimeMillis();
         int batchNum = 100;
 

@@ -14,7 +14,6 @@
 
 package com.landawn.abacus.lock;
 
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.util.MemcachedLock;
@@ -160,7 +159,7 @@ public class MemcachedRWLock<T> extends AbstractRWLock<T> {
                     if (isOK) {
                         isOK = false;
                     } else {
-                        throw new AbacusException(
+                        throw new RuntimeException(
                                 "Failed to lock 'write' on the target object: " + N.toString(target) + " because 'read' is locked on it with key: " + readKey);
                     }
 
@@ -190,17 +189,17 @@ public class MemcachedRWLock<T> extends AbstractRWLock<T> {
                     if (isOK) {
                         isOK = false;
                     } else {
-                        throw new AbacusException("Failed to lock 'write' on the target object: " + N.toString(target)
+                        throw new RuntimeException("Failed to lock 'write' on the target object: " + N.toString(target)
                                 + " because 'write' is locked on it with key: " + writeKey);
                     }
 
                     try {
                         if (mLock.lock(writeKey, 1, liveTime)) {
-                            throw new AbacusException("Failed to lock 'write' on the target object: " + N.toString(target) + " with key: " + writeKey);
+                            throw new RuntimeException("Failed to lock 'write' on the target object: " + N.toString(target) + " with key: " + writeKey);
                         }
                     } catch (Exception e) {
                         if (mLock.client().get(writeKey) == null) {
-                            throw new AbacusException("Failed to lock 'write' on the target object: " + N.toString(target) + " with key: " + writeKey);
+                            throw new RuntimeException("Failed to lock 'write' on the target object: " + N.toString(target) + " with key: " + writeKey);
                         }
                     }
                 } finally {
@@ -211,7 +210,7 @@ public class MemcachedRWLock<T> extends AbstractRWLock<T> {
             }
         } while (endTime - System.currentTimeMillis() > 0);
 
-        throw new AbacusException("Failed to lock the target object: " + N.toString(target) + " with key: " + key);
+        throw new RuntimeException("Failed to lock the target object: " + N.toString(target) + " with key: " + key);
     }
 
     /**
@@ -226,7 +225,7 @@ public class MemcachedRWLock<T> extends AbstractRWLock<T> {
         String writeKey = generateKey(writeKeyPrefix, target);
 
         if (!mLock.unlock(writeKey)) {
-            throw new AbacusException("Failed to unlock 'write' on the target object: " + N.toString(target) + " with key: " + writeKey);
+            throw new RuntimeException("Failed to unlock 'write' on the target object: " + N.toString(target) + " with key: " + writeKey);
         }
     }
 
@@ -284,14 +283,14 @@ public class MemcachedRWLock<T> extends AbstractRWLock<T> {
                     if (isOK) {
                         isOK = false;
                     } else {
-                        throw new AbacusException("Failed to lock 'write' on the target object: " + N.toString(target)
+                        throw new RuntimeException("Failed to lock 'write' on the target object: " + N.toString(target)
                                 + " because 'write' is locked on it with key: " + writeKey);
                     }
 
                     String readKey = generateKey(readKeyPrefix, target);
 
                     if (mLock.client().incr(readKey, 1, 1, liveTime) <= 0) {
-                        throw new AbacusException("Failed to lock 'read' the target object: " + N.toString(target) + " with key: " + readKey);
+                        throw new RuntimeException("Failed to lock 'read' the target object: " + N.toString(target) + " with key: " + readKey);
                     }
                 } finally {
                     mLock.unlock(key);
@@ -301,7 +300,7 @@ public class MemcachedRWLock<T> extends AbstractRWLock<T> {
             }
         } while (endTime - System.currentTimeMillis() > 0);
 
-        throw new AbacusException("Failed to lock the target object: " + N.toString(target) + " with key: " + key);
+        throw new RuntimeException("Failed to lock the target object: " + N.toString(target) + " with key: " + key);
 
     }
 
@@ -317,7 +316,7 @@ public class MemcachedRWLock<T> extends AbstractRWLock<T> {
         String readKey = generateKey(readKeyPrefix, target);
 
         if (mLock.client().decr(readKey, 1, 0, liveTime) < 0) {
-            throw new AbacusException("Failed to unlock 'read' on the target object: " + N.toString(target) + " with key: " + readKey);
+            throw new RuntimeException("Failed to unlock 'read' on the target object: " + N.toString(target) + " with key: " + readKey);
         }
     }
 

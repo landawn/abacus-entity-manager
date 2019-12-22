@@ -21,7 +21,7 @@ package com.landawn.abacus.exception;
  * @author Haiyang Li
  * @since 0.8
  */
-public class InvalidResultHandleException extends AbacusException {
+public class InvalidResultHandleException extends RuntimeException {
     /**
      * Field serialVersionUID. (value is -1143484757845245789)
      */

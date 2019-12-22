@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.util.N;
@@ -85,7 +84,7 @@ public final class LocalRWLock<T> extends AbstractRWLock<T> {
         try {
             isOk = refRWLock.writeLock().tryLock(timeout, TimeUnit.MICROSECONDS);
         } catch (InterruptedException e) {
-            throw new AbacusException("Failed to lock write on target: " + N.stringOf(target), e);
+            throw new RuntimeException("Failed to lock write on target: " + N.stringOf(target), e);
         } finally {
             if (!isOk) {
                 closeLock(target, refRWLock);
@@ -142,7 +141,7 @@ public final class LocalRWLock<T> extends AbstractRWLock<T> {
         try {
             isOk = refRWLock.readLock().tryLock(timeout, TimeUnit.MICROSECONDS);
         } catch (InterruptedException e) {
-            throw new AbacusException("Failed to lock read on target: " + N.stringOf(target), e);
+            throw new RuntimeException("Failed to lock read on target: " + N.stringOf(target), e);
         } finally {
             if (!isOk) {
                 closeLock(target, refRWLock);

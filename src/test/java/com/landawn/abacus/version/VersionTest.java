@@ -10,7 +10,6 @@ import com.landawn.abacus.AbstractTest;
 import com.landawn.abacus.EntityId;
 import com.landawn.abacus.core.Seid;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.util.N;
 
 /**
@@ -44,7 +43,7 @@ public class VersionTest extends AbstractTest {
     //
     //        try {
     //            version = VersionFactory.createVersion("Memcached(localhost:11211, aa, 10000000, 100, wrong)");
-    //        } catch (AbacusException e) {
+    //        } catch (RuntimeException e) {
     //        }
     //
     //        try {
@@ -69,7 +68,7 @@ public class VersionTest extends AbstractTest {
     //
     //        try {
     //            version = VersionFactory.createVersion("Redis(localhost:11211, aa, 10000000, 100, wrong)");
-    //        } catch (AbacusException e) {
+    //        } catch (RuntimeException e) {
     //        }
     //
     //        version = new LocalVersion<EntityId>(100);

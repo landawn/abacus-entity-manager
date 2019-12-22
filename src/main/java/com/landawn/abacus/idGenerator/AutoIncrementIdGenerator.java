@@ -14,7 +14,6 @@
 
 package com.landawn.abacus.idGenerator;
 
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.metadata.Property;
 
 // TODO: Auto-generated Javadoc
@@ -41,6 +40,6 @@ public final class AutoIncrementIdGenerator extends AbstractNumberIdGenerator<Nu
      */
     @Override
     public Long allocate() {
-        throw new AbacusException("Can't allocate value for database auto-generated id.");
+        throw new RuntimeException("Can't allocate value for database auto-generated id.");
     }
 }

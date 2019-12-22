@@ -59,7 +59,6 @@ import com.landawn.abacus.DirtyMarker;
 import com.landawn.abacus.annotation.Id;
 import com.landawn.abacus.core.AbstractDirtyMarker;
 import com.landawn.abacus.core.DirtyMarkerImpl;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.exception.UncheckedIOException;
 import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
@@ -976,15 +975,15 @@ public final class CodeGenerator2 {
         final String pkgName = entityDefinitionFactory.getAttribute(EntityDefEle.PACKAGE);
 
         if ((pkgName == null) || (pkgName.length() == 0)) {
-            throw new AbacusException("the package attribute in 'entityDef' element can't be null or empty");
+            throw new RuntimeException("the package attribute in 'entityDef' element can't be null or empty");
         }
         //
         //        if (generatePropNameTable && ((domainName == null) || (domainName.length() == 0))) {
-        //            throw new AbacusException("the domain attribute in 'entityDef' element can't be null or empty");
+        //            throw new RuntimeException("the domain attribute in 'entityDef' element can't be null or empty");
         //        }
 
         if (entityMode == null) {
-            throw new AbacusException("entityMode can't be null");
+            throw new RuntimeException("entityMode can't be null");
         }
 
         if (propName2VarName == null) {
@@ -1190,7 +1189,7 @@ public final class CodeGenerator2 {
                     extendedClass = AbstractDirtyMarker.class;
                 } else {
                     if (!AbstractDirtyMarker.class.isAssignableFrom(extendedClass)) {
-                        throw new AbacusException(
+                        throw new RuntimeException(
                                 "the class: " + extendedClass.getCanonicalName() + " must extend " + AbstractDirtyMarker.class.getCanonicalName());
                     }
                 }
@@ -3013,7 +3012,7 @@ public final class CodeGenerator2 {
         }
 
         if (st.length() == 0) {
-            throw new AbacusException("NOT able to generate valid entity/property name by table/column name: " + temp);
+            throw new RuntimeException("NOT able to generate valid entity/property name by table/column name: " + temp);
         }
 
         String nst = "";
@@ -3842,7 +3841,7 @@ public final class CodeGenerator2 {
                 HBaseColumnType<?> hbaseColumnType = (HBaseColumnType) prop.getType();
 
                 if (hbaseColumnType.getParameterTypes()[0].isEntity()) {
-                    throw new AbacusException("Family/Entity property can't/unnecessary to be HBaseColumn");
+                    throw new RuntimeException("Family/Entity property can't/unnecessary to be HBaseColumn");
                 }
 
                 String valueTypeName = Primitives.isWrapperType(hbaseColumnType.getElementType().clazz())
@@ -3906,7 +3905,7 @@ public final class CodeGenerator2 {
                 }
 
                 if (hbaseColumnType.getParameterTypes()[0].isEntity()) {
-                    throw new AbacusException("Family/Entity property can't/unnecessary to be HBaseColumn");
+                    throw new RuntimeException("Family/Entity property can't/unnecessary to be HBaseColumn");
                 }
 
                 String valueTypeName = Primitives.isWrapperType(hbaseColumnType.getElementType().clazz())

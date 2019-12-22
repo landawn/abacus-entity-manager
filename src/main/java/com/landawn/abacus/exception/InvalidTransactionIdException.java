@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 HaiYang Li
+ * Copyright (C) 2015 HaiYang Li
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,49 +16,49 @@ package com.landawn.abacus.exception;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class RecordNotFoundException.
+ * The Class InvalidTransactionIdException.
  *
  * @author Haiyang Li
- * @since 1.3.29
+ * @since 0.8
  */
-public class RecordNotFoundException extends IllegalStateException {
+public class InvalidTransactionIdException extends IllegalStateException {
     /**
-     * Field serialVersionUID.
+     * Field serialVersionUID. (value is -8260899582499449660L)
      */
-    private static final long serialVersionUID = -8572479810647985475L;
+    private static final long serialVersionUID = -8260899582499449660L;
 
     /**
-     * Constructor for EntityNotFoundException.
+     * Constructor for InvalidTransactionIdException.
      */
-    public RecordNotFoundException() {
+    public InvalidTransactionIdException() {
         super();
     }
 
     /**
-     * Constructor for EntityNotFoundException.
+     * Constructor for InvalidTransactionIdException.
      *
      * @param message
      */
-    public RecordNotFoundException(String message) {
+    public InvalidTransactionIdException(String message) {
         super(message);
     }
 
     /**
-     * Constructor for EntityNotFoundException.
+     * Constructor for InvalidTransactionIdException.
      *
      * @param message
      * @param cause
      */
-    public RecordNotFoundException(String message, Throwable cause) {
+    public InvalidTransactionIdException(String message, Throwable cause) {
         super(message, cause);
     }
 
     /**
-     * Constructor for EntityNotFoundException.
+     * Constructor for InvalidTransactionIdException.
      *
      * @param cause
      */
-    public RecordNotFoundException(Throwable cause) {
+    public InvalidTransactionIdException(Throwable cause) {
         super(cause);
     }
 }

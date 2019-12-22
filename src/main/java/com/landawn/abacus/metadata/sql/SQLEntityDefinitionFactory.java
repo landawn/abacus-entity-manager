@@ -28,7 +28,6 @@ import java.util.Set;
 import org.w3c.dom.Element;
 
 import com.landawn.abacus.core.NameUtil;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.exception.UncheckedIOException;
 import com.landawn.abacus.metadata.EntityDefXmlEle.EntityDefEle;
 import com.landawn.abacus.metadata.EntityDefXmlEle.EntityDefEle.EntityEle;
@@ -90,7 +89,7 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
                 Class<?> typeClass = entityDef.getTypeClass();
 
                 if (entityTypeClass.contains(typeClass) && !Object.class.equals(typeClass)) {
-                    throw new AbacusException("Two entity can't have same type class: " + typeClass.getCanonicalName());
+                    throw new RuntimeException("Two entity can't have same type class: " + typeClass.getCanonicalName());
                 }
 
                 entityTypeClass.add(typeClass);

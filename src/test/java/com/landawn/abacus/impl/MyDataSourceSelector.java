@@ -10,7 +10,6 @@ import java.util.Map;
 import com.landawn.abacus.DataSource;
 import com.landawn.abacus.DataSourceManager;
 import com.landawn.abacus.DataSourceSelector;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options.Query;
 
@@ -54,7 +53,7 @@ public class MyDataSourceSelector implements DataSourceSelector {
             }
 
             if (targetDS == null) {
-                throw new AbacusException("no data source found by '" + NON_EXIST_DATA_SOURCE + "'.");
+                throw new RuntimeException("no data source found by '" + NON_EXIST_DATA_SOURCE + "'.");
             }
 
             return targetDS;

@@ -26,7 +26,6 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.landawn.abacus.core.NameUtil;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.idGenerator.AutoIncrementIdGenerator;
 import com.landawn.abacus.idGenerator.IdGenerator;
 import com.landawn.abacus.logging.Logger;
@@ -201,11 +200,11 @@ public class SQLProperty implements Property {
         String actionOnDeleteAttr = getAttribute(PropertyEle.ACTION_ON_DELETE);
 
         if (((actionOnUpdateAttr != null) || (actionOnDeleteAttr != null)) && (columnType != ColumnType.ENTITY)) {
-            throw new AbacusException("Can't set 'constraint' attribute for non-entity property(" + getName() + "). ");
+            throw new RuntimeException("Can't set 'constraint' attribute for non-entity property(" + getName() + "). ");
         }
 
         if (actionOnUpdateAttr != null) {
-            throw new AbacusException("Constraint on update is not supported currently.");
+            throw new RuntimeException("Constraint on update is not supported currently.");
         }
 
         onUpdateAction = columnType.isEntity() ? ((actionOnUpdateAttr == null) ? OnUpdateAction.NO_ACTION : OnUpdateAction.get(actionOnUpdateAttr)) : null;
@@ -224,14 +223,14 @@ public class SQLProperty implements Property {
         isInsertable = (attr == null) ? (isReadOnly ? false : true) : Boolean.valueOf(attr);
 
         if (isReadOnly && isInsertable) {
-            throw new AbacusException("Can't set both 'insertable=true' and 'readOnly=true' attributes");
+            throw new RuntimeException("Can't set both 'insertable=true' and 'readOnly=true' attributes");
         }
 
         attr = this.attrs.get(PropertyEle.UPDATABLE);
         isUpdatable = (attr == null) ? (isReadOnly ? false : true) : Boolean.valueOf(attr);
 
         if (isReadOnly && isUpdatable) {
-            throw new AbacusException("Can't set both 'isUpdatable=true' and 'readOnly=true' attributes");
+            throw new RuntimeException("Can't set both 'isUpdatable=true' and 'readOnly=true' attributes");
         }
 
         String collection = this.attrs.get(PropertyEle.COLLECTION);
@@ -251,7 +250,7 @@ public class SQLProperty implements Property {
 
         if (orderBy != null) {
             if (!isCollection()) {
-                throw new AbacusException("Only list or set property supports sort attribute.");
+                throw new RuntimeException("Only list or set property supports sort attribute.");
             }
         }
     }

@@ -19,7 +19,6 @@ package com.landawn.abacus.core;
 import java.util.Map;
 
 import com.landawn.abacus.annotation.Internal;
-import com.landawn.abacus.exception.AbacusException;
 import com.landawn.abacus.metadata.Association;
 import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.N;
@@ -85,7 +84,7 @@ final class PropEntityProps {
             srcPropValue = props.get(srcProp.getName());
 
             if (srcPropValue == null) {
-                throw new AbacusException("Source property " + srcProp.getName() + " is null");
+                throw new RuntimeException("Source property " + srcProp.getName() + " is null");
             }
         }
 
