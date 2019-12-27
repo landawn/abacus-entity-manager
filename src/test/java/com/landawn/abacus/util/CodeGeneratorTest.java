@@ -18,11 +18,12 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.sql.DataSource;
+
 import org.junit.Test;
 
 import com.landawn.abacus.AbstractEntityManager0Test;
 import com.landawn.abacus.AbstractTest;
-import com.landawn.abacus.DataSource;
 import com.landawn.abacus.core.AbstractDirtyMarker;
 import com.landawn.abacus.metadata.Column;
 import com.landawn.abacus.metadata.EntityDefXmlEle.EntityDefEle;

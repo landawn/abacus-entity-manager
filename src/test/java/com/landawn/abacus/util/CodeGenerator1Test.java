@@ -11,8 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.sql.DataSource;
+
 import com.landawn.abacus.AbstractEntityManager0Test;
-import com.landawn.abacus.DataSource;
 import com.landawn.abacus.impl.MyAbstractDirtyMarker;
 import com.landawn.abacus.impl.MyDirtyMarker;
 import com.landawn.abacus.impl.MyDirtyMarkerImpl;
@@ -22,16 +23,16 @@ import com.landawn.abacus.util.CodeGenerator2.EntityMode;
 import junit.framework.TestCase;
 
 /**
- * 
+ *
  * @since 0.8
- * 
+ *
  * @author Haiyang Li
  */
 public class CodeGenerator1Test extends TestCase {
     static final DataSource ds;
     static {
         Properties<String, String> props = PropertiesUtil.load(new File("./src/test/resources/config/abacus-entity-manager.properties"));
-        Properties<String, String> jdbcProperties = new Properties<String, String>();
+        Properties<String, String> jdbcProperties = new Properties<>();
         for (Map.Entry<String, String> entry : props.entrySet()) {
             if (entry.getKey().startsWith("jdbc.")) {
                 jdbcProperties.put(entry.getKey().substring(5), entry.getValue());
@@ -85,7 +86,7 @@ public class CodeGenerator1Test extends TestCase {
     }
 
     public void generate(String domainName, EntityMode entityMode, Class<?> extendedClass, Class<?>... implInterface) {
-        Connection conn = ds.getConnection();
+        Connection conn = JdbcUtil.getConnection(ds);
 
         SQLDatabase database = new SQLDatabase(conn, AbstractEntityManager0Test.databaseName, selectedTables);
         JdbcUtil.closeQuietly(null, conn);
