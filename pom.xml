@@ -21,13 +21,13 @@
 		<dependency>
 			<groupId>com.landawn</groupId>
 			<artifactId>abacus-util</artifactId>
-			<version>1.10.3</version>
+			<version>1.10.4</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.landawn</groupId>
 			<artifactId>abacus-jdbc</artifactId>
-			<version>1.10.3</version>
+			<version>1.10.4</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -55,7 +55,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>28.0-jre</version>
+			<version>28.2-jre</version>
 			<scope>provided</scope>
 		</dependency>
 
