@@ -84,7 +84,7 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
     public int hashCode() {
         int h = 7;
         h = (h * 31) + prop.getName().hashCode();
-        h = (h * 31) + ClassUtil.getCanonicalClassName(getClass()).hashCode();
+        h = (h * 31) + ClassUtil.getClassName(getClass()).hashCode();
 
         return h;
     }

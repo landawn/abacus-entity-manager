@@ -1418,11 +1418,11 @@ public final class CodeGenerator2 {
             //            }
 
             //            fileWrite.write(N.LINE_SEPARATOR);
-            //            String utilClassName = ClassUtil.getCanonicalClassName(utilClass);
+            //            String utilClassName = ClassUtil.getClassName(utilClass);
             //            if (pkgName.equals(utilClassName.substring(0, utilClassName.lastIndexOf('.'))) || utilClass.equals(_N)) {
             //                // ignore
             //            } else {
-            //                fileWrite.write("import " + ClassUtil.getCanonicalClassName(utilClass) + ";" + N.LINE_SEPARATOR);
+            //                fileWrite.write("import " + ClassUtil.getClassName(utilClass) + ";" + N.LINE_SEPARATOR);
             //                fileWrite.write(N.LINE_SEPARATOR);
             //            }
 
@@ -1723,11 +1723,11 @@ public final class CodeGenerator2 {
             //            }
 
             //            fileWrite.write(N.LINE_SEPARATOR);
-            //            String utilClassName = ClassUtil.getCanonicalClassName(utilClass);
+            //            String utilClassName = ClassUtil.getClassName(utilClass);
             //            if (pkgName.equals(utilClassName.substring(0, utilClassName.lastIndexOf('.'))) || utilClass.equals(_N)) {
             //                // ignore
             //            } else {
-            //                fileWrite.write("import " + ClassUtil.getCanonicalClassName(utilClass) + ";" + N.LINE_SEPARATOR);
+            //                fileWrite.write("import " + ClassUtil.getClassName(utilClass) + ";" + N.LINE_SEPARATOR);
             //                fileWrite.write(N.LINE_SEPARATOR);
             //            }
 
@@ -3145,7 +3145,7 @@ public final class CodeGenerator2 {
         }
 
         if ((generateHashEqualsMethod || generateToStringMethod) && (hasHashEqualsProperty(entityDef) || hasToStringProperty(entityDef))) {
-            String utilClassName = ClassUtil.getCanonicalClassName(utilClass);
+            String utilClassName = ClassUtil.getClassName(utilClass);
             if (pkgName.equals(utilClassName.substring(0, utilClassName.lastIndexOf('.'))) || _N.equals(utilClass)) {
                 // ignore
             } else {
@@ -3243,7 +3243,7 @@ public final class CodeGenerator2 {
         //        }
 
         if ((cls != null) && !importedClasses.containsKey(cls.getSimpleName())) {
-            fileWrite.write(IOUtil.LINE_SEPARATOR + "import " + ClassUtil.getCanonicalClassName(cls) + ";");
+            fileWrite.write(IOUtil.LINE_SEPARATOR + "import " + ClassUtil.getClassName(cls) + ";");
             importedClasses.put(cls.getSimpleName(), cls);
         }
     }
@@ -3989,7 +3989,7 @@ public final class CodeGenerator2 {
                     fileWrite.write(headSpace + "            " + fieldName + " = new java.util.TreeMap<" + prop.getType().getParameterTypes()[0].name() + ", "
                             + prop.getType().getParameterTypes()[1].name() + ">(HBaseColumn.DESC_HBASE_VERSION_COMPARATOR);" + IOUtil.LINE_SEPARATOR);
                 } else {
-                    fileWrite.write(headSpace + "            " + fieldName + " = N.newInstance(" + ClassUtil.getCanonicalClassName(prop.getType().clazz())
+                    fileWrite.write(headSpace + "            " + fieldName + " = N.newInstance(" + ClassUtil.getClassName(prop.getType().clazz())
                             + ".class);" + IOUtil.LINE_SEPARATOR);
                 }
 
@@ -4071,7 +4071,7 @@ public final class CodeGenerator2 {
                     fileWrite.write(headSpace + "            " + fieldName + " = new java.util.TreeMap<" + prop.getType().getParameterTypes()[0].name() + ", "
                             + prop.getType().getParameterTypes()[1].name() + ">(HBaseColumn.DESC_HBASE_VERSION_COMPARATOR);" + IOUtil.LINE_SEPARATOR);
                 } else {
-                    fileWrite.write(headSpace + "            " + fieldName + " = N.newInstance(" + ClassUtil.getCanonicalClassName(prop.getType().clazz())
+                    fileWrite.write(headSpace + "            " + fieldName + " = N.newInstance(" + ClassUtil.getClassName(prop.getType().clazz())
                             + ".class);" + IOUtil.LINE_SEPARATOR);
                 }
 

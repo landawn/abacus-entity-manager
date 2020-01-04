@@ -200,7 +200,7 @@ public class SQLEntityDefinition implements EntityDefinition {
         final List<EntityDefinition> sliceEntityDefList = (List<EntityDefinition>) propsAndSlices[2];
 
         this.factory = factory;
-        this.javaType = ClassUtil.getCanonicalClassName(cls);
+        this.javaType = ClassUtil.getClassName(cls);
         this.typeClazz = cls;
         this.arrayTypeClazz = Array.newInstance(typeClazz, 0).getClass();
 
