@@ -257,7 +257,7 @@ public final class EntityManagerUtil {
         }
 
         if (entityName == null) {
-            throw new IllegalArgumentException("No entity definition found for class: " + ClassUtil.getClassName(cls));
+            throw new IllegalArgumentException("No entity definition found for class: " + ClassUtil.getCanonicalClassName(cls));
         } else {
             return checkEntityName(entityDefinitionFactory, entityName);
         }
