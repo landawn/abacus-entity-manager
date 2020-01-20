@@ -34,6 +34,7 @@ public enum OnDeleteAction {
      * Field CASCADE.
      */
     CASCADE(2);
+
     /**
      * Field intValue.
      */
@@ -62,11 +63,11 @@ public enum OnDeleteAction {
      * @return ConstraintType
      */
     public static OnDeleteAction get(String name) {
-        if ("noAction".equals(name)) {
+        if ("noAction".equalsIgnoreCase(name)) {
             return NO_ACTION;
-        } else if ("setNull".equals(name)) {
+        } else if ("setNull".equalsIgnoreCase(name)) {
             return SET_NULL;
-        } else if ("cascade".equals(name)) {
+        } else if ("cascade".equalsIgnoreCase(name)) {
             return CASCADE;
         } else {
             throw new IllegalArgumentException("Invalid CascadeType value[" + name + "]. ");
