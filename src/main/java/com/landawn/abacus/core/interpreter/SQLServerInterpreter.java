@@ -25,9 +25,9 @@ import com.landawn.abacus.condition.Join;
 import com.landawn.abacus.condition.Limit;
 import com.landawn.abacus.core.command.SQLCondCommand;
 import com.landawn.abacus.metadata.EntityDefinition;
-import com.landawn.abacus.util.WD;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Objectory;
+import com.landawn.abacus.util.WD;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -37,10 +37,10 @@ import com.landawn.abacus.util.Objectory;
  * @since 0.8
  */
 public class SQLServerInterpreter extends SQLInterpreter {
-    
+
     /** The Constant VERSION_2012. */
     private static final int VERSION_2012 = 11;
-    
+
     /** The is version 2012 or above. */
     private final boolean isVersion2012OrAbove;
 
@@ -162,24 +162,29 @@ public class SQLServerInterpreter extends SQLInterpreter {
             interpretCell(entityDef, orderBy, sqlCondCmd, sql);
         }
 
-        Limit limit = criteria.getLimit();
-        if (limit != null) {
-            if (isVersion2012OrAbove) {
-                sql.append(WD._SPACE);
-                sql.append(_OFFSET);
-                sql.append(WD._SPACE);
-                sql.append(limit.getOffset());
-                sql.append(WD._SPACE);
-                sql.append(WD.ROWS);
+        final Limit limit = criteria.getLimit();
 
-                sql.append(WD._SPACE);
-                sql.append(WD.FETCH_NEXT);
-                sql.append(WD._SPACE);
-                sql.append(limit.getCount());
-                sql.append(WD._SPACE);
-                sql.append(WD.ROWS_ONLY);
+        if (limit != null) {
+            if (N.notNullOrEmpty(limit.getExpr())) {
+                sql.append(WD._SPACE).append(limit.getExpr());
             } else {
-                // do nothing.
+                if (isVersion2012OrAbove) {
+                    sql.append(WD._SPACE);
+                    sql.append(_OFFSET);
+                    sql.append(WD._SPACE);
+                    sql.append(limit.getOffset());
+                    sql.append(WD._SPACE);
+                    sql.append(WD.ROWS);
+
+                    sql.append(WD._SPACE);
+                    sql.append(WD.FETCH_NEXT);
+                    sql.append(WD._SPACE);
+                    sql.append(limit.getCount());
+                    sql.append(WD._SPACE);
+                    sql.append(WD.ROWS_ONLY);
+                } else {
+                    // do nothing.
+                }
             }
         }
     }

@@ -32,7 +32,7 @@ import com.landawn.abacus.metadata.EntityDefinition;
 import com.landawn.abacus.types.WeekDay;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
-import com.landawn.abacus.util.Try;
+import com.landawn.abacus.util.Throwables;
 
 /**
  *
@@ -139,7 +139,7 @@ public class EntityManagerTest extends AbstractEntityManager1Test {
 
             activeThreadNum.incrementAndGet();
 
-            N.asyncExecute(new Try.Runnable<RuntimeException>() {
+            N.asyncExecute(new Throwables.Runnable<RuntimeException>() {
                 @Override
                 public void run() {
                     try {

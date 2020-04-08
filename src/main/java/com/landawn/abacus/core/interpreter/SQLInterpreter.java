@@ -780,21 +780,25 @@ public class SQLInterpreter extends AbstractInterpreter {
      * @param sql
      */
     protected final void interpretLimit(Limit limit, StringBuilder sql) {
-        sql.append(WD._SPACE);
-        sql.append(_LIMIT);
+        if (N.notNullOrEmpty(limit.getExpr())) {
+            sql.append(WD._SPACE).append(limit.getExpr());
+        } else {
+            sql.append(WD._SPACE);
+            sql.append(_LIMIT);
 
-        // setParameterValue(limit.getCount(), TypeFactory.getType(IntType.INT),
-        // sqlCondCmd, sql);
-        sql.append(WD._SPACE);
-        sql.append(limit.getCount());
+            // setParameterValue(limit.getCount(), TypeFactory.getType(IntType.INT),
+            // sqlCondCmd, sql);
+            sql.append(WD._SPACE);
+            sql.append(limit.getCount());
 
-        sql.append(WD._SPACE);
-        sql.append(_OFFSET);
+            sql.append(WD._SPACE);
+            sql.append(_OFFSET);
 
-        // setParameterValue(limit.getOffset(),
-        // TypeFactory.getType(IntType.INT), sqlCondCmd, sql);
-        sql.append(WD._SPACE);
-        sql.append(limit.getOffset());
+            // setParameterValue(limit.getOffset(),
+            // TypeFactory.getType(IntType.INT), sqlCondCmd, sql);
+            sql.append(WD._SPACE);
+            sql.append(limit.getOffset());
+        }
     }
 
     /**

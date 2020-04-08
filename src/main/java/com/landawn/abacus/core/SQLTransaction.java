@@ -32,7 +32,7 @@ import com.landawn.abacus.util.JdbcUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.SQLExecutor;
 import com.landawn.abacus.util.StringUtil;
-import com.landawn.abacus.util.Try;
+import com.landawn.abacus.util.Throwables;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -512,7 +512,7 @@ public final class SQLTransaction implements Transaction {
      * @param cmd
      * @throws E
      */
-    public <E extends Exception> void runNotInMe(Try.Runnable<E> cmd) throws E {
+    public <E extends Exception> void runNotInMe(Throwables.Runnable<E> cmd) throws E {
         threadTransactionMap.remove(id);
 
         try {
@@ -533,7 +533,7 @@ public final class SQLTransaction implements Transaction {
      * @return
      * @throws E
      */
-    public <R, E extends Exception> R callNotInMe(Try.Callable<R, E> cmd) throws E {
+    public <R, E extends Exception> R callNotInMe(Throwables.Callable<R, E> cmd) throws E {
         threadTransactionMap.remove(id);
 
         try {

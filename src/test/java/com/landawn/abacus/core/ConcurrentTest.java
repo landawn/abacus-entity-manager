@@ -12,7 +12,7 @@ import com.landawn.abacus.LockMode;
 import com.landawn.abacus.entity.extendDirty.lvc.Account;
 import com.landawn.abacus.exception.RecordLockedException;
 import com.landawn.abacus.util.N;
-import com.landawn.abacus.util.Try;
+import com.landawn.abacus.util.Throwables;
 
 /**
  * 
@@ -26,7 +26,7 @@ public class ConcurrentTest extends AbstractEntityManager1Test {
         final int threadNumber = 100;
 
         for (int i = 0; i < threadNumber; i++) {
-            Try.Runnable<RuntimeException> command = new Try.Runnable<RuntimeException>() {
+            Throwables.Runnable<RuntimeException> command = new Throwables.Runnable<RuntimeException>() {
                 @Override
                 public void run() {
                     try {
@@ -72,7 +72,7 @@ public class ConcurrentTest extends AbstractEntityManager1Test {
         final int threadNumber = 100;
 
         for (int i = 0; i < threadNumber; i++) {
-            Try.Runnable<RuntimeException> command = new Try.Runnable<RuntimeException>() {
+            Throwables.Runnable<RuntimeException> command = new Throwables.Runnable<RuntimeException>() {
                 @Override
                 public void run() {
                     try {

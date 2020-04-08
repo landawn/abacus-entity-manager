@@ -25,8 +25,8 @@ import com.landawn.abacus.condition.Join;
 import com.landawn.abacus.condition.Limit;
 import com.landawn.abacus.core.command.SQLCondCommand;
 import com.landawn.abacus.metadata.EntityDefinition;
-import com.landawn.abacus.util.WD;
 import com.landawn.abacus.util.N;
+import com.landawn.abacus.util.WD;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -36,7 +36,7 @@ import com.landawn.abacus.util.N;
  * @since 0.8
  */
 public class OracleInterpreter extends SQLInterpreter {
-    
+
     /**
      * Instantiates a new oracle interpreter.
      *
@@ -75,7 +75,8 @@ public class OracleInterpreter extends SQLInterpreter {
             sqlCondCmd.setWhereEndIndex(whereEndIndex);
         }
 
-        Limit limit = criteria.getLimit();
+        final Limit limit = criteria.getLimit();
+
         if (limit != null) {
             if (limit.getOffset() != 0) {
                 throw new IllegalArgumentException("Oracle doesn't support offset. ");
@@ -94,12 +95,16 @@ public class OracleInterpreter extends SQLInterpreter {
                 sql.append(_AND);
             }
 
-            sql.append(WD._SPACE);
-            sql.append(WD.ROWNUM);
-            sql.append(WD._SPACE);
-            sql.append(WD._LESS_THAN);
-            sql.append(WD._SPACE);
-            sql.append(limit.getCount() + 1);
+            if (N.notNullOrEmpty(limit.getExpr())) {
+                sql.append(WD._SPACE).append(limit.getExpr());
+            } else {
+                sql.append(WD._SPACE);
+                sql.append(WD.ROWNUM);
+                sql.append(WD._SPACE);
+                sql.append(WD._LESS_THAN);
+                sql.append(WD._SPACE);
+                sql.append(limit.getCount() + 1);
+            }
 
             sqlCondCmd.setWhereEndIndex(sql.length());
         }

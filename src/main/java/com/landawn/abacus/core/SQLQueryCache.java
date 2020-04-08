@@ -43,7 +43,7 @@ import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Objectory;
 import com.landawn.abacus.util.OperationType;
 import com.landawn.abacus.util.Options;
-import com.landawn.abacus.util.Try;
+import com.landawn.abacus.util.Throwables;
 import com.landawn.abacus.util.WD;
 
 // TODO: Auto-generated Javadoc
@@ -153,7 +153,7 @@ class SQLQueryCache extends AbstractQueryCache {
             final Options.Cache.Range range, final boolean closeResult) {
         assertNotClosed();
 
-        ASYNC_EXECUTOR.execute(new Try.Runnable<RuntimeException>() {
+        ASYNC_EXECUTOR.execute(new Throwables.Runnable<RuntimeException>() {
             @Override
             public void run() {
                 try {

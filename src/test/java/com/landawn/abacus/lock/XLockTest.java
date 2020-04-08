@@ -12,7 +12,7 @@ import com.landawn.abacus.LockMode;
 import com.landawn.abacus.cache.SpyMemcached;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Profiler;
-import com.landawn.abacus.util.Try;
+import com.landawn.abacus.util.Throwables;
 
 import junit.framework.TestCase;
 
@@ -122,7 +122,7 @@ public abstract class XLockTest extends TestCase {
             xLock.unlock(target, refLockCode);
         }
 
-        Profiler.run(33, 1000, 1, new Try.Runnable() {
+        Profiler.run(33, 1000, 1, new Throwables.Runnable() {
             @Override
             public void run() {
                 for (int i = 0; i < 100; i++) {
@@ -150,7 +150,7 @@ public abstract class XLockTest extends TestCase {
             xLock.unlock(target, refLockCode);
         }
 
-        Profiler.run(33, 100, 1, new Try.Runnable() {
+        Profiler.run(33, 100, 1, new Throwables.Runnable<RuntimeException>() {
             @Override
             public void run() {
                 for (int i = 0; i < 100; i++) {
