@@ -21,13 +21,13 @@
 		<dependency>
 			<groupId>com.landawn</groupId>
 			<artifactId>abacus-util</artifactId>
-			<version>1.20.25</version>
+			<version>1.20.26</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.landawn</groupId>
 			<artifactId>abacus-jdbc</artifactId>
-			<version>1.20.15</version>
+			<version>1.20.16</version>
 			<scope>provided</scope>
 		</dependency>
 
