@@ -1,3 +1,9 @@
+### 1.9.9
+
+* Refactoring `SQLBuilder`.
+* Bug fixes and improvements.
+
+
 ### 1.9.8
 
 * Bug fixes and improvements.
