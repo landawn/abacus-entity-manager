@@ -18,7 +18,6 @@ package com.landawn.abacus.core;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface EntityManagerInitializer.
  *
  * @author Haiyang Li
  * @since 0.8

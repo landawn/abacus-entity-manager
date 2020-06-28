@@ -19,7 +19,6 @@ import com.landawn.abacus.type.Type;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface Validator.
  *
  * @author Haiyang Li
  * @param <T>

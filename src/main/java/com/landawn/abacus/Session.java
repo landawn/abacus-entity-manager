@@ -24,7 +24,6 @@ import com.landawn.abacus.util.u.Optional;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface Session.
  *
  * @author Haiyang Li
  * @param <T> the entity type

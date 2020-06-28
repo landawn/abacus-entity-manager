@@ -19,7 +19,6 @@ import java.util.Map;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface Database.
  *
  * @author Haiyang Li
  * @since 0.8

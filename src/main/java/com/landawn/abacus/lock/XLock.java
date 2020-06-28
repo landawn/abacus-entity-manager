@@ -20,7 +20,6 @@ import com.landawn.abacus.LockMode;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface XLock.
  *
  * @param <T>
  */

@@ -38,7 +38,7 @@ import com.landawn.abacus.util.N;
  * @since 0.8
  */
 public class InterpreterProxy extends AbstractInterpreter {
-    
+
     /** The Constant MAX_POOL_SIZE. */
     private static final int MAX_POOL_SIZE = 100;
 

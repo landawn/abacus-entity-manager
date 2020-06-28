@@ -23,7 +23,7 @@ package com.landawn.abacus.core.interpreter;
  * @since 0.8
  */
 public class DB2Interpreter extends SQLInterpreter {
-    
+
     /**
      * Instantiates a new DB 2 interpreter.
      *

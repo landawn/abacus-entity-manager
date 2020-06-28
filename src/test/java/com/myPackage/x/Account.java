@@ -75,10 +75,8 @@ public class Account {
         if (obj instanceof Account) {
             final Account other = (Account) obj;
 
-            return Objects.equals(firstName, other.firstName)
-                && Objects.equals(lastName, other.lastName)
-                && Objects.equals(birthdate, other.birthdate)
-                && Objects.equals(attrs, other.attrs);
+            return Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName) && Objects.equals(birthdate, other.birthdate)
+                    && Objects.equals(attrs, other.attrs);
         }
 
         return false;
@@ -86,10 +84,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return "{firstName=" + Objects.toString(firstName)
-                 + ", lastName=" + Objects.toString(lastName)
-                 + ", birthdate=" + Objects.toString(birthdate)
-                 + ", attrs=" + Objects.toString(attrs)
-                 + "}";
+        return "{firstName=" + Objects.toString(firstName) + ", lastName=" + Objects.toString(lastName) + ", birthdate=" + Objects.toString(birthdate)
+                + ", attrs=" + Objects.toString(attrs) + "}";
     }
 }

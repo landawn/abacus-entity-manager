@@ -28,7 +28,7 @@ import com.landawn.abacus.util.OperationType;
  * @since 0.8
  */
 public abstract class AbstractCommand implements Command, Cloneable {
-    
+
     /**
      * Gets the operation type.
      *

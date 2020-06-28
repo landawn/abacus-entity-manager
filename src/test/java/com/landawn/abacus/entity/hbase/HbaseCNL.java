@@ -83,12 +83,15 @@ public interface HbaseCNL {
         /**
          * Immutable column name list
          */
-        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList(ID, GUI, EMAIL_ADDRESS, NAME, STATUS, LAST_UPDATE_TIME, CREATE_TIME, CONTACT, STR_SET, STR_MAP));
+        public static final List<String> _CNL = Collections
+                .unmodifiableList(Arrays.asList(ID, GUI, EMAIL_ADDRESS, NAME, STATUS, LAST_UPDATE_TIME, CREATE_TIME, CONTACT, STR_SET, STR_MAP));
 
         /**
          * Immutable property name list
          */
-        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList("Account.id".intern(), "Account.gui".intern(), "Account.emailAddress".intern(), "Account.name".intern(), "Account.status".intern(), "Account.lastUpdateTime".intern(), "Account.createTime".intern(), "Account.contact".intern(), "Account.strSet".intern(), "Account.strMap".intern()));
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList("Account.id".intern(), "Account.gui".intern(),
+                "Account.emailAddress".intern(), "Account.name".intern(), "Account.status".intern(), "Account.lastUpdateTime".intern(),
+                "Account.createTime".intern(), "Account.contact".intern(), "Account.strSet".intern(), "Account.strMap".intern()));
     }
 
     public static interface NameCNL {
@@ -123,7 +126,8 @@ public interface HbaseCNL {
         /**
          * Immutable property name list
          */
-        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList("Name.firstName".intern(), "Name.middleName".intern(), "Name.lastName".intern()));
+        public static final List<String> _PNL = Collections
+                .unmodifiableList(Arrays.asList("Name.firstName".intern(), "Name.middleName".intern(), "Name.lastName".intern()));
     }
 
     public static interface AccountContactCNL {
@@ -189,12 +193,15 @@ public interface HbaseCNL {
         /**
          * Immutable column name list
          */
-        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList(ID, ACCOUNT_ID, TELEPHONE, CITY, STATE, ZIP_CODE, STATUS, LAST_UPDATE_TIME, CREATE_TIME));
+        public static final List<String> _CNL = Collections
+                .unmodifiableList(Arrays.asList(ID, ACCOUNT_ID, TELEPHONE, CITY, STATE, ZIP_CODE, STATUS, LAST_UPDATE_TIME, CREATE_TIME));
 
         /**
          * Immutable property name list
          */
-        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList("AccountContact.id".intern(), "AccountContact.accountId".intern(), "AccountContact.telephone".intern(), "AccountContact.city".intern(), "AccountContact.state".intern(), "AccountContact.zipCode".intern(), "AccountContact.status".intern(), "AccountContact.lastUpdateTime".intern(), "AccountContact.createTime".intern()));
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList("AccountContact.id".intern(), "AccountContact.accountId".intern(),
+                "AccountContact.telephone".intern(), "AccountContact.city".intern(), "AccountContact.state".intern(), "AccountContact.zipCode".intern(),
+                "AccountContact.status".intern(), "AccountContact.lastUpdateTime".intern(), "AccountContact.createTime".intern()));
     }
 
     public static interface AccountDeviceCNL {
@@ -284,12 +291,17 @@ public interface HbaseCNL {
         /**
          * Immutable column name list
          */
-        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList(ID, ACCOUNT_ID, NAME, UDID, PLATFORM, MODEL, MANUFACTURER, PRODUCE_TIME, CATEGORY, DESCRIPTION, STATUS, LAST_UPDATE_TIME, CREATE_TIME));
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList(ID, ACCOUNT_ID, NAME, UDID, PLATFORM, MODEL, MANUFACTURER,
+                PRODUCE_TIME, CATEGORY, DESCRIPTION, STATUS, LAST_UPDATE_TIME, CREATE_TIME));
 
         /**
          * Immutable property name list
          */
-        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList("AccountDevice.id".intern(), "AccountDevice.accountId".intern(), "AccountDevice.name".intern(), "AccountDevice.UDID".intern(), "AccountDevice.platform".intern(), "AccountDevice.model".intern(), "AccountDevice.manufacturer".intern(), "AccountDevice.produceTime".intern(), "AccountDevice.category".intern(), "AccountDevice.description".intern(), "AccountDevice.status".intern(), "AccountDevice.lastUpdateTime".intern(), "AccountDevice.createTime".intern()));
+        public static final List<String> _PNL = Collections
+                .unmodifiableList(Arrays.asList("AccountDevice.id".intern(), "AccountDevice.accountId".intern(), "AccountDevice.name".intern(),
+                        "AccountDevice.UDID".intern(), "AccountDevice.platform".intern(), "AccountDevice.model".intern(), "AccountDevice.manufacturer".intern(),
+                        "AccountDevice.produceTime".intern(), "AccountDevice.category".intern(), "AccountDevice.description".intern(),
+                        "AccountDevice.status".intern(), "AccountDevice.lastUpdateTime".intern(), "AccountDevice.createTime".intern()));
     }
 
     public static final String ACCOUNT_ID = "accountId".intern();

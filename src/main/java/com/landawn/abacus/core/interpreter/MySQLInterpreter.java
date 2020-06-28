@@ -39,7 +39,7 @@ import com.landawn.abacus.util.WD;
  * @since 0.8
  */
 public class MySQLInterpreter extends SQLInterpreter {
-    
+
     /**
      * Instantiates a new my SQL interpreter.
      *

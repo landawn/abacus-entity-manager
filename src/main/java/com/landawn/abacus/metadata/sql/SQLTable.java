@@ -54,37 +54,37 @@ import com.landawn.abacus.util.XMLUtil;
  * @since 0.8
  */
 public class SQLTable implements Table {
-    
+
     /** The Constant logger. */
     protected static final Logger logger = LoggerFactory.getLogger(SQLTable.class);
 
     /** The Constant COLUMN_NAME. */
     private static final String COLUMN_NAME = "COLUMN_NAME";
-    
+
     /** The Constant PRIMARY_KEY_GOT_SQL. */
     private static final String PRIMARY_KEY_GOT_SQL = "SELECT cols.column_name FROM all_constraints cons, all_cons_columns cols WHERE cols.table_name = ? AND cons.constraint_type = 'P' AND cons.constraint_name = cols.constraint_name";
-    
+
     /** The Constant ORACLE. */
     private static final String ORACLE = "ORACLE";
-    
+
     /** The Constant NUMBER. */
     private static final String NUMBER = "NUMBER";
-    
+
     /** The Constant SMALLINT. */
     private static final String SMALLINT = "SMALLINT";
-    
+
     /** The Constant TINYINT. */
     private static final String TINYINT = "TINYINT";
 
     /** The name. */
     private final String name;
-    
+
     /** The attrs. */
     private final Map<String, String> attrs;
-    
+
     /** The column map. */
     private final Map<String, SQLColumn> columnMap;
-    
+
     /** The column pool. */
     private final Map<String, SQLColumn> columnPool = new HashMap<>();
 

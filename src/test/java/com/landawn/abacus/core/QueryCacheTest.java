@@ -578,8 +578,8 @@ public class QueryCacheTest extends AbstractEntityManager1Test {
                         Cache.condition(0, 1000000), Cache.CACHE_RESULT_RANGE, Cache.range(Math.max(0, resultSize - 1), resultSize));
                 DataSet result = em.query(Account.__, null, cond, null, options);
 
-                options = N.asProps(Query.OFFSET, offset, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Cache.CACHE_RESULT_CONDITION, Cache.condition(0, 1000000),
-                        Cache.CACHE_RESULT_RANGE, Cache.range(offset, Math.max(resultSize, offset)));
+                options = N.asProps(Query.OFFSET, offset, Query.CACHE_RESULT, Query.CACHE_RESULT_SYNC, Cache.CACHE_RESULT_CONDITION,
+                        Cache.condition(0, 1000000), Cache.CACHE_RESULT_RANGE, Cache.range(offset, Math.max(resultSize, offset)));
                 result = em.query(Account.__, null, cond, null, options);
 
                 long startTime = System.currentTimeMillis();

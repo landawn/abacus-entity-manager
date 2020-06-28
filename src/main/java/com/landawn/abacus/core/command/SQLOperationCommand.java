@@ -40,22 +40,22 @@ import com.landawn.abacus.util.OperationType;
  * @since 0.8
  */
 public class SQLOperationCommand extends SQLCondCommand {
-    
+
     /** The operation type. */
     private final OperationType operationType;
-    
+
     /** The entity def. */
     private final EntityDefinition entityDef;
-    
+
     /** The options. */
     private final Map<String, Object> options;
 
     /** The target prop names. */
     private Collection<String> targetPropNames;
-    
+
     /** The batch parameter values. */
     private List<Object[]> batchParameterValues;
-    
+
     /** The is batch. */
     private boolean isBatch = false;
 

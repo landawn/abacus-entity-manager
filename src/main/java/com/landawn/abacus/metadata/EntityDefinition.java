@@ -21,7 +21,6 @@ import com.landawn.abacus.idGenerator.IdGenerator;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface EntityDefinition.
  *
  * @author Haiyang Li
  * @since 0.8

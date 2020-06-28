@@ -26,7 +26,6 @@ import com.landawn.abacus.metadata.EntityDefinition;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface Interpreter.
  *
  * @author Haiyang Li
  * @since 0.8

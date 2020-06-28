@@ -24,7 +24,6 @@ import com.landawn.abacus.util.Options.Cache;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface QueryCache.
  *
  * @author Haiyang Li
  * @since 0.8

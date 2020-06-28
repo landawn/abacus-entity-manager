@@ -28,7 +28,6 @@ import com.landawn.abacus.util.u.Holder;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface Handler.
  *
  * @author Haiyang Li
  * @param <T>

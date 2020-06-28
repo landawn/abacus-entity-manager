@@ -34,6 +34,7 @@ public enum OnUpdateAction {
      * Field CASCADE.
      */
     CASCADE(2);
+
     /**
      * Field intValue.
      */

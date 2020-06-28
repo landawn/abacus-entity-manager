@@ -21,7 +21,8 @@ public class Entity_1 {
     public Entity_1() {
     }
 
-    public Entity_1(String gui, String firstName, String lastName, Date birthDate, java.sql.Date birthDate2, Timestamp createTime, Map<List<com.landawn.abacus.util.stream.Stream<String>>, String> map) {
+    public Entity_1(String gui, String firstName, String lastName, Date birthDate, java.sql.Date birthDate2, Timestamp createTime,
+            Map<List<com.landawn.abacus.util.stream.Stream<String>>, String> map) {
         this.gui = gui;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -139,13 +140,9 @@ public class Entity_1 {
         if (obj instanceof Entity_1) {
             final Entity_1 other = (Entity_1) obj;
 
-            return Objects.equals(gui, other.gui)
-                && Objects.equals(firstName, other.firstName)
-                && Objects.equals(lastName, other.lastName)
-                && Objects.equals(birthDate, other.birthDate)
-                && Objects.equals(birthDate2, other.birthDate2)
-                && Objects.equals(createTime, other.createTime)
-                && Objects.equals(map, other.map);
+            return Objects.equals(gui, other.gui) && Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName)
+                    && Objects.equals(birthDate, other.birthDate) && Objects.equals(birthDate2, other.birthDate2)
+                    && Objects.equals(createTime, other.createTime) && Objects.equals(map, other.map);
         }
 
         return false;
@@ -153,13 +150,8 @@ public class Entity_1 {
 
     @Override
     public String toString() {
-        return "{gui=" + Objects.toString(gui)
-                 + ", firstName=" + Objects.toString(firstName)
-                 + ", lastName=" + Objects.toString(lastName)
-                 + ", birthDate=" + Objects.toString(birthDate)
-                 + ", birthDate2=" + Objects.toString(birthDate2)
-                 + ", createTime=" + Objects.toString(createTime)
-                 + ", map=" + Objects.toString(map)
-                 + "}";
+        return "{gui=" + Objects.toString(gui) + ", firstName=" + Objects.toString(firstName) + ", lastName=" + Objects.toString(lastName) + ", birthDate="
+                + Objects.toString(birthDate) + ", birthDate2=" + Objects.toString(birthDate2) + ", createTime=" + Objects.toString(createTime) + ", map="
+                + Objects.toString(map) + "}";
     }
 }

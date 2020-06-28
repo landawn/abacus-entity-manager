@@ -23,7 +23,7 @@ package com.landawn.abacus.core.interpreter;
  * @since 0.8
  */
 public class HSQLDBInterpreter extends SQLInterpreter {
-    
+
     /**
      * Instantiates a new HSQLDB interpreter.
      *

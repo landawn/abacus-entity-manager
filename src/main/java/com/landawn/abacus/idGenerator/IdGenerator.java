@@ -19,7 +19,6 @@ import com.landawn.abacus.metadata.Property;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface IdGenerator.
  *
  * @author Haiyang Li
  * @param <T>

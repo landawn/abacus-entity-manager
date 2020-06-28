@@ -70,7 +70,8 @@ public interface ExtendDirtyPNL {
         /**
          * Immutable column name list
          */
-        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("author.id".intern(), "author.firstName".intern(), "author.lastName".intern(), "author.birthday".intern()));
+        public static final List<String> _CNL = Collections
+                .unmodifiableList(Arrays.asList("author.id".intern(), "author.firstName".intern(), "author.lastName".intern(), "author.birthday".intern()));
     }
 
     public static interface AuthorBookPNL {
@@ -212,7 +213,8 @@ public interface ExtendDirtyPNL {
         /**
          * Immutable column name list
          */
-        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("contact.id".intern(), "contact.hostid".intern(), "contact.mobile".intern(), "contact.telephone".intern(), "contact.email".intern(), "contact.address".intern()));
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("contact.id".intern(), "contact.hostid".intern(),
+                "contact.mobile".intern(), "contact.telephone".intern(), "contact.email".intern(), "contact.address".intern()));
     }
 
     public static interface DataTypePNL {
@@ -532,12 +534,31 @@ public interface ExtendDirtyPNL {
         /**
          * Immutable property name list
          */
-        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(BYTE_TYPE, CHAR_TYPE, BOOLEAN_TYPE, SHORT_TYPE, INT_TYPE, LONG_TYPE, FLOAT_TYPE, DOUBLE_TYPE, BIG_INTEGER_TYPE, BIG_DECIMAL_TYPE, STRING_TYPE, BYTE_ARRAY_TYPE, CHARACTER_STREAM_TYPE, BINARY_STREAM_TYPE, CLOB_TYPE, BLOB_TYPE, DATE_TYPE, TIME_TYPE, TIMESTAMP_TYPE, LONG_DATE_TYPE, LONG_TIME_TYPE, LONG_TIMESTAMP_TYPE, ENUM_TYPE, STRING_ARRAY_LIST_TYPE, BOOLEAN_LINKED_LIST_TYPE, DOUBLE_LIST_TYPE, DATE_ARRAY_LIST_TYPE, TIMESTAMP_ARRAY_LIST_TYPE, BIG_DECIMAL_ARRAY_LIST_TYPE, STRING_HASH_SET_TYPE, BOOLEAN_LINKED_HASH_SET_TYPE, DATE_HASH_SET_TYPE, TIMESTAMP_HASH_SET_TYPE, BIG_DECIMAL_HASH_SET_TYPE, STRING_HASH_MAP_TYPE, BOOLEAN_LINKED_HASH_MAP_TYPE, FLOAT_HASH_MAP_TYPE, DATE_HASH_MAP_TYPE, TIMESTAMP_HASH_MAP_TYPE, BIG_DECIMAL_HASH_MAP_TYPE, STRING_VECTOR_TYPE, STRING_CONCURRENT_HASH_MAP_TYPE, JSON_TYPE, XML_TYPE));
+        public static final List<String> _PNL = Collections.unmodifiableList(Arrays.asList(BYTE_TYPE, CHAR_TYPE, BOOLEAN_TYPE, SHORT_TYPE, INT_TYPE, LONG_TYPE,
+                FLOAT_TYPE, DOUBLE_TYPE, BIG_INTEGER_TYPE, BIG_DECIMAL_TYPE, STRING_TYPE, BYTE_ARRAY_TYPE, CHARACTER_STREAM_TYPE, BINARY_STREAM_TYPE, CLOB_TYPE,
+                BLOB_TYPE, DATE_TYPE, TIME_TYPE, TIMESTAMP_TYPE, LONG_DATE_TYPE, LONG_TIME_TYPE, LONG_TIMESTAMP_TYPE, ENUM_TYPE, STRING_ARRAY_LIST_TYPE,
+                BOOLEAN_LINKED_LIST_TYPE, DOUBLE_LIST_TYPE, DATE_ARRAY_LIST_TYPE, TIMESTAMP_ARRAY_LIST_TYPE, BIG_DECIMAL_ARRAY_LIST_TYPE, STRING_HASH_SET_TYPE,
+                BOOLEAN_LINKED_HASH_SET_TYPE, DATE_HASH_SET_TYPE, TIMESTAMP_HASH_SET_TYPE, BIG_DECIMAL_HASH_SET_TYPE, STRING_HASH_MAP_TYPE,
+                BOOLEAN_LINKED_HASH_MAP_TYPE, FLOAT_HASH_MAP_TYPE, DATE_HASH_MAP_TYPE, TIMESTAMP_HASH_MAP_TYPE, BIG_DECIMAL_HASH_MAP_TYPE, STRING_VECTOR_TYPE,
+                STRING_CONCURRENT_HASH_MAP_TYPE, JSON_TYPE, XML_TYPE));
 
         /**
          * Immutable column name list
          */
-        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("data_type.bytetype".intern(), "data_type.chartype".intern(), "data_type.booleantype".intern(), "data_type.shorttype".intern(), "data_type.inttype".intern(), "data_type.longtype".intern(), "data_type.floattype".intern(), "data_type.doubletype".intern(), "data_type.bigIntegerType".intern(), "data_type.bigdecimaltype".intern(), "data_type.stringtype".intern(), "data_type.bytearraytype".intern(), "data_type.characterstreamtype".intern(), "data_type.binarystreamtype".intern(), "data_type.clobtype".intern(), "data_type.blobtype".intern(), "data_type.datetype".intern(), "data_type.timetype".intern(), "data_type.timestamptype".intern(), "data_type.longDateType".intern(), "data_type.longTimeType".intern(), "data_type.longTimestampType".intern(), "data_type.enumType".intern(), "data_type.stringarraylisttype".intern(), "data_type.booleanlinkedlisttype".intern(), "data_type.doublearraylisttype".intern(), "data_type.datearraylisttype".intern(), "data_type.timestamparraylisttype".intern(), "data_type.bigdecimalarraylisttype".intern(), "data_type.stringhashsettype".intern(), "data_type.booleanlinkedhashsettype".intern(), "data_type.datehashsettype".intern(), "data_type.timestamphashsettype".intern(), "data_type.bigdecimalhashsettype".intern(), "data_type.stringhashmaptype".intern(), "data_type.booleanlinkedhashmaptype".intern(), "data_type.floathashmaptype".intern(), "data_type.datehashmaptype".intern(), "data_type.timestamphashmaptype".intern(), "data_type.bigdecimalhashmaptype".intern(), "data_type.stringvectortype".intern(), "data_type.stringconcurrenthashmaptype".intern(), "data_type.jsonType".intern(), "data_type.xmlType".intern()));
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("data_type.bytetype".intern(), "data_type.chartype".intern(),
+                "data_type.booleantype".intern(), "data_type.shorttype".intern(), "data_type.inttype".intern(), "data_type.longtype".intern(),
+                "data_type.floattype".intern(), "data_type.doubletype".intern(), "data_type.bigIntegerType".intern(), "data_type.bigdecimaltype".intern(),
+                "data_type.stringtype".intern(), "data_type.bytearraytype".intern(), "data_type.characterstreamtype".intern(),
+                "data_type.binarystreamtype".intern(), "data_type.clobtype".intern(), "data_type.blobtype".intern(), "data_type.datetype".intern(),
+                "data_type.timetype".intern(), "data_type.timestamptype".intern(), "data_type.longDateType".intern(), "data_type.longTimeType".intern(),
+                "data_type.longTimestampType".intern(), "data_type.enumType".intern(), "data_type.stringarraylisttype".intern(),
+                "data_type.booleanlinkedlisttype".intern(), "data_type.doublearraylisttype".intern(), "data_type.datearraylisttype".intern(),
+                "data_type.timestamparraylisttype".intern(), "data_type.bigdecimalarraylisttype".intern(), "data_type.stringhashsettype".intern(),
+                "data_type.booleanlinkedhashsettype".intern(), "data_type.datehashsettype".intern(), "data_type.timestamphashsettype".intern(),
+                "data_type.bigdecimalhashsettype".intern(), "data_type.stringhashmaptype".intern(), "data_type.booleanlinkedhashmaptype".intern(),
+                "data_type.floathashmaptype".intern(), "data_type.datehashmaptype".intern(), "data_type.timestamphashmaptype".intern(),
+                "data_type.bigdecimalhashmaptype".intern(), "data_type.stringvectortype".intern(), "data_type.stringconcurrenthashmaptype".intern(),
+                "data_type.jsonType".intern(), "data_type.xmlType".intern()));
     }
 
     public static interface EmailPNL {
@@ -575,7 +596,8 @@ public interface ExtendDirtyPNL {
         /**
          * Immutable column name list
          */
-        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("email.id".intern(), "email.contactid".intern(), "email.emailaddress".intern()));
+        public static final List<String> _CNL = Collections
+                .unmodifiableList(Arrays.asList("email.id".intern(), "email.contactid".intern(), "email.emailaddress".intern()));
     }
 
     public static final String ADDRESS = "address".intern();

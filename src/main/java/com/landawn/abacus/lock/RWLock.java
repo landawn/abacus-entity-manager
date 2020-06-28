@@ -18,7 +18,6 @@ import javax.jws.WebService;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Interface RWLock.
  *
  * @param <T>
  */

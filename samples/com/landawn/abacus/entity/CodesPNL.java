@@ -63,7 +63,8 @@ public interface CodesPNL {
         /**
          * Immutable column name list
          */
-        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("account.id".intern(), "account.first_name".intern(), "account.last_name".intern(), "account.email_address".intern(), "account.create_time".intern()));
+        public static final List<String> _CNL = Collections.unmodifiableList(Arrays.asList("account.id".intern(), "account.first_name".intern(),
+                "account.last_name".intern(), "account.email_address".intern(), "account.create_time".intern()));
     }
 
     public static final String CREATE_TIME = "createTime".intern();

@@ -20,7 +20,8 @@ public class Account2 extends Account {
     public Account2() {
     }
 
-    public Account2(String firstName, String lastName, java.sql.Date birthdate, java.util.LinkedHashMap<String, Integer> attrs, long firstName2, List<String> list1, List<Account2> list2, Map<Account2, Account2> map1, Map<String, Account2> map2, Map<Account2, String> map3) {
+    public Account2(String firstName, String lastName, java.sql.Date birthdate, java.util.LinkedHashMap<String, Integer> attrs, long firstName2,
+            List<String> list1, List<Account2> list2, Map<Account2, Account2> map1, Map<String, Account2> map2, Map<Account2, String> map3) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setBirthdate(birthdate);
@@ -160,16 +161,10 @@ public class Account2 extends Account {
         if (obj instanceof Account2) {
             final Account2 other = (Account2) obj;
 
-            return _N.equals(getFirstName(), other.getFirstName())
-                && _N.equals(getLastName(), other.getLastName())
-                && _N.equals(getBirthdate(), other.getBirthdate())
-                && _N.equals(getAttrs(), other.getAttrs())
-                && _N.equals(firstName2, other.firstName2)
-                && _N.equals(list1, other.list1)
-                && _N.equals(list2, other.list2)
-                && _N.equals(map1, other.map1)
-                && _N.equals(map2, other.map2)
-                && _N.equals(map3, other.map3);
+            return _N.equals(getFirstName(), other.getFirstName()) && _N.equals(getLastName(), other.getLastName())
+                    && _N.equals(getBirthdate(), other.getBirthdate()) && _N.equals(getAttrs(), other.getAttrs()) && _N.equals(firstName2, other.firstName2)
+                    && _N.equals(list1, other.list1) && _N.equals(list2, other.list2) && _N.equals(map1, other.map1) && _N.equals(map2, other.map2)
+                    && _N.equals(map3, other.map3);
         }
 
         return false;
@@ -177,16 +172,8 @@ public class Account2 extends Account {
 
     @Override
     public String toString() {
-        return "{firstName=" + _N.toString(getFirstName())
-                 + ", lastName=" + _N.toString(getLastName())
-                 + ", birthdate=" + _N.toString(getBirthdate())
-                 + ", attrs=" + _N.toString(getAttrs())
-                 + ", firstName2=" + _N.toString(firstName2)
-                 + ", list1=" + _N.toString(list1)
-                 + ", list2=" + _N.toString(list2)
-                 + ", map1=" + _N.toString(map1)
-                 + ", map2=" + _N.toString(map2)
-                 + ", map3=" + _N.toString(map3)
-                 + "}";
+        return "{firstName=" + _N.toString(getFirstName()) + ", lastName=" + _N.toString(getLastName()) + ", birthdate=" + _N.toString(getBirthdate())
+                + ", attrs=" + _N.toString(getAttrs()) + ", firstName2=" + _N.toString(firstName2) + ", list1=" + _N.toString(list1) + ", list2="
+                + _N.toString(list2) + ", map1=" + _N.toString(map1) + ", map2=" + _N.toString(map2) + ", map3=" + _N.toString(map3) + "}";
     }
 }
