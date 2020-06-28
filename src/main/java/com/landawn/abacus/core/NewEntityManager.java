@@ -63,25 +63,15 @@ import com.landawn.abacus.util.function.ToShortFunction;
  */
 public final class NewEntityManager {
 
-    /** The entity mapper pool. */
     @SuppressWarnings("rawtypes")
     private final Map<Class, Mapper> entityMapperPool = new HashMap<>();
 
-    /** The entity manager. */
     private final EntityManagerEx<Object> em;
 
-    /** The dsm. */
     private final DataSourceManager _dsm;
 
-    /** The ds. */
     private final DataSource _ds;
 
-    /**
-     * Instantiates a new entity manager ex.
-     *
-     * @param entityManager
-     * @param dsm
-     */
     NewEntityManager(final EntityManagerEx<Object> entityManager, final DataSourceManager dsm) {
         this.em = entityManager;
         this._dsm = dsm;

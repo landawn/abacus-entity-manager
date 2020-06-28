@@ -28,14 +28,8 @@ import com.landawn.abacus.util.ClassUtil;
  */
 public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
 
-    /** The prop. */
     final Property prop;
 
-    /**
-     * Instantiates a new abstract id generator.
-     *
-     * @param prop
-     */
     protected AbstractIdGenerator(Property prop) {
         this.prop = prop;
     }
@@ -59,10 +53,6 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
         // do nothing.
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public abstract T allocate();
 
@@ -75,10 +65,6 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
         // do nothing.
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int hashCode() {
         int h = 7;
@@ -108,10 +94,6 @@ public abstract class AbstractIdGenerator<T> implements IdGenerator<T> {
         return false;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         return this.getClass().getSimpleName() + ": " + prop.getName();

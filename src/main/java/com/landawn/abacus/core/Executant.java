@@ -64,32 +64,20 @@ import com.landawn.abacus.util.WD;
 @Internal
 public class Executant {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(Executant.class);
 
-    /** The Constant SELECT_COUNT. */
     private static final String SELECT_COUNT = "SELECT count(*) ";
 
-    /** The dsm. */
     private final DataSourceManager _dsm;
 
-    /** The dss. */
     private final DataSourceSelector _dss;
 
     private final SQLDataSource _ds;
 
-    /** The interpreter. */
     private final Interpreter _interpreter;
 
-    /** The default isolation level. */
     private final IsolationLevel _defaultIsolationLevel;
 
-    /**
-     * Instantiates a new executant.
-     *
-     * @param dsm
-     * @throws UncheckedSQLException the unchecked SQL exception
-     */
     public Executant(DataSourceManager dsm) throws UncheckedSQLException {
         this._dsm = dsm;
         this._dss = dsm.getDataSourceSelector();

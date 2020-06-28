@@ -69,7 +69,6 @@ public final class SQLInterpreterFactory {
      */
     public static final String H2 = "H2";
 
-    /** The registered interpreters. */
     public static Map<String, Class<?>> registeredInterpreters = new ConcurrentHashMap<>();
 
     static {
@@ -83,9 +82,6 @@ public final class SQLInterpreterFactory {
         registerInterpreter(HSQL, HSQLDBInterpreter.class);
     }
 
-    /**
-     * Instantiates a new SQL interpreter factory.
-     */
     private SQLInterpreterFactory() {
         // singleton.
     }

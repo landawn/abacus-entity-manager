@@ -29,12 +29,8 @@ import com.landawn.abacus.util.TypeAttrParser;
  */
 public final class RWLockFactory {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(RWLockFactory.class);
 
-    /**
-     * Instantiates a new RW lock factory.
-     */
     private RWLockFactory() {
         // singleton
     }

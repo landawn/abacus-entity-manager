@@ -29,16 +29,8 @@ import com.landawn.abacus.util.StringUtil;
  */
 public final class InValidator<T> extends AbstractValidator<T> {
 
-    /** The value set. */
     private final Set<T> valueSet = N.newHashSet();
 
-    /**
-     * Instantiates a new in validator.
-     *
-     * @param propName
-     * @param type
-     * @param values
-     */
     @SafeVarargs
     public InValidator(String propName, Type<T> type, String... values) {
         super(propName, type);

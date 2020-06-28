@@ -25,20 +25,10 @@ import com.landawn.abacus.type.Type;
  */
 public final class RangeValidator<T extends Comparable<T>> extends AbstractValidator<T> {
 
-    /** The min value. */
     private final T minValue;
 
-    /** The max value. */
     private final T maxValue;
 
-    /**
-     * Instantiates a new range validator.
-     *
-     * @param propName
-     * @param type
-     * @param minValue
-     * @param maxValue
-     */
     public RangeValidator(String propName, Type<T> type, String minValue, String maxValue) {
         super(propName, type);
         this.minValue = type.valueOf(minValue);

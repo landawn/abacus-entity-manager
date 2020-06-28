@@ -74,30 +74,16 @@ import com.landawn.abacus.util.function.ToShortFunction;
  */
 public final class EntityManagerEx<T> implements EntityManager<T> {
 
-    /** The async executor. */
     private final AsyncExecutor asyncExecutor;
 
-    /** The entity manager. */
     private final EntityManager<T> entityManager;
 
-    /** The is version supported. */
     private final boolean isVersionSupported;
 
-    /**
-     * Instantiates a new entity manager ex.
-     *
-     * @param entityManager
-     */
     EntityManagerEx(final EntityManager<T> entityManager) {
         this(entityManager, new AsyncExecutor(Math.max(8, IOUtil.CPU_CORES), Math.max(64, IOUtil.CPU_CORES), 180L, TimeUnit.SECONDS));
     }
 
-    /**
-     * Instantiates a new entity manager ex.
-     *
-     * @param entityManager
-     * @param asyncExecutor
-     */
     @SuppressWarnings("deprecation")
     EntityManagerEx(final EntityManager<T> entityManager, final AsyncExecutor asyncExecutor) {
         this.entityManager = entityManager;

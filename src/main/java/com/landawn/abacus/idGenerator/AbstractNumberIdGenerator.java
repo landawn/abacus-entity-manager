@@ -27,26 +27,16 @@ import com.landawn.abacus.metadata.Property;
  */
 public abstract class AbstractNumberIdGenerator<T extends Number> extends AbstractIdGenerator<T> {
 
-    /** The Constant LONG_TYPE. */
     private static final int LONG_TYPE = 1;
 
-    /** The Constant INT_TYPE. */
     private static final int INT_TYPE = 2;
 
-    /** The Constant SHORT_TYPE. */
     private static final int SHORT_TYPE = 3;
 
-    /** The Constant BYTE_TYPE. */
     private static final int BYTE_TYPE = 4;
 
-    /** The number type. */
     private final int numberType;
 
-    /**
-     * Instantiates a new abstract number id generator.
-     *
-     * @param prop
-     */
     protected AbstractNumberIdGenerator(Property prop) {
         super(prop);
 

@@ -32,36 +32,18 @@ import com.landawn.abacus.util.N;
 @Internal
 final class PropEntityProps {
 
-    /** The prop. */
     private final Property prop;
 
-    /** The entity. */
     private final Object entity;
 
-    /** The props. */
     private final Map<String, Object> props;
 
-    /** The src prop value. */
     private Object srcPropValue;
 
-    /**
-     * Instantiates a new prop entity props.
-     *
-     * @param prop
-     * @param entity
-     */
     PropEntityProps(Property prop, Object entity) {
         this(prop, entity, null, null);
     }
 
-    /**
-     * Instantiates a new prop entity props.
-     *
-     * @param prop
-     * @param entity
-     * @param srcPropValue
-     * @param props
-     */
     PropEntityProps(Property prop, Object entity, Object srcPropValue, Map<String, Object> props) {
         this.prop = prop;
         this.entity = entity;
@@ -94,10 +76,6 @@ final class PropEntityProps {
         return entity;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -128,10 +106,6 @@ final class PropEntityProps {
         return false;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         return "{prop=" + prop + ", entity=" + entity + "}";

@@ -29,12 +29,8 @@ import com.landawn.abacus.util.TypeAttrParser;
  */
 public final class XLockFactory {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(XLockFactory.class);
 
-    /**
-     * Instantiates a new x lock factory.
-     */
     private XLockFactory() {
         // singleton
     }

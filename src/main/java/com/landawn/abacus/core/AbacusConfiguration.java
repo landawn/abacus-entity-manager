@@ -52,7 +52,6 @@ import com.landawn.abacus.util.XMLUtil;
  */
 public final class AbacusConfiguration {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(AbacusConfiguration.class);
 
     /**
@@ -95,27 +94,16 @@ public final class AbacusConfiguration {
      */
     public static final String FACTORY = "factory";
 
-    /** The props. */
     private final Map<String, String> props = new HashMap<>();
 
-    /** The entity manager configuration list. */
     private final List<EntityManagerConfiguration> entityManagerConfigurationList;
 
-    /** The slog configuration. */
     private final SLogConfiguration slogConfiguration;
 
-    /** The initializer on startup. */
     private String initializerOnStartup;
 
-    /** The factory. */
     private String factory;
 
-    /**
-     * Instantiates a new abacus configuration.
-     *
-     * @param abacusFile
-     * @throws UncheckedIOException the unchecked IO exception
-     */
     public AbacusConfiguration(File abacusFile) throws UncheckedIOException {
         abacusFile = Configuration.formatPath(abacusFile);
 

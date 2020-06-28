@@ -32,28 +32,14 @@ import com.landawn.abacus.pool.AbstractPoolable;
 @Internal
 final class HandleResult extends AbstractPoolable {
 
-    /** The entity def. */
     private final EntityDefinition entityDef;
 
-    /** The select prop name. */
     private Collection<String> selectPropName;
 
-    /** The query result. */
     private final SQLResult queryResult;
 
-    /** The query cache. */
     private QueryCache queryCache;
 
-    /**
-     * Instantiates a new handle result.
-     *
-     * @param entityDef
-     * @param selectPropName
-     * @param queryResult
-     * @param queryCache
-     * @param liveTime
-     * @param maxIdleTime
-     */
     HandleResult(EntityDefinition entityDef, Collection<String> selectPropName, SQLResult queryResult, QueryCache queryCache, long liveTime, long maxIdleTime) {
         super(liveTime, maxIdleTime);
         this.entityDef = entityDef;

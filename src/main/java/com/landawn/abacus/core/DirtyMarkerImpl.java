@@ -31,19 +31,11 @@ import com.landawn.abacus.util.N;
  */
 public final class DirtyMarkerImpl extends AbstractDirtyMarker {
 
-    /**
-     * Instantiates a new dirty marker impl.
-     */
     // for kryo
     DirtyMarkerImpl() {
         super(N.EMPTY_STRING);
     }
 
-    /**
-     * Instantiates a new dirty marker impl.
-     *
-     * @param entityName
-     */
     public DirtyMarkerImpl(String entityName) {
         super(entityName);
     }

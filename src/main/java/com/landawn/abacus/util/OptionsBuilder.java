@@ -26,20 +26,12 @@ import java.util.Map;
  */
 public class OptionsBuilder {
 
-    /** The options. */
     private final Map<String, Object> options = new HashMap<>();
 
-    /**
-     * Instantiates a new options builder.
-     */
     OptionsBuilder() {
 
     }
 
-    /**
-     *
-     * @return
-     */
     public static OptionsBuilder create() {
         return new OptionsBuilder();
     }
@@ -542,10 +534,6 @@ public class OptionsBuilder {
     //        return this;
     //    }
 
-    /**
-     *
-     * @return
-     */
     public Map<String, Object> build() {
         return options;
     }

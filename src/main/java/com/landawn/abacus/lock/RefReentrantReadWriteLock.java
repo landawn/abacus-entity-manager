@@ -25,32 +25,18 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class RefReentrantReadWriteLock extends ReentrantReadWriteLock {
 
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 8951250203376524845L;
 
-    /** The ref count. */
     private final AtomicInteger refCount = new AtomicInteger();
 
-    /**
-     *
-     * @return
-     */
     public int getRefCount() {
         return refCount.get();
     }
 
-    /**
-     *
-     * @return
-     */
     public int incrementRefCount() {
         return refCount.incrementAndGet();
     }
 
-    /**
-     *
-     * @return
-     */
     public int decrementRefCount() {
         return refCount.decrementAndGet();
     }

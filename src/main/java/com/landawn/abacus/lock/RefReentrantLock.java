@@ -25,32 +25,18 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class RefReentrantLock extends ReentrantLock {
 
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6795827089746882791L;
 
-    /** The ref count. */
     private final AtomicInteger refCount = new AtomicInteger();
 
-    /**
-     *
-     * @return
-     */
     public int getRefCount() {
         return refCount.get();
     }
 
-    /**
-     *
-     * @return
-     */
     public int incrementRefCount() {
         return refCount.incrementAndGet();
     }
 
-    /**
-     *
-     * @return
-     */
     public int decrementRefCount() {
         return refCount.decrementAndGet();
     }

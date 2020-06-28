@@ -39,12 +39,8 @@ import com.landawn.abacus.util.Objectory;
 @Internal
 public final class EntityUtil {
 
-    /** The Constant DOUBLE_BRACKET. */
     private static final String DOUBLE_BRACKET = "{}";
 
-    /**
-     * Instantiates a new entity util.
-     */
     private EntityUtil() {
         // no instance.
     }

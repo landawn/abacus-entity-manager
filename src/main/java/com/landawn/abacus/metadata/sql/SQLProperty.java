@@ -59,118 +59,74 @@ import com.landawn.abacus.validator.ValidatorFactory;
  */
 public class SQLProperty implements Property {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(SQLProperty.class);
 
-    /** The name. */
     private final String name;
 
-    /** The canonical name. */
     private final String canonicalName;
 
-    /** The attrs. */
     private final Map<String, String> attrs;
 
-    /** The type. */
     private Type<Object> type;
 
-    /** The is sys time default on insert. */
     private boolean isSysTimeDefaultOnInsert = false;
 
-    /** The is sys time default on update. */
     private boolean isSysTimeDefaultOnUpdate = false;
 
-    /** The default on insert. */
     private Object defaultOnInsert;
 
-    /** The default on update. */
     private Object defaultOnUpdate;
 
-    /** The column name. */
     private final String columnName;
 
-    /** The canonical column name. */
     private final String canonicalColumnName;
 
-    /** The column type. */
     private final ColumnType columnType;
 
-    /** The column entity def. */
     private EntityDefinition columnEntityDef;
 
-    /** The on update action. */
     private final OnUpdateAction onUpdateAction;
 
-    /** The on delete action. */
     private final OnDeleteAction onDeleteAction;
 
-    /** The order by. */
     private final String orderBy;
 
-    /** The validator list. */
     private List<Validator<Object>> validatorList;
 
-    /** The association. */
     private Association association;
 
-    /** The is id. */
     private final boolean isId;
 
-    /** The is UID. */
     private final boolean isUID;
 
-    /** The is readable. */
     private final boolean isReadable;
 
-    /** The is updatable. */
     private final boolean isUpdatable;
 
-    /** The is insertable. */
     private final boolean isInsertable;
 
-    /** The is list. */
     private final boolean isList;
 
-    /** The is set. */
     private final boolean isSet;
 
-    /** The sub prop map. */
     private Map<String, Property> subPropMap;
 
-    /** The sub prop name list. */
     private List<String> subPropNameList;
 
-    /** The sub prop list. */
     private List<Property> subPropList;
 
-    /** The set method map. */
     private final Map<Class<?>, Method> setMethodMap = new ConcurrentHashMap<>();
 
-    /** The get method map. */
     private final Map<Class<?>, Method> getMethodMap = new ConcurrentHashMap<>();
 
-    /** The id generator. */
     private IdGenerator<?> idGenerator;
 
-    /** The is auto increment. */
     private boolean isAutoIncrement = false;
 
-    /** The entity def. */
     volatile EntityDefinition entityDef;
 
-    /** The is init. */
     private volatile boolean isInit = false;
 
-    /**
-     * Instantiates a new SQL property.
-     *
-     * @param entityName
-     * @param tableName
-     * @param name
-     * @param attrs
-     * @param isId
-     * @param isUID
-     */
     protected SQLProperty(String entityName, String tableName, String name, Map<String, String> attrs, boolean isId, boolean isUID) {
         this.name = NameUtil.getCachedName(name);
         attrs.put(PropertyEle.NAME, this.name);
@@ -715,10 +671,6 @@ public class SQLProperty implements Property {
         this.entityDef = entityDef;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int hashCode() {
         return canonicalName.hashCode();
@@ -734,10 +686,6 @@ public class SQLProperty implements Property {
         return this == obj || (obj instanceof SQLProperty && N.equals(((SQLProperty) obj).canonicalName, canonicalName));
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         return attrs.toString();

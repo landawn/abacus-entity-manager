@@ -40,12 +40,6 @@ import com.landawn.abacus.util.WD;
  */
 public class MySQLInterpreter extends SQLInterpreter {
 
-    /**
-     * Instantiates a new my SQL interpreter.
-     *
-     * @param productName
-     * @param productVersion
-     */
     public MySQLInterpreter(String productName, String productVersion) {
         super(productName, productVersion);
     }

@@ -37,9 +37,6 @@ import com.landawn.abacus.util.N;
  */
 final class DataSetUtil {
 
-    /**
-     * Instantiates a new data set util.
-     */
     private DataSetUtil() {
         // no instance.
     }

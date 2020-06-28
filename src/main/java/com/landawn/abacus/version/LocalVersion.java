@@ -28,24 +28,14 @@ import com.landawn.abacus.util.MutableLong;
  */
 public final class LocalVersion<K> extends AbstractVersion<K> {
 
-    /** The pool. */
     private final Map<K, MutableLong> pool;
 
-    /** The capacity. */
     private final int capacity;
 
-    /**
-     * Instantiates a new local version.
-     */
     public LocalVersion() {
         this(getDefaultCapacity());
     }
 
-    /**
-     * Instantiates a new local version.
-     *
-     * @param capacity
-     */
     public LocalVersion(int capacity) {
         if (capacity < 0) {
             throw new IllegalArgumentException("Capacity(" + capacity + ") can't be negative.");

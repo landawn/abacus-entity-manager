@@ -31,27 +31,16 @@ import com.landawn.abacus.util.N;
  */
 public final class LocalRWLock<T> extends AbstractRWLock<T> {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(LocalRWLock.class);
 
-    /** The blocked lock pool. */
     private final Map<T, RefReentrantReadWriteLock> blockedLockPool = new ConcurrentHashMap<T, RefReentrantReadWriteLock>();
 
-    /** The timeout. */
     private final long timeout;
 
-    /**
-     * Instantiates a new local RW lock.
-     */
     public LocalRWLock() {
         this(DEFAULT_TIMEOUT);
     }
 
-    /**
-     * Instantiates a new local RW lock.
-     *
-     * @param timeout
-     */
     public LocalRWLock(long timeout) {
         this.timeout = timeout;
     }

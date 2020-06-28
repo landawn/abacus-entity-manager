@@ -34,39 +34,24 @@ import com.landawn.abacus.util.N;
  */
 public class Association implements Serializable {
 
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3451344350605572248L;
 
-    /** The join on. */
     private final String joinOn;
 
-    /** The prop. */
     private final Property prop;
 
-    /** The src prop. */
     private final Property srcProp;
 
-    /** The target prop. */
     private final Property targetProp;
 
-    /** The bi entity props. */
     private final Property[] biEntityProps;
 
-    /** The bi entity def. */
     private final EntityDefinition biEntityDef;
 
-    /** The join type. */
     private final JoinType joinType;
 
-    /** The joins. */
     private final List<Join> joins;
 
-    /**
-     * Instantiates a new association.
-     *
-     * @param prop
-     * @param joinOn
-     */
     public Association(Property prop, String joinOn) {
         this.joinOn = joinOn;
         this.prop = prop;
@@ -272,19 +257,11 @@ public class Association implements Serializable {
         return this == obj || (obj instanceof Association && N.equals(((Association) obj).joinOn, joinOn));
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int hashCode() {
         return joinOn.hashCode();
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         return joinOn;

@@ -31,10 +31,8 @@ import com.landawn.abacus.util.N;
  */
 public class MemcachedXLock<T> extends AbstractXLock<T> {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(MemcachedXLock.class);
 
-    /** The Constant DEFAULT_LIVE_TIME. */
     static final long DEFAULT_LIVE_TIME = 3600 * 1000L;
 
     /**
@@ -53,37 +51,16 @@ public class MemcachedXLock<T> extends AbstractXLock<T> {
      */
     private final String keyPrefix;
 
-    /** The m lock. */
     private final MemcachedLock<String, Object> mLock;
 
-    /**
-     * Instantiates a new memcached X lock.
-     *
-     * @param servers
-     */
     public MemcachedXLock(String servers) {
         this(servers, N.EMPTY_STRING, DEFAULT_LIVE_TIME, DEFAULT_TIMEOUT);
     }
 
-    /**
-     * Instantiates a new memcached X lock.
-     *
-     * @param servers
-     * @param keyPrefix
-     * @param liveTime
-     */
     public MemcachedXLock(String servers, String keyPrefix, String liveTime) {
         this(servers, keyPrefix, Long.valueOf(liveTime), DEFAULT_TIMEOUT);
     }
 
-    /**
-     * Instantiates a new memcached X lock.
-     *
-     * @param servers
-     * @param keyPrefix
-     * @param liveTime
-     * @param timeout
-     */
     public MemcachedXLock(String servers, String keyPrefix, long liveTime, long timeout) {
         this.mLock = new MemcachedLock<String, Object>(servers);
 

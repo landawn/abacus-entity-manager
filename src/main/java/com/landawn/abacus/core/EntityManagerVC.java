@@ -32,12 +32,6 @@ import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration;
  */
 class EntityManagerVC<T> extends EntityManagerLVC<T> {
 
-    /**
-     * Instantiates a new entity manager VC.
-     *
-     * @param entityManagerConfig
-     * @param dbAccess
-     */
     protected EntityManagerVC(EntityManagerConfiguration entityManagerConfig, DBAccessImpl dbAccess) {
         super(entityManagerConfig, dbAccess);
     }

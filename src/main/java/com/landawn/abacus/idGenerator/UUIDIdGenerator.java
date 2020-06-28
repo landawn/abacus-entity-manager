@@ -25,33 +25,17 @@ import com.landawn.abacus.util.N;
  */
 public final class UUIDIdGenerator extends AbstractStringIdGenerator {
 
-    /** The header. */
     private final String header;
 
-    /**
-     * Instantiates a new UUID id generator.
-     *
-     * @param prop
-     */
     public UUIDIdGenerator(Property prop) {
         this(prop, null);
     }
 
-    /**
-     * Instantiates a new UUID id generator.
-     *
-     * @param prop
-     * @param header
-     */
     public UUIDIdGenerator(Property prop, String header) {
         super(prop);
         this.header = header;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String allocate() {
         if (header == null) {

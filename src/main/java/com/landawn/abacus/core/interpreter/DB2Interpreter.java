@@ -24,12 +24,6 @@ package com.landawn.abacus.core.interpreter;
  */
 public class DB2Interpreter extends SQLInterpreter {
 
-    /**
-     * Instantiates a new DB 2 interpreter.
-     *
-     * @param productName
-     * @param productVersion
-     */
     public DB2Interpreter(String productName, String productVersion) {
         super(productName, productVersion);
     }

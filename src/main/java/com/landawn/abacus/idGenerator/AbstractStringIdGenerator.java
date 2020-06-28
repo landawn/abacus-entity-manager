@@ -24,11 +24,6 @@ import com.landawn.abacus.metadata.Property;
  */
 public abstract class AbstractStringIdGenerator extends AbstractIdGenerator<String> {
 
-    /**
-     * Instantiates a new abstract string id generator.
-     *
-     * @param prop
-     */
     protected AbstractStringIdGenerator(Property prop) {
         super(prop);
     }

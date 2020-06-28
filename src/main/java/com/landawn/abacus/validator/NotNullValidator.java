@@ -24,12 +24,6 @@ import com.landawn.abacus.type.Type;
  */
 public final class NotNullValidator extends AbstractValidator<Object> {
 
-    /**
-     * Instantiates a new not null validator.
-     *
-     * @param propName
-     * @param type
-     */
     public NotNullValidator(String propName, Type<Object> type) {
         super(propName, type);
     }

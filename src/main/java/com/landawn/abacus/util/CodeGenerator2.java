@@ -91,7 +91,6 @@ import com.landawn.abacus.util.CodeGenerator.ParentPropertyMode;
  */
 public final class CodeGenerator2 {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(CodeGenerator2.class);
 
     /** Field UTF_8. */
@@ -102,7 +101,6 @@ public final class CodeGenerator2 {
      */
     public static final Class<?> _N = _N.class;
 
-    /** The Constant POSTFIX_OF_JAVA_FILE. */
     private static final String POSTFIX_OF_JAVA_FILE = ".java";
 
     /**
@@ -199,7 +197,6 @@ public final class CodeGenerator2 {
         USUAL_TYPES.add(HBaseColumn.class.getCanonicalName());
     }
 
-    /** The java type prop name. */
     private static Map<String, String> JAVA_TYPE_PROP_NAME = new HashMap<>();
 
     static {

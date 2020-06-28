@@ -24,12 +24,6 @@ package com.landawn.abacus.core.interpreter;
  */
 public class H2Interpreter extends SQLInterpreter {
 
-    /**
-     * Instantiates a new h 2 interpreter.
-     *
-     * @param productName
-     * @param productVersion
-     */
     public H2Interpreter(String productName, String productVersion) {
         super(productName, productVersion);
     }

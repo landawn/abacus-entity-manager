@@ -35,24 +35,14 @@ import com.landawn.abacus.util.Properties;
  */
 public abstract class AbstractQueryCache extends AbstractPoolable implements QueryCache {
 
-    /** The rw lock. */
     protected final ReentrantReadWriteLock rwLock = new ReentrantReadWriteLock();
 
-    /** The prop name index map. */
     protected final Properties<String, Integer> propNameIndexMap = new Properties<>();
 
-    /** The last updated time. */
     protected long lastUpdatedTime = System.currentTimeMillis();
 
-    /** The is closed. */
     protected boolean isClosed = false;
 
-    /**
-     * Instantiates a new abstract query cache.
-     *
-     * @param liveTime
-     * @param maxIdleTime
-     */
     protected AbstractQueryCache(long liveTime, long maxIdleTime) {
         super(liveTime, maxIdleTime);
     }
@@ -249,10 +239,6 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
         return lastUpdatedTime;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int size() {
         assertNotClosed();
@@ -319,10 +305,6 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
         close();
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         DataGrid<Object> dataGrid = getDataGrid();

@@ -26,18 +26,10 @@ import com.landawn.abacus.type.Type;
  */
 public abstract class AbstractValidator<T> implements Validator<T> {
 
-    /** The prop name. */
     private final String propName;
 
-    /** The type. */
     private final Type<T> type;
 
-    /**
-     * Instantiates a new abstract validator.
-     *
-     * @param propName
-     * @param type
-     */
     protected AbstractValidator(String propName, Type<T> type) {
         this.propName = propName;
         this.type = type;
@@ -79,10 +71,6 @@ public abstract class AbstractValidator<T> implements Validator<T> {
         return propValue;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         return getClass().getSimpleName();

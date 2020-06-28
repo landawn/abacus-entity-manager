@@ -134,10 +134,6 @@ public interface QueryCache extends Poolable {
      */
     long getLastUpdateTime();
 
-    /**
-     *
-     * @return
-     */
     int size();
 
     /**

@@ -40,10 +40,6 @@ public enum ColumnType {
         this.name = name;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getName() {
         return name;
     }

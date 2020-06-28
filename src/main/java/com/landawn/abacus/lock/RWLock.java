@@ -30,7 +30,6 @@ import javax.jws.WebService;
  */
 public interface RWLock<T> {
 
-    /** The Constant DEFAULT_TIMEOUT. */
     public static final long DEFAULT_TIMEOUT = 3600 * 1000L;
 
     /**

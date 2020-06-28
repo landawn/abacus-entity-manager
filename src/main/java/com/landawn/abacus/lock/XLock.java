@@ -32,7 +32,6 @@ import com.landawn.abacus.LockMode;
  */
 public interface XLock<T> {
 
-    /** The Constant DEFAULT_TIMEOUT. */
     public static final long DEFAULT_TIMEOUT = 3 * 1000L;
 
     /**

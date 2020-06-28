@@ -24,19 +24,10 @@ import com.landawn.abacus.metadata.Property;
  */
 public final class AutoIncrementIdGenerator extends AbstractNumberIdGenerator<Number> {
 
-    /**
-     * Instantiates a new auto increment id generator.
-     *
-     * @param prop
-     */
     public AutoIncrementIdGenerator(Property prop) {
         super(prop);
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public Long allocate() {
         throw new RuntimeException("Can't allocate value for database auto-generated id.");

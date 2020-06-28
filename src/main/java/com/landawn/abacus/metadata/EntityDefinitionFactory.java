@@ -26,10 +26,6 @@ import java.util.Map;
  */
 public interface EntityDefinitionFactory {
 
-    /**
-     *
-     * @return
-     */
     String domainName();
 
     /**
@@ -69,9 +65,5 @@ public interface EntityDefinitionFactory {
      */
     String getAttribute(String attrName);
 
-    /**
-     *
-     * @return
-     */
     byte[] exportDefinition();
 }

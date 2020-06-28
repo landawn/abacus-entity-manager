@@ -41,31 +41,18 @@ import com.landawn.abacus.util.OperationType;
  */
 public class SQLOperationCommand extends SQLCondCommand {
 
-    /** The operation type. */
     private final OperationType operationType;
 
-    /** The entity def. */
     private final EntityDefinition entityDef;
 
-    /** The options. */
     private final Map<String, Object> options;
 
-    /** The target prop names. */
     private Collection<String> targetPropNames;
 
-    /** The batch parameter values. */
     private List<Object[]> batchParameterValues;
 
-    /** The is batch. */
     private boolean isBatch = false;
 
-    /**
-     * Instantiates a new SQL operation command.
-     *
-     * @param operationType
-     * @param entityDef
-     * @param options
-     */
     public SQLOperationCommand(OperationType operationType, EntityDefinition entityDef, Map<String, Object> options) {
         super();
 
@@ -188,10 +175,6 @@ public class SQLOperationCommand extends SQLCondCommand {
         }
     }
 
-    /**
-     *
-     * @return
-     */
     @SuppressWarnings("unchecked")
     @Override
     public Object clone() {
@@ -220,10 +203,6 @@ public class SQLOperationCommand extends SQLCondCommand {
         batchParameterValues = null;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int hashCode() {
         int h = 17;
@@ -279,10 +258,6 @@ public class SQLOperationCommand extends SQLCondCommand {
         return false;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         if (!isBatch() && (parameterCount == 0)) {

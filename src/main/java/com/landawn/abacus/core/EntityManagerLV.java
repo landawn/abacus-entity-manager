@@ -58,27 +58,16 @@ import com.landawn.abacus.version.VersionFactory;
  */
 class EntityManagerLV<E> extends EntityManagerImpl<E> {
 
-    /** The Constant VERSION_DELTA_FOR_DELETE. */
     static final int VERSION_DELTA_FOR_DELETE = -1;
 
-    /** The Constant VERSION_DELTA_FOR_UPDATE. */
     static final int VERSION_DELTA_FOR_UPDATE = 1;
 
-    /** The tran id entity ids map. */
     private final Map<String, List<EntityIdMemo>> tranIdEntityIdsMap = new ConcurrentHashMap<>();
 
-    /** The x record lock. */
     private final XLock<EntityId> xRecordLock;
 
-    /** The record version. */
     private final Version<EntityId> recordVersion;
 
-    /**
-     * Instantiates a new entity manager LV.
-     *
-     * @param entityManagerConfig
-     * @param dbAccess
-     */
     protected EntityManagerLV(EntityManagerConfiguration entityManagerConfig, DBAccessImpl dbAccess) {
         super(entityManagerConfig, dbAccess);
 

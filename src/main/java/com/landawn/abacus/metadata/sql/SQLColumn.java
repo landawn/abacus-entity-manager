@@ -33,45 +33,28 @@ import com.landawn.abacus.util.N;
  */
 public class SQLColumn implements Column {
 
-    /** The name. */
     private final String name;
 
-    /** The canonical name. */
     private final String canonicalName;
 
-    /** The attrs. */
     private final ImmutableMap<String, String> attrs;
 
-    /** The java type. */
     private final String javaType;
 
-    /** The jdbc type. */
     private final String jdbcType;
 
-    /** The sql type. */
     private final int sqlType;
 
-    /** The is primary key. */
     private final boolean isPrimaryKey;
 
-    /** The is unique. */
     private final boolean isUnique;
 
-    /** The is auto increment. */
     private final boolean isAutoIncrement;
 
-    /** The default value. */
     private final Object defaultValue;
 
-    /** The table. */
     private Table table;
 
-    /**
-     * Instantiates a new SQL column.
-     *
-     * @param attrs
-     * @param tableName
-     */
     public SQLColumn(Map<String, String> attrs, String tableName) {
         this.name = NameUtil.getCachedName(attrs.get(ColumnEle.NAME));
         attrs.put(ColumnEle.NAME, name);
@@ -271,10 +254,6 @@ public class SQLColumn implements Column {
         this.table = table;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int hashCode() {
         return canonicalName.hashCode();
@@ -290,10 +269,6 @@ public class SQLColumn implements Column {
         return this == obj || (obj instanceof SQLColumn && N.equals(((SQLColumn) obj).canonicalName, canonicalName));
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         return attrs.toString();

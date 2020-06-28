@@ -29,13 +29,10 @@ import com.landawn.abacus.util.N;
  */
 public class SQLCondCommand extends SQLCommand {
 
-    /** The join tables. */
     private Set<String> joinTables = N.newHashSet();
 
-    /** The where begin index. */
     private int whereBeginIndex = -1;
 
-    /** The where end idnex. */
     private int whereEndIdnex = -1;
 
     /**
@@ -143,10 +140,6 @@ public class SQLCondCommand extends SQLCommand {
         }
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public Object clone() {
         SQLCondCommand copy = (SQLCondCommand) super.clone();

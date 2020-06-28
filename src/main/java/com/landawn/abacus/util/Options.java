@@ -82,10 +82,6 @@ public final class Options {
         // no instance
     }
 
-    /**
-     *
-     * @return
-     */
     public static Map<String, Object> create() {
         return new HashMap<>();
     }

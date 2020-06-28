@@ -30,9 +30,6 @@ import com.landawn.abacus.util.OperationType;
  */
 public final class SQLCommandFactory {
 
-    /**
-     * Instantiates a new SQL command factory.
-     */
     private SQLCommandFactory() {
         // No instance;
     }

@@ -49,24 +49,14 @@ import com.landawn.abacus.util.XMLUtil;
  */
 public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
 
-    /** The domain name. */
     private final String domainName;
 
-    /** The domain definition. */
     private final byte[] domainDefinition;
 
-    /** The attrs. */
     private final Map<String, String> attrs;
 
-    /** The entity definition pool. */
     private final Map<String, SQLEntityDefinition> entityDefinitionPool;
 
-    /**
-     * Instantiates a new SQL entity definition factory.
-     *
-     * @param domainName
-     * @param byteDef
-     */
     protected SQLEntityDefinitionFactory(String domainName, byte[] byteDef) {
         this.domainName = NameUtil.getCachedName(domainName);
         this.domainDefinition = byteDef;
@@ -135,10 +125,6 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
         return new SQLEntityDefinitionFactory(domainName, IOUtil.readAllBytes(is));
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String domainName() {
         return domainName;
@@ -197,19 +183,11 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
         return attrs.get(attrName);
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public byte[] exportDefinition() {
         return domainDefinition;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int hashCode() {
         return entityDefinitionPool.hashCode();
@@ -227,10 +205,6 @@ public class SQLEntityDefinitionFactory implements EntityDefinitionFactory {
 
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         return attrs.toString();

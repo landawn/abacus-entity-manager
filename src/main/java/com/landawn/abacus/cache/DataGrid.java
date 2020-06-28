@@ -37,48 +37,30 @@ import com.landawn.abacus.util.N;
  */
 public class DataGrid<E> implements Serializable {
 
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -8547707617757713870L;
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(DataGrid.class);
 
-    /** The Constant NULL_MASK. */
     private static final Object NULL_MASK = NullMask.INSTANCE;
 
-    /** The Constant INIT_INDEX. */
     private static final int INIT_INDEX = -1;
 
-    /** The Constant PIECE_BITS. */
     private static final int PIECE_BITS = 10;
 
-    /** The Constant PIECE_SIZE. */
     private static final int PIECE_SIZE = 1 << PIECE_BITS;
 
-    /** The Constant BIT_INDEX_MASK. */
     private static final int BIT_INDEX_MASK = PIECE_SIZE - 1;
 
-    /** The is big Y. */
     private final boolean isBigY;
 
-    /** The x. */
     private int x;
 
-    /** The y. */
     private final int y;
 
-    /** The xy array. */
     private Object[][] xyArray;
 
-    /** The piece index. */
     private int[] pieceIndex;
 
-    /**
-     * Instantiates a new data grid.
-     *
-     * @param x
-     * @param y
-     */
     public DataGrid(int x, int y) {
         if ((x < 0) || (y < 0)) {
             throw new IllegalArgumentException("both x and y must be bigger than 0");
@@ -379,19 +361,11 @@ public class DataGrid<E> implements Serializable {
         return this == obj || (obj instanceof DataGrid && N.deepEquals(((DataGrid<E>) obj).xyArray, xyArray));
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int hashCode() {
         return Arrays.deepHashCode(xyArray);
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         return Arrays.deepToString(xyArray);

@@ -40,11 +40,6 @@ public enum OnUpdateAction {
      */
     private int intValue;
 
-    /**
-     * Instantiates a new on update action.
-     *
-     * @param intValue
-     */
     OnUpdateAction(int intValue) {
         this.intValue = intValue;
     }

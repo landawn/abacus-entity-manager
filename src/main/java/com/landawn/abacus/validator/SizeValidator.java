@@ -28,19 +28,10 @@ import com.landawn.abacus.type.Type;
  */
 public class SizeValidator extends AbstractValidator<Object> {
 
-    /** The min size. */
     final int minSize;
 
-    /** The max size. */
     final int maxSize;
 
-    /**
-     * Instantiates a new size validator.
-     *
-     * @param propName
-     * @param type
-     * @param size
-     */
     public SizeValidator(String propName, Type<Object> type, String size) {
         super(propName, type);
         this.minSize = Integer.valueOf(size);

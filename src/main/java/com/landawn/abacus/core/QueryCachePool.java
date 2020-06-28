@@ -50,16 +50,12 @@ import com.landawn.abacus.util.OperationType;
 @Internal
 class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, V> {
 
-    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -4494321879106210592L;
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(QueryCachePool.class);
 
-    /** The Constant ZIP_DELAY. */
     private static final long ZIP_DELAY = 3 * 60 * 1000L;
 
-    /** The Constant scheduledExecutor. */
     private static final ScheduledExecutorService scheduledExecutor;
     static {
         final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(IOUtil.CPU_CORES);
@@ -67,22 +63,12 @@ class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, 
         scheduledExecutor = MoreExecutors.getExitingScheduledExecutorService(executor);
     }
 
-    /** The schedule future. */
     private ScheduledFuture<?> scheduleFuture;
 
-    /** The query cache config. */
     private final QueryCacheConfiguration queryCacheConfig;
 
-    /** The cache zipper. */
     private CacheZipper cacheZipper;
 
-    /**
-     * Instantiates a new query cache pool.
-     *
-     * @param capacity
-     * @param evictDelay
-     * @param queryCacheConfig
-     */
     public QueryCachePool(int capacity, long evictDelay, QueryCacheConfiguration queryCacheConfig) {
         super(capacity, evictDelay, EvictionPolicy.LAST_ACCESS_TIME);
         this.queryCacheConfig = queryCacheConfig;

@@ -23,17 +23,10 @@ package com.landawn.abacus.validator;
  */
 final class NotValidator<T> extends AbstractValidator<T> {
 
-    /** The src validator. */
     private final Validator<T> srcValidator;
 
-    /** The is not null. */
     private final boolean isNotNull;
 
-    /**
-     * Instantiates a new not validator.
-     *
-     * @param srcValidator
-     */
     NotValidator(Validator<T> srcValidator) {
         super(srcValidator.getPropName(), srcValidator.getType());
         this.srcValidator = srcValidator;

@@ -47,29 +47,18 @@ import com.landawn.abacus.util.ObjectPool;
  */
 public class EntityManagerFactory {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(EntityManagerFactory.class);
 
-    /** The Constant GET_INSTANCE. */
     private static final String GET_INSTANCE = "getInstance";
 
-    /** The Constant INTANCE_POOL. */
     private static final Map<String, EntityManagerFactory> INTANCE_POOL = new LinkedHashMap<>();
 
-    /** The default instance. */
     private static volatile EntityManagerFactory DEFAULT_INSTANCE = null;
 
-    /** The entity manager pool. */
     private final Map<String, DomainEntityManager> entityManagerPool = new ObjectPool<String, DomainEntityManager>(64);
 
-    /** The abacus config. */
     private final AbacusConfiguration abacusConfig;
 
-    /**
-     * Instantiates a new entity manager factory.
-     *
-     * @param abacusConfig
-     */
     EntityManagerFactory(AbacusConfiguration abacusConfig) {
         this.abacusConfig = abacusConfig;
 

@@ -34,9 +34,6 @@ import com.landawn.abacus.util.TypeAttrParser;
  */
 public final class VersionFactory {
 
-    /**
-     * Instantiates a new version factory.
-     */
     private VersionFactory() {
         // singleton
     }

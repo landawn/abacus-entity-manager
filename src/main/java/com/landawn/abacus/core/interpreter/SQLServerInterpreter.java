@@ -37,18 +37,11 @@ import com.landawn.abacus.util.WD;
  */
 public class SQLServerInterpreter extends SQLInterpreter {
 
-    /** The Constant VERSION_2012. */
     private static final int VERSION_2012 = 11;
 
     /** The is version 2012 or above. */
     private final boolean isVersion2012OrAbove;
 
-    /**
-     * Instantiates a new SQL server interpreter.
-     *
-     * @param productName
-     * @param productVersion
-     */
     public SQLServerInterpreter(String productName, String productVersion) {
         super(productName, productVersion);
 

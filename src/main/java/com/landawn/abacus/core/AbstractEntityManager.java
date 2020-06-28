@@ -45,21 +45,12 @@ import com.landawn.abacus.util.u.Optional;
  */
 abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityManager<E> {
 
-    /** The domain name. */
     protected final String domainName;
 
-    /** The config. */
     protected final EntityManagerConfiguration entityManagerConfig;
 
-    /** The handler list. */
     private final List<Handler<E>> handlerList;
 
-    /**
-     * Instantiates a new abstract entity manager.
-     *
-     * @param domainName
-     * @param entityManagerConfig configuration for entity manager.
-     */
     protected AbstractEntityManager(final String domainName, final EntityManagerConfiguration entityManagerConfig) {
         this.domainName = domainName;
         this.entityManagerConfig = entityManagerConfig;

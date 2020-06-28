@@ -53,102 +53,47 @@ import com.landawn.abacus.util.WD;
 @Internal
 public class SQLResult {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(SQLResult.class);
 
-    /** The Constant resultInfoPool. */
     private static final Map<String, Map<String, Map<List<String>, ResultInfo>>> resultInfoPool = new HashMap<>();
 
-    /** The executant. */
     protected final Executant executant;
 
-    /** The sql cmd. */
     protected final SQLOperationCommand sqlCmd;
 
-    /** The options. */
     protected final Map<String, Object> options;
 
-    /** The ds. */
     protected final SQLDataSource ds;
 
-    /** The stmt. */
     protected final Statement stmt;
 
-    /** The rs. */
     protected final ResultSet rs;
 
-    /** The result info. */
     protected final ResultInfo resultInfo;
 
-    /** The execution time. */
     private final long executionTime;
 
-    /** The update count. */
     private final int updateCount;
 
-    /** The generated keys. */
     private final List<Object> generatedKeys;
 
-    /** The size. */
     private int size = -1;
 
-    /** The is closed. */
     private boolean isClosed = false;
 
-    /**
-     * Instantiates a new SQL result.
-     *
-     * @param executant
-     * @param sqlCmd
-     * @param options
-     * @param ds
-     * @param stmt
-     * @param rs
-     * @param executionTime
-     */
     public SQLResult(Executant executant, SQLOperationCommand sqlCmd, Map<String, Object> options, SQLDataSource ds, Statement stmt, ResultSet rs,
             long executionTime) {
         this(executant, sqlCmd, options, ds, stmt, rs, executionTime, 0, null);
     }
 
-    /**
-     * Instantiates a new SQL result.
-     *
-     * @param executant
-     * @param sqlCmd
-     * @param executionTime
-     * @param updateCount
-     */
     public SQLResult(Executant executant, SQLOperationCommand sqlCmd, long executionTime, int updateCount) {
         this(executant, sqlCmd, null, null, null, null, executionTime, updateCount, null);
     }
 
-    /**
-     * Instantiates a new SQL result.
-     *
-     * @param executant
-     * @param sqlCmd
-     * @param executionTime
-     * @param updateCount
-     * @param generatedKeys
-     */
     public SQLResult(Executant executant, SQLOperationCommand sqlCmd, long executionTime, int updateCount, List<Object> generatedKeys) {
         this(executant, sqlCmd, null, null, null, null, executionTime, updateCount, generatedKeys);
     }
 
-    /**
-     * Instantiates a new SQL result.
-     *
-     * @param executant
-     * @param sqlCmd
-     * @param options
-     * @param ds
-     * @param stmt
-     * @param rs
-     * @param executionTime
-     * @param updateCount
-     * @param generatedKeys
-     */
     SQLResult(Executant executant, SQLOperationCommand sqlCmd, Map<String, Object> options, SQLDataSource ds, Statement stmt, ResultSet rs, long executionTime,
             int updateCount, List<Object> generatedKeys) {
         this.executant = executant;
@@ -337,10 +282,6 @@ public class SQLResult {
         }
     }
 
-    /**
-     *
-     * @return
-     */
     public int size() {
         assertNotClosed();
 

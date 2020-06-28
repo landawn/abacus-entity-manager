@@ -57,7 +57,6 @@ import com.landawn.abacus.util.WD;
  */
 public class SQLInterpreter extends AbstractInterpreter {
 
-    /** The Constant operatorChars. */
     static final char[] operatorChars = new char[128];
     static {
         operatorChars[' '] = ' ';
@@ -84,21 +83,12 @@ public class SQLInterpreter extends AbstractInterpreter {
         operatorChars['!'] = '!';
     }
 
-    /** The Constant EMPTY_CRITERIA. */
     static final Criteria EMPTY_CRITERIA = CF.criteria();
 
-    /** The product name. */
     protected final String productName;
 
-    /** The product version. */
     protected final String productVersion;
 
-    /**
-     * Instantiates a new SQL interpreter.
-     *
-     * @param productName
-     * @param productVersion
-     */
     public SQLInterpreter(String productName, String productVersion) {
         this.productName = productName;
         this.productVersion = productVersion;

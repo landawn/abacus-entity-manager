@@ -38,25 +38,18 @@ import com.landawn.abacus.util.Objectory;
  */
 public class SQLCommand extends AbstractCommand {
 
-    /** The Constant INIT_SIZE. */
     private static final int INIT_SIZE = 9;
 
-    /** The target tables. */
     private Set<String> targetTables = N.newHashSet();
 
-    /** The sub query tables. */
     private Set<String> subQueryTables = N.newHashSet();
 
-    /** The parameter values. */
     protected Object[] parameterValues = new Object[INIT_SIZE];
 
-    /** The parameter types. */
     protected Type<Object>[] parameterTypes = new Type[INIT_SIZE];
 
-    /** The parameter count. */
     protected int parameterCount;
 
-    /** The sql. */
     protected String sql = N.EMPTY_STRING;
 
     /**
@@ -374,10 +367,6 @@ public class SQLCommand extends AbstractCommand {
         appendParameters(sqlCmd);
     }
 
-    /**
-     *
-     * @return
-     */
     @SuppressWarnings("unchecked")
     @Override
     public Object clone() {
@@ -417,10 +406,6 @@ public class SQLCommand extends AbstractCommand {
         parameterCount = 0;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int hashCode() {
         int h = 17;
@@ -450,10 +435,6 @@ public class SQLCommand extends AbstractCommand {
         return false;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         if (parameterCount == 0) {

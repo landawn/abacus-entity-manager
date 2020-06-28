@@ -28,10 +28,8 @@ import com.landawn.abacus.util.N;
  */
 public class MemcachedRWLock<T> extends AbstractRWLock<T> {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(MemcachedRWLock.class);
 
-    /** The Constant DEFAULT_LIVE_TIME. */
     static final long DEFAULT_LIVE_TIME = 3600 * 1000L;
 
     /**
@@ -65,34 +63,14 @@ public class MemcachedRWLock<T> extends AbstractRWLock<T> {
      */
     private final long timeout;
 
-    /**
-     * Instantiates a new memcached RW lock.
-     *
-     * @param servers
-     */
     public MemcachedRWLock(String servers) {
         this(servers, N.EMPTY_STRING, DEFAULT_LIVE_TIME, DEFAULT_TIMEOUT);
     }
 
-    /**
-     * Instantiates a new memcached RW lock.
-     *
-     * @param servers
-     * @param keyPrefix
-     * @param liveTime
-     */
     public MemcachedRWLock(String servers, String keyPrefix, String liveTime) {
         this(servers, keyPrefix, Long.valueOf(liveTime), DEFAULT_TIMEOUT);
     }
 
-    /**
-     * Instantiates a new memcached RW lock.
-     *
-     * @param servers
-     * @param keyPrefix
-     * @param liveTime
-     * @param timeout
-     */
     public MemcachedRWLock(String servers, String keyPrefix, long liveTime, long timeout) {
         this.mLock = new MemcachedLock<String, Number>(servers);
 

@@ -36,12 +36,6 @@ import com.landawn.abacus.util.WD;
  */
 public class OracleInterpreter extends SQLInterpreter {
 
-    /**
-     * Instantiates a new oracle interpreter.
-     *
-     * @param productName
-     * @param productVersion
-     */
     public OracleInterpreter(String productName, String productVersion) {
         super(productName, productVersion);
     }

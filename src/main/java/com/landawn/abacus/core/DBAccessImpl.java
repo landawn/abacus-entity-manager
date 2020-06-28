@@ -90,40 +90,24 @@ import com.landawn.abacus.util.u.Optional;
  */
 class DBAccessImpl implements com.landawn.abacus.DBAccess {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(DBAccessImpl.class);
 
-    /** The handle result pool. */
     private final KeyedObjectPool<String, HandleResult> handleResultPool = PoolFactory.createKeyedObjectPool(3000, 1000);
 
-    /** The query cache ref lock. */
     private final RefReentrantReadWriteLock queryCacheRefLock = new RefReentrantReadWriteLock();
 
-    /** The config. */
     private final EntityManagerConfiguration entityManagerConfig;
 
-    /** The entity def factory. */
     private final EntityDefinitionFactory entityDefFactory;
 
-    /** The executant. */
     private final Executant executant;
 
-    /** The data crid cache. */
     private final Cache<String, DataGrid<Object>> dataCridCache;
 
-    /** The query cache pool. */
     private final QueryCachePool<String, QueryCache> queryCachePool;
 
-    /** The is auto refresh query cache. */
     private final boolean isAutoRefreshQueryCache;
 
-    /**
-     * Instantiates a new DB access impl.
-     *
-     * @param entityManagerConfig configuration for entity manager.
-     * @param entityDefFactory
-     * @param executant
-     */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     protected DBAccessImpl(EntityManagerConfiguration entityManagerConfig, EntityDefinitionFactory entityDefFactory, Executant executant) {
         this.entityManagerConfig = entityManagerConfig;

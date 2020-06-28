@@ -33,50 +33,26 @@ import com.landawn.abacus.util.OperationType;
  */
 public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
 
-    /** The init value. */
     private final long initValue;
 
-    /** The delta. */
     private final int delta;
 
-    /** The max id value. */
     private volatile long maxIdValue;
 
-    /** The sql. */
     private final String sql;
 
-    /** The executor. */
     private Executant executor;
 
-    /** The is initialized. */
     private boolean isInitialized = false;
 
-    /**
-     * Instantiates a new local id generator.
-     *
-     * @param prop
-     */
     public LocalIdGenerator(Property prop) {
         this(prop, "0");
     }
 
-    /**
-     * Instantiates a new local id generator.
-     *
-     * @param prop
-     * @param initValue
-     */
     public LocalIdGenerator(Property prop, String initValue) {
         this(prop, initValue, "1");
     }
 
-    /**
-     * Instantiates a new local id generator.
-     *
-     * @param prop
-     * @param initValue
-     * @param delta
-     */
     public LocalIdGenerator(Property prop, String initValue, String delta) {
         super(prop);
         this.initValue = Long.valueOf(initValue);
@@ -95,10 +71,6 @@ public final class LocalIdGenerator extends AbstractNumberIdGenerator<Number> {
         this.executor = executor;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public synchronized Number allocate() {
         if (!isInitialized) {

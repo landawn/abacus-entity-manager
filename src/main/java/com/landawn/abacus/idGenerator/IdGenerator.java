@@ -26,7 +26,6 @@ import com.landawn.abacus.metadata.Property;
  */
 public interface IdGenerator<T> {
 
-    /** The Constant ID_GENERATOR. */
     public static final String ID_GENERATOR = IdGenerator.class.getSimpleName();
 
     /**

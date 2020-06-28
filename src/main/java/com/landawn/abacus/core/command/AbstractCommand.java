@@ -59,10 +59,6 @@ public abstract class AbstractCommand implements Command, Cloneable {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public Object clone() {
         Object copy = null;

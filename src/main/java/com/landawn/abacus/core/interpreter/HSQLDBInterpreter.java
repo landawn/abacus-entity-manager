@@ -24,12 +24,6 @@ package com.landawn.abacus.core.interpreter;
  */
 public class HSQLDBInterpreter extends SQLInterpreter {
 
-    /**
-     * Instantiates a new HSQLDB interpreter.
-     *
-     * @param productName
-     * @param productVersion
-     */
     public HSQLDBInterpreter(String productName, String productVersion) {
         super(productName, productVersion);
     }

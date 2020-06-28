@@ -50,36 +50,22 @@ import com.landawn.abacus.util.u.Optional;
 @SuppressWarnings("deprecation")
 final class SessionImpl<E> implements Session<E> {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(SessionImpl.class);
 
-    /** The attached entities. */
     private final Map<E, OperationType> attachedEntities = new IdentityHashMap<>();
 
-    /** The attached entity list. */
     private final List<E> attachedEntityList = new LinkedList<>();
 
-    /** The entity manager. */
     private final EntityManager<E> entityManager;
 
-    /** The isolation level. */
     private final IsolationLevel isolationLevel;
 
-    /** The options. */
     private Map<String, Object> options;
 
-    /** The transaction. */
     private TransactionProxy transaction;
 
-    /** The is closed. */
     private boolean isClosed = false;
 
-    /**
-     * Instantiates a new session impl.
-     *
-     * @param entityManager
-     * @param isolationLevel
-     */
     SessionImpl(EntityManager<E> entityManager, IsolationLevel isolationLevel) {
         this.entityManager = entityManager;
         this.isolationLevel = isolationLevel;
@@ -599,10 +585,6 @@ final class SessionImpl<E> implements Session<E> {
         }
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         return "{isClosed=" + isClosed + ", transactionId=" + ((transaction == null) ? "null" : transaction.id) + ", attached entities: "

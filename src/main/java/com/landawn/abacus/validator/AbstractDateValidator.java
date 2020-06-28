@@ -29,19 +29,10 @@ import com.landawn.abacus.util.DateUtil;
  */
 public abstract class AbstractDateValidator<T extends Date> extends AbstractValidator<T> {
 
-    /** The benchmark. */
     private final T benchmark;
 
-    /** The is sys time. */
     private final boolean isSysTime;
 
-    /**
-     * Instantiates a new abstract date validator.
-     *
-     * @param propName
-     * @param type
-     * @param value
-     */
     protected AbstractDateValidator(String propName, Type<T> type, String value) {
         super(propName, type);
 

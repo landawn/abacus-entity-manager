@@ -25,7 +25,6 @@ import com.landawn.abacus.type.Type;
  */
 public final class EqualValidator<T> extends AbstractComparableValidator<T> {
 
-    /** The case insensitive. */
     private boolean caseInsensitive = true;
 
     /**
@@ -39,14 +38,6 @@ public final class EqualValidator<T> extends AbstractComparableValidator<T> {
         super(propName, type, value);
     }
 
-    /**
-     * Instantiates a new equal validator.
-     *
-     * @param propName
-     * @param type
-     * @param value
-     * @param caseInsensitive
-     */
     public EqualValidator(String propName, Type<T> type, String value, String caseInsensitive) {
         super(propName, type, value);
         this.caseInsensitive = Boolean.valueOf(caseInsensitive);

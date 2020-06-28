@@ -25,16 +25,8 @@ import com.landawn.abacus.type.Type;
  */
 public abstract class AbstractComparableValidator<T> extends AbstractValidator<T> {
 
-    /** The benchmark. */
     protected final T benchmark;
 
-    /**
-     * Instantiates a new abstract comparable validator.
-     *
-     * @param propName
-     * @param type
-     * @param benchmark
-     */
     protected AbstractComparableValidator(String propName, Type<T> type, String benchmark) {
         super(propName, type);
         this.benchmark = type.valueOf(benchmark);
@@ -49,10 +41,6 @@ public abstract class AbstractComparableValidator<T> extends AbstractValidator<T
         return benchmark;
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         return getClass().getSimpleName() + "(" + benchmark + ")";

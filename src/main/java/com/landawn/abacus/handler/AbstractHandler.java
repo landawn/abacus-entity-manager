@@ -36,14 +36,8 @@ import com.landawn.abacus.util.u.Holder;
  */
 public abstract class AbstractHandler<T> implements Handler<T> {
 
-    /** The entity manager. */
     protected final EntityManager<T> entityManager;
 
-    /**
-     * Instantiates a new abstract handler.
-     *
-     * @param entityManager
-     */
     public AbstractHandler(EntityManager<T> entityManager) {
         this.entityManager = entityManager;
     }

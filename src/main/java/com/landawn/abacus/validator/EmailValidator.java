@@ -24,15 +24,8 @@ import com.landawn.abacus.type.Type;
  */
 public class EmailValidator extends PatternValidator {
 
-    /** The Constant EMAIL_PATTERN. */
     private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*$";
 
-    /**
-     * Instantiates a new email validator.
-     *
-     * @param propName
-     * @param type
-     */
     protected EmailValidator(String propName, Type<String> type) {
         super(propName, type, EMAIL_PATTERN);
     }

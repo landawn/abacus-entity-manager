@@ -48,112 +48,50 @@ import com.landawn.abacus.util.XMLUtil;
  */
 public class SQLDatabase implements Database {
 
-    /** The Constant TABLE_NAME. */
     private static final String TABLE_NAME = "TABLE_NAME";
 
-    /** The Constant TABLE. */
     private static final String TABLE = "TABLE";
 
     // private static final String REF_GENERATION = "REF_GENERATION";
-    /** The Constant ORACLE. */
     // private static final String USER = "USER";
     private static final String ORACLE = "ORACLE";
 
-    /** The Constant BIN$. */
     private static final String BIN$ = "BIN$";
 
-    /** The name. */
     private final String name;
 
-    /** The attrs. */
     private final ImmutableMap<String, String> attrs;
 
-    /** The table map. */
     private final ImmutableMap<String, SQLTable> tableMap;
 
-    /**
-     * Instantiates a new SQL database.
-     *
-     * @param conn
-     * @param dbName
-     */
     public SQLDatabase(Connection conn, String dbName) {
         this(conn, dbName, null);
     }
 
-    /**
-     * Instantiates a new SQL database.
-     *
-     * @param conn
-     * @param dbName
-     * @param selectTableNames
-     */
     public SQLDatabase(Connection conn, String dbName, Collection<String> selectTableNames) {
         this(conn, dbName, null, null, null, selectTableNames);
     }
 
-    /**
-     * Instantiates a new SQL database.
-     *
-     * @param conn
-     * @param dbName
-     * @param schemaPattern
-     * @param tableNamePattern
-     * @param types
-     */
     public SQLDatabase(Connection conn, String dbName, String schemaPattern, String tableNamePattern, String[] types) {
         this(conn, dbName, schemaPattern, tableNamePattern, types, null);
     }
 
-    /**
-     * Instantiates a new SQL database.
-     *
-     * @param conn
-     * @param dbName
-     * @param schemaPattern
-     * @param tableNamePattern
-     * @param types
-     * @param selectTableNames
-     */
     SQLDatabase(Connection conn, String dbName, String schemaPattern, String tableNamePattern, String[] types, Collection<String> selectTableNames) {
         this(parse(conn, dbName, schemaPattern, tableNamePattern, types, selectTableNames));
     }
 
-    /**
-     * Instantiates a new SQL database.
-     *
-     * @param is
-     * @throws SAXException the SAX exception
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
     public SQLDatabase(InputStream is) throws SAXException, IOException {
         this(Configuration.parse(is).getDocumentElement());
     }
 
-    /**
-     * Instantiates a new SQL database.
-     *
-     * @param databaseNode
-     */
     public SQLDatabase(Element databaseNode) {
         this(parse(databaseNode));
     }
 
-    /**
-     * Instantiates a new SQL database.
-     *
-     * @param attrsTableMap
-     */
     SQLDatabase(Object[] attrsTableMap) {
         this((Map<String, String>) attrsTableMap[0], (Map<String, SQLTable>) attrsTableMap[1]);
     }
 
-    /**
-     * Instantiates a new SQL database.
-     *
-     * @param attrs
-     * @param tableMap
-     */
     SQLDatabase(Map<String, String> attrs, Map<String, SQLTable> tableMap) {
         this.name = NameUtil.getCachedName(attrs.get(TableEle.NAME));
         attrs.put(TableEle.NAME, name);
@@ -245,10 +183,6 @@ public class SQLDatabase implements Database {
         return attrs.get(attrName);
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public int hashCode() {
         return name.hashCode();
@@ -264,10 +198,6 @@ public class SQLDatabase implements Database {
         return this == obj || (obj instanceof SQLDatabase && ((SQLDatabase) obj).name.equals(name));
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
         return attrs.toString();

@@ -24,12 +24,6 @@ package com.landawn.abacus.core.interpreter;
  */
 public class PostgreSQLInterpreter extends SQLInterpreter {
 
-    /**
-     * Instantiates a new postgre SQL interpreter.
-     *
-     * @param productName
-     * @param productVersion
-     */
     public PostgreSQLInterpreter(String productName, String productVersion) {
         super(productName, productVersion);
     }

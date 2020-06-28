@@ -58,18 +58,10 @@ import com.landawn.abacus.util.stream.Stream.StreamEx;
  */
 class EntityManagerLVC<E> extends EntityManagerLV<E> {
 
-    /** The entity cache decorator. */
     private final EntityCacheDecorator entityCacheDecorator;
 
-    /** The rw entity id lock. */
     private final RWLock<EntityId> rwEntityIdLock;
 
-    /**
-     * Instantiates a new entity manager LVC.
-     *
-     * @param entityManagerConfig
-     * @param dbAccess
-     */
     protected EntityManagerLVC(EntityManagerConfiguration entityManagerConfig, DBAccessImpl dbAccess) {
         super(entityManagerConfig, dbAccess);
         this.entityCacheDecorator = new EntityCacheDecorator(entityManagerConfig.getEntityCacheConfiguration());

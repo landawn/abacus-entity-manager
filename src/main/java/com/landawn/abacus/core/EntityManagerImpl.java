@@ -87,30 +87,18 @@ import com.landawn.abacus.util.u.Holder;
  */
 class EntityManagerImpl<E> extends AbstractEntityManager<E> {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(EntityManagerImpl.class);
 
-    /** The Constant NON_EXISTED_CONDITION. */
     private static final Condition NON_EXISTED_CONDITION = CF.eq("1", "2");
 
-    /** The get select prop name view pool. */
     private final Map<String, Map<Collection<String>, SelectPropNameView>> getSelectPropNameViewPool = new ConcurrentHashMap<>();
 
-    /** The query select prop name view pool. */
     private final Map<String, Map<Collection<String>, SelectPropNameView>> querySelectPropNameViewPool = new ConcurrentHashMap<>();
 
-    /** The query cmd pool. */
     private final Map<String, Map<String, Map<Collection<String>, CachedQueryCmd>>> queryCmdPool = new HashMap<>();
 
-    /** The db access. */
     protected final DBAccessImpl dbAccess;
 
-    /**
-     * Instantiates a new entity manager impl.
-     *
-     * @param entityManagerConfig
-     * @param dbAccess
-     */
     protected EntityManagerImpl(EntityManagerConfiguration entityManagerConfig, DBAccessImpl dbAccess) {
         super(dbAccess.getEntityDefinitionFactory().domainName(), entityManagerConfig);
         this.dbAccess = dbAccess;

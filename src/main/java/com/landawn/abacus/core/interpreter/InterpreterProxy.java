@@ -39,38 +39,25 @@ import com.landawn.abacus.util.N;
  */
 public class InterpreterProxy extends AbstractInterpreter {
 
-    /** The Constant MAX_POOL_SIZE. */
     private static final int MAX_POOL_SIZE = 100;
 
-    /** The condition cmd pool. */
     private final Map<String, Map<String, Command>> conditionCmdPool = new HashMap<>();
 
-    /** The add cmd pool. */
     private final Map<String, Map<List<String>, Command>> addCmdPool = new HashMap<>();
 
-    /** The update cmd pool. */
     private final Map<String, Map<String, Map<List<String>, Command>>> updateCmdPool = new HashMap<>();
 
-    /** The delete cmd pool. */
     private final Map<String, Map<String, Command>> deleteCmdPool = new HashMap<>();
 
-    /** The query cmd pool. */
     private final Map<String, Map<String, Map<List<String>, Command>>> queryCmdPool = new HashMap<>();
 
-    /** The sql query cmd pool. */
     private final Map<String, Map<String, Command>> sqlQueryCmdPool = new HashMap<>();
 
     //    private final Map<String, Map<Set<String>, SQLOperationCommand>> batchUpdateCmdPool = new HashMap<>();
     //    private final Map<String, SQLOperationCommand> batchDeleteCmdPool = new HashMap<>();
 
-    /** The interpreter. */
     private final Interpreter interpreter;
 
-    /**
-     * Instantiates a new interpreter proxy.
-     *
-     * @param interpreter
-     */
     public InterpreterProxy(Interpreter interpreter) {
         this.interpreter = interpreter;
     }

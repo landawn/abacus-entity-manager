@@ -33,27 +33,16 @@ import com.landawn.abacus.util.N;
  */
 public final class LocalXLock<T> extends AbstractXLock<T> {
 
-    /** The Constant logger. */
     private static final Logger logger = LoggerFactory.getLogger(LocalXLock.class);
 
-    /** The blocked lock pool. */
     private final Map<T, ModeLock> blockedLockPool = new ConcurrentHashMap<T, ModeLock>();
 
-    /** The timeout. */
     private final long timeout;
 
-    /**
-     * Instantiates a new local X lock.
-     */
     public LocalXLock() {
         this(DEFAULT_TIMEOUT);
     }
 
-    /**
-     * Instantiates a new local X lock.
-     *
-     * @param timeout
-     */
     public LocalXLock(long timeout) {
         this.timeout = timeout;
     }

@@ -27,13 +27,6 @@ import com.landawn.abacus.type.Type;
  */
 public final class AfterValidator<T extends Date> extends AbstractDateValidator<T> {
 
-    /**
-     * Instantiates a new after validator.
-     *
-     * @param propName
-     * @param type
-     * @param time
-     */
     public AfterValidator(String propName, Type<T> type, String time) {
         super(propName, type, time);
     }

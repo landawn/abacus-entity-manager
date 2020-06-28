@@ -70,12 +70,8 @@ import com.landawn.abacus.validator.Validator;
 @Internal
 public final class EntityManagerUtil {
 
-    /** The Constant clsEntityName. */
     private static final Map<Class<?>, String> clsEntityName = new ObjectPool<Class<?>, String>(1024);
 
-    /**
-     * Instantiates a new entity manager util.
-     */
     private EntityManagerUtil() {
         // no instance
     }
@@ -1923,10 +1919,8 @@ public final class EntityManagerUtil {
         return cond;
     }
 
-    /** The Constant NAME_OF_ENTITY_NAME_FIELD. */
     private static final String NAME_OF_ENTITY_NAME_FIELD = "__";
 
-    /** The Constant entityNameMap. */
     private static final Map<Class<?>, String> entityNameMap = new ConcurrentHashMap<>();
 
     /**
@@ -1965,7 +1959,6 @@ public final class EntityManagerUtil {
         return entityName;
     }
 
-    /** The Constant sqlStateForTableNotExists. */
     private static final Set<String> sqlStateForTableNotExists = N.newHashSet();
 
     static {

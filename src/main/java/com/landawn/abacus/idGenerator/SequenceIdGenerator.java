@@ -33,21 +33,12 @@ import com.landawn.abacus.util.OperationType;
  */
 public final class SequenceIdGenerator extends AbstractNumberIdGenerator<Number> {
 
-    /** The next val sql. */
     private final String nextValSql;
 
-    /** The executant. */
     private Executant executant;
 
-    /** The query cmd. */
     private Command queryCmd;
 
-    /**
-     * Instantiates a new sequence id generator.
-     *
-     * @param prop
-     * @param sequenceName
-     */
     public SequenceIdGenerator(Property prop, String sequenceName) {
         super(prop);
 
@@ -75,10 +66,6 @@ public final class SequenceIdGenerator extends AbstractNumberIdGenerator<Number>
         queryCmd = SQLCommandFactory.createSqlCommand(OperationType.QUERY, entityDef, nextValSql, null);
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public Number allocate() {
         SQLResult queryResult = executant.executeQuery(queryCmd, null);
