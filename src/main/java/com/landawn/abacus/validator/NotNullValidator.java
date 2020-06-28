@@ -18,7 +18,6 @@ import com.landawn.abacus.type.Type;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class NotNullValidator.
  *
  * @author Haiyang Li
  * @since 0.8

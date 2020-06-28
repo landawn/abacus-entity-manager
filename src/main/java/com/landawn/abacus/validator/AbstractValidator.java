@@ -19,7 +19,6 @@ import com.landawn.abacus.type.Type;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbstractValidator.
  *
  * @author Haiyang Li
  * @param <T>

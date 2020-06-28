@@ -20,7 +20,6 @@ import java.util.Map;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class OptionsBuilder.
  *
  * @author Haiyang Li
  * @since 1.2

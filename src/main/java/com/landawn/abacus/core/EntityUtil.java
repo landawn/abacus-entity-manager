@@ -32,7 +32,6 @@ import com.landawn.abacus.util.Objectory;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class EntityUtil.
  *
  * @author Haiyang Li
  * @since 0.8

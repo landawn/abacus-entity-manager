@@ -23,7 +23,6 @@ import com.landawn.abacus.util.OperationType;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbstractCommand.
  *
  * @author Haiyang Li
  * @since 0.8

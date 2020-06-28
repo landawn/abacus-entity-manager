@@ -32,7 +32,6 @@ import com.landawn.abacus.util.Options;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AsyncBatchExecutor.
  *
  * @author Haiyang Li
  * @param <E>

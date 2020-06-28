@@ -29,7 +29,6 @@ import com.landawn.abacus.util.N;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class CacheZipper.
  *
  * @author Haiyang Li
  * @since 0.8

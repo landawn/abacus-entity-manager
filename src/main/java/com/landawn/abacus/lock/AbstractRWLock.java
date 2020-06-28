@@ -16,7 +16,6 @@ package com.landawn.abacus.lock;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbstractRWLock.
  *
  * @author Haiyang Li
  * @param <T>

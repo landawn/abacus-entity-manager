@@ -34,7 +34,6 @@ import com.landawn.abacus.util.WD;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MySQLInterpreter.
  *
  * @author Haiyang Li
  * @since 0.8

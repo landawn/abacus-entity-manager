@@ -63,7 +63,6 @@ import com.landawn.abacus.validator.Validator;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class EntityManagerUtil.
  *
  * @author Haiyang Li
  * @since 0.8

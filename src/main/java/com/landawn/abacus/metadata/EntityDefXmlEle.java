@@ -16,7 +16,6 @@ package com.landawn.abacus.metadata;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class EntityDefXmlEle.
  *
  * @author Haiyang Li
  * @since 0.8

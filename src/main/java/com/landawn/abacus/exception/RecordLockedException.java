@@ -16,7 +16,6 @@ package com.landawn.abacus.exception;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class RecordLockedException.
  *
  * @author Haiyang Li
  * @since 0.8

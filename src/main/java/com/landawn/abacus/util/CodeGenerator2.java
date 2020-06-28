@@ -85,7 +85,6 @@ import com.landawn.abacus.util.CodeGenerator.ParentPropertyMode;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class CodeGenerator2.
  *
  * @author Haiyang Li
  * @since 0.8

@@ -18,7 +18,6 @@ package com.landawn.abacus.core.interpreter;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class DB2Interpreter.
  *
  * @author Haiyang Li
  * @since 0.8

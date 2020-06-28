@@ -21,7 +21,6 @@ import com.landawn.abacus.util.ClassUtil;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbstractIdGenerator.
  *
  * @author Haiyang Li
  * @param <T>

@@ -51,7 +51,6 @@ import com.landawn.abacus.version.VersionFactory;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class EntityManagerLV.
  *
  * @author Haiyang Li
  * @param <E>

@@ -51,7 +51,6 @@ import com.landawn.abacus.util.stream.Stream.StreamEx;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class EntityManagerLVC.
  *
  * @author Haiyang Li
  * @param <E>

@@ -53,7 +53,6 @@ import com.landawn.abacus.validator.ValidatorFactory;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class SQLProperty.
  *
  * @author Haiyang Li
  * @since 0.8

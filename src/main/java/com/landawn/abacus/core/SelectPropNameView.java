@@ -22,7 +22,6 @@ import com.landawn.abacus.annotation.Internal;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class SelectPropNameView.
  *
  * @author Haiyang Li
  * @since 0.8

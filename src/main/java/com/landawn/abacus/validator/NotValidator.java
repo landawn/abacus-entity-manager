@@ -16,7 +16,6 @@ package com.landawn.abacus.validator;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class NotValidator.
  *
  * @author Haiyang Li
  * @param <T>

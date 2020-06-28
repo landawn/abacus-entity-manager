@@ -22,7 +22,6 @@ import com.landawn.abacus.util.DateUtil;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbstractDateValidator.
  *
  * @author Haiyang Li
  * @param <T>

@@ -22,7 +22,6 @@ import com.landawn.abacus.type.Type;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class SizeValidator.
  *
  * @author Haiyang Li
  * @since 0.8

@@ -16,7 +16,6 @@ package com.landawn.abacus.exception;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class InvalidResultHandleException.
  *
  * @author Haiyang Li
  * @since 0.8

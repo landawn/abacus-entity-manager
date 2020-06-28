@@ -51,7 +51,6 @@ import com.landawn.abacus.util.WD;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class SQLInterpreter.
  *
  * @author Haiyang Li
  * @since 0.8

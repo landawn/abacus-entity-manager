@@ -29,7 +29,6 @@ import com.landawn.abacus.util.Properties;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbstractQueryCache.
  *
  * @author Haiyang Li
  * @since 0.8

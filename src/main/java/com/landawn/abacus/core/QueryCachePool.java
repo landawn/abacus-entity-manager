@@ -41,7 +41,6 @@ import com.landawn.abacus.util.OperationType;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class QueryCachePool.
  *
  * @author Haiyang Li
  * @param <K> the key type

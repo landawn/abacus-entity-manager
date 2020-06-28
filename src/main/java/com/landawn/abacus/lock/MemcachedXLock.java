@@ -24,7 +24,6 @@ import com.landawn.abacus.util.N;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MemcachedXLock.
  *
  * @author Haiyang Li
  * @param <T>

@@ -29,7 +29,6 @@ import com.landawn.abacus.util.u.Holder;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbstractHandler.
  *
  * @author Haiyang Li
  * @param <T>

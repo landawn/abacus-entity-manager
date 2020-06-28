@@ -46,7 +46,6 @@ import com.landawn.abacus.util.WD;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class SQLResult.
  *
  * @author Haiyang Li
  * @since 0.8

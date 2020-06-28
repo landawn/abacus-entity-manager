@@ -16,7 +16,6 @@ package com.landawn.abacus.version;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbstractVersion.
  *
  * @author Haiyang Li
  * @param <K> the key type

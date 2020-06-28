@@ -46,7 +46,6 @@ import com.landawn.abacus.util.XMLUtil;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbacusConfiguration.
  *
  * @author Haiyang Li
  * @since 0.8

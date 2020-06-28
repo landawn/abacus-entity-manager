@@ -25,7 +25,6 @@ import com.landawn.abacus.pool.AbstractPoolable;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class HandleResult.
  *
  * @author Haiyang Li
  * @since 0.8

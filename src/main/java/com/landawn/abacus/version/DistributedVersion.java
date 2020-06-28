@@ -22,7 +22,6 @@ import com.landawn.abacus.util.N;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class DistributedVersion.
  *
  * @author Haiyang Li
  * @param <K> the key type

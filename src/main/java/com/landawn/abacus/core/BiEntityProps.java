@@ -25,7 +25,6 @@ import com.landawn.abacus.metadata.Property;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class BiEntityProps.
  *
  * @author Haiyang Li
  * @since 0.8

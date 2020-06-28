@@ -58,7 +58,6 @@ import com.landawn.abacus.util.XMLUtil;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class SQLEntityDefinition.
  *
  * @author Haiyang Li
  * @since 0.8

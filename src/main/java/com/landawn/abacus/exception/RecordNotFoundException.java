@@ -16,7 +16,6 @@ package com.landawn.abacus.exception;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class RecordNotFoundException.
  *
  * @author Haiyang Li
  * @since 1.3.29

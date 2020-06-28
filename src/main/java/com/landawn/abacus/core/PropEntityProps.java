@@ -25,7 +25,6 @@ import com.landawn.abacus.util.N;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class PropEntityProps.
  *
  * @author Haiyang Li
  * @since 0.8

@@ -18,7 +18,6 @@ import com.landawn.abacus.metadata.Property;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbstractStringIdGenerator.
  *
  * @author Haiyang Li
  * @since 0.8

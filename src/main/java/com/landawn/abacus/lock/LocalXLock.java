@@ -26,7 +26,6 @@ import com.landawn.abacus.util.N;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class LocalXLock.
  *
  * @author Haiyang Li
  * @param <T>

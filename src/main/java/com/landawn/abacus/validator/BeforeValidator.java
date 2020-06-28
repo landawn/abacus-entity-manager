@@ -20,7 +20,6 @@ import com.landawn.abacus.type.Type;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class BeforeValidator.
  *
  * @author Haiyang Li
  * @param <T>

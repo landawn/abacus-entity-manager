@@ -22,7 +22,6 @@ import com.landawn.abacus.util.StringUtil;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class InValidator.
  *
  * @author Haiyang Li
  * @param <T>

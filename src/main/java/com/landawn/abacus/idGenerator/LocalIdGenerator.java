@@ -27,7 +27,6 @@ import com.landawn.abacus.util.OperationType;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class LocalIdGenerator.
  *
  * @author Haiyang Li
  * @since 0.8

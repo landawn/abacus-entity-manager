@@ -24,7 +24,6 @@ import com.landawn.abacus.metadata.Property;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class InsertPropsListView.
  *
  * @author Haiyang Li
  * @since 0.8

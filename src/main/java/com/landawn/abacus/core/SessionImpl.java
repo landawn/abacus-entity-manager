@@ -42,7 +42,6 @@ import com.landawn.abacus.util.u.Optional;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class SessionImpl.
  *
  * @author Haiyang Li
  * @param <E>

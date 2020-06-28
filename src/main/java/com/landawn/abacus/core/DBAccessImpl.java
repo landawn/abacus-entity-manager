@@ -84,7 +84,6 @@ import com.landawn.abacus.util.u.Optional;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class DBAccessImpl.
  *
  * @author Haiyang Li
  * @since 0.8

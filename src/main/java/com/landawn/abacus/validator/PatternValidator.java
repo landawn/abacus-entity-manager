@@ -21,7 +21,6 @@ import com.landawn.abacus.type.Type;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class PatternValidator.
  *
  * @author Haiyang Li
  * @since 0.8

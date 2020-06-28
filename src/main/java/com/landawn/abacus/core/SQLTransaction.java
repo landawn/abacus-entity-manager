@@ -36,7 +36,6 @@ import com.landawn.abacus.util.Throwables;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class SQLTransaction.
  *
  * @author Haiyang Li
  * @since 0.8

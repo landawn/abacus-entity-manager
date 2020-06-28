@@ -21,7 +21,6 @@ import com.landawn.abacus.util.N;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MemcachedRWLock.
  *
  * @author Haiyang Li
  * @param <T>

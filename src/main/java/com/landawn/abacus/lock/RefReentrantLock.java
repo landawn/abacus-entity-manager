@@ -19,7 +19,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class RefReentrantLock.
  *
  * @author Haiyang Li
  * @since 0.8

@@ -18,7 +18,6 @@ import com.landawn.abacus.LockMode;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class AbstractXLock.
  *
  * @author Haiyang Li
  * @param <T>

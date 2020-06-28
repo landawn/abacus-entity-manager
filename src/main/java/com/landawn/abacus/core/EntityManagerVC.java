@@ -25,7 +25,6 @@ import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class EntityManagerVC.
  *
  * @author Haiyang Li
  * @param <T>

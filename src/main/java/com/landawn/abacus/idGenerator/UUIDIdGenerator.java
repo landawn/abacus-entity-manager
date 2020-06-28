@@ -19,7 +19,6 @@ import com.landawn.abacus.util.N;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class UUIDIdGenerator.
  *
  * @author Haiyang Li
  * @since 0.8

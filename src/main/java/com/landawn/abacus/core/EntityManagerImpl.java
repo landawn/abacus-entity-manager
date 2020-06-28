@@ -80,7 +80,6 @@ import com.landawn.abacus.util.u.Holder;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class EntityManagerImpl.
  *
  * @author Haiyang Li
  * @param <E>

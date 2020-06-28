@@ -24,7 +24,6 @@ import com.landawn.abacus.core.AbacusConfiguration.EntityManagerConfiguration.Qu
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Options.
  *
  * @author Haiyang Li
  * @since 0.8

@@ -18,7 +18,6 @@ import com.landawn.abacus.type.Type;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class GreaterEqualValidator.
  *
  * @author Haiyang Li
  * @param <T>
