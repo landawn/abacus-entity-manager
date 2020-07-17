@@ -333,6 +333,7 @@ public final class Options {
      * @param a
      * @return
      */
+    @SuppressWarnings("deprecation")
     @SafeVarargs
     public static Map<String, Object> of(final Object... a) {
         if (N.isNullOrEmpty(a)) {

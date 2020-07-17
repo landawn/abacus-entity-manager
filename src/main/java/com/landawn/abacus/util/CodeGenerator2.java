@@ -1124,7 +1124,7 @@ public final class CodeGenerator2 {
         attr = entityDef.getAttribute("implements");
         if (N.notNullOrEmpty(attr)) {
             implementedInterfaces = new ArrayList<>();
-            final List<String> strList = Splitter.with(",").trim(true).split(attr);
+            final List<String> strList = Splitter.with(",").trimResults().split(attr);
 
             for (String str : strList) {
                 String className = str;
