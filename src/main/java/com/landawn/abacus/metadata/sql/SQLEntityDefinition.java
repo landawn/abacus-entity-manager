@@ -53,7 +53,6 @@ import com.landawn.abacus.util.Configuration;
 import com.landawn.abacus.util.ImmutableList;
 import com.landawn.abacus.util.ImmutableMap;
 import com.landawn.abacus.util.N;
-import com.landawn.abacus.util.Primitives;
 import com.landawn.abacus.util.XMLUtil;
 
 // TODO: Auto-generated Javadoc
@@ -646,7 +645,7 @@ public class SQLEntityDefinition implements EntityDefinition {
             Type<?> columnJavaType = N.typeOf(column.getJavaType());
 
             if (columnJavaType.isPrimitiveWrapper()) {
-                attrs.put(PropertyEle.TYPE, ClassUtil.getSimpleClassName(Primitives.unwrap(columnJavaType.clazz())));
+                attrs.put(PropertyEle.TYPE, ClassUtil.getSimpleClassName(N.unwrap(columnJavaType.clazz())));
             } else {
                 attrs.put(PropertyEle.TYPE, column.getJavaType());
             }

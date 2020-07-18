@@ -34,7 +34,6 @@ import com.landawn.abacus.metadata.Property;
 import com.landawn.abacus.util.ClassUtil;
 import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.Options;
-import com.landawn.abacus.util.Primitives;
 import com.landawn.abacus.util.u.Holder;
 import com.landawn.abacus.util.u.Nullable;
 import com.landawn.abacus.util.u.Optional;
@@ -1433,7 +1432,7 @@ public final class NewEntityManager {
                     throw new IllegalArgumentException("'ID' type only can be Void for entity with no id property");
                 }
             } else if (idPropList.size() == 1) {
-                if (!(Primitives.wrap(idClass).isAssignableFrom(Primitives.wrap(idReturnType)))) {
+                if (!(N.wrap(idClass).isAssignableFrom(N.wrap(idReturnType)))) {
                     throw new IllegalArgumentException("The 'ID' type declared in Dao type parameters: " + idClass
                             + " is not assignable from the id property type in the entity class: " + idReturnType);
                 }
@@ -1445,7 +1444,7 @@ public final class NewEntityManager {
 
             this.nem = nem;
             this.entityClass = entityClass;
-            this.idClass = Primitives.wrap(idClass).isAssignableFrom(Primitives.wrap(idReturnType)) ? (Class<ID>) idReturnType : idClass;
+            this.idClass = N.wrap(idClass).isAssignableFrom(N.wrap(idReturnType)) ? (Class<ID>) idReturnType : idClass;
             this.entityName = EntityManagerUtil.getEntityName(entityClass);
             this.entityDef = entityDef;
             this.isEntityId = idClass.equals(EntityId.class);

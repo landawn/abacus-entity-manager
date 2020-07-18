@@ -3840,8 +3840,8 @@ public final class CodeGenerator2 {
                     throw new RuntimeException("Family/Entity property can't/unnecessary to be HBaseColumn");
                 }
 
-                String valueTypeName = Primitives.isWrapperType(hbaseColumnType.getElementType().clazz())
-                        ? Primitives.unwrap(hbaseColumnType.getElementType().clazz()).getSimpleName()
+                String valueTypeName = N.isWrapperType(hbaseColumnType.getElementType().clazz())
+                        ? N.unwrap(hbaseColumnType.getElementType().clazz()).getSimpleName()
                         : hbaseColumnType.getElementType().name();
 
                 // =========================
@@ -3904,8 +3904,8 @@ public final class CodeGenerator2 {
                     throw new RuntimeException("Family/Entity property can't/unnecessary to be HBaseColumn");
                 }
 
-                String valueTypeName = Primitives.isWrapperType(hbaseColumnType.getElementType().clazz())
-                        ? Primitives.unwrap(hbaseColumnType.getElementType().clazz()).getSimpleName()
+                String valueTypeName = N.isWrapperType(hbaseColumnType.getElementType().clazz())
+                        ? N.unwrap(hbaseColumnType.getElementType().clazz()).getSimpleName()
                         : hbaseColumnType.getElementType().name();
 
                 // =========================
