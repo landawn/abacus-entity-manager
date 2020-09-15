@@ -39,53 +39,129 @@ public final class _N {
     }
 
     private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+
     private static final int MAX_HASH_LENGTH = (int) (MAX_ARRAY_SIZE / 1.25) - 1;
+
     private static final String NULL_STRING = "null";
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final boolean a, final boolean b) {
         return a == b;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final char a, final char b) {
         return a == b;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final byte a, final byte b) {
         return a == b;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final short a, final short b) {
         return a == b;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final int a, final int b) {
         return a == b;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final long a, final long b) {
         return a == b;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final float a, final float b) {
         return Float.compare(a, b) == 0;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final double a, final double b) {
         return Double.compare(a, b) == 0;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final String a, final String b) {
         return (a == null) ? b == null : (b == null ? false : a.length() == b.length() && a.equals(b));
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final Object a, final Object b) {
         return (a == null) ? b == null : (b == null ? false : a.equals(b));
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final boolean[] a, final boolean[] b) {
         return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final boolean[] a, final int fromIndex, final int toIndex, final boolean[] b) {
         if (a == b) {
             return true;
@@ -104,10 +180,24 @@ public final class _N {
         return true;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final char[] a, final char[] b) {
         return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final char[] a, final int fromIndex, final int toIndex, final char[] b) {
         if (a == b) {
             return true;
@@ -126,10 +216,24 @@ public final class _N {
         return true;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final byte[] a, final byte[] b) {
         return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final byte[] a, final int fromIndex, final int toIndex, final byte[] b) {
         if (a == b) {
             return true;
@@ -148,10 +252,24 @@ public final class _N {
         return true;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final short[] a, final short[] b) {
         return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final short[] a, final int fromIndex, final int toIndex, final short[] b) {
         if (a == b) {
             return true;
@@ -170,10 +288,24 @@ public final class _N {
         return true;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final int[] a, final int[] b) {
         return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final int[] a, final int fromIndex, final int toIndex, final int[] b) {
         if (a == b) {
             return true;
@@ -192,10 +324,24 @@ public final class _N {
         return true;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final long[] a, final long[] b) {
         return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final long[] a, final int fromIndex, final int toIndex, final long[] b) {
         if (a == b) {
             return true;
@@ -214,10 +360,24 @@ public final class _N {
         return true;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final float[] a, final float[] b) {
         return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final float[] a, final int fromIndex, final int toIndex, final float[] b) {
         if (a == b) {
             return true;
@@ -236,10 +396,24 @@ public final class _N {
         return true;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final double[] a, final double[] b) {
         return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final double[] a, final int fromIndex, final int toIndex, final double[] b) {
         if (a == b) {
             return true;
@@ -258,10 +432,24 @@ public final class _N {
         return true;
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final Object[] a, final Object[] b) {
         return (a == null || b == null) ? a == b : (a.length == b.length && equals(a, 0, a.length, b));
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @param b
+     * @return true, if successful
+     */
     public static boolean equals(final Object[] a, final int fromIndex, final int toIndex, final Object[] b) {
         if (a == b) {
             return true;
@@ -280,40 +468,85 @@ public final class _N {
         return true;
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static int hashCode(final boolean value) {
         return value ? 1231 : 1237;
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static int hashCode(final char value) {
         return value;
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static int hashCode(final byte value) {
         return value;
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static int hashCode(final short value) {
         return value;
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static int hashCode(final int value) {
         return value;
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static int hashCode(final long value) {
         return (int) (value ^ (value >>> 32));
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static int hashCode(final float value) {
         return Float.floatToIntBits(value);
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static int hashCode(final double value) {
         long bits = Double.doubleToLongBits(value);
 
         return (int) (bits ^ (bits >>> 32));
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     public static int hashCode(final Object obj) {
         if (obj == null) {
             return 0;
@@ -322,10 +555,22 @@ public final class _N {
         return obj.hashCode();
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static int hashCode(final boolean[] a) {
         return a == null ? 0 : hashCode(a, 0, a.length);
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
     public static int hashCode(final boolean[] a, final int fromIndex, final int toIndex) {
         if (a == null) {
             return 0;
@@ -340,10 +585,22 @@ public final class _N {
         return result;
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static int hashCode(final char[] a) {
         return a == null ? 0 : hashCode(a, 0, a.length);
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
     public static int hashCode(final char[] a, final int fromIndex, final int toIndex) {
         if (a == null) {
             return 0;
@@ -358,10 +615,22 @@ public final class _N {
         return result;
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static int hashCode(final byte[] a) {
         return a == null ? 0 : hashCode(a, 0, a.length);
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
     public static int hashCode(final byte[] a, final int fromIndex, final int toIndex) {
         if (a == null) {
             return 0;
@@ -376,10 +645,22 @@ public final class _N {
         return result;
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static int hashCode(final short[] a) {
         return a == null ? 0 : hashCode(a, 0, a.length);
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
     public static int hashCode(final short[] a, final int fromIndex, final int toIndex) {
         if (a == null) {
             return 0;
@@ -394,10 +675,22 @@ public final class _N {
         return result;
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static int hashCode(final int[] a) {
         return a == null ? 0 : hashCode(a, 0, a.length);
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
     public static int hashCode(final int[] a, final int fromIndex, final int toIndex) {
         if (a == null) {
             return 0;
@@ -412,10 +705,22 @@ public final class _N {
         return result;
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static int hashCode(final long[] a) {
         return a == null ? 0 : hashCode(a, 0, a.length);
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
     public static int hashCode(final long[] a, final int fromIndex, final int toIndex) {
         if (a == null) {
             return 0;
@@ -430,10 +735,22 @@ public final class _N {
         return result;
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static int hashCode(final float[] a) {
         return a == null ? 0 : hashCode(a, 0, a.length);
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
     public static int hashCode(final float[] a, final int fromIndex, final int toIndex) {
         if (a == null) {
             return 0;
@@ -448,10 +765,22 @@ public final class _N {
         return result;
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static int hashCode(final double[] a) {
         return a == null ? 0 : hashCode(a, 0, a.length);
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
     public static int hashCode(final double[] a, final int fromIndex, final int toIndex) {
         if (a == null) {
             return 0;
@@ -467,10 +796,22 @@ public final class _N {
         return result;
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static int hashCode(final Object[] a) {
         return a == null ? 0 : hashCode(a, 0, a.length);
     }
 
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
     public static int hashCode(final Object[] a, final int fromIndex, final int toIndex) {
         if (a == null) {
             return 0;
@@ -485,38 +826,83 @@ public final class _N {
         return result;
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static String toString(final boolean value) {
         return String.valueOf(value);
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static String toString(final char value) {
         return String.valueOf(value);
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static String toString(final byte value) {
         return String.valueOf(value);
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static String toString(final short value) {
         return String.valueOf(value);
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static String toString(final int value) {
         return String.valueOf(value);
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static String toString(final long value) {
         return String.valueOf(value);
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static String toString(final float value) {
         return String.valueOf(value);
     }
 
+    /**
+     *
+     * @param value
+     * @return
+     */
     public static String toString(final double value) {
         return String.valueOf(value);
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     public static String toString(final Object obj) {
         if (obj == null) {
             return NULL_STRING;
@@ -525,6 +911,11 @@ public final class _N {
         return obj.toString();
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static String toString(final boolean[] a) {
         if (a == null) {
             return NULL_STRING;
@@ -537,14 +928,26 @@ public final class _N {
         return toString(a, 0, a.length);
     }
 
-    public static String toString(final boolean[] a, final int from, final int to) {
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
+    public static String toString(final boolean[] a, final int fromIndex, final int toIndex) {
         final StringBuilder sb = new StringBuilder();
 
-        toString(sb, a, from, to);
+        toString(sb, a, fromIndex, toIndex);
 
         return sb.toString();
     }
 
+    /**
+     *
+     * @param sb
+     * @param a
+     */
     static void toString(final StringBuilder sb, final boolean[] a) {
         if (a == null) {
             sb.append(NULL_STRING);
@@ -555,11 +958,18 @@ public final class _N {
         }
     }
 
-    static void toString(final StringBuilder sb, final boolean[] a, final int from, final int to) {
+    /**
+     *
+     * @param sb
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     */
+    static void toString(final StringBuilder sb, final boolean[] a, final int fromIndex, final int toIndex) {
         sb.append('[');
 
-        for (int i = from; i < to; i++) {
-            if (i > from) {
+        for (int i = fromIndex; i < toIndex; i++) {
+            if (i > fromIndex) {
                 sb.append(", ");
             }
 
@@ -569,6 +979,11 @@ public final class _N {
         sb.append(']');
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static String toString(final char[] a) {
         if (a == null) {
             return NULL_STRING;
@@ -581,14 +996,26 @@ public final class _N {
         return toString(a, 0, a.length);
     }
 
-    public static String toString(final char[] a, final int from, final int to) {
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
+    public static String toString(final char[] a, final int fromIndex, final int toIndex) {
         final StringBuilder sb = new StringBuilder();
 
-        toString(sb, a, from, to);
+        toString(sb, a, fromIndex, toIndex);
 
         return sb.toString();
     }
 
+    /**
+     *
+     * @param sb
+     * @param a
+     */
     static void toString(final StringBuilder sb, final char[] a) {
         if (a == null) {
             sb.append(NULL_STRING);
@@ -599,11 +1026,18 @@ public final class _N {
         }
     }
 
-    static void toString(final StringBuilder sb, final char[] a, final int from, final int to) {
+    /**
+     *
+     * @param sb
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     */
+    static void toString(final StringBuilder sb, final char[] a, final int fromIndex, final int toIndex) {
         sb.append('[');
 
-        for (int i = from; i < to; i++) {
-            if (i > from) {
+        for (int i = fromIndex; i < toIndex; i++) {
+            if (i > fromIndex) {
                 sb.append(", ");
             }
 
@@ -613,6 +1047,11 @@ public final class _N {
         sb.append(']');
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static String toString(final byte[] a) {
         if (a == null) {
             return NULL_STRING;
@@ -625,14 +1064,26 @@ public final class _N {
         return toString(a, 0, a.length);
     }
 
-    public static String toString(final byte[] a, final int from, final int to) {
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
+    public static String toString(final byte[] a, final int fromIndex, final int toIndex) {
         final StringBuilder sb = new StringBuilder();
 
-        toString(sb, a, from, to);
+        toString(sb, a, fromIndex, toIndex);
 
         return sb.toString();
     }
 
+    /**
+     *
+     * @param sb
+     * @param a
+     */
     static void toString(final StringBuilder sb, final byte[] a) {
         if (a == null) {
             sb.append(NULL_STRING);
@@ -643,11 +1094,18 @@ public final class _N {
         }
     }
 
-    static void toString(final StringBuilder sb, final byte[] a, final int from, final int to) {
+    /**
+     *
+     * @param sb
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     */
+    static void toString(final StringBuilder sb, final byte[] a, final int fromIndex, final int toIndex) {
         sb.append('[');
 
-        for (int i = from; i < to; i++) {
-            if (i > from) {
+        for (int i = fromIndex; i < toIndex; i++) {
+            if (i > fromIndex) {
                 sb.append(", ");
             }
 
@@ -657,6 +1115,11 @@ public final class _N {
         sb.append(']');
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static String toString(final short[] a) {
         if (a == null) {
             return NULL_STRING;
@@ -669,14 +1132,26 @@ public final class _N {
         return toString(a, 0, a.length);
     }
 
-    public static String toString(final short[] a, final int from, final int to) {
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
+    public static String toString(final short[] a, final int fromIndex, final int toIndex) {
         final StringBuilder sb = new StringBuilder();
 
-        toString(sb, a, from, to);
+        toString(sb, a, fromIndex, toIndex);
 
         return sb.toString();
     }
 
+    /**
+     *
+     * @param sb
+     * @param a
+     */
     static void toString(final StringBuilder sb, final short[] a) {
         if (a == null) {
             sb.append(NULL_STRING);
@@ -687,11 +1162,18 @@ public final class _N {
         }
     }
 
-    static void toString(final StringBuilder sb, final short[] a, final int from, final int to) {
+    /**
+     *
+     * @param sb
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     */
+    static void toString(final StringBuilder sb, final short[] a, final int fromIndex, final int toIndex) {
         sb.append('[');
 
-        for (int i = from; i < to; i++) {
-            if (i > from) {
+        for (int i = fromIndex; i < toIndex; i++) {
+            if (i > fromIndex) {
                 sb.append(", ");
             }
 
@@ -701,6 +1183,11 @@ public final class _N {
         sb.append(']');
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static String toString(final int[] a) {
         if (a == null) {
             return NULL_STRING;
@@ -713,14 +1200,26 @@ public final class _N {
         return toString(a, 0, a.length);
     }
 
-    public static String toString(final int[] a, final int from, final int to) {
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
+    public static String toString(final int[] a, final int fromIndex, final int toIndex) {
         final StringBuilder sb = new StringBuilder();
 
-        toString(sb, a, from, to);
+        toString(sb, a, fromIndex, toIndex);
 
         return sb.toString();
     }
 
+    /**
+     *
+     * @param sb
+     * @param a
+     */
     static void toString(final StringBuilder sb, final int[] a) {
         if (a == null) {
             sb.append(NULL_STRING);
@@ -731,11 +1230,18 @@ public final class _N {
         }
     }
 
-    static void toString(final StringBuilder sb, final int[] a, final int from, final int to) {
+    /**
+     *
+     * @param sb
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     */
+    static void toString(final StringBuilder sb, final int[] a, final int fromIndex, final int toIndex) {
         sb.append('[');
 
-        for (int i = from; i < to; i++) {
-            if (i > from) {
+        for (int i = fromIndex; i < toIndex; i++) {
+            if (i > fromIndex) {
                 sb.append(", ");
             }
 
@@ -745,6 +1251,11 @@ public final class _N {
         sb.append(']');
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static String toString(final long[] a) {
         if (a == null) {
             return NULL_STRING;
@@ -757,14 +1268,26 @@ public final class _N {
         return toString(a, 0, a.length);
     }
 
-    public static String toString(final long[] a, final int from, final int to) {
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
+    public static String toString(final long[] a, final int fromIndex, final int toIndex) {
         final StringBuilder sb = new StringBuilder();
 
-        toString(sb, a, from, to);
+        toString(sb, a, fromIndex, toIndex);
 
         return sb.toString();
     }
 
+    /**
+     *
+     * @param sb
+     * @param a
+     */
     static void toString(final StringBuilder sb, final long[] a) {
         if (a == null) {
             sb.append(NULL_STRING);
@@ -775,11 +1298,18 @@ public final class _N {
         }
     }
 
-    static void toString(final StringBuilder sb, final long[] a, final int from, final int to) {
+    /**
+     *
+     * @param sb
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     */
+    static void toString(final StringBuilder sb, final long[] a, final int fromIndex, final int toIndex) {
         sb.append('[');
 
-        for (int i = from; i < to; i++) {
-            if (i > from) {
+        for (int i = fromIndex; i < toIndex; i++) {
+            if (i > fromIndex) {
                 sb.append(", ");
             }
 
@@ -789,6 +1319,11 @@ public final class _N {
         sb.append(']');
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static String toString(final float[] a) {
         if (a == null) {
             return NULL_STRING;
@@ -801,14 +1336,26 @@ public final class _N {
         return toString(a, 0, a.length);
     }
 
-    public static String toString(final float[] a, final int from, final int to) {
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
+    public static String toString(final float[] a, final int fromIndex, final int toIndex) {
         final StringBuilder sb = new StringBuilder();
 
-        toString(sb, a, from, to);
+        toString(sb, a, fromIndex, toIndex);
 
         return sb.toString();
     }
 
+    /**
+     *
+     * @param sb
+     * @param a
+     */
     static void toString(final StringBuilder sb, final float[] a) {
         if (a == null) {
             sb.append(NULL_STRING);
@@ -819,11 +1366,18 @@ public final class _N {
         }
     }
 
-    static void toString(final StringBuilder sb, final float[] a, final int from, final int to) {
+    /**
+     *
+     * @param sb
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     */
+    static void toString(final StringBuilder sb, final float[] a, final int fromIndex, final int toIndex) {
         sb.append('[');
 
-        for (int i = from; i < to; i++) {
-            if (i > from) {
+        for (int i = fromIndex; i < toIndex; i++) {
+            if (i > fromIndex) {
                 sb.append(", ");
             }
 
@@ -833,6 +1387,11 @@ public final class _N {
         sb.append(']');
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static String toString(final double[] a) {
         if (a == null) {
             return NULL_STRING;
@@ -845,14 +1404,26 @@ public final class _N {
         return toString(a, 0, a.length);
     }
 
-    public static String toString(final double[] a, final int from, final int to) {
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
+    public static String toString(final double[] a, final int fromIndex, final int toIndex) {
         final StringBuilder sb = new StringBuilder();
 
-        toString(sb, a, from, to);
+        toString(sb, a, fromIndex, toIndex);
 
         return sb.toString();
     }
 
+    /**
+     *
+     * @param sb
+     * @param a
+     */
     static void toString(final StringBuilder sb, final double[] a) {
         if (a == null) {
             sb.append(NULL_STRING);
@@ -863,11 +1434,18 @@ public final class _N {
         }
     }
 
-    static void toString(final StringBuilder sb, final double[] a, final int from, final int to) {
+    /**
+     *
+     * @param sb
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     */
+    static void toString(final StringBuilder sb, final double[] a, final int fromIndex, final int toIndex) {
         sb.append('[');
 
-        for (int i = from; i < to; i++) {
-            if (i > from) {
+        for (int i = fromIndex; i < toIndex; i++) {
+            if (i > fromIndex) {
                 sb.append(", ");
             }
 
@@ -877,6 +1455,11 @@ public final class _N {
         sb.append(']');
     }
 
+    /**
+     *
+     * @param a
+     * @return
+     */
     public static String toString(final Object[] a) {
         if (a == null) {
             return NULL_STRING;
@@ -889,14 +1472,26 @@ public final class _N {
         return toString(a, 0, a.length);
     }
 
-    public static String toString(final Object[] a, final int from, final int to) {
+    /**
+     *
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     * @return
+     */
+    public static String toString(final Object[] a, final int fromIndex, final int toIndex) {
         final StringBuilder sb = new StringBuilder();
 
-        toString(sb, a, from, to);
+        toString(sb, a, fromIndex, toIndex);
 
         return sb.toString();
     }
 
+    /**
+     *
+     * @param sb
+     * @param a
+     */
     static void toString(final StringBuilder sb, final Object[] a) {
         if (a == null) {
             sb.append(NULL_STRING);
@@ -907,11 +1502,18 @@ public final class _N {
         }
     }
 
-    static void toString(final StringBuilder sb, final Object[] a, final int from, final int to) {
+    /**
+     *
+     * @param sb
+     * @param a
+     * @param fromIndex
+     * @param toIndex
+     */
+    static void toString(final StringBuilder sb, final Object[] a, final int fromIndex, final int toIndex) {
         sb.append('[');
 
-        for (int i = from; i < to; i++) {
-            if (i > from) {
+        for (int i = fromIndex; i < toIndex; i++) {
+            if (i > fromIndex) {
                 sb.append(", ");
             }
 
@@ -921,6 +1523,12 @@ public final class _N {
         sb.append(']');
     }
 
+    /**
+     *
+     * @param <T>
+     * @param a
+     * @return
+     */
     @SafeVarargs
     public static <T> List<T> asList(final T... a) {
         if (a == null) {
@@ -936,6 +1544,13 @@ public final class _N {
         return list;
     }
 
+    /**
+     * As linked list.
+     *
+     * @param <T>
+     * @param a
+     * @return
+     */
     @SafeVarargs
     public static <T> LinkedList<T> asLinkedList(final T... a) {
         if (a == null) {
@@ -951,6 +1566,12 @@ public final class _N {
         return list;
     }
 
+    /**
+     *
+     * @param <T>
+     * @param a
+     * @return
+     */
     @SafeVarargs
     public static <T> Set<T> asSet(final T... a) {
         if (a == null) {
@@ -966,6 +1587,13 @@ public final class _N {
         return set;
     }
 
+    /**
+     * As linked hash set.
+     *
+     * @param <T>
+     * @param a
+     * @return
+     */
     @SafeVarargs
     public static <T> LinkedHashSet<T> asLinkedHashSet(final T... a) {
         if (a == null) {
@@ -981,8 +1609,15 @@ public final class _N {
         return set;
     }
 
-    @SafeVarargs
+    /**
+     *
+     * @param <K> the key type
+     * @param <V> the value type
+     * @param a
+     * @return
+     */
     @SuppressWarnings("unchecked")
+    @SafeVarargs
     public static <K, V> Map<K, V> asMap(final Object... a) {
         if (a == null) {
             return new HashMap<>();
@@ -997,8 +1632,16 @@ public final class _N {
         return m;
     }
 
-    @SafeVarargs
+    /**
+     * As linked hash map.
+     *
+     * @param <K> the key type
+     * @param <V> the value type
+     * @param a
+     * @return
+     */
     @SuppressWarnings("unchecked")
+    @SafeVarargs
     public static <K, V> LinkedHashMap<K, V> asLinkedHashMap(final Object... a) {
         if (a == null) {
             return new LinkedHashMap<>();
@@ -1013,6 +1656,12 @@ public final class _N {
         return m;
     }
 
+    /**
+     * Inits the hash capacity.
+     *
+     * @param size
+     * @return
+     */
     private static int initHashCapacity(final int size) {
         return size < MAX_HASH_LENGTH ? (int) (size * 1.25) + 1 : MAX_ARRAY_SIZE;
     }
