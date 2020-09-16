@@ -215,7 +215,7 @@ public class ValidatorTest extends AbstractTest {
         validator = (AfterValidator<Date>) (Validator<?>) ValidatorFactory.create(DataType.STRING_TYPE, N.typeOf(Date.class), "After(sysTime)");
 
         assertFalse(validator.isValid(DateUtil.currentJUDate()));
-        assertTrue(validator.isValid(DateUtil.parseJUDate("2020-01-01")));
+        assertTrue(validator.isValid(DateUtil.parseJUDate("2050-01-01")));
         assertTrue(validator.isValid(null));
 
         N.println(validator.toString());

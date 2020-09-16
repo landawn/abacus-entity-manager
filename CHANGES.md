@@ -1,3 +1,8 @@
+### 1.9.10
+
+* A new release.
+
+
 ### 1.9.9
 
 * Refactoring `SQLBuilder`.
