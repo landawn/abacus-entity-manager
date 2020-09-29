@@ -42,7 +42,7 @@ public final class RWLockFactory {
      * @return
      */
     public static <T> RWLock<T> createLocalRWLock() {
-        return new LocalRWLock<T>();
+        return new LocalRWLock<>();
     }
 
     /**
@@ -53,7 +53,7 @@ public final class RWLockFactory {
      * @return
      */
     public static <T> RWLock<T> createLocalRWLock(long timeout) {
-        return new LocalRWLock<T>(timeout);
+        return new LocalRWLock<>(timeout);
     }
 
     /**

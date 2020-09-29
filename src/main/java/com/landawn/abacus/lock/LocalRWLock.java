@@ -33,7 +33,7 @@ public final class LocalRWLock<T> extends AbstractRWLock<T> {
 
     private static final Logger logger = LoggerFactory.getLogger(LocalRWLock.class);
 
-    private final Map<T, RefReentrantReadWriteLock> blockedLockPool = new ConcurrentHashMap<T, RefReentrantReadWriteLock>();
+    private final Map<T, RefReentrantReadWriteLock> blockedLockPool = new ConcurrentHashMap<>();
 
     private final long timeout;
 

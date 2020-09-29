@@ -42,7 +42,7 @@ public final class XLockFactory {
      * @return
      */
     public static <T> XLock<T> createLocalXLock() {
-        return new LocalXLock<T>();
+        return new LocalXLock<>();
     }
 
     /**
@@ -53,7 +53,7 @@ public final class XLockFactory {
      * @return
      */
     public static <T> XLock<T> createLocalXLock(long timeout) {
-        return new LocalXLock<T>(timeout);
+        return new LocalXLock<>(timeout);
     }
 
     /**

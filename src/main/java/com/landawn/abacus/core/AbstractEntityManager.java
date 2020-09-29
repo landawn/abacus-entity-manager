@@ -55,7 +55,7 @@ abstract class AbstractEntityManager<E> implements com.landawn.abacus.EntityMana
         this.domainName = domainName;
         this.entityManagerConfig = entityManagerConfig;
 
-        handlerList = new ArrayList<Handler<E>>();
+        handlerList = new ArrayList<>();
 
         for (String attr : entityManagerConfig.getHandlerList()) {
             Handler<E> handler = HandlerFactory.create(this, attr);

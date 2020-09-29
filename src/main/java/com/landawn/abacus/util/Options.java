@@ -93,7 +93,7 @@ public final class Options {
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count) {
-        Map<String, Object> option = new HashMap<String, Object>();
+        final Map<String, Object> option = new HashMap<>();
         option.put(Query.OFFSET, offset);
         option.put(Query.COUNT, count);
 
@@ -109,7 +109,7 @@ public final class Options {
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count, boolean fromCache, String cacheResult) {
-        Map<String, Object> option = new HashMap<String, Object>();
+        final Map<String, Object> option = new HashMap<>();
         option.put(Query.OFFSET, offset);
         option.put(Query.COUNT, count);
         option.put(Query.QUERY_FROM_CACHE, fromCache);
@@ -129,7 +129,7 @@ public final class Options {
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(String cacheResult, Cache.Range range, Cache.Condition cond) {
-        Map<String, Object> option = new HashMap<String, Object>();
+        final Map<String, Object> option = new HashMap<>();
 
         if (cacheResult != null) {
             option.put(Query.CACHE_RESULT, cacheResult);
@@ -156,7 +156,7 @@ public final class Options {
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(String cacheResult, Cache.Range range, Cache.Condition cond, long liveTime, long maxIdleTime) {
-        Map<String, Object> option = new HashMap<String, Object>();
+        final Map<String, Object> option = new HashMap<>();
 
         if (cacheResult != null) {
             option.put(Query.CACHE_RESULT, cacheResult);
@@ -186,7 +186,7 @@ public final class Options {
      * @return Map<String,Object>
      */
     public static Map<String, Object> create(int offset, int count, String cacheResult, Cache.Range range, Cache.Condition cond) {
-        Map<String, Object> option = new HashMap<String, Object>();
+        final Map<String, Object> option = new HashMap<>();
         option.put(Query.OFFSET, offset);
         option.put(Query.COUNT, count);
 
@@ -218,7 +218,7 @@ public final class Options {
      */
     public static Map<String, Object> create(int offset, int count, String cacheResult, Cache.Range range, Cache.Condition cond, long liveTime,
             long maxIdleTime) {
-        Map<String, Object> option = new HashMap<String, Object>();
+        final Map<String, Object> option = new HashMap<>();
         option.put(Query.OFFSET, offset);
         option.put(Query.COUNT, count);
 
@@ -253,7 +253,7 @@ public final class Options {
      */
     public static Map<String, Object> create(int offset, int count, boolean fromCache, String cacheResult, Cache.Range range, Cache.Condition cond,
             String transactionId) {
-        Map<String, Object> option = new HashMap<String, Object>();
+        final Map<String, Object> option = new HashMap<>();
         option.put(Query.OFFSET, offset);
         option.put(Query.COUNT, count);
         option.put(Query.QUERY_FROM_CACHE, fromCache);
@@ -292,7 +292,7 @@ public final class Options {
      */
     public static Map<String, Object> create(int offset, int count, boolean fromCache, String cacheResult, Cache.Range range, Cache.Condition cond,
             long liveTime, long maxIdleTime, String transactionId) {
-        Map<String, Object> option = new HashMap<String, Object>();
+        final Map<String, Object> option = new HashMap<>();
         option.put(Query.OFFSET, offset);
         option.put(Query.COUNT, count);
         option.put(Query.QUERY_FROM_CACHE, fromCache);
@@ -325,7 +325,7 @@ public final class Options {
      * @return
      */
     public static Map<String, Object> copy(final Map<String, Object> options) {
-        return N.isNullOrEmpty(options) ? new HashMap<String, Object>() : new HashMap<String, Object>(options);
+        return N.isNullOrEmpty(options) ? new HashMap<>() : new HashMap<>(options);
     }
 
     /**

@@ -32,7 +32,7 @@ public final class HandlerFactory {
     /**
      * Field registeredHandler.
      */
-    private static final Map<String, Class<? extends Handler<?>>> registeredHandler = new ConcurrentHashMap<String, Class<? extends Handler<?>>>();
+    private static final Map<String, Class<? extends Handler<?>>> registeredHandler = new ConcurrentHashMap<>();
 
     /**
      * Constructor for HandlerFactory.

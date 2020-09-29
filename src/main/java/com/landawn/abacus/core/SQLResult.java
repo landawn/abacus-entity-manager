@@ -368,7 +368,7 @@ public class SQLResult {
         final List<List<Object>> columnList = new ArrayList<>(propCount);
 
         for (int i = 0; i < propCount; i++) {
-            columnList.add(new ArrayList<Object>());
+            columnList.add(new ArrayList<>());
         }
 
         int offset = EntityManagerUtil.getOffset(options);

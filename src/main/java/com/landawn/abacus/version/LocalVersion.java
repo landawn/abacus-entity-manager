@@ -42,7 +42,7 @@ public final class LocalVersion<K> extends AbstractVersion<K> {
         }
 
         this.capacity = (capacity == 0) ? getDefaultCapacity() : capacity;
-        pool = new LinkedHashMap<K, MutableLong>(capacity);
+        pool = new LinkedHashMap<>(capacity);
     }
 
     /**

@@ -456,7 +456,7 @@ class SQLQueryCache extends AbstractQueryCache {
                 }
 
                 if (dataGrid != null) {
-                    softDataGrid = new SoftReference<DataGrid<Object>>(dataGrid);
+                    softDataGrid = new SoftReference<>(dataGrid);
                 }
             }
         }
@@ -626,13 +626,13 @@ class SQLQueryCache extends AbstractQueryCache {
         DataGrid<Object> dataGrid = getDataGrid();
 
         if (dataGrid == null) {
-            dataGrid = new DataGrid<Object>(cachingPropNames.size(), queryResult.size());
+            dataGrid = new DataGrid<>(cachingPropNames.size(), queryResult.size());
         } else if (propNameIndexMap.size() > dataGrid.getX()) {
             dataGrid.extendX(propNameIndexMap.size());
         }
 
         if ((softDataGrid == null) || (softDataGrid.get() == null)) {
-            softDataGrid = new SoftReference<DataGrid<Object>>(dataGrid);
+            softDataGrid = new SoftReference<>(dataGrid);
         }
 
         return dataGrid;

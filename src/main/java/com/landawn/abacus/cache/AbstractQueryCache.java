@@ -189,7 +189,7 @@ public abstract class AbstractQueryCache extends AbstractPoolable implements Que
 
         try {
             if (!propNameIndexMap.keySet().containsAll(propNames)) {
-                List<String> temp = new ArrayList<String>(propNames);
+                List<String> temp = new ArrayList<>(propNames);
                 temp.removeAll(propNameIndexMap.keySet());
                 throw new IllegalArgumentException(
                         "This cache(" + propNameIndexMap.keySet() + ") doesn't cache result for the properties( " + temp.toString() + "). ");

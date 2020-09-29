@@ -72,7 +72,7 @@ public class MemcachedRWLock<T> extends AbstractRWLock<T> {
     }
 
     public MemcachedRWLock(String servers, String keyPrefix, long liveTime, long timeout) {
-        this.mLock = new MemcachedLock<String, Number>(servers);
+        this.mLock = new MemcachedLock<>(servers);
 
         this.liveTime = liveTime;
         this.timeout = timeout;

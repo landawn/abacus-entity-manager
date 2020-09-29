@@ -70,7 +70,7 @@ import com.landawn.abacus.validator.Validator;
 @Internal
 public final class EntityManagerUtil {
 
-    private static final Map<Class<?>, String> clsEntityName = new ObjectPool<Class<?>, String>(1024);
+    private static final Map<Class<?>, String> clsEntityName = new ObjectPool<>(1024);
 
     private EntityManagerUtil() {
         // no instance

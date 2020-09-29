@@ -450,7 +450,7 @@ class EntityManagerLV<E> extends EntityManagerImpl<E> {
             List<EntityIdMemo> entityIdMemoList = tranIdEntityIdsMap.get(transactionId);
 
             if (entityIdMemoList == null) {
-                entityIdMemoList = new ArrayList<EntityIdMemo>();
+                entityIdMemoList = new ArrayList<>();
                 tranIdEntityIdsMap.put(transactionId, entityIdMemoList);
             }
 

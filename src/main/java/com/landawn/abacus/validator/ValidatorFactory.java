@@ -21,10 +21,10 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.landawn.abacus.type.Type;
-import com.landawn.abacus.util.WD;
-import com.landawn.abacus.util.ObjectPool;
 import com.landawn.abacus.util.ClassUtil;
+import com.landawn.abacus.util.ObjectPool;
 import com.landawn.abacus.util.TypeAttrParser;
+import com.landawn.abacus.util.WD;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -81,7 +81,7 @@ public final class ValidatorFactory {
         }
     }
 
-    private static final Map<String, Validator<?>> validatorPool = new ObjectPool<String, Validator<?>>(1024);
+    private static final Map<String, Validator<?>> validatorPool = new ObjectPool<>(1024);
 
     private ValidatorFactory() {
         // singleton.

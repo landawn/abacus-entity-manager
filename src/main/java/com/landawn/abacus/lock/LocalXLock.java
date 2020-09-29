@@ -35,7 +35,7 @@ public final class LocalXLock<T> extends AbstractXLock<T> {
 
     private static final Logger logger = LoggerFactory.getLogger(LocalXLock.class);
 
-    private final Map<T, ModeLock> blockedLockPool = new ConcurrentHashMap<T, ModeLock>();
+    private final Map<T, ModeLock> blockedLockPool = new ConcurrentHashMap<>();
 
     private final long timeout;
 

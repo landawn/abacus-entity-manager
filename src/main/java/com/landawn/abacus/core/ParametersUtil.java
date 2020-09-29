@@ -42,7 +42,7 @@ final class ParametersUtil {
      */
     @SafeVarargs
     public static <T> List<T> asList(T... a) {
-        List<T> list = (a.length == 0) ? new ArrayList<T>() : new ArrayList<T>(a.length);
+        List<T> list = (a.length == 0) ? new ArrayList<>() : new ArrayList<>(a.length);
 
         for (int i = 0; i < a.length; i++) {
             list.add(a[i]);
@@ -82,7 +82,7 @@ final class ParametersUtil {
             throw new IllegalArgumentException("The property name and value are not paired. ");
         }
 
-        Map<K, V> map = (a.length == 0) ? new HashMap<K, V>() : new HashMap<K, V>(a.length / 2 + 3);
+        Map<K, V> map = (a.length == 0) ? new HashMap<>() : new HashMap<>(a.length / 2 + 3);
 
         for (int i = 0; i < a.length; i++) {
             map.put((K) a[i], (V) a[++i]);
@@ -139,9 +139,9 @@ final class ParametersUtil {
      */
     public static <T> List<T> copy(List<T> c) {
         if (c == null) {
-            return new ArrayList<T>();
+            return new ArrayList<>();
         } else {
-            return (c instanceof Local) ? c : new ArrayList<T>(c);
+            return (c instanceof Local) ? c : new ArrayList<>(c);
         }
     }
 
@@ -168,9 +168,9 @@ final class ParametersUtil {
      */
     public static <K, V> Map<K, V> copy(Map<K, V> m) {
         if (m == null) {
-            return new LinkedHashMap<K, V>();
+            return new LinkedHashMap<>();
         } else {
-            return (m instanceof Local) ? m : new LinkedHashMap<K, V>(m);
+            return (m instanceof Local) ? m : new LinkedHashMap<>(m);
         }
     }
 

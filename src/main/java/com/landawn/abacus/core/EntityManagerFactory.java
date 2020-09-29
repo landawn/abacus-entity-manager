@@ -55,7 +55,7 @@ public class EntityManagerFactory {
 
     private static volatile EntityManagerFactory DEFAULT_INSTANCE = null;
 
-    private final Map<String, DomainEntityManager> entityManagerPool = new ObjectPool<String, DomainEntityManager>(64);
+    private final Map<String, DomainEntityManager> entityManagerPool = new ObjectPool<>(64);
 
     private final AbacusConfiguration abacusConfig;
 
@@ -231,7 +231,7 @@ public class EntityManagerFactory {
      */
     @SuppressWarnings("unchecked")
     public <T> AsyncBatchExecutor<T> createAsyncBatchExecutor(String domainName) {
-        return new AsyncBatchExecutor<T>((EntityManager<T>) getEntityManager(domainName));
+        return new AsyncBatchExecutor<>((EntityManager<T>) getEntityManager(domainName));
     }
 
     /**
@@ -246,7 +246,7 @@ public class EntityManagerFactory {
      */
     @SuppressWarnings("unchecked")
     public <T> AsyncBatchExecutor<T> createAsyncBatchExecutor(String domainName, int batchSize, long evictDelay, int capacity) {
-        return new AsyncBatchExecutor<T>((EntityManager<T>) getEntityManager(domainName), capacity, evictDelay, batchSize);
+        return new AsyncBatchExecutor<>((EntityManager<T>) getEntityManager(domainName), capacity, evictDelay, batchSize);
     }
 
     /**
@@ -384,13 +384,13 @@ public class EntityManagerFactory {
             EntityManager<Object> entityManager = null;
 
             if (mode == Mode.LVC) {
-                entityManager = new EntityManagerLVC<Object>(entityManagerConfig, dbAccessImpl);
+                entityManager = new EntityManagerLVC<>(entityManagerConfig, dbAccessImpl);
             } else if (mode == Mode.VC) {
-                entityManager = new EntityManagerVC<Object>(entityManagerConfig, dbAccessImpl);
+                entityManager = new EntityManagerVC<>(entityManagerConfig, dbAccessImpl);
             } else if (mode == Mode.LV) {
-                entityManager = new EntityManagerLV<Object>(entityManagerConfig, dbAccessImpl);
+                entityManager = new EntityManagerLV<>(entityManagerConfig, dbAccessImpl);
             } else {
-                entityManager = new EntityManagerImpl<Object>(entityManagerConfig, dbAccessImpl);
+                entityManager = new EntityManagerImpl<>(entityManagerConfig, dbAccessImpl);
             }
 
             if (mode == Mode.basic) {
@@ -399,7 +399,7 @@ public class EntityManagerFactory {
                 dbAccess = entityManager;
             }
 
-            entityManagerEx = new EntityManagerEx<Object>(entityManager);
+            entityManagerEx = new EntityManagerEx<>(entityManager);
 
             newEntityManager = new NewEntityManager(entityManagerEx, dsm);
 

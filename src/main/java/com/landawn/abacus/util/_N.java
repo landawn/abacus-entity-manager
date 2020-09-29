@@ -1534,7 +1534,7 @@ public final class _N {
             return new ArrayList<>();
         }
 
-        final List<T> list = new ArrayList<T>(a.length);
+        final List<T> list = new ArrayList<>(a.length);
 
         for (T e : a) {
             list.add(e);
@@ -1556,7 +1556,7 @@ public final class _N {
             return new LinkedList<>();
         }
 
-        LinkedList<T> list = new LinkedList<T>();
+        LinkedList<T> list = new LinkedList<>();
 
         for (T e : a) {
             list.add(e);
@@ -1577,7 +1577,7 @@ public final class _N {
             return new HashSet<>();
         }
 
-        final Set<T> set = new HashSet<T>(initHashCapacity(a.length));
+        final Set<T> set = new HashSet<>(initHashCapacity(a.length));
 
         for (T e : a) {
             set.add(e);
@@ -1599,7 +1599,7 @@ public final class _N {
             return new LinkedHashSet<>();
         }
 
-        final LinkedHashSet<T> set = new LinkedHashSet<T>(initHashCapacity(a.length));
+        final LinkedHashSet<T> set = new LinkedHashSet<>(initHashCapacity(a.length));
 
         for (T e : a) {
             set.add(e);
@@ -1622,7 +1622,7 @@ public final class _N {
             return new HashMap<>();
         }
 
-        final Map<K, V> m = new HashMap<K, V>(initHashCapacity(a.length / 2));
+        final Map<K, V> m = new HashMap<>(initHashCapacity(a.length / 2));
 
         for (int i = 0; i < a.length; i++) {
             m.put((K) a[i], (V) a[++i]);
@@ -1646,7 +1646,7 @@ public final class _N {
             return new LinkedHashMap<>();
         }
 
-        final LinkedHashMap<K, V> m = new LinkedHashMap<K, V>(initHashCapacity(a.length / 2));
+        final LinkedHashMap<K, V> m = new LinkedHashMap<>(initHashCapacity(a.length / 2));
 
         for (int i = 0; i < a.length; i++) {
             m.put((K) a[i], (V) a[++i]);

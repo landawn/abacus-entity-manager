@@ -258,7 +258,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
         Map<Collection<String>, SelectPropNameView> entitySelectPropNamesView = getSelectPropNameViewPool.get(entityDef.getName());
 
         if (entitySelectPropNamesView == null) {
-            entitySelectPropNamesView = new HashMap<Collection<String>, SelectPropNameView>();
+            entitySelectPropNamesView = new HashMap<>();
             getSelectPropNameViewPool.put(entityDef.getName(), entitySelectPropNamesView);
         } else {
             xa = entitySelectPropNamesView.get(selectPropNames);
@@ -1167,7 +1167,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
                         if (ct == OnDeleteAction.CASCADE) {
                             internalDelete(propEntityEntityIds, options);
                         } else if (ct == OnDeleteAction.SET_NULL) {
-                            Map<String, Object> props = new HashMap<String, Object>();
+                            Map<String, Object> props = new HashMap<>();
                             props.put(targetPropName, N.defaultValueOf(targetProp.getType().clazz()));
                             internalUpdate(propEntityEntityIds, props, options);
                         }
@@ -1195,7 +1195,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
                             if (ct == OnDeleteAction.CASCADE) {
                                 internalDelete(propEntityName, targetPropCond, options);
                             } else if (ct == OnDeleteAction.SET_NULL) {
-                                Map<String, Object> props = new HashMap<String, Object>();
+                                Map<String, Object> props = new HashMap<>();
                                 props.put(targetPropName, N.defaultValueOf(targetProp.getType().clazz()));
                                 internalUpdate(propEntityName, props, targetPropCond, options);
                             }
@@ -1387,7 +1387,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
         Map<Collection<String>, SelectPropNameView> entitySelectPropNamesView = querySelectPropNameViewPool.get(entityDef.getName());
 
         if (entitySelectPropNamesView == null) {
-            entitySelectPropNamesView = new HashMap<Collection<String>, SelectPropNameView>();
+            entitySelectPropNamesView = new HashMap<>();
             querySelectPropNameViewPool.put(entityDef.getName(), entitySelectPropNamesView);
         } else {
             xa = entitySelectPropNamesView.get(selectPropNames);
@@ -1438,7 +1438,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
                 indecs[result.getColumnIndex(propName)] = 1;
             }
 
-            final List<String> columnNameList = new ArrayList<String>(result.columnNameList());
+            final List<String> columnNameList = new ArrayList<>(result.columnNameList());
 
             for (int i = 0, len = indecs.length; i < len; i++) {
                 if (indecs[i] == 0) {

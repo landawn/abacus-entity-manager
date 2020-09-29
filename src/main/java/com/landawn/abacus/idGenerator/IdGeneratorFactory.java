@@ -18,8 +18,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.landawn.abacus.metadata.Property;
-import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.ClassUtil;
+import com.landawn.abacus.util.N;
 import com.landawn.abacus.util.TypeAttrParser;
 
 // TODO: Auto-generated Javadoc
@@ -33,7 +33,7 @@ public final class IdGeneratorFactory {
     /**
      * Field registeredIdGenerator.
      */
-    private static final Map<String, Class<? extends IdGenerator<?>>> registeredIdGenerator = new ConcurrentHashMap<String, Class<? extends IdGenerator<?>>>();
+    private static final Map<String, Class<? extends IdGenerator<?>>> registeredIdGenerator = new ConcurrentHashMap<>();
 
     static {
         initBuiltinIdGeneratorName(LocalIdGenerator.class);

@@ -62,7 +62,7 @@ public class MemcachedXLock<T> extends AbstractXLock<T> {
     }
 
     public MemcachedXLock(String servers, String keyPrefix, long liveTime, long timeout) {
-        this.mLock = new MemcachedLock<String, Object>(servers);
+        this.mLock = new MemcachedLock<>(servers);
 
         this.liveTime = liveTime;
         this.timeout = timeout;

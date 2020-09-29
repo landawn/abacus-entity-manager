@@ -45,7 +45,7 @@ public final class VersionFactory {
      * @return
      */
     public static <K> LocalVersion<K> createLocalVersion() {
-        return new LocalVersion<K>();
+        return new LocalVersion<>();
     }
 
     /**
@@ -56,7 +56,7 @@ public final class VersionFactory {
      * @return
      */
     public static <K> LocalVersion<K> createLocalVersion(int capacity) {
-        return new LocalVersion<K>(capacity);
+        return new LocalVersion<>(capacity);
     }
 
     /**
@@ -76,25 +76,25 @@ public final class VersionFactory {
 
         if (MEMCACHED.equalsIgnoreCase(className)) {
             if (parameters.length == 1) {
-                return new DistributedVersion<K>(new SpyMemcached<Long>(url, DEFAULT_TIMEOUT));
+                return new DistributedVersion<>(new SpyMemcached<Long>(url, DEFAULT_TIMEOUT));
             } else if (parameters.length == 2) {
-                return new DistributedVersion<K>(new SpyMemcached<Long>(url, DEFAULT_TIMEOUT), parameters[1], DistributedVersion.DEFAULT_LIVE_TIME);
+                return new DistributedVersion<>(new SpyMemcached<Long>(url, DEFAULT_TIMEOUT), parameters[1], DistributedVersion.DEFAULT_LIVE_TIME);
             } else if (parameters.length == 3) {
-                return new DistributedVersion<K>(new SpyMemcached<Long>(url, DEFAULT_TIMEOUT), parameters[1], N.parseLong(parameters[2]));
+                return new DistributedVersion<>(new SpyMemcached<Long>(url, DEFAULT_TIMEOUT), parameters[1], N.parseLong(parameters[2]));
             } else if (parameters.length == 4) {
-                return new DistributedVersion<K>(new SpyMemcached<Long>(url, N.parseLong(parameters[3])), parameters[1], N.parseLong(parameters[2]));
+                return new DistributedVersion<>(new SpyMemcached<Long>(url, N.parseLong(parameters[3])), parameters[1], N.parseLong(parameters[2]));
             } else {
                 throw new IllegalArgumentException("Unsupported parameters: " + StringUtil.join(parameters));
             }
         } else if (REDIS.equalsIgnoreCase(className)) {
             if (parameters.length == 1) {
-                return new DistributedVersion<K>(new JRedis<Long>(url, DEFAULT_TIMEOUT));
+                return new DistributedVersion<>(new JRedis<Long>(url, DEFAULT_TIMEOUT));
             } else if (parameters.length == 2) {
-                return new DistributedVersion<K>(new JRedis<Long>(url, DEFAULT_TIMEOUT), parameters[1], DistributedVersion.DEFAULT_LIVE_TIME);
+                return new DistributedVersion<>(new JRedis<Long>(url, DEFAULT_TIMEOUT), parameters[1], DistributedVersion.DEFAULT_LIVE_TIME);
             } else if (parameters.length == 3) {
-                return new DistributedVersion<K>(new JRedis<Long>(url, DEFAULT_TIMEOUT), parameters[1], N.parseLong(parameters[2]));
+                return new DistributedVersion<>(new JRedis<Long>(url, DEFAULT_TIMEOUT), parameters[1], N.parseLong(parameters[2]));
             } else if (parameters.length == 4) {
-                return new DistributedVersion<K>(new JRedis<Long>(url, N.parseLong(parameters[3])), parameters[1], N.parseLong(parameters[2]));
+                return new DistributedVersion<>(new JRedis<Long>(url, N.parseLong(parameters[3])), parameters[1], N.parseLong(parameters[2]));
             } else {
                 throw new IllegalArgumentException("Unsupported parameters: " + StringUtil.join(parameters));
             }
