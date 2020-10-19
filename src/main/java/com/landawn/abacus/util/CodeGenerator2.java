@@ -2060,7 +2060,7 @@ public final class CodeGenerator2 {
         }
 
         final Class<?> utilClass = utilClassForHashEqualsToString == null ? Objects.class : utilClassForHashEqualsToString;
-        final Map<String, Type<?>> fieldTypes = new LinkedHashMap<>(N.initHashCapacity(fields.size()));
+        final Map<String, Type<?>> fieldTypes = N.newLinkedHashMap(fields.size());
         Type<?> type = null;
 
         for (Map.Entry<String, ?> entry : fields.entrySet()) {

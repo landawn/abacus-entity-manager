@@ -632,7 +632,7 @@ public final class EntityManagerUtil {
      */
     public static UpdatePropsView parseUpdateProps(final EntityDefinition entityDef, final Map<String, Object> props, final boolean isPropEntitySupported) {
         // TODO [performance improvement]. how to improve performance?
-        final Map<String, Object> updateProps = new HashMap<>(N.initHashCapacity(props.size()));
+        final Map<String, Object> updateProps = N.newHashMap(props.size());
         Map<Property, List<Object>> propEntityList = null;
         Property prop = null;
         Object propValue = null;
@@ -858,7 +858,7 @@ public final class EntityManagerUtil {
             final InsertPropsListView insertPropsListView, final boolean isPropEntitySupported) {
         // TODO [performance improvement]. how to improve performance?
 
-        final Map<String, Object> insertProps = new HashMap<>(N.initHashCapacity(props.size()));
+        final Map<String, Object> insertProps = N.newHashMap(props.size());
         final boolean isInputPropNames = propNamesToInsert != null;
         propNamesToInsert = (propNamesToInsert == null) ? props.keySet() : propNamesToInsert;
 
