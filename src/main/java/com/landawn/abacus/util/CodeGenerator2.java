@@ -4659,7 +4659,7 @@ public final class CodeGenerator2 {
         }
 
         if (typeClass.isArray()) {
-            String componentClassName = StringUtil.substring(typeName, 0, typeName.indexOf('[')).get();
+            String componentClassName = StringUtil.substring(typeName, 0, typeName.indexOf('['));
             if (importedClasses.containsKey(componentClassName)) {
                 typeName = typeName.replaceAll(componentClassName.substring(0, componentClassName.lastIndexOf('.') + 1), "");
             }

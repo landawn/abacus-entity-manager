@@ -1,3 +1,8 @@
+### 1.10.0
+
+* Bug fixes and improvements.
+
+
 ### 1.9.10
 
 * A new release.

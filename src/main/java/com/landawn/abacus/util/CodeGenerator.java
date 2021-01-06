@@ -215,7 +215,7 @@ public final class CodeGenerator {
             while (i < size && lines.get(i).indexOf(tmp) < 0) {
                 String line = lines.get(i);
                 if (line.startsWith("import ") && line.endsWith(";") && line.indexOf(" static ") < 0) {
-                    String clsName = StringUtil.substringBetween(line, ' ', line.lastIndexOf(';')).get();
+                    String clsName = StringUtil.substringBetween(line, ' ', line.lastIndexOf(';'));
                     importedClasses.put(clsName, ClassUtil.forClass(clsName));
                 }
                 i++;
@@ -1091,7 +1091,7 @@ public final class CodeGenerator {
         }
 
         if (typeClass.isArray()) {
-            String componentClassName = StringUtil.substring(typeName, 0, typeName.indexOf('[')).get();
+            String componentClassName = StringUtil.substring(typeName, 0, typeName.indexOf('['));
             if (importedClasses.containsKey(componentClassName)) {
                 typeName = typeName.replaceAll(componentClassName.substring(0, componentClassName.lastIndexOf('.') + 1), "");
             }
