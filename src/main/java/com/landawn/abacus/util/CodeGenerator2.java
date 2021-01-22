@@ -960,7 +960,7 @@ public final class CodeGenerator2 {
      * @param hashEqualsWithParentProperties
      * @param toStringWithParentProperties
      * @param utilClassForHashEqualsToString is <code>Objects.class</code> by default. It can also be <code>N.class</code> or any classes else which provide the {@code hashCode/equals/toString} method.
-     *      Or specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-util.jar for Methods {@code hashCode/equals/toString}.
+     *      Or specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-common.jar for Methods {@code hashCode/equals/toString}.
      */
     public static void entityDefinitionXml2Class(final String domainName, final File entityDefinitionXml, final String srcPath, final EntityMode entityMode,
             Method propName2VarName, Method propName2MethodName, final boolean fluentSetMethod, Map<String, Class<?>> entityExtendedClasses,
@@ -1346,7 +1346,7 @@ public final class CodeGenerator2 {
      * @param entityDefinitionXml
      * @param srcPath
      * @param propName2VarName
-     * @param utilClass specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-util.jar
+     * @param utilClass specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-common.jar
      */
     public static void entityDefinitionXml2PropNameTable(String domainName, final File entityDefinitionXml, final String srcPath, Method propName2VarName,
             Class<?> utilClass) {
@@ -1663,7 +1663,7 @@ public final class CodeGenerator2 {
      * @param entityDefinitionXml
      * @param srcPath
      * @param columnName2VarName
-     * @param utilClass specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-util.jar
+     * @param utilClass specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-common.jar
      */
     public static void entityDefinitionXml2ColumnNameTable(final String domainName, final File entityDefinitionXml, final String srcPath,
             Method columnName2VarName, Class<?> utilClass) {
@@ -2022,7 +2022,7 @@ public final class CodeGenerator2 {
      * @param copyMethod
      * @param fluentSetter
      * @param utilClassForHashEqualsToString is <code>Objects.class</code> by default. It can also be <code>N.class</code> or any classes else which provide the {@code hashCode/equals/toString} method.
-     *      Or specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-util.jar for Methods {@code hashCode/equals/toString}.
+     *      Or specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-common.jar for Methods {@code hashCode/equals/toString}.
      */
     public static void generateEntity(File srcDir, String packageName, String className, Map<String, ?> fields, final boolean constructor,
             final boolean copyMethod, final boolean fluentSetter, final Class<?> utilClassForHashEqualsToString) {
@@ -2044,7 +2044,7 @@ public final class CodeGenerator2 {
      * @param parentPropertyModeForHashEquals
      * @param parentPropertyModeForToString
      * @param utilClassForHashEqualsToString is <code>Objects.class</code> by default. It can also be <code>N.class</code> or any classes else which provide the {@code hashCode/equals/toString} method.
-     *      Or specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-util.jar for Methods {@code hashCode/equals/toString}.
+     *      Or specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-common.jar for Methods {@code hashCode/equals/toString}.
      */
     public static void generateEntity(File srcDir, String packageName, String className, Map<String, ?> fields, final boolean constructor,
             final boolean copyMethod, final boolean fluentSetter, final Map<String, String> fieldName2MethodName, Class<?> parentClass,

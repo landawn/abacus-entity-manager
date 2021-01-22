@@ -21,7 +21,7 @@ Another Java persistence framework.
 compile 'com.landawn:abacus-entity-manager:1.10.0'
 ```
 
-## Also See: [abacus-util](https://github.com/landawn/abacus-util), [abacus-jdbc](https://github.com/landawn/abacus-jdbc).
+## Also See: [abacus-common](https://github.com/landawn/abacus-common), [abacus-jdbc](https://github.com/landawn/abacus-jdbc).
 
 ## Recommended Java programming libraries/frameworks:
 [lombok](https://github.com/rzwitserloot/lombok), [Guava](https://github.com/google/guava), [Kyro](https://github.com/EsotericSoftware/kryo), [snappy-java](https://github.com/xerial/snappy-java), [lz4-java](https://github.com/lz4/lz4-java), [Caffeine](https://github.com/ben-manes/caffeine), [Ehcache](http://www.ehcache.org/), [Chronicle-Map](https://github.com/OpenHFT/Chronicle-Map), [echarts](https://github.com/apache/incubator-echarts), 

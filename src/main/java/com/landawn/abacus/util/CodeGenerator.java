@@ -140,7 +140,7 @@ public final class CodeGenerator {
      * @param ignoreFieldNames
      * @param fieldName2MethodName
      * @param utilClassForHashEqualsToString is <code>Objects.class</code> by default. It can also be <code>N.class</code> or any classes else which provide the {@code hashCode/equals/toString} method.
-     *      Or specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-util.jar for Methods {@code hashCode/equals/toString}.
+     *      Or specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-common.jar for Methods {@code hashCode/equals/toString}.
      */
     public static void writeClassMethod(final File srcDir, final Class<?> cls, final boolean constructor, final boolean copyMethod, final boolean fluentSetter,
             Set<String> ignoreFieldNames, final Map<String, String> fieldName2MethodName, final Class<?> utilClassForHashEqualsToString) {
@@ -170,7 +170,7 @@ public final class CodeGenerator {
      * @param parentPropertyModeForHashEquals
      * @param parentPropertyModeForToString
      * @param utilClassForHashEqualsToString is <code>Objects.class</code> by default. It can also be <code>N.class</code> or any classes else which provide the {@code hashCode/equals/toString} method.
-     *      Or specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-util.jar for Methods {@code hashCode/equals/toString}.
+     *      Or specify <code>CodeGenerator._N</code> or your own utility class to generate entity classes which not dependent on abacus-common.jar for Methods {@code hashCode/equals/toString}.
      */
     public static void writeClassMethod(final File srcDir, final Class<?> cls, final boolean constructor, final boolean copyMethod, final boolean fluentSetter,
             Set<String> ignoreFieldNames, final Map<String, String> fieldName2MethodName, final ParentPropertyMode parentPropertyModeForHashEquals,
