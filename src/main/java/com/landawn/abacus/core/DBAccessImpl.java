@@ -888,12 +888,12 @@ class DBAccessImpl implements com.landawn.abacus.DBAccess {
     //        if (!N.isNullOrEmpty(attrs)) {
     //            if ((attrs.get(SQLMapper.BATCH_SIZE) != null) && ((options == null) || (options.get(Options.BATCH_SIZE) == null))) {
     //                options = InternalParametersUtil.copy(options);
-    //                options.put(Options.BATCH_SIZE, N.parseInt(attrs.get(SQLMapper.BATCH_SIZE)));
+    //                options.put(Options.BATCH_SIZE, Numbers.toInt(attrs.get(SQLMapper.BATCH_SIZE)));
     //            }
     //
     //            if ((attrs.get(SQLMapper.FETCH_SIZE) != null) && ((options == null) || (options.get(Options.Jdbc.FETCH_SIZE) == null))) {
     //                options = InternalParametersUtil.copy(options);
-    //                options.put(Options.Jdbc.FETCH_SIZE, N.parseInt(attrs.get(SQLMapper.FETCH_SIZE)));
+    //                options.put(Options.Jdbc.FETCH_SIZE, Numbers.toInt(attrs.get(SQLMapper.FETCH_SIZE)));
     //            }
     //
     //            if ((attrs.get(SQLMapper.RESULT_SET_TYPE) != null) && ((options == null) || (options.get(Options.Jdbc.RESULT_SET_TYPE) == null))) {

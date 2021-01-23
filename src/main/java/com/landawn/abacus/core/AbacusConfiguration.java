@@ -40,6 +40,7 @@ import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.util.Configuration;
 import com.landawn.abacus.util.IOUtil;
 import com.landawn.abacus.util.N;
+import com.landawn.abacus.util.Numbers;
 import com.landawn.abacus.util.OperationType;
 import com.landawn.abacus.util.SQLMapper;
 import com.landawn.abacus.util.XMLUtil;
@@ -319,7 +320,7 @@ public final class AbacusConfiguration {
             mode = (attr == null) ? Mode.basic : Mode.valueOf(attr);
 
             attr = getAttribute(BATCH_SIZE);
-            batchSize = (attr == null) ? DEFAULT_BATCH_SIZE : N.parseInt(attr);
+            batchSize = (attr == null) ? DEFAULT_BATCH_SIZE : Numbers.toInt(attr);
 
             attr = getAttribute(ENTITY_DEFINITION);
 
@@ -663,7 +664,7 @@ public final class AbacusConfiguration {
                 provider = getAttribute(PROVIDER);
 
                 String attr = getAttribute(CAPACITY);
-                this.capacity = (attr == null) ? defaultCapacity : N.parseInt(attr);
+                this.capacity = (attr == null) ? defaultCapacity : Numbers.toInt(attr);
 
                 attr = getAttribute(EVICT_DELAY);
                 this.evictDelay = (attr == null) ? defaultEvictDelay : Configuration.readTimeInMillis(attr);
@@ -1141,7 +1142,7 @@ public final class AbacusConfiguration {
                 maxCheckCacheTime = (attr == null) ? DEFAULT_MAX_CHECK_QUERY_CACHE_TIME : Configuration.readTimeInMillis(attr);
 
                 attr = getAttribute(MIN_CHECK_QUERY_CACHE_SIZE);
-                minCheckCacheSize = (attr == null) ? DEFAULT_MIN_CHECK_QUERY_CACHE_SIZE : N.parseInt(attr);
+                minCheckCacheSize = (attr == null) ? DEFAULT_MIN_CHECK_QUERY_CACHE_SIZE : Numbers.toInt(attr);
             }
 
             /**
@@ -1259,10 +1260,10 @@ public final class AbacusConfiguration {
                     super(element, AbacusConfiguration.this.props);
 
                     String attr = getAttribute(MIN_COUNT);
-                    minCount = (attr == null) ? DEFAULT_MIN_COUNT : N.parseInt(attr);
+                    minCount = (attr == null) ? DEFAULT_MIN_COUNT : Numbers.toInt(attr);
 
                     attr = getAttribute(MAX_COUNT);
-                    maxCount = (attr == null) ? DEFAULT_MAX_COUNT : N.parseInt(attr);
+                    maxCount = (attr == null) ? DEFAULT_MAX_COUNT : Numbers.toInt(attr);
 
                     attr = getAttribute(MIN_QUERY_TIME);
                     minQueryTime = (attr == null) ? DEFAULT_MIN_QUERY_TIME : Configuration.readTimeInMillis(attr);
@@ -1372,7 +1373,7 @@ public final class AbacusConfiguration {
                 this.url = getAttribute(URL);
 
                 String attr = getAttribute(MAX_CONNECTION);
-                maxConnection = N.isNullOrEmpty(attr) ? DEFAULT_MAX_CONNECTION : N.parseInt(attr);
+                maxConnection = N.isNullOrEmpty(attr) ? DEFAULT_MAX_CONNECTION : Numbers.toInt(attr);
 
                 attr = getAttribute(CONNECTION_TIMEOUT);
                 connTimeout = N.isNullOrEmpty(attr) ? DEFAULT_CONNECTION_TIMEOUT : (int) Configuration.readTimeInMillis(attr);
@@ -1488,7 +1489,7 @@ public final class AbacusConfiguration {
 
             String attr = getAttribute(BATCH_SIZE);
 
-            batchSize = N.isNullOrEmpty(attr) ? DEFAULT_BATCH_SIZE : N.parseInt(attr);
+            batchSize = N.isNullOrEmpty(attr) ? DEFAULT_BATCH_SIZE : Numbers.toInt(attr);
 
             if (domainList == null) {
                 domainList = new HashMap<>();
@@ -1593,7 +1594,7 @@ public final class AbacusConfiguration {
 
                     operationCode = all;
                 } else {
-                    operationCode = N.parseInt(attr);
+                    operationCode = Numbers.toInt(attr);
                 }
             }
 

@@ -18,6 +18,7 @@ import com.landawn.abacus.logging.Logger;
 import com.landawn.abacus.logging.LoggerFactory;
 import com.landawn.abacus.util.MemcachedLock;
 import com.landawn.abacus.util.N;
+import com.landawn.abacus.util.Numbers;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -120,7 +121,7 @@ public class MemcachedRWLock<T> extends AbstractRWLock<T> {
                                 isOK = true;
 
                                 break;
-                            } else if (N.parseInt(count.toString()) <= 0) {
+                            } else if (Numbers.toInt(count.toString()) <= 0) {
                                 mLock.client().delete(readKey);
                                 isOK = true;
 
@@ -150,7 +151,7 @@ public class MemcachedRWLock<T> extends AbstractRWLock<T> {
                                 isOK = true;
 
                                 break;
-                            } else if (N.parseInt(count.toString()) <= 0) {
+                            } else if (Numbers.toInt(count.toString()) <= 0) {
                                 mLock.client().delete(writeKey);
                                 isOK = true;
 
@@ -244,7 +245,7 @@ public class MemcachedRWLock<T> extends AbstractRWLock<T> {
                                 isOK = true;
 
                                 break;
-                            } else if (N.parseInt(count.toString()) <= 0) {
+                            } else if (Numbers.toInt(count.toString()) <= 0) {
                                 mLock.client().delete(writeKey);
                                 isOK = true;
 
