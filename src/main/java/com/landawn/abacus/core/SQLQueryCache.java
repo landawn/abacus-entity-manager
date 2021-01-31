@@ -199,9 +199,7 @@ class SQLQueryCache extends AbstractQueryCache {
 
                 if (isToCache) {
                     try {
-                        if (dataGrid != null) {
-                            dataGridCache.put(dataGridCacheId, dataGrid, activityPrint().getLiveTime(), activityPrint().getMaxIdleTime());
-                        }
+                        dataGridCache.put(dataGridCacheId, dataGrid, activityPrint().getLiveTime(), activityPrint().getMaxIdleTime());
                     } finally {
                         CACHED_DATA_GRID_ID_IN_EXECUTING.remove(dataGridCacheId);
                     }

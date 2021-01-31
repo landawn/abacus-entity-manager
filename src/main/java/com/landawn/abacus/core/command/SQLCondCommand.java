@@ -135,7 +135,7 @@ public class SQLCondCommand extends SQLCommand {
     public void combine(SQLCommand sqlCondCmd) {
         super.combine(sqlCondCmd);
 
-        if (sqlCondCmd instanceof SQLCommand) {
+        if (sqlCondCmd instanceof SQLCondCommand) {
             addJoinTables(((SQLCondCommand) sqlCondCmd).joinTables);
         }
     }

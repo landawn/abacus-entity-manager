@@ -153,7 +153,7 @@ public final class LocalXLock<T> extends AbstractXLock<T> {
             return false;
         }
 
-        final LockMode lockMode = modeLock == null ? null : modeLock.lockMode;
+        final LockMode lockMode = modeLock.lockMode;
 
         return lockMode != null && lockMode.isXLockOf(requiredLockMode);
     }

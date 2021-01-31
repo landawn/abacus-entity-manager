@@ -226,6 +226,7 @@ public final class CacheZipper {
      *
      * @return
      */
+    @SuppressWarnings("fallthrough")
     public static Object[] createBigArray() {
         final long M8 = 1024 * 1024 * 8; // N.ONE_MB * 8;
 

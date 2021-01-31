@@ -14,7 +14,6 @@
 
 package com.landawn.abacus.metadata.sql;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -30,7 +29,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.w3c.dom.Element;
-import org.xml.sax.SAXException;
 
 import com.landawn.abacus.core.NameUtil;
 import com.landawn.abacus.exception.UncheckedSQLException;
@@ -81,7 +79,7 @@ public class SQLTable implements Table {
         this(parse(name, conn));
     }
 
-    public SQLTable(InputStream is) throws SAXException, IOException {
+    public SQLTable(InputStream is) {
         this(Configuration.parse(is).getDocumentElement());
     }
 

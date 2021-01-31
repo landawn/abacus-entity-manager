@@ -343,6 +343,7 @@ public class SQLEntityDefinition implements EntityDefinition {
      * @param propName
      * @return
      */
+    @SuppressWarnings("null")
     @Override
     public Property getProperty(String propName) {
         Property prop = propPool.get(propName);

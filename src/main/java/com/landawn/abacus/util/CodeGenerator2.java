@@ -1376,7 +1376,7 @@ public final class CodeGenerator2 {
         String propNameTableClassName = getSimplePropNameTableClassName(getPropNameTableClassName(entityDefinitionFactory));
         File propNameDefClassFile = new File(classFilePath + propNameTableClassName + POSTFIX_OF_JAVA_FILE);
 
-        entityDefinition2PropNameTable(entityDefinitionFactory, propNameDefClassFile, pkgName, propName2VarName, utilClass);
+        entityDefinition2PropNameTable(entityDefinitionFactory, propNameDefClassFile, pkgName, propName2VarName);
     }
 
     /**
@@ -1385,11 +1385,10 @@ public final class CodeGenerator2 {
      * @param entityDefinitionFactory
      * @param propNameDefClassFile
      * @param pkgName
-     * @param propName2VarName
-     * @param utilClass
+     * @param propName2VarName 
      */
     static void entityDefinition2PropNameTable(final EntityDefinitionFactory entityDefinitionFactory, final File propNameDefClassFile, final String pkgName,
-            final Method propName2VarName, final Class<?> utilClass) {
+            final Method propName2VarName) {
 
         if (propNameDefClassFile.exists()) {
             propNameDefClassFile.delete();
@@ -1433,7 +1432,7 @@ public final class CodeGenerator2 {
 
             EntityDefinition[] entityDefinitions = entityDefinitionFactory.getDefinitionList()
                     .toArray(new EntityDefinition[entityDefinitionFactory.getDefinitionList().size()]);
-            writePropNameTable(entityDefinitions, propName2VarName, headSpace, fileWrite, utilClass);
+            writePropNameTable(entityDefinitions, propName2VarName, headSpace, fileWrite);
 
             // -------- write global domain property name.
             Map<String, String> allPropNamesMap = new LinkedHashMap<>();
@@ -1510,12 +1509,11 @@ public final class CodeGenerator2 {
      * @param entityDefs
      * @param propName2VarName
      * @param headSpace
-     * @param fileWrite
-     * @param utilClass
+     * @param fileWrite 
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    private static void writePropNameTable(final EntityDefinition[] entityDefs, final Method propName2VarName, final String headSpace, final Writer fileWrite,
-            final Class<?> utilClass) throws IOException {
+    private static void writePropNameTable(final EntityDefinition[] entityDefs, final Method propName2VarName, final String headSpace, final Writer fileWrite)
+            throws IOException {
         for (EntityDefinition entityDef : entityDefs) {
             if (entityDef.isSliceEntity()) {
                 continue;
@@ -1524,7 +1522,7 @@ public final class CodeGenerator2 {
             fileWrite.write(IOUtil.LINE_SEPARATOR);
             fileWrite.write(headSpace + "    public static interface " + entityDef.getName() + POSTFIX_OF_PROP_NAME_LIST + " {");
 
-            writePropNameField(entityDef, propName2VarName, headSpace + "    ", fileWrite, utilClass);
+            writePropNameField(entityDef, propName2VarName, headSpace + "    ", fileWrite);
 
             fileWrite.write(headSpace + "    }" + IOUtil.LINE_SEPARATOR);
 
@@ -1550,12 +1548,11 @@ public final class CodeGenerator2 {
      * @param entityDef
      * @param propName2VarName
      * @param headSpace
-     * @param fileWrite
-     * @param utilClass
+     * @param fileWrite 
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    private static void writePropNameField(final EntityDefinition entityDef, final Method propName2VarName, final String headSpace, final Writer fileWrite,
-            final Class<?> utilClass) throws IOException {
+    private static void writePropNameField(final EntityDefinition entityDef, final Method propName2VarName, final String headSpace, final Writer fileWrite)
+            throws IOException {
         final StringBuilder sb = Objectory.createStringBuilder();
 
         sb.append(IOUtil.LINE_SEPARATOR);
@@ -1735,7 +1732,7 @@ public final class CodeGenerator2 {
             String headSpace = "";
             writeDomainPropNameClass(domainName, fileWrite, headSpace);
 
-            writeColumnNameTable(entityDefs, columnName2VarName, headSpace, fileWrite, utilClass);
+            writeColumnNameTable(entityDefs, columnName2VarName, headSpace, fileWrite);
 
             // -------- write global domain property name.
             Map<String, String> allColumnNamesMap = new LinkedHashMap<>();
@@ -1807,12 +1804,11 @@ public final class CodeGenerator2 {
      * @param entityDefs
      * @param columnName2VarName
      * @param headSpace
-     * @param fileWrite
-     * @param utilClass
+     * @param fileWrite 
      * @throws IOException Signals that an I/O exception has occurred.
      */
     private static void writeColumnNameTable(final Collection<EntityDefinition> entityDefs, final Method columnName2VarName, final String headSpace,
-            final Writer fileWrite, final Class<?> utilClass) throws IOException {
+            final Writer fileWrite) throws IOException {
         for (EntityDefinition entityDef : entityDefs) {
             if (entityDef.isSliceEntity()) {
                 continue;
@@ -1821,7 +1817,7 @@ public final class CodeGenerator2 {
             fileWrite.write(IOUtil.LINE_SEPARATOR);
             fileWrite.write(headSpace + "    public static interface " + entityDef.getName() + POSTFIX_OF_COLUMN_NAME_LIST + " {");
 
-            writeColumnNameField(entityDef, columnName2VarName, headSpace + "    ", fileWrite, utilClass);
+            writeColumnNameField(entityDef, columnName2VarName, headSpace + "    ", fileWrite);
 
             fileWrite.write(headSpace + "    }" + IOUtil.LINE_SEPARATOR);
         }
@@ -1833,12 +1829,11 @@ public final class CodeGenerator2 {
      * @param entityDef
      * @param columnName2VarName
      * @param headSpace
-     * @param fileWrite
-     * @param utilClass
+     * @param fileWrite 
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    private static void writeColumnNameField(final EntityDefinition entityDef, final Method columnName2VarName, final String headSpace, final Writer fileWrite,
-            final Class<?> utilClass) throws IOException {
+    private static void writeColumnNameField(final EntityDefinition entityDef, final Method columnName2VarName, final String headSpace, final Writer fileWrite)
+            throws IOException {
         final StringBuilder sb = Objectory.createStringBuilder();
 
         sb.append(IOUtil.LINE_SEPARATOR);

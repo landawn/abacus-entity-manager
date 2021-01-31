@@ -94,7 +94,7 @@ public class Executant {
 
             _interpreter = new InterpreterProxy(SQLInterpreterFactory.getInterpreter(proudctName, productVersion));
 
-            final IsolationLevel tmp = _ds instanceof SQLDataSource ? this._ds.getDefaultIsolationLevel() : IsolationLevel.DEFAULT;
+            final IsolationLevel tmp = this._ds.getDefaultIsolationLevel();
             _defaultIsolationLevel = tmp == IsolationLevel.DEFAULT ? IsolationLevel.valueOf(conn.getTransactionIsolation()) : tmp;
 
         } catch (SQLException e) {
@@ -252,7 +252,7 @@ public class Executant {
      * @param options
      */
     @SuppressWarnings("deprecation")
-    public void endTransaction(String transactionId, Action transactionAction, Map<String, Object> options) {
+    public void endTransaction(String transactionId, Action transactionAction, @SuppressWarnings("unused") Map<String, Object> options) {
         final SQLTransaction tran = getTransaction(transactionId);
 
         // Should never happen.

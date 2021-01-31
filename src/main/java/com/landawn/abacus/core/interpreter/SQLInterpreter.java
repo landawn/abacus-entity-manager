@@ -568,6 +568,7 @@ public class SQLInterpreter extends AbstractInterpreter {
      * @param sqlCondCmd
      * @param sql
      */
+    @SuppressWarnings("unused")
     protected void inerpretCustomizedCondition(EntityDefinition entityDef, Condition condition, SQLCondCommand sqlCondCmd, StringBuilder sql) {
         throw new IllegalArgumentException("unsupported condition[" + condition + "]. ");
     }

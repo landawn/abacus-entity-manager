@@ -1033,7 +1033,7 @@ class EntityManagerImpl<E> extends AbstractEntityManager<E> {
             CascadeDeleteResult cascadeDeleteResult = deleteCascade(entityDef, null, cond, options);
 
             if (cascadeDeleteResult != null) {
-                if ((cascadeDeleteResult.transactionId != null) && (transactionId == null)) {
+                if (cascadeDeleteResult.transactionId != null) {
                     transactionId = cascadeDeleteResult.transactionId;
                     options = cascadeDeleteResult.options;
                 }

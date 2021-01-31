@@ -172,7 +172,7 @@ public class MemcachedXLock<T> extends AbstractXLock<T> {
             return false;
         }
 
-        final LockMode lockMode = lockInfo == null ? null : lockInfo.lockMode;
+        final LockMode lockMode = lockInfo.lockMode;
 
         return lockMode != null && lockMode.isXLockOf(requiredLockMode);
     }

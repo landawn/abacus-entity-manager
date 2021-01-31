@@ -127,6 +127,7 @@ public class SQLProperty implements Property {
 
     private volatile boolean isInit = false;
 
+    @SuppressWarnings("null")
     protected SQLProperty(String entityName, String tableName, String name, Map<String, String> attrs, boolean isId, boolean isUID) {
         this.name = NameUtil.getCachedName(name);
         attrs.put(PropertyEle.NAME, this.name);

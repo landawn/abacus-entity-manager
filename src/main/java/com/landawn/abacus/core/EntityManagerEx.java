@@ -2270,6 +2270,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
      * @param e
      * @return true, if is table not exists exception
      */
+    @SuppressWarnings("unused")
     static boolean isTableNotExistsException(RuntimeException e) {
         // TODO Auto-generated method stub
         return false;
