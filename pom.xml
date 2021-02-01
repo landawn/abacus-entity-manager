@@ -4,7 +4,7 @@
 
 	<groupId>com.landawn</groupId>
 	<artifactId>abacus-entity-manager</artifactId>
-	<version>1.10.2</version>
+	<version>1.10.3</version>
 	<packaging>jar</packaging>
 
 	<name>abacus-entity-manager</name>
@@ -21,13 +21,13 @@
 		<dependency>
 			<groupId>com.landawn</groupId>
 			<artifactId>abacus-common</artifactId>
-            <version>2.2.2</version>
+            <version>2.2.3</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.landawn</groupId>
 			<artifactId>abacus-jdbc</artifactId>
-            <version>1.22.5</version>
+            <version>1.22.6</version>
 			<scope>provided</scope>
 		</dependency>
 

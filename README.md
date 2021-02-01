@@ -18,7 +18,7 @@ Another Java persistence framework.
 * Gradle:
 ```gradle
 // JDK 1.8 or above:
-compile 'com.landawn:abacus-entity-manager:1.10.1'
+compile 'com.landawn:abacus-entity-manager:1.10.2'
 ```
 
 ## Also See: [abacus-common](https://github.com/landawn/abacus-common), [abacus-jdbc](https://github.com/landawn/abacus-jdbc).
