@@ -29,6 +29,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import com.landawn.abacus.core.AbstractDirtyMarker;
+import com.landawn.abacus.exception.UncheckedIOException;
 import com.landawn.abacus.type.ObjectType;
 import com.landawn.abacus.type.Type;
 import com.landawn.abacus.type.TypeType;
@@ -286,7 +287,11 @@ public final class CodeGenerator {
             if (!utilClassFile.exists()) {
                 String sourceCode = _N_STRING.replaceFirst("package com.landawn.abacus.util;",
                         N.isNullOrEmpty(packageName) ? "" : "package " + packageName + ";");
-                IOUtil.write(utilClassFile, sourceCode);
+                try {
+                    IOUtil.write(utilClassFile, sourceCode);
+                } catch (IOException e) {
+                    throw new UncheckedIOException(e);
+                }
             }
         }
 
@@ -566,11 +571,12 @@ public final class CodeGenerator {
      * @param writer
      * @throws NoSuchFieldException the no such field exception
      * @throws SecurityException the security exception
+     * @throws IOException 
      */
     private static void writeClassMethod(Class<?> cls, final String className, final Class<?> parentClass, final String pkgName,
             final Map<String, Type<?>> fieldTypes, final boolean constructor, final boolean copyMethod, final boolean fluentSetter,
             ParentPropertyMode parentPropertyModeForHashEquals, ParentPropertyMode parentPropertyModeForToString, Map<String, String> fieldName2MethodName,
-            final Map<String, Class<?>> importedClasses, final Class<?> utilClass, Writer writer) throws NoSuchFieldException, SecurityException {
+            final Map<String, Class<?>> importedClasses, final Class<?> utilClass, Writer writer) throws NoSuchFieldException, SecurityException, IOException {
 
         if (N.isNullOrEmpty(fieldTypes) && fluentSetter == false && constructor == false && copyMethod == false) {
             return;
@@ -995,10 +1001,14 @@ public final class CodeGenerator {
             throw new RuntimeException("Failed to create new File by path: " + utilClassFilePath);
         }
 
-        if (N.isNullOrEmpty(pkgName)) {
-            IOUtil.write(utilClassFile, _N_STRING.replaceFirst("package com.landawn.abacus.util;", "").replaceAll("_N", utilClassName));
-        } else {
-            IOUtil.write(utilClassFile, _N_STRING.replaceFirst("com.landawn.abacus.util", pkgName).replaceAll("_N", utilClassName));
+        try {
+            if (N.isNullOrEmpty(pkgName)) {
+                IOUtil.write(utilClassFile, _N_STRING.replaceFirst("package com.landawn.abacus.util;", "").replaceAll("_N", utilClassName));
+            } else {
+                IOUtil.write(utilClassFile, _N_STRING.replaceFirst("com.landawn.abacus.util", pkgName).replaceAll("_N", utilClassName));
+            }
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
         }
     }
 

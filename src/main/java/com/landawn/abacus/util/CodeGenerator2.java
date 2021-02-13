@@ -1006,7 +1006,11 @@ public final class CodeGenerator2 {
             if (!utilClassFile.exists()) {
                 String sourceCode = CodeGenerator._N_STRING.replaceFirst("package com.landawn.abacus.util;",
                         N.isNullOrEmpty(pkgName) ? "" : "package " + pkgName + ";");
-                IOUtil.write(utilClassFile, sourceCode);
+                try {
+                    IOUtil.write(utilClassFile, sourceCode);
+                } catch (IOException e) {
+                    throw new UncheckedIOException(e);
+                }
             }
         }
 
@@ -2158,7 +2162,11 @@ public final class CodeGenerator2 {
             if (!utilClassFile.exists()) {
                 String sourceCode = CodeGenerator._N_STRING.replaceFirst("package com.landawn.abacus.util;",
                         N.isNullOrEmpty(packageName) ? "" : "package " + packageName + ";");
-                IOUtil.write(utilClassFile, sourceCode);
+                try {
+                    IOUtil.write(utilClassFile, sourceCode);
+                } catch (IOException e) {
+                    throw new UncheckedIOException(e);
+                }
             }
         }
 
@@ -2169,7 +2177,11 @@ public final class CodeGenerator2 {
         final BufferedWriter writer = IOUtil.newBufferedWriter(classFile);
 
         try {
-            IOUtil.writeLine(writer, "package " + packageName + ";");
+            try {
+                IOUtil.writeLine(writer, "package " + packageName + ";");
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
+            }
             // IOUtil.writeLine(writer, N.EMPTY_STRING);
 
             // write imports
@@ -2259,7 +2271,7 @@ public final class CodeGenerator2 {
                     parentPropertyModeForToString, fieldName2MethodName, importedClasses, utilClass, writer);
 
             IOUtil.writeLine(writer, "}");
-        } catch (NoSuchFieldException | SecurityException e) {
+        } catch (NoSuchFieldException | SecurityException | IOException e) {
             throw N.toRuntimeException(e);
         } finally {
             IOUtil.closeQuietly(writer);
@@ -2412,11 +2424,12 @@ public final class CodeGenerator2 {
      * @param writer
      * @throws NoSuchFieldException the no such field exception
      * @throws SecurityException the security exception
+     * @throws IOException 
      */
     private static void writeClassMethod(Class<?> cls, final String className, final Class<?> parentClass, final String pkgName,
             final Map<String, Type<?>> fieldTypes, final boolean constructor, final boolean copyMethod, final boolean fluentSetter,
             ParentPropertyMode parentPropertyModeForHashEquals, ParentPropertyMode parentPropertyModeForToString, Map<String, String> fieldName2MethodName,
-            final Map<String, Class<?>> importedClasses, final Class<?> utilClass, Writer writer) throws NoSuchFieldException, SecurityException {
+            final Map<String, Class<?>> importedClasses, final Class<?> utilClass, Writer writer) throws NoSuchFieldException, SecurityException, IOException {
 
         if (N.isNullOrEmpty(fieldTypes) && fluentSetter == false && constructor == false && copyMethod == false) {
             return;

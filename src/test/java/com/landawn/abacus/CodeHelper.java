@@ -1,12 +1,14 @@
 package com.landawn.abacus;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.junit.Test;
 
+import com.landawn.abacus.exception.UncheckedIOException;
 import com.landawn.abacus.util.Fn;
 import com.landawn.abacus.util.Fn.Suppliers;
 import com.landawn.abacus.util.IOUtil;
@@ -20,7 +22,7 @@ import com.landawn.abacus.util.stream.Stream.StreamEx;
 public class CodeHelper {
 
     @Test
-    public void remove_useless_comments() {
+    public void remove_useless_comments() throws UncheckedIOException, IOException {
         final File parentPath = new File("./src/main/java/");
 
         final Function<String, String> returnMapper = line -> line.trim().startsWith("* @return the ") ? line.substring(0, line.indexOf("* @return the ") + 9)
@@ -98,7 +100,7 @@ public class CodeHelper {
     }
 
     @Test
-    public void remove_comments() {
+    public void remove_comments() throws IOException {
         File file = new File("./src/com/landawn/abacus/util/function/");
 
         for (File javaFile : file.listFiles()) {
@@ -118,7 +120,7 @@ public class CodeHelper {
     }
 
     @Test
-    public void test_02() {
+    public void test_02() throws IOException {
         File file = new File("./config/abacus-entity-manager.properties");
 
         Map<String, File> map = Stream.listFiles(new File("./src/test/java"), true).toMap(f -> f.getName(), f -> f, Fn.ignoringMerger());
