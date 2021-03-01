@@ -74,6 +74,9 @@ import com.landawn.abacus.util.function.ToShortFunction;
  */
 public final class EntityManagerEx<T> implements EntityManager<T> {
 
+    static final AsyncExecutor DEFAULT_ASYNC_EXECUTOR = new AsyncExecutor(Math.min(Math.max(64, IOUtil.CPU_CORES * 8), (IOUtil.MAX_MEMORY_IN_MB / 1024) * 32),
+            Math.max(256, (IOUtil.MAX_MEMORY_IN_MB / 1024) * 64), 180L, TimeUnit.SECONDS);
+
     private final AsyncExecutor asyncExecutor;
 
     private final EntityManager<T> entityManager;
@@ -81,7 +84,7 @@ public final class EntityManagerEx<T> implements EntityManager<T> {
     private final boolean isVersionSupported;
 
     EntityManagerEx(final EntityManager<T> entityManager) {
-        this(entityManager, new AsyncExecutor(Math.max(8, IOUtil.CPU_CORES), Math.max(64, IOUtil.CPU_CORES), 180L, TimeUnit.SECONDS));
+        this(entityManager, DEFAULT_ASYNC_EXECUTOR);
     }
 
     @SuppressWarnings("deprecation")

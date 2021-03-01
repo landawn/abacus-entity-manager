@@ -57,6 +57,7 @@ class QueryCachePool<K, V extends QueryCache> extends GenericKeyedObjectPool<K, 
     private static final long ZIP_DELAY = 3 * 60 * 1000L;
 
     private static final ScheduledExecutorService scheduledExecutor;
+
     static {
         final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(IOUtil.CPU_CORES);
         executor.setRemoveOnCancelPolicy(true);
