@@ -74,7 +74,7 @@ import com.landawn.abacus.util.function.ToShortFunction;
  */
 public final class EntityManagerEx<T> implements EntityManager<T> {
 
-    static final AsyncExecutor DEFAULT_ASYNC_EXECUTOR = new AsyncExecutor(Math.min(Math.max(64, IOUtil.CPU_CORES * 8), (IOUtil.MAX_MEMORY_IN_MB / 1024) * 32),
+    static final AsyncExecutor DEFAULT_ASYNC_EXECUTOR = new AsyncExecutor(Math.max(64, Math.min(IOUtil.CPU_CORES * 8, IOUtil.MAX_MEMORY_IN_MB / 1024) * 32),
             Math.max(256, (IOUtil.MAX_MEMORY_IN_MB / 1024) * 64), 180L, TimeUnit.SECONDS);
 
     private final AsyncExecutor asyncExecutor;
