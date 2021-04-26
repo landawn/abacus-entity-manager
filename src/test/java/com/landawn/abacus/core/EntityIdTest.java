@@ -21,7 +21,7 @@ public class EntityIdTest extends AbstractEntityManager1Test {
     @Test
     public void test_1() {
         Seid entityId = Seid.of(Account.ID, 1);
-        assertEquals(1, entityId.get(int.class, Account.ID).intValue());
+        assertEquals(1, entityId.get(Account.ID, int.class).intValue());
 
         assertEquals(entityId, entityId.copy());
 

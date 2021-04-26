@@ -2307,7 +2307,7 @@ public final class NewEntityManager {
             } else if (isNoId) {
                 return null;
             } else {
-                return entityId.get(idClass, idPropName);
+                return entityId.get(idPropName, idClass);
             }
         }
 
@@ -2317,7 +2317,7 @@ public final class NewEntityManager {
             } else if (isNoId) {
                 return N.map(entityIds, entityId -> null);
             } else {
-                return N.map(entityIds, entityId -> entityId.get(idClass, idPropName));
+                return N.map(entityIds, entityId -> entityId.get(idPropName, idClass));
             }
         }
     }
